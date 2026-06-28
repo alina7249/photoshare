@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 import { toast } from "sonner";
+import { apiGet } from "../lib/api";
 
 interface FormData {
     username: string;
@@ -58,21 +59,6 @@ interface SecuritySettings {
     lastLogin: string;
     lastIp: string;
 }
-
-// 模拟订单数据
-const mockOrders = [
-  { id: "ORD20231025001", type: "会员订阅", status: "已完成", amount: "¥199", date: "2023-10-25", details: "银河会员年卡" },
-  { id: "ORD20231020002", type: "课程购买", status: "已完成", amount: "¥299", date: "2023-10-20", details: "风光摄影进阶课程" },
-  { id: "ORD20231015003", type: "器材租赁", status: "进行中", amount: "¥150", date: "2023-10-15", details: "索尼 A7R IV (3天)" },
-];
-
-// 模拟通知数据
-const mockNotifications = [
-  { id: "1", type: "like", content: "用户 @摄影爱好者 点赞了您的作品《晨曦中的山峦》", time: "5分钟前", read: false },
-  { id: "2", type: "comment", content: "用户 @光影达人 评论了您的作品《城市剪影》", time: "1小时前", read: false },
-  { id: "3", type: "follow", content: "用户 @新摄影师 关注了您", time: "3小时前", read: true },
-  { id: "4", type: "system", content: "您的作品《星空下的古堡》被推荐到首页", time: "1天前", read: true },
-];
 
 const ProfileSettings: React.FC = () => {
     const { isAuthenticated, user, logout } = useAuth();
@@ -146,6 +132,8 @@ const ProfileSettings: React.FC = () => {
     const [uploadProgress, setUploadProgress] = useState<number | null>(null);
     const [isUploading, setIsUploading] = useState(false);
     const [selectedNotificationIds, setSelectedNotificationIds] = useState<string[]>([]);
+    const [orders, setOrders] = useState<any[]>([]);
+    const [notifications, setNotifications] = useState<any[]>([]);
     const avatarInputRef = useRef<HTMLInputElement>(null);
     const coverInputRef = useRef<HTMLInputElement>(null);
 
@@ -159,6 +147,32 @@ const ProfileSettings: React.FC = () => {
             }));
         }
     }, [user]);
+
+    // 从API获取订单列表
+    useEffect(() => {
+        const fetchOrders = async () => {
+            try {
+                const data = await apiGet<any[]>('/orders');
+                setOrders(data);
+            } catch (error) {
+                console.error('Failed to fetch orders:', error);
+            }
+        };
+        fetchOrders();
+    }, []);
+
+    // 从API获取通知列表
+    useEffect(() => {
+        const fetchNotifications = async () => {
+            try {
+                const data = await apiGet<any[]>('/notifications');
+                setNotifications(data);
+            } catch (error) {
+                console.error('Failed to fetch notifications:', error);
+            }
+        };
+        fetchNotifications();
+    }, []);
 
     const handleInputChange = (field: string, value: string) => {
         setFormData(prev => ({ ...prev, [field]: value }));
@@ -276,10 +290,10 @@ const ProfileSettings: React.FC = () => {
     };
 
     const selectAllNotifications = () => {
-        if (selectedNotificationIds.length === mockNotifications.length) {
+        if (selectedNotificationIds.length === notifications.length) {
             setSelectedNotificationIds([]);
         } else {
-            setSelectedNotificationIds(mockNotifications.map(n => n.id));
+            setSelectedNotificationIds(notifications.map(n => n.id));
         }
     };
 
@@ -429,7 +443,7 @@ const ProfileSettings: React.FC = () => {
                 {activeTab === "orders" && <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                     <h3 className="text-lg font-bold text-[#F5F7FA] mb-6">我的订单</h3>
                     <div className="space-y-4">
-                        {mockOrders.map(order => (
+                        {orders.map(order => (
                             <div key={order.id} className="bg-[#1E2532] rounded-lg p-4 flex flex-col md:flex-row md:items-center justify-between">
                                 <div className="flex-1">
                                     <div className="flex items-center justify-between mb-2">
@@ -455,7 +469,7 @@ const ProfileSettings: React.FC = () => {
                         <h3 className="text-lg font-bold text-[#F5F7FA]">通知</h3>
                         <div className="flex space-x-2">
                             <button onClick={selectAllNotifications} className="px-3 py-1.5 bg-[#1E2532] text-[#B8C6D8] rounded-lg text-sm hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors">
-                                {selectedNotificationIds.length === mockNotifications.length ? "取消全选" : "全选"}
+                                {selectedNotificationIds.length === notifications.length ? "取消全选" : "全选"}
                             </button>
                             <button onClick={markNotificationsAsRead} className="px-3 py-1.5 bg-[#1E2532] text-[#B8C6D8] rounded-lg text-sm hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors">
                                 标记已读
@@ -466,7 +480,7 @@ const ProfileSettings: React.FC = () => {
                         </div>
                     </div>
                     <div className="space-y-3">
-                        {mockNotifications.map(notification => (
+                        {notifications.map(notification => (
                             <div key={notification.id} className={`bg-[#1E2532] rounded-lg p-4 flex items-start space-x-3 ${!notification.read ? "border-l-4 border-[#4A5F8B]" : ""}`}>
                                 <input type="checkbox" checked={selectedNotificationIds.includes(notification.id)} onChange={() => toggleNotificationSelect(notification.id)} className="mt-1" />
                                 <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${notification.type === "like" ? "bg-red-500/20 text-red-400" : notification.type === "comment" ? "bg-blue-500/20 text-blue-400" : notification.type === "follow" ? "bg-green-500/20 text-green-400" : "bg-gray-500/20 text-gray-400"}`}>

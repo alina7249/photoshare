@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../contexts/authContext";
 import { ShareButton } from "../components/common/ShareButton";
+import { apiGet } from "../lib/api";
 
 import {
     PieChart,
@@ -93,117 +94,6 @@ interface Achievement {
     total: number;
     unlocked: boolean;
 }
-
-const mockUsers: User[] = [{
-    id: "1",
-    name: "极简摄影师林风",
-    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=minimalist%20photographer%20male%20serious&sign=fded36172bb86afa4dc326776156459c",
-    level: 8,
-
-    stats: {
-        posts: 156,
-        likes: 2345,
-        days: 365}
-}, {
-    id: "2",
-    name: "城市摄影师陈默",
-    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=urban%20photographer%20male%20creative&sign=5df0f9b10a5022623be1cb145264b5a1",
-    level: 6,
-
-    stats: {
-        posts: 89,
-        likes: 1234,
-        days: 240
-    }
-}, {
-    id: "3",
-    name: "风景摄影爱好者",
-    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=landscape%20photographer%20male%20nature%20lover&sign=d96b376fb9cd51636566b2ae4aadba91",
-    level: 4,
-
-    stats: {
-        posts: 45,
-        likes: 876,
-        days: 180
-    }
-}];
-
-const mockTopics: Topic[] = [{
-    id: "1",
-    title: "分享我的极简主义摄影心得",
-    content: "在过去的一年里，我专注于极简主义摄影，通过简化构图和色彩，突出主题的本质。今天想和大家分享一些心得...",
-    author: mockUsers[0],
-    tags: ["极简主义", "构图", "心得"],
-    createdAt: "2023-10-25",
-    likes: 125,
-    comments: 34,
-    views: 890,
-    isEssential: true,
-    isSticky: false,
-    isSelected: false
-}, {
-    id: "2",
-    title: "【器材评测】索尼A7R V深度使用体验",
-    content: "入手索尼A7R V已经三个月了，作为一名专业摄影师，我想从实际使用的角度分享一下这款相机的优缺点...",
-    author: mockUsers[1],
-    tags: ["器材评测", "索尼", "全画幅"],
-    createdAt: "2023-10-24",
-    likes: 230,
-    comments: 56,
-    views: 1250,
-    isEssential: true,
-    isSticky: true,
-    isSelected: false
-}, {
-    id: "3",
-    title: "寻找城市中的几何美感",
-    content: "城市环境中蕴含着丰富的几何元素，这些线条和形状构成了独特的视觉语言。分享几个我常用的寻找和拍摄方法...",
-    author: mockUsers[0],
-    tags: ["城市摄影", "几何构图", "技巧"],
-    createdAt: "2023-10-23",
-    likes: 98,
-    comments: 23,
-    views: 650,
-    isEssential: false,
-    isSticky: false,
-    isSelected: false
-}, {
-    id: "4",
-    title: "风光摄影中的光线把握",
-    content: "光线是摄影的灵魂，尤其是在风光摄影中。本文将探讨如何观察和利用不同时段的光线来创作精彩作品...",
-    author: mockUsers[2],
-    tags: ["风光摄影", "光线", "技巧"],
-    createdAt: "2023-10-22",
-    likes: 156,
-    comments: 42,
-    views: 980,
-    isEssential: false,
-    isSticky: false,
-    isSelected: false
-}];
-
-const mockNotifications: Notification[] = [{
-    id: "1",
-    type: "like",
-    content: "极简摄影师林风 点赞了你的作品",
-    relatedId: "post123",
-    createdAt: "2023-10-25 10:23",
-    isRead: false
-}, {
-    id: "2",
-    type: "comment",
-    content: "城市摄影师陈默 评论了你的话题",
-    relatedId: "topic456",
-    createdAt: "2023-10-25 09:15",
-    isRead: false
-}, {
-    id: "3",
-    type: "system",
-    content: "系统维护通知：平台将于今晚23:00-次日凌晨2:00进行维护",
-    relatedId: "",
-    createdAt: "2023-10-24 18:30",
-    isRead: true
-}];
 
 const topicDistributionData: ChartData[] = [{
     name: "器材讨论",
@@ -300,85 +190,6 @@ const generateContributionData = (): ContributionDay[] => {
 
     return data;
 };
-
-const mockCollections: Collection[] = [{
-    id: "1",
-    name: "摄影技巧",
-    description: "收集各种摄影技巧和教程",
-    topicIds: ["1", "3", "4"],
-    createdAt: "2023-10-01"
-}, {
-    id: "2",
-    name: "器材评测",
-    description: "关注最新器材评测和体验",
-    topicIds: ["2"],
-    createdAt: "2023-10-15"
-}];
-
-const mockAchievements: Achievement[] = [{
-    id: "active-1",
-    title: "摄影新手",
-    description: "发布第1篇帖子",
-    icon: "fa-camera",
-    category: "active",
-    progress: 1,
-    total: 1,
-    unlocked: true
-}, {
-    id: "active-2",
-    title: "坚持不懈",
-    description: "连续登录7天",
-    icon: "fa-calendar-check",
-    category: "active",
-    progress: 5,
-    total: 7,
-    unlocked: false
-}, {
-    id: "active-3",
-    title: "创作达人",
-    description: "发布50篇帖子",
-    icon: "fa-pen-fancy",
-    category: "active",
-    progress: 12,
-    total: 50,
-    unlocked: false
-}, {
-    id: "contrib-1",
-    title: "精华创作者",
-    description: "获得5篇精华帖",
-    icon: "fa-star",
-    category: "contribution",
-    progress: 2,
-    total: 5,
-    unlocked: false
-}, {
-    id: "contrib-2",
-    title: "热门话题",
-    description: "发布10个热门话题",
-    icon: "fa-fire",
-    category: "contribution",
-    progress: 3,
-    total: 10,
-    unlocked: false
-}, {
-    id: "social-1",
-    title: "社交达人",
-    description: "拥有100个粉丝",
-    icon: "fa-users",
-    category: "social",
-    progress: 72,
-    total: 100,
-    unlocked: false
-}, {
-    id: "social-2",
-    title: "万人迷",
-    description: "获得1000个点赞",
-    icon: "fa-heart",
-    category: "social",
-    progress: 896,
-    total: 1000,
-    unlocked: false
-}];
 
 const ContributionCalendar: React.FC = () => {
     const [contributionData, setContributionData] = useState<ContributionDay[]>([]);
@@ -949,90 +760,8 @@ export const GroupCard: React.FC<GroupCardProps> = (
     );
 };
 
-// 模拟小组数据
-const mockGroups: Group[] = [
-  {
-    id: "g1",
-    name: "风光摄影爱好者",
-    description: "专注于分享和交流风光摄影技巧、作品和器材使用经验。无论你是专业摄影师还是业余爱好者，都能在这里找到志同道合的朋友。",
-    coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=landscape%20photography%20mountain%20lake%20sunset%20group&sign=dcb281799d48f79a565ca84312d184f9",
-    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=landscape%20photography%20club%20logo&sign=6e7a0377c1765869954de67da2805104",
-    members: [mockUsers[0], mockUsers[1], mockUsers[2]],
-    posts: 345,
-    createdAt: "2023-01-15",
-    isPublic: true,
-    joined: true,
-    tags: ["风光", "自然", "户外", "风景"]
-  },
-  {
-    id: "g2",
-    name: "人像摄影技巧交流",
-    description: "探讨人像摄影的光线运用、构图技巧、引导模特等专业内容。分享最新人像作品，互相学习进步。",
-    coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=portrait%20photography%20studio%20group%20creative&sign=ad812d2b6b21ee3f52025b0964288c97",
-    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=portrait%20photography%20club%20logo&sign=946c2ca7a407063d1cb6744320f85a57",
-    members: [mockUsers[1], mockUsers[2]],
-    posts: 267,
-    createdAt: "2023-03-20",
-    isPublic: true,
-    joined: false,
-    tags: ["人像", "肖像", "模特", "自然光"]
-  },
-  {
-    id: "g3",
-    name: "城市街头摄影",
-    description: "记录城市生活的瞬间，捕捉街头的故事和人文情怀。分享街头摄影的技巧和设备推荐。",
-    coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=street%20photography%20urban%20city%20street%20group&sign=e076386c6e6cb8682835ab9a15e145e7",
-    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=street%20photography%20club%20logo&sign=d6bc81adc6768a530f17c2ee445c92ce",
-    members: [mockUsers[0], mockUsers[1]],
-    posts: 189,
-    createdAt: "2023-02-10",
-    isPublic: true,
-    joined: false,
-    tags: ["街头", "城市", "人文", "纪实"]
-  },
-  {
-    id: "g4",
-    name: "器材玩家俱乐部",
-    description: "摄影器材的深度评测、使用心得和购买建议。从相机、镜头到各种配件，我们聊的都是硬货。",
-    coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=photography%20equipment%20camera%20lenses%20group&sign=de7808fe088e719e100bdd4ab79d5448",
-    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography%20equipment%20club%20logo&sign=11b90cf1c2e6893f916de925d4e82f15",
-    members: [mockUsers[0], mockUsers[1], mockUsers[2]],
-    posts: 412,
-    createdAt: "2023-04-05",
-    isPublic: true,
-    joined: true,
-    tags: ["器材", "评测", "购买", "配件"]
-  },
-  {
-    id: "g5",
-    name: "后期修图大师班",
-    description: "分享PS、Lightroom等后期修图技巧，从基础调整到高级合成，提升你的作品质感。",
-    coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=photo%20editing%20workspace%20post%20processing%20group&sign=bf46adb74ee31c030f652bf8ac9e19e7",
-    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photo%20editing%20club%20logo&sign=0561d34d4200e2caa00089faf67fcaef",
-    members: [mockUsers[1], mockUsers[2]],
-    posts: 234,
-    createdAt: "2023-05-15",
-    isPublic: true,
-    joined: false,
-    tags: ["后期", "修图", "PS", "Lightroom"]
-  },
-  {
-    id: "g6",
-    name: "手机摄影达人",
-    description: "用手机也能拍出大片！分享手机摄影技巧、配件使用和后期修图APP推荐。",
-    coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=mobile%20photography%20smartphone%20camera%20group&sign=7ad2126eb7f0147b6c8fbb8e6ba94dca",
-    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=mobile%20photography%20club%20logo&sign=07f813a1329616c29de7a5dccf800f5f",
-    members: [mockUsers[0], mockUsers[2]],
-    posts: 176,
-    createdAt: "2023-06-10",
-    isPublic: true,
-    joined: false,
-    tags: ["手机", "手机摄影", "APP", "便携"]
-  }
-];
-
 const CollectionsManager: React.FC = () => {
-    const [collections, setCollections] = useState<Collection[]>(mockCollections);
+    const [collections, setCollections] = useState<Collection[]>([]);
     const [showCreateForm, setShowCreateForm] = useState(false);
     const [newCollectionName, setNewCollectionName] = useState("");
     const [newCollectionDesc, setNewCollectionDesc] = useState("");
@@ -1079,7 +808,7 @@ const CollectionsManager: React.FC = () => {
             name: collection.name,
             description: collection.description,
 
-            topics: mockTopics.filter(topic => collection.topicIds.includes(topic.id)).map(topic => ({
+            topics: [].filter(topic => collection.topicIds.includes(topic.id)).map(topic => ({
                 id: topic.id,
                 title: topic.title,
                 author: topic.author.name,
@@ -1112,7 +841,7 @@ const CollectionsManager: React.FC = () => {
 };
 
 const AchievementSystem: React.FC = () => {
-    const [achievements, setAchievements] = useState<Achievement[]>(mockAchievements);
+    const [achievements, setAchievements] = useState<Achievement[]>([]);
     const [activeCategory, setActiveCategory] = useState<"all" | "active" | "contribution" | "social">("all");
 
     const filteredAchievements = achievements.filter(
@@ -1297,8 +1026,8 @@ const CreateGroupForm: React.FC<{ isOpen: boolean; onClose: () => void; onCreate
 };
 
 const Community: React.FC = () => {
-    const [topics, setTopics] = useState<Topic[]>(mockTopics);
-    const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
+    const [topics, setTopics] = useState<Topic[]>([]);
+    const [notifications, setNotifications] = useState<Notification[]>([]);
     const [showNotifications, setShowNotifications] = useState(false);
     const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
     const [batchMode, setBatchMode] = useState(false);
@@ -1309,7 +1038,7 @@ const Community: React.FC = () => {
     const unreadCount = notifications.filter(n => !n.isRead).length;
     
     // 小组相关状态
-    const [groups, setGroups] = useState<Group[]>(mockGroups);
+    const [groups, setGroups] = useState<Group[]>([]);
     const [showGroups, setShowGroups] = useState(false);
     const [showCreateGroupForm, setShowCreateGroupForm] = useState(false);
 
@@ -1425,6 +1154,45 @@ const Community: React.FC = () => {
             setBookmarkPositions(JSON.parse(saved));
         }
     }, []);
+
+    // 从API获取话题列表
+    useEffect(() => {
+        const fetchTopics = async () => {
+            try {
+                const data = await apiGet<Topic[]>('/topics');
+                setTopics(data);
+            } catch (error) {
+                console.error('Failed to fetch topics:', error);
+            }
+        };
+        fetchTopics();
+    }, []);
+
+    // 从API获取通知列表
+    useEffect(() => {
+        const fetchNotifications = async () => {
+            try {
+                const data = await apiGet<Notification[]>('/notifications');
+                setNotifications(data);
+            } catch (error) {
+                console.error('Failed to fetch notifications:', error);
+            }
+        };
+        fetchNotifications();
+    }, []);
+
+    // 从API获取小组列表
+    useEffect(() => {
+        const fetchGroups = async () => {
+            try {
+                const data = await apiGet<Group[]>('/groups');
+                setGroups(data);
+            } catch (error) {
+                console.error('Failed to fetch groups:', error);
+            }
+        };
+        fetchGroups();
+    }, []);
     
     // 处理加入/退出小组
     const handleJoinLeaveGroup = (groupId: string) => {
@@ -1445,7 +1213,7 @@ const Community: React.FC = () => {
         description: newGroup.description || "",
         coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=default%20group%20cover%20photography&sign=3bc880c564b24e50436a36ff7e049628",
         avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=default%20group%20logo%20photography&sign=dffce2dd824c325946b2f4c9d5864412",
-        members: [mockUsers[0]], // 假设创建者是当前用户
+        members: [], // 创建者为初始成员
         posts: 0,
         createdAt: new Date().toISOString(),
         isPublic: newGroup.isPublic || true,

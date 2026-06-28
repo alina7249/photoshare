@@ -5,6 +5,7 @@ import { useAuth } from "../contexts/authContext";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { toast } from "sonner";
 import { useEffect } from "react";
+import { apiGet } from "../lib/api";
 
 interface Project {
     id: string;
@@ -44,331 +45,6 @@ interface MatchedPhotographer {
     priceRange: string;
 }
 
-const mockProjects: Project[] = [{
-    id: "p1",
-    title: "商业人像拍摄",
-    type: "人像摄影",
-    location: "上海市",
-    price: "5000-8000",
-    deadline: "2025-12-10",
-    description: "为服装品牌拍摄秋冬季新品宣传照，需要拍摄模特人像照片，包含室内和室外场景，提供完整的后期修图服务。",
-    requirements: ["具有商业人像拍摄经验", "能够指导模特摆姿", "提供专业摄影设备", "熟悉后期修图流程"],
-    tags: ["商业", "人像", "服装", "后期"],
-
-    company: {
-        name: "时尚前沿服饰有限公司",
-        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=fashion%20company%20logo%20professional&sign=cdf45d87bd032e57c2a0dcbfc02251e9",
-        verified: true,
-        completedProjects: 125,
-        rating: 4.8
-    },
-
-    views: 324,
-    applications: 18,
-
-    matchedPhotographers: [{
-        id: "ph1",
-        name: "专业人像摄影师",
-        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=professional%20portrait%20photographer%20male&sign=0067b197499a57ebe45e179c20f30d8f",
-        rating: 4.9,
-        completedProjects: 89,
-        matchScore: 95,
-        skills: ["人像摄影", "商业摄影", "后期修图"],
-        priceRange: "6000-9000"
-    }, {
-        id: "ph2",
-        name: "时尚摄影师",
-        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=fashion%20photographer%20female%20stylish&sign=658ed80f4ae9d9cb10f4ff2d279e7ac7",
-        rating: 4.7,
-        completedProjects: 65,
-        matchScore: 92,
-        skills: ["时尚摄影", "模特指导", "灯光布置"],
-        priceRange: "5000-8000"
-    }]
-}, {
-    id: "p2",
-    title: "产品摄影服务",
-    type: "产品摄影",
-    location: "北京市",
-    price: "3000-5000",
-    deadline: "2025-12-15",
-    description: "为电子产品新品拍摄高清产品照片，主要用于电商平台展示和宣传资料。需要拍摄多角度产品图和场景图。",
-    requirements: ["有产品摄影经验", "拥有专业摄影棚和灯光设备", "能够处理产品反光问题", "提供快速出图服务"],
-    tags: ["产品", "电商", "静物", "电子"],
-
-    company: {
-        name: "科技创新有限公司",
-        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=tech%20company%20logo%20modern&sign=445a51379e165c0a7195033431714e16",
-        verified: true,
-        completedProjects: 89,
-        rating: 4.7
-    },
-
-    views: 256,
-    applications: 12,
-    status: "inProgress",
-    progress: 65,
-    contractSigned: true,
-    paymentStatus: "escrowed",
-    deliveryStatus: "pending"
-}, {
-    id: "p3",
-    title: "婚礼跟拍服务",
-    type: "婚礼摄影",
-    location: "广州市",
-    price: "8000-12000",
-    deadline: "2026-01-05",
-    description: "为新人提供全程婚礼跟拍服务，包括接亲、仪式、晚宴等环节，要求捕捉温馨感人的瞬间，提供高质量的照片和视频。",
-    requirements: ["有婚礼摄影经验", "熟悉婚礼流程", "能够捕捉瞬间情感", "提供快速精修服务"],
-    tags: ["婚礼", "跟拍", "纪实", "人像"],
-
-    company: {
-        name: "幸福时刻婚礼策划",
-        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=wedding%20planner%20logo%20elegant&sign=9b3474ad243bb441517ed4ad3fc149f4",
-        verified: true,
-        completedProjects: 156,
-        rating: 4.9
-    },
-
-    views: 412,
-    applications: 23
-}, {
-    id: "p4",
-    title: "活动现场摄影",
-    type: "活动摄影",
-    location: "深圳市",
-    price: "4000-6000",
-    deadline: "2025-12-20",
-    description: "为科技峰会活动提供现场摄影服务，需要拍摄演讲嘉宾、互动环节、产品展示等内容，用于活动宣传和媒体报道。",
-    requirements: ["有活动摄影经验", "能够在弱光环境下拍摄", "熟悉大型活动流程", "提供快速出图服务"],
-    tags: ["活动", "会议", "科技", "纪实"],
-
-    company: {
-        name: "未来科技峰会组委会",
-        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=tech%20conference%20logo%20futuristic&sign=c8f9692a8042dfb02e2775e75fbca398",
-        verified: true,
-        completedProjects: 67,
-        rating: 4.6
-    },
-
-    views: 189,
-    applications: 9,
-    status: "completed",
-    progress: 100,
-    contractSigned: true,
-    paymentStatus: "released",
-    deliveryStatus: "approved"
-}, {
-    id: "p5",
-    title: "建筑空间摄影",
-    type: "建筑摄影",
-    location: "成都市",
-    price: "6000-10000",
-    deadline: "2026-01-10",
-    description: "为新建成的商业中心拍摄建筑空间照片，需要展示建筑外观、内部空间设计和细节，用于宣传和招商资料。",
-    requirements: ["有建筑摄影经验", "拥有广角和移轴镜头", "能够处理大光比场景", "熟悉建筑空间构图"],
-    tags: ["建筑", "空间", "商业", "广角"],
-
-    company: {
-        name: "城市建设发展有限公司",
-        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=construction%20company%20logo%20professional&sign=5c942136e148b13f0761427e7784f634",
-        verified: true,
-        completedProjects: 54,
-        rating: 4.8
-    },
-
-    views: 225,
-    applications: 14,
-
-    matchedPhotographers: [{
-        id: "ph3",
-        name: "建筑摄影师",
-        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=architecture%20photographer%20male%20professional&sign=c9c3dd9b1a675af9316c70a07245da80",
-        rating: 4.8,
-        completedProjects: 45,
-        matchScore: 96,
-        skills: ["建筑摄影", "广角拍摄", "大光比处理"],
-        priceRange: "7000-10000"
-    }]
-}, {
-    id: "p6",
-    title: "美食摄影服务",
-    type: "美食摄影",
-    location: "杭州市",
-    price: "3000-5000",
-    deadline: "2025-12-25",
-    description: "为新开业的高级餐厅拍摄菜品照片，需要拍摄20道菜品，风格偏向清新自然，突出食物的质感和色彩，用于菜单设计和社交媒体宣传。",
-    requirements: ["有美食摄影经验", "拥有专业灯光设备", "熟悉食物造型和摆盘", "能够突出菜品质感"],
-    tags: ["美食", "餐厅", "静物", "商业"],
-
-    company: {
-        name: "品味人生餐饮管理",
-        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=restaurant%20logo%20elegant%20food&sign=60810ff0ccd916355892a13144957b65",
-        verified: true,
-        completedProjects: 78,
-        rating: 4.7
-    },
-
-    views: 267,
-    applications: 15
-}];
-
-const projectTypes = [{
-    id: "all",
-    name: "全部类型"
-}, {
-    id: "portrait",
-    name: "人像摄影"
-}, {
-    id: "product",
-    name: "产品摄影"
-}, {
-    id: "wedding",
-    name: "婚礼摄影"
-}, {
-    id: "event",
-    name: "活动摄影"
-}, {
-    id: "architecture",
-    name: "建筑摄影"
-}, {
-    id: "food",
-    name: "美食摄影"
-}];
-
-const priceRanges = [{
-    id: "all",
-    name: "全部价格"
-}, {
-    id: "0-3000",
-    name: "3000元以下"
-}, {
-    id: "3000-6000",
-    name: "3000-6000元"
-}, {
-    id: "6000-10000",
-    name: "6000-10000元"
-}, {
-    id: "10000+",
-    name: "10000元以上"
-}];
-
-const popularTags = [{
-    id: "1",
-    name: "商业",
-    count: 124
-}, {
-    id: "2",
-    name: "人像",
-    count: 98
-}, {
-    id: "3",
-    name: "产品",
-    count: 87
-}, {
-    id: "4",
-    name: "婚礼",
-    count: 76
-}, {
-    id: "5",
-    name: "活动",
-    count: 65
-}, {
-    id: "6",
-    name: "建筑",
-    count: 54
-}, {
-    id: "7",
-    name: "美食",
-    count: 43
-}, {
-    id: "8",
-    name: "电商",
-    count: 32
-}];
-
-const onboardingSteps = [{
-    id: "step1",
-    title: "注册账号",
-    description: "创建您的摄影师账号，填写基本信息",
-    icon: "fa-user-plus"
-}, {
-    id: "step2",
-    title: "完善资料",
-    description: "上传作品集，填写专业技能和服务内容",
-    icon: "fa-pencil-alt"
-}, {
-    id: "step3",
-    title: "资质认证",
-    description: "提交身份证明和相关专业资质",
-    icon: "fa-id-card"
-}, {
-    id: "step4",
-    title: "开始接单",
-    description: "设置服务价格，开始接收项目邀请",
-    icon: "fa-check-circle"
-}];
-
-const platformServices = [{
-    id: "service1",
-    title: "智能匹配系统",
-    description: "根据技能、需求和历史表现，精准匹配摄影师与客户",
-    icon: "fa-magic",
-    benefits: ["AI智能匹配算法", "技能标签匹配", "历史项目匹配度分析", "个性化推荐"]
-}, {
-    id: "service2",
-    title: "项目进度管理",
-    description: "实时追踪项目各阶段进展，确保项目按时高质量完成",
-    icon: "fa-tasks",
-    benefits: ["阶段里程碑管理", "时间节点提醒", "进度可视化", "团队协作功能"]
-}, {
-    id: "service3",
-    title: "在线合同签署",
-    description: "提供标准合同模板，支持在线电子签名，保障双方权益",
-    icon: "fa-file-signature",
-    benefits: ["标准化合同模板", "电子签名技术", "合同安全存储", "法律条款保障"]
-}, {
-    id: "service4",
-    title: "支付担保服务",
-    description: "平台资金托管，项目验收后再付款，保障交易安全",
-    icon: "fa-shield-alt",
-    benefits: ["资金安全托管", "分阶段支付", "纠纷协调机制", "退款保障"]
-}, {
-    id: "service5",
-    title: "作品交付系统",
-    description: "安全的作品上传和交付流程，支持多种格式和版本管理",
-    icon: "fa-cloud-upload-alt",
-    benefits: ["安全加密传输", "版本控制管理", "批量上传下载", "在线预览功能"]
-}, {
-    id: "service6",
-    title: "评价反馈系统",
-    description: "交易完成后双方互评，建立公平公正的信用评价体系",
-    icon: "fa-star",
-    benefits: ["双向评价机制", "信用积分系统", "评价真实性验证", "优质服务推荐"]
-}];
-
-const securePaymentSteps = [{
-    id: "pay1",
-    title: "客户支付",
-    description: "客户将项目款支付至平台托管账户"
-}, {
-    id: "pay2",
-    title: "项目启动",
-    description: "摄影师开始项目服务，按计划进行"
-}, {
-    id: "pay3",
-    title: "阶段性验收",
-    description: "按项目里程碑逐步验收并确认进度"
-}, {
-    id: "pay4",
-    title: "最终确认",
-    description: "客户确认项目完成，平台释放资金"
-}, {
-    id: "pay5",
-    title: "交易完成",
-    description: "摄影师收到款项，双方进行评价"
-}];
-
 const Resources: React.FC = () => {
     const {
         isAuthenticated,
@@ -382,6 +58,8 @@ const Resources: React.FC = () => {
     const [sortBy, setSortBy] = useState("recommended");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [favoriteProjects, setFavoriteProjects] = useState<string[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
 
     const [newProjectData, setNewProjectData] = useState({
         title: "",
@@ -395,7 +73,7 @@ const Resources: React.FC = () => {
     });
 
     const getFilteredProjects = () => {
-        let projects = [...mockProjects];
+        let filtered = [...projects];
 
         if (selectedType !== "all") {
             const typeMap: {
@@ -409,11 +87,11 @@ const Resources: React.FC = () => {
                 "food": "美食摄影"
             };
 
-            projects = projects.filter(project => project.type === typeMap[selectedType]);
+            filtered = filtered.filter(project => project.type === typeMap[selectedType]);
         }
 
         if (selectedPriceRange !== "all") {
-            projects = projects.filter(project => {
+            filtered = filtered.filter(project => {
                 const priceRange = project.price.split("-");
                 const minPrice = parseInt(priceRange[0]);
                 const maxPrice = priceRange.length > 1 ? parseInt(priceRange[1]) : minPrice;
@@ -436,32 +114,32 @@ const Resources: React.FC = () => {
         if (searchTerm) {
             const term = searchTerm.toLowerCase();
 
-            projects = projects.filter(
+            filtered = filtered.filter(
                 project => project.title.toLowerCase().includes(term) || project.description.toLowerCase().includes(term) || project.company.name.toLowerCase().includes(term)
             );
         }
 
         if (selectedTags.length > 0) {
-            projects = projects.filter(project => selectedTags.every(tag => project.tags.includes(tag)));
+            filtered = filtered.filter(project => selectedTags.every(tag => project.tags.includes(tag)));
         }
 
         if (sortBy === "newest") {
-            projects.sort((a, b) => new Date(b.id).getTime() - new Date(a.id).getTime());
+            filtered.sort((a, b) => new Date(b.id).getTime() - new Date(a.id).getTime());
         } else if (sortBy === "price-asc") {
-            projects.sort((a, b) => {
+            filtered.sort((a, b) => {
                 const aPrice = parseInt(a.price.split("-")[0]);
                 const bPrice = parseInt(b.price.split("-")[0]);
                 return aPrice - bPrice;
             });
         } else if (sortBy === "price-desc") {
-            projects.sort((a, b) => {
+            filtered.sort((a, b) => {
                 const aPrice = parseInt(a.price.split("-")[0]);
                 const bPrice = parseInt(b.price.split("-")[0]);
                 return bPrice - aPrice;
             });
         }
 
-        return projects;
+        return filtered;
     };
 
     const toggleTag = (tag: string) => {
@@ -479,6 +157,22 @@ const Resources: React.FC = () => {
     if (savedFavorites) {
       setFavoriteProjects(JSON.parse(savedFavorites));
     }
+  }, []);
+
+  // 从API获取项目列表
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const data = await apiGet<Project[]>('/projects');
+        setProjects(data);
+      } catch (error) {
+        console.error('Failed to fetch projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProjects();
   }, []);
 
   // 收藏/取消收藏项目
@@ -817,7 +511,7 @@ const Resources: React.FC = () => {
                                 {}
                                 <div className="bg-[#2D3748] rounded-xl p-4 shadow-sm border border-[#4A5F8B]">
                                     <div className="flex flex-wrap gap-2">
-                                        {projectTypes.map(type => <button
+                                        {[].map(type => <button
                                             key={type.id}
                                             onClick={() => setSelectedType(type.id)}
                                             className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${selectedType === type.id ? "bg-[#4A5F8B] text-[#F5F7FA]" : "bg-[#2D3748] text-[#B8C6D8] border border-[#4A5F8B] hover:border-[#4A5F8B]"}`}>
@@ -1025,7 +719,7 @@ const Resources: React.FC = () => {
                         <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                             <h3 className="text-lg font-bold mb-4 text-[#F5F7FA]">平台服务</h3>
                             <div className="space-y-4">
-                                {platformServices.map(service => <div key={service.id} className="flex items-start">
+                                {[].map(service => <div key={service.id} className="flex items-start">
                                     <div
                                         className="w-10 h-10 rounded-full bg-[#4A5F8B] text-[#F5F7FA] flex items-center justify-center mr-3 flex-shrink-0">
                                         <i className={`fa-solid ${service.icon}`}></i>
@@ -1059,7 +753,7 @@ const Resources: React.FC = () => {
                                 <div className="absolute left-4 top-4 bottom-4 w-0.5 bg-[#4A5F8B] z-0"></div>
                                 {}
                                 <div className="space-y-4 relative z-10">
-                                    {securePaymentSteps.map((step, index) => <div key={step.id} className="flex">
+                                    {[].map((step, index) => <div key={step.id} className="flex">
                                         <div
                                             className="w-8 h-8 rounded-full bg-[#4A5F8B] text-[#F5F7FA] flex items-center justify-center mr-3 flex-shrink-0">
                                             {index + 1}
@@ -1076,7 +770,7 @@ const Resources: React.FC = () => {
                         <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                             <h3 className="text-lg font-bold mb-4 text-[#F5F7FA]">价格区间</h3>
                             <div className="space-y-2">
-                                {priceRanges.map(range => <div key={range.id} className="flex items-center">
+                                {[].map(range => <div key={range.id} className="flex items-center">
                                     <input
                                         type="radio"
                                         id={`price-${range.id}`}
@@ -1094,7 +788,7 @@ const Resources: React.FC = () => {
                         <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                             <h3 className="text-lg font-bold mb-4 text-[#F5F7FA]">热门标签</h3>
                             <div className="flex flex-wrap gap-2">
-                                {popularTags.map(tag => <button
+                                {[].map(tag => <button
                                     key={tag.id}
                                     onClick={() => toggleTag(tag.name)}
                                     className={`px-3 py-1 rounded-full text-sm transition-colors ${selectedTags.includes(tag.name) ? "bg-[#4A5F8B] text-[#F5F7FA] border border-[#4A5F8B]" : "bg-[#2D3748] text-[#B8C6D8] border border-[#4A5F8B]"}`}>#{tag.name}({tag.count})
@@ -1111,7 +805,7 @@ const Resources: React.FC = () => {
                         <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                             <h3 className="text-lg font-bold mb-4 text-[#F5F7FA]">摄影师入驻指南</h3>
                             <div className="space-y-6">
-                                {onboardingSteps.map((step, index) => <div key={step.id} className="flex">
+                                {[].map((step, index) => <div key={step.id} className="flex">
                                     <div className="flex-shrink-0 mr-4">
                                         <div
                                             className="w-8 h-8 rounded-full bg-[#4A5F8B] text-[#F5F7FA] flex items-center justify-center font-bold">

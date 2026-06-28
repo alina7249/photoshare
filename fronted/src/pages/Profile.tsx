@@ -5,170 +5,7 @@ import { useAuth } from '../contexts/authContext';
 import { Empty } from '../components/Empty';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { toast } from 'sonner';
-
-// 模拟用户数据
-const mockUser = {
-  id: 'user-123',
-  username: '@光影捕手',
-  email: 'user@example.com',
-  avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male%20portrait&sign=e53a45a0e2ef5ba23982d6db8693456b',
-  bio: '热爱风光和人像摄影，喜欢探索城市中的几何美感和自然中的光影变化。',
-  joinDate: '2023-01-15',
-  followers: 123,
-  following: 45,
-  posts: 28,
-  coverImage: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=photography%20studio%20background%20modern%20minimalist&sign=8848033bdf94e05818be4d57164ea015',
-  level: '新锐摄影师',
-  levelNum: 3,
-  progress: 120,
-  progressMax: 200,
-  tags: '风光/人像双题材创作者',
-  memberStatus: '银河会员·年卡',
-  memberDaysLeft: 128
-};
-
-// 模拟作品数据
-const mockPhotographyPosts = [
-  {
-    id: "1",
-    title: "晨曦中的山峦",
-    description: "捕捉清晨第一缕阳光洒在山峦上的壮丽景色，使用长曝光展现云海的流动感。",
-    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=morning%20sunrise%20mountain%20landscape%20mist%20china&sign=a50c8d6084b10f76978cc2afb1ca29a9",
-    author: {
-      id: "user-123",
-      name: "@光影捕手",
-      avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc"
-    },
-    likes: 324,
-    comments: 45,
-    tags: ["风光", "日出", "云海", "自然"],
-    date: "2023-10-25",
-    views: 1256,
-    format: "RAW",
-    visibility: "公开",
-    copyrightType: "独家授权"
-  },
-  {
-    id: "2",
-    title: "城市剪影",
-    description: "从高处俯瞰城市天际线，记录夕阳下城市建筑的剪影效果。",
-    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=city%20skyline%20silhouette%20sunset%20urban%20architecture%20modern&sign=8de72287cf83cda70c057b89bfc1d186",
-    author: {
-      id: "user-123",
-      name: "@光影捕手",
-      avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc"
-    },
-    likes: 289,
-    comments: 37,
-    tags: ["城市", "建筑", "剪影", "夕阳"],
-    date: "2023-10-22",
-    views: 987,
-    format: "JPG",
-    visibility: "公开",
-    copyrightType: "非独家"
-  },
-  {
-    id: "3",
-    title: "海浪与礁石",
-    description: "长时间曝光拍摄海浪拍打礁石的场景，展现水的丝绸质感。",
-    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=ocean%20waves%20crashing%20on%20rocks%20long%20exposure%20seascape&sign=e3c4cd3840caaaedc19f43f96183a958",
-    author: {
-      id: "user-123",
-      name: "@光影捕手",
-      avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc"
-    },
-    likes: 412,
-    comments: 53,
-    tags: ["海景", "慢门", "自然", "礁石"],
-    date: "2023-10-18",
-    views: 1452,
-    format: "RAW",
-    visibility: "仅好友可见",
-    copyrightType: "独家授权"
-  },
-  {
-    id: "4",
-    title: "森林晨雾",
-    description: "在山间森林中捕捉晨雾弥漫的神秘氛围，阳光透过树叶形成丁达尔效应。",
-    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=forest%20morning%20mist%20sunlight%20rays%20trees%20mystical&sign=0d866462637658cb7796789831e1cc68",
-    author: {
-      id: "user-123",
-      name: "@光影捕手",
-      avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc"
-    },
-    likes: 387,
-    comments: 49,
-    tags: ["森林", "晨雾", "丁达尔效应", "自然"],
-    date: "2023-10-15",
-    views: 1328,
-    format: "JPG",
-    visibility: "公开",
-    copyrightType: "非独家"
-  },
-  {
-    id: "5",
-    title: "湖畔日落",
-    description: "平静的湖面倒映着绚丽的晚霞，形成对称的美感。",
-    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=lake%20sunset%20reflection%20mountains%20evening%20colorful%20sky&sign=c039f18a4bf074634422a50690ffb6c",
-    author: {
-      id: "user-123",
-      name: "@光影捕手",
-      avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc"
-    },
-    likes: 456,
-    comments: 61,
-    tags: ["湖泊", "日落", "倒影", "晚霞"],
-    date: "2023-10-12",
-    views: 1689,
-    format: "RAW",
-    visibility: "公开",
-    copyrightType: "独家授权"
-  },
-  {
-    id: "6",
-    title: "星空下的古堡",
-    description: "在远离城市光污染的地方，拍摄星空下的古堡遗迹，展现历史与自然的交融。",
-    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=castle%20ruins%20under%20starry%20sky%20milky%20way%20night%20long%20exposure&sign=4f691b61d53a7e9b6b0869b95858dbb2",
-    author: {
-      id: "user-123",
-      name: "@光影捕手",
-      avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc"
-    },
-    likes: 523,
-    comments: 78,
-    tags: ["星空", "夜景", "古堡", "银河"],
-    date: "2023-10-08",
-    views: 1976,
-    format: "RAW",
-    visibility: "私密",
-    copyrightType: "独家授权"
-  }
-];
-
-// 月度浏览数据
-const monthlyViewsData = [
-  { date: "10/1", views: 150, likes: 25 },
-  { date: "10/5", views: 250, likes: 45 },
-  { date: "10/10", views: 210, likes: 38 },
-  { date: "10/15", views: 240, likes: 44 },
-  { date: "10/20", views: 190, likes: 35 },
-  { date: "10/25", views: 220, likes: 40 },
-];
-
-// 最近活动
-const recentActivities = [
-  { id: 1, text: "3天前发布作品《城市剪影》，获赞23次", type: "post" },
-  { id: 2, text: "1周前获得新粉丝5人", type: "follower" },
-  { id: 3, text: "2周前完成新手任务《发布第一张作品》", type: "task" },
-  { id: 4, text: "3周前作品《森林晨雾》被推荐到首页", type: "featured" },
-];
-
-// 最近器材
-const recentEquipment = [
-  { id: 1, name: "索尼 A7R IV", type: "camera" },
-  { id: 2, name: "佳能 EF 24-70mm f/2.8L", type: "lens" },
-  { id: 3, name: "DJI Mavic 3", type: "drone" },
-];
+import { apiGet } from '../lib/api';
 
 const Profile: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
@@ -189,19 +26,50 @@ const Profile: React.FC = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
   
-  // 初始化模拟用户数据
-  const [profileUser] = useState({
-    id: 'user-123',
-    username: '@光影捕手',
-    email: 'user@example.com',
-    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male%20portrait&sign=e53a45a0e2ef5ba23982d6db8693456b',
-    bio: '热爱风光和人像摄影，喜欢探索城市中的几何美感和自然中的光影变化。',
-    joinDate: '2023-01-15',
-    followers: 123,
-    following: 45,
-    posts: 28,
-    likes: mockPhotographyPosts.reduce((sum, post) => sum + post.likes, 0)
+  // 用户资料数据
+  const [profileUser, setProfileUser] = useState({
+    id: '',
+    username: '',
+    email: '',
+    avatar: '',
+    bio: '',
+    joinDate: '',
+    followers: 0,
+    following: 0,
+    posts: 0,
+    likes: 0
   });
+  const [profilePosts, setProfilePosts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // 从API获取用户资料
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        setLoading(true);
+        const data = await apiGet<any>('/profile');
+        setProfileUser(data);
+      } catch (error) {
+        console.error('Failed to fetch profile:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProfile();
+  }, []);
+
+  // 从API获取用户作品
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const data = await apiGet<any[]>('/profile/posts');
+        setProfilePosts(data);
+      } catch (error) {
+        console.error('Failed to fetch profile posts:', error);
+      }
+    };
+    fetchPosts();
+  }, []);
   
   // 检查是否是当前用户自己的主页
   const isCurrentUser = isAuthenticated && user?.id === profileUser.id;
@@ -212,7 +80,7 @@ const Profile: React.FC = () => {
   // 获取所有标签
   const getAllTags = () => {
     const tags = ["全部"];
-    mockPhotographyPosts.forEach(post => {
+    profilePosts.forEach(post => {
       post.tags.forEach(tag => {
         if (!tags.includes(tag)) {
           tags.push(tag);
@@ -224,7 +92,7 @@ const Profile: React.FC = () => {
   
   // 筛选作品
   const getFilteredPosts = () => {
-    let posts = [...mockPhotographyPosts];
+    let posts = [...profilePosts];
     
     if (selectedTag !== "全部") {
       posts = posts.filter(post => post.tags.includes(selectedTag));
@@ -272,8 +140,8 @@ const Profile: React.FC = () => {
   
   // 根据当前激活的标签显示对应的内容
   const displayPosts = activeTab === 'posts' ? filteredPosts : 
-                      activeTab === 'collections' ? mockPhotographyPosts.slice(0, 2) : 
-                      mockPhotographyPosts.slice(1, 3);
+                      activeTab === 'collections' ? profilePosts.slice(0, 2) : 
+                      profilePosts.slice(1, 3);
   
   // 格式化日期为相对时间
   const formatRelativeTime = (dateString: string) => {
@@ -383,7 +251,7 @@ const Profile: React.FC = () => {
           {/* 封面图 */}
           <div className="h-64 overflow-hidden">
             <img
-              src={mockUser.coverImage}
+              src={profileUser.avatar}
               alt="Cover"
               className="w-full h-full object-cover"
             />
@@ -412,21 +280,21 @@ const Profile: React.FC = () => {
                     </h1>
                     <div className="ml-3 flex flex-wrap gap-2">
                       <span className="px-2 py-0.5 text-xs bg-[#4A5F8B]/20 text-[#B8C6D8] rounded">
-                        {mockUser.tags}
+                        {''}
                       </span>
                     </div>
                   </div>
                   
                   {/* 等级和进度条 */}
                   <div className="flex items-center mb-4">
-                    <span className="text-[#B8C6D8] text-sm mr-2">{mockUser.level} LV.{mockUser.levelNum}</span>
+                    <span className="text-[#B8C6D8] text-sm mr-2">LV.0</span>
                     <div className="flex-1 h-2 bg-[#1E2532] rounded-full overflow-hidden mr-2">
                       <div 
                         className="h-full bg-[#4A5F8B]" 
-                        style={{ width: `${(mockUser.progress / mockUser.progressMax) * 100}%` }}
+                        style={{ width: '0%' }}
                       ></div>
                     </div>
-                    <span className="text-[#B8C6D8] text-xs">{mockUser.progress}/{mockUser.progressMax}</span>
+                    <span className="text-[#B8C6D8] text-xs">0/200</span>
                   </div>
                   
                   {/* 个人简介 */}
@@ -630,7 +498,7 @@ const Profile: React.FC = () => {
               <div className="bg-[#1E2532] rounded-xl p-6 shadow-sm border border-[#4A5F8B] mb-8">
                 <h2 className="text-xl font-bold text-[#F5F7FA] mb-4">最近活动</h2>
                 <div className="space-y-3">
-                  {recentActivities.map(activity => (
+                  {[].map(activity => (
                     <div key={activity.id} className="flex items-start space-x-3">
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                         activity.type === "post" ? "bg-blue-500/20 text-blue-400" :
@@ -853,7 +721,7 @@ const Profile: React.FC = () => {
                 </div>
                 <p className="text-xs text-[#B8C6D8]/70 mb-4">最近浏览：索尼 A7R IV</p>
                 <div className="space-y-3 mb-4">
-                  {recentEquipment.map(equipment => (
+                  {[].map(equipment => (
                     <div key={equipment.id} className="flex items-center justify-between">
                       <div className="flex items-center">
                         <div className="w-8 h-8 rounded-full bg-[#4A5F8B]/20 flex items-center justify-center text-[#4A5F8B] mr-3">
@@ -880,14 +748,14 @@ const Profile: React.FC = () => {
                     <i className="fa-solid fa-crown text-[#4A5F8B] mr-2"></i>会员中心
                   </h3>
                 </div>
-                <p className="text-xs text-[#B8C6D8]/70 mb-4">您当前是 {mockUser.memberStatus}</p>
+                <p className="text-xs text-[#B8C6D8]/70 mb-4">您当前是 会员</p>
                 <div className="bg-[#2D3748] p-3 rounded-lg mb-4">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm text-[#B8C6D8]">会员有效期</span>
-                    <span className="text-xs text-[#4A5F8B]">剩余 {mockUser.memberDaysLeft}天</span>
+                    <span className="text-xs text-[#4A5F8B]">剩余 0天</span>
                   </div>
                   <div className="w-full h-2 bg-[#1E2532] rounded-full overflow-hidden">
-                    <div className="h-full bg-[#4A5F8B]" style={{ width: `${mockUser.memberDaysLeft / 365 * 100}%` }}></div>
+                    <div className="h-full bg-[#4A5F8B]" style={{ width: '0%' }}></div>
                   </div>
                 </div>
                 <div className="flex space-x-2">

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { toast } from 'sonner';
-import { mockCameras, mockLenses, mockAccessories } from '../lib/equipmentData';
+import { apiGet } from '../lib/api';
 
 // 器材接口定义
 interface Equipment {
@@ -37,94 +37,25 @@ const EquipmentLibrary: React.FC = () => {
     isPublic: false
   });
   
-  // 从外部数据文件导入器材数据并转换格式
-  const convertFromEquipmentData = (data: any[]) => {
-    return data.map((item, index) => ({
-      id: `eq-${index + 1}`,
-      name: item.name,
-      type: item.type === '相机' ? 'camera' : 
-             item.type === '镜头' ? 'lens' : 
-             item.type === '三脚架' ? 'tripod' : 
-             item.type === '闪光灯' ? 'flash' : 'other',
-      brand: item.brand,
-      model: item.name,
-      purchaseDate: '2023-10-01',
-      condition: 'good',
-      image: item.image,
-      serialNumber: `SN${index + 100000}`,
-      notes: item.pros ? `优点: ${item.pros.join('，')}` : '暂无备注',
-      isPublic: true
-    }));
-  };
-
   // 初始化器材列表
-  const [equipmentList, setEquipmentList] = useState<Equipment[]>([
-    {
-      id: '1',
-      name: '索尼 A7R IV',
-      type: 'camera',
-      brand: 'Sony',
-      model: 'A7R IV',
-      purchaseDate: '2022-03-15',
-      condition: 'good',
-      image: mockCameras[0].image,
-      serialNumber: '789456123',
-      notes: '全画幅高像素相机，适合风光和商业摄影',
-      isPublic: true
-    },
-    {
-      id: '2',
-      name: '佳能 EF 24-70mm f/2.8L',
-      type: 'lens',
-      brand: 'Canon',
-      model: 'EF 24-70mm f/2.8L USM',
-      purchaseDate: '2021-11-20',
-      condition: 'like-new',
-      image: mockLenses[0].image,
-      serialNumber: '456789123',
-      notes: '标准变焦镜头，适合人像和婚礼摄影',
-      isPublic: true
-    },
-    {
-      id: '3',
-      name: 'Gitzo 碳纤维三脚架',
-      type: 'tripod',
-      brand: 'Gitzo',
-      model: 'GT3543LS',
-      purchaseDate: '2022-05-05',
-      condition: 'good',
-      image: mockAccessories[0].image,
-      serialNumber: '987654321',
-      notes: '轻巧稳定，适合风光摄影',
-      isPublic: true
-    },
-    {
-      id: '4',
-      name: 'Profoto A1X 闪光灯',
-      type: 'flash',
-      brand: 'Profoto',
-      model: 'A1X',
-      purchaseDate: '2022-09-18',
-      condition: 'like-new',
-      image: mockAccessories[1].image,
-      serialNumber: '321654987',
-      notes: '便携式闪光灯，适合人像和商业摄影',
-      isPublic: true
-    },
-    {
-      id: '5',
-      name: 'DJI Mini 3 Pro 无人机',
-      type: 'camera',
-      brand: 'DJI',
-      model: 'Mini 3 Pro',
-      purchaseDate: '2023-01-10',
-      condition: 'new',
-      image: mockAccessories[7].image,
-      serialNumber: '123456789',
-      notes: '专业航拍无人机，支持4K视频',
-      isPublic: false
-    }
-  ]);
+  const [loading, setLoading] = useState(true);
+  const [equipmentList, setEquipmentList] = useState<Equipment[]>([]);
+
+  useEffect(() => {
+    const fetchEquipment = async () => {
+      try {
+        setLoading(true);
+        const data = await apiGet<Equipment[]>('/equipment/library');
+        setEquipmentList(data || []);
+      } catch (error) {
+        console.error('Failed to load equipment:', error);
+        toast.error('器材数据加载失败');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchEquipment();
+  }, []);
   
   // 获取所有品牌
   const getAllBrands = () => {
@@ -456,7 +387,18 @@ const EquipmentLibrary: React.FC = () => {
           </div>
         </div>
         
+        {/* 加载状态 */}
+        {loading && (
+          <div className="flex items-center justify-center py-16">
+            <div className="flex flex-col items-center">
+              <div className="w-10 h-10 border-4 border-[#4A5F8B] border-t-transparent rounded-full animate-spin mb-4"></div>
+              <p className="text-[#B8C6D8]">加载器材数据中...</p>
+            </div>
+          </div>
+        )}
+
         {/* 器材列表 */}
+        {!loading && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredEquipment.map((equipment) => (
             <motion.div
@@ -543,8 +485,9 @@ const EquipmentLibrary: React.FC = () => {
             </motion.div>
           ))}
         </div>
+        )}
         
-        {filteredEquipment.length === 0 && (
+        {!loading && filteredEquipment.length === 0 && (
           <div className="p-8 bg-[#2D3748] rounded-xl border border-[#4A5F8B] text-center mt-8">
             <div className="w-16 h-16 bg-[#1E2532] rounded-full flex items-center justify-center text-[#4A5F8B] mx-auto mb-4">
               <i className="fa-solid fa-video text-2xl"></i>

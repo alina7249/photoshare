@@ -1,11 +1,12 @@
 // EquipmentDatabase.tsx - 卡片hover效果详细描述：
 // 1. 器材类型选择按钮：当鼠标悬停时，按钮会向上平移5个像素(y: -5)，提供清晰的交互反馈
 // 2. 器材卡片：当鼠标悬停时，卡片会向上平移5个像素(y: -5)，同时阴影效果增强，给人一种浮动感
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } from 'recharts';
-import { mockCameras, mockLenses, mockAccessories, allEquipments, Equipment } from '../lib/equipmentData';
+import { Equipment } from '../lib/equipmentData';
+import { apiGet } from '../lib/api';
 
 import { EquipmentQuestions } from '../components/EquipmentQuestions';
 import { toast } from 'sonner';
@@ -231,22 +232,47 @@ const equipmentTypes = [
   const [rentalDuration, setRentalDuration] = useState<'daily' | 'weekly' | 'monthly'>('daily');
   const [equipmentPrice, setEquipmentPrice] = useState(0);
 
+  // API 数据状态
+  const [allEquipments, setAllEquipments] = useState<Equipment[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // 从 API 加载器材数据
+  useEffect(() => {
+    const fetchEquipment = async () => {
+      try {
+        const data = await apiGet<Equipment[]>('/equipment');
+        setAllEquipments(data);
+      } catch (error) {
+        console.error('Failed to fetch equipment:', error);
+        toast.error('加载器材数据失败');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchEquipment();
+  }, []);
+
+  // 按类型派生器材数组
+  const cameras = useMemo(() => allEquipments.filter(e => e.type === '相机' || e.type === '无人机'), [allEquipments]);
+  const lenses = useMemo(() => allEquipments.filter(e => e.type === '镜头'), [allEquipments]);
+  const accessories = useMemo(() => allEquipments.filter(e => e.type !== '相机' && e.type !== '无人机' && e.type !== '镜头'), [allEquipments]);
+
   // 过滤器材
   const getFilteredEquipment = () => {
-    let equipment = [];
+    let equipment: Equipment[] = [];
     
     switch(activeType) {
       case 'cameras':
-        equipment = mockCameras;
+        equipment = cameras;
         break;
       case 'lenses':
-        equipment = mockLenses;
+        equipment = lenses;
         break;
       case 'accessories':
-        equipment = mockAccessories;
+        equipment = accessories;
         break;
       default:
-        equipment = mockCameras;
+        equipment = cameras;
     }
     
     // 按品牌过滤
@@ -285,8 +311,7 @@ const equipmentTypes = [
 
   // 获取对比数据
   const getComparisonData = () => {
-    let allEquipment: any[] = [...mockCameras, ...mockLenses, ...mockAccessories];
-    return selectedItems.map(id => allEquipment.find(item => item.id === id)).filter(Boolean);
+    return selectedItems.map(id => allEquipments.find(item => item.id === id)).filter(Boolean);
   };
 
   // 获取性能雷达图数据
@@ -335,10 +360,8 @@ const equipmentTypes = [
 
   // 获取推荐器材
   const getRecommendedEquipment = (equipment: Equipment) => {
-    let allEquipment: Equipment[] = [...mockCameras, ...mockLenses, ...mockAccessories];
-    
     // 过滤掉当前器材和同类型器材
-    let recommendations = allEquipment.filter(item => 
+    let recommendations = allEquipments.filter(item => 
       item.id !== equipment.id && 
       item.type !== equipment.type &&
       item.brand === equipment.brand
@@ -346,7 +369,7 @@ const equipmentTypes = [
     
     // 如果同品牌推荐不足，补充其他品牌
     if (recommendations.length < 3) {
-      const additionalRecommendations = allEquipment.filter(item => 
+      const additionalRecommendations = allEquipments.filter(item => 
         item.id !== equipment.id && 
         item.type !== equipment.type &&
         !recommendations.some(r => r.id === item.id)
@@ -497,7 +520,8 @@ const equipmentTypes = [
       message = '对于摄影新手，这些器材操作简单，性价比高，非常适合您入门学习。';
     } else if (prompt.includes('长焦') || prompt.includes('远摄')) {
       // 推荐长焦镜头
-      recommendations = mockLenses.filter(item => 
+      recommendations = allEquipments.filter(item => 
+        item.type === '镜头' &&
         item.focalLength && 
         (item.focalLength.includes('70-200') || 
          item.focalLength.includes('100-400') || 
@@ -529,13 +553,13 @@ const equipmentTypes = [
       let typeRecommendations: Equipment[] = [];
       switch (filters.type) {
         case 'cameras':
-          typeRecommendations = mockCameras;
+          typeRecommendations = cameras;
           break;
         case 'lenses':
-          typeRecommendations = mockLenses;
+          typeRecommendations = lenses;
           break;
         case 'accessories':
-          typeRecommendations = mockAccessories;
+          typeRecommendations = accessories;
           break;
         default:
           typeRecommendations = allEquipments;
