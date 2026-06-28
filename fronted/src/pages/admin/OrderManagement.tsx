@@ -4,79 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import Button from '../../components/common/Button';
 
-// 模拟订单数据
-const mockOrders = [
-  {
-    id: 'O-20231025-001',
-    userId: '101',
-    userName: '张三',
-    userAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20male&sign=92090021266b3aaadfd4d99b36d00763',
-    items: [
-      { name: '银河会员·年卡', price: 299, quantity: 1 }
-    ],
-    totalAmount: 299,
-    status: 'paid',
-    paymentMethod: 'alipay',
-    createdAt: '2023-10-25T10:30:00',
-    paidAt: '2023-10-25T10:32:15'
-  },
-  {
-    id: 'O-20231024-002',
-    userId: '102',
-    userName: '李四',
-    userAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20female&sign=f09d83378aa1e845abd3d8360ae43318',
-    items: [
-      { name: '器材租赁套餐A', price: 199, quantity: 2 }
-    ],
-    totalAmount: 398,
-    status: 'paid',
-    paymentMethod: 'wechat',
-    createdAt: '2023-10-24T14:20:00',
-    paidAt: '2023-10-24T14:23:45'
-  },
-  {
-    id: 'O-20231023-003',
-    userId: '103',
-    userName: '王五',
-    userAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20male%20creative&sign=05eaa6a6889c9fd565f612592ebff64a',
-    items: [
-      { name: '线上课程《风光摄影大师班》', price: 399, quantity: 1 }
-    ],
-    totalAmount: 399,
-    status: 'pending',
-    paymentMethod: 'alipay',
-    createdAt: '2023-10-23T09:15:00',
-    paidAt: null
-  },
-  {
-    id: 'O-20231022-004',
-    userId: '104',
-    userName: '赵六',
-    userAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20female%20professional&sign=de0253bc58d40781a8618749ea5612ee',
-    items: [
-      { name: 'RAW素材包', price: 59, quantity: 1 },{ name: '后期预设包', price: 39, quantity: 1 }
-    ],
-    totalAmount: 98,
-    status: 'paid',
-    paymentMethod: 'creditcard',
-    createdAt: '2023-10-22T16:45:00',
-    paidAt: '2023-10-22T16:47:30'
-  },
-  {
-    id: 'O-20231021-005',
-    userId: '105',
-    userName: '孙七',
-    userAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20male%20nature%20lover&sign=5bde84c0a947f0a379af97355ca16564',
-    items: [
-      { name: '银河会员·月卡', price: 39, quantity: 1 }
-    ],
-    totalAmount: 39,
-    status: 'cancelled',
-    paymentMethod: 'wechat',
-    createdAt: '2023-10-21T11:30:00',
-    paidAt: null
-  }
-];
+// TODO: Replace with API call
+const mockOrders = [];
 
 const OrderManagement: React.FC = () => {
   const navigate = useNavigate();

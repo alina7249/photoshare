@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { toast } from 'sonner';
-import { mockCameras, mockLenses, mockAccessories } from '../lib/equipmentData';
 
 // 器材接口定义
 interface Equipment {
@@ -58,73 +57,8 @@ const EquipmentLibrary: React.FC = () => {
   };
 
   // 初始化器材列表
-  const [equipmentList, setEquipmentList] = useState<Equipment[]>([
-    {
-      id: '1',
-      name: '索尼 A7R IV',
-      type: 'camera',
-      brand: 'Sony',
-      model: 'A7R IV',
-      purchaseDate: '2022-03-15',
-      condition: 'good',
-      image: mockCameras[0].image,
-      serialNumber: '789456123',
-      notes: '全画幅高像素相机，适合风光和商业摄影',
-      isPublic: true
-    },
-    {
-      id: '2',
-      name: '佳能 EF 24-70mm f/2.8L',
-      type: 'lens',
-      brand: 'Canon',
-      model: 'EF 24-70mm f/2.8L USM',
-      purchaseDate: '2021-11-20',
-      condition: 'like-new',
-      image: mockLenses[0].image,
-      serialNumber: '456789123',
-      notes: '标准变焦镜头，适合人像和婚礼摄影',
-      isPublic: true
-    },
-    {
-      id: '3',
-      name: 'Gitzo 碳纤维三脚架',
-      type: 'tripod',
-      brand: 'Gitzo',
-      model: 'GT3543LS',
-      purchaseDate: '2022-05-05',
-      condition: 'good',
-      image: mockAccessories[0].image,
-      serialNumber: '987654321',
-      notes: '轻巧稳定，适合风光摄影',
-      isPublic: true
-    },
-    {
-      id: '4',
-      name: 'Profoto A1X 闪光灯',
-      type: 'flash',
-      brand: 'Profoto',
-      model: 'A1X',
-      purchaseDate: '2022-09-18',
-      condition: 'like-new',
-      image: mockAccessories[1].image,
-      serialNumber: '321654987',
-      notes: '便携式闪光灯，适合人像和商业摄影',
-      isPublic: true
-    },
-    {
-      id: '5',
-      name: 'DJI Mini 3 Pro 无人机',
-      type: 'camera',
-      brand: 'DJI',
-      model: 'Mini 3 Pro',
-      purchaseDate: '2023-01-10',
-      condition: 'new',
-      image: mockAccessories[7].image,
-      serialNumber: '123456789',
-      notes: '专业航拍无人机，支持4K视频',
-      isPublic: false
-    }
-  ]);
+  // TODO: from API
+  const [equipmentList, setEquipmentList] = useState<Equipment[]>([]);
   
   // 获取所有品牌
   const getAllBrands = () => {

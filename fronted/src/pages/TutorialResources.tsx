@@ -8,45 +8,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-// 模拟已添加工具数据
-const mockAddedTools = [
-  {
-    id: 't1',
-    name: 'Lightroom 预设编辑器',
-    description: '自定义和应用Lightroom预设，调整照片色调、对比度等参数',
-    thumbnail: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=lightroom%20preset%20editor%20interface%20tool&sign=42661b7d2c987e965f113dcc6f3dac60',
-    category: '预设工具',
-    usageCount: 35,
-    rating: 4.8,
-  },
-  {
-    id: 't2',
-    name: 'Photoshop 在线编辑器',
-    description: '基础的在线Photoshop功能，适合快速编辑和调整照片',
-    thumbnail: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=photoshop%20online%20editor%20interface%20tool&sign=ba958b5aae10d256ff78fd63cdd9317e',
-    category: '图像编辑',
-    usageCount: 28,
-    rating: 4.7,
-  },
-  {
-    id: 't3',
-    name: 'RAW 格式转换器',
-    description: '将RAW格式照片转换为各种常用图像格式，支持批量处理',
-    thumbnail: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=raw%20format%20converter%20interface%20tool&sign=4b092bc64a2cfa96e4b3e8a40f290cf7',
-    category: '格式转换',
-    usageCount: 19,
-    rating: 4.5,
-  },
-  {
-    id: 't4',
-    name: '批量水印工具',
-    description: '为多张照片添加自定义水印，支持调整位置、透明度和大小',
-    thumbnail: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=batch%20watermark%20tool%20interface%20utility&sign=a1f93a0268496bbb87f0338ad8bf46f9',
-    category: '批量处理',
-    usageCount: 14,
-    rating: 4.6,
-  },
-];
+// TODO: from API
+const mockAddedTools: any[] = [];
 
 // 模拟推荐工具数据
 const mockRecommendedTools = [

@@ -49,59 +49,8 @@ const GroupsList: React.FC = () => {
         if (savedGroups) {
           setGroups(JSON.parse(savedGroups));
         } else {
-          // 模拟数据
-          const mockGroups: Group[] = [
-            {
-              id: "g1",
-              name: "风光摄影爱好者",
-              description: "专注于分享和交流风光摄影技巧、作品和器材使用经验。无论你是专业摄影师还是业余爱好者，都能在这里找到志同道合的朋友。",
-              coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=landscape%20photography%20mountain%20lake%20sunset%20group&sign=dcb281799d48f79a565ca84312d184f9",
-              avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=landscape%20photography%20club%20logo&sign=6e7a0377c1765869954de67da2805104",
-              members: [
-                {
-                  id: "1",
-                  name: "极简摄影师林风",
-                  avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=minimalist%20photographer%20male%20serious&sign=fded36172bb86afa4dc326776156459c",
-                  role: "owner",
-                  joinDate: "2023-01-15"
-                }
-              ],
-              posts: 345,
-              createdAt: "2023-01-15",
-              isPublic: true,
-              joined: user?.id === "1", // 当前用户是否已加入
-              tags: ["风光", "自然", "户外", "风景"],
-              ownerId: "1" // 小组创建者ID
-            },
-            {
-              id: "g2",
-              name: "人像摄影技巧交流",
-              description: "探讨人像摄影的光线运用、构图技巧、引导模特等专业内容。分享最新人像作品，互相学习进步。",
-              coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=portrait%20photography%20studio%20group%20creative&sign=ad812d2b6b21ee3f52025b0964288c97",
-              avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=portrait%20photography%20club%20logo&sign=946c2ca7a407063d1cb6744320f85a57",
-              members: [],
-              posts: 267,
-              createdAt: "2023-03-20",
-              isPublic: true,
-              joined: false,
-              tags: ["人像", "肖像", "模特", "自然光"],
-              ownerId: "2"
-            },
-            {
-              id: "g3",
-              name: "城市街头摄影",
-              description: "记录城市生活的瞬间，捕捉街头的故事和人文情怀。分享街头摄影的技巧和设备推荐。",
-              coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=street%20photography%20urban%20city%20street%20group&sign=e076386c6e6cb8682835ab9a15e145e7",
-              avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=street%20photography%20club%20logo&sign=d6bc81adc6768a530f17c2ee445c92ce",
-              members: [],
-              posts: 189,
-              createdAt: "2023-02-10",
-              isPublic: true,
-              joined: false,
-              tags: ["街头", "城市", "人文", "纪实"],
-              ownerId: "3"
-            }
-          ];
+          // TODO: Replace with API call
+          const mockGroups: Group[] = [];
           setGroups(mockGroups);
           localStorage.setItem('photographyGroups', JSON.stringify(mockGroups));
         }

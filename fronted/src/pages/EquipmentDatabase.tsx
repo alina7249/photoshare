@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } from 'recharts';
-import { mockCameras, mockLenses, mockAccessories, allEquipments, Equipment } from '../lib/equipmentData';
+import { Equipment } from '../lib/equipmentData';
 
 import { EquipmentQuestions } from '../components/EquipmentQuestions';
 import { toast } from 'sonner';
@@ -233,36 +233,8 @@ const equipmentTypes = [
 
   // 过滤器材
   const getFilteredEquipment = () => {
-    let equipment = [];
-    
-    switch(activeType) {
-      case 'cameras':
-        equipment = mockCameras;
-        break;
-      case 'lenses':
-        equipment = mockLenses;
-        break;
-      case 'accessories':
-        equipment = mockAccessories;
-        break;
-      default:
-        equipment = mockCameras;
-    }
-    
-    // 按品牌过滤
-    if (selectedBrand !== '全部') {
-      equipment = equipment.filter(item => item.brand === selectedBrand);
-    }
-    
-    // 按搜索词过滤
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      equipment = equipment.filter(item => 
-        item.name.toLowerCase().includes(term) || 
-        item.brand.toLowerCase().includes(term) ||
-        (item.type && item.type.toLowerCase().includes(term))
-      );
-    }
+    // TODO: from API
+    let equipment: Equipment[] = [];
     
     return equipment;
   };
@@ -285,8 +257,8 @@ const equipmentTypes = [
 
   // 获取对比数据
   const getComparisonData = () => {
-    let allEquipment: any[] = [...mockCameras, ...mockLenses, ...mockAccessories];
-    return selectedItems.map(id => allEquipment.find(item => item.id === id)).filter(Boolean);
+    // TODO: from API
+    return selectedItems.map(id => ({} as Equipment)).filter(Boolean);
   };
 
   // 获取性能雷达图数据
@@ -335,29 +307,8 @@ const equipmentTypes = [
 
   // 获取推荐器材
   const getRecommendedEquipment = (equipment: Equipment) => {
-    let allEquipment: Equipment[] = [...mockCameras, ...mockLenses, ...mockAccessories];
-    
-    // 过滤掉当前器材和同类型器材
-    let recommendations = allEquipment.filter(item => 
-      item.id !== equipment.id && 
-      item.type !== equipment.type &&
-      item.brand === equipment.brand
-    );
-    
-    // 如果同品牌推荐不足，补充其他品牌
-    if (recommendations.length < 3) {
-      const additionalRecommendations = allEquipment.filter(item => 
-        item.id !== equipment.id && 
-        item.type !== equipment.type &&
-        !recommendations.some(r => r.id === item.id)
-      );
-      
-      recommendations = [...recommendations, ...additionalRecommendations].slice(0, 3);
-    } else {
-      recommendations = recommendations.slice(0, 3);
-    }
-    
-    return recommendations;
+    // TODO: from API
+    return [] as Equipment[];
   };
 
   const filteredEquipment = getFilteredEquipment();
@@ -473,88 +424,8 @@ const equipmentTypes = [
     message: string;
     recommendations: Equipment[];
   }> => {
-    // 根据提示内容返回不同的推荐
-    let recommendations: Equipment[] = [];
-    let message: string = '';
-    
-    // 模拟API处理逻辑
-    const { prompt, filters } = params;
-    
-    // 根据不同条件进行推荐
-    if (prompt.includes('旅行') || prompt.includes('便携')) {
-      // 推荐便携器材
-      recommendations = allEquipments.filter(item => 
-        (item.type === '相机' || item.type === '无人机') && 
-        (item.tags.includes('便携') || item.weight && parseFloat(item.weight.replace('g', '')) < 700)
-      ).slice(0, 3);
-      message = '根据您的需求，我为您推荐了几款便携的摄影器材，非常适合旅行携带。';
-    } else if (prompt.includes('入门') || prompt.includes('新手')) {
-      // 推荐入门器材
-      recommendations = allEquipments.filter(item => 
-        item.tags.includes('入门') || 
-        (item.type === '相机' && parseInt(item.price) < 6000)
-      ).slice(0, 3);
-      message = '对于摄影新手，这些器材操作简单，性价比高，非常适合您入门学习。';
-    } else if (prompt.includes('长焦') || prompt.includes('远摄')) {
-      // 推荐长焦镜头
-      recommendations = mockLenses.filter(item => 
-        item.focalLength && 
-        (item.focalLength.includes('70-200') || 
-         item.focalLength.includes('100-400') || 
-         item.focalLength.includes('85mm'))
-      ).slice(0, 3);
-      message = '这些长焦镜头可以帮助您拍摄远距离的主体，非常适合人像和野生动物摄影。';
-    } else if (prompt.includes('预算')) {
-      // 解析预算信息
-      const budgetMatch = prompt.match(/预算\s*(\d+)/);
-      if (budgetMatch && budgetMatch[1]) {
-        const budget = parseInt(budgetMatch[1]);
-        recommendations = allEquipments.filter(item => 
-          parseInt(item.price) <= budget
-        ).sort(() => Math.random() - 0.5).slice(0, 3);
-        message = `在您的预算范围内，我为您推荐了这些性价比高的摄影器材。`;
-      } else {
-        // 默认推荐热门器材
-        recommendations = allEquipments.slice(0, 3);
-        message = '根据平台热门度和用户评价，我为您推荐了这些高品质器材。';
-      }
-    } else if (filters.brand && filters.brand !== '全部') {
-      // 根据品牌筛选
-      recommendations = allEquipments.filter(item => 
-        item.brand === filters.brand
-      ).slice(0, 3);
-      message = `${filters.brand}品牌的热门器材推荐，品质可靠，值得信赖。`;
-    } else if (filters.type) {
-      // 根据类型筛选
-      let typeRecommendations: Equipment[] = [];
-      switch (filters.type) {
-        case 'cameras':
-          typeRecommendations = mockCameras;
-          break;
-        case 'lenses':
-          typeRecommendations = mockLenses;
-          break;
-        case 'accessories':
-          typeRecommendations = mockAccessories;
-          break;
-        default:
-          typeRecommendations = allEquipments;
-      }
-      recommendations = typeRecommendations.slice(0, 3);
-      message = `精选的${equipmentTypes.find(t => t.id === filters.type)?.name || '器材'}推荐，满足您的专业需求。`;
-    } else {
-      // 默认推荐热门器材
-      recommendations = allEquipments.slice(0, 3);
-      message = '根据平台热门度和用户评价，我为您推荐了这些高品质器材。';
-    }
-    
-    // 确保至少有推荐结果
-    if (recommendations.length === 0) {
-      recommendations = allEquipments.slice(0, 3);
-      message = '根据平台热门度，我为您推荐了这些高品质器材。';
-    }
-    
-    return { message, recommendations };
+    // TODO: from API
+    return { message: '', recommendations: [] };
   };
 
   return (

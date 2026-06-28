@@ -145,30 +145,14 @@ const mockPhotographyPosts = [
   }
 ];
 
-// 月度浏览数据
-const monthlyViewsData = [
-  { date: "10/1", views: 150, likes: 25 },
-  { date: "10/5", views: 250, likes: 45 },
-  { date: "10/10", views: 210, likes: 38 },
-  { date: "10/15", views: 240, likes: 44 },
-  { date: "10/20", views: 190, likes: 35 },
-  { date: "10/25", views: 220, likes: 40 },
-];
+// TODO: from API
+const monthlyViewsData: any[] = [];
 
-// 最近活动
-const recentActivities = [
-  { id: 1, text: "3天前发布作品《城市剪影》，获赞23次", type: "post" },
-  { id: 2, text: "1周前获得新粉丝5人", type: "follower" },
-  { id: 3, text: "2周前完成新手任务《发布第一张作品》", type: "task" },
-  { id: 4, text: "3周前作品《森林晨雾》被推荐到首页", type: "featured" },
-];
+// TODO: from API
+const recentActivities: any[] = [];
 
-// 最近器材
-const recentEquipment = [
-  { id: 1, name: "索尼 A7R IV", type: "camera" },
-  { id: 2, name: "佳能 EF 24-70mm f/2.8L", type: "lens" },
-  { id: 3, name: "DJI Mavic 3", type: "drone" },
-];
+// TODO: from API
+const recentEquipment: any[] = [];
 
 const Profile: React.FC = () => {
   const { isAuthenticated, user } = useAuth();

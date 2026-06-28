@@ -44,15 +44,8 @@ const EMOJI_LIST = [
   "😋", "😛", "😝", "😜", "🤪", "🤨", "🧐", "🤓", "😎", "🤩"
 ];
 
-// 模拟用户列表
-const mockUsers: User[] = [
-  { id: '1', name: '摄影爱好者', avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography+enthusiast+male+casual&sign=baaa24d00499bfa62c3331c6bf8fac63' },
-  { id: '2', name: '器材纠结者', avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=camera+lover+male+thinking&sign=b4c3b2a13ef3cc80ca680a6123c78331' },
-  { id: '3', name: '摄影新手', avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=young+photographer+student+male&sign=c8c88269cfd5ed96c4081bb7a4ed50b8' },
-  { id: '4', name: '专业摄影师', avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=professional+photographer+male+serious&sign=d191f4ad9c14b22a1a115bafed6ee0ed' },
-  { id: '5', name: '器材专家', avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=equipment+expert+male+glasses&sign=8d8319579a6ab06ca40149f75a43e06b' },
-  { id: '6', name: '摄影导师', avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography+teacher+female+experienced&sign=a5b88cad9fb822a07468f9c7f743556f' }
-];
+// TODO: Replace with API call
+const mockUsers: User[] = [];
 
 // 举报原因
 const REPORT_REASONS = [
