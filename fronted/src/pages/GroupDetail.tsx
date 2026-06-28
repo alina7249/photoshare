@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { toast } from 'sonner';
+import { apiGet } from '../lib/api';
 import { CommentSection } from '../components/CommentSection';
 
 // 定义类型
@@ -60,98 +61,22 @@ const GroupDetail: React.FC = () => {
   const [newPostContent, setNewPostContent] = useState("");
   const [newPostTitle, setNewPostTitle] = useState("");
 
-  // 模拟从API加载小组详情
+  // 从API加载小组详情
   useEffect(() => {
-    const loadGroupDetail = () => {
-      // 模拟网络请求延迟
-      setTimeout(() => {
-        // 模拟小组数据
-        const mockGroup: Group = {
-          id: id || "g1",
-          name: "风光摄影爱好者",
-          description: "专注于分享和交流风光摄影技巧、作品和器材使用经验。无论你是专业摄影师还是业余爱好者，都能在这里找到志同道合的朋友。我们定期组织线上分享会和线下外拍活动，欢迎加入！",
-          coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=landscape%20photography%20mountain%20lake%20sunset%20group&sign=dcb281799d48f79a565ca84312d184f9",
-          avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=landscape%20photography%20club%20logo&sign=6e7a0377c1765869954de67da2805104",
-          members: [
-            {
-              id: "1",
-              name: "极简摄影师林风",
-              avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=minimalist%20photographer%20male%20serious&sign=fded36172bb86afa4dc326776156459c",
-              role: "owner",
-              joinDate: "2023-01-15"
-            },
-            {
-              id: "2",
-              name: "城市摄影师陈默",
-              avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=urban%20photographer%20male%20creative&sign=5df0f9b10a5022623be1cb145264b5a1",
-              role: "admin",
-              joinDate: "2023-01-20"
-            },
-            {
-              id: "3",
-              name: "风景摄影爱好者",
-              avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=landscape%20photographer%20male%20nature%20lover&sign=d96b376fb9cd51636566b2ae4aadba91",
-              role: "member",
-              joinDate: "2023-02-01"
-            }
-          ],
-          posts: [
-            {
-              id: "p1",
-              title: "【分享】我的春季风光摄影心得",
-              content: "春天是一年中拍摄风光的最佳季节之一，万物复苏，色彩丰富。分享一些我的春季拍摄技巧和心得...\n\n1. 时间选择：春季的光线变化很快，清晨和黄昏是黄金时段\n2. 构图技巧：利用新绿的树枝作为前景，增加画面层次感\n3. 器材选择：广角镜头适合拍摄壮阔的风景，微距镜头可以捕捉细节\n\n希望这些技巧对大家有帮助！",
-              author: {
-                id: "1",
-                name: "极简摄影师林风",
-                avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=minimalist%20photographer%20male%20serious&sign=fded36172bb86afa4dc326776156459c"
-              },
-              createdAt: "2023-04-15T10:30:00",
-              likes: 45,
-              comments: 12,
-              images: [
-                "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=spring%20landscape%20mountains%20flowers%20river&sign=dd478f18134eb179ab7f10fc4621849d"
-              ],
-              tags: ["春季", "风光", "技巧"]
-            },
-            {
-              id: "p2",
-              title: "请教：关于长曝光拍摄水流的问题",
-              content: "最近尝试拍摄溪流的长曝光效果，但总是拍不出丝滑的感觉，想请教各位老师几个问题：\n\n1. 一般需要多少秒的曝光时间？\n2. 除了三脚架，还需要哪些配件？\n3. 后期处理有什么技巧吗？\n\n附上我最近拍的一张照片，请各位指点！",
-              author: {
-                id: "3",
-                name: "风景摄影爱好者",
-                avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=landscape%20photographer%20male%20nature%20lover&sign=d96b376fb9cd51636566b2ae4aadba91"
-              },
-              createdAt: "2023-04-14T15:45:00",
-              likes: 23,
-              comments: 18,
-              images: [
-                "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=stream%20waterfall%20long%20exposure%20forest&sign=deb44d926ed6eba487647f556bc78282"
-              ],
-              tags: ["长曝光", "水流", "提问"]
-            }
-          ],
-          createdAt: "2023-01-15",
-          isPublic: true,
-          joined: user?.id === "1" || user?.id === "2" || user?.id === "3", // 模拟用户是否已加入
-          tags: ["风光", "自然", "户外", "风景"],
-          ownerId: "1",
-          activity: {
-            today: 8,
-            thisWeek: 45,
-            thisMonth: 120
-          }
-        };
-        
-        setGroup(mockGroup);
+    const loadGroupDetail = async () => {
+      if (!id) return;
+      try {
+        const data = await apiGet<Group>(`/groups/${id}`);
+        setGroup(data);
+      } catch (error) {
+        console.error('Failed to load group detail:', error);
+      } finally {
         setIsLoading(false);
-      }, 1000);
+      }
     };
 
-    if (id) {
-      loadGroupDetail();
-    }
-  }, [id, user?.id]);
+    loadGroupDetail();
+  }, [id]);
 
   // 处理加入小组
   const handleJoinGroup = () => {

@@ -5,6 +5,7 @@ import { useAuth } from '../contexts/authContext';
 import { CommentSection } from '../components/CommentSection';
 import { toast } from 'sonner';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { apiGet } from '../lib/api';
 
 // 课程类型定义
 interface CourseType {
@@ -84,134 +85,6 @@ interface InstructorDetail {
   bio: string;
 }
 
-// 模拟课程数据
-const mockCourseData: CourseType = {
-  id: 'c1',
-  title: '摄影入门：曝光三要素详解',
-  type: '免费',
-  category: '基础知识',
-  level: '入门',
-  instructor: {
-    id: 'i1',
-    name: '摄影导师李明',
-    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography%20instructor%20male%20professional&sign=3463768fb946a95d70afa8eb5967ad9c',
-    title: '资深摄影师',
-    students: 12543,
-    courses: 28,
-    rating: 4.9
-  },
-  coverImage: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=photography%20basics%20exposure%20triangle%20tutorial&sign=e033925b5e39db550134d845baeaa825',
-  duration: '1小时30分钟',
-  lessons: 8,
-  students: 12543,
-  rating: 4.9,
-  reviews: 2345,
-  description: '本课程适合摄影初学者，详细讲解摄影的核心概念——曝光三要素（光圈、快门、ISO），让你掌握正确曝光的技巧，拍出专业水准的照片。通过实际案例分析和练习，帮助你快速理解和应用这些基础知识。',
-  tags: ['曝光', '基础', '入门', '光圈', '快门', 'ISO'],
-  price: 0,
-  isTrial: true,
-  sections: [
-    {
-      id: 's1',
-      title: '课程介绍',
-      duration: '5分钟',
-      lessons: [
-        {
-          id: 'l1',
-          title: '课程概述与学习目标',
-          duration: '5分钟',
-          description: '介绍本课程的主要内容、学习目标和预期收获',
-          isTrial: true
-        }
-      ]
-    },
-    {
-      id: 's2',
-      title: '曝光基础',
-      duration: '25分钟',
-      lessons: [
-        {
-          id: 'l2',
-          title: '什么是曝光',
-          duration: '10分钟',
-          description: '曝光的基本概念和重要性',
-          isTrial: true
-        },
-        {
-          id: 'l3',
-          title: '曝光补偿',
-          duration: '15分钟',
-          description: '曝光补偿的原理和应用场景'
-        }
-      ]
-    },
-    {
-      id: 's3',
-      title: '光圈',
-      duration: '20分钟',
-      lessons: [
-        {
-          id: 'l4',
-          title: '光圈的概念与作用',
-          duration: '10分钟',
-          description: '光圈的工作原理及其对景深的影响'
-        },
-        {
-          id: 'l5',
-          title: '光圈的实际应用',
-          duration: '10分钟',
-          description: '不同光圈值在实际拍摄中的应用技巧'
-        }
-      ]
-    },
-    {
-      id: 's4',
-      title: '快门速度',
-      duration: '20分钟',
-      lessons: [
-        {
-          id: 'l6',
-          title: '快门速度的概念',
-          duration: '10分钟',
-          description: '快门速度的定义和对画面的影响'
-        },
-        {
-          id: 'l7',
-          title: '高速与慢速快门的应用',
-          duration: '10分钟',
-          description: '如何利用不同快门速度创造特殊效果'
-        }
-      ]
-    },
-    {
-      id: 's5',
-      title: 'ISO',
-      duration: '15分钟',
-      lessons: [
-        {
-          id: 'l8',
-          title: 'ISO的作用与噪点',
-          duration: '15分钟',
-          description: 'ISO的工作原理和对画面质量的影响'
-        }
-      ]
-    },
-    {
-      id: 's6',
-      title: '课程总结',
-      duration: '5分钟',
-      lessons: [
-        {
-          id: 'l9',
-          title: '曝光三要素的平衡与实践',
-          duration: '5分钟',
-          description: '如何在实际拍摄中平衡光圈、快门和ISO'
-        }
-      ]
-    }
-  ]
-};
-
 // 模拟学习小组数据
 const mockStudyGroups: StudyGroup[] = [
   {
@@ -252,8 +125,22 @@ const CourseDetail: React.FC = () => {
   const [showCertificate, setShowCertificate] = useState(false);
   const [selectedInstructor, setSelectedInstructor] = useState<InstructorDetail | null>(null);
   
-  // 模拟课程数据
-  const course = mockCourseData;
+  // 课程数据从API加载
+  const [course, setCourse] = useState<CourseType | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    apiGet<CourseType>(`/courses/${id}`)
+      .then((data) => {
+        setCourse(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setCourse(null);
+        setLoading(false);
+      });
+  }, [id]);
   
   // 模拟推荐讲师数据
   const recommendedInstructors = [
@@ -294,7 +181,7 @@ const CourseDetail: React.FC = () => {
   
   // 从本地存储加载用户数据
   useEffect(() => {
-    if (isAuthenticated && user) {
+    if (isAuthenticated && user && course) {
       const savedProgress = localStorage.getItem(`progress_${user.id}_${course.id}`);
       const savedNotes = localStorage.getItem(`notes_${user.id}_${course.id}`);
       
@@ -309,10 +196,11 @@ const CourseDetail: React.FC = () => {
       // 计算总体进度
       calculateProgress();
     }
-  }, [isAuthenticated, user, course.id]);
+  }, [isAuthenticated, user, course]);
   
   // 计算总体进度
   const calculateProgress = () => {
+    if (!course) return;
     let totalLessons = 0;
     let completedLessons = 0;
     
@@ -344,7 +232,7 @@ const CourseDetail: React.FC = () => {
   
   // 处理完成课时
   const handleMarkCompleted = () => {
-    if (!isAuthenticated || !selectedLesson) return;
+    if (!isAuthenticated || !selectedLesson || !course) return;
     
     const updatedProgress = { ...progress, [selectedLesson.id]: !progress[selectedLesson.id] };
     setProgress(updatedProgress);
@@ -360,7 +248,7 @@ const CourseDetail: React.FC = () => {
   
   // 处理添加笔记
   const handleAddNote = () => {
-    if (!isAuthenticated || !selectedLesson || !newNote.trim()) return;
+    if (!isAuthenticated || !selectedLesson || !newNote.trim() || !course) return;
     
     const newNoteObj: Note = {
       id: `note_${Date.now()}`,
@@ -382,6 +270,7 @@ const CourseDetail: React.FC = () => {
   
   // 处理删除笔记
   const handleDeleteNote = (noteId: string) => {
+    if (!course) return;
     const updatedNotes = notes.filter(note => note.id !== noteId);
     setNotes(updatedNotes);
     
@@ -417,17 +306,17 @@ const CourseDetail: React.FC = () => {
   
   // 检查是否有权限访问课程
   const hasAccess = () => {
-    return course.type === '免费' || isAuthenticated;
+    return course?.type === '免费' || isAuthenticated;
   };
   
   // 生成证书数据
   const getCertificateData = () => {
     return {
-      id: `cert_${user?.id}_${course.id}`,
+      id: `cert_${user?.id}_${course?.id}`,
       userName: user?.username || '学员',
-      courseName: course.title,
+      courseName: course?.title,
       completionDate: new Date().toLocaleDateString('zh-CN'),
-      instructor: course.instructor.name
+      instructor: course?.instructor.name
     };
   };
   
@@ -441,6 +330,29 @@ const CourseDetail: React.FC = () => {
     setShowCertificate(false);
   };
   
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen flex items-center justify-center">
+        <div className="w-16 h-16 border-4 border-[#4A5F8B] border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  if (!course) {
+    return (
+      <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen">
+        <div className="flex flex-col items-center justify-center h-[60vh] text-center">
+          <div className="w-16 h-16 bg-[#4A5F8B] rounded-full flex items-center justify-center text-[#F5F7FA] mb-4">
+            <i className="fa-solid fa-exclamation-circle text-2xl"></i>
+          </div>
+          <h2 className="text-2xl font-bold text-[#F5F7FA] mb-2">未找到该课程</h2>
+          <p className="text-[#B8C6D8] mb-6 max-w-md">抱歉，您访问的课程不存在或已被删除</p>
+          <Link to="/online-courses" className="px-6 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors border border-[#4A5F8B]">返回课程列表</Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen">
       <motion.div

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { toast } from 'sonner';
+import { apiGet } from '../lib/api';
 
 // 评论接口定义
 interface Comment {
@@ -39,22 +40,21 @@ const PhotoComments: React.FC = () => {
   const [commentText, setCommentText] = useState('');
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
   const [replyText, setReplyText] = useState('');
-  
-  // 模拟作品数据
-  const mockPhotoPost: PhotographyPost = {
-    id: id || '1',
-    title: '晨曦中的山峦',
-    image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=morning%20sunrise%20mountain%20landscape%20mist%20china&sign=a50c8d6084b10f76978cc2afb1ca29a9',
-    author: {
-      id: 'user-123',
-      name: '@光影捕手',
-      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc',
-    },
-    likes: 324,
-    comments: 45,
-    tags: ['风光', '日出', '云海', '自然'],
-    date: '2023-10-25',
-  };
+  const [photo, setPhoto] = useState<PhotographyPost | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    apiGet<PhotographyPost>(`/photos/${id}`)
+      .then((data) => {
+        setPhoto(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setPhoto(null);
+        setLoading(false);
+      });
+  }, [id]);
 
   // 模拟评论数据
   const [comments, setComments] = useState<Comment[]>([
@@ -254,6 +254,29 @@ const PhotoComments: React.FC = () => {
     setComments(updatedComments);
   };
 
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen flex items-center justify-center">
+        <div className="w-16 h-16 border-4 border-[#4A5F8B] border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  if (!photo) {
+    return (
+      <div className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen">
+        <div className="flex flex-col items-center justify-center h-[60vh] text-center">
+          <div className="w-16 h-16 bg-[#4A5F8B] rounded-full flex items-center justify-center text-[#F5F7FA] mb-4">
+            <i className="fa-solid fa-exclamation-circle text-2xl"></i>
+          </div>
+          <h2 className="text-2xl font-bold text-[#F5F7FA] mb-2">未找到该作品</h2>
+          <p className="text-[#B8C6D8] mb-6 max-w-md">抱歉，您访问的作品不存在或已被删除</p>
+          <Link to="/profile-center" className="px-6 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors border border-[#4A5F8B]">返回作品集</Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen">
       <motion.div
@@ -286,27 +309,27 @@ const PhotoComments: React.FC = () => {
             <div className="w-full md:w-1/3">
               <div className="bg-[#1E2532] rounded-lg overflow-hidden">
                 <img
-                  src={mockPhotoPost.image}
-                  alt={mockPhotoPost.title}
+                  src={photo?.image}
+                  alt={photo?.title}
                   className="w-full h-auto"
                 />
               </div>
             </div>
             <div className="w-full md:w-2/3">
-              <h2 className="text-xl font-bold text-[#F5F7FA] mb-3">{mockPhotoPost.title}</h2>
+              <h2 className="text-xl font-bold text-[#F5F7FA] mb-3">{photo?.title}</h2>
               <div className="flex items-center mb-4">
                 <img
-                  src={mockPhotoPost.author.avatar}
-                  alt={mockPhotoPost.author.name}
+                  src={photo?.author.avatar}
+                  alt={photo?.author.name}
                   className="w-10 h-10 rounded-full mr-3 object-cover"
                 />
                 <div>
-                  <span className="text-[#F5F7FA] font-medium">{mockPhotoPost.author.name}</span>
-                  <span className="text-[#B8C6D8] text-sm ml-2">{mockPhotoPost.date}</span>
+                  <span className="text-[#F5F7FA] font-medium">{photo?.author.name}</span>
+                  <span className="text-[#B8C6D8] text-sm ml-2">{photo?.date}</span>
                 </div>
               </div>
               <div className="flex flex-wrap gap-2 mb-4">
-                {mockPhotoPost.tags.map((tag, index) => (
+                {photo?.tags.map((tag, index) => (
                   <span key={index} className="px-2 py-1 bg-[#1E2532] text-[#B8C6D8] text-xs rounded-full">
                     #{tag}
                   </span>
@@ -315,7 +338,7 @@ const PhotoComments: React.FC = () => {
               <div className="flex items-center space-x-4">
                 <div className="flex items-center">
                   <i className="fa-solid fa-heart text-[#4A5F8B] mr-1"></i>
-                  <span className="text-[#B8C6D8]">{mockPhotoPost.likes} 点赞</span>
+                  <span className="text-[#B8C6D8]">{photo?.likes} 点赞</span>
                 </div>
                 <div className="flex items-center">
                   <i className="fa-solid fa-comment text-[#4A5F8B] mr-1"></i>

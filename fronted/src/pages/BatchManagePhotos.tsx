@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { toast } from 'sonner';
+import { apiGet } from '../lib/api';
 import { Empty } from '../components/Empty';
 
 // 摄影作品接口定义
@@ -63,129 +64,24 @@ const BatchManagePhotos: React.FC = () => {
     return saved ? JSON.parse(saved) : [];
   });
   
-  // 模拟用户作品数据
-  const mockUserPosts: PhotographyPost[] = [
-    {
-      id: '1',
-      title: '晨曦中的山峦',
-      description: '捕捉清晨第一缕阳光洒在山峦上的壮丽景色，使用长曝光展现云海的流动感。',
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=morning%20sunrise%20mountain%20landscape%20mist%20china&sign=a50c8d6084b10f76978cc2afb1ca29a9',
-      author: {
-        id: 'user-123',
-        name: '@光影捕手',
-        avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc',
-      },
-      likes: 324,
-      comments: 45,
-      tags: ['风光', '日出', '云海', '自然'],
-      date: '2023-10-25',
-      views: 1256,
-      format: 'RAW',
-      visibility: '公开',
-      copyrightType: '独家授权',
-      category: '风景',
-    },
-    {
-      id: '2',
-      title: '城市剪影',
-      description: '从高处俯瞰城市天际线，记录夕阳下城市建筑的剪影效果。',
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=city%20skyline%20silhouette%20sunset%20urban%20architecture%20modern&sign=8de72287cf83cda70c057b89bfc1d186',
-      author: {
-        id: 'user-123',
-        name: '@光影捕手',
-        avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc',
-      },
-      likes: 289,
-      comments: 37,
-      tags: ['城市', '建筑', '剪影', '夕阳'],
-      date: '2023-10-22',
-      views: 987,
-      format: 'JPG',
-      visibility: '公开',
-      copyrightType: '非独家',
-      category: '城市',
-    },
-    {
-      id: '3',
-      title: '海浪与礁石',
-      description: '长时间曝光拍摄海浪拍打礁石的场景，展现水的丝绸质感。',
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=ocean%20waves%20crashing%20on%20rocks%20long%20exposure%20seascape&sign=e3c4cd3840caaaedc19f43f96183a958',
-      author: {
-        id: 'user-123',
-        name: '@光影捕手',
-        avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc',
-      },
-      likes: 412,
-      comments: 53,
-      tags: ['海景', '慢门', '自然', '礁石'],
-      date: '2023-10-18',
-      views: 1452,
-      format: 'RAW',
-      visibility: '仅好友可见',
-      copyrightType: '独家授权',
-      category: '风景',
-    },
-    {
-      id: '4',
-      title: '森林晨雾',
-      description: '在山间森林中捕捉晨雾弥漫的神秘氛围，阳光透过树叶形成丁达尔效应。',
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=forest%20morning%20mist%20sunlight%20rays%20trees%20mystical&sign=0d866462637658cb7796789831e1cc68',
-      author: {
-        id: 'user-123',
-        name: '@光影捕手',
-        avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc',
-      },
-      likes: 387,
-      comments: 49,
-      tags: ['森林', '晨雾', '丁达尔效应', '自然'],
-      date: '2023-10-15',
-      views: 1328,
-      format: 'JPG',
-      visibility: '公开',
-      copyrightType: '非独家',
-      category: '风景',
-    },
-    {
-      id: '5',
-      title: '湖畔日落',
-      description: '平静的湖面倒映着绚丽的晚霞，形成对称的美感。',
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=lake%20sunset%20reflection%20mountains%20evening%20colorful%20sky&sign=c039f18a4bf0746344422a50690ffb6c',
-      author: {
-        id: 'user-123',
-        name: '@光影捕手',
-        avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc',
-      },
-      likes: 456,
-      comments: 61,
-      tags: ['湖泊', '日落', '倒影', '晚霞'],
-      date: '2023-10-12',
-      views: 1689,
-      format: 'RAW',
-      visibility: '公开',
-      copyrightType: '独家授权',
-      category: '风景',
-    },
-    {
-      id: '6',
-      title: '星空下的古堡',
-      description: '在远离城市光污染的地方，拍摄星空下的古堡遗迹，展现历史与自然的交融。',
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=castle%20ruins%20under%20starry%20sky%20milky%20way%20night%20long%20exposure&sign=4f691b61d53a7e9b6b0869b95858dbb2',
-      author: {
-        id: 'user-123',
-        name: '@光影捕手',
-        avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc',
-      },
-      likes: 523,
-      comments: 78,
-      tags: ['星空', '夜景', '古堡', '银河'],
-      date: '2023-10-08',
-      views: 1976,
-      format: 'RAW',
-      visibility: '私密',
-      copyrightType: '独家授权',
-      category: '夜景',
-    },
-  ];
+  // 从API加载用户作品数据
+  const [posts, setPosts] = useState<PhotographyPost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        const data = await apiGet<PhotographyPost[]>('/profile/posts');
+        setPosts(data);
+      } catch (error) {
+        console.error('Failed to load posts:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadPosts();
+  }, []);
 
   // 保存选中状态到本地存储
   useEffect(() => {
@@ -211,7 +107,7 @@ const BatchManagePhotos: React.FC = () => {
   // 获取所有标签
   const getAllTags = useMemo(() => {
     const tags = ['全部'];
-    mockUserPosts.forEach(post => {
+    posts.forEach(post => {
       post.tags.forEach(tag => {
         if (!tags.includes(tag)) {
           tags.push(tag);
@@ -219,32 +115,32 @@ const BatchManagePhotos: React.FC = () => {
       });
     });
     return tags;
-  }, []);
+  }, [posts]);
 
   // 获取所有分类
   const getAllCategories = useMemo(() => {
     const categories = ['全部'];
-    mockUserPosts.forEach(post => {
+    posts.forEach(post => {
       if (!categories.includes(post.category)) {
         categories.push(post.category);
       }
     });
     return categories;
-  }, []);
+  }, [posts]);
 
   // 过滤和排序作品
   const filteredPosts = useMemo(() => {
-    let posts = [...mockUserPosts];
+    let result = [...posts];
     
     // 按标签过滤
     if (selectedTag !== '全部') {
-      posts = posts.filter(post => post.tags.includes(selectedTag));
+      result = result.filter(post => post.tags.includes(selectedTag));
     }
     
     // 按搜索词过滤
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
-      posts = posts.filter(post => 
+      result = result.filter(post => 
         post.title.toLowerCase().includes(term) || 
         post.description.toLowerCase().includes(term) ||
         post.tags.some(tag => tag.toLowerCase().includes(term))
@@ -253,7 +149,7 @@ const BatchManagePhotos: React.FC = () => {
     
     // 按可见性过滤
     if (visibilityFilter !== 'all') {
-      posts = posts.filter(post => {
+      result = result.filter(post => {
         if (visibilityFilter === 'public') return post.visibility === '公开';
         if (visibilityFilter === 'friends') return post.visibility === '仅好友可见';
         if (visibilityFilter === 'private') return post.visibility === '私密';
@@ -263,7 +159,7 @@ const BatchManagePhotos: React.FC = () => {
     
     // 按格式过滤
     if (formatFilter !== 'all') {
-      posts = posts.filter(post => {
+      result = result.filter(post => {
         if (formatFilter === 'raw') return post.format === 'RAW';
         if (formatFilter === 'jpg') return post.format === 'JPG';
         return true;
@@ -272,20 +168,20 @@ const BatchManagePhotos: React.FC = () => {
     
     // 按分类过滤
     if (categoryFilter !== 'all') {
-      posts = posts.filter(post => post.category === categoryFilter);
+      result = result.filter(post => post.category === categoryFilter);
     }
     
     // 排序
     if (sortBy === 'latest') {
-      posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      result.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     } else if (sortBy === 'popular') {
-      posts.sort((a, b) => b.likes - a.likes);
+      result.sort((a, b) => b.likes - a.likes);
     } else if (sortBy === 'views') {
-      posts.sort((a, b) => b.views - a.views);
+      result.sort((a, b) => b.views - a.views);
     }
     
-    return posts;
-  }, [selectedTag, searchTerm, visibilityFilter, formatFilter, categoryFilter, sortBy]);
+    return result;
+  }, [posts, selectedTag, searchTerm, visibilityFilter, formatFilter, categoryFilter, sortBy]);
 
   // 分页计算
   const totalPages = Math.ceil(filteredPosts.length / pageSize);

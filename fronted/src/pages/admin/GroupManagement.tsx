@@ -1,101 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import Button from '../../components/common/Button';
-
-// 模拟小组数据
-const mockGroups = [
-  {
-    id: '1',
-    name: '风光摄影爱好者',
-    description: '专注于分享和交流风光摄影技巧、作品和器材使用经验。',
-    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=landscape%20photography%20club%20logo&sign=6e7a0377c1765869954de67da2805104',
-    coverImage: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=landscape%20photography%20mountain%20lake%20sunset%20group&sign=dcb281799d48f79a565ca84312d184f9',
-    memberCount: 256,
-    postCount: 158,
-    status: 'active',
-    createdAt: '2023-01-15',
-    owner: {
-      id: '101',
-      name: '极简摄影师林风',
-      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=minimalist%20photographer%20male%20serious&sign=fded36172bb86afa4dc326776156459c'
-    }
-  },
-  {
-    id: '2',
-    name: '人像摄影交流群',
-    description: '探讨人像摄影技巧，分享创作经验和心得。',
-    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=portrait%20photography%20club%20logo&sign=946c2ca7a407063d1cb6744320f85a57',
-    coverImage: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=portrait%20photography%20studio%20setup%20group&sign=c1df4cb85b4f6fab9f97f0f60c9056d7',
-    memberCount: 320,
-    postCount: 215,
-    status: 'active',
-    createdAt: '2023-02-10',
-    owner: {
-      id: '102',
-      name: '人像摄影师小雨',
-      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=portrait%20photographer%20female%20smiling&sign=620b116509f1022014ac6d9864231ba5'
-    }
-  },
-  {
-    id: '3',
-    name: '街头摄影联盟',
-    description: '记录城市瞬间，分享街头摄影的魅力和技巧。',
-    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=street%20photography%20club%20logo%20urban&sign=ed44bded77c174a37b374cc92d3661f4',
-    coverImage: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=street%20photography%20urban%20scene%20group&sign=6f3c69be5e9d78d6308b08cfb3df1421',
-    memberCount: 180,
-    postCount: 176,
-    status: 'active',
-    createdAt: '2023-03-05',
-    owner: {
-      id: '103',
-      name: '城市摄影师陈默',
-      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=urban%20photographer%20male%20creative&sign=5df0f9b10a5022623be1cb145264b5a1'
-    }
-  },
-  {
-    id: '4',
-    name: '黑白摄影艺术',
-    description: '专注于黑白摄影的创作与欣赏，分享技巧和作品。',
-    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=black%20and%20white%20photography%20club%20logo&sign=20391fbad91d80cc2bfc64b085492e16',
-    coverImage: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=black%20and%20white%20photography%20art%20monochrome%20group&sign=d0d50bf259aa980b08ef620b4df5094a',
-    memberCount: 145,
-    postCount: 98,
-    status: 'pending',
-    createdAt: '2023-03-20',
-    owner: {
-      id: '104',
-      name: '黑白摄影师阿明',
-      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20male%20vintage%20style&sign=59a54bc0fa95cdb00b476bf1065e679c'
-    }
-  },
-  {
-    id: '5',
-    name: '商业摄影圈',
-    description: '商业摄影从业者交流平台，分享经验和资源。',
-    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=commercial%20photography%20club%20logo&sign=3093fd57b573feda727d456e62bd8b08',
-    coverImage: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=commercial%20photography%20studio%20product%20group&sign=c48254752661c0437c0cb036bfe03807',
-    memberCount: 98,
-    postCount: 64,
-    status: 'banned',
-    createdAt: '2023-02-28',
-    owner: {
-      id: '105',
-      name: '商业摄影师老张',
-      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=professional%20commercial%20photographer%20male&sign=55bbeea9b2593639d31ca56d2fbc559c'
-    }
-  }
-];
+import { apiGet } from '../../lib/api';
 
 const GroupManagement: React.FC = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [sortBy, setSortBy] = useState('createdAt');
-  const [groups, setGroups] = useState(mockGroups);
+  const [groups, setGroups] = useState<any[]>([]);
   const [selectedGroups, setSelectedGroups] = useState<string[]>([]);
   const [showBulkActions, setShowBulkActions] = useState(false);
+
+  useEffect(() => {
+    apiGet('/admin/groups').then(data => setGroups(data)).catch(() => {});
+  }, []);
 
   // 过滤和排序小组
   const getFilteredGroups = () => {
