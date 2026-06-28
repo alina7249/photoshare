@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义深色主题颜色 - 基于用户提供的色彩方案 */
+:root {
+  /* 全局通用颜色 */
+  --deep-cool-gray: #1E2532;    /* 深冷灰 - 所有页面的底层背景 */
+  --deep-blue-gray: #2D3748;   /* 深灰蓝 - 导航栏、搜索栏、卡片背景 */
+  --light-blue-gray: #4A5F8B;  /* 浅蓝灰 - 选中状态、交互元素 */
+  --light-cool-gray: #B8C6D8;  /* 浅冷灰 - 次要文字、占位文字 */
+  --light-white: #F5F7FA;      /* 浅白 - 主要文字颜色 */
+  --medium-blue-gray: #6B7C93; /* 浅蓝灰 - 辅助文字颜色 */
+  
+  font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1E2532;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4A5F8B;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6B7C93;
+}
+
+ /* 动画效果 */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  /* 自定义动画类 */
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* 重复的动画类定义已移除 */
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* 全局样式 */
+body {
+  min-height: 100vh;
+  background-color: var(--deep-cool-gray);
+  color: var(--light-white);
+  background-image: radial-gradient(circle, rgba(74, 95, 139, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-attachment: fixed;
+}
+
+/* 抖动动画 */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+.animate-shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+  /* 星点纹理背景 */
+  .star-texture {
+    background-image: radial-gradient(circle, rgba(74, 95, 139, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-attachment: fixed;
+  }
+  
+  /* 脉冲动画 */
+  @keyframes pulse-icon {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  
+  .animate-pulse-icon {
+    animation: pulse-icon 2s infinite;
+  }
+  
+  /* 旋转动画 */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .fa-spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  /* 3D变换支持 */
+  .transform-style-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+    .text-6xl {
+      font-size: 4rem;
+    }
+    
+    .text-4xl {
+      font-size: 2.5rem;
+    }
+  }
+
+/* 图片加载动画 */
+img {
+  transition: opacity 0.3s ease-in-out;
+}
+
+img.loading {
+  opacity: 0.5;
+}
+
+/* 按钮基础样式 */
+.btn-primary {
+  @apply bg-[#4A5F8B] text-[#F5F7FA] font-medium rounded-lg px-4 py-2 transition-colors border border-[#4A5F8B];
+}
+
+.btn-secondary {
+  @apply bg-[#2D3748] text-[#F5F7FA] border border-[#4A5F8B] font-medium rounded-lg px-4 py-2 transition-colors hover:bg-[#4A5F8B];
+}
+
+/* 输入框基础样式 */
+.input {
+  @apply bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all placeholder:text-[#B8C6D8];
+}
+
+/* 自定义滚动条样式增强 */
+.course-outline::-webkit-scrollbar {
+  width: 6px;
+}
+
+.course-outline::-webkit-scrollbar-track {
+  background: #1E2532;
+  border-radius: 3px;
+}
+
+.course-outline::-webkit-scrollbar-thumb {
+  background: #4A5F8B;
+  border-radius: 3px;
+}
+
+.course-outline::-webkit-scrollbar-thumb:hover {
+  background: #6B7C93;
+}
