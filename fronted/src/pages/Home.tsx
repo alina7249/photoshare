@@ -6,20 +6,183 @@ import { Banner } from "../components/Banner";
 import { Feature } from "../components/Feature";
 
 // 摄影作品数据
-// TODO: from API
-const photographyPosts: any[] = [];
+const photographyPosts = [{
+    id: "1",
+    title: "黑白光影",
+    description: "Leica Q2 Monochrom | 光圈: f/2.8 | 快门: 1/125s | ISO: 800\n极简主义黑白摄影，通过光影对比展现建筑的几何美感。",
+    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=black%20and%20white%20architecture%20geometric%20composition&sign=7f2b53dd226ab1ffb3f3eae704bada52",
+    author: {
+        id: "1",
+        name: "极简摄影师林风",
+        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=minimalist%20photographer%20male%20serious&sign=fded36172bb86afa4dc326776156459c"
+    },
+    likes: 342,
+    comments: 42,
+    collections: 28,
+    tags: ["极简主义", "黑白", "建筑", "徕卡"],
+    date: "2023-10-25"
+}, {
+    id: "2",
+    title: "胶片质感人像",
+    description: "Canon AE-1 + 50mm f/1.4 | 光圈: f/2.0 | 快门: 1/125s | ISO: 400\n使用复古胶片相机拍摄的人像作品，自然柔和的色调与颗粒感。",
+    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=portrait_4_3&prompt=film%20photography%20portrait%20natural%20light%20soft%20colors&sign=c33fc387d9611cfbf5948eab73b3426b",
+    author: {
+        id: "2",
+        name: "胶片摄影师安娜",
+        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=film%20photographer%20female%20vintage%20style&sign=5ec915debce76b46483be485e236cee2"
+    },
+    likes: 412,
+    comments: 56,
+    collections: 35,
+    tags: ["人像", "胶片", "复古", "自然光"],
+    date: "2023-10-24"
+}, {
+    id: "3",
+    title: "暗调氛围",
+    description: "Sony A7R IV + 35mm f/1.4 GM | 光圈: f/2.8 | 快门: 1/60s | ISO: 1600\n营造神秘而富有故事感的暗调氛围人像，强调光影层次与情绪表达。",
+    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=moody%20portrait%20low%20key%20dramatic%20lighting&sign=667d5b0612922acbe1a4e0355faeb800",
+    author: {
+        id: "3",
+        name: "情绪摄影师李明",
+        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=moody%20photographer%20male%20creative&sign=b74f18a9e01693163824506fbbcc8c47"
+    },
+    likes: 389,
+    comments: 49,
+    collections: 31,
+    tags: ["暗调", "氛围", "情绪", "人像"],
+    date: "2023-10-23"
+}, {
+    id: "4",
+    title: "极简静物",
+    description: "Fujifilm GFX 100S + 120mm f/4 Macro | 光圈: f/5.6 | 快门: 1/125s | ISO: 200\n通过简洁的构图和柔和的光线，展现日常物品的质感与美感。",
+    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=square_hd&prompt=minimalist%20still%20life%20composition%20natural%20light&sign=d50543b56e3575f63623ea5055f2f854",
+    author: {
+        id: "4",
+        name: "静物摄影师王静",
+        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=still%20life%20photographer%20female%20detail-oriented&sign=3bfd67c585c96ccf90c0560aadfc6c75"
+    },
+    likes: 276,
+    comments: 32,
+    collections: 22,
+    tags: ["静物", "极简", "中画幅", "富士"],
+    date: "2023-10-22"
+}, {
+    id: "5",
+    title: "城市几何",
+    description: "iPhone 15 Pro + 原生相机 | 光圈: f/2.2 | 快门: 1/1000s | ISO: 25\n从独特视角发现城市中的几何美感，手机摄影也能创造艺术作品。",
+    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=urban%20geometry%20city%20architecture%20minimalist%20composition&sign=b5c56f91ceaddbb80362822c8664e0ae",
+    author: {
+        id: "5",
+        name: "手机摄影师张强",
+        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=mobile%20photographer%20male%20urban%20explorer&sign=1eff3d26acd6475fd9c84ba0ee8e5d74"
+    },
+    likes: 321,
+    comments: 41,
+    collections: 25,
+    tags: ["城市", "几何", "手机摄影", "极简"],
+    date: "2023-10-21"
+}, {
+    id: "6",
+    title: "黑白纪实",
+    description: "Canon EOS R6 + 24-70mm f/2.8 | 光圈: f/4 | 快门: 1/250s | ISO: 800\n用黑白影像记录城市中的人文瞬间，展现生活的真实与温度。",
+    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=black%20and%20white%20street%20photography%20documentary%20moment&sign=d29476f80a3d538bddc7d6b20fcd017d",
+    author: {
+        id: "6",
+        name: "纪实摄影师陈默",
+        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=documentary%20photographer%20male%20street&sign=788a26eea5ce0ca5b0473146963afcf0"
+    },
+    likes: 398,
+    comments: 52,
+    collections: 33,
+    tags: ["黑白", "纪实", "人文", "街头"],
+    date: "2023-10-20"
+}];
 
 // 热门标签数据
-// TODO: from API
-const popularTags: any[] = [];
+const popularTags = [{
+    id: 1,
+    name: "极简主义",
+    count: 1456
+}, {
+    id: 2,
+    name: "黑白",
+    count: 1245
+}, {
+    id: 3,
+    name: "胶片质感",
+    count: 987
+}, {
+    id: 4,
+    name: "暗调氛围",
+    count: 765
+}, {
+    id: 5,
+    name: "建筑",
+    count: 654
+}, {
+    id: 6,
+    name: "人像",
+    count: 543
+}, {
+    id: 7,
+    name: "城市几何",
+    count: 432
+}, {
+    id: 8,
+    name: "静物",
+    count: 321
+}];
 
 // 推荐艺术家数据
-// TODO: from API
-const featuredPhotographers: any[] = [];
+const featuredPhotographers = [{
+    id: "101",
+    name: "黑白影像达人",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=black%20and%20white%20photographer%20male%20serious&sign=7651d7d16421ab76c2b59b1bd71a39c2",
+    followers: 12543,
+    posts: 324,
+    level: "新锐艺术家"
+}, {
+    id: "102",
+    name: "胶片艺术师",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=film%20photographer%20female%20vintage&sign=1742134c6641907308d9b1410d65842c",
+    followers: 8765,
+    posts: 213,
+    level: "资深摄影师"
+}, {
+    id: "103",
+    name: "建筑几何控",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=architecture%20photographer%20male%20creative&sign=17c8985a6812f53b55a5f015db719ac3",
+    followers: 6543,
+    posts: 187,
+    level: "创意摄影师"
+}];
 
 // 灵感专栏数据
-// TODO: from API
-const inspirationItems: any[] = [];
+const inspirationItems = [{
+    id: "1",
+    title: "黑白摄影的光影艺术",
+    author: "林风",
+    description: "探索如何通过光影对比创造出富有情感和深度的黑白影像作品...",
+    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=portrait_4_3&prompt=black%20and%20white%20photography%20tutorial%20light%20shadow&sign=581ada31389ae6719d75794988b72a4c"
+}, {
+    id: "2",
+    title: "胶片摄影的复兴与现代应用",
+    author: "安娜",
+    description: "探讨胶片摄影在数字时代的独特魅力和应用场景，以及如何将传统技术融入现代创作...",
+    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=portrait_4_3&prompt=film%20camera%20vintage%20photography%20process&sign=e4d693788f49256f00febe15b1f68df2"
+}, {
+    id: "3",
+    title: "极简主义摄影的构图法则",
+    author: "李明",
+    description: "解析极简主义摄影的核心构图原则，帮助你创造简洁而有力的视觉表达...",
+    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=portrait_4_3&prompt=minimalist%20photography%20composition%20rules&sign=fd587b41706f60a738a2464cc11304ac"
+}, {
+    id: "4",
+    title: "暗房技术与现代数字暗房",
+    author: "张强",
+    description: "比较传统暗房技术与现代数字暗房的异同，以及如何在后期制作中保留胶片质感...",
+    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=portrait_4_3&prompt=darkroom%20photography%20digital%20workflow&sign=c372da4647ca0d3c6ef6803314856aec"
+}];
 
 export default function Home() {
     const [selectedCategory, setSelectedCategory] = useState("all");

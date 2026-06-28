@@ -68,8 +68,27 @@ const EMOJI_LIST = [
 
 const REPORT_REASONS = ["垃圾广告", "不友善行为", "色情内容", "政治敏感", "盗用他人作品", "其他原因"];
 
-// TODO: Replace with API call
-const mockUsers: User[] = [];
+const mockUsers: User[] = [{
+    id: "1",
+    username: "极简摄影师林风",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=minimalist%20photographer%20male%20serious&sign=fded36172bb86afa4dc326776156459c"
+}, {
+    id: "2",
+    username: "极简摄影师林静",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=minimalist%20photographer%20female%20glasses&sign=bcb6273a0e310c266e722c0131d6e146"
+}, {
+    id: "3",
+    username: "建筑摄影师王强",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=architecture%20photographer%20male%20smiling&sign=3c23397344efe1e22c27fde5dd0bd934"
+}, {
+    id: "4",
+    username: "摄影学习者小张",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=young%20photographer%20student%20male&sign=c8c88269cfd5ed96c4081bb7a4ed50b8"
+}, {
+    id: "5",
+    username: "艺术摄影师陈默",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=art%20photographer%20male%20creative&sign=bceaa07bd21b90efedda5c86e7059959"
+}];
 
 export const CommentSection: React.FC<CommentSectionProps> = (
     {

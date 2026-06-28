@@ -59,11 +59,20 @@ interface SecuritySettings {
     lastIp: string;
 }
 
-// TODO: from API
-const mockOrders: any[] = [];
+// 模拟订单数据
+const mockOrders = [
+  { id: "ORD20231025001", type: "会员订阅", status: "已完成", amount: "¥199", date: "2023-10-25", details: "银河会员年卡" },
+  { id: "ORD20231020002", type: "课程购买", status: "已完成", amount: "¥299", date: "2023-10-20", details: "风光摄影进阶课程" },
+  { id: "ORD20231015003", type: "器材租赁", status: "进行中", amount: "¥150", date: "2023-10-15", details: "索尼 A7R IV (3天)" },
+];
 
-// TODO: from API
-const mockNotifications: any[] = [];
+// 模拟通知数据
+const mockNotifications = [
+  { id: "1", type: "like", content: "用户 @摄影爱好者 点赞了您的作品《晨曦中的山峦》", time: "5分钟前", read: false },
+  { id: "2", type: "comment", content: "用户 @光影达人 评论了您的作品《城市剪影》", time: "1小时前", read: false },
+  { id: "3", type: "follow", content: "用户 @新摄影师 关注了您", time: "3小时前", read: true },
+  { id: "4", type: "system", content: "您的作品《星空下的古堡》被推荐到首页", time: "1天前", read: true },
+];
 
 const ProfileSettings: React.FC = () => {
     const { isAuthenticated, user, logout } = useAuth();

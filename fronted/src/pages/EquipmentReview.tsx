@@ -2,9 +2,247 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend } from 'recharts';
+import { mockCameras, mockLenses } from '../lib/equipmentData';
 
-// TODO: from API
-const mockReviews = [];
+// 模拟测评数据
+const mockReviews = [
+  {
+    id: 'r1',
+    title: `${mockCameras[0].name}深度测评：高像素摄影的新标杆`,
+    type: '专业编辑测评',
+    author: {
+      id: '101',
+      name: '器材专家张明',
+      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography%20equipment%20expert%20male%20professional&sign=56fa5f34db1fbce04f76c7576c6ad020',
+      role: '资深器材编辑',
+      experience: '10年摄影器材评测经验'
+    },
+    equipment: {
+      id: '1',
+      name: mockCameras[0].name,
+      type: '微单相机',
+      image: mockCameras[0].image
+    },
+    date: '2023-10-25',
+    readTime: '15分钟',
+    views: 12543,
+    likes: 2890,
+    comments: 345,
+    rating: 9.4,
+    credibilityRating: 9.6, // 测评可信度评分
+    featuredImage: mockCameras[0].image,
+    videoUrl: 'https://example.com/video1.mp4', // 视频URL
+    tags: ['索尼', '全画幅', '高像素', '专业', '微单'],
+    excerpt: `${mockCameras[0].name}作为一款高像素全画幅微单相机，带来了诸多技术革新。本文将从画质、对焦、视频、操控等多个维度进行深度测评，帮助您了解这款相机是否值得入手。`,
+    pros: mockCameras[0].pros,
+    cons: mockCameras[0].cons,
+    performance: {
+      imageQuality: 9.8,
+      autofocus: 9.9,
+      video: 9.5,
+      handling: 9.0,
+      battery: 9.2,
+      value: 8.7
+    },
+    tips: [
+      '使用A模式配合曝光补偿可以获得更精准的曝光',
+      '高像素模式下建议使用三脚架以获得最佳画质',
+      '自定义按钮可以提高操作效率',
+      '使用原厂电池以获得最佳续航表现'
+    ],
+    faq: [
+      {
+        question: '这款相机适合入门用户吗？',
+        answer: '这款相机功能强大但操作相对复杂，适合有一定摄影基础的用户。'
+      },
+      {
+        question: '电池续航能力如何？',
+        answer: '满电状态下可拍摄约500张照片，建议长时间拍摄时携带备用电池。'
+      },
+      {
+        question: '是否支持无线传输？',
+        answer: '支持Wi-Fi和蓝牙传输，可以方便地将照片传输到手机或电脑。'
+      }
+    ]
+  },
+  {
+    id: 'r2',
+    title: `${mockCameras[1].name}用户实测：婚礼摄影的可靠选择`,
+    type: '用户实测分享',
+    author: {
+      id: '102',
+      name: '婚礼摄影师李华',
+      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=wedding%20photographer%20male%20creative&sign=82c2687369cb5518e618423326b5a47c',
+      role: '职业婚礼摄影师',
+      experience: '8年婚礼拍摄经验'
+    },
+    equipment: {
+      id: '2',
+      name: mockCameras[1].name,
+      type: '微单相机',
+      image: mockCameras[1].image
+    },
+    date: '2023-10-20',
+    readTime: '10分钟',
+    views: 8765,
+    likes: 1987,
+    comments: 234,
+    rating: 9.2,
+    credibilityRating: 9.4, // 测评可信度评分
+    featuredImage: mockCameras[1].image,
+    videoUrl: 'https://example.com/video2.mp4', // 视频URL
+    tags: ['佳能', '婚礼摄影', '高速连拍', '微单', '弱光性能'],
+    excerpt: `作为一名职业婚礼摄影师，我在过去的三个月里使用${mockCameras[1].name}拍摄了20多场婚礼。本文将分享我的实际使用体验，包括对焦性能、高感表现、电池续航等关键指标。`,
+    pros: mockCameras[1].pros,
+    cons: mockCameras[1].cons,
+    performance: {
+      imageQuality: 9.3,
+      autofocus: 9.8,
+      video: 9.2,
+      handling: 9.5,
+      battery: 9.0,
+      value: 9.0
+    },
+    tips: [
+      '在弱光环境下使用高ISO拍摄时，推荐开启降噪功能',
+      '婚礼拍摄时建议使用双存储卡模式以防数据丢失',
+      '自定义快捷键可以快速切换不同的拍摄模式',
+      '使用原厂电池充电器可以延长电池寿命'
+    ],
+    faq: [
+      {
+        question: '这款相机的弱光表现如何？',
+        answer: '在ISO 6400以下表现优异，噪点控制良好，适合婚礼等弱光环境。'
+      },
+      {
+        question: '连续拍摄时的缓冲深度如何？',
+        answer: '使用高速SD卡时可以连续拍摄约30张RAW格式照片。'
+      },
+      {
+        question: '是否支持4K视频拍摄？',
+        answer: '支持4K 60fps视频拍摄，视频质量优秀。'
+      }
+    ]
+  },
+  {
+    id: 'r3',
+    title: `${mockCameras[3].name}开箱体验：复古外观与现代性能的完美结合`,
+    type: '用户实测分享',
+    author: {
+      id: '103',
+      name: '街头摄影师王强',
+      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=street%20photographer%20male%20urban&sign=c49a759749c39b9f82ea2702f7f9adc6',
+      role: '街拍摄影师',
+      experience: '5年街头摄影经验'
+    },
+    equipment: {
+      id: '3',
+      name: mockCameras[3].name,
+      type: '微单相机',
+      image: mockCameras[3].image
+    },
+    date: '2023-10-15',
+    readTime: '8分钟',
+    views: 7654,
+    likes: 1765,
+    comments: 189,
+    rating: 9.0,
+    credibilityRating: 9.3, // 测评可信度评分
+    featuredImage: mockCameras[3].image,
+    videoUrl: 'https://example.com/video3.mp4', // 视频URL
+    tags: ['富士', '复古', '街拍', 'APS-C', '高像素'],
+    excerpt: `${mockCameras[3].name}以其复古的外观设计和强大的性能吸引了众多摄影爱好者。本文将从开箱体验开始，详细介绍这款相机的外观、功能和实际拍摄表现。`,
+    pros: mockCameras[3].pros,
+    cons: mockCameras[3].cons,
+    performance: {
+      imageQuality: 9.5,
+      autofocus: 9.0,
+      video: 8.5,
+      handling: 9.6,
+      battery: 8.8,
+      value: 8.9
+    },
+    tips: [
+      '使用胶片模拟模式可以获得独特的色彩风格',
+      '街拍时建议使用静音拍摄模式',
+      '自定义ISO转盘可以快速调整感光度',
+      '配合XF系列定焦镜头可以获得最佳成像质量'
+    ],
+    faq: [
+      {
+        question: '这款相机的操作复杂度如何？',
+        answer: '虽然有复古外观，但操作直观，适合喜欢传统操作方式的用户。'
+      },
+      {
+        question: '电池续航能力如何？',
+        answer: '满电状态下可拍摄约300张照片，外出拍摄建议携带备用电池。'
+      },
+      {
+        question: '是否支持镜头防抖？',
+        answer: '支持机身防抖，配合防抖镜头可以获得更稳定的画面。'
+      }
+    ]
+  },
+  {
+    id: 'r4',
+    title: `${mockLenses[0].name}镜头深度测评`,
+    type: '专业编辑测评',
+    author: {
+      id: '104',
+      name: '镜头专家刘芳',
+      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography%20lens%20expert%20female%20professional&sign=c9dd2373388218683b3e980d22233258',
+      role: '资深镜头评测师',
+      experience: '12年摄影镜头评测经验'
+    },
+    equipment: {
+      id: 'l1',
+      name: mockLenses[0].name,
+      type: '变焦镜头',
+      image: mockLenses[0].image
+    },
+    date: '2023-10-10',
+    readTime: '12分钟',
+    views: 9876,
+    likes: 2345,
+    comments: 278,
+    rating: 9.6,
+    credibilityRating: 9.7, // 测评可信度评分
+    featuredImage: mockLenses[0].image,
+    videoUrl: 'https://example.com/video4.mp4', // 视频URL
+    tags: ['索尼', '大三元', '标准变焦', '专业', '镜头'],
+    excerpt: `作为索尼新一代大三元标准变焦镜头，${mockLenses[0].name}带来了哪些提升？本文通过实验室测试和实际拍摄，全面解析这款镜头的光学性能。`,
+    pros: mockLenses[0].pros,
+    cons: mockLenses[0].cons,
+    performance: {
+      sharpness: 9.8,
+      bokeh: 9.2,
+      autofocus: 9.7,
+      buildQuality: 9.5,
+      handling: 9.0,
+      value: 8.5
+    },
+    tips: [
+      '使用遮光罩可以有效减少眩光和鬼影',
+      '拍摄人像时推荐使用f/2.8光圈以获得最佳虚化效果',
+      '定期清洁镜头前组镜片以保持最佳成像质量',
+      '存储时建议使用镜头盖保护镜片'
+    ],
+    faq: [
+      {
+        question: '这款镜头的锐度表现如何？',
+        answer: '在全焦段和全光圈下都有优异的锐度表现，特别是中心区域。'
+      },
+      {
+        question: '对焦速度和安静度如何？',
+        answer: '采用最新的线性马达，对焦迅速且安静，适合拍摄动态场景。'
+      },
+      {
+        question: '重量和体积如何？适合旅行携带吗？',
+        answer: '相比上一代有所减重，但作为专业镜头体积仍然较大，旅行携带需要考虑。'
+      }
+    ]
+  }
+];
 
 // 测评分类
 const reviewCategories = [
@@ -20,12 +258,47 @@ const equipmentTypeTags = ['相机', '镜头', '配件', '无人机', '三脚架
 const priceRangeTags = ['入门级 (0-5000元)', '进阶级 (5000-15000元)', '专业级 (15000元以上)'];
 
 // 使用场景标签
-// TODO: from API
-const usageScenarioTags = [];
+const usageScenarioTags = ['风光', '人像', '街头', '婚礼', '商业', '视频', '旅行'];
 
 // 模拟对比测评数据
-// TODO: from API
-const comparisonReviewData = [];
+const comparisonReviewData = [
+  { 
+    category: '分辨率', 
+    'A7R V': 9.8, 
+    'EOS R5': 9.7, 
+    'Z 7II': 9.6 
+  },
+  { 
+    category: '低光性能', 
+    'A7R V': 9.5, 
+    'EOS R5': 9.3, 
+    'Z 7II': 9.4 
+  },
+  { 
+    category: '自动对焦', 
+    'A7R V': 9.9, 
+    'EOS R5': 9.8, 
+    'Z 7II': 9.5 
+  },
+  { 
+    category: '视频能力', 
+    'A7R V': 9.5, 
+    'EOS R5': 9.7, 
+    'Z 7II': 9.2 
+  },
+  { 
+    category: '电池续航', 
+    'A7R V': 9.2, 
+    'EOS R5': 8.8, 
+    'Z 7II': 9.0 
+  },
+  { 
+    category: '性价比', 
+    'A7R V': 8.7, 
+    'EOS R5': 8.5, 
+    'Z 7II': 8.8 
+  }
+];
 
 // 雷达图颜色
 const RADAR_COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8'];

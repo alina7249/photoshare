@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { mockCameras, mockLenses, mockAccessories } from "../lib/equipmentData";
 import { toast } from "sonner";
 import { useAuth } from "../contexts/authContext";
 import { useTheme } from "../hooks/useTheme";
@@ -1269,20 +1270,180 @@ const safeGetEquipment = <T,>(array: T[] | undefined, index: number, defaultValu
     return array[index];
 };
 
-// TODO: from API
-const defaultCamera: any = {};
+const defaultCamera = {
+    name: "索尼全画幅相机",
+    brand: "Sony",
+    price: "12999",
+    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=Sony+mirrorless+camera+professional+photography+equipment&sign=5f9e2f27c40853405c8b28ab7e864c75"
+};
 
-// TODO: from API
-const defaultLens: any = {};
+const defaultLens = {
+    name: "佳能标准变焦镜头",
+    brand: "Canon",
+    price: "14999",
+    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=Canon+EF+70-200mm+f%2F2.8L+IS+III+USM+lens+professional+photography+equipment&sign=90b3d98d08881f8fead46c8ccac54661"
+};
 
-// TODO: from API
-const defaultAccessory: any = {};
+const defaultAccessory = {
+    name: "捷信碳纤维三脚架",
+    brand: "Gitzo",
+    price: "8999",
+    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=Gitzo+carbon+fiber+tripod+photography+equipment&sign=bff0c0ba5fe556ca67ffb0739e6395c8"
+};
 
-// TODO: from API
-const mockUsedEquipment: any[] = [];
+const mockUsedEquipment = [{
+    id: "ue1",
+    name: safeGetEquipment(mockCameras, 6, defaultCamera).name,
+    type: "相机",
+    brand: safeGetEquipment(mockCameras, 6, defaultCamera).brand,
+    price: "8500",
+    originalPrice: safeGetEquipment(mockCameras, 6, defaultCamera).price,
+    image: safeGetEquipment(mockCameras, 6, defaultCamera).image,
+    condition: "95新",
+    usageTime: "约1年",
+    shutterCount: "8500次",
+    repairHistory: "无维修记录",
+    accessories: ["原装电池2块", "充电器", "相机包", "说明书"],
 
-// TODO: from API
-const mockNewEquipment: any[] = [];
+    seller: {
+        id: "s1",
+        name: "摄影爱好者小王",
+        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20male%20smiling%20casual&sign=db92da1c3005295607f7766d7f9263bb",
+        location: "上海",
+        rating: 4.9,
+        completedTransactions: 128
+    },
+
+    description: "2022年10月购买，使用非常小心，成色极佳。快门次数仅8500次，无任何磕碰和维修记录。因升级设备故出售，附带全部原装配件。",
+    images: Array(4).fill(safeGetEquipment(mockCameras, 6, defaultCamera).image),
+    tags: ["索尼", "全画幅", "微单", "二手", "高性价比"]
+}, {
+    id: "ue2",
+    name: safeGetEquipment(mockLenses, 4, defaultLens).name,
+    type: "镜头",
+    brand: safeGetEquipment(mockLenses, 4, defaultLens).brand,
+    price: "7200",
+    originalPrice: safeGetEquipment(mockLenses, 4, defaultLens).price,
+    image: safeGetEquipment(mockLenses, 4, defaultLens).image,
+    condition: "9成新",
+    usageTime: "约2年",
+    shutterCount: "",
+    repairHistory: "无维修记录",
+    accessories: ["原装遮光罩", "镜头盖", "镜头袋"],
+
+    seller: {
+        id: "s2",
+        name: "专业摄影师老李",
+        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=professional%20photographer%20male%20experienced&sign=fe817dce4d08957c62787348c72eb1b7",
+        location: "北京",
+        rating: 4.8,
+        completedTransactions: 256
+    },
+
+    description: "经典佳能大三元标准变焦镜头，2021年购买，使用状况良好。镜片无霉无划痕，对焦快速准确。因更换RF卡口系统故出售。",
+    images: Array(4).fill(safeGetEquipment(mockLenses, 4, defaultLens).image),
+    tags: ["佳能", "大三元", "标准变焦", "二手", "专业"]
+}, {
+    id: "ue3",
+    name: safeGetEquipment(mockCameras, 9, defaultCamera).name,
+    type: "相机",
+    brand: safeGetEquipment(mockCameras, 9, defaultCamera).brand,
+    price: "5800",
+    originalPrice: safeGetEquipment(mockCameras, 9, defaultCamera).price,
+    image: safeGetEquipment(mockCameras, 9, defaultCamera).image,
+    condition: "99新",
+    usageTime: "约3个月",
+    shutterCount: "2300次",
+    repairHistory: "无维修记录",
+    accessories: ["原装电池", "充电器", "相机包", "肩带", "说明书"],
+
+    seller: {
+        id: "s3",
+        name: "新手摄影小张",
+        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=young%20photographer%20male%20student&sign=a076fa14f7977e902fe333f899d2603c",
+        location: "广州",
+        rating: 4.7,
+        completedTransactions: 32
+    },
+
+    description: "2023年7月购买，几乎全新，仅使用过几次。因工作繁忙无暇使用故出售。相机和镜头均无任何瑕疵，配件齐全。",
+    images: Array(4).fill(safeGetEquipment(mockCameras, 9, defaultCamera).image),
+    tags: ["富士", "APS-C", "复古", "二手", "套机"]
+}, {
+    id: "ue4",
+    name: safeGetEquipment(mockAccessories, 0, defaultAccessory).name,
+    type: "配件",
+    brand: safeGetEquipment(mockAccessories, 0, defaultAccessory).brand,
+    price: "4200",
+    originalPrice: safeGetEquipment(mockAccessories, 0, defaultAccessory).price,
+    image: safeGetEquipment(mockAccessories, 0, defaultAccessory).image,
+    condition: "9成新",
+    usageTime: "约1.5年",
+    shutterCount: "",
+    repairHistory: "无维修记录",
+    accessories: ["原装收纳袋", "说明书"],
+
+    seller: {
+        id: "s4",
+        name: "风光摄影师老王",
+        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=landscape%20photographer%20male%20outdoor&sign=e12559b462289b3e1b2448807304bc67",
+        location: "成都",
+        rating: 4.9,
+        completedTransactions: 187
+    },
+
+    description: "2022年3月购买，碳纤维材质，轻巧耐用，承重能力强。使用状况良好，无任何损坏。因升级更大号三脚架故出售。",
+    images: Array(4).fill(safeGetEquipment(mockAccessories, 0, defaultAccessory).image),
+    tags: ["捷信", "碳纤维", "三脚架", "二手", "专业"]
+}];
+
+const mockNewEquipment = [{
+    id: "ne1",
+    name: safeGetEquipment(mockCameras, 1, defaultCamera).name,
+    type: "相机",
+    brand: safeGetEquipment(mockCameras, 1, defaultCamera).brand,
+    price: safeGetEquipment(mockCameras, 1, defaultCamera).price,
+    originalPrice: safeGetEquipment(mockCameras, 1, defaultCamera).price,
+    image: safeGetEquipment(mockCameras, 1, defaultCamera).image,
+
+    seller: {
+        id: "b1",
+        name: "佳能官方授权店",
+        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=canon%20official%20store%20logo&sign=50cd433cb1c90a4b4dca5af8ff32317b",
+        location: "上海",
+        rating: 4.9,
+        completedTransactions: 1254,
+        isOfficial: true
+    },
+
+    description: "佳能EOS R5是一款专业级全画幅微单相机，具备4500万像素，支持8K视频录制和高速连拍。本商品为全新正品，享受官方保修服务。",
+    images: Array(4).fill(safeGetEquipment(mockCameras, 1, defaultCamera).image),
+    tags: ["佳能", "全画幅", "微单", "全新", "专业"],
+    warranty: "官方保修2年"
+}, {
+    id: "ne2",
+    name: safeGetEquipment(mockLenses, 8, defaultLens).name,
+    type: "镜头",
+    brand: safeGetEquipment(mockLenses, 8, defaultLens).brand,
+    price: safeGetEquipment(mockLenses, 8, defaultLens).price,
+    originalPrice: safeGetEquipment(mockLenses, 8, defaultLens).price,
+    image: safeGetEquipment(mockLenses, 8, defaultLens).image,
+
+    seller: {
+        id: "b2",
+        name: "尼康官方授权店",
+        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=nikon%20official%20store%20logo&sign=1cb76f80ef7e58ff4fd8842daa09e778",
+        location: "北京",
+        rating: 4.8,
+        completedTransactions: 987,
+        isOfficial: true
+    },
+
+    description: "尼康Z卡口70-200mm F2.8 VR S镜头，采用纳米结晶涂层和ED镜片，提供出色的光学性能和防抖效果。全新正品，支持官方保修。",
+    images: Array(4).fill(safeGetEquipment(mockLenses, 8, defaultLens).image),
+    tags: ["尼康", "大三元", "长焦", "全新", "专业"],
+    warranty: "官方保修2年"
+}];
 
 const equipmentTypes = ["全部", "相机", "镜头", "配件", "无人机", "三脚架", "滤镜", "闪光灯"];
 const priceRanges = ["全部", "0-5000元", "5000-10000元", "10000-20000元", "20000元以上"];

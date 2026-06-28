@@ -57,11 +57,117 @@ interface RegistrationFormData {
   agreement: boolean;
 }
 
-// TODO: Replace with API call
-const mockEvents: Event[] = [];
+// 模拟线下活动数据
+const mockEvents: Event[] = [
+  {
+    id: 'e1',
+    title: '新疆喀纳斯秋季风光摄影团',
+    type: '采风团',
+    category: '风光',
+    image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=xinjiang%20kanas%20autumn%20landscape%20photography%20tour&sign=80fdfc7396a896f951715b6544406409',
+    location: '新疆·喀纳斯',
+    date: '2025-12-15 至 2025-12-22',
+    duration: '8天7晚',
+    instructor: {
+      id: 'i1',
+      name: '风光摄影师张明',
+      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=landscape%20photographer%20male%20outdoor%20professional&sign=871dd04c358f08c5214aaf9a36e6bf27',
+      title: '国家地理摄影师',
+      experience: '15年'
+    },
+    price: 6999,
+    participants: 12,
+    maxParticipants: 20,
+    description: '跟随国家地理摄影师张明，深入新疆喀纳斯，拍摄秋季绝美风光。行程涵盖喀纳斯湖、禾木村、白哈巴等著名景点，在最佳时间和地点拍摄金秋时节的层林尽染、晨雾缭绕的梦幻景色。',
+    tags: ['风光', '新疆', '秋季', '长线', '深度']
+  },
+  {
+    id: 'e2',
+    title: '上海城市纪实摄影沙龙',
+    type: '摄影沙龙',
+    category: '纪实',
+    image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=shanghai%20urban%20documentary%20photography%20salon&sign=c10d47ff72e693e4aae932edd3732d15',
+    location: '上海·静安区',
+    date: '2025-12-28 14:00-17:00',
+    duration: '3小时',
+    instructor: {
+      id: 'i2',
+      name: '纪实摄影师李华',
+      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=documentary%20photographer%20male%20street%20experienced&sign=c2d89b9f47e07118aab5b3aef7c5cdf3',
+      title: '国际纪实摄影奖得主',
+      experience: '10年'
+    },price: 199,
+    participants: 18,
+    maxParticipants: 30,
+    description: '在上海这座国际化大都市，跟随国际纪实摄影奖得主李华，学习如何捕捉城市中的人文瞬间和生活故事。沙龙将涵盖纪实摄影的构图技巧、光线运用、与被摄者沟通等实用内容，并进行现场拍摄指导。',
+    tags: ['纪实', '城市', '上海', '沙龙', '短期']
+  },
+  {
+    id: 'e3',
+    title: '索尼Alpha新品体验会',
+    type: '器材体验会',
+    category: '器材',
+    image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=sony%20alpha%20new%20camera%20experience%20event%20demo&sign=7801e7949f7d2a5e0e7c3a308a3fba3a',
+    location: '北京·朝阳区',
+    date: '2026-01-05 10:00-16:00',
+    duration: '6小时',
+    instructor: {
+      id: 'i3',
+      name: '索尼技术专家王强',
+      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=sony%20camera%20technical%20expert%20male%20professional&sign=78333651a183c3049ee0b820a0642879',
+      title: '索尼官方讲师',
+      experience: '8年'
+    },
+    price: 0,
+    participants: 25,
+    maxParticipants: 50,
+    description: '索尼Alpha系列新品体验会，现场体验最新的索尼相机和镜头，包括A7R V、A7S III等热门机型。专业技术专家现场讲解产品特性和使用技巧，并提供一对一咨询服务。',
+    tags: ['器材', '索尼', '新品', '体验', '免费']
+  }
+];
 
-// TODO: Replace with API call
-const mockContests: Contest[] = [];
+// 模拟摄影赛事数据
+const mockContests: Contest[] = [
+  {
+    id: 'c1',
+    title: '2025年度黑白摄影大赛',
+    type: '官方主办',
+    image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=black%20and%20white%20photography%20contest%20banner%20minimalist&sign=5958a9112dbd48d52283b3d3b68c22df',
+    deadline: '2025-12-31',
+    status: '进行中',
+    entries: 1254,
+    worksCount: 3458,
+    participants: 1254,
+    description: '展现黑白摄影的独特魅力，通过光影、构图和情感表达，呈现经典而永恒的视觉艺术作品。大赛面向全球摄影爱好者，欢迎各类黑白摄影作品参赛。',
+    tags: ['黑白', '年度', '官方', '奖金', '全球']
+  },
+  {
+    id: 'c2',
+    title: '索尼Alpha创意摄影挑战赛',
+    type: '合作赛事',
+    image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=sony%20alpha%20creative%20photography%20challenge%20banner&sign=38f14ccad69f3dbb399991f5317127ce',
+    deadline: '2025-12-15',
+    status: '进行中',
+    entries: 876,
+    worksCount: 2156,
+    participants: 876,
+    description: '使用索尼Alpha系列相机创作，展示你的创意视角和摄影才华。本次挑战赛不限题材，鼓励创新和实验性的摄影作品。',
+    tags: ['索尼', '创意', '器材', '相机', '合作']
+  },
+  {
+    id: 'c3',
+    title: '城市人文纪实摄影大赛',
+    type: '官方主办',
+    image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=urban%20documentary%20photography%20contest%20banner%20street%20life&sign=818fdf65887ba3b9c9d321794542006b',
+    deadline: '2025-12-30',
+    status: '进行中',
+    entries: 654,
+    worksCount: 1890,
+    participants: 654,
+    description: '记录城市生活的瞬间，展现都市人文风情和社会变迁。通过摄影镜头，讲述城市中的故事，传递人文关怀和思考。',
+    tags: ['城市', '人文', '纪实', '街拍', '官方']
+  }
+];
 
 // 活动类型
 const eventTypes = ['全部', '采风团', '摄影沙龙', '器材体验会'];

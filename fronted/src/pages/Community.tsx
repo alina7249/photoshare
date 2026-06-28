@@ -94,8 +94,39 @@ interface Achievement {
     unlocked: boolean;
 }
 
-// TODO: Replace with API call
-const mockUsers: User[] = [];
+const mockUsers: User[] = [{
+    id: "1",
+    name: "极简摄影师林风",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=minimalist%20photographer%20male%20serious&sign=fded36172bb86afa4dc326776156459c",
+    level: 8,
+
+    stats: {
+        posts: 156,
+        likes: 2345,
+        days: 365}
+}, {
+    id: "2",
+    name: "城市摄影师陈默",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=urban%20photographer%20male%20creative&sign=5df0f9b10a5022623be1cb145264b5a1",
+    level: 6,
+
+    stats: {
+        posts: 89,
+        likes: 1234,
+        days: 240
+    }
+}, {
+    id: "3",
+    name: "风景摄影爱好者",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=landscape%20photographer%20male%20nature%20lover&sign=d96b376fb9cd51636566b2ae4aadba91",
+    level: 4,
+
+    stats: {
+        posts: 45,
+        likes: 876,
+        days: 180
+    }
+}];
 
 const mockTopics: Topic[] = [{
     id: "1",
@@ -151,20 +182,105 @@ const mockTopics: Topic[] = [{
     isSelected: false
 }];
 
-// TODO: from API
-const mockNotifications: Notification[] = [];
+const mockNotifications: Notification[] = [{
+    id: "1",
+    type: "like",
+    content: "极简摄影师林风 点赞了你的作品",
+    relatedId: "post123",
+    createdAt: "2023-10-25 10:23",
+    isRead: false
+}, {
+    id: "2",
+    type: "comment",
+    content: "城市摄影师陈默 评论了你的话题",
+    relatedId: "topic456",
+    createdAt: "2023-10-25 09:15",
+    isRead: false
+}, {
+    id: "3",
+    type: "system",
+    content: "系统维护通知：平台将于今晚23:00-次日凌晨2:00进行维护",
+    relatedId: "",
+    createdAt: "2023-10-24 18:30",
+    isRead: true
+}];
 
-// TODO: from API
-const topicDistributionData: ChartData[] = [];
+const topicDistributionData: ChartData[] = [{
+    name: "器材讨论",
+    value: 35,
+    color: "#4A5F8B"
+}, {
+    name: "摄影技巧",
+    value: 25,
+    color: "#6B7C93"
+}, {
+    name: "作品分享",
+    value: 20,
+    color: "#B8C6D8"
+}, {
+    name: "后期处理",
+    value: 15,
+    color: "#2D3748"
+}, {
+    name: "其他",
+    value: 5,
+    color: "#1E2532"
+}];
 
-// TODO: from API
-const activityData7Days: any[] = [];
+const activityData7Days = [{
+    date: "10/19",
+    posts: 45,
+    replies: 120,
+    users: 89
+}, {
+    date: "10/20",
+    posts: 52,
+    replies: 130,
+    users: 95
+}, {
+    date: "10/21",
+    posts: 49,
+    replies: 115,
+    users: 92
+}, {
+    date: "10/22",
+    posts: 63,
+    replies: 145,
+    users: 105
+}, {
+    date: "10/23",
+    posts: 71,
+    replies: 160,
+    users: 110
+}, {
+    date: "10/24",
+    posts: 85,
+    replies: 190,
+    users: 130
+}, {
+    date: "10/25",
+    posts: 78,
+    replies: 175,
+    users: 125
+}];
 
-// TODO: from API
-const activityData30Days: any[] = [];
+const activityData30Days = Array.from({
+    length: 30
+}).map((_, index) => ({
+    date: `10/${index + 1}`,
+    posts: Math.floor(Math.random() * 80) + 20,
+    replies: Math.floor(Math.random() * 200) + 80,
+    users: Math.floor(Math.random() * 140) + 60
+}));
 
-// TODO: from API
-const activityData90Days: any[] = [];
+const activityData90Days = Array.from({
+    length: 90
+}).map((_, index) => ({
+    date: `7/${index + 1}`,
+    posts: Math.floor(Math.random() * 100) + 10,
+    replies: Math.floor(Math.random() * 250) + 50,
+    users: Math.floor(Math.random() * 160) + 40
+}));
 
 const generateContributionData = (): ContributionDay[] => {
     const data: ContributionDay[] = [];
@@ -833,8 +949,87 @@ export const GroupCard: React.FC<GroupCardProps> = (
     );
 };
 
-// TODO: Replace with API call
-const mockGroups: Group[] = [];
+// 模拟小组数据
+const mockGroups: Group[] = [
+  {
+    id: "g1",
+    name: "风光摄影爱好者",
+    description: "专注于分享和交流风光摄影技巧、作品和器材使用经验。无论你是专业摄影师还是业余爱好者，都能在这里找到志同道合的朋友。",
+    coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=landscape%20photography%20mountain%20lake%20sunset%20group&sign=dcb281799d48f79a565ca84312d184f9",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=landscape%20photography%20club%20logo&sign=6e7a0377c1765869954de67da2805104",
+    members: [mockUsers[0], mockUsers[1], mockUsers[2]],
+    posts: 345,
+    createdAt: "2023-01-15",
+    isPublic: true,
+    joined: true,
+    tags: ["风光", "自然", "户外", "风景"]
+  },
+  {
+    id: "g2",
+    name: "人像摄影技巧交流",
+    description: "探讨人像摄影的光线运用、构图技巧、引导模特等专业内容。分享最新人像作品，互相学习进步。",
+    coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=portrait%20photography%20studio%20group%20creative&sign=ad812d2b6b21ee3f52025b0964288c97",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=portrait%20photography%20club%20logo&sign=946c2ca7a407063d1cb6744320f85a57",
+    members: [mockUsers[1], mockUsers[2]],
+    posts: 267,
+    createdAt: "2023-03-20",
+    isPublic: true,
+    joined: false,
+    tags: ["人像", "肖像", "模特", "自然光"]
+  },
+  {
+    id: "g3",
+    name: "城市街头摄影",
+    description: "记录城市生活的瞬间，捕捉街头的故事和人文情怀。分享街头摄影的技巧和设备推荐。",
+    coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=street%20photography%20urban%20city%20street%20group&sign=e076386c6e6cb8682835ab9a15e145e7",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=street%20photography%20club%20logo&sign=d6bc81adc6768a530f17c2ee445c92ce",
+    members: [mockUsers[0], mockUsers[1]],
+    posts: 189,
+    createdAt: "2023-02-10",
+    isPublic: true,
+    joined: false,
+    tags: ["街头", "城市", "人文", "纪实"]
+  },
+  {
+    id: "g4",
+    name: "器材玩家俱乐部",
+    description: "摄影器材的深度评测、使用心得和购买建议。从相机、镜头到各种配件，我们聊的都是硬货。",
+    coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=photography%20equipment%20camera%20lenses%20group&sign=de7808fe088e719e100bdd4ab79d5448",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography%20equipment%20club%20logo&sign=11b90cf1c2e6893f916de925d4e82f15",
+    members: [mockUsers[0], mockUsers[1], mockUsers[2]],
+    posts: 412,
+    createdAt: "2023-04-05",
+    isPublic: true,
+    joined: true,
+    tags: ["器材", "评测", "购买", "配件"]
+  },
+  {
+    id: "g5",
+    name: "后期修图大师班",
+    description: "分享PS、Lightroom等后期修图技巧，从基础调整到高级合成，提升你的作品质感。",
+    coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=photo%20editing%20workspace%20post%20processing%20group&sign=bf46adb74ee31c030f652bf8ac9e19e7",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photo%20editing%20club%20logo&sign=0561d34d4200e2caa00089faf67fcaef",
+    members: [mockUsers[1], mockUsers[2]],
+    posts: 234,
+    createdAt: "2023-05-15",
+    isPublic: true,
+    joined: false,
+    tags: ["后期", "修图", "PS", "Lightroom"]
+  },
+  {
+    id: "g6",
+    name: "手机摄影达人",
+    description: "用手机也能拍出大片！分享手机摄影技巧、配件使用和后期修图APP推荐。",
+    coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=mobile%20photography%20smartphone%20camera%20group&sign=7ad2126eb7f0147b6c8fbb8e6ba94dca",
+    avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=mobile%20photography%20club%20logo&sign=07f813a1329616c29de7a5dccf800f5f",
+    members: [mockUsers[0], mockUsers[2]],
+    posts: 176,
+    createdAt: "2023-06-10",
+    isPublic: true,
+    joined: false,
+    tags: ["手机", "手机摄影", "APP", "便携"]
+  }
+];
 
 const CollectionsManager: React.FC = () => {
     const [collections, setCollections] = useState<Collection[]>(mockCollections);
