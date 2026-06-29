@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuthStore } from "../store/authStore";
 import { ProfileDropdown } from "./ProfileDropdown";
+import { apiGet } from "../lib/api";
 
 export const Header: React.FC = () => {
     const {
@@ -18,19 +19,15 @@ export const Header: React.FC = () => {
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
 
-    const mockUserData = {
-        username: "@光影捕手",
-        level: "新锐摄影师",
-        levelNum: 3,
-        progress: 120,
-        progressMax: 200,
+    const [userData, setUserData] = useState<any>(null);
 
-        stats: {
-            posts: 12,
-            likes: 236,
-            collections: 48
-        }
-    };
+    useEffect(() => {
+        apiGet("/profile").then((data) => {
+            setUserData(data);
+        }).catch(() => {
+            // ignore
+        });
+    }, []);
 
     const navLinks = [{
         name: "作品库",
@@ -77,7 +74,7 @@ export const Header: React.FC = () => {
     };
 
     const userAvatar = user?.avatar || "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional&sign=b0609ecfca466fa5510f7df4adb33529";
-    const username = user?.username || mockUserData.username;
+    const username = user?.username || userData?.username;
 
     const getBgClass = () => {
         if (scrolled) {
@@ -280,11 +277,11 @@ export const Header: React.FC = () => {
                 isOpen={isProfileDropdownOpen}
                 onClose={() => setIsProfileDropdownOpen(false)}
                 username={username}
-                level={mockUserData.level}
-                levelNum={mockUserData.levelNum}
-                progress={mockUserData.progress}
-                progressMax={mockUserData.progressMax}
-                stats={mockUserData.stats}
+                level={userData?.level}
+                levelNum={userData?.levelNum}
+                progress={userData?.progress}
+                progressMax={userData?.progressMax}
+                stats={userData?.stats}
                 avatarSrc={userAvatar} />
         </header>
     );

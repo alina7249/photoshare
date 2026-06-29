@@ -85,31 +85,6 @@ interface InstructorDetail {
   bio: string;
 }
 
-// 模拟学习小组数据
-const mockStudyGroups: StudyGroup[] = [
-  {
-    id: 'g1',
-    name: '摄影初学者联盟',
-    description: '为摄影新手提供互相学习和交流的平台',
-    members: 156,
-    createdAt: '2023-10-15'
-  },
-  {
-    id: 'g2',
-    name: '曝光三要素研讨组',
-    description: '深入探讨曝光三要素的应用技巧',
-    members: 89,
-    createdAt: '2023-10-20'
-  },
-  {
-    id: 'g3',
-    name: '光影探索者',
-    description: '一起探索光影的奥秘和摄影的艺术',
-    members: 124,
-    createdAt: '2023-10-05'
-  }
-];
-
 const CourseDetail: React.FC = () => {
   const { id } = useParams();
   const { isAuthenticated, user } = useAuth();
@@ -141,44 +116,27 @@ const CourseDetail: React.FC = () => {
         setLoading(false);
       });
   }, [id]);
-  
-  // 模拟推荐讲师数据
-  const recommendedInstructors = [
-    {
-      id: 'i2',
-      name: '摄影导师张华',
-      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography%20instructor%20female%20professional%20portrait&sign=08fa1853cdf591120a2622c5cf6c7d19',
-      title: '高级摄影师',
-      students: 8976,
-      courses: 18,
-      rating: 4.8,
-      specialty: '人像摄影',
-      bio: '专注人像摄影领域10年，曾为多个时尚杂志拍摄封面，擅长光影运用和人物情绪捕捉。'
-    },
-    {
-      id: 'i3',
-      name: '摄影导师王强',
-      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography%20instructor%20male%20professional%20smiling&sign=6b48dd922f87103eab9ee885c472a9a7',
-      title: '风光摄影专家',
-      students: 15678,
-      courses: 32,
-      rating: 4.9,
-      specialty: '风光摄影',
-      bio: '国家地理认证摄影师，擅长自然风光拍摄，足迹遍布全球各大摄影胜地，作品曾获多项国际奖项。'
-    },
-    {
-      id: 'i4',
-      name: '摄影导师陈明',
-      avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photo%20editor%20male%20creative%20glasses&sign=4092d65f4b480ad2845bb8802adb2927',
-      title: '后期修图大师',
-      students: 12345,
-      courses: 25,
-      rating: 4.7,
-      specialty: '后期处理',
-      bio: 'Adobe认证讲师，精通Photoshop和Lightroom，出版过多本摄影后期教程，擅长色彩管理和创意合成。'
-    }
-  ];
-  
+
+  // 学习小组和推荐讲师从API加载
+  const [studyGroups, setStudyGroups] = useState<StudyGroup[]>([]);
+  const [instructors, setInstructors] = useState<any[]>([]);
+
+  useEffect(() => {
+    apiGet("/study-groups").then((data) => {
+      setStudyGroups(data);
+    }).catch(() => {
+      // ignore
+    });
+  }, []);
+
+  useEffect(() => {
+    apiGet("/instructors").then((data) => {
+      setInstructors(data);
+    }).catch(() => {
+      // ignore
+    });
+  }, []);
+
   // 从本地存储加载用户数据
   useEffect(() => {
     if (isAuthenticated && user && course) {
@@ -741,7 +699,7 @@ const CourseDetail: React.FC = () => {
                     
                     {/* 小组列表 */}
                     <div className="space-y-3">
-                      {mockStudyGroups.map((group) => (
+                      {studyGroups.map((group) => (
                         <div key={group.id} className="p-3 bg-[#1E2532] rounded-lg border border-[#4A5F8B]">
                           <div className="flex justify-between items-start mb-1">
                             <h4 className="font-medium text-[#F5F7FA]">{group.name}</h4>
@@ -773,7 +731,7 @@ const CourseDetail: React.FC = () => {
         <div className="mt-12">
           <h2 className="text-2xl font-bold text-[#F5F7FA] mb-6">推荐讲师</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {recommendedInstructors.map((instructor) => (
+            {instructors.map((instructor) => (
               <motion.div
                 key={instructor.id}
                 whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}

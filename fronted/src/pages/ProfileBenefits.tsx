@@ -1,348 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { toast } from 'sonner';
-
-// 模拟会员数据
-const mockMembershipData = {
-  currentPlan: {
-    name: "银河会员·年卡",
-    level: "3",
-    startDate: "2023-06-15",
-    endDate: "2024-06-15",
-    daysLeft: 128,
-    price: "299",
-    paymentFrequency: "年付"
-  },
-  nextLevel: {
-    name: "星云会员",
-    level: "4",
-    requirements: [
-      {
-        id: 1,
-        name: "连续开通会员6个月",
-        completed: true
-      },
-      {
-        id: 2,
-        name: "发布10篇优质作品",
-        completed: true
-      },
-      {
-        id: 3,
-        name: "获得500个收藏",
-        completed: false,
-        progress: 342,
-        total: 500
-      },
-      {
-        id: 4,
-        name: "拥有100个粉丝",
-        completed: false,
-        progress: 72,
-        total: 100
-      }
-    ]
-  },
-  benefits: {
-    active: [
-      {
-        id: 1,
-        name: "免费RAW素材下载",
-        description: "每月可下载10个高质量RAW素材",
-        icon: "fa-file-image",
-        count: "10/10"
-      },
-      {
-        id: 2,
-        name: "赛事优先报名",
-        description: "热门赛事提前3天报名资格",
-        icon: "fa-trophy",
-        count: null
-      },
-      {
-        id: 3,
-        name: "专属后期预设包",
-        description: "10个专业摄影后期预设",
-        icon: "fa-sliders-h",
-        count: null
-      },
-      {
-        id: 4,
-        name: "免费在线课程",
-        description: "每月2门会员专属摄影课程",
-        icon: "fa-graduation-cap",
-        count: "2/2"
-      },
-      {
-        id: 5,
-        name: "作品优先推荐",
-        description: "作品在首页推荐几率提升50%",
-        icon: "fa-star",
-        count: null
-      },
-      {
-        id: 6,
-        name: "无水印导出",
-        description: "在线编辑工具支持无水印导出",
-        icon: "fa-image",
-        count: null
-      },
-      {
-        id: 7,
-        name: "会员专属客服",
-        description: "优先的技术支持通道，24小时响应",
-        icon: "fa-headset",
-        count: null
-      }
-    ],
-    upcoming: [
-      {
-        id: 1,
-        name: "专属客服通道",
-        description: "1对1专属客服咨询服务",
-        icon: "fa-headset",
-        level: 4
-      },
-      {
-        id: 2,
-        name: "器材租赁优惠",
-        description: "专业摄影器材租赁9折优惠",
-        icon: "fa-video",
-        level: 4
-      },
-      {
-        id: 3,
-        name: "线下活动免费",
-        description: "每月1次免费参与线下摄影活动",
-        icon: "fa-calendar-check",
-        level: 5
-      }
-    ]
-  },
-  availablePlans: [
-    {
-      id: 1,
-      name: "月卡",
-      price: "39",
-      period: "1个月",
-      features: ["全部基础功能", "每月5个素材", "在线客服", "会员专属标识"]
-    },
-    {
-      id: 2,
-      name: "年卡",
-      price: "299",
-      period: "13个月",
-      features: ["全部基础功能", "每月10个素材", "优先报名", "专属预设包", "免费课程", "作品优先推荐", "无水印导出", "会员专属客服"],
-      recommended: true
-    },
-    {
-      id: 3,
-      name: "终身卡",
-      price: "1999",
-      period: "终身",
-      features: ["全部高级功能", "无限素材下载", "专属客服", "器材租赁8折", "免费线下活动", "专属标识"]
-    }
-  ],
-  usageStats: {
-    "素材下载": {
-      used: 8,
-      total: 10
-    },
-    "课程学习": {
-      used: 2,
-      total: 2
-    },
-    "赛事报名": {
-      used: 3,
-      total: 10
-    },
-    "预设使用": {
-      used: 5,
-      total: 10
-    }
-  },
-  // 会员成长体系详细数据
-  growthSystem: {
-    levels: [
-      {
-        level: 1,
-        name: "入门会员",
-        price: "免费",
-        description: "基础功能访问权限，每月3个素材",
-        icon: "fa-user",
-        isCurrent: false
-      },
-      {
-        level: 2,
-        name: "进阶会员",
-        price: "¥19/月",
-        description: "扩展功能访问，每月5个素材",
-        icon: "fa-user-plus",
-        isCurrent: false
-      },
-      {
-        level: 3,
-        name: "银河会员",
-        price: "¥39/月",
-        description: "您当前的等级，每月10个素材，优先报名资格",
-        icon: "fa-user-tie",
-        isCurrent: true
-      },
-      {
-        level: 4,
-        name: "星云会员",
-        price: "¥59/月",
-        description: "高级功能访问，每月15个素材，专属客服",
-        icon: "fa-user-edit",
-        isCurrent: false
-      },
-      {
-        level: 5,
-        name: "宇宙会员",
-        price: "¥99/月",
-        description: "全部高级功能，无限素材下载，器材租赁优惠",
-        icon: "fa-user-crown",
-        isCurrent: false
-      },
-      {
-        level: 6,
-        name: "至尊会员",
-        price: "¥199/月",
-        description: "顶级会员特权，专属线下活动，一对一导师指导",
-        icon: "fa-crown",
-        isCurrent: false
-      }
-    ],
-    // 会员专属内容预览数据
-    exclusiveContent: [
-      {
-        id: 1,
-        title: "风光摄影大师班",
-        description: "由国际获奖摄影师亲自授课，学习专业风光拍摄技巧",
-        image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=professional%20landscape%20photography%20workshop%20banner%20mountain%20scenery&sign=0dafc8a260a28664bd392980e71a805c"
-      },
-      {
-        id: 2,
-        title: "高级后期修图工作流",
-        description: "从RAW到成品的完整修图流程，掌握专业调色技巧",
-        image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=photo%20editing%20workflow%20tutorial%20professional%20studio&sign=7e760f67fc2009a141b2828a5affabf7"
-      },
-      {
-        id: 3,
-        title: "商业摄影实战指南",
-        description: "学习商业摄影的布光、构图和客户沟通技巧",
-        image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=commercial%20photography%20studio%20setup%20lighting%20equipment&sign=1af5b7229aaeac89bfdec8f05214b754"
-      }
-    ],
-    // 会员活动日历数据
-    events: [
-      {
-        id: 1,
-        title: "会员专属摄影沙龙·上海站",
-        date: "2023-11-15",
-        location: "上海·静安区",
-        type: "线下活动"
-      },
-      {
-        id: 2,
-        title: "后期修图大师直播课",
-        date: "2023-11-10",
-        location: "线上直播",
-        type: "线上活动"
-      },
-      {
-        id: 3,
-        title: "器材体验会·深圳站",
-        date: "2023-11-20",
-        location: "深圳·南山区",
-        type: "线下活动"
-      },
-      {
-        id: 4,
-        title: "摄影大赛启动仪式",
-        date: "2023-11-25",
-        location: "线上直播",
-        type: "线上活动"
-      }
-    ],
-    // 权益使用统计数据（用于图表）
-    usageChartData: [
-      { name: "素材下载", used: 8, total: 10 },
-      { name: "课程学习", used: 2, total: 2 },
-      { name: "赛事报名", used: 3, total: 10 },
-      { name: "预设使用", used: 5, total: 10 },
-      { name: "客服咨询", used: 1, total: 3 }
-    ],
-  // 会员推荐奖励数据
-  referralProgram: {
-    currentUser: {
-      referralCode: "PHOTOMASTER2023",
-      referralLink: "https://photoshare.com/invite/PHOTOMASTER2023",
-      totalInvites: 3,
-      successfulInvites: 2,
-      pendingInvites: 1,
-      rewards: [
-        { id: 1, name: "会员延长1个月", status: "已获得", date: "2023-09-15" },
-        { id: 2, name: "RAW素材包1个", status: "已获得", date: "2023-10-02" },
-        { id: 3, name: "高级预设包", status: "未获得", requirement: "再邀请1位好友" }
-      ]
-    },
-    rewardTiers: [
-      { invites: 1, reward: "RAW素材包1个", description: "包含20个高质量RAW格式风景照片素材" },
-      { invites: 2, reward: "会员延长1个月", description: "当前会员有效期额外延长30天" },
-      { invites: 5, reward: "高级预设包", description: "50个专业摄影后期Lightroom预设" },
-      { invites: 10, reward: "线下活动免费券", description: "可免费参加1次平台组织的线下摄影活动" },
-      { invites: 20, reward: "器材租赁8折券", description: "专业摄影器材租赁享受8折优惠" },
-      { invites: 50, reward: "年度会员免费", description: "赠送一年高级会员资格" }
-    ]
-  }
-  },
-  // 成长福利数据
-  growthBenefits: {
-    currentLevel: {
-      name: '新锐摄影师',
-      level: 3,
-      progress: 120,
-      maxProgress: 200,
-      joinDate: '2023-03-15',
-    },
-    growthHistory: [
-      { date: '2023-10-25', action: '发布作品获得收藏', points: 15 },
-      { date: '2023-10-22', action: '参加摄影比赛', points: 30 },
-      { date: '2023-10-18', action: '作品获得点赞', points: 5 },
-      { date: '2023-10-15', action: '完成新手任务', points: 20 },
-      { date: '2023-10-10', action: '发布作品获得收藏', points: 10 },
-      { date: '2023-10-05', action: '邀请好友注册', points: 20 },
-    ],
-    availableRewards: [
-      { id: 'r1', name: '基础后期预设包', description: '10个专业摄影后期预设', points: 50, image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photo%20preset%20pack%20thumbnail%20photography%20editing&sign=e8c6e47f437ba890910bd7f636a11f1b', available: true },
-      { id: 'r2', name: 'RAW素材下载券', description: '5个高质量RAW素材下载权限', points: 80, image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=raw%20photo%20download%20voucher%20thumbnail&sign=05dbb388d7010c5c0355b7ca1fcf8775', available: true },
-      { id: 'r3', name: '摄影课程折扣券', description: '线上摄影课程8折优惠', points: 100, image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography%20course%20discount%20voucher%20thumbnail&sign=9ab6fe1c09a5f10cf322494fa9d02fdb', available: true },
-      { id: 'r4', name: '高级会员体验卡', description: '7天高级会员免费体验', points: 150, image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=premium%20membership%20trial%20card%20thumbnail%20gold%20glow&sign=1c989a761cbbc5239aefecefd0fb57bf', available: true },
-      { id: 'r5', name: '专业器材租赁券', description: '专业相机镜头租赁一天免费', points: 200, image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=camera%20equipment%20rental%20voucher%20thumbnail&sign=526fa89bffb356b8ee6de91d54131e4f', available: false },
-      { id: 'r6', name: '线下活动免费券', description: '免费参加一次线下摄影活动', points: 250, image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography%20event%20free%20ticket%20thumbnail&sign=603c66e6e40f8e7fb5a2c9abab507bff', available: false },
-    ],
-    completedTasks: [
-      { id: 't1', name: '完善个人资料', description: '上传头像并填写个人简介', points: 10, completed: true },
-      { id: 't2', name: '发布第一篇作品', description: '上传并发布您的第一篇摄影作品', points: 20, completed: true },
-      { id: 't3', name: '关注5位摄影师', description: '关注5位您感兴趣的摄影师', points: 15, completed: true },
-      { id: 't4', name: '收藏10篇作品', description: '收藏10篇您喜欢的摄影作品', points: 10, completed: true },
-    ],
-    ongoingTasks: [
-      { id: 't5', name: '参加摄影比赛', description: '提交作品参加一次摄影比赛', points: 30, progress: 0, total: 1, completed: false },
-      { id: 't6', name: '作品获得100赞', description: '您的作品累计获得100个点赞', points: 25, progress: 72, total: 100, completed: false },
-      { id: 't7', name: '发布5篇优质作品', description: '上传并发布5篇获得推荐的优质作品', points: 50, progress: 2, total: 5, completed: false },
-      { id: 't8', name: '邀请3位好友', description: '邀请3位好友注册并完成认证', points: 30, progress: 1, total: 3, completed: false },
-    ]
-  }
-};
+import { apiGet } from '../lib/api';
 
 // 饼图数据处理
-const getPieChartData = () => {
-  const data = mockMembershipData.growthSystem.usageChartData.map(item => ({
+const getPieChartData = (membershipData: any) => {
+  if (!membershipData?.growthSystem?.usageChartData) return { data: [], COLORS: [] };
+  const data = membershipData.growthSystem.usageChartData.map((item: any) => ({
     name: item.name,
     value: item.used,
     fullValue: item.total
@@ -355,28 +22,33 @@ const getPieChartData = () => {
 
 const ProfileBenefits: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
+  const [membershipData, setMembershipData] = useState<any>(null);
   const [activeTab, setActiveTab] = useState("overview");
   const [currentMonth, setCurrentMonth] = useState(11); // 当前是11月
   const [showChatModal, setShowChatModal] = useState(false);
   const [newNote, setNewNote] = useState("");
   const [showClaimedRewards, setShowClaimedRewards] = useState(false);
+
+  useEffect(() => {
+    apiGet('/membership').then(setMembershipData).catch(console.error);
+  }, []);
   
-  const { data, COLORS } = getPieChartData();
+  const { data, COLORS } = getPieChartData(membershipData);
   
   // 计算已获得和可获得的成长值
-  const totalPoints = mockMembershipData.growthBenefits.growthHistory.reduce((sum, item) => sum + item.points, 0);
-  const totalAvailableRewardsPoints = mockMembershipData.growthBenefits.availableRewards
-    .filter(reward => reward.available)
-    .reduce((sum, reward) => sum + reward.points, 0);
+  const totalPoints = membershipData?.growthBenefits?.growthHistory?.reduce((sum: number, item: any) => sum + item.points, 0) ?? 0;
+  const totalAvailableRewardsPoints = membershipData?.growthBenefits?.availableRewards
+    ?.filter((reward: any) => reward.available)
+    ?.reduce((sum: number, reward: any) => sum + reward.points, 0) ?? 0;
   
   // 过滤奖励
   const getFilteredRewards = () => {
-    return mockMembershipData.growthBenefits.availableRewards.filter(reward => {
+    return membershipData?.growthBenefits?.availableRewards?.filter((reward: any) => {
       if (showClaimedRewards) {
         return true;
       }
       return reward.available;
-    });
+    }) ?? [];
   };
   
   const filteredRewards = getFilteredRewards();
@@ -398,22 +70,35 @@ const ProfileBenefits: React.FC = () => {
     );
   }
 
+  if (!membershipData) {
+    return (
+      <div className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 mx-auto mb-4">
+            <i className="fa-solid fa-spinner fa-spin text-3xl text-[#4A5F8B]"></i>
+          </div>
+          <p className="text-[#B8C6D8]">加载中...</p>
+        </div>
+      </div>
+    );
+  }
+
   // 复制邀请码功能
   const copyReferralCode = () => {
-    navigator.clipboard.writeText(mockMembershipData.growthSystem.referralProgram.currentUser.referralCode);
+    navigator.clipboard.writeText(membershipData.growthSystem.referralProgram.currentUser.referralCode);
     toast.success("邀请码已复制到剪贴板");
   };
   
   // 复制邀请链接功能
   const copyReferralLink = () => {
-    navigator.clipboard.writeText(mockMembershipData.growthSystem.referralProgram.currentUser.referralLink);
+    navigator.clipboard.writeText(membershipData.growthSystem.referralProgram.currentUser.referralLink);
     toast.success("邀请链接已复制到剪贴板");
   };
   
   // 分享到社交媒体
   const shareToSocial = (platform: string) => {
-    const url = mockMembershipData.growthSystem.referralProgram.currentUser.referralLink;
-    const text = `加入摄影社区，使用我的邀请码 ${mockMembershipData.growthSystem.referralProgram.currentUser.referralCode} 注册，我们都能获得奖励！`;
+    const url = membershipData.growthSystem.referralProgram.currentUser.referralLink;
+    const text = `加入摄影社区，使用我的邀请码 ${membershipData.growthSystem.referralProgram.currentUser.referralCode} 注册，我们都能获得奖励！`;
     
     switch (platform) {
       case 'wechat':
@@ -472,17 +157,17 @@ const ProfileBenefits: React.FC = () => {
                   <i className="fa-solid fa-crown text-3xl text-[#F5F7FA]"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold">{mockMembershipData.currentPlan.name}</h2>
-                  <p className="text-[#F5F7FA]">有效期至：{mockMembershipData.currentPlan.endDate}</p>
+                  <h2 className="text-2xl font-bold">{membershipData.currentPlan.name}</h2>
+                  <p className="text-[#F5F7FA]">有效期至：{membershipData.currentPlan.endDate}</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center">
-                  <span className="text-lg font-bold mr-2">{mockMembershipData.currentPlan.daysLeft}</span>
+                  <span className="text-lg font-bold mr-2">{membershipData.currentPlan.daysLeft}</span>
                   <span className="text-[#F5F7FA]">天剩余</span>
                 </div>
                 <div className="flex items-center">
-                  <span className="text-lg font-bold mr-2">LV.{mockMembershipData.currentPlan.level}</span>
+                  <span className="text-lg font-bold mr-2">LV.{membershipData.currentPlan.level}</span>
                   <span className="text-[#F5F7FA]">会员等级</span>
                 </div>
               </div>
@@ -492,7 +177,7 @@ const ProfileBenefits: React.FC = () => {
                   className="px-6 py-3 bg-[#F5F7FA] text-[#4A5F8B] rounded-lg font-medium hover:bg-white transition-colors shadow-md"
                   onClick={() => {
                     toast.info("即将跳转到续费页面");
-                    setTimeout(() => window.location.href = `/membership/pay?level=${mockMembershipData.currentPlan.level}`, 800);
+                    setTimeout(() => window.location.href = `/membership/pay?level=${membershipData.currentPlan.level}`, 800);
                   }}
                 >
                   立即续费
@@ -501,7 +186,7 @@ const ProfileBenefits: React.FC = () => {
                   className="px-6 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#63B3ED] transition-colors"
                   onClick={() => {
                     toast.info("即将跳转到升级页面");
-                    setTimeout(() => window.location.href = `/membership/pay?level=${mockMembershipData.currentPlan.level}`, 800);
+                    setTimeout(() => window.location.href = `/membership/pay?level=${membershipData.currentPlan.level}`, 800);
                   }}
                 >
                   升级会员
@@ -559,7 +244,7 @@ const ProfileBenefits: React.FC = () => {
               <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                 <h3 className="text-lg font-bold text-[#B8C6D8] mb-4">使用统计</h3>
                 <div className="space-y-4">
-                  {Object.entries(mockMembershipData.usageStats).map(([key, value]) => (
+                  {Object.entries(membershipData.usageStats).map(([key, value]) => (
                     <div key={key}>
                       <div className="flex justify-between items-center mb-2">
                         <span className="text-sm text-[#B8C6D8]">{key}</span>
@@ -584,27 +269,27 @@ const ProfileBenefits: React.FC = () => {
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span className="text-sm text-[#B8C6D8]">会员等级</span>
-                    <span className="text-sm text-[#B8C6D8] font-medium">LV.{mockMembershipData.currentPlan.level}</span>
+                    <span className="text-sm text-[#B8C6D8] font-medium">LV.{membershipData.currentPlan.level}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm text-[#B8C6D8]">订阅计划</span>
-                    <span className="text-sm text-[#B8C6D8] font-medium">{mockMembershipData.currentPlan.name}</span>
+                    <span className="text-sm text-[#B8C6D8] font-medium">{membershipData.currentPlan.name}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm text-[#B8C6D8]">开始日期</span>
-                    <span className="text-sm text-[#B8C6D8]">{mockMembershipData.currentPlan.startDate}</span>
+                    <span className="text-sm text-[#B8C6D8]">{membershipData.currentPlan.startDate}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm text-[#B8C6D8]">结束日期</span>
-                    <span className="text-sm text-[#B8C6D8]">{mockMembershipData.currentPlan.endDate}</span>
+                    <span className="text-sm text-[#B8C6D8]">{membershipData.currentPlan.endDate}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm text-[#B8C6D8]">支付方式</span>
-                    <span className="text-sm text-[#B8C6D8]">{mockMembershipData.currentPlan.paymentFrequency}</span>
+                    <span className="text-sm text-[#B8C6D8]">{membershipData.currentPlan.paymentFrequency}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm text-[#B8C6D8]">下次付款</span>
-                    <span className="text-sm text-[#B8C6D8]">¥{mockMembershipData.currentPlan.price}</span>
+                    <span className="text-sm text-[#B8C6D8]">¥{membershipData.currentPlan.price}</span>
                   </div>
                 </div>
                  <button className="w-full mt-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#63B3ED] transition-colors border border-[#4A5F8B]"
@@ -640,7 +325,7 @@ const ProfileBenefits: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="h-64">
                     <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={mockMembershipData.growthSystem.usageChartData}>
+                      <BarChart data={membershipData.growthSystem.usageChartData}>
                         <XAxis dataKey="name" stroke="#B8C6D8" />
                         <YAxis stroke="#B8C6D8" />
                         <Tooltip 
@@ -685,7 +370,7 @@ const ProfileBenefits: React.FC = () => {
               <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                 <h3 className="text-lg font-bold text-[#B8C6D8] mb-4">您的专属特权</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {mockMembershipData.benefits.active.slice(0, 4).map(benefit => (
+                  {membershipData.benefits.active.slice(0, 4).map(benefit => (
                     <div key={benefit.id} className="flex items-start p-4 bg-[#1E2532] rounded-lg"><div className="w-10 h-10 rounded-full bg-[#4A5F8B]/20 flex items-center justify-center text-[#4A5F8B] mr-4 flex-shrink-0"><i className={`fa-solid ${benefit.icon}`}></i>
                         </div>
                         <div>
@@ -708,7 +393,7 @@ const ProfileBenefits: React.FC = () => {
               <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                 <h3 className="text-lg font-bold text-[#B8C6D8] mb-4">专属内容预览</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {mockMembershipData.growthSystem.exclusiveContent.map(content => (
+                  {membershipData.growthSystem.exclusiveContent.map(content => (
                     <motion.div
                       key={content.id}
                       whileHover={{ y: -5, boxShadow: "0 2px 12px rgba(74, 95, 139, 0.3)" }}
@@ -738,7 +423,7 @@ const ProfileBenefits: React.FC = () => {
               <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                 <h3 className="text-lg font-bold text-[#B8C6D8] mb-4">推荐套餐</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {mockMembershipData.availablePlans.map(plan => (
+                  {membershipData.availablePlans.map(plan => (
                     <motion.div
                       key={plan.id}
                       whileHover={{ y: -5, boxShadow: "0 2px 12px rgba(74, 95, 139, 0.3)" }}
@@ -785,7 +470,7 @@ const ProfileBenefits: React.FC = () => {
             <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
               <h3 className="text-lg font-bold text-[#B8C6D8] mb-4">当前可用权益</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {mockMembershipData.benefits.active.map(benefit => (
+                {membershipData.benefits.active.map(benefit => (
                   <div key={benefit.id} className="flex items-start p-4 bg-[#1E2532] rounded-lg">
                     <div className="w-10 h-10 rounded-full bg-[#4A5F8B]/20 flex items-center justify-center text-[#4A5F8B] mr-4 flex-shrink-0">
                       <i className={`fa-solid ${benefit.icon}`}></i>
@@ -809,7 +494,7 @@ const ProfileBenefits: React.FC = () => {
             <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
               <h3 className="text-lg font-bold text-[#B8C6D8] mb-4">即将解锁权益</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {mockMembershipData.benefits.upcoming.map(benefit => (
+                {membershipData.benefits.upcoming.map(benefit => (
                   <div key={benefit.id} className="flex flex-col p-4 bg-[#1E2532] rounded-lg">
                     <div className="flex items-center mb-3">
                       <div className="w-10 h-10 rounded-full bg-[#4A5F8B]/20 flex items-center justify-center text-[#4A5F8B] mr-4 flex-shrink-0">
@@ -845,7 +530,7 @@ const ProfileBenefits: React.FC = () => {
                 <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-[#4A5F8B] hidden md:block"></div>
                 
                 <div className="space-y-6">
-                  {mockMembershipData.growthSystem.levels.map((level, index) => (
+                  {membershipData.growthSystem.levels.map((level, index) => (
                     <motion.div
                       key={level.level}
                       initial={{ opacity: 0, x: -20 }}
@@ -886,7 +571,7 @@ const ProfileBenefits: React.FC = () => {
                   <div className="flex items-center justify-center mb-4">
                     <div className="w-24 h-24 rounded-full bg-[#4A5F8B]/20 flex items-center justify-center relative">
                       <span className="text-3xl font-bold text-[#4A5F8B]">
-                        LV.{mockMembershipData.currentPlan.level}
+                        LV.{membershipData.currentPlan.level}
                       </span>
                       <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#1E2532] rounded-b-full overflow-hidden">
                         <div
@@ -897,7 +582,7 @@ const ProfileBenefits: React.FC = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <h4 className="font-medium text-[#B8C6D8] mb-1">{mockMembershipData.currentPlan.name}</h4>
+                    <h4 className="font-medium text-[#B8C6D8] mb-1">{membershipData.currentPlan.name}</h4>
                     <p className="text-sm text-[#B8C6D8]">距离升级还需完成以下任务</p>
                   </div>
                 </div>
@@ -906,10 +591,10 @@ const ProfileBenefits: React.FC = () => {
               <div className="lg:col-span-2">
                 <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                   <h3 className="text-lg font-bold text-[#B8C6D8] mb-4">
-                    升级至 {mockMembershipData.nextLevel.name}(LV.{mockMembershipData.nextLevel.level})
+                    升级至 {membershipData.nextLevel.name}(LV.{membershipData.nextLevel.level})
                   </h3>
                   <div className="space-y-4">
-                    {mockMembershipData.nextLevel.requirements.map(req => (
+                    {membershipData.nextLevel.requirements.map(req => (
                       <div key={req.id} className="p-4 bg-[#1E2532] rounded-lg">
                         <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center">
@@ -972,19 +657,19 @@ const ProfileBenefits: React.FC = () => {
                       <i className="fa-solid fa-trophy text-3xl text-[#F5F7FA]"></i>
                     </div>
                     <div>
-                      <h2 className="text-2xl font-bold">{mockMembershipData.growthBenefits.currentLevel.name}</h2>
-                      <p className="text-[#F5F7FA]/80">LV.{mockMembershipData.growthBenefits.currentLevel.level}</p>
+                      <h2 className="text-2xl font-bold">{membershipData.growthBenefits.currentLevel.name}</h2>
+                      <p className="text-[#F5F7FA]/80">LV.{membershipData.growthBenefits.currentLevel.level}</p>
                     </div>
                   </div>
                   <div className="w-full bg-white/20 rounded-full h-2.5 mb-2 overflow-hidden">
                     <div 
                       className="h-full bg-[#4A5F8B]" 
-                      style={{ width: `${(mockMembershipData.growthBenefits.currentLevel.progress / mockMembershipData.growthBenefits.currentLevel.maxProgress) * 100}%` }}
+                      style={{ width: `${(membershipData.growthBenefits.currentLevel.progress / membershipData.growthBenefits.currentLevel.maxProgress) * 100}%` }}
                     ></div>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span>成长值: {mockMembershipData.growthBenefits.currentLevel.progress}/{mockMembershipData.growthBenefits.currentLevel.maxProgress}</span>
-                    <span>距离升级还需: {mockMembershipData.growthBenefits.currentLevel.maxProgress - mockMembershipData.growthBenefits.currentLevel.progress}点</span>
+                    <span>成长值: {membershipData.growthBenefits.currentLevel.progress}/{membershipData.growthBenefits.currentLevel.maxProgress}</span>
+                    <span>距离升级还需: {membershipData.growthBenefits.currentLevel.maxProgress - membershipData.growthBenefits.currentLevel.progress}点</span>
                   </div>
                 </div>
                 
@@ -995,7 +680,7 @@ const ProfileBenefits: React.FC = () => {
                     <p className="text-sm text-[#F5F7FA]/80">总成长值</p>
                   </div>
                   <div className="bg-white/20 p-4 rounded-lg text-center">
-                    <p className="text-3xl font-bold mb-1">{Object.keys(mockMembershipData.growthBenefits.completedTasks).length}</p>
+                    <p className="text-3xl font-bold mb-1">{Object.keys(membershipData.growthBenefits.completedTasks).length}</p>
                     <p className="text-sm text-[#F5F7FA]/80">已完成任务</p>
                   </div>
                 </div>
@@ -1053,7 +738,7 @@ const ProfileBenefits: React.FC = () => {
                 <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                   <h3 className="text-lg font-bold text-[#F5F7FA] mb-4">成长值记录</h3>
                   <div className="space-y-4">
-                    {mockMembershipData.growthBenefits.growthHistory.map((item, index) => (
+                    {membershipData.growthBenefits.growthHistory.map((item, index) => (
                       <div key={index} className="flex items-center justify-between p-4 bg-[#1E2532] rounded-lg border border-[#4A5F8B] hover:border-[#4A5F8B] hover:border-2 transition-all">
                         <div className="flex items-center">
                           <div className="w-10 h-10 rounded-full bg-[#4A5F8B]/20 flex items-center justify-center text-[#4A5F8B] mr-4">
@@ -1284,7 +969,7 @@ const ProfileBenefits: React.FC = () => {
                 <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                   <h3 className="text-lg font-bold text-[#F5F7FA] mb-4">进行中任务</h3>
                   <div className="space-y-4">
-                    {mockMembershipData.growthBenefits.ongoingTasks.map((task) => (
+                    {membershipData.growthBenefits.ongoingTasks.map((task) => (
                       <div key={task.id} className="p-4 bg-[#1E2532] rounded-lg border border-[#4A5F8B]">
                         <div className="flex items-start justify-between mb-3">
                           <div className="flex items-start">
@@ -1327,7 +1012,7 @@ const ProfileBenefits: React.FC = () => {
                 <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                   <h3 className="text-lg font-bold text-[#F5F7FA] mb-4">已完成任务</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {mockMembershipData.growthBenefits.completedTasks.map((task) => (
+                    {membershipData.growthBenefits.completedTasks.map((task) => (
                       <div key={task.id} className="p-4 bg-[#1E2532] rounded-lg border border-[#4A5F8B] flex items-center justify-between">
                         <div className="flex items-center">
                           <div className="w-10 h-10 rounded-full bg-[#4A5F8B]/20 flex items-center justify-center text-[#4A5F8B] mr-4">
@@ -1356,7 +1041,7 @@ const ProfileBenefits: React.FC = () => {
                     <div className="bg-[#1E2532] rounded-lg p-4 mb-6">
                       <h4 className="text-md font-medium text-[#B8C6D8] mb-3">我的邀请码</h4>
                       <div className="flex items-center justify-between bg-[#2D3748] p-3 rounded-lg">
-                        <span className="font-mono text-[#B8C6D8]">{mockMembershipData.growthSystem.referralProgram.currentUser.referralCode}</span>
+                        <span className="font-mono text-[#B8C6D8]">{membershipData.growthSystem.referralProgram.currentUser.referralCode}</span>
                         <button 
                           className="px-3 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg hover:bg-[#63B3ED] transition-colors text-sm"
                           onClick={copyReferralCode}
@@ -1370,7 +1055,7 @@ const ProfileBenefits: React.FC = () => {
                       <h4 className="text-md font-medium text-[#B8C6D8] mb-3">我的邀请链接</h4>
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between bg-[#2D3748] p-3 rounded-lg space-y-3 sm:space-y-0">
                         <span className="font-mono text-[#B8C6D8] text-sm truncate flex-1">
-                          {mockMembershipData.growthSystem.referralProgram.currentUser.referralLink}
+                          {membershipData.growthSystem.referralProgram.currentUser.referralLink}
                         </span>
                         <button 
                           className="px-3 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg hover:bg-[#63B3ED] transition-colors text-sm whitespace-nowrap"
@@ -1384,22 +1069,22 @@ const ProfileBenefits: React.FC = () => {
                     <div className="space-y-4">
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-[#B8C6D8]">总邀请人数</span>
-                        <span className="font-medium text-[#4A5F8B]">{mockMembershipData.growthSystem.referralProgram.currentUser.totalInvites}</span>
+                        <span className="font-medium text-[#4A5F8B]">{membershipData.growthSystem.referralProgram.currentUser.totalInvites}</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-[#B8C6D8]">成功开通会员</span>
-                        <span className="font-medium text-[#4A5F8B]">{mockMembershipData.growthSystem.referralProgram.currentUser.successfulInvites}</span>
+                        <span className="font-medium text-[#4A5F8B]">{membershipData.growthSystem.referralProgram.currentUser.successfulInvites}</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-[#B8C6D8]">待确认邀请</span>
-                        <span className="font-medium text-[#4A5F8B]">{mockMembershipData.growthSystem.referralProgram.currentUser.pendingInvites}</span>
+                        <span className="font-medium text-[#4A5F8B]">{membershipData.growthSystem.referralProgram.currentUser.pendingInvites}</span>
                       </div>
                     </div>
                     
                     <div className="mt-6">
                       <h4 className="text-md font-medium text-[#B8C6D8] mb-3">已获得奖励</h4>
                       <div className="space-y-3">
-                        {mockMembershipData.growthSystem.referralProgram.currentUser.rewards.map(reward => (
+                        {membershipData.growthSystem.referralProgram.currentUser.rewards.map(reward => (
                           <div key={reward.id} className="flex justify-between items-center p-3 bg-[#1E2532] rounded-lg">
                             <div>
                               <span className="text-sm text-[#B8C6D8]">{reward.name}</span>
@@ -1422,21 +1107,21 @@ const ProfileBenefits: React.FC = () => {
                     <h3 className="text-lg font-bold text-[#B8C6D8] mb-4">奖励等级</h3>
                     
                     <div className="space-y-6">
-                      {mockMembershipData.growthSystem.referralProgram.rewardTiers.map((tier, index) => (
+                      {membershipData.growthSystem.referralProgram.rewardTiers.map((tier, index) => (
                         <motion.div
                           key={index}
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: index * 0.1 }}
                           className={`flex items-center justify-between p-4 rounded-lg border ${
-                            index < mockMembershipData.growthSystem.referralProgram.currentUser.successfulInvites 
+                            index < membershipData.growthSystem.referralProgram.currentUser.successfulInvites 
                               ? "bg-[#4A5F8B]/20 border-[#4A5F8B]" 
                               : "bg-[#1E2532] border-[#4A5F8B]"
                           }`}
                         >
                           <div className="flex items-center">
                             <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white mr-4 ${
-                              index < mockMembershipData.growthSystem.referralProgram.currentUser.successfulInvites 
+                              index < membershipData.growthSystem.referralProgram.currentUser.successfulInvites 
                                 ? "bg-[#4A5F8B]" 
                                 : "bg-[#1E2532] border border-[#4A5F8B]"
                             }`}>
@@ -1444,17 +1129,17 @@ const ProfileBenefits: React.FC = () => {
                             </div>
                             <div>
                               <h4 className={`font-medium ${
-                                index < mockMembershipData.growthSystem.referralProgram.currentUser.successfulInvites 
+                                index < membershipData.growthSystem.referralProgram.currentUser.successfulInvites 
                                   ? "text-white" 
                                   : "text-[#B8C6D8]"
                               }`}>
-                                邀请{mockMembershipData.growthSystem.referralProgram.currentUser.successfulInvites >= tier.invites ? "已完成" : `${tier.invites}位好友`}
+                                邀请{membershipData.growthSystem.referralProgram.currentUser.successfulInvites >= tier.invites ? "已完成" : `${tier.invites}位好友`}
                               </h4>
                               <p className="text-sm text-[#B8C6D8]">{tier.reward}</p>
                               <p className="text-xs text-[#6B7C93]">{tier.description}</p>
                             </div>
                           </div>
-                          {index < mockMembershipData.growthSystem.referralProgram.currentUser.successfulInvites && (
+                          {index < membershipData.growthSystem.referralProgram.currentUser.successfulInvites && (
                             <span className="text-[#4A5F8B]">
                               <i className="fa-solid fa-check-circle text-lg"></i>
                             </span>
@@ -1659,7 +1344,7 @@ const ProfileBenefits: React.FC = () => {
               <div>
                 <h4 className="text-md font-medium text-[#B8C6D8] mb-4">近期活动</h4>
                 <div className="space-y-4">
-                  {mockMembershipData.growthSystem.events.map(event => (
+                  {membershipData.growthSystem.events.map(event => (
                     <motion.div 
                       key={event.id}
                       whileHover={{ x: 5 }}

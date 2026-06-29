@@ -10,6 +10,7 @@ import { useAuth } from '../contexts/authContext';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { ShareButton } from '../components/common/ShareButton';
 import { toast } from 'sonner';
+import { apiGet } from '../lib/api';
 
 // 位置信息接口
 interface Location {
@@ -77,110 +78,15 @@ const PhotoLocations: React.FC = () => {
   });
   const mapRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  
-  // 模拟位置数据
-  const mockLocations: Location[] = [
-    {
-      id: '1',
-      name: '上海外滩',
-      address: '上海市黄浦区中山东一路',
-      latitude: 31.2304,
-      longitude: 121.4737,
-      photos: 256,
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=shanghai%20bund%20skyline%20night%20photography%20location&sign=c5826fa443a4a31ae340466ff9a0c083',
-      categories: ['城市', '建筑', '夜景'],
-      visitCount: 12,
-      firstVisit: '2023-05-10',
-      lastVisit: '2023-10-22',
-      rating: 5,
-      notes: '黄昏和夜晚拍摄效果最佳，需要三脚架和ND滤镜',
-      isFavorite: true,
-    },
-    {
-      id: '2',
-      name: '北京故宫',
-      address: '北京市东城区景山前街4号',
-      latitude: 39.9042,
-      longitude: 116.4074,
-      photos: 189,
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=beijing%20forbidden%20city%20ancient%20architecture%20photography%20location&sign=48da96b2f5b3c60847d97d2acf789507',
-      categories: ['历史', '建筑', '人文'],
-      visitCount: 8,
-      firstVisit: '2023-04-15',
-      lastVisit: '2023-09-30',
-      rating: 4,
-      notes: '建议上午9点前到达，光线最佳且游客较少',
-      isFavorite: false,
-    },
-    {
-      id: '3',
-      name: '杭州西湖',
-      address: '浙江省杭州市西湖区龙井路1号',
-      latitude: 30.2741,
-      longitude: 120.1551,
-      photos: 324,
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=hangzhou%20west%20lake%20scenery%20landscape%20photography%20location&sign=962e534ce7b680e8e2a9e894a4967250',
-      categories: ['自然', '风景', '湖泊'],
-      visitCount: 15,
-      firstVisit: '2023-03-20',
-      lastVisit: '2023-10-15',
-      rating: 5,
-      notes: '春天桃花盛开和秋天枫叶红时是最佳拍摄季节',
-      isFavorite: true,
-    },
-    {
-      id: '4',
-      name: '成都锦里',
-      address: '四川省成都市武侯区武侯祠大街231号',
-      latitude: 30.6575,
-      longitude: 104.0663,
-      photos: 156,
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=chengdu%20jinli%20ancient%20street%20photography%20location%20china&sign=feb68402462ca5f58dbda88525c932ba',
-      categories: ['古镇', '人文', '街拍'],
-      visitCount: 6,
-      firstVisit: '2023-07-05',
-      lastVisit: '2023-10-08',
-      rating: 4,
-      notes: '晚上灯光亮起后氛围更佳，适合人文纪实摄影',
-      isFavorite: false,
-    },
-    {
-      id: '5',
-      name: '张家界国家森林公园',
-      address: '湖南省张家界市武陵源区',
-      latitude: 29.1175,
-      longitude: 110.4878,
-      photos: 218,
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=zhangjiajie%20national%20forest%20park%20mountains%20photography%20location%20china&sign=f696cf51c01cfd7dbe99084a34020ec0',
-      categories: ['自然', '风景', '山脉'],
-      visitCount: 10,
-      firstVisit: '2023-06-15',
-      lastVisit: '2023-09-20',
-      rating: 5,
-      notes: '云海景观最佳季节是春末夏初，建议住在景区内以便早起拍摄',
-      isFavorite: true,
-    },
-    {
-      id: '6',
-      name: '广州塔',
-      address: '广东省广州市海珠区阅江西路222号',
-      latitude: 23.1291,
-      longitude: 113.2644,
-      photos: 178,
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=guangzhou%20tower%20modern%20architecture%20photography%20location%20china&sign=de1bb556dbf0b35adcc7f22f45323226',
-      categories: ['城市', '建筑', '现代'],
-      visitCount: 7,
-      firstVisit: '2023-08-10',
-      lastVisit: '2023-10-05',
-      rating: 4,
-      notes: '最佳拍摄位置在珠江对岸的花城广场',
-      isFavorite: false,
-    }
-  ];
-  
+  const [locations, setLocations] = useState<any[]>([]);
+
+  useEffect(() => {
+    apiGet('/locations').then(setLocations).catch(console.error);
+  }, []);
+
   // 模拟位置相关的作品数据
   const getPhotosByLocation = (locationId: string): PhotographyPost[] => {
-    const location = mockLocations.find(loc => loc.id === locationId);
+    const location = locations.find(loc => loc.id === locationId);
     if (!location) return [];
     
     // 为每个位置生成固定的作品数据，使用常量URL
@@ -229,12 +135,12 @@ const PhotoLocations: React.FC = () => {
   
   // 过滤位置数据
   const getFilteredLocations = () => {
-    let locations = [...mockLocations];
+    let filtered = [...locations];
     
     // 按搜索词过滤
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
-      locations = locations.filter(location => 
+      filtered = filtered.filter(location => 
         location.name.toLowerCase().includes(term) || 
         location.address.toLowerCase().includes(term)
       );
@@ -242,7 +148,7 @@ const PhotoLocations: React.FC = () => {
     
     // 按分类过滤
     if (selectedCategory !== '全部') {
-      locations = locations.filter(location => 
+      filtered = filtered.filter(location => 
         location.categories.includes(selectedCategory)
       );
     }
@@ -250,7 +156,7 @@ const PhotoLocations: React.FC = () => {
     // 按时间过滤
     if (selectedTimeFilter !== '全部') {
       const now = new Date();
-      locations = locations.filter(location => {
+      filtered = filtered.filter(location => {
         const lastVisitDate = new Date(location.lastVisit);
         const diffTime = now.getTime() - lastVisitDate.getTime();
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -266,7 +172,7 @@ const PhotoLocations: React.FC = () => {
     
     // 按活跃度过滤
     if (selectedActivityFilter !== '全部') {
-      locations = locations.filter(location => {
+      filtered = filtered.filter(location => {
         if (selectedActivityFilter === '高活跃') return location.visitCount >= 10;
         if (selectedActivityFilter === '中活跃') return location.visitCount >= 5 && location.visitCount < 10;
         if (selectedActivityFilter === '低活跃') return location.visitCount < 5;
@@ -275,13 +181,13 @@ const PhotoLocations: React.FC = () => {
       });
     }
     
-    return locations;
+    return filtered;
   };
   
   // 获取所有分类
   const getAllCategories = () => {
     const categories = ['全部'];
-    mockLocations.forEach(location => {
+    locations.forEach(location => {
       location.categories.forEach(category => {
         if (!categories.includes(category)) {
           categories.push(category);
@@ -293,7 +199,7 @@ const PhotoLocations: React.FC = () => {
   
   // 生成统计数据
   const generateStatsData = () => {
-    return mockLocations.map(location => ({
+    return locations.map(location => ({
       name: location.name,
       photos: location.photos,
       visits: location.visitCount,
@@ -450,7 +356,7 @@ const PhotoLocations: React.FC = () => {
     );
   }
   
-  const selectedLocationData = selectedLocation ? mockLocations.find(loc => loc.id === selectedLocation) : null;
+  const selectedLocationData = selectedLocation ? locations.find(loc => loc.id === selectedLocation) : null;
   
   return (
     <div className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen">
@@ -567,7 +473,7 @@ const PhotoLocations: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-sm text-[#B8C6D8]">总地点数</p>
-                  <p className="text-xl font-bold text-[#F5F7FA]">{mockLocations.length}</p>
+                  <p className="text-xl font-bold text-[#F5F7FA]">{locations.length}</p>
                 </div>
               </div>
             </div>
@@ -579,7 +485,7 @@ const PhotoLocations: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-sm text-[#B8C6D8]">总作品数</p>
-                  <p className="text-xl font-bold text-[#F5F7FA]">{mockLocations.reduce((sum, loc) => sum + loc.photos, 0)}</p>
+                  <p className="text-xl font-bold text-[#F5F7FA]">{locations.reduce((sum, loc) => sum + loc.photos, 0)}</p>
                 </div>
               </div>
             </div>
@@ -591,7 +497,7 @@ const PhotoLocations: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-sm text-[#B8C6D8]">收藏地点</p>
-                  <p className="text-xl font-bold text-[#F5F7FA]">{mockLocations.filter(loc => loc.isFavorite).length}</p>
+                  <p className="text-xl font-bold text-[#F5F7FA]">{locations.filter(loc => loc.isFavorite).length}</p>
                 </div>
               </div>
             </div>
@@ -651,7 +557,7 @@ const PhotoLocations: React.FC = () => {
                 </motion.div>
                 
                 {/* 地图标记点 */}
-                {mockLocations.map((location) => (
+                {locations.map((location) => (
                   <motion.div
                     key={location.id}
                     initial={{ scale: 1 }}
@@ -790,7 +696,7 @@ const PhotoLocations: React.FC = () => {
                 {/* 位置详情 - 简洁版 */}
                 <div className="bg-gradient-to-r from-[#4A5F8B] to-[#6B7C93] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
                   {(() => {
-                    const location = mockLocations.find(loc => loc.id === selectedLocation);
+                    const location = locations.find(loc => loc.id === selectedLocation);
                     if (!location) return null;
                     
                     return (

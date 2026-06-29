@@ -7,90 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { PhotographyCard } from '../components/PhotographyCard';
-
-// 模拟搜索结果数据
-const mockSearchResults = {
-  '风景': [
-    {
-      id: '101',
-      title: '山水之间',
-      description: '壮丽的山水风光，大自然的鬼斧神工',
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=mountain%20landscape%20river%20nature%20scenery&sign=1ebfb3d0a3aabb7b0d0208e56d87faab',
-      author: {
-        id: '201',
-        name: '山水摄影师',
-        avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20male%20nature&sign=d2909ca21847a589724e375f707f0c30',
-      },
-      likes: 356,
-      comments: 42,
-      tags: ['风景', '山水', '自然'],
-      date: '2023-10-25',
-    },
-    {
-      id: '102',
-      title: '云海奇观',
-      description: '壮观的云海景观，宛如仙境',
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=sea%20of%20clouds%20mountain%20peak%20spectacular&sign=8942a52199358f7bfc5daabce6ff87b5',
-      author: {
-        id: '202',
-        name: '云海拍摄者',
-        avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20male%20cloud&sign=31c14761db1c0116595f984e6c8612a0',
-      },
-      likes: 289,
-      comments: 35,
-      tags: ['风景', '云海', '高山'],
-      date: '2023-10-24',
-    },
-    {
-      id: '103',
-      title: '海边日落',
-      description: '浪漫的海边日落，金色的阳光洒在海面上',
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=sunset%20at%20beach%20golden%20light%20waves&sign=96158b5722f8d2bdf5a194341611e00a',
-      author: {
-        id: '203',
-        name: '海景摄影师',
-        avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20male%20beach&sign=49ff3b599ac6461498299f7ce099fc87',
-      },
-      likes: 423,
-      comments: 56,
-      tags: ['风景', '海边', '日落'],
-      date: '2023-10-23',
-    },
-  ],
-  '人像': [
-    {
-      id: '104',
-      title: '都市人像',
-      description: '现代都市背景下的时尚人像摄影',
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=portrait_4_3&prompt=urban%20portrait%20modern%20fashion%20city&sign=138dd578a7705dd37ddac86727b5619b',
-      author: {
-        id: '204',
-        name: '时尚摄影师',
-        avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=fashion%20photographer%20avatar%20female&sign=5d573110bed3aa6476481a358aacfcf9',
-      },
-      likes: 387,
-      comments: 48,
-      tags: ['人像', '时尚', '都市'],
-      date: '2023-10-22',
-    },
-    {
-      id: '105',
-      title: '自然光影人像',
-      description: '利用自然光线打造的唯美人像作品',
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=portrait_4_3&prompt=natural%20light%20portrait%20soft%20shadow%20outdoor&sign=1f351c2bbca721b34bec99b730cc7f80',
-      author: {
-        id: '205',
-        name: '光影摄影师',
-        avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=portrait%20photographer%20avatar%20male%20light&sign=41f9af8620a61e383eaca864c3409ef8',
-      },
-      likes: 456,
-      comments: 62,
-      tags: ['人像', '自然光', '唯美'],
-      date: '2023-10-21',
-    },
-  ],
-  // 其他标签的结果...
-};
+import { apiGet } from '../lib/api';
 
 // 推荐搜索关键词
 const suggestedSearches = [
@@ -101,7 +18,9 @@ const suggestedSearches = [
 const SearchResult: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<typeof mockSearchResults['风景']>([]);
+  const [results, setResults] = useState<any[]>([]);
+  const [landscapeResults, setLandscapeResults] = useState<any[]>([]);
+  const [portraitResults, setPortraitResults] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchType, setSearchType] = useState('all'); // 'all', 'photos', 'users', 'tags'
 
@@ -121,35 +40,17 @@ const SearchResult: React.FC = () => {
     }
   }, [searchParams]);
 
-  // 模拟搜索功能
+  // 搜索功能
   const search = (keyword: string) => {
     setIsLoading(true);
-    
-    // 模拟网络延迟
-    setTimeout(() => {
-      // 查找匹配的结果
-      let searchResults: typeof mockSearchResults['风景'] = [];
-      
-      // 检查是否有匹配的标签结果
-      for (const tag in mockSearchResults) {
-        if (tag.includes(keyword)) {
-          searchResults = [...searchResults, ...mockSearchResults[tag as keyof typeof mockSearchResults]];
-        }
-      }
-      
-      // 如果没有匹配的标签结果，返回一些默认结果
-      if (searchResults.length === 0) {
-        // 合并所有结果
-        for (const tag in mockSearchResults) {
-          searchResults = [...searchResults, ...mockSearchResults[tag as keyof typeof mockSearchResults]];
-        }
-        // 随机取一些结果
-        searchResults = searchResults.sort(() => 0.5 - Math.random()).slice(0, 4);
-      }
-      
-      setResults(searchResults);
-      setIsLoading(false);
-    }, 500);
+    apiGet(`/search?q=${encodeURIComponent(keyword)}`)
+      .then((data: any[]) => {
+        setResults(data);
+        setLandscapeResults(data.filter((item: any) => item.tags?.includes('风景') || item.tags?.includes('landscape')));
+        setPortraitResults(data.filter((item: any) => item.tags?.includes('人像') || item.tags?.includes('portrait')));
+      })
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   };
 
   // 处理搜索提交

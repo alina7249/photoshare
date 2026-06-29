@@ -1,72 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import Button from '../../components/common/Button';
-
-// 模拟用户数据
-const mockUsers = [
-  {
-    id: '1',
-    username: '张三',
-    email: 'zhangsan@example.com',
-    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20male&sign=92090021266b3aaadfd4d99b36d00763',
-    role: 'user',
-    status: 'active',
-    joinDate: '2023-01-15',
-    posts: 28,
-    followers: 125,
-    following: 86
-  },
-  {
-    id: '2',
-    username: '李四',
-    email: 'lisi@example.com',
-    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20female&sign=f09d83378aa1e845abd3d8360ae43318',
-    role: 'user',
-    status: 'active',
-    joinDate: '2023-02-20',
-    posts: 45,
-    followers: 320,
-    following: 156
-  },
-  {
-    id: '3',
-    username: '王五',
-    email: 'wangwu@example.com',
-    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20male%20creative&sign=05eaa6a6889c9fd565f612592ebff64a',
-    role: 'photographer',
-    status: 'active',
-    joinDate: '2023-03-05',
-    posts: 76,
-    followers: 542,
-    following: 210
-  },
-  {
-    id: '4',
-    username: '赵六',
-    email: 'zhaoliu@example.com',
-    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20female%20professional&sign=de0253bc58d40781a8618749ea5612ee',
-    role: 'photographer',
-    status: 'pending',
-    joinDate: '2023-03-18',
-    posts: 12,
-    followers: 38,
-    following: 65
-  },
-  {
-    id: '5',
-    username: '孙七',
-    email: 'sunqi@example.com',
-    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20male%20nature%20lover&sign=5bde84c0a947f0a379af97355ca16564',
-    role: 'user',
-    status: 'banned',
-    joinDate: '2023-01-10',
-    posts: 8,
-    followers: 12,
-    following: 30
-  }
-];
+import { apiGet } from '../../lib/api';
 
 const UserManagement: React.FC = () => {
   const location = useLocation();
@@ -75,9 +12,13 @@ const UserManagement: React.FC = () => {
   const [statusFilter, setStatusFilter] = useState('all');
   const [roleFilter, setRoleFilter] = useState('all');
   const [sortBy, setSortBy] = useState('joinDate');
-  const [users, setUsers] = useState(mockUsers);
+  const [users, setUsers] = useState<any[]>([]);
   const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
   const [showBulkActions, setShowBulkActions] = useState(false);
+
+  useEffect(() => {
+    apiGet('/admin/users').then(setUsers).catch(console.error);
+  }, []);
 
   // 根据当前路径确定显示的用户类型
   const getCurrentUserType = () => {
