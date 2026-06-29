@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
+import { EMPTY_TEXT } from '../constants/text';
 
 const Footer: React.FC = () => {
   const { theme } = useAuthStore();
@@ -98,14 +99,14 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="#" className={`text-sm ${getLinkClass()} transition-colors`}>
+                <button disabled title={EMPTY_TEXT.COMING_SOON} className={`text-sm ${getLinkClass()} transition-colors cursor-not-allowed opacity-50`}>
                   赛事
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="#" className={`text-sm ${getLinkClass()} transition-colors`}>
+                <button disabled title={EMPTY_TEXT.COMING_SOON} className={`text-sm ${getLinkClass()} transition-colors cursor-not-allowed opacity-50`}>
                   器材交易
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -115,29 +116,29 @@ const Footer: React.FC = () => {
             <h4 className={`text-lg font-bold mb-4 ${getTextClass(true)}`}>支持</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="#" className={`text-sm ${getLinkClass()} transition-colors`}>
+                <button disabled title={EMPTY_TEXT.COMING_SOON} className={`text-sm ${getLinkClass()} transition-colors cursor-not-allowed opacity-50`}>
                   帮助中心
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="#" className={`text-sm ${getLinkClass()} transition-colors`}>
+                <button disabled title={EMPTY_TEXT.COMING_SOON} className={`text-sm ${getLinkClass()} transition-colors cursor-not-allowed opacity-50`}>
                   社区准则
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="#" className={`text-sm ${getLinkClass()} transition-colors`}>
+                <button disabled title={EMPTY_TEXT.COMING_SOON} className={`text-sm ${getLinkClass()} transition-colors cursor-not-allowed opacity-50`}>
                   隐私政策
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="#" className={`text-sm ${getLinkClass()} transition-colors`}>
+                <button disabled title={EMPTY_TEXT.COMING_SOON} className={`text-sm ${getLinkClass()} transition-colors cursor-not-allowed opacity-50`}>
                   服务条款
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="#" className={`text-sm ${getLinkClass()} transition-colors`}>
+                <button disabled title={EMPTY_TEXT.COMING_SOON} className={`text-sm ${getLinkClass()} transition-colors cursor-not-allowed opacity-50`}>
                   联系我们
-                </Link>
+                </button>
               </li>
             </ul>
           </div>

@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { profileMenuItems } from '../lib/menuConfig';
+import { useClickOutside } from '../composables/useClickOutside';
 
 interface ProfileStats {
   posts: number;
@@ -34,19 +35,14 @@ export const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
   stats,
   avatarSrc
 }) => {
+  const { createHandler } = useClickOutside('.profile-dropdown-container');
+
   // 点击外部关闭下拉菜单
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (isOpen && !target.closest('.profile-dropdown-container')) {
-        onClose();
-      }
-    };
-
+    const handleClickOutside = createHandler(onClose);
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };

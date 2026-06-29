@@ -1,4 +1,5 @@
 import { buildCozeImageUrl } from '../constants/api';
+import { useTheme } from '../hooks/useTheme';
 import { HOVER_SHADOWS } from '../constants/theme';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -14,7 +15,7 @@ interface FeatureItem {
 }
 
 export const Feature: React.FC = () => {
-  const theme = 'dark';
+  const { theme } = useTheme();
   
   // 功能入口区数据
   const features: FeatureItem[] = [

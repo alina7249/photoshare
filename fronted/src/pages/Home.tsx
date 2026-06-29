@@ -1,5 +1,7 @@
 import { buildCozeImageUrl } from '../constants/api';
-import { useState } from "react";
+import { useState } from 'react';
+import { useTheme } from '../hooks/useTheme';
+import { getPageBgClass } from '../composables/useThemeHelpers';
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { PhotographyCard } from "../components/PhotographyCard";
@@ -189,15 +191,10 @@ export default function Home() {
     const [selectedCategory, setSelectedCategory] = useState("all");
     const filteredPosts = selectedCategory === "all" ? photographyPosts : photographyPosts.filter(post => post.tags.includes(selectedCategory));
 
-    const theme = 'dark';
+    const { theme } = useTheme();
     
-    // 根据主题获取背景和文本颜色类
-    const getBgClass = () => {
-      return theme === 'dark' ? 'bg-deep' : 'bg-white';
-    };
-
     return (
-        <div className={`container mx-auto px-4 py-8 ${getBgClass()} star-texture min-h-screen`}>
+        <div className={`container mx-auto px-4 py-8 ${getPageBgClass(theme)} star-texture min-h-screen`}>
             {/* 轮播图组件 */}
             <Banner />
             

@@ -4,7 +4,10 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuthStore } from "../store/authStore";
 import { ProfileDropdown } from "./ProfileDropdown";
-import { apiGet } from "../services/api";
+import { getHeaderBgClass, getNavTextClass } from '../composables/useThemeHelpers';
+import { useScrollSpy } from '../composables/useScrollSpy';
+import { useProfileApi } from '../composables/useProfileApi';
+import { EMPTY_TEXT } from '../constants/text';
 
 export const Header: React.FC = () => {
     const {
@@ -21,12 +24,12 @@ export const Header: React.FC = () => {
     const location = useLocation();
 
     const [userData, setUserData] = useState<any>(null);
+    const { fetchProfile } = useProfileApi();
+    const { createScrollHandler } = useScrollSpy();
 
     useEffect(() => {
-        apiGet("/profile").then((data) => {
+        fetchProfile().then((data) => {
             setUserData(data);
-        }).catch(() => {
-            // ignore
         });
     }, []);
 
@@ -54,14 +57,7 @@ export const Header: React.FC = () => {
     }];
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-        };
-
+        const handleScroll = createScrollHandler(setScrolled);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -77,21 +73,9 @@ export const Header: React.FC = () => {
     const userAvatar = user?.avatar || buildCozeImageUrl('photographer avatar professional', 'b0609ecfca466fa5510f7df4adb33529', 'square');
     const username = user?.username || userData?.username;
 
-    const getBgClass = () => {
-        if (scrolled) {
-            return theme === "dark" ? "bg-deep/95 backdrop-blur-sm" : "bg-white/95 backdrop-blur-sm shadow-md";
-        }
+    const getBgClass = () => getHeaderBgClass(theme, scrolled);
 
-        return theme === "dark" ? "bg-deep" : "bg-white";
-    };
-
-    const getTextClass = (isActive: boolean) => {
-        if (isActive) {
-            return theme === "dark" ? "text-text-primary" : "text-deep";
-        }
-
-        return theme === "dark" ? "text-text-muted/70 hover:text-text-primary" : "text-accent-hover/70 hover:text-deep";
-    };
+    const getTextClass = (isActive: boolean) => getNavTextClass(theme, isActive);
 
     return (
         <header
@@ -231,18 +215,20 @@ export const Header: React.FC = () => {
                             onClick={() => setIsMobileMenuOpen(false)}>
                             <i className="fa-solid fa-image mb-1"></i>作品
                                             </Link>
-                        <Link
-                            to="#"
-                            className={`flex flex-col items-center justify-center p-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-card text-text-muted hover:bg-accent hover:text-text-primary" : "bg-gray-100 text-accent-hover hover:bg-gray-200 hover:text-deep"} transition-colors`}
+                        <button
+                            disabled
+                            title={EMPTY_TEXT.COMING_SOON}
+                            className={`flex flex-col items-center justify-center p-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-card text-text-muted/50 cursor-not-allowed" : "bg-gray-100 text-accent-hover/50 cursor-not-allowed"} transition-colors`}
                             onClick={() => setIsMobileMenuOpen(false)}>
                             <i className="fa-solid fa-heart mb-1"></i>收藏
-                                            </Link>
-                        <Link
-                            to="#"
-                            className={`flex flex-col items-center justify-center p-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-card text-text-muted hover:bg-accent hover:text-text-primary" : "bg-gray-100 text-accent-hover hover:bg-gray-200 hover:text-deep"} transition-colors`}
+                                            </button>
+                        <button
+                            disabled
+                            title={EMPTY_TEXT.COMING_SOON}
+                            className={`flex flex-col items-center justify-center p-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-card text-text-muted/50 cursor-not-allowed" : "bg-gray-100 text-accent-hover/50 cursor-not-allowed"} transition-colors`}
                             onClick={() => setIsMobileMenuOpen(false)}>
                             <i className="fa-solid fa-cog mb-1"></i>设置
-                                            </Link>
+                                            </button>
                         {/* 管理后台入口 */}
                         <Link
                             to="/admin"

@@ -1,11 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { Empty } from '../components/Empty';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { toast } from 'sonner';
-import { apiGet } from '../services/api';
+import { useProfileApi } from '../composables/useProfileApi';
+import { getAllTags, filterPosts } from '../composables/usePostFilter';
+import { formatRelativeTime } from '../composables/useRelativeTime';
 
 const Profile: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
@@ -41,13 +43,14 @@ const Profile: React.FC = () => {
   });
   const [profilePosts, setProfilePosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const { fetchProfile, fetchProfilePosts } = useProfileApi();
 
   // 从API获取用户资料
   useEffect(() => {
-    const fetchProfile = async () => {
+    const loadProfile = async () => {
       try {
         setLoading(true);
-        const data = await apiGet<any>('/profile');
+        const data = await fetchProfile();
         setProfileUser(data);
       } catch (error) {
         console.error('Failed to fetch profile:', error);
@@ -55,20 +58,20 @@ const Profile: React.FC = () => {
         setLoading(false);
       }
     };
-    fetchProfile();
+    loadProfile();
   }, []);
 
   // 从API获取用户作品
   useEffect(() => {
-    const fetchPosts = async () => {
+    const loadPosts = async () => {
       try {
-        const data = await apiGet<any[]>('/profile/posts');
+        const data = await fetchProfilePosts();
         setProfilePosts(data);
       } catch (error) {
         console.error('Failed to fetch profile posts:', error);
       }
     };
-    fetchPosts();
+    loadPosts();
   }, []);
   
   // 检查是否是当前用户自己的主页
@@ -78,83 +81,21 @@ const Profile: React.FC = () => {
   const [isFollowing, setIsFollowing] = useState(false);
   
   // 获取所有标签
-  const getAllTags = () => {
-    const tags = ["全部"];
-    profilePosts.forEach(post => {
-      post.tags.forEach(tag => {
-        if (!tags.includes(tag)) {
-          tags.push(tag);
-        }
-      });
-    });
-    return tags;
-  };
+  const allTags = getAllTags(profilePosts);
   
   // 筛选作品
-  const getFilteredPosts = () => {
-    let posts = [...profilePosts];
-    
-    if (selectedTag !== "全部") {
-      posts = posts.filter(post => post.tags.includes(selectedTag));
-    }
-    
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      posts = posts.filter(
-        post => post.title.toLowerCase().includes(term) || 
-                post.description.toLowerCase().includes(term) || 
-                post.tags.some(tag => tag.toLowerCase().includes(term))
-      );
-    }
-    
-    if (visibilityFilter !== "all") {
-      posts = posts.filter(post => {
-        if (visibilityFilter === "public") return post.visibility === "公开";
-        if (visibilityFilter === "friends") return post.visibility === "仅好友可见";
-        if (visibilityFilter === "private") return post.visibility === "私密";
-        return true;
-      });
-    }
-    
-    if (formatFilter !== "all") {
-      posts = posts.filter(post => {
-        if (formatFilter === "raw") return post.format === "RAW";
-        if (formatFilter === "jpg") return post.format === "JPG";
-        return true;
-      });
-    }
-    
-    if (sortBy === "latest") {
-      posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    } else if (sortBy === "popular") {
-      posts.sort((a, b) => b.likes - a.likes);
-    } else if (sortBy === "views") {
-      posts.sort((a, b) => b.views - a.views);
-    }
-    
-    return posts;
-  };
-  
-  const filteredPosts = getFilteredPosts();
-  const allTags = getAllTags();
+  const filteredPosts = filterPosts(profilePosts, {
+    selectedTag,
+    searchTerm,
+    visibilityFilter,
+    formatFilter,
+    sortBy,
+  });
   
   // 根据当前激活的标签显示对应的内容
   const displayPosts = activeTab === 'posts' ? filteredPosts : 
                       activeTab === 'collections' ? profilePosts.slice(0, 2) : 
                       profilePosts.slice(1, 3);
-  
-  // 格式化日期为相对时间
-  const formatRelativeTime = (dateString: string) => {
-    const date = new Date(dateString);
-    const now = new Date();
-    const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-    
-    if (diffInSeconds < 60) return "刚刚";
-    if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}分钟前`;
-    if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}小时前`;
-    if (diffInSeconds < 604800) return `${Math.floor(diffInSeconds / 86400)}天前`;
-    return date.toLocaleDateString('zh-CN');
-  };
   
   // 处理上传
   const handleUpload = () => {

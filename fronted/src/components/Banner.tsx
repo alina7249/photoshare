@@ -1,4 +1,5 @@
 import { buildCozeImageUrl } from '../constants/api';
+import { useTheme } from '../hooks/useTheme';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -16,7 +17,7 @@ interface BannerSlide {
 export const Banner: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef<HTMLDivElement>(null);
-  const theme = 'dark';
+  const { theme } = useTheme();
   
   // 轮播图数据
   const slides: BannerSlide[] = [

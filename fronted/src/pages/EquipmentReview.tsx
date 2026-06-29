@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend } from 'recharts';
 import { apiGet } from '../services/api';
 import { CHART_COLORS, HOVER_SHADOWS } from '../constants/theme';
+import { EMPTY_TEXT } from '../constants/text';
 
 // 雷达图颜色
 const RADAR_COLORS = [...CHART_COLORS.RADAR];
@@ -682,13 +683,14 @@ const EquipmentReview: React.FC = () => {
                   </motion.div>
                 ))}
               </div>
-              <Link
-                to="#"
-                className="mt-4 inline-block text-sm text-accent hover:underline transition-colors flex items-center justify-center"
+              <button
+                disabled
+                title={EMPTY_TEXT.COMING_SOON}
+                className="mt-4 inline-block text-sm text-accent/50 cursor-not-allowed transition-colors flex items-center justify-center"
               >
                 <span>查看更多作者</span>
                 <i className="fa-solid fa-arrow-right text-xs ml-1"></i>
-              </Link>
+              </button>
             </div>
             
             {/* 器材使用技巧 */}
@@ -729,13 +731,14 @@ const EquipmentReview: React.FC = () => {
                   </motion.div>
                 ))}
               </div>
-              <Link
-                to="#"
-                className="mt-4 inline-block text-sm text-accent hover:underline transition-colors flex items-center justify-center"
+              <button
+                disabled
+                title={EMPTY_TEXT.COMING_SOON}
+                className="mt-4 inline-block text-sm text-accent/50 cursor-not-allowed transition-colors flex items-center justify-center"
               >
                 <span>查看更多技巧</span>
                 <i className="fa-solid fa-arrow-right text-xs ml-1"></i>
-              </Link>
+              </button>
             </div>
             
             {/* 常见问题解答 */}
@@ -771,13 +774,14 @@ const EquipmentReview: React.FC = () => {
                   </motion.div>
                 ))}
               </div>
-              <Link
-                to="#"
-                className="mt-4 inline-block text-sm text-accent hover:underline transition-colors flex items-center justify-center"
+              <button
+                disabled
+                title={EMPTY_TEXT.COMING_SOON}
+                className="mt-4 inline-block text-sm text-accent/50 cursor-not-allowed transition-colors flex items-center justify-center"
               >
                 <span>查看更多FAQ</span>
                 <i className="fa-solid fa-arrow-right text-xs ml-1"></i>
-              </Link>
+              </button>
             </div>
             
             {/* 测评贡献者招募 */}

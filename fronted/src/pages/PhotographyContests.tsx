@@ -9,6 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { CONTEST_API } from '../constants/api';
+import { EMPTY_TEXT } from '../constants/text';
 import { HOVER_SHADOWS } from '../constants/theme';
 import { toast } from 'sonner';
 import { apiGet } from '../services/api';
@@ -556,12 +557,13 @@ const PhotographyContests: React.FC = () => {
                     );
                   })}
               </div>
-              <Link
-                to="#"
-                className="mt-4 inline-block text-sm text-text-primary hover:text-surface-light-hover transition-colors flex items-center justify-center w-full"
+              <button
+                disabled
+                title={EMPTY_TEXT.COMING_SOON}
+                className="mt-4 inline-block text-sm text-text-primary/50 cursor-not-allowed transition-colors flex items-center justify-center w-full"
               >
                 <span>查看全部即将截止的赛事</span>
-              </Link>
+              </button>
             </div>
             
             {/* 赛事常见问题 */}
