@@ -11,7 +11,7 @@ import { CHART_COLORS, HOVER_SHADOWS } from '../constants/theme';
 import { EQUIPMENT_TYPE } from '../constants/enums';
 
 import { EquipmentQuestions } from '../components/EquipmentQuestions';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { EquipmentRecommendations } from '../components/EquipmentRecommendations';
 import { Empty } from '../components/Empty';
 
@@ -215,6 +215,7 @@ const equipmentTypes = [
 };
 
   const EquipmentDatabase: React.FC = () => {
+  const toast = useToast();
   const [activeType, setActiveType] = useState('cameras');
   const [selectedBrand, setSelectedBrand] = useState('全部');
   const [selectedItems, setSelectedItems] = useState<string[]>([]);

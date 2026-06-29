@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import RegisterForm from '../components/common/RegisterForm';
+import { ROUTES } from '../router/routes';
 
 const Register: React.FC = () => {
   return (
@@ -71,7 +72,7 @@ const Register: React.FC = () => {
           <p className="text-sm text-text-light-muted">
             已有账号？{' '}
             <Link
-              to="/login"
+              to={ROUTES.LOGIN}
               className="font-medium text-light-accent hover:text-light-accent transition-colors"
             >
               立即登录

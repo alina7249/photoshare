@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+
+import { useRouter } from '../../router/useRouter';
 import { useAdminAuth } from '../../hooks/useAdminAuth';
 import { adminMenuConfig } from '../../lib/adminMenuConfig';
+import { ROUTES } from '../../router/routes';
 
 interface HeaderProps {
   toggleSidebar: () => void;
@@ -9,15 +11,14 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ toggleSidebar, sidebarCollapsed }) => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const router = useRouter();
   const { logout } = useAdminAuth();
   const [showNotifications, setShowNotifications] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   // 构建面包屑
   const buildBreadcrumb = () => {
-    const pathParts = location.pathname.split('/').filter(part => part);
+    const pathParts = router.currentPath.split('/').filter(part => part);
     const breadcrumbs = [];
     
     let cumulativePath = '/';
@@ -66,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, sidebarCollapsed }) => {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    router.push(ROUTES.LOGIN);
   };
 
   return (

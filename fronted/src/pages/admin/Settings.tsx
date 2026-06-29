@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { toast } from 'sonner';
+import { useToast } from '../../composables/useToast';
 import Button from '../../components/common/Button';
 
 const Settings: React.FC = () => {
+  const toast = useToast();
   const [activeTab, setActiveTab] = useState<'system' | 'security' | 'permissions' | 'notifications' | 'backup'>('system');
   
   // 系统设置表单状态

@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { apiGet } from '../services/api';
+import { ROUTES } from '../router/routes';
 
 // 器材接口定义
 interface Equipment {
@@ -23,6 +24,7 @@ interface Equipment {
 }
 
 const EquipmentLibrary: React.FC = () => {
+  const toast = useToast();
   const { isAuthenticated, user } = useAuth();
   const [selectedType, setSelectedType] = useState('all'); // all, camera, lens, tripod, flash, other
   const [selectedBrand, setSelectedBrand] = useState('all');
@@ -169,7 +171,7 @@ const EquipmentLibrary: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">请先登录</h2>
           <p className="text-text-muted mb-6 max-w-md">登录后管理您的摄影器材，记录购买信息和使用情况</p>
-          <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors">
+          <Link to={ROUTES.LOGIN} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors">
             立即登录
           </Link>
         </div>
@@ -187,7 +189,7 @@ const EquipmentLibrary: React.FC = () => {
         {/* 返回按钮 */}
         <div className="mb-6">
           <Link
-            to="/profile-center"
+            to={ROUTES.PROFILE_CENTER}
             className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>

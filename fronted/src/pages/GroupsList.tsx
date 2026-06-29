@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { apiGet } from '../services/api';
 import GroupCard from '../components/common/GroupCard';
+import { ROUTES } from '../router/routes';
 
 // 定义类型
 interface GroupMember {
@@ -32,6 +33,7 @@ interface Group {
 }
 
 const GroupsList: React.FC = () => {
+  const toast = useToast();
   const { isAuthenticated, user } = useAuth();
   const [groups, setGroups] = useState<Group[]>([]);
   const [showCreateGroupForm, setShowCreateGroupForm] = useState(false);
@@ -165,7 +167,7 @@ const GroupsList: React.FC = () => {
         {/* 返回按钮 */}
         <div className="mb-6">
           <Link
-            to="/community"
+            to={ROUTES.COMMUNITY}
             className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>

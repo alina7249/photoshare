@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { toast } from 'sonner';
+import { useToast } from '../../composables/useToast';
 
 interface ShareButtonProps {
   url: string;
@@ -15,6 +15,7 @@ export const ShareButton: React.FC<ShareButtonProps> = ({
   className = '',
   size = 'md'
 }) => {
+  const toast = useToast();
   const [showMenu, setShowMenu] = useState(false);
   
   // 复制链接到剪贴板

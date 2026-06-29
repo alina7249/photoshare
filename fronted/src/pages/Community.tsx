@@ -5,7 +5,30 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../contexts/authContext";
 import { ShareButton } from "../components/common/ShareButton";
-import { apiGet } from "../services/api";
+import {
+  useCommunity,
+  initCommunityState,
+  filterAndSortTopics,
+  getLevelBadgeClass,
+  getNotificationColorClass,
+  getNotificationIcon,
+  unreadCount,
+  toggleTopicSelection,
+  toggleSelectAll,
+  markAllAsRead,
+  saveBookmarkPosition,
+  loadBookmarkPositions,
+  handleJoinLeaveGroup,
+  createNewGroup,
+  fetchTopics,
+  fetchNotifications,
+  fetchGroups,
+  type CommunityTopic,
+  type CommunityNotification,
+  type CommunityGroup,
+  type CommunityFilterType,
+  type CommunitySortType,
+} from "../composables/useCommunity";
 
 import {
     PieChart,
@@ -27,6 +50,7 @@ import {
 } from "recharts";
 
 import { toast } from "sonner";
+import { ROUTES } from '../router/routes';
 
 interface User {
     id: string;
@@ -1028,202 +1052,79 @@ const CreateGroupForm: React.FC<{ isOpen: boolean; onClose: () => void; onCreate
 };
 
 const Community: React.FC = () => {
-    const [topics, setTopics] = useState<Topic[]>([]);
-    const [notifications, setNotifications] = useState<Notification[]>([]);
-    const [showNotifications, setShowNotifications] = useState(false);
-    const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
-    const [batchMode, setBatchMode] = useState(false);
-    const [searchQuery, setSearchQuery] = useState("");
-    const [filterType, setFilterType] = useState("all");
-    const [sortType, setSortType] = useState("latest");
-    const [bookmarkPositions, setBookmarkPositions] = useState<Record<string, number>>({});
-    const unreadCount = notifications.filter(n => !n.isRead).length;
+    const { initState } = useCommunity();
+    const [topics, setTopics] = useState<Topic[]>(initState.topics as unknown as Topic[]);
+    const [notifications, setNotifications] = useState<Notification[]>(initState.notifications as unknown as Notification[]);
+    const [showNotifications, setShowNotifications] = useState(initState.showNotifications);
+    const [selectedTopics, setSelectedTopics] = useState<string[]>(initState.selectedTopics);
+    const [batchMode, setBatchMode] = useState(initState.batchMode);
+    const [searchQuery, setSearchQuery] = useState(initState.searchQuery);
+    const [filterType, setFilterType] = useState(initState.filterType);
+    const [sortType, setSortType] = useState(initState.sortType);
+    const [bookmarkPositions, setBookmarkPositions] = useState<Record<string, number>>(initState.bookmarkPositions);
+    const _computedUnreadCount = unreadCount(notifications);
     
     // 小组相关状态
-    const [groups, setGroups] = useState<Group[]>([]);
-    const [showGroups, setShowGroups] = useState(false);
-    const [showCreateGroupForm, setShowCreateGroupForm] = useState(false);
+    const [groups, setGroups] = useState<Group[]>(initState.groups as unknown as Group[]);
+    const [showGroups, setShowGroups] = useState(initState.showGroups);
+    const [showCreateGroupForm, setShowCreateGroupForm] = useState(initState.showCreateGroupForm);
 
-    const toggleTopicSelection = (id: string) => {
-        setSelectedTopics(
-            prev => prev.includes(id) ? prev.filter(topicId => topicId !== id) : [...prev, id]
-        );
+    const handleToggleTopicSelection = (id: string) => {
+        setSelectedTopics(prev => toggleTopicSelection(prev, id));
     };
 
-    const toggleSelectAll = () => {
-        if (selectedTopics.length === topics.length) {
-            setSelectedTopics([]);
-        } else {
-            setSelectedTopics(topics.map(topic => topic.id));
-        }
+    const handleToggleSelectAll = () => {
+        setSelectedTopics(prev => toggleSelectAll(prev, topics));
     };
 
-    const markAllAsRead = () => {
-        setNotifications(prev => prev.map(notification => ({
-            ...notification,
-            isRead: true
-        })));
+    const handleMarkAllAsRead = () => {
+        setNotifications(prev => markAllAsRead(prev));
     };
 
-    const toggleBatchMode = () => {
+    const handleToggleBatchMode = () => {
         setBatchMode(!batchMode);
         setSelectedTopics([]);
     };
 
-    const filteredAndSortedTopics = topics.filter(topic => {
-        if (searchQuery && !topic.title.toLowerCase().includes(searchQuery.toLowerCase()) && !topic.content.toLowerCase().includes(searchQuery.toLowerCase())) {
-            return false;
-        }
+    const filteredAndSortedTopics = filterAndSortTopics(
+        topics,
+        searchQuery,
+        filterType as CommunityFilterType,
+        sortType as CommunitySortType
+    );
 
-        if (filterType === "essential" && !topic.isEssential) {
-            return false;
-        } else if (filterType === "sticky" && !topic.isSticky) {
-            return false;
-        }
-
-        return true;
-    }).sort((a, b) => {
-        if (sortType === "latest") {
-            return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-        } else if (sortType === "popular") {
-            return b.likes - a.likes;
-        } else {
-            return b.comments - a.comments;
-        }
-    });
-
-    const getLevelBadgeClass = (level: number) => {
-        if (level >= 9)
-            return "bg-gradient-to-r from-yellow-400 to-amber-600 text-white";
-
-        if (level >= 7)
-            return "bg-blue-800 text-white";
-
-        if (level >= 5)
-            return "bg-accent text-white";
-
-        if (level >= 3)
-            return "bg-gray-600 text-white";
-
-        return "bg-gray-300 text-gray-800";
-    };
-
-    const getNotificationColorClass = (type: Notification["type"]) => {
-        switch (type) {
-        case "like":
-            return "bg-red-500/10 text-red-400";
-        case "comment":
-            return "bg-blue-500/10 text-blue-400";
-        case "system":
-            return "bg-orange-500/10 text-orange-400";
-        case "subscription":
-            return "bg-green-500/10 text-green-400";
-        default:
-            return "bg-gray-500/10 text-gray-400";
-        }
-    };
-
-    const getNotificationIcon = (type: Notification["type"]) => {
-        switch (type) {
-        case "like":
-            return "fa-heart";
-        case "comment":
-            return "fa-comment";
-        case "system":
-            return "fa-bell";
-        case "subscription":
-            return "fa-rss";
-        default:
-            return "fa-info";
-        }
-    };
-
-    const saveBookmarkPosition = (topicId: string, position: number) => {
-        const newPositions = {
-            ...bookmarkPositions,
-            [topicId]: position
-        };
-
-        setBookmarkPositions(newPositions);
-        localStorage.setItem("bookmarkPositions", JSON.stringify(newPositions));
+    const handleSaveBookmarkPosition = (topicId: string, position: number) => {
+        setBookmarkPositions(prev => saveBookmarkPosition(prev, topicId, position));
         toast.success("阅读进度已保存");
     };
 
     useEffect(() => {
-        const saved = localStorage.getItem("bookmarkPositions");
-
-        if (saved) {
-            setBookmarkPositions(JSON.parse(saved));
-        }
+        setBookmarkPositions(loadBookmarkPositions());
     }, []);
 
     // 从API获取话题列表
     useEffect(() => {
-        const fetchTopics = async () => {
-            try {
-                const data = await apiGet<Topic[]>('/topics');
-                setTopics(data);
-            } catch (error) {
-                console.error('Failed to fetch topics:', error);
-            }
-        };
-        fetchTopics();
+        fetchTopics().then(data => setTopics(data as unknown as Topic[]));
     }, []);
 
     // 从API获取通知列表
     useEffect(() => {
-        const fetchNotifications = async () => {
-            try {
-                const data = await apiGet<Notification[]>('/notifications');
-                setNotifications(data);
-            } catch (error) {
-                console.error('Failed to fetch notifications:', error);
-            }
-        };
-        fetchNotifications();
+        fetchNotifications().then(data => setNotifications(data as unknown as Notification[]));
     }, []);
 
     // 从API获取小组列表
     useEffect(() => {
-        const fetchGroups = async () => {
-            try {
-                const data = await apiGet<Group[]>('/groups');
-                setGroups(data);
-            } catch (error) {
-                console.error('Failed to fetch groups:', error);
-            }
-        };
-        fetchGroups();
+        fetchGroups().then(data => setGroups(data as unknown as Group[]));
     }, []);
     
     // 处理加入/退出小组
-    const handleJoinLeaveGroup = (groupId: string) => {
-      setGroups(prevGroups => 
-        prevGroups.map(group => 
-          group.id === groupId 
-            ? { ...group, joined: !group.joined } 
-            : group
-        )
-      );
+    const handleJoinLeaveGroupAction = (groupId: string) => {
+      setGroups(prevGroups => handleJoinLeaveGroup(prevGroups as unknown as CommunityGroup[], groupId) as unknown as Group[]);
     };
     
     // 处理创建小组
-    const handleCreateGroup = (newGroup: Partial<Group>) => {
-      const group: Group = {
-        id: `g${Date.now()}`,
-        name: newGroup.name || "",
-        description: newGroup.description || "",
-        coverImage: buildCozeImageUrl('default group cover photography', '3bc880c564b24e50436a36ff7e049628', 'landscape_16_9'),
-        avatar: buildCozeImageUrl('default group logo photography', 'dffce2dd824c325946b2f4c9d5864412', 'square'),
-        members: [], // 创建者为初始成员
-        posts: 0,
-        createdAt: new Date().toISOString(),
-        isPublic: newGroup.isPublic || true,
-        joined: true, // 创建者默认加入
-        tags: newGroup.tags || []
-      };
-      
-      setGroups(prevGroups => [group, ...prevGroups]);
+    const handleCreateGroupAction = (newGroup: Partial<Group>) => {
+      setGroups(prevGroups => createNewGroup(prevGroups as unknown as CommunityGroup[], newGroup as Partial<CommunityGroup>) as unknown as Group[]);
     };
 
     return (
@@ -1294,7 +1195,7 @@ const Community: React.FC = () => {
                             whileTap={{
                                 scale: 0.95
                             }}
-                            onClick={toggleBatchMode}
+                            onClick={handleToggleBatchMode}
                             className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors flex items-center">
                             <i className={`fa-solid ${batchMode ? "fa-xmark" : "fa-list-check"} mr-2`}></i>
                             {batchMode ? "退出批量操作" : "批量管理"}
@@ -1311,9 +1212,9 @@ const Community: React.FC = () => {
                                 onClick={() => setShowNotifications(!showNotifications)}
                                 className="w-10 h-10 rounded-full bg-accent text-text-primary flex items-center justify-center hover:bg-accent-hover transition-colors">
                                 <i className="fa-solid fa-bell"></i>
-                                {unreadCount > 0 && <span
+                                {_computedUnreadCount > 0 && <span
                                     className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-danger text-white text-xs flex items-center justify-center">
-                                    {unreadCount}
+                                    {_computedUnreadCount}
                                 </span>}
                             </motion.button>
                             {}
@@ -1335,8 +1236,8 @@ const Community: React.FC = () => {
                                     <div
                                         className="flex justify-between items-center p-4 border-b border-accent">
                                         <h3 className="font-medium text-text-primary">通知</h3>
-                                        {unreadCount > 0 && <button
-                                            onClick={markAllAsRead}
+                                        {_computedUnreadCount > 0 && <button
+                                            onClick={handleMarkAllAsRead}
                                             className="text-xs text-accent hover:text-text-muted">全部已读
                                                                                                                                                              </button>}
                                     </div>
@@ -1397,7 +1298,7 @@ const Community: React.FC = () => {
                                 <input
                                     type="checkbox"
                                     checked={selectedTopics.length > 0 && selectedTopics.length === topics.length}
-                                    onChange={toggleSelectAll}
+                                    onChange={handleToggleSelectAll}
                                     className="w-4 h-4 bg-card border-accent text-accent rounded focus:ring-accent mr-2" />
                                 <span className="text-text-muted">已选择 {selectedTopics.length}个话题</span>
                             </div>
@@ -1463,14 +1364,15 @@ const Community: React.FC = () => {
                       <GroupCard
                         key={group.id}
                         group={group}
-                        onJoin={() => handleJoinLeaveGroup(group.id)}
-                        onLeave={() => handleJoinLeaveGroup(group.id)}
+                        onJoin={() => handleJoinLeaveGroupAction(group.id)}
+                        onLeave={() => handleJoinLeaveGroupAction(group.id)}
                       />
                     ))}
                   </div>
-1701|                   {/* 查看更多按钮 */}
+                  
+                   {/* 查看更多按钮 */}
                   <div className="mt-6 text-center">
-                    <Link to="/groups">
+                    <Link to={ROUTES.GROUPS}>
                       <motion.button
                         whileHover={{
                           scale: 1.03
@@ -1531,7 +1433,7 @@ const Community: React.FC = () => {
                                     <input
                                         type="checkbox"
                                         checked={selectedTopics.includes(topic.id)}
-                                        onChange={() => toggleTopicSelection(topic.id)}
+                                        onChange={() => handleToggleTopicSelection(topic.id)}
                                         className="w-4 h-4 bg-card border-accent text-accent rounded focus:ring-accent mt-1" />
                                 </div>}
                                 {}

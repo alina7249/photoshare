@@ -1,43 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLocation, useNavigate } from 'react-router-dom';
+
+import { useRouter } from '../router/useRouter';
 import EquipmentDatabase from './EquipmentDatabase';
 import EquipmentReview from './EquipmentReview';
 import EquipmentTrade from './EquipmentTrade';
 import EquipmentLibrary from './EquipmentLibrary';
-
-const tabs = [
-  { id: 'database', name: '器材库', icon: 'fa-database' },
-  { id: 'review', name: '专业测评', icon: 'fa-star' },
-  { id: 'trade', name: '二手交易', icon: 'fa-shopping-cart' },
-  { id: 'library', name: '资料库', icon: 'fa-book-open' },
-];
+import { useEquipmentHub, EQUIPMENT_TABS } from '../composables/useEquipmentHub';
 
 const EquipmentHub: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('database');
+  const router = useRouter();
+  const { initState, actions } = useEquipmentHub();
+  const [activeTab, setActiveTab] = useState(initState.activeTab);
 
   // 根据URL路径设置当前Tab
   useEffect(() => {
-    const pathParts = location.pathname.split('/');
-    const tabId = pathParts[2] || 'database';
-    
-    if (tabs.some(tab => tab.id === tabId)) {
-      setActiveTab(tabId);
-    } else {
-      setActiveTab('database');
-    }
-  }, [location.pathname]);
+    const tabId = actions.getTabFromPath(router.currentPath);
+    setActiveTab(tabId);
+  }, [router.currentPath]);
 
   // 切换Tab时更新URL
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
-    if (tabId === 'database') {
-      navigate('/equipment');
-    } else {
-      navigate(`/equipment/${tabId}`);
-    }
+    router.push(actions.getTabNavigationPath(tabId));
   };
 
   return (
@@ -47,7 +32,7 @@ const EquipmentHub: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-1">
-              {tabs.map((tab) => (
+              {EQUIPMENT_TABS.map((tab) => (
                 <motion.button
                   key={tab.id}
                   whileHover={{ scale: 1.02 }}

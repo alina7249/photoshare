@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { useParams } from '../router/useRouter';
 import { motion } from "framer-motion";
-import { toast } from "sonner";
+import { useToast } from '../composables/useToast';
 import { useAuth } from "../contexts/authContext";
 import { useTheme } from "../hooks/useTheme";
 import { TRADE_API } from '../constants/api';
 import { apiGet } from "../services/api";
 import { HOVER_SHADOWS } from "../constants/theme";
+import { ROUTES } from '../router/routes';
 
 // 联系卖家模态框组件
 const ContactSellerModal: React.FC<{
@@ -18,6 +20,7 @@ const ContactSellerModal: React.FC<{
   onClose,
   seller
 }) => {
+  const toast = useToast();
   const { isAuthenticated, user } = useAuth();
   const { theme } = useTheme();
   
@@ -1299,7 +1302,7 @@ const EquipmentDetail: React.FC = () => {
                     <p className="text-text-muted mb-6">请检查器材ID是否正确或返回上一页
                                   </p>
                     <Link
-                        to="/equipment-trade"
+                        to={ROUTES.EQUIPMENT_TRADE}
                         className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors">返回交易平台
                                   </Link>
                 </div>
@@ -1321,7 +1324,7 @@ const EquipmentDetail: React.FC = () => {
             className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
             <div className="mb-6">
                 <Link
-                    to="/equipment-trade"
+                    to={ROUTES.EQUIPMENT_TRADE}
                     className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors">
                     <i className="fa-solid fa-arrow-left"></i>
                     <span>返回器材交易平台</span>
@@ -1711,6 +1714,7 @@ const EquipmentDetail: React.FC = () => {
 
 
 const EquipmentTrade: React.FC = () => {
+    const toast = useToast();
     const {
         id
     } = useParams();

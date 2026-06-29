@@ -1,7 +1,7 @@
 import { buildCozeImageUrl } from '../constants/api';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { useTheme } from '../hooks/useTheme';
 import { useAuth } from '../contexts/authContext';
 import { apiGet } from '../services/api';
@@ -75,6 +75,7 @@ const formatRelativeTime = (dateString: string) => {
 };
 
 export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmentId }) => {
+  const toast = useToast();
   const { theme, toggleTheme } = useTheme();
   const { isAuthenticated } = useAuth();
   const [questions, setQuestions] = useState<Question[]>([

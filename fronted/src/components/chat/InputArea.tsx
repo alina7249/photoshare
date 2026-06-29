@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useAuthStore } from '../../store/authStore';
 import { useChatStore, AIRole } from '../../store/chatStore';
-import { toast } from 'sonner';
+import { useToast } from '../../composables/useToast';
 
 export const InputArea: React.FC = () => {
+  const toast = useToast();
   const { theme } = useAuthStore();
   const { 
     currentChatId, 

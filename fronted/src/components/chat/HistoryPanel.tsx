@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useAuthStore } from '../../store/authStore';
 import { useChatStore } from '../../store/chatStore';
 import { motion } from 'framer-motion';
-import { toast } from 'sonner';
+import { useToast } from '../../composables/useToast';
 
 export const HistoryPanel: React.FC = () => {
+  const toast = useToast();
   const { theme } = useAuthStore();
   const { 
     chatHistories, 

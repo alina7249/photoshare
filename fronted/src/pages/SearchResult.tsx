@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { PhotographyCard } from '../components/PhotographyCard';
 import { POST_API } from '../constants/api';
 import { apiGet } from '../services/api';
+import { ROUTES } from '../router/routes';
 
 // 推荐搜索关键词
 const suggestedSearches = [
@@ -207,7 +208,7 @@ const SearchResult: React.FC = () => {
                   尝试使用不同的关键词或检查拼写，也可以浏览我们的推荐内容
                 </p>
                 <Link
-                  to="/"
+                  to={ROUTES.HOME}
                   className="inline-flex items-center px-6 py-3 border-2 border-dark-surface bg-gradient-to-br from-border-light to-surface-light-alt hover:from-surface-light-alt hover:to-border-light text-dark-surface rounded-lg font-medium transition-colors shadow-light-sm"
                 >
                   <i className="fa-solid fa-home mr-2"></i>

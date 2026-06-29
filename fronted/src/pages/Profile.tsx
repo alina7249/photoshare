@@ -1,48 +1,42 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useRouter } from '../router/useRouter';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { Empty } from '../components/Empty';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { useProfileApi } from '../composables/useProfileApi';
 import { getAllTags, filterPosts } from '../composables/usePostFilter';
 import { formatRelativeTime } from '../composables/useRelativeTime';
+import { useProfile } from '../composables/useProfile';
+import { ROUTES } from '../router/routes';
 
 const Profile: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
-  const [activeTab, setActiveTab] = useState<'posts' | 'collections' | 'likes' | 'stats'>('posts');
-  const [sortBy, setSortBy] = useState("latest");
-  const [selectedTag, setSelectedTag] = useState("全部");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [visibilityFilter, setVisibilityFilter] = useState("all");
-  const [formatFilter, setFormatFilter] = useState("all");
-  const [showUploadModal, setShowUploadModal] = useState(false);
-  const [uploading, setUploading] = useState(false);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [uploadProgress, setUploadProgress] = useState(0);
-  const [newPostTitle, setNewPostTitle] = useState("");
-  const [newPostDescription, setNewPostDescription] = useState("");
-  const [newPostTags, setNewPostTags] = useState("");
-  const [newPostVisibility, setNewPostVisibility] = useState("公开");
-  const navigate = useNavigate();
+  const toast = useToast();
+  const { initState, actions } = useProfile();
+  const [activeTab, setActiveTab] = useState(initState.activeTab);
+  const [sortBy, setSortBy] = useState(initState.sortBy);
+  const [selectedTag, setSelectedTag] = useState(initState.selectedTag);
+  const [searchTerm, setSearchTerm] = useState(initState.searchTerm);
+  const [visibilityFilter, setVisibilityFilter] = useState(initState.visibilityFilter);
+  const [formatFilter, setFormatFilter] = useState(initState.formatFilter);
+  const [showUploadModal, setShowUploadModal] = useState(initState.showUploadModal);
+  const [uploading, setUploading] = useState(initState.uploading);
+  const [selectedFile, setSelectedFile] = useState<File | null>(initState.selectedFile);
+  const [uploadProgress, setUploadProgress] = useState(initState.uploadProgress);
+  const [newPostTitle, setNewPostTitle] = useState(initState.newPostTitle);
+  const [newPostDescription, setNewPostDescription] = useState(initState.newPostDescription);
+  const [newPostTags, setNewPostTags] = useState(initState.newPostTags);
+  const [newPostVisibility, setNewPostVisibility] = useState(initState.newPostVisibility);
+  const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   // 用户资料数据
-  const [profileUser, setProfileUser] = useState({
-    id: '',
-    username: '',
-    email: '',
-    avatar: '',
-    bio: '',
-    joinDate: '',
-    followers: 0,
-    following: 0,
-    posts: 0,
-    likes: 0
-  });
-  const [profilePosts, setProfilePosts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [profileUser, setProfileUser] = useState(initState.profileUser);
+  const [profilePosts, setProfilePosts] = useState<any[]>(initState.profilePosts);
+  const [loading, setLoading] = useState(initState.loading);
   const { fetchProfile, fetchProfilePosts } = useProfileApi();
 
   // 从API获取用户资料
@@ -78,7 +72,7 @@ const Profile: React.FC = () => {
   const isCurrentUser = isAuthenticated && user?.id === profileUser.id;
   
   // 关注状态
-  const [isFollowing, setIsFollowing] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(initState.isFollowing);
   
   // 获取所有标签
   const allTags = getAllTags(profilePosts);
@@ -126,11 +120,13 @@ const Profile: React.FC = () => {
         clearInterval(interval);
         setTimeout(() => {
           toast.success("作品上传成功");
-          setSelectedFile(null);
-          setNewPostTitle("");
-          setNewPostDescription("");
-          setNewPostTags("");
-          setNewPostVisibility("公开");
+          const reset = actions.resetUploadForm();
+          setSelectedFile(reset.selectedFile);
+          setNewPostTitle(reset.newPostTitle);
+          setNewPostDescription(reset.newPostDescription);
+          setNewPostTags(reset.newPostTags);
+          setNewPostVisibility(reset.newPostVisibility);
+          setUploadProgress(reset.uploadProgress);
           setUploading(false);
           setShowUploadModal(false);
         }, 500);
@@ -140,12 +136,13 @@ const Profile: React.FC = () => {
   
   const handleCancelUpload = () => {
     setShowUploadModal(false);
-    setSelectedFile(null);
-    setNewPostTitle("");
-    setNewPostDescription("");
-    setNewPostTags("");
-    setNewPostVisibility("公开");
-    setUploadProgress(0);
+    const reset = actions.resetUploadForm();
+    setSelectedFile(reset.selectedFile);
+    setNewPostTitle(reset.newPostTitle);
+    setNewPostDescription(reset.newPostDescription);
+    setNewPostTags(reset.newPostTags);
+    setNewPostVisibility(reset.newPostVisibility);
+    setUploadProgress(reset.uploadProgress);
   };
   
   // 检查用户是否登录，如果没有登录，显示登录提示
@@ -159,7 +156,7 @@ const Profile: React.FC = () => {
           <h2 className="text-2xl font-bold text-text-primary mb-2">请先登录</h2>
           <p className="text-text-muted mb-6 max-w-md">登录后查看用户主页内容，支持创作者</p>
           <button 
-            onClick={() => navigate('/login')}
+            onClick={() => router.push(ROUTES.LOGIN)}
             className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors"
           >
             立即登录
@@ -179,7 +176,7 @@ const Profile: React.FC = () => {
         {/* 返回按钮 */}
         <div className="mb-6">
           <button
-            onClick={() => navigate('/')}
+            onClick={() => router.push(ROUTES.HOME)}
             className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>
@@ -259,13 +256,13 @@ const Profile: React.FC = () => {
                   {isCurrentUser && (
                     <>
                       <button
-                        onClick={() => navigate('/profile/settings')}
+                        onClick={() => router.push(ROUTES.PROFILE_SETTINGS)}
                         className="px-4 py-2 bg-accent text-text-primary border border-accent rounded-lg font-medium hover:bg-accent-hover transition-colors"
                       >
                         <i className="fa-solid fa-pen-to-square mr-2 text-text-primary"></i> 编辑资料
                       </button>
                       <button
-                        onClick={() => navigate('/profile/settings')}
+                        onClick={() => router.push(ROUTES.PROFILE_SETTINGS)}
                         className="px-4 py-2 bg-accent text-text-primary border border-accent rounded-lg font-medium hover:bg-accent-hover transition-colors"
                       >
                         <i className="fa-solid fa-cog mr-2 text-text-primary"></i> 设置
@@ -637,7 +634,7 @@ const Profile: React.FC = () => {
               {displayPosts.length > 0 && (
                 <div className="mt-10 text-center">
                   <button
-                    onClick={() => navigate('/login')}
+                    onClick={() => router.push(ROUTES.LOGIN)}
                     className="inline-flex items-center px-6 py-3 bg-card text-text-muted border border-accent hover:bg-accent hover:text-text-primary rounded-lg font-medium transition-colors"
                   >
                     加载更多
@@ -734,7 +731,7 @@ const Profile: React.FC = () => {
                     <span className="text-sm text-text-muted">我的通知</span>
                   </button>
                 </div>
-                <button onClick={() => navigate('/profile/settings')} className="w-full py-2 text-center bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors text-sm">
+                <button onClick={() => router.push(ROUTES.PROFILE_SETTINGS)} className="w-full py-2 text-center bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors text-sm">
                   <i className="fa-solid fa-cog mr-1"></i>更多设置
                 </button>
               </div>

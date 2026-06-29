@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { apiGet } from '../services/api';
 import { HOVER_SHADOWS } from '../constants/theme';
+import { ROUTES } from '../router/routes';
 
 const categories: string[] = ['全部'];
 
@@ -122,7 +123,7 @@ const TutorialResources: React.FC = () => {
         {/* 返回按钮 */}
         <div className="mb-6">
           <Link
-            to="/profile-center"
+            to={ROUTES.PROFILE_CENTER}
             className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>

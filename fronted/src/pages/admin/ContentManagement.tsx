@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
+import { useRouter } from '../../router/useRouter';
+import { useToast } from '../../composables/useToast';
 import Button from '../../components/common/Button';
 import { apiGet } from '../../services/api';
 
 const ContentManagement: React.FC = () => {
-  const navigate = useNavigate();
+  const toast = useToast();
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [contentType, setContentType] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
@@ -133,10 +134,10 @@ const ContentManagement: React.FC = () => {
   const handleContentAction = (contentId: string, action: string) => {
     switch (action) {
       case 'view':
-        navigate(`/admin/content/${contentId}`);
+        router.push(`/admin/content/${contentId}`);
         break;
       case 'edit':
-        navigate(`/admin/content/${contentId}/edit`);
+        router.push(`/admin/content/${contentId}/edit`);
         break;
       case 'ban':
         setContent(prev => 

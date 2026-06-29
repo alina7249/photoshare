@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useParams } from '../router/useRouter';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { CommentSection } from '../components/CommentSection';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { GROUP_API } from '../constants/api';
 import { apiGet } from '../services/api';
 import { HOVER_SHADOWS } from '../constants/theme';
+import { ROUTES } from '../router/routes';
 
 // 课程类型定义
 interface CourseType {
@@ -88,6 +90,7 @@ interface InstructorDetail {
 }
 
 const CourseDetail: React.FC = () => {
+  const toast = useToast();
   const { id } = useParams();
   const { isAuthenticated, user } = useAuth();
   const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
@@ -307,7 +310,7 @@ const CourseDetail: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该课程</h2>
           <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的课程不存在或已被删除</p>
-          <Link to="/online-courses" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent">返回课程列表</Link>
+          <Link to={ROUTES.ONLINE_COURSES} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent">返回课程列表</Link>
         </div>
       </div>
     );
@@ -323,7 +326,7 @@ const CourseDetail: React.FC = () => {
         {/* 返回按钮 */}
         <div className="mb-6">
           <Link
-            to="/online-courses"
+            to={ROUTES.ONLINE_COURSES}
             className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>

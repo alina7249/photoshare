@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
+import { useRouter } from '../../router/useRouter';
+import { useToast } from '../../composables/useToast';
 import { useAuthStore } from '../../store/authStore';
 import Captcha from './Captcha';
+import { ROUTES } from '../../router/routes';
 
 interface LoginFormData {
   username: string;
@@ -13,8 +14,9 @@ interface LoginFormData {
 }
 
 const LoginForm: React.FC = () => {
+  const toast = useToast();
   const { login, adminLogin, theme } = useAuthStore();
-  const navigate = useNavigate();
+  const router = useRouter();
   
   const [showPassword, setShowPassword] = useState(false);
   const [showCaptcha, setShowCaptcha] = useState(false);
@@ -69,7 +71,7 @@ const LoginForm: React.FC = () => {
           if (adminSuccess) {
             resetLoginAttempts();
             toast.success('管理员登录成功！');
-            navigate('/admin');
+            router.push(ROUTES.ADMIN);
             return;
           } else {
             setLoginAttempts(prev => {
@@ -112,7 +114,7 @@ const LoginForm: React.FC = () => {
           
           resetLoginAttempts();
           toast.success('登录成功！');
-          navigate('/');
+          router.push(ROUTES.HOME);
           return;
         } catch (error) {
           console.error('User login error:', error);

@@ -4,8 +4,9 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../contexts/authContext";
-import { toast } from "sonner";
+import { useToast } from '../composables/useToast';
 import { apiGet } from "../services/api";
+import { ROUTES } from '../router/routes';
 
 interface Comment {
     id: string;
@@ -78,6 +79,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
         authorId = "1"
     }
 ) => {
+    const toast = useToast();
     const {
         isAuthenticated,
         user
@@ -1058,11 +1060,11 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                                                                   </p>
                 <div className="flex justify-center space-x-3">
                     <Link
-                        to="/login"
+                        to={ROUTES.LOGIN}
                         className={`px-4 py-2 text-sm font-medium ${colors.loginButton} ${colors.loginButtonHover} rounded-lg transition-colors`}>登录
                                                                       </Link>
                     <Link
-                        to="/register"
+                        to={ROUTES.REGISTER}
                         className={`px-4 py-2 text-sm font-medium ${colors.registerButton} rounded-lg transition-colors`}>注册
                                                                       </Link>
                 </div>

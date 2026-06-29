@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { apiGet } from '../services/api';
 
 import { CHART_COLORS, HOVER_SHADOWS } from '../constants/theme';
+import { ROUTES } from '../router/routes';
 
 // 饼图数据处理
 const getPieChartData = (membershipData: any) => {
+  const toast = useToast();
   if (!membershipData?.growthSystem?.usageChartData) return { data: [], COLORS: [] };
   const data = membershipData.growthSystem.usageChartData.map((item: any) => ({
     name: item.name,
@@ -64,7 +66,7 @@ const ProfileBenefits: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">请先登录</h2>
           <p className="text-text-muted mb-6 max-w-md">登录后查看您的会员等级和专属权益</p>
-          <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-light-accent transition-colors">
+          <Link to={ROUTES.LOGIN} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-light-accent transition-colors">
             立即登录
           </Link>
         </div>
@@ -138,7 +140,7 @@ const ProfileBenefits: React.FC = () => {
       >
         {/* 返回按钮 */}
         <div className="mb-6">
-          <Link to="/profile-center" className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors">
+          <Link to={ROUTES.PROFILE_CENTER} className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors">
             <i className="fa-solid fa-arrow-left"></i>
             <span>返回个人中心</span>
           </Link>

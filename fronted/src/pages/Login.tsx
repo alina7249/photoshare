@@ -1,9 +1,11 @@
 import { buildCozeImageUrl } from '../constants/api';
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useRouter } from '../router/useRouter';
 import { motion } from 'framer-motion';
 import LoginForm from '../components/common/LoginForm';
 import { checkAuthStatus } from '../hooks/useAuth';
+import { ROUTES } from '../router/routes';
 
 const Login: React.FC = () => {
   // 检查URL参数中是否有重定向信息
@@ -16,11 +18,11 @@ const Login: React.FC = () => {
   // 如果已经登录，直接重定向到首页或指定页面
   React.useEffect(() => {
     if (isLoggedIn) {
-      navigate(redirectUrl);
+      router.push(redirectUrl);
     }
   }, [isLoggedIn, redirectUrl]);
   
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-text-dark-inverse">
@@ -88,7 +90,7 @@ const Login: React.FC = () => {
           <p className="text-sm text-text-light-muted">
             还没有账号？{' '}
             <Link
-              to="/register"
+              to={ROUTES.REGISTER}
               className="font-medium text-light-accent hover:text-light-accent transition-colors"
             >
               立即注册

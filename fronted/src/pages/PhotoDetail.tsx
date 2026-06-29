@@ -1,13 +1,15 @@
 import { buildCozeImageUrl } from '../constants/api';
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useParams } from '../router/useRouter';
 import { motion } from 'framer-motion';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { CommentSection } from '../components/CommentSection';
 import { ShareButton } from '../components/common/ShareButton';
 import { useLikeAndBookmark } from '../hooks/useLikeAndBookmark';
 import { useAuth } from '../contexts/authContext';
 import { apiGet } from '../services/api';
+import { ROUTES } from '../router/routes';
 
 // 摄影作品类型定义
 interface PhotoPost {
@@ -51,6 +53,7 @@ interface PhotoPost {
 }
 
 const PhotoDetail: React.FC = () => {
+  const toast = useToast();
   const { id } = useParams();
   const { isAuthenticated } = useAuth();
   
@@ -151,7 +154,7 @@ const PhotoDetail: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该作品</h2>
           <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的作品不存在或已被删除</p>
-          <Link to="/profile-center" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent">返回作品集</Link>
+          <Link to={ROUTES.PROFILE_CENTER} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent">返回作品集</Link>
         </div>
       </div>
     );
@@ -166,7 +169,7 @@ const PhotoDetail: React.FC = () => {
         {/* 返回按钮 */}
         <div className="mb-6">
           <Link
-            to="/profile-center"
+            to={ROUTES.PROFILE_CENTER}
             className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>

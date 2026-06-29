@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useParams } from '../router/useRouter';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { CommentSection } from '../components/CommentSection';
 import { EVENT_API } from '../constants/api';
 import { apiGet } from '../services/api';
+import { ROUTES } from '../router/routes';
 
 const EventDetail: React.FC = () => {
+  const toast = useToast();
   const { id } = useParams<{ id: string }>();
   const { isAuthenticated, user } = useAuth();
   const [event, setEvent] = useState<any>(null);
@@ -120,7 +123,7 @@ const EventDetail: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该活动</h2>
           <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的活动不存在或已被删除</p>
-          <Link to="/offline-events" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors">
+          <Link to={ROUTES.OFFLINE_EVENTS} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors">
             返回活动列表
           </Link>
              </div>
@@ -143,7 +146,7 @@ const EventDetail: React.FC = () => {
         {/* 返回按钮 */}
         <div className="mb-6">
           <Link
-            to="/offline-events"
+            to={ROUTES.OFFLINE_EVENTS}
             className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>

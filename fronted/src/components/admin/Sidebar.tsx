@@ -1,5 +1,6 @@
 import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useRouter } from '../../router/useRouter';
 import { useAdminAuth } from '../../hooks/useAdminAuth';
 import { adminMenuConfig } from '../../lib/adminMenuConfig';
 
@@ -8,7 +9,7 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ collapsed }) => {
-  const location = useLocation();
+  const router = useRouter();
   const { userRole } = useAdminAuth();
   
   // 根据用户角色过滤菜单项
@@ -22,7 +23,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed }) => {
   const filteredMenuItems = getFilteredMenuItems();
   
   const isActive = (path: string) => {
-    return location.pathname.includes(path);
+    return router.currentPath.includes(path);
   };
 
   return (

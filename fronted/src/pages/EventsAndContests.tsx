@@ -3,12 +3,14 @@ import { buildCozeImageUrl, EVENT_API, CONTEST_API } from '../constants/api';
 // 整合线下活动和摄影赛事，采用与资源模块类似的标签切换格式
 
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useRouter } from '../router/useRouter';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { EventCard } from '../components/EventCard';
 import { apiGet } from '../services/api';
+import { ROUTES } from '../router/routes';
 
 // 线下活动类型定义
 interface Event {
@@ -60,6 +62,7 @@ interface RegistrationFormData {
 }
 
 const EventsAndContests: React.FC = () => {
+  const toast = useToast();
   const { isAuthenticated, user } = useAuth();
   const [allEvents, setAllEvents] = useState<Event[]>([]);
   const [allContests, setAllContests] = useState<Contest[]>([]);
@@ -127,7 +130,7 @@ const EventsAndContests: React.FC = () => {
     agreement: false
   });
   
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // 切换标签
   const toggleTag = (tag: string) => {
@@ -273,7 +276,7 @@ const EventsAndContests: React.FC = () => {
   const openRegistrationForm = (item: Event | Contest) => {
     if (!isAuthenticated) {
       toast.info('请先登录后再报名');
-      navigate('/login');
+      router.push(ROUTES.LOGIN);
       return;
     }
     
@@ -623,7 +626,7 @@ const EventsAndContests: React.FC = () => {
     onClick={() => {
       if (!isAuthenticated) {
         toast.info('请先登录后再发布');
-        navigate('/login');
+        router.push(ROUTES.LOGIN);
       } else {
         // 显示发布表单
         if (activeTab === 'events') {
@@ -749,10 +752,10 @@ const EventsAndContests: React.FC = () => {
               <div className="mt-6 pt-4 border-t border-accent">
                 <p className="text-sm text-text-muted mb-2">您可能还对以下内容感兴趣：</p>
                 <div className="flex flex-wrap gap-2">
-                  <Link to="/resources" className="px-3 py-1 bg-accent text-text-primary rounded-full text-xs hover:bg-accent-hover transition-colors">
+                  <Link to={ROUTES.RESOURCES} className="px-3 py-1 bg-accent text-text-primary rounded-full text-xs hover:bg-accent-hover transition-colors">
                     资源交易
                   </Link>
-                  <Link to="/equipment-database" className="px-3 py-1 bg-accent text-text-primary rounded-full text-xs hover:bg-accent-hover transition-colors">
+                  <Link to={ROUTES.EQUIPMENT_DATABASE} className="px-3 py-1 bg-accent text-text-primary rounded-full text-xs hover:bg-accent-hover transition-colors">
                     器材数据库
                   </Link>
                 </div>

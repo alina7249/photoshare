@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
+import { useRouter } from '../../router/useRouter';
+import { useToast } from '../../composables/useToast';
 import { useAuthStore } from '../../store/authStore';
 import Captcha from './Captcha';
+import { ROUTES } from '../../router/routes';
 
 interface RegisterFormData {
   username: string;
@@ -15,8 +16,9 @@ interface RegisterFormData {
 }
 
 const RegisterForm: React.FC = () => {
+  const toast = useToast();
   const { register: authRegister, theme } = useAuthStore();
-  const navigate = useNavigate();
+  const router = useRouter();
   
   const [captchaValue, setCaptchaValue] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -51,7 +53,7 @@ const RegisterForm: React.FC = () => {
       
       if (success) {
         toast.success('注册成功，请登录！');
-        navigate('/login');
+        router.push(ROUTES.LOGIN);
       } else {
         toast.error('注册失败，请稍后重试');
       }

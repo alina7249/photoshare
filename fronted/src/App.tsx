@@ -1,8 +1,10 @@
 import React, { useState, Suspense, useEffect } from 'react';
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useRouter } from './router/useRouter';
 import { useAuthStore } from './store/authStore';
 import { Toaster } from 'sonner';
 import { Header } from "@/components/Header";
+import { ROUTES } from './router/routes';
 
 const Home = React.lazy(() => import("@/pages/Home"));
 const PhotoDetail = React.lazy(() => import("@/pages/PhotoDetail"));
@@ -43,11 +45,11 @@ const AdminAuthGuard: React.FC<{ children: React.ReactNode }> = ({ children }) =
   const { isAdminAuthenticated, adminUser } = useAuthStore();
   
   if (!isAdminAuthenticated) {
-    return <Navigate to="/login?redirect=/admin" replace />;
+    return <Navigate to={ROUTES.LOGIN + "?redirect=/admin"} replace />;
   }
   
   if (!adminUser) {
-    return <Navigate to="/login?redirect=/admin" replace />;
+    return <Navigate to={ROUTES.LOGIN + "?redirect=/admin"} replace />;
   }
   
   return <>{children}</>;
@@ -55,7 +57,7 @@ const AdminAuthGuard: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
 export default function App() {
   const { theme } = useAuthStore();
-  const location = useLocation();
+  const router = useRouter();
   const [showFooter, setShowFooter] = useState(true);
   
   useEffect(() => {
@@ -65,7 +67,7 @@ export default function App() {
     });
     
     const noFooterRoutes = ['/login', '/register'];
-    setShowFooter(!noFooterRoutes.includes(location.pathname));
+    setShowFooter(!noFooterRoutes.includes(router.currentPath));
   }, [location]);
   
   return (
@@ -79,27 +81,27 @@ export default function App() {
         }>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/runtime/" element={<Navigate to="/" replace />} />
-            <Route path="/runtime/login" element={<Navigate to="/login" replace />} />
-            <Route path="/runtime/register" element={<Navigate to="/register" replace />} />
+            <Route path="/runtime/" element={<Navigate to={ROUTES.HOME} replace />} />
+            <Route path="/runtime/login" element={<Navigate to={ROUTES.LOGIN} replace />} />
+            <Route path="/runtime/register" element={<Navigate to={ROUTES.REGISTER} replace />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile/settings" element={<ProfileSettings />} />
             
-            <Route path="/profile-center" element={<Navigate to="/profile" replace />} />
-            <Route path="/profile-center/batch-manage" element={<Navigate to="/profile" replace />} />
-            <Route path="/profile-center/photo-locations" element={<Navigate to="/profile" replace />} />
-            <Route path="/profile-center/materials" element={<Navigate to="/profile/settings" replace />} />
-            <Route path="/profile-center/membership" element={<Navigate to="/profile/settings" replace />} />
-            <Route path="/profile-center/settings" element={<Navigate to="/profile/settings" replace />} />
-            <Route path="/profile-center/notifications" element={<Navigate to="/profile/settings" replace />} />
-            <Route path="/profile-center/events" element={<Navigate to="/profile/settings" replace />} />
-            <Route path="/profile-center/orders" element={<Navigate to="/profile/settings" replace />} />
-            <Route path="/profile-center/editor" element={<Navigate to="/profile" replace />} />
-            <Route path="/profile-center/contests" element={<Navigate to="/profile" replace />} />
-            <Route path="/profile-center/equipment" element={<Navigate to="/profile" replace />} />
+            <Route path="/profile-center" element={<Navigate to={ROUTES.PROFILE} replace />} />
+            <Route path="/profile-center/batch-manage" element={<Navigate to={ROUTES.PROFILE} replace />} />
+            <Route path="/profile-center/photo-locations" element={<Navigate to={ROUTES.PROFILE} replace />} />
+            <Route path="/profile-center/materials" element={<Navigate to={ROUTES.PROFILE_SETTINGS} replace />} />
+            <Route path="/profile-center/membership" element={<Navigate to={ROUTES.PROFILE_SETTINGS} replace />} />
+            <Route path="/profile-center/settings" element={<Navigate to={ROUTES.PROFILE_SETTINGS} replace />} />
+            <Route path="/profile-center/notifications" element={<Navigate to={ROUTES.PROFILE_SETTINGS} replace />} />
+            <Route path="/profile-center/events" element={<Navigate to={ROUTES.PROFILE_SETTINGS} replace />} />
+            <Route path="/profile-center/orders" element={<Navigate to={ROUTES.PROFILE_SETTINGS} replace />} />
+            <Route path="/profile-center/editor" element={<Navigate to={ROUTES.PROFILE} replace />} />
+            <Route path="/profile-center/contests" element={<Navigate to={ROUTES.PROFILE} replace />} />
+            <Route path="/profile-center/equipment" element={<Navigate to={ROUTES.PROFILE} replace />} />
             
             <Route path="/community" element={<Community />} />
             <Route path="/groups" element={<GroupsList />} />
@@ -115,9 +117,9 @@ export default function App() {
             <Route path="/equipment/trade" element={<EquipmentHub />} />
             <Route path="/equipment/library" element={<EquipmentHub />} />
             {/* 旧路由重定向 */}
-            <Route path="/equipment-database" element={<Navigate to="/equipment" replace />} />
-            <Route path="/equipment-review" element={<Navigate to="/equipment" replace />} />
-            <Route path="/equipment-trade" element={<Navigate to="/equipment" replace />} />
+            <Route path="/equipment-database" element={<Navigate to={ROUTES.EQUIPMENT_HUB} replace />} />
+            <Route path="/equipment-review" element={<Navigate to={ROUTES.EQUIPMENT_HUB} replace />} />
+            <Route path="/equipment-trade" element={<Navigate to={ROUTES.EQUIPMENT_HUB} replace />} />
             
             <Route path="/online-courses" element={<OnlineCourses />} />
             <Route path="/course/:id" element={<CourseDetail />} />

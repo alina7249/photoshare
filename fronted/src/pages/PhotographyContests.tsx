@@ -5,18 +5,21 @@
 // 4. 即将截止日期提醒：当鼠标悬停时，整个提醒项会向右平移5个像素，产生一种被选中的动效
 
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useRouter } from '../router/useRouter';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { CONTEST_API } from '../constants/api';
 import { EMPTY_TEXT } from '../constants/text';
 import { HOVER_SHADOWS } from '../constants/theme';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { apiGet } from '../services/api';
+import { ROUTES } from '../router/routes';
 
 const PhotographyContests: React.FC = () => {
+  const toast = useToast();
   const { isAuthenticated, user } = useAuth();
-  const navigate = useNavigate();
+  const router = useRouter();
   
   const [selectedType, setSelectedType] = useState('全部');
   const [selectedStatus, setSelectedStatus] = useState('全部');
@@ -117,7 +120,7 @@ const PhotographyContests: React.FC = () => {
   // 处理立即参赛
   const handleJoinContest = (contestId: string) => {
     if (!isAuthenticated) {
-      navigate('/login');
+      router.push(ROUTES.LOGIN);
       return;
     }
     
@@ -139,7 +142,7 @@ const PhotographyContests: React.FC = () => {
             </div>
             <h2 className="text-2xl font-bold text-text-primary mb-2">请先登录</h2>
             <p className="text-text-muted mb-6 max-w-md">登录后查看您参加的摄影赛事</p>
-            <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors">
+            <Link to={ROUTES.LOGIN} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors">
               立即登录
             </Link>
           </div>
@@ -448,7 +451,7 @@ const PhotographyContests: React.FC = () => {
                     }
                   </p>
                   {isUserPersonalContests && (
-                    <Link to="/photography-contests" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors inline-flex items-center">
+                    <Link to={ROUTES.PHOTOGRAPHY_CONTESTS} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors inline-flex items-center">
                       <i className="fa-solid fa-compass mr-2"></i>
                       浏览更多赛事
                     </Link>
@@ -658,7 +661,7 @@ const PhotographyContests: React.FC = () => {
     onClick={() => {
       if (!isAuthenticated) {
         toast.info('请先登录后再创建赛事');
-        navigate('/login');
+        router.push(ROUTES.LOGIN);
       } else {
         // 这里可以跳转到赛事创建页面或显示创建表单
         toast.success('赛事创建功能已开启！');

@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { useAuthStore } from '../../store/authStore';
 import { useChatStore, Message } from '../../store/chatStore';
 import { motion } from 'framer-motion';
-import { toast } from 'sonner';
+import { useToast } from '../../composables/useToast';
 
 // 文本清理函数，用于防止XSS攻击
 const sanitizeText = (text: string): string => {
@@ -58,6 +58,7 @@ const parseMarkdown = (text: string): string => {
 };
 
 export const MessageList: React.FC = () => {
+  const toast = useToast();
   const { theme } = useAuthStore();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { currentChatId, chatHistories, toggleMessageFavorite, isTyping } = useChatStore();

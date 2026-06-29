@@ -3,8 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
-import { toast } from "sonner";
+import { useToast } from '../composables/useToast';
 import { apiGet } from "../services/api";
+import { ROUTES } from '../router/routes';
 
 interface FormData {
     username: string;
@@ -62,6 +63,7 @@ interface SecuritySettings {
 }
 
 const ProfileSettings: React.FC = () => {
+    const toast = useToast();
     const { isAuthenticated, user, logout } = useAuth();
     
     // 扩展标签页，包含订单和通知
@@ -316,7 +318,7 @@ const ProfileSettings: React.FC = () => {
                     </div>
                     <h2 className="text-2xl font-bold text-text-primary mb-2">请先登录</h2>
                     <p className="text-text-muted mb-6 max-w-md">登录后管理您的账号设置和隐私偏好</p>
-                    <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-light-accent transition-colors">立即登录</Link>
+                    <Link to={ROUTES.LOGIN} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-light-accent transition-colors">立即登录</Link>
                 </div>
             </div>
         );
@@ -327,7 +329,7 @@ const ProfileSettings: React.FC = () => {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
                 {/* 返回按钮 */}
                 <div className="mb-6">
-                    <Link to="/profile" className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors">
+                    <Link to={ROUTES.PROFILE} className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors">
                         <i className="fa-solid fa-arrow-left"></i>
                         <span>返回个人主页</span>
                     </Link>

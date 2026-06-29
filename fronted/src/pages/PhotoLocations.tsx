@@ -5,13 +5,15 @@ import { buildCozeImageUrl } from '../constants/api';
 // 3. 位置列表项：使用Tailwind的hover伪类，悬停时边框变化
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useRouter } from '../router/useRouter';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { ShareButton } from '../components/common/ShareButton';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { apiGet } from '../services/api';
+import { ROUTES } from '../router/routes';
 
 // 位置信息接口
 interface Location {
@@ -55,6 +57,7 @@ interface NewLocationForm {
 }
 
 const PhotoLocations: React.FC = () => {
+  const toast = useToast();
   const { isAuthenticated, user } = useAuth();
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -78,7 +81,7 @@ const PhotoLocations: React.FC = () => {
     rating: 3,
   });
   const mapRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
+  const router = useRouter();
   const [locations, setLocations] = useState<any[]>([]);
 
   useEffect(() => {
@@ -349,7 +352,7 @@ const PhotoLocations: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">请先登录</h2>
           <p className="text-text-muted mb-6 max-w-md">登录后查看您的拍摄地点分布和相关作品</p>
-          <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors">
+          <Link to={ROUTES.LOGIN} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors">
             立即登录
           </Link>
         </div>
@@ -369,7 +372,7 @@ const PhotoLocations: React.FC = () => {
         {/* 返回按钮 */}
         <div className="mb-6">
           <Link
-            to="/profile-center"
+            to={ROUTES.PROFILE_CENTER}
             className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>
@@ -766,7 +769,7 @@ const PhotoLocations: React.FC = () => {
                             <i className="fa-solid fa-pen-to-square mr-1"></i> 编辑
                           </button>
                           <button 
-                            onClick={() => navigate(`/profile-center/works?location=${location.id}`)}
+                            onClick={() => router.push(`/profile-center/works?location=${location.id}`)}
                             className="flex-1 py-2 bg-card text-text-primary rounded-lg text-sm font-medium hover:bg-accent transition-colors"
                           >
                             <i className="fa-solid fa-images mr-1"></i> 查看作品
@@ -788,7 +791,7 @@ const PhotoLocations: React.FC = () => {
                         className="flex space-x-3 p-3 bg-deep rounded-lg border border-accent hover:border-accent transition-colors"
                         onClick={(e) => {
                           e.stopPropagation(); // 防止触发父元素的点击事件
-                          navigate(`/photo/${photo.id}`);
+                          router.push(`/photo/${photo.id}`);
                         }}
                       >
                         <div className="w-20 h-20 rounded overflow-hidden flex-shrink-0">
@@ -817,7 +820,7 @@ const PhotoLocations: React.FC = () => {
                       <div className="p-4 text-center">
                         <p className="text-text-muted">该地点暂无作品</p>
                         <button
-                          onClick={() => navigate('/profile-center/works?action=upload')}
+                          onClick={() => router.push(ROUTES.PROFILE_CENTER_UPLOAD)}
                           className="mt-3 px-4 py-2 bg-accent text-text-primary rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors"
                         >
                           上传作品
@@ -829,7 +832,7 @@ const PhotoLocations: React.FC = () => {
                   {locationPhotos.length > 0 && (
                     <div className="mt-4 text-center">
                       <button
-                        onClick={() => navigate(`/profile-center/works?location=${selectedLocation}`)}
+                        onClick={() => router.push(`/profile-center/works?location=${selectedLocation}`)}
                         className="inline-flex items-center text-sm text-accent hover:text-accent-hover transition-colors"
                       >
                         查看更多作品 <i className="fa-solid fa-chevron-right ml-1 text-xs"></i>
@@ -1074,7 +1077,7 @@ const PhotoLocations: React.FC = () => {
                         key={photo.id}
                         whileHover={{ scale: 1.05 }}
                         className="group"
-                        onClick={() => navigate(`/photo/${photo.id}`)}
+                        onClick={() => router.push(`/photo/${photo.id}`)}
                       >
                         <div className="aspect-square rounded-lg overflow-hidden border border-accent cursor-pointer">
                           <img
@@ -1091,7 +1094,7 @@ const PhotoLocations: React.FC = () => {
                   <div className="p-4 bg-deep rounded-lg border border-accent text-center">
                     <p className="text-text-muted">暂无相关作品</p>
                     <button
-                      onClick={() => navigate('/profile-center/works?action=upload')}
+                      onClick={() => router.push(ROUTES.PROFILE_CENTER_UPLOAD)}
                       className="mt-3 px-4 py-2 bg-accent text-text-primary rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors"
                     >
                       上传作品
@@ -1108,7 +1111,7 @@ const PhotoLocations: React.FC = () => {
                   <i className="fa-solid fa-pen-to-square mr-2"></i> 编辑地点信息
                 </button>
                 <button
-                  onClick={() => navigate(`/profile-center/works?location=${selectedLocationData.id}`)}
+                  onClick={() => router.push(`/profile-center/works?location=${selectedLocationData.id}`)}
                   className="flex-1 py-3 bg-card text-text-primary border border-accent rounded-lg font-medium hover:bg-accent transition-colors"
                 >
                   <i className="fa-solid fa-images mr-2"></i> 查看全部作品

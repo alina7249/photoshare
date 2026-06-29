@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuth } from "../contexts/authContext";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-import { toast } from "sonner";
+import { useToast } from '../composables/useToast';
 import { useEffect } from "react";
 import { apiGet } from "../services/api";
 import { HOVER_SHADOWS } from "../constants/theme";
+import { ROUTES } from '../router/routes';
 
 interface Project {
     id: string;
@@ -47,6 +48,7 @@ interface MatchedPhotographer {
 }
 
 const Resources: React.FC = () => {
+    const toast = useToast();
     const {
         isAuthenticated,
         user
@@ -736,11 +738,11 @@ const Resources: React.FC = () => {
                                 <p className="text-sm text-text-muted mb-2">您可能还对以下内容感兴趣：</p>
                                 <div className="flex flex-wrap gap-2">
                                     <Link
-                                        to="/events-and-contests"
+                                        to={ROUTES.EVENTS_AND_CONTESTS}
                                         className="px-3 py-1 bg-accent text-text-primary rounded-full text-xs hover:bg-accent-hover transition-colors">线下活动
                                                           </Link>
                                     <Link
-                                        to="/photography-contests"
+                                        to={ROUTES.PHOTOGRAPHY_CONTESTS}
                                         className="px-3 py-1 bg-accent text-text-primary rounded-full text-xs hover:bg-accent-hover transition-colors">摄影赛事
                                                           </Link>
                                 </div>

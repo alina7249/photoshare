@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
+
+import { useRouter } from '../../router/useRouter';
+import { useToast } from '../../composables/useToast';
 import Button from '../../components/common/Button';
 import { apiGet } from '../../services/api';
 
 const UserManagement: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const toast = useToast();
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [roleFilter, setRoleFilter] = useState('all');
@@ -22,8 +23,8 @@ const UserManagement: React.FC = () => {
 
   // 根据当前路径确定显示的用户类型
   const getCurrentUserType = () => {
-    if (location.pathname.includes('/pending')) return 'pending';
-    if (location.pathname.includes('/banned')) return 'banned';
+    if (router.currentPath.includes('/pending')) return 'pending';
+    if (router.currentPath.includes('/banned')) return 'banned';
     return 'all';
   };
 
@@ -150,10 +151,10 @@ const UserManagement: React.FC = () => {
   const handleUserAction = (userId: string, action: string) => {
     switch (action) {
       case 'view':
-        navigate(`/admin/users/${userId}`);
+        router.push(`/admin/users/${userId}`);
         break;
       case 'edit':
-        navigate(`/admin/users/${userId}/edit`);
+        router.push(`/admin/users/${userId}/edit`);
         break;
       case 'ban':
         setUsers(prev => 

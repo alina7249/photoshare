@@ -5,6 +5,7 @@ import { useAuth } from '../contexts/authContext';
 import { apiGet } from '../services/api';
 import { EVENT_API } from '../constants/api';
 import { HOVER_SHADOWS } from '../constants/theme';
+import { ROUTES } from '../router/routes';
 
 const OfflineEvents: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
@@ -105,7 +106,7 @@ const OfflineEvents: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">请先登录</h2>
           <p className="text-text-muted mb-6 max-w-md">登录后查看您已报名的摄影活动</p>
-          <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors">
+          <Link to={ROUTES.LOGIN} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors">
             立即登录
           </Link>
         </div>

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useParams } from '../router/useRouter';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { CommentSection } from '../components/CommentSection';
 import { ShareButton } from '../components/common/ShareButton';
 import { apiGet } from '../services/api';
 import { HOVER_SHADOWS } from '../constants/theme';
+import { ROUTES } from '../router/routes';
 
 // 帖子接口定义
 interface Post {
@@ -35,6 +37,7 @@ interface Post {
 }
 
 const PostDetail: React.FC = () => {
+  const toast = useToast();
   const { id } = useParams<{ id: string }>();
   const { isAuthenticated } = useAuth();
   const [post, setPost] = useState<Post | null>(null);
@@ -155,7 +158,7 @@ const PostDetail: React.FC = () => {
         {/* 返回按钮 */}
         <div className="mb-6">
           <Link
-            to="/community"
+            to={ROUTES.COMMUNITY}
             className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/authContext';
-import { toast } from 'sonner';
+import { useToast } from '../../composables/useToast';
 
 // 定义类型
 interface GroupMember {
@@ -40,6 +40,7 @@ const GroupCard: React.FC<GroupCardProps> = (
     canDelete = false
   }
 ) => {
+  const toast = useToast();
   const { isAuthenticated } = useAuth();
 
   const handleJoinLeave = () => {

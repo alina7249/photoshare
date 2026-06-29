@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
+import { useRouter } from '../../router/useRouter';
+import { useToast } from '../../composables/useToast';
 import Button from '../../components/common/Button';
 import { apiGet } from '../../services/api';
 
 const GroupManagement: React.FC = () => {
-  const navigate = useNavigate();
+  const toast = useToast();
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [sortBy, setSortBy] = useState('createdAt');
@@ -128,10 +129,10 @@ const GroupManagement: React.FC = () => {
   const handleGroupAction = (groupId: string, action: string) => {
     switch (action) {
       case 'view':
-        navigate(`/admin/groups/${groupId}`);
+        router.push(`/admin/groups/${groupId}`);
         break;
       case 'edit':
-        navigate(`/admin/groups/${groupId}/edit`);
+        router.push(`/admin/groups/${groupId}/edit`);
         break;
       case 'ban':
         setGroups(prev => 

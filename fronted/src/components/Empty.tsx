@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 
 // 定义 Empty 组件的状态类型
 export type EmptyType = 'empty' | 'permission' | 'network' | 'function' | 'disabled';
@@ -31,6 +31,7 @@ export const EmptyProvider: React.FC<{
   children: React.ReactNode;
   config?: EmptyConfig;
 }> = ({ children, config = {} }) => {
+  const toast = useToast();
   const [globalConfig, setGlobalConfig] = useState<EmptyConfig>({
     type: 'empty',
     effect3d: false,
@@ -145,6 +146,7 @@ function cn(...classes: (string | undefined)[]) {
 
 // Empty 组件
 export function Empty(props: EmptyProps) {
+  const toast = useToast();
   const context = useContext(EmptyContext);
   const globalConfig = context?.config || {};
   

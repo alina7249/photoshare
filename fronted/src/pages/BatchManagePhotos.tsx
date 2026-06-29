@@ -2,9 +2,10 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { apiGet } from '../services/api';
 import { Empty } from '../components/Empty';
+import { ROUTES } from '../router/routes';
 
 // 摄影作品接口定义
 interface PhotographyPost {
@@ -37,6 +38,7 @@ interface OperationHistory {
 }
 
 const BatchManagePhotos: React.FC = () => {
+  const toast = useToast();
   const { isAuthenticated, user } = useAuth();
   
   // 基本状态管理
@@ -362,7 +364,7 @@ const BatchManagePhotos: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">请先登录</h2>
           <p className="text-text-muted mb-6 max-w-md">登录后管理您的作品，支持批量操作</p>
-          <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors">
+          <Link to={ROUTES.LOGIN} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors">
             立即登录
           </Link>
         </motion.div>
@@ -384,7 +386,7 @@ const BatchManagePhotos: React.FC = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Link
-              to="/profile-center/works"
+              to={ROUTES.PROFILE_CENTER_WORKS}
               className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
             >
               <i className="fa-solid fa-arrow-left"></i>

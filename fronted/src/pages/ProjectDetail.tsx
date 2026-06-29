@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { useParams } from '../router/useRouter';
 import { motion } from "framer-motion";
 import { useAuth } from "../contexts/authContext";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-import { toast } from "sonner";
+import { useToast } from '../composables/useToast';
 import { CommentSection } from '../components/CommentSection';
 import { apiGet } from '../services/api';
 import { CHART_COLORS } from '../constants/theme';
+import { ROUTES } from '../router/routes';
 
 interface Project {
     id: string;
@@ -47,7 +49,7 @@ interface MatchedPhotographer {
 }
 
 const calculateDaysRemaining = (deadline: string) => {
-    const now = new Date();
+  const now = new Date();
     const deadlineDate = new Date(deadline);
     const diffTime = deadlineDate.getTime() - now.getTime();
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -55,6 +57,7 @@ const calculateDaysRemaining = (deadline: string) => {
 };
 
 const ProjectDetail: React.FC = () => {
+    const toast = useToast();
     const {
         id
     } = useParams<{
@@ -137,7 +140,7 @@ const ProjectDetail: React.FC = () => {
                     <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该项目</h2>
                     <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的项目不存在或已被删除</p>
                     <Link
-                        to="/resources"
+                        to={ROUTES.RESOURCES}
                         className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent">返回资源列表
                                   </Link>
                 </div>
@@ -174,7 +177,7 @@ const ProjectDetail: React.FC = () => {
                 {}
                 <div className="mb-6">
                     <Link
-                        to="/resources"
+                        to={ROUTES.RESOURCES}
                         className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors">
                         <i className="fa-solid fa-arrow-left"></i>
                         <span>返回资源列表</span>

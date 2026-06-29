@@ -1,6 +1,7 @@
 import { buildCozeImageUrl } from '../constants/api';
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { useRouter } from '../router/useRouter';
 import { motion } from "framer-motion";
 import { useAuthStore } from "../store/authStore";
 import { ProfileDropdown } from "./ProfileDropdown";
@@ -8,6 +9,7 @@ import { getHeaderBgClass, getNavTextClass } from '../composables/useThemeHelper
 import { useScrollSpy } from '../composables/useScrollSpy';
 import { useProfileApi } from '../composables/useProfileApi';
 import { EMPTY_TEXT } from '../constants/text';
+import { ROUTES } from '../router/routes';
 
 export const Header: React.FC = () => {
     const {
@@ -21,7 +23,7 @@ export const Header: React.FC = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const location = useLocation();
+    const router = useRouter();
 
     const [userData, setUserData] = useState<any>(null);
     const { fetchProfile } = useProfileApi();
@@ -84,7 +86,7 @@ export const Header: React.FC = () => {
                 <div className="flex items-center justify-between h-16">
                     {}
                     <div className="flex items-center">
-                        <Link to="/" className="flex items-center">
+                        <Link to={ROUTES.HOME} className="flex items-center">
                             <motion.div
                                 whileHover={{
                                     rotate: 10
@@ -102,15 +104,15 @@ export const Header: React.FC = () => {
                         {navLinks.map(link => <Link
                             key={link.path}
                             to={link.path}
-                            className={`font-medium transition-colors relative ${getTextClass(location.pathname === link.path)} 
-                  ${location.pathname === link.path ? `after:content-[""] after:block after:w-full after:h-[2px] after:${theme === "dark" ? "bg-accent" : "bg-light-accent"} after:absolute after:bottom-[-6px] after:left-0` : ""}`}>
+                            className={`font-medium transition-colors relative ${getTextClass(router.currentPath === link.path)} 
+                  ${router.currentPath === link.path ? `after:content-[""] after:block after:w-full after:h-[2px] after:${theme === "dark" ? "bg-accent" : "bg-light-accent"} after:absolute after:bottom-[-6px] after:left-0` : ""}`}>
                             {link.name}
                         </Link>)}
             {/* 管理后台入口 - 桌面端显示 */}
             <Link
-              to="/admin"
-              className={`font-medium transition-colors relative ${getTextClass(location.pathname.startsWith('/admin'))} 
-            ${location.pathname.startsWith('/admin') ? `after:content-[""] after:block after:w-full after:h-[2px] after:${theme === "dark" ? "bg-accent" : "bg-light-accent"} after:absolute after:bottom-[-6px] after:left-0` : ""}`}
+              to={ROUTES.ADMIN}
+              className={`font-medium transition-colors relative ${getTextClass(router.currentPath.startsWith('/admin'))} 
+            ${router.currentPath.startsWith('/admin') ? `after:content-[""] after:block after:w-full after:h-[2px] after:${theme === "dark" ? "bg-accent" : "bg-light-accent"} after:absolute after:bottom-[-6px] after:left-0` : ""}`}
             >
               管理后台
             </Link>
@@ -134,11 +136,11 @@ export const Header: React.FC = () => {
                             </button>
                         </div> : <div className="flex items-center space-x-3">
                             <Link
-                                to="/login"
+                                to={ROUTES.LOGIN}
                                 className={`px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "text-text-primary border border-accent hover:bg-accent/20" : "text-deep border border-gray-300 hover:bg-gray-100"} transition-colors`}>登录
                                                 </Link>
                             <Link
-                                to="/register"
+                                to={ROUTES.REGISTER}
                                 className={`px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "text-deep bg-accent hover:bg-accent-hover shadow-accent-md" : "text-white bg-light-accent hover:bg-light-accent-hover shadow-light-accent-sm"} transition-colors`}>注册
                                                 </Link>
                         </div>}
@@ -203,7 +205,7 @@ export const Header: React.FC = () => {
                     {navLinks.map(link => <Link
                         key={link.path}
                         to={link.path}
-                        className={`block px-4 py-2 font-medium transition-colors ${location.pathname === link.path ? theme === "dark" ? "text-text-primary bg-card rounded-lg border-l-2 border-accent" : "text-deep bg-gray-100 rounded-lg border-l-2 border-light-accent" : theme === "dark" ? "text-text-muted/70 hover:text-text-primary" : "text-accent-hover/70 hover:text-deep"}`}
+                        className={`block px-4 py-2 font-medium transition-colors ${router.currentPath === link.path ? theme === "dark" ? "text-text-primary bg-card rounded-lg border-l-2 border-accent" : "text-deep bg-gray-100 rounded-lg border-l-2 border-light-accent" : theme === "dark" ? "text-text-muted/70 hover:text-text-primary" : "text-accent-hover/70 hover:text-deep"}`}
                         onClick={() => setIsMobileMenuOpen(false)}>
                         {link.name}
                     </Link>)}
@@ -231,7 +233,7 @@ export const Header: React.FC = () => {
                                             </button>
                         {/* 管理后台入口 */}
                         <Link
-                            to="/admin"
+                            to={ROUTES.ADMIN}
                             className={`flex flex-col items-center justify-center p-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-accent/20 text-accent hover:bg-accent hover:text-text-primary" : "bg-light-accent/10 text-light-accent hover:bg-light-accent/20 hover:text-light-accent-hover"} transition-colors`}
                             onClick={() => setIsMobileMenuOpen(false)}>
                             <i className="fa-solid fa-user-shield mb-1"></i>管理后台
@@ -247,12 +249,12 @@ export const Header: React.FC = () => {
                                             </button>
                     </div> : <div className="px-4 space-y-3">
                         <Link
-                            to="/login"
+                            to={ROUTES.LOGIN}
                             className={`block w-full text-center px-4 py-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-card text-text-muted hover:bg-accent hover:text-text-primary" : "bg-gray-100 text-accent-hover hover:bg-gray-200 hover:text-deep"} transition-colors`}
                             onClick={() => setIsMobileMenuOpen(false)}>登录
                                             </Link>
                         <Link
-                            to="/register"
+                            to={ROUTES.REGISTER}
                             className={`block w-full text-center px-4 py-3 rounded-lg text-sm font-medium ${theme === "dark" ? "text-deep bg-accent hover:bg-accent-hover" : "text-white bg-light-accent hover:bg-light-accent-hover"} transition-colors`}
                             onClick={() => setIsMobileMenuOpen(false)}>注册
                                             </Link>

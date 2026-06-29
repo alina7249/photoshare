@@ -16,7 +16,7 @@ import {
   Legend,
   ResponsiveContainer 
 } from 'recharts';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import html2canvas from 'html2canvas';
 
 // 性能数据类型定义
@@ -46,6 +46,7 @@ export const EquipmentComparisonChart: React.FC<EquipmentComparisonChartProps> =
   performance,
   darkMode = true
 }) => {
+  const toast = useToast();
   // 状态管理
   const [chartType, setChartType] = useState<'radar' | 'bar'>('radar');
   const [is3DMode, setIs3DMode] = useState(false);

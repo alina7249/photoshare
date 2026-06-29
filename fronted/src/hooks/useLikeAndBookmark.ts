@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { useAuth } from './useAuth';
 
 // 自定义 hook 用于管理点赞和收藏状态
 export const useLikeAndBookmark = (postId: string, initialLikes: number, initialCollections: number) => {
+  const toast = useToast();
   const { isAuthenticated, user } = useAuth();
   
   // 从 localStorage 获取用户对该作品的点赞和收藏状态

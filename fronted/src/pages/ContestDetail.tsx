@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useParams } from '../router/useRouter';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { CommentSection } from '../components/CommentSection';
 import { CONTEST_API } from '../constants/api';
 import { apiGet } from '../services/api';
+import { ROUTES } from '../router/routes';
 
 const ContestDetail: React.FC = () => {
+  const toast = useToast();
   const { id } = useParams<{ id: string }>();
   const { isAuthenticated, user } = useAuth();
   const [contest, setContest] = useState<any>(null);
@@ -57,7 +60,7 @@ const ContestDetail: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该赛事</h2>
           <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的赛事不存在或已被删除</p>
-          <Link to="/photography-contests" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors">
+          <Link to={ROUTES.PHOTOGRAPHY_CONTESTS} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors">
             返回赛事列表
           </Link>
         </div>
@@ -87,7 +90,7 @@ const ContestDetail: React.FC = () => {
         {/* 返回按钮 */}
         <div className="mb-6">
           <Link
-            to="/photography-contests"
+            to={ROUTES.PHOTOGRAPHY_CONTESTS}
             className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>

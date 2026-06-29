@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useParams } from '../router/useRouter';
 import { motion } from 'framer-motion';
-  import { toast } from 'sonner';
+import { ROUTES } from '../router/routes';
+  import { useToast } from '../composables/useToast';
   import { CommentSection } from '../components/CommentSection';
   import { apiGet } from '../services/api';
 
@@ -26,6 +28,7 @@ interface Tutorial {
 }
 
 const TutorialDetail: React.FC = () => {
+  const toast = useToast();
   const { id } = useParams<{ id: string }>();
   const [tutorial, setTutorial] = useState<Tutorial | null>(null);
   const [loading, setLoading] = useState(true);
@@ -81,7 +84,7 @@ const TutorialDetail: React.FC = () => {
           <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该教程</h2>
           <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的教程不存在或已被删除</p>
           <Link 
-            to="/online-courses" 
+            to={ROUTES.ONLINE_COURSES} 
             className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent"
           >
             返回课程列表
@@ -101,7 +104,7 @@ const TutorialDetail: React.FC = () => {
         {/* 返回按钮 */}
         <div className="mb-6">
           <Link
-            to="/online-courses"
+            to={ROUTES.ONLINE_COURSES}
             className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>

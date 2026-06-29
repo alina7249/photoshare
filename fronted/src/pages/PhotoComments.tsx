@@ -1,10 +1,12 @@
 import { buildCozeImageUrl } from '../constants/api';
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useParams } from '../router/useRouter';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
-import { toast } from 'sonner';
+import { useToast } from '../composables/useToast';
 import { apiGet } from '../services/api';
+import { ROUTES } from '../router/routes';
 
 // 评论接口定义
 interface Comment {
@@ -36,6 +38,7 @@ interface PhotographyPost {
 }
 
 const PhotoComments: React.FC = () => {
+  const toast = useToast();
   const { id } = useParams();
   const { isAuthenticated, user } = useAuth();
   const [commentText, setCommentText] = useState('');
@@ -272,7 +275,7 @@ const PhotoComments: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该作品</h2>
           <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的作品不存在或已被删除</p>
-          <Link to="/profile-center" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent">返回作品集</Link>
+          <Link to={ROUTES.PROFILE_CENTER} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent">返回作品集</Link>
         </div>
       </div>
     );
@@ -392,13 +395,13 @@ const PhotoComments: React.FC = () => {
             </p>
             <div className="flex justify-center space-x-3">
               <Link
-                to="/login"
+                to={ROUTES.LOGIN}
                 className="px-4 py-2 text-sm font-medium text-text-primary bg-accent hover:bg-text-light rounded-lg transition-colors"
               >
                 登录
               </Link>
               <Link
-                to="/register"
+                to={ROUTES.REGISTER}
                 className="px-4 py-2 text-sm font-medium text-accent border border-accent rounded-lg hover:bg-accent/20 transition-colors"
               >
                 注册

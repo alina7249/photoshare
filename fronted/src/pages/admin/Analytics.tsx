@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { apiGet } from '../../services/api';
 import { motion } from 'framer-motion';
 import {
   LineChart,
@@ -20,25 +19,27 @@ import {
 } from 'recharts';
 import StatsCard from '../../components/common/StatsCard';
 import { CHART_COLORS } from '../../constants/theme';
+import { useAnalytics } from '../../composables/useAnalytics';
 
 const COLORS = [...CHART_COLORS.EXTENDED].slice(0, 3);
 
 const Analytics: React.FC = () => {
-  const [timeRange, setTimeRange] = useState<'day' | 'week' | 'month' | 'year'>('month');
-  const [activeTab, setActiveTab] = useState<'overview' | 'users' | 'content' | 'revenue' | 'engagement'>('overview');
-  const [userGrowthData, setUserGrowthData] = useState<any[]>([]);
-  const [contentStatsData, setContentStatsData] = useState<any[]>([]);
-  const [revenueData, setRevenueData] = useState<any[]>([]);
-  const [userActivityData, setUserActivityData] = useState<any[]>([]);
-  const [popularCategoriesData, setPopularCategoriesData] = useState<any[]>([]);
+  const { initState, actions } = useAnalytics();
+  const [timeRange, setTimeRange] = useState(initState.timeRange);
+  const [activeTab, setActiveTab] = useState(initState.activeTab);
+  const [userGrowthData, setUserGrowthData] = useState<any[]>(initState.userGrowthData);
+  const [contentStatsData, setContentStatsData] = useState<any[]>(initState.contentStatsData);
+  const [revenueData, setRevenueData] = useState<any[]>(initState.revenueData);
+  const [userActivityData, setUserActivityData] = useState<any[]>(initState.userActivityData);
+  const [popularCategoriesData, setPopularCategoriesData] = useState<any[]>(initState.popularCategoriesData);
 
   useEffect(() => {
-    apiGet('/analytics/dashboard').then((res: any) => {
-      setUserGrowthData(res.userGrowthData || []);
-      setContentStatsData(res.contentStatsData || []);
-      setRevenueData(res.revenueData || []);
-      setUserActivityData(res.userActivityData || []);
-      setPopularCategoriesData(res.popularCategoriesData || []);
+    actions.fetchDashboardData().then((res) => {
+      setUserGrowthData(res.userGrowthData);
+      setContentStatsData(res.contentStatsData);
+      setRevenueData(res.revenueData);
+      setUserActivityData(res.userActivityData);
+      setPopularCategoriesData(res.popularCategoriesData);
     });
   }, []);
 

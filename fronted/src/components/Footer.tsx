@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import { EMPTY_TEXT } from '../constants/text';
+import { ROUTES } from '../router/routes';
 
 const Footer: React.FC = () => {
   const { theme } = useAuthStore();
@@ -84,17 +85,17 @@ const Footer: React.FC = () => {
             <h4 className={`text-lg font-bold mb-4 ${getTextClass(true)}`}>快速链接</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className={`text-sm ${getLinkClass()} transition-colors`}>
+                <Link to={ROUTES.HOME} className={`text-sm ${getLinkClass()} transition-colors`}>
                   首页
                 </Link>
               </li>
               <li>
-                <Link to="/community" className={`text-sm ${getLinkClass()} transition-colors`}>
+                <Link to={ROUTES.COMMUNITY} className={`text-sm ${getLinkClass()} transition-colors`}>
                   社区
                 </Link>
               </li>
               <li>
-                <Link to="/resources" className={`text-sm ${getLinkClass()} transition-colors`}>
+                <Link to={ROUTES.RESOURCES} className={`text-sm ${getLinkClass()} transition-colors`}>
                   资源
                 </Link>
               </li>
