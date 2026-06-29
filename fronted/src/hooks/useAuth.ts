@@ -1,4 +1,5 @@
 import { useAuthStore } from '../store/authStore';
+import { UserRoleEnum } from '../constants/enums';
 
 export const useAuth = () => {
   const {
@@ -6,9 +7,7 @@ export const useAuth = () => {
     user,
     login,
     logout,
-    register,
     setUser,
-    setIsAuthenticated
   } = useAuthStore();
 
   return {
@@ -16,15 +15,16 @@ export const useAuth = () => {
     user,
     login,
     logout,
-    register,
     setUser,
-    setIsAuthenticated
   };
 };
 
 export const checkAuthStatus = (): boolean => {
   const token = localStorage.getItem('token');
   const authData = localStorage.getItem('auth-storage');
-  
   return !!(token || (authData && JSON.parse(authData).isAuthenticated));
+};
+
+export const isAdmin = (userRole: string): boolean => {
+  return userRole === UserRoleEnum.ADMIN;
 };

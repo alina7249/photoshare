@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { useAuthStore } from '../../store/authStore';
 import { HOVER_SHADOWS } from '../../constants/theme';
+import { getCardClass, getCardHoverShadow } from '../../composables/useThemeHelpers';
 
 interface CardProps {
   children: ReactNode;
@@ -18,28 +19,15 @@ const Card: React.FC<CardProps> = ({
 }) => {
   const { theme } = useAuthStore();
   
-  // 基础卡片样式
   const baseStyles = "rounded-xl overflow-hidden shadow-sm";
-  
-  // 根据主题获取背景和边框颜色
-  const themeStyles = theme === 'dark' 
-    ? "bg-card border border-accent" 
-    : "bg-white border border-gray-200";
-  
-  // 组合所有样式
-  const cardClasses = `${baseStyles} ${themeStyles} ${className}`;
-  
-  // 如果有点击事件，则添加cursor-pointer
+  const cardClasses = `${baseStyles} ${getCardClass(theme)} ${className}`;
   const interactiveClasses = onClick ? "cursor-pointer" : "";
   
-  // 悬停效果配置
   const hoverVariants = {
     initial: { y: 0 },
     hover: { 
       y: -5,
-      boxShadow: theme === 'dark' 
-        ? HOVER_SHADOWS.ACCENT_XL
-        : "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+      boxShadow: getCardHoverShadow(theme, HOVER_SHADOWS.ACCENT_XL),
       transition: { duration: 0.3 }
     }
   };

@@ -11,6 +11,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useLikeAndBookmark } from '../hooks/useLikeAndBookmark';
+import { getEquipmentParams } from '../composables/usePostFilter';
 
 // 摄影作品类型定义
 export interface PhotographyPost {
@@ -46,19 +47,7 @@ export const PhotographyCard: React.FC<PhotographyCardProps> = ({ post }) => {
     handleBookmark 
   } = useLikeAndBookmark(post.id, post.likes, post.collections);
 
-  // handleLike 和 handleBookmark 已在 useLikeAndBookmark hook 中定义
-
-  // 提取设备参数信息
-  const getEquipmentParams = () => {
-    const firstLine = post.description.split('\n')[0];
-    // 检查是否包含设备参数格式
-    if (firstLine.includes('|')) {
-      return firstLine;
-    }
-    return '';
-  };
-
-  const equipmentParams = getEquipmentParams();
+  const equipmentParams = getEquipmentParams(post.description);
 
   return (
     <motion.div

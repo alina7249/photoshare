@@ -64,7 +64,7 @@ const LoginForm: React.FC = () => {
       
       if (isAdminUsername) {
         if (['admin', 'editor', 'operator'].includes(data.username.toLowerCase())) {
-          const adminSuccess = await adminLogin(data.username, data.password);
+          const adminSuccess = await adminLogin({ username: data.username, password: data.password });
           
           if (adminSuccess) {
             resetLoginAttempts();
@@ -86,7 +86,7 @@ const LoginForm: React.FC = () => {
         }
       } else {
         try {
-          const success = await login(data.username, data.password);
+          const success = await login({ username: data.username, password: data.password });
           
           if (!success) {
             setLoginAttempts(prev => {

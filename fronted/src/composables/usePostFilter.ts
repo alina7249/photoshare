@@ -84,3 +84,9 @@ export const filterPosts = (
 
   return result;
 };
+
+/** 从描述中提取设备参数（第一行，含 | 分隔符） */
+export const getEquipmentParams = (description: string): string => {
+  const firstLine = description.split('\n')[0];
+  return firstLine.includes('|') ? firstLine : '';
+};
