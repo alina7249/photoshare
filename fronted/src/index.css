@@ -28,6 +28,11 @@
   --light-cool-gray: #B8C6D8;  /* 浅冷灰 - 次要文字、占位文字 */
   --light-white: #F5F7FA;      /* 浅白 - 主要文字颜色 */
   --medium-blue-gray: #6B7C93; /* 浅蓝灰 - 辅助文字颜色 */
+  --chart-purple: #8884d8;   /* 图表紫色 */
+  --chart-green: #68D391;    /* 图表绿色 */
+  --chart-mint: #4CAF50;     /* 图表薄荷绿 */
+  --chart-teal: #38B2AC;     /* 图表青绿色 */
+  --canvas-light: #f8fafc;   /* Canvas 浅色背景 */
   
   font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   line-height: 1.5;

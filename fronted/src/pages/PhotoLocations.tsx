@@ -453,14 +453,14 @@ const PhotoLocations: React.FC = () => {
                 data={statsData}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
               >
-                <CartesianGrid strokeDasharray="3 3" stroke="#4A5F8B" />
-                <XAxis dataKey="name" stroke="#B8C6D8" />
-                <YAxis stroke="#B8C6D8" />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--light-blue-gray)" />
+                <XAxis dataKey="name" stroke="var(--light-cool-gray)" />
+                <YAxis stroke="var(--light-cool-gray)" />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#2D3748', borderColor: '#4A5F8B', color: '#F5F7FA' }} 
+                  contentStyle={{ backgroundColor: 'var(--deep-blue-gray)', borderColor: 'var(--light-blue-gray)', color: 'var(--light-white)' }} 
                 />
-                <Bar dataKey="photos" name="作品数量" fill="#4A5F8B" />
-                <Bar dataKey="visits" name="访问次数" fill="#6B7C93" />
+                <Bar dataKey="photos" name="作品数量" fill="var(--light-blue-gray)" />
+                <Bar dataKey="visits" name="访问次数" fill="var(--medium-blue-gray)" />
               </BarChart>
             </ResponsiveContainer>
           </div>

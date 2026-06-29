@@ -36,7 +36,7 @@ const Captcha: React.FC<CaptchaProps> = ({ onChange, value = '', className = '' 
     canvas.height = 40;
     
     // 背景色
-    ctx.fillStyle = theme === 'dark' ? '#2D3748' : '#f8fafc';
+    ctx.fillStyle = theme === 'dark' ? 'var(--deep-blue-gray)' : 'var(--canvas-light)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
     // 绘制干扰线

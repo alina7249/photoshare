@@ -15,7 +15,8 @@ const getPieChartData = (membershipData: any) => {
     fullValue: item.total
   }));
   
-  const COLORS = ['#4A5F8B', '#6B7C93', '#38B2AC', '#68D391', '#B8C6D8'];
+  // 对应 CSS 变量: --light-blue-gray, --medium-blue-gray, --chart-teal, --chart-green, --light-cool-gray
+const COLORS = ['#4A5F8B', '#6B7C93', '#38B2AC', '#68D391', '#B8C6D8'];
   
   return { data, COLORS };
 };
@@ -326,14 +327,14 @@ const ProfileBenefits: React.FC = () => {
                   <div className="h-64">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={membershipData.growthSystem.usageChartData}>
-                        <XAxis dataKey="name" stroke="#B8C6D8" />
-                        <YAxis stroke="#B8C6D8" />
+                        <XAxis dataKey="name" stroke="var(--light-cool-gray)" />
+                        <YAxis stroke="var(--light-cool-gray)" />
                         <Tooltip 
-                          contentStyle={{ backgroundColor: "#1E2532", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                          labelStyle={{ color: "#F5F7FA" }}
+                          contentStyle={{ backgroundColor: "var(--deep-cool-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                          labelStyle={{ color: "var(--light-white)" }}
                         />
-                        <Bar dataKey="used" name="已使用" fill="#4A5F8B" />
-                        <Bar dataKey="total" name="总量" fill="#6B7C93" />
+                        <Bar dataKey="used" name="已使用" fill="var(--light-blue-gray)" />
+                        <Bar dataKey="total" name="总量" fill="var(--medium-blue-gray)" />
                       </BarChart>
                     </ResponsiveContainer>
                   </div>
@@ -346,7 +347,7 @@ const ProfileBenefits: React.FC = () => {
                           cy="50%"
                           labelLine={false}
                           outerRadius={80}
-                          fill="#8884d8"
+                          fill="var(--chart-purple)"
                           dataKey="value"
                           nameKey="name"
                           label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
@@ -356,8 +357,8 @@ const ProfileBenefits: React.FC = () => {
                           ))}
                         </Pie>
                         <Tooltip 
-                          contentStyle={{ backgroundColor: "#1E2532", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                          labelStyle={{ color: "#F5F7FA" }}
+                          contentStyle={{ backgroundColor: "var(--deep-cool-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                          labelStyle={{ color: "var(--light-white)" }}
                           formatter={(value, name, props) => [`${value}/${props.payload.fullValue}`, name]}
                         />
                       </PieChart>

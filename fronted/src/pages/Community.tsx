@@ -98,23 +98,23 @@ interface Achievement {
 const topicDistributionData: ChartData[] = [{
     name: "器材讨论",
     value: 35,
-    color: "#4A5F8B"
+    color: "var(--light-blue-gray)"
 }, {
     name: "摄影技巧",
     value: 25,
-    color: "#6B7C93"
+    color: "var(--medium-blue-gray)"
 }, {
     name: "作品分享",
     value: 20,
-    color: "#B8C6D8"
+    color: "var(--light-cool-gray)"
 }, {
     name: "后期处理",
     value: 15,
-    color: "#2D3748"
+    color: "var(--deep-blue-gray)"
 }, {
     name: "其他",
     value: 5,
-    color: "#1E2532"
+    color: "var(--deep-cool-gray)"
 }];
 
 const activityData7Days = [{
@@ -388,41 +388,41 @@ const ActivityTrendChart: React.FC = () => {
             <div className="h-80">
                 <ResponsiveContainer width="100%" height="100%">
                     <ComposedChart data={activityData}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#4A5F8B" />
+                        <CartesianGrid strokeDasharray="3 3" stroke="var(--light-blue-gray)" />
                         <XAxis
                             dataKey="date"
                             tick={{
-                                fill: "#B8C6D8"
+                                fill: "var(--light-cool-gray)"
                             }}
                             interval={timeRange === "7days" ? 0 : timeRange === "30days" ? 4 : 14} />
                         <YAxis
                             yAxisId="left"
                             tick={{
-                                fill: "#B8C6D8"
+                                fill: "var(--light-cool-gray)"
                             }} />
                         <YAxis
                             yAxisId="right"
                             orientation="right"
                             tick={{
-                                fill: "#B8C6D8"
+                                fill: "var(--light-cool-gray)"
                             }} />
                         <Tooltip
                             contentStyle={{
-                                backgroundColor: "#2D3748",
-                                borderColor: "#4A5F8B",
+                                backgroundColor: "var(--deep-blue-gray)",
+                                borderColor: "var(--light-blue-gray)",
                                 borderRadius: "8px"
                             }}
                             labelStyle={{
-                                color: "#F5F7FA"
+                                color: "var(--light-white)"
                             }}
                             itemStyle={{
-                                color: "#B8C6D8"
+                                color: "var(--light-cool-gray)"
                             }} />
                         <Legend />
                         <Line
                             type="monotone"
                             dataKey="posts"
-                            stroke="#4A5F8B"
+                            stroke="var(--light-blue-gray)"
                             strokeWidth={2}
                             dot={{
                                 r: 3
@@ -435,7 +435,7 @@ const ActivityTrendChart: React.FC = () => {
                         <Line
                             type="monotone"
                             dataKey="replies"
-                            stroke="#6B7C93"
+                            stroke="var(--medium-blue-gray)"
                             strokeWidth={2}
                             dot={{
                                 r: 3
@@ -448,8 +448,8 @@ const ActivityTrendChart: React.FC = () => {
                         <Area
                             type="monotone"
                             dataKey="users"
-                            stroke="#B8C6D8"
-                            fill="#4A5F8B"
+                            stroke="var(--light-cool-gray)"
+                            fill="var(--light-blue-gray)"
                             fillOpacity={0.3}
                             name="用户数"
                             yAxisId="right" />
@@ -1623,27 +1623,27 @@ const Community: React.FC = () => {
                                 id: "landscape",
                                 text: "风光摄影",
                                 votes: 128,
-                                color: "#4A5F8B"
+                                color: "var(--light-blue-gray)"
                             }, {
                                 id: "portrait",
                                 text: "人像摄影",
                                 votes: 95,
-                                color: "#6B7C93"
+                                color: "var(--medium-blue-gray)"
                             }, {
                                 id: "street",
                                 text: "街头摄影",
                                 votes: 76,
-                                color: "#B8C6D8"
+                                color: "var(--light-cool-gray)"
                             }, {
                                 id: "architecture",
                                 text: "建筑摄影",
                                 votes: 54,
-                                color: "#2D3748"
+                                color: "var(--deep-blue-gray)"
                             }, {
                                 id: "wildlife",
                                 text: "野生动物摄影",
                                 votes: 32,
-                                color: "#1E2532"
+                                color: "var(--deep-cool-gray)"
                             }]}
                             multiSelect={false}
                             expiresAt="2025-12-31" />
@@ -1660,7 +1660,7 @@ const Community: React.FC = () => {
                                             cy="50%"
                                             innerRadius={60}
                                             outerRadius={80}
-                                            fill="#8884d8"
+                                            fill="var(--chart-purple)"
                                             dataKey="value"
                                             labelLine={false}
                                             label={(

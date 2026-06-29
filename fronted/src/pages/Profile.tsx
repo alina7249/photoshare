@@ -466,11 +466,11 @@ const Profile: React.FC = () => {
                 <div className="h-64">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={monthlyViewsData}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#4A5F8B" />
-                      <XAxis dataKey="date" stroke="#B8C6D8" />
-                      <YAxis stroke="#B8C6D8" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="var(--light-blue-gray)" />
+                      <XAxis dataKey="date" stroke="var(--light-cool-gray)" />
+                      <YAxis stroke="var(--light-cool-gray)" />
                       <Tooltip 
-                        contentStyle={{ backgroundColor: '#2D3748', borderColor: '#4A5F8B', color: '#F5F7FA' }}
+                        contentStyle={{ backgroundColor: 'var(--deep-blue-gray)', borderColor: 'var(--light-blue-gray)', color: 'var(--light-white)' }}
                         content={({ active, payload, label }) => {
                           if (active && payload && payload.length) {
                             const viewsData = payload.find(item => item.dataKey === "views");
@@ -487,8 +487,8 @@ const Profile: React.FC = () => {
                         }}
                       />
                       <Legend />
-                      <Line type="monotone" dataKey="views" stroke="#4A5F8B" strokeWidth={2} dot={false} name="浏览量" />
-                      <Line type="monotone" dataKey="likes" stroke="#6B7C93" strokeWidth={2} dot={false} name="点赞量" />
+                      <Line type="monotone" dataKey="views" stroke="var(--light-blue-gray)" strokeWidth={2} dot={false} name="浏览量" />
+                      <Line type="monotone" dataKey="likes" stroke="var(--medium-blue-gray)" strokeWidth={2} dot={false} name="点赞量" />
                     </LineChart>
                   </ResponsiveContainer>
                 </div>

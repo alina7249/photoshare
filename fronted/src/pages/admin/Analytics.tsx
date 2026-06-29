@@ -20,6 +20,7 @@ import {
 } from 'recharts';
 import StatsCard from '../../components/common/StatsCard';
 
+// 对应 CSS 变量: --light-blue-gray, --medium-blue-gray, --chart-teal
 const COLORS = ['#4A5F8B', '#6B7C93', '#38B2AC'];
 
 const Analytics: React.FC = () => {
@@ -196,32 +197,32 @@ const Analytics: React.FC = () => {
                     <ResponsiveContainer width="100%" height="100%">
                       <AreaChart data={userGrowthData}><defs>
                           <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#4A5F8B" stopOpacity={0.8}/>
-                            <stop offset="95%" stopColor="#4A5F8B" stopOpacity={0}/>
+                            <stop offset="5%" stopColor="var(--light-blue-gray)" stopOpacity={0.8}/>
+                            <stop offset="95%" stopColor="var(--light-blue-gray)" stopOpacity={0}/>
                           </linearGradient>
                           <linearGradient id="colorNewUsers" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#6B7C93" stopOpacity={0.8}/>
-                            <stop offset="95%" stopColor="#6B7C93" stopOpacity={0}/>
+                            <stop offset="5%" stopColor="var(--medium-blue-gray)" stopOpacity={0.8}/>
+                            <stop offset="95%" stopColor="var(--medium-blue-gray)" stopOpacity={0}/>
                           </linearGradient>
                         </defs>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#4A5F8B" />
-                        <XAxis dataKey="date" stroke="#B8C6D8" />
-                        <YAxis stroke="#B8C6D8" />
+                        <CartesianGrid strokeDasharray="3 3" stroke="var(--light-blue-gray)" />
+                        <XAxis dataKey="date" stroke="var(--light-cool-gray)" />
+                        <YAxis stroke="var(--light-cool-gray)" />
                         <Tooltip
-                          contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                          labelStyle={{ color: "#F5F7FA" }}
+                          contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                          labelStyle={{ color: "var(--light-white)" }}
                         />
                         <Area
                           type="monotone"
                           dataKey="users"
-                          stroke="#4A5F8B"
+                          stroke="var(--light-blue-gray)"
                           fillOpacity={1}
                           fill="url(#colorUsers)"
                         />
                         <Area
                           type="monotone"
                           dataKey="newUsers"
-                          stroke="#6B7C93"
+                          stroke="var(--medium-blue-gray)"
                           fillOpacity={1}
                           fill="url(#colorNewUsers)"
                         />
@@ -248,7 +249,7 @@ const Analytics: React.FC = () => {
                             cy="50%"
                             labelLine={false}
                             outerRadius={80}
-                            fill="#8884d8"
+                            fill="var(--chart-purple)"
                             dataKey="value"
                             label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
                           >
@@ -257,8 +258,8 @@ const Analytics: React.FC = () => {
                             ))}
                           </Pie>
                           <Tooltip
-                            contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                            labelStyle={{ color: "#F5F7FA" }}
+                            contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                            labelStyle={{ color: "var(--light-white)" }}
                           />
                         </PieChart>
                       </ResponsiveContainer>
@@ -311,16 +312,16 @@ const Analytics: React.FC = () => {
                   <div className="h-80">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={contentStatsData}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#4A5F8B" />
-                        <XAxis dataKey="date" stroke="#B8C6D8" />
-                        <YAxis stroke="#B8C6D8" />
+                        <CartesianGrid strokeDasharray="3 3" stroke="var(--light-blue-gray)" />
+                        <XAxis dataKey="date" stroke="var(--light-cool-gray)" />
+                        <YAxis stroke="var(--light-cool-gray)" />
                         <Tooltip
-                          contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                          labelStyle={{ color: "#F5F7FA" }}
+                          contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                          labelStyle={{ color: "var(--light-white)" }}
                         />
-                        <Bar dataKey="photos" name="摄影作品" fill="#4A5F8B" radius={[4, 4, 0, 0]} />
-                        <Bar dataKey="posts" name="社区帖子" fill="#6B7C93" radius={[4, 4, 0, 0]} />
-                        <Bar dataKey="comments" name="评论" fill="#38B2AC" radius={[4, 4, 0, 0]} />
+                        <Bar dataKey="photos" name="摄影作品" fill="var(--light-blue-gray)" radius={[4, 4, 0, 0]} />
+                        <Bar dataKey="posts" name="社区帖子" fill="var(--medium-blue-gray)" radius={[4, 4, 0, 0]} />
+                        <Bar dataKey="comments" name="评论" fill="var(--chart-teal)" radius={[4, 4, 0, 0]} />
                       </BarChart>
                     </ResponsiveContainer>
                   </div>
@@ -343,7 +344,7 @@ const Analytics: React.FC = () => {
                           cy="50%"
                           labelLine={true}
                           outerRadius={80}
-                          fill="#8884d8"
+                          fill="var(--chart-purple)"
                           dataKey="value"
                           label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
                         >
@@ -352,8 +353,8 @@ const Analytics: React.FC = () => {
                           ))}
                         </Pie>
                         <Tooltip
-                          contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                          labelStyle={{ color: "#F5F7FA" }}
+                          contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                          labelStyle={{ color: "var(--light-white)" }}
                           formatter={(value) => [`${value}%`, '占比']}
                         />
                       </PieChart>
@@ -380,20 +381,20 @@ const Analytics: React.FC = () => {
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={userGrowthData}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#4A5F8B" />
-                      <XAxis dataKey="date" stroke="#B8C6D8" />
-                      <YAxis stroke="#B8C6D8" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="var(--light-blue-gray)" />
+                      <XAxis dataKey="date" stroke="var(--light-cool-gray)" />
+                      <YAxis stroke="var(--light-cool-gray)" />
                       <Tooltip
-                        contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                        labelStyle={{ color: "#F5F7FA" }}
+                        contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                        labelStyle={{ color: "var(--light-white)" }}
                       />
                       <Line
                         type="monotone"
                         dataKey="users"
-                        stroke="#4A5F8B"
+                        stroke="var(--light-blue-gray)"
                         strokeWidth={2}
                         dot={{ r: 4 }}
-                        activeDot={{ r: 6, stroke: "#4A5F8B", strokeWidth: 2 }}
+                        activeDot={{ r: 6, stroke: "var(--light-blue-gray)", strokeWidth: 2 }}
                       />
                     </LineChart>
                   </ResponsiveContainer>
@@ -418,7 +419,7 @@ const Analytics: React.FC = () => {
                           cy="50%"
                           labelLine={false}
                           outerRadius={80}
-                          fill="#8884d8"
+                          fill="var(--chart-purple)"
                           dataKey="value"
                           label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
                         >
@@ -427,8 +428,8 @@ const Analytics: React.FC = () => {
                           ))}
                         </Pie>
                         <Tooltip
-                          contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                          labelStyle={{ color: "#F5F7FA" }}
+                          contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                          labelStyle={{ color: "var(--light-white)" }}
                         />
                       </PieChart>
                     </ResponsiveContainer>
@@ -451,7 +452,7 @@ const Analytics: React.FC = () => {
                           cy="50%"
                           labelLine={true}
                           outerRadius={80}
-                          fill="#8884d8"
+                          fill="var(--chart-purple)"
                           dataKey="value"
                           label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
                         >
@@ -460,8 +461,8 @@ const Analytics: React.FC = () => {
                           ))}
                         </Pie>
                         <Tooltip
-                          contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                          labelStyle={{ color: "#F5F7FA" }}
+                          contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                          labelStyle={{ color: "var(--light-white)" }}
                           formatter={(value) => [`${value}%`, '占比']}
                         />
                       </PieChart>
@@ -502,16 +503,16 @@ const Analytics: React.FC = () => {
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={contentStatsData}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#4A5F8B" />
-                      <XAxis dataKey="date" stroke="#B8C6D8" />
-                      <YAxis stroke="#B8C6D8" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="var(--light-blue-gray)" />
+                      <XAxis dataKey="date" stroke="var(--light-cool-gray)" />
+                      <YAxis stroke="var(--light-cool-gray)" />
                       <Tooltip
-                        contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                        labelStyle={{ color: "#F5F7FA" }}
+                        contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                        labelStyle={{ color: "var(--light-white)" }}
                       />
-                      <Bar dataKey="photos" name="摄影作品" fill="#4A5F8B" radius={[4, 4, 0, 0]} />
-                      <Bar dataKey="posts" name="社区帖子" fill="#6B7C93" radius={[4, 4, 0, 0]} />
-                      <Bar dataKey="comments" name="评论" fill="#38B2AC" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="photos" name="摄影作品" fill="var(--light-blue-gray)" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="posts" name="社区帖子" fill="var(--medium-blue-gray)" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="comments" name="评论" fill="var(--chart-teal)" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -535,15 +536,15 @@ const Analytics: React.FC = () => {
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={revenueData}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#4A5F8B" />
-                      <XAxis dataKey="month" stroke="#B8C6D8" />
-                      <YAxis stroke="#B8C6D8" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="var(--light-blue-gray)" />
+                      <XAxis dataKey="month" stroke="var(--light-cool-gray)" />
+                      <YAxis stroke="var(--light-cool-gray)" />
                       <Tooltip
-                        contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                        labelStyle={{ color: "#F5F7FA" }}
+                        contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                        labelStyle={{ color: "var(--light-white)" }}
                         formatter={(value) => [`¥${value}`, '收入']}
                       />
-                      <Bar dataKey="amount" fill="#4A5F8B" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="amount" fill="var(--light-blue-gray)" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -568,20 +569,20 @@ const Analytics: React.FC = () => {
                   <div className="h-80">
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={contentStatsData}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#4A5F8B" />
-                        <XAxis dataKey="date" stroke="#B8C6D8" />
-                        <YAxis stroke="#B8C6D8" />
+                        <CartesianGrid strokeDasharray="3 3" stroke="var(--light-blue-gray)" />
+                        <XAxis dataKey="date" stroke="var(--light-cool-gray)" />
+                        <YAxis stroke="var(--light-cool-gray)" />
                         <Tooltip
-                          contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                          labelStyle={{ color: "#F5F7FA" }}
+                          contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                          labelStyle={{ color: "var(--light-white)" }}
                         />
                         <Line
                           type="monotone"
                           dataKey="comments"
-                          stroke="#4A5F8B"
+                          stroke="var(--light-blue-gray)"
                           strokeWidth={2}
                           dot={{ r: 4 }}
-                          activeDot={{ r: 6, stroke: "#4A5F8B", strokeWidth: 2 }}
+                          activeDot={{ r: 6, stroke: "var(--light-blue-gray)", strokeWidth: 2 }}
                         />
                       </LineChart>
                     </ResponsiveContainer>
@@ -605,7 +606,7 @@ const Analytics: React.FC = () => {
                           cy="50%"
                           labelLine={true}
                           outerRadius={80}
-                          fill="#8884d8"
+                          fill="var(--chart-purple)"
                           dataKey="value"
                           label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
                         >
@@ -614,8 +615,8 @@ const Analytics: React.FC = () => {
                           ))}
                         </Pie>
                         <Tooltip
-                          contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                          labelStyle={{ color: "#F5F7FA" }}
+                          contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                          labelStyle={{ color: "var(--light-white)" }}
                           formatter={(value) => [`${value}%`, '占比']}
                         />
                       </PieChart>

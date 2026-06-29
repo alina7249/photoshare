@@ -61,6 +61,11 @@ export default {
         'brand-wechat': '#07C160',
         'blue-medium': '#4A9DE6',
         'blue-dark': '#3182CE',
+        // 图表色
+        'chart-purple': '#8884d8',
+        'chart-green': '#68D391',
+        'chart-mint': '#4CAF50',
+        'canvas-light': '#f8fafc',
       },
       zIndex: {
         'dropdown': 100,

@@ -19,6 +19,7 @@ import {
 import StatsCard from '../../components/common/StatsCard';
 import Button from '../../components/common/Button';
 
+// 对应 CSS 变量: --light-blue-gray, --medium-blue-gray, --chart-teal, --chart-green
 const COLORS = ['#4A5F8B', '#6B7C93', '#38B2AC', '#68D391'];
 
 const Dashboard: React.FC = () => {
@@ -142,28 +143,28 @@ const Dashboard: React.FC = () => {
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={userGrowthData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#4A5F8B" />
-                <XAxis dataKey="date" stroke="#B8C6D8" />
-                <YAxis stroke="#B8C6D8" />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--light-blue-gray)" />
+                <XAxis dataKey="date" stroke="var(--light-cool-gray)" />
+                <YAxis stroke="var(--light-cool-gray)" />
                 <Tooltip
-                  contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                  labelStyle={{ color: "#F5F7FA" }}
+                  contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                  labelStyle={{ color: "var(--light-white)" }}
                 />
                 <Line
                   type="monotone"
                   dataKey="users"
-                  stroke="#4A5F8B"
+                  stroke="var(--light-blue-gray)"
                   strokeWidth={2}
                   dot={{ r: 4 }}
-                  activeDot={{ r: 6, stroke: "#4A5F8B", strokeWidth: 2 }}
+                  activeDot={{ r: 6, stroke: "var(--light-blue-gray)", strokeWidth: 2 }}
                 />
                 <Line
                   type="monotone"
                   dataKey="newUsers"
-                  stroke="#6B7C93"
+                  stroke="var(--medium-blue-gray)"
                   strokeWidth={2}
                   dot={{ r: 4 }}
-                  activeDot={{ r: 6, stroke: "#6B7C93", strokeWidth: 2 }}
+                  activeDot={{ r: 6, stroke: "var(--medium-blue-gray)", strokeWidth: 2 }}
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -182,7 +183,7 @@ const Dashboard: React.FC = () => {
                   cy="50%"
                   labelLine={false}
                   outerRadius={80}
-                  fill="#8884d8"
+                  fill="var(--chart-purple)"
                   dataKey="value"
                   label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
                 >
@@ -191,8 +192,8 @@ const Dashboard: React.FC = () => {
                   ))}
                 </Pie>
                 <Tooltip
-                  contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                  labelStyle={{ color: "#F5F7FA" }}
+                  contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                  labelStyle={{ color: "var(--light-white)" }}
                 />
               </PieChart>
             </ResponsiveContainer>
@@ -220,15 +221,15 @@ const Dashboard: React.FC = () => {
           <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={orderStatsData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#4A5F8B" />
-                <XAxis dataKey="month" stroke="#B8C6D8" />
-                <YAxis stroke="#B8C6D8" />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--light-blue-gray)" />
+                <XAxis dataKey="month" stroke="var(--light-cool-gray)" />
+                <YAxis stroke="var(--light-cool-gray)" />
                 <Tooltip
-                  contentStyle={{ backgroundColor: "#2D3748", borderColor: "#4A5F8B", borderRadius: "8px" }}
-                  labelStyle={{ color: "#F5F7FA" }}
+                  contentStyle={{ backgroundColor: "var(--deep-blue-gray)", borderColor: "var(--light-blue-gray)", borderRadius: "8px" }}
+                  labelStyle={{ color: "var(--light-white)" }}
                   formatter={(value) => [`¥${value}`, '收入']}
                 />
-                <Bar dataKey="amount" fill="#4A5F8B" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="amount" fill="var(--light-blue-gray)" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>

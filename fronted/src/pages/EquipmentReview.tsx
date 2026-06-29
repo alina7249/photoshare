@@ -5,6 +5,7 @@ import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadius
 import { apiGet } from '../lib/api';
 
 // 雷达图颜色
+// 对应 CSS 变量: --light-blue-gray, --chart-purple, --light-cool-gray
 const RADAR_COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8'];
 
 const EquipmentReview: React.FC = () => {
@@ -259,9 +260,9 @@ const EquipmentReview: React.FC = () => {
                 <div className="h-80 mb-6">
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart outerRadius={90} data={comparisonReviewData}>
-                      <PolarGrid stroke="#B8C6D8" />
-                      <PolarAngleAxis dataKey="category" tick={{ fill: '#4A5059', fontSize: 12 }} />
-                      <PolarRadiusAxis angle={30} domain={[0, 10]} tick={{ fill: '#4A5059' }} />
+                      <PolarGrid stroke="var(--light-cool-gray)" />
+                      <PolarAngleAxis dataKey="category" tick={{ fill: 'var(--text-light)', fontSize: 12 }} />
+                      <PolarRadiusAxis angle={30} domain={[0, 10]} tick={{ fill: 'var(--text-light)' }} />
                       <Radar
                         name="A7R V"
                         dataKey="A7R V"

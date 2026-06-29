@@ -526,7 +526,7 @@ const CourseDetail: React.FC = () => {
                           key={i}
                           onClick={() => setUserRating(i + 1)}
                           className="text-2xl"
-                          style={{ color: i < userRating ? '#4A5F8B' : '#4A5F8B/30' }}
+                          style={{ color: i < userRating ? 'var(--light-blue-gray)' : '#4A5F8B/30' }}
                         >
                           <i className="fa-solid fa-star"></i>
                         </button>

@@ -356,7 +356,8 @@ const equipmentTypes = [
   };
 
   // 颜色配置
-  const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
+  // 对应 CSS 变量: --light-blue-gray, --chart-purple, --light-cool-gray, --surface-light-card
+const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
 
   // 获取推荐器材
   const getRecommendedEquipment = (equipment: Equipment) => {
@@ -1400,8 +1401,8 @@ const equipmentTypes = [
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart outerRadius={90} data={radarData}>
-                      <PolarGrid stroke="#4A5F8B" />
-                      <PolarAngleAxis dataKey="category" tick={{ fill: '#B8C6D8', fontSize: 12 }} />
+                      <PolarGrid stroke="var(--light-blue-gray)" />
+                      <PolarAngleAxis dataKey="category" tick={{ fill: 'var(--light-cool-gray)', fontSize: 12 }} />
                       {comparisonData.map((item, index) => (
                         <Radar
                           key={index}

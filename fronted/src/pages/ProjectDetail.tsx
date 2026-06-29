@@ -154,6 +154,7 @@ const ProjectDetail: React.FC = () => {
         value: 100 - (project.progress || 0)
     }];
 
+    // 对应 CSS 变量: --light-blue-gray, --deep-cool-gray
     const COLORS = ["#4A5F8B", "#1E2532"];
 
     return (

@@ -161,7 +161,8 @@ export const EquipmentComparisonChart: React.FC<EquipmentComparisonChartProps> =
   }, [performance]);
   
   // 图表颜色配置
-  const COLORS = ['#4A5F8B', '#8884d8', '#6B7C93', '#4CAF50'];
+  // 对应 CSS 变量: --light-blue-gray, --chart-purple, --medium-blue-gray, --chart-mint
+const COLORS = ['#4A5F8B', '#8884d8', '#6B7C93', '#4CAF50'];
   
   // 图表高度（响应式）
   const chartHeight = useMemo(() => {
@@ -246,7 +247,7 @@ export const EquipmentComparisonChart: React.FC<EquipmentComparisonChartProps> =
     
     try {
       const canvas = await html2canvas(chartRef.current, {
-        backgroundColor: darkMode ? '#2D3748' : '#F5F7FA',
+        backgroundColor: darkMode ? 'var(--deep-blue-gray)' : 'var(--light-white)',
         scale: 2 // 提高导出图片质量
       });
       
@@ -302,9 +303,9 @@ export const EquipmentComparisonChart: React.FC<EquipmentComparisonChartProps> =
         <ResponsiveContainer width="100%" height={chartHeight}>
           {chartType === 'radar' ? (
             <RadarChart outerRadius={chartHeight * 0.35} data={chartData}>
-              <PolarGrid stroke={darkMode ? "#4A5F8B" : "#B8C6D8"} />
-              <PolarAngleAxis dataKey="category" tick={{ fill: darkMode ? "#B8C6D8" : "#4A5F8B", fontSize: 12 }} />
-              <PolarRadiusAxis angle={30} domain={[0, 10]} tick={{ fill: darkMode ? "#B8C6D8" : "#4A5F8B" }} />
+              <PolarGrid stroke={darkMode ? "var(--light-blue-gray)" : "var(--light-cool-gray)"} />
+              <PolarAngleAxis dataKey="category" tick={{ fill: darkMode ? "var(--light-cool-gray)" : "var(--light-blue-gray)", fontSize: 12 }} />
+              <PolarRadiusAxis angle={30} domain={[0, 10]} tick={{ fill: darkMode ? "var(--light-cool-gray)" : "var(--light-blue-gray)" }} />
               
               <Radar
                 name={equipmentName}
@@ -332,15 +333,15 @@ export const EquipmentComparisonChart: React.FC<EquipmentComparisonChartProps> =
             </RadarChart>
           ) : (
             <BarChart data={chartData} barGap={0} barCategoryGap="15%">
-              <CartesianGrid strokeDasharray="3 3" stroke={darkMode ? "#4A5F8B" : "#B8C6D8"} />
+              <CartesianGrid strokeDasharray="3 3" stroke={darkMode ? "var(--light-blue-gray)" : "var(--light-cool-gray)"} />
               <XAxis 
                 dataKey="category" 
-                tick={{ fill: darkMode ? "#B8C6D8" : "#4A5F8B", fontSize: 12 }}
+                tick={{ fill: darkMode ? "var(--light-cool-gray)" : "var(--light-blue-gray)", fontSize: 12 }}
                 angle={-45}
                 textAnchor="end"
                 height={70}
               />
-              <YAxis domain={[0, 10]} tick={{ fill: darkMode ? "#B8C6D8" : "#4A5F8B" }} />
+              <YAxis domain={[0, 10]} tick={{ fill: darkMode ? "var(--light-cool-gray)" : "var(--light-blue-gray)" }} />
               
               <Bar 
                 name={equipmentName}
