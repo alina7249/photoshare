@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 import { toast } from "sonner";
-import { apiGet } from "../lib/api";
+import { apiGet } from "../services/api";
 
 interface FormData {
     username: string;

@@ -5,7 +5,7 @@ import { useAuth } from "../contexts/authContext";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { toast } from "sonner";
 import { useEffect } from "react";
-import { apiGet } from "../lib/api";
+import { apiGet } from "../services/api";
 import { HOVER_SHADOWS } from "../constants/theme";
 
 interface Project {

@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { toast } from 'sonner';
 import { CommentSection } from '../components/CommentSection';
-import { apiGet } from '../lib/api';
+import { CONTEST_API } from '../constants/api';
+import { apiGet } from '../services/api';
 
 const ContestDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,7 +16,7 @@ const ContestDetail: React.FC = () => {
   useEffect(() => {
     const fetchContestDetail = async () => {
       try {
-        const data = await apiGet(`/contests/${id}`);
+        const data = await apiGet(`${CONTEST_API.DETAIL}/${id}`);
         setContest(data);
       } catch (err) {
         console.error('Failed to fetch contest detail:', err);

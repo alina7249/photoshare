@@ -5,7 +5,8 @@ import { useAuth } from '../contexts/authContext';
 import { CommentSection } from '../components/CommentSection';
 import { toast } from 'sonner';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { apiGet } from '../lib/api';
+import { GROUP_API } from '../constants/api';
+import { apiGet } from '../services/api';
 import { HOVER_SHADOWS } from '../constants/theme';
 
 // 课程类型定义
@@ -123,7 +124,7 @@ const CourseDetail: React.FC = () => {
   const [instructors, setInstructors] = useState<any[]>([]);
 
   useEffect(() => {
-    apiGet("/study-groups").then((data) => {
+    apiGet(GROUP_API.LIST).then((data) => {
       setStudyGroups(data);
     }).catch(() => {
       // ignore

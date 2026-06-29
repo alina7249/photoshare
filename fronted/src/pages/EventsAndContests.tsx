@@ -1,4 +1,4 @@
-import { buildCozeImageUrl } from '../constants/api';
+import { buildCozeImageUrl, EVENT_API, CONTEST_API } from '../constants/api';
 // EventsAndContests.tsx - 活动与赛事主页面
 // 整合线下活动和摄影赛事，采用与资源模块类似的标签切换格式
 
@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { toast } from 'sonner';
 import { EventCard } from '../components/EventCard';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 
 // 线下活动类型定义
 interface Event {
@@ -69,8 +69,8 @@ const EventsAndContests: React.FC = () => {
     const fetchData = async () => {
       try {
         const [eventsData, contestsData] = await Promise.all([
-          apiGet('/events'),
-          apiGet('/contests'),
+          apiGet(EVENT_API.LIST),
+          apiGet(CONTEST_API.LIST),
         ]);
         setAllEvents(eventsData);
         setAllContests(contestsData);

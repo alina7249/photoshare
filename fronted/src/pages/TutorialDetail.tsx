@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
   import { toast } from 'sonner';
   import { CommentSection } from '../components/CommentSection';
-  import { apiGet } from '../lib/api';
+  import { apiGet } from '../services/api';
 
 // 教程类型定义
 interface Tutorial {

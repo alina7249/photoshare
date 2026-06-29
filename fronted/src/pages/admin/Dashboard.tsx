@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { apiGet } from '../../lib/api';
+import { apiGet } from '../../services/api';
 import { motion } from 'framer-motion';
 import {
   LineChart,

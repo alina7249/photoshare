@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { toast } from 'sonner';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 import { CommentSection } from '../components/CommentSection';
 
 // 定义类型

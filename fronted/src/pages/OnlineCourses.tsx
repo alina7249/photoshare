@@ -8,9 +8,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { COURSE_API } from '../constants/api';
 import { HOVER_SHADOWS } from '../constants/theme';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 
 const courseCategories: { id: string; name: string; count: number }[] = [];
 const courseTypes: string[] = ['全部'];
@@ -33,7 +34,7 @@ const OnlineCourses: React.FC = () => {
     const fetchData = async () => {
       try {
         const [coursesData, tutorialsData] = await Promise.all([
-          apiGet('/courses'),
+          apiGet(COURSE_API.LIST),
           apiGet('/tutorials'),
         ]);
         setCourses(Array.isArray(coursesData) ? coursesData : []);

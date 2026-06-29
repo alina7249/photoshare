@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
 import { useTheme } from '../hooks/useTheme';
 import { useAuth } from '../contexts/authContext';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 import { HOVER_SHADOWS } from '../constants/theme';
 
 interface Answer {

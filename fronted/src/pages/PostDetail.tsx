@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/authContext';
 import { toast } from 'sonner';
 import { CommentSection } from '../components/CommentSection';
 import { ShareButton } from '../components/common/ShareButton';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 import { HOVER_SHADOWS } from '../constants/theme';
 
 // 帖子接口定义

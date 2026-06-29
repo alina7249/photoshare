@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/authContext';
 import { Empty } from '../components/Empty';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { toast } from 'sonner';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 
 const Profile: React.FC = () => {
   const { isAuthenticated, user } = useAuth();

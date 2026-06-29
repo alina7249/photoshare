@@ -8,9 +8,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
+import { CONTEST_API } from '../constants/api';
 import { HOVER_SHADOWS } from '../constants/theme';
 import { toast } from 'sonner';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 
 const PhotographyContests: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
@@ -32,7 +33,7 @@ const PhotographyContests: React.FC = () => {
   useEffect(() => {
     const fetchContests = async () => {
       try {
-        const data = await apiGet('/contests');
+        const data = await apiGet(CONTEST_API.LIST);
         setAllContests(data);
       } catch (err) {
         console.error('Failed to fetch contests:', err);

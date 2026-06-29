@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import Button from '../../components/common/Button';
-import { apiGet } from '../../lib/api';
+import { apiGet } from '../../services/api';
 
 const ContentManagement: React.FC = () => {
   const navigate = useNavigate();

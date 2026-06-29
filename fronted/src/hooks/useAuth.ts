@@ -23,7 +23,7 @@ export const useAuth = () => {
 };
 
 export const checkAuthStatus = (): boolean => {
-  const token = localStorage.getItem('authToken');
+  const token = localStorage.getItem('token');
   const authData = localStorage.getItem('auth-storage');
   
   return !!(token || (authData && JSON.parse(authData).isAuthenticated));

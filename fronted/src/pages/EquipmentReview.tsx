@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend } from 'recharts';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 import { CHART_COLORS, HOVER_SHADOWS } from '../constants/theme';
 
 // 雷达图颜色

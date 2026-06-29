@@ -11,7 +11,7 @@ import { useAuth } from '../contexts/authContext';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { ShareButton } from '../components/common/ShareButton';
 import { toast } from 'sonner';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 
 // 位置信息接口
 interface Location {

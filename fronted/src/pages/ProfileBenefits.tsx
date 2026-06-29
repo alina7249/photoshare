@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { toast } from 'sonner';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 
 import { CHART_COLORS, HOVER_SHADOWS } from '../constants/theme';
 

@@ -7,7 +7,7 @@ import { CommentSection } from '../components/CommentSection';
 import { ShareButton } from '../components/common/ShareButton';
 import { useLikeAndBookmark } from '../hooks/useLikeAndBookmark';
 import { useAuth } from '../contexts/authContext';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 
 // 摄影作品类型定义
 interface PhotoPost {

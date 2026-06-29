@@ -35,3 +35,75 @@ export const buildCozeImageUrl = (
   const encodedPrompt = encodeURIComponent(prompt);
   return `${COZE_API_BASE}/gen_image?image_size=${imageSize}&prompt=${encodedPrompt}&sign=${sign}`;
 };
+
+// ============================================================
+// API 路径常量 — 与后端 Controller @RequestMapping 保持一致
+// ============================================================
+
+// 用户模块
+export const USER_API = {
+  LOGIN: '/user/login',
+  REGISTER: '/user/register',
+  GET_CURRENT: '/user/getLoginUser',
+  UPDATE: '/user/update/my',
+  LOGOUT: '/user/logout',
+};
+
+// 帖子模块
+export const POST_API = {
+  LIST: '/post/list/page/vo',
+  DETAIL: '/post/get/vo',
+  ADD: '/post/add',
+  UPDATE: '/post/update',
+  DELETE: '/post/delete',
+  MY_LIST: '/post/my/list/page/vo',
+  SEARCH: '/post/search/page/vo',
+};
+
+// 器材模块
+export const EQUIPMENT_API = {
+  LIST: '/equipment/list',
+  DETAIL: '/equipment/detail',
+  ADD: '/equipment/add',
+  EDIT: '/equipment/edit',
+};
+
+// 活动模块
+export const EVENT_API = {
+  LIST: '/event/list',
+  DETAIL: '/event/detail',
+  ADD: '/event/add',
+  EDIT: '/event/edit',
+};
+
+// 课程模块
+export const COURSE_API = {
+  LIST: '/course/list',
+  DETAIL: '/course/detail',
+  ADD: '/course/add',
+  EDIT: '/course/edit',
+};
+
+// 小组模块
+export const GROUP_API = {
+  LIST: '/group/list',
+  DETAIL: '/group/detail',
+  ADD: '/group/add',
+  EDIT: '/group/edit',
+};
+
+// 赛事模块
+export const CONTEST_API = {
+  LIST: '/contest/list',
+  DETAIL: '/contest/detail',
+  ADD: '/contest/add',
+  EDIT: '/contest/edit',
+};
+
+// 交易模块
+export const TRADE_API = {
+  LIST: '/trade/list',
+  DETAIL: '/trade/detail',
+  ADD: '/trade/add',
+  EDIT: '/trade/edit',
+};

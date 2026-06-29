@@ -5,7 +5,7 @@ import { useAuth } from "../contexts/authContext";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { toast } from "sonner";
 import { CommentSection } from '../components/CommentSection';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 import { CHART_COLORS } from '../constants/theme';
 
 interface Project {

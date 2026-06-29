@@ -100,7 +100,7 @@ export const useAuthStore = create<AuthState>()(
               isAuthenticated: true 
             });
             
-            localStorage.setItem('authToken', userData.token || `token_${Date.now()}`);
+            localStorage.setItem('token', userData.token || `token_${Date.now()}`);
             
             return true;
           } else {
@@ -120,7 +120,7 @@ export const useAuthStore = create<AuthState>()(
           isAuthenticated: false
         });
         
-        localStorage.removeItem('authToken');
+        localStorage.removeItem('token');
       },
       
       // 注册方法
@@ -174,7 +174,7 @@ export const useAuthStore = create<AuthState>()(
               userRole: adminUser.role
             });
             
-            localStorage.setItem('authToken', userData.token || `token_${Date.now()}`);
+            localStorage.setItem('token', userData.token || `token_${Date.now()}`);
             
             return true;
           } else {
@@ -195,7 +195,7 @@ export const useAuthStore = create<AuthState>()(
           userRole: 'operator'
         });
         
-        localStorage.removeItem('authToken');
+        localStorage.removeItem('token');
       },
       
       // 切换主题

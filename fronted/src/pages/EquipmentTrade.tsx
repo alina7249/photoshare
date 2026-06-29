@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { useAuth } from "../contexts/authContext";
 import { useTheme } from "../hooks/useTheme";
-import { apiGet } from "../lib/api";
+import { TRADE_API } from '../constants/api';
+import { apiGet } from "../services/api";
 import { HOVER_SHADOWS } from "../constants/theme";
 
 // 联系卖家模态框组件
@@ -1248,7 +1249,7 @@ const EquipmentDetail: React.FC = () => {
   const [showTradeProcess, setShowTradeProcess] = useState(false);
 
   useEffect(() => {
-    apiGet('/trades').then((data: any[]) => {
+    apiGet(TRADE_API.LIST).then((data: any[]) => {
       const found = data.find((item: any) => item.id === id);
       setEquipment(found || null);
     }).catch(() => setEquipment(null));
@@ -1728,8 +1729,8 @@ const EquipmentTrade: React.FC = () => {
     const [newEquipment, setNewEquipment] = useState<any[]>([]);
 
     useEffect(() => {
-      apiGet('/trades?type=used').then(data => setUsedEquipment(data)).catch(() => setUsedEquipment([]));
-      apiGet('/trades?type=new').then(data => setNewEquipment(data)).catch(() => setNewEquipment([]));
+      apiGet(`${TRADE_API.LIST}?type=used`).then(data => setUsedEquipment(data)).catch(() => setUsedEquipment([]));
+      apiGet(`${TRADE_API.LIST}?type=new`).then(data => setNewEquipment(data)).catch(() => setNewEquipment([]));
     }, []);
 
     if (id) {

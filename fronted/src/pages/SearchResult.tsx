@@ -7,7 +7,8 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { PhotographyCard } from '../components/PhotographyCard';
-import { apiGet } from '../lib/api';
+import { POST_API } from '../constants/api';
+import { apiGet } from '../services/api';
 
 // 推荐搜索关键词
 const suggestedSearches = [
@@ -43,7 +44,7 @@ const SearchResult: React.FC = () => {
   // 搜索功能
   const search = (keyword: string) => {
     setIsLoading(true);
-    apiGet(`/search?q=${encodeURIComponent(keyword)}`)
+    apiGet(`${POST_API.SEARCH}?q=${encodeURIComponent(keyword)}`)
       .then((data: any[]) => {
         setResults(data);
         setLandscapeResults(data.filter((item: any) => item.tags?.includes('风景') || item.tags?.includes('landscape')));

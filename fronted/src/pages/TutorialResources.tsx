@@ -7,7 +7,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 import { HOVER_SHADOWS } from '../constants/theme';
 
 const categories: string[] = ['全部'];

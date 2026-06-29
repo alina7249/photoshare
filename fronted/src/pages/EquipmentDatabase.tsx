@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } from 'recharts';
 import { Equipment } from '../lib/equipmentData';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
 import { CHART_COLORS, HOVER_SHADOWS } from '../constants/theme';
 import { EQUIPMENT_TYPE } from '../constants/enums';
 

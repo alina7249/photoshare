@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../contexts/authContext";
 import { ShareButton } from "../components/common/ShareButton";
-import { apiGet } from "../lib/api";
+import { apiGet } from "../services/api";
 
 import {
     PieChart,

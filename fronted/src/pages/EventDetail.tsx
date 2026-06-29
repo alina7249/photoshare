@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { toast } from 'sonner';
 import { CommentSection } from '../components/CommentSection';
-import { apiGet } from '../lib/api';
+import { EVENT_API } from '../constants/api';
+import { apiGet } from '../services/api';
 
 const EventDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,7 +16,7 @@ const EventDetail: React.FC = () => {
   useEffect(() => {
     const fetchEventDetail = async () => {
       try {
-        const data = await apiGet(`/events/${id}`);
+        const data = await apiGet(`${EVENT_API.DETAIL}/${id}`);
         if (data) setEvent(data);
       } catch (err) {
         console.error('Failed to fetch event detail:', err);

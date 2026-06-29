@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuthStore } from "../store/authStore";
 import { ProfileDropdown } from "./ProfileDropdown";
-import { apiGet } from "../lib/api";
+import { apiGet } from "../services/api";
 
 export const Header: React.FC = () => {
     const {

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
-import { apiGet } from '../lib/api';
+import { apiGet } from '../services/api';
+import { EVENT_API } from '../constants/api';
 import { HOVER_SHADOWS } from '../constants/theme';
 
 const OfflineEvents: React.FC = () => {
@@ -16,7 +17,7 @@ const OfflineEvents: React.FC = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const data = await apiGet('/events');
+        const data = await apiGet(EVENT_API.LIST);
         setAllEvents(data);
       } catch (err) {
         console.error('Failed to fetch events:', err);
