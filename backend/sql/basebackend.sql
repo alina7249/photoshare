@@ -1,6 +1,6 @@
 /*
 SQLyog Community v13.3.1 (64 bit)
-MySQL - 8.0.44 : Database - citywalk
+MySQL - 8.0.44 : Database - photoshare
 *********************************************************************
 */
 
