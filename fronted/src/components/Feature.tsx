@@ -45,24 +45,24 @@ export const Feature: React.FC = () => {
   // 根据主题获取样式类
   const getBgClass = () => {
     return theme === 'dark' 
-      ? 'bg-[#2D3748] border border-[#4A5F8B]' 
+      ? 'bg-bg-card border border-accent' 
       : 'bg-white border border-gray-200';
   };
   
   const getTextClass = (isPrimary: boolean) => {
     return isPrimary 
-      ? (theme === 'dark' ? 'text-[#F5F7FA]' : 'text-[#1E2532]')
-      : (theme === 'dark' ? 'text-[#B8C6D8]' : 'text-[#6B7C93]');
+      ? (theme === 'dark' ? 'text-text-primary' : 'text-bg-deep')
+      : (theme === 'dark' ? 'text-text-muted' : 'text-accent-hover');
   };
   
   const getIconBgClass = () => {
-    return theme === 'dark' ? 'bg-[#4A5F8B]/20 text-[#4A5F8B]' : 'bg-gray-100 text-[#63B3ED]';
+    return theme === 'dark' ? 'bg-accent/20 text-accent' : 'bg-gray-100 text-light-accent';
   };
   
   const getLinkClass = () => {
     return theme === 'dark' 
-      ? 'text-[#4A5F8B] hover:text-[#6B7C93]' 
-      : 'text-[#63B3ED] hover:text-[#4299E1]';
+      ? 'text-accent hover:text-accent-hover' 
+      : 'text-light-accent hover:text-light-accent-hover';
   };
   
   const getShadowClass = () => {
@@ -89,7 +89,7 @@ export const Feature: React.FC = () => {
               alt={feature.title} 
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
             />
-            <div className={`absolute inset-0 bg-gradient-to-t ${theme === 'dark' ? 'from-[#1E2532]/80' : 'from-black/60'} to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end`}>
+            <div className={`absolute inset-0 bg-gradient-to-t ${theme === 'dark' ? 'from-bg-deep/80' : 'from-black/60'} to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end`}>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
                 <p className="text-gray-300">{feature.description}</p>

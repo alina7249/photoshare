@@ -132,9 +132,9 @@ const defaultConfig = {
   
   // 操作按钮类型配置
   actionTypeConfig: {
-    primary: 'bg-[#4A5F8B] text-[#F5F7FA] hover:bg-[#6B7C93]',
-    secondary: 'bg-[#2D3748] text-[#B8C6D8] hover:bg-[#4A5F8B] border border-[#4A5F8B]',
-    ghost: 'bg-transparent text-[#4A5F8B] hover:bg-[#4A5F8B]/10 border border-[#4A5F8B]',
+    primary: 'bg-accent text-text-primary hover:bg-accent-hover',
+    secondary: 'bg-bg-card text-text-muted hover:bg-accent border border-accent',
+    ghost: 'bg-transparent text-accent hover:bg-accent/10 border border-accent',
   },
 };
 
@@ -163,8 +163,8 @@ export function Empty(props: EmptyProps) {
     effect3d = globalConfig.effect3d || false,
     onClick,
     onActionClick,
-    backgroundColor = 'bg-[#2D3748]',
-    textColor = 'text-[#F5F7FA]',
+    backgroundColor = 'bg-bg-card',
+    textColor = 'text-text-primary',
     padding,
     cursor = 'cursor-pointer',
     children,
@@ -185,7 +185,7 @@ export function Empty(props: EmptyProps) {
       'flex flex-col items-center justify-center',
       padding || sizeConfig.padding,
       backgroundColor,
-      'border border-[#4A5F8B] rounded-xl',
+      'border border-accent rounded-xl',
       'transition-all duration-300',
       effect3d ? 'transform-style-3d hover:rotate-y-5' : '',
       type === 'disabled' ? 'opacity-50 cursor-not-allowed pointer-events-none' : '',
@@ -208,7 +208,7 @@ export function Empty(props: EmptyProps) {
       'fa-solid',
       icon || typeConfig.icon,
       sizeConfig.iconSize,
-      'text-[#4A5F8B] mb-4',
+      'text-accent mb-4',
       type === 'network' && !loading ? 'animate-pulse-icon' : '',
       loading ? 'fa-spin' : ''
     );
@@ -219,7 +219,7 @@ export function Empty(props: EmptyProps) {
   }, [sizeConfig.textSize, textColor]);
   
   const helperTextClasses = useMemo(() => {
-    return cn(sizeConfig.helperTextSize, 'text-[#B8C6D8] text-center mb-4');
+    return cn(sizeConfig.helperTextSize, 'text-text-muted text-center mb-4');
   }, [sizeConfig.helperTextSize]);
   
   const buttonClasses = useMemo(() => {
@@ -292,8 +292,8 @@ export function Empty(props: EmptyProps) {
       
       {/* 加载覆盖层 */}
       {loading && (
-        <div className="absolute inset-0 bg-[#1E2532]/80 flex items-center justify-center rounded-xl">
-          <i className="fa-solid fa-spinner fa-spin text-2xl text-[#4A5F8B]"></i>
+        <div className="absolute inset-0 bg-bg-deep/80 flex items-center justify-center rounded-xl">
+          <i className="fa-solid fa-spinner fa-spin text-2xl text-accent"></i>
         </div>
       )}
     </div>

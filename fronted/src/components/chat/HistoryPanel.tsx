@@ -75,7 +75,7 @@ export const HistoryPanel: React.FC = () => {
             }}
             className={`flex-1 px-2 py-1 rounded text-sm ${
               theme === 'dark' 
-                ? 'bg-[#4A5F8B] text-white border-none focus:outline-none focus:ring-2 focus:ring-[#6B7C93]' 
+                ? 'bg-accent text-white border-none focus:outline-none focus:ring-2 focus:ring-accent-hover' 
                 : 'bg-gray-200 text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-gray-300'
             }`}
             autoFocus
@@ -84,7 +84,7 @@ export const HistoryPanel: React.FC = () => {
             <button
               onClick={() => handleSaveTitle(chat.id)}
               className={`p-1 rounded text-xs ${
-                theme === 'dark' ? 'text-white hover:bg-[#6B7C93]' : 'text-gray-700 hover:bg-gray-300'
+                theme === 'dark' ? 'text-white hover:bg-accent-hover' : 'text-gray-700 hover:bg-gray-300'
               }`}
             >
               <i className="fa-solid fa-check"></i>
@@ -92,7 +92,7 @@ export const HistoryPanel: React.FC = () => {
             <button
               onClick={handleCancelEdit}
               className={`p-1 rounded text-xs ${
-                theme === 'dark' ? 'text-white hover:bg-[#6B7C93]' : 'text-gray-700 hover:bg-gray-300'
+                theme === 'dark' ? 'text-white hover:bg-accent-hover' : 'text-gray-700 hover:bg-gray-300'
               }`}
             >
               <i className="fa-solid fa-times"></i>
@@ -113,7 +113,7 @@ export const HistoryPanel: React.FC = () => {
         <span className={`font-medium truncate ${
           currentChatId === chat.id 
             ? theme === 'dark' ? 'text-white' : 'text-gray-800'
-            : theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-600'
+            : theme === 'dark' ? 'text-text-muted' : 'text-gray-600'
         }`}>
           {chat.title}
         </span>
@@ -124,7 +124,7 @@ export const HistoryPanel: React.FC = () => {
               handleEditTitle(chat.id, chat.title);
             }}
             className={`p-1 rounded text-xs ${
-              theme === 'dark' ? 'text-[#B8C6D8] hover:text-white' : 'text-gray-500 hover:text-gray-800'
+              theme === 'dark' ? 'text-text-muted hover:text-white' : 'text-gray-500 hover:text-gray-800'
             }`}
             title="编辑标题"
           >
@@ -139,7 +139,7 @@ export const HistoryPanel: React.FC = () => {
               }
             }}
             className={`p-1 rounded text-xs ${
-              theme === 'dark' ? 'text-[#B8C6D8] hover:text-white' : 'text-gray-500 hover:text-gray-800'
+              theme === 'dark' ? 'text-text-muted hover:text-white' : 'text-gray-500 hover:text-gray-800'
             }`}
             title="删除对话"
           >
@@ -175,16 +175,16 @@ export const HistoryPanel: React.FC = () => {
   };
   
   return (
-    <div className={`flex flex-col h-[calc(100vh-160px)] ${theme === 'dark' ? 'bg-[#2D3748]' : 'bg-white'} rounded-xl shadow-xl overflow-hidden border ${theme === 'dark' ? 'border-[#4A5F8B]' : 'border-gray-200'}`}>
+    <div className={`flex flex-col h-[calc(100vh-160px)] ${theme === 'dark' ? 'bg-bg-card' : 'bg-white'} rounded-xl shadow-xl overflow-hidden border ${theme === 'dark' ? 'border-accent' : 'border-gray-200'}`}>
       {/* 面板头部 */}
-      <div className={`p-4 border-b ${theme === 'dark' ? 'border-[#4A5F8B] bg-[#1E2532]' : 'border-gray-200 bg-gray-50'} flex justify-between items-center`}>
+      <div className={`p-4 border-b ${theme === 'dark' ? 'border-accent bg-bg-deep' : 'border-gray-200 bg-gray-50'} flex justify-between items-center`}>
         <h3 className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>对话历史</h3>
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={createNewChat}
           className={`p-2 rounded-full ${
-            theme === 'dark' ? 'hover:bg-[#4A5F8B] text-[#B8C6D8]' : 'hover:bg-gray-200 text-gray-600'
+            theme === 'dark' ? 'hover:bg-accent text-text-muted' : 'hover:bg-gray-200 text-gray-600'
           }`}
           title="新建对话"
         >
@@ -193,7 +193,7 @@ export const HistoryPanel: React.FC = () => {
       </div>
       
       {/* 搜索框 */}
-      <div className={`p-3 border-b ${theme === 'dark' ? 'border-[#4A5F8B]' : 'border-gray-200'}`}>
+      <div className={`p-3 border-b ${theme === 'dark' ? 'border-accent' : 'border-gray-200'}`}>
         <div className={`relative`}>
           <input
             type="text"
@@ -202,11 +202,11 @@ export const HistoryPanel: React.FC = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className={`w-full pl-9 pr-4 py-2 rounded-lg text-sm ${
               theme === 'dark' 
-                ? 'bg-[#1E2532] text-white border-none focus:outline-none focus:ring-2 focus:ring-[#4A5F8B]' 
+                ? 'bg-bg-deep text-white border-none focus:outline-none focus:ring-2 focus:ring-accent' 
                 : 'bg-gray-100 text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-gray-300'
             }`}
           />
-          <i className={`fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 ${theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'}`}></i>
+          <i className={`fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 ${theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'}`}></i>
         </div>
       </div>
       
@@ -218,7 +218,7 @@ export const HistoryPanel: React.FC = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${theme === 'dark' ? 'bg-[#4A5F8B]' : 'bg-gray-100'}`}
+              className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${theme === 'dark' ? 'bg-accent' : 'bg-gray-100'}`}
             >
               {searchQuery.trim() === '' ? (
                 <i className={`fa-solid fa-history text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}></i>
@@ -226,7 +226,7 @@ export const HistoryPanel: React.FC = () => {
                 <i className={`fa-solid fa-search text-xl ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}></i>
               )}
             </motion.div>
-            <p className={`${theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-600'}`}>
+            <p className={`${theme === 'dark' ? 'text-text-muted' : 'text-gray-600'}`}>
               {searchQuery.trim() === '' ? 
                 '暂无对话历史，开始您的第一次对话吧！' : 
                 `没有找到包含"${searchQuery}"的对话`
@@ -239,7 +239,7 @@ export const HistoryPanel: React.FC = () => {
                 onClick={() => setSearchQuery('')}
                 className={`mt-4 px-4 py-2 rounded-lg text-sm ${
                   theme === 'dark' 
-                    ? 'bg-[#4A5F8B]/20 text-[#B8C6D8] hover:bg-[#4A5F8B]/40' 
+                    ? 'bg-accent/20 text-text-muted hover:bg-accent/40' 
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 } transition-colors`}
               >
@@ -259,7 +259,7 @@ export const HistoryPanel: React.FC = () => {
                   {isNewDateGroup && (
                     <div className="mt-2 pt-2 border-t border-dashed text-center">
                       <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                        theme === 'dark' ? 'bg-[#4A5F8B] text-[#B8C6D8]' : 'bg-gray-100 text-gray-600'
+                        theme === 'dark' ? 'bg-accent text-text-muted' : 'bg-gray-100 text-gray-600'
                       }`}>
                         {formatDate(chat.lastActive)}
                       </span>
@@ -274,10 +274,10 @@ export const HistoryPanel: React.FC = () => {
                     className={`p-3 rounded-lg mb-1 cursor-pointer transition-all duration-300 group transform ${
                       currentChatId === chat.id
                         ? theme === 'dark' 
-                          ? 'bg-[#4A5F8B]/30 border-l-2 border-[#4A5F8B] translate-x-1' 
+                          ? 'bg-accent/30 border-l-2 border-accent translate-x-1' 
                           : 'bg-blue-50 border-l-2 border-blue-500 translate-x-1'
                         : theme === 'dark' 
-                          ? 'hover:bg-[#4A5F8B]/10 hover:translate-x-1' 
+                          ? 'hover:bg-accent/10 hover:translate-x-1' 
                           : 'hover:bg-gray-50 hover:translate-x-1'
                     }`}
                     onClick={() => setCurrentChat(chat.id)}
@@ -288,7 +288,7 @@ export const HistoryPanel: React.FC = () => {
                     {chat.messages.length > 0 && (
                       <div className="mt-1 flex items-center justify-between">
                         <p className={`text-xs truncate flex-1 ${
-                          theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'
+                          theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'
                         }`}>
                           <span className="mr-1">
                             {chat.messages[chat.messages.length - 1].sender === 'user' 
@@ -300,7 +300,7 @@ export const HistoryPanel: React.FC = () => {
                           {chat.messages[chat.messages.length - 1].content.length > 50 ? '...' : ''}
                         </p>
                         <span className={`text-xs ${
-                          theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'
+                          theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'
                         }`}>
                           {formatTime(chat.lastActive)}
                         </span>
@@ -322,7 +322,7 @@ export const HistoryPanel: React.FC = () => {
       </div>
       
       {/* 面板底部 */}
-      <div className={`p-4 border-t ${theme === 'dark' ? 'border-[#4A5F8B] bg-[#1E2532]' : 'border-gray-200 bg-gray-50'}`}>
+      <div className={`p-4 border-t ${theme === 'dark' ? 'border-accent bg-bg-deep' : 'border-gray-200 bg-gray-50'}`}>
         <div className="grid grid-cols-2 gap-3">
           <motion.button
             whileHover={{ scale: 1.02 }}
@@ -335,7 +335,7 @@ export const HistoryPanel: React.FC = () => {
               }
             }}
             className={`w-full text-sm py-2 rounded-lg transition-colors ${
-              theme === 'dark' ? 'text-[#B8C6D8] hover:bg-[#4A5F8B]/20' : 'text-gray-600 hover:bg-gray-200'
+              theme === 'dark' ? 'text-text-muted hover:bg-accent/20' : 'text-gray-600 hover:bg-gray-200'
             }`}
           >
             <i className="fa-solid fa-trash-can mr-2"></i> 清空所有
@@ -349,7 +349,7 @@ export const HistoryPanel: React.FC = () => {
               toast.info('设置功能已触发');
             }}
             className={`w-full text-sm py-2 rounded-lg transition-colors ${
-              theme === 'dark' ? 'text-[#B8C6D8] hover:bg-[#4A5F8B]/20' : 'text-gray-600 hover:bg-gray-200'
+              theme === 'dark' ? 'text-text-muted hover:bg-accent/20' : 'text-gray-600 hover:bg-gray-200'
             }`}
           >
             <i className="fa-solid fa-cog mr-2"></i> 设置

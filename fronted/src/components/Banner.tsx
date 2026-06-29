@@ -75,32 +75,32 @@ export const Banner: React.FC = () => {
   // 根据主题获取样式类
   const getBgClass = () => {
     return theme === 'dark' 
-      ? 'bg-[#2D3748] border border-[#4A5F8B]' 
+      ? 'bg-bg-card border border-accent' 
       : 'bg-gray-100 border border-gray-200';
   };
   
   const getGradientClass = () => {
     return theme === 'dark' 
-      ? 'bg-gradient-to-t from-[#1E2532]/80 to-transparent' 
+      ? 'bg-gradient-to-t from-bg-deep/80 to-transparent' 
       : 'bg-gradient-to-t from-black/60 to-transparent';
   };
   
   const getButtonClass = () => {
     return theme === 'dark' 
-      ? 'border-2 border-[#4A5F8B] bg-gradient-to-r from-[#4A5F8B] to-[#2D3748] text-[#F5F7FA] hover:from-[#6B7C93] hover:to-[#4A5F8B]' 
-      : 'border-2 border-[#63B3ED] bg-gradient-to-r from-[#63B3ED] to-[#4299E1] text-white hover:from-[#4299E1] hover:to-[#3182CE]';
+      ? 'border-2 border-accent bg-gradient-to-r from-accent to-bg-card text-text-primary hover:from-accent-hover hover:to-accent' 
+      : 'border-2 border-light-accent bg-gradient-to-r from-light-accent to-light-accent-hover text-white hover:from-light-accent-hover hover:to-[#3182CE]';
   };
   
   const getAvatarBorderClass = () => {
-    return theme === 'dark' ? 'border-[#4A5F8B]' : 'border-[#63B3ED]';
+    return theme === 'dark' ? 'border-accent' : 'border-light-accent';
   };
   
   const getActiveDotClass = () => {
-    return theme === 'dark' ? 'bg-[#4A5F8B]' : 'bg-[#63B3ED]';
+    return theme === 'dark' ? 'bg-accent' : 'bg-light-accent';
   };
   
   const getInactiveDotClass = () => {
-    return theme === 'dark' ? 'bg-[#6B7C93]/50' : 'bg-gray-400/50';
+    return theme === 'dark' ? 'bg-accent-hover/50' : 'bg-gray-400/50';
   };
 
   return (
@@ -125,10 +125,10 @@ export const Banner: React.FC = () => {
                 alt={slide.author}
                 className={`w-8 h-8 rounded-full mr-2 border-2 ${getAvatarBorderClass()}`}
               />
-              <span className="text-[#F5F7FA] text-sm">专访 {slide.author}</span>
+              <span className="text-text-primary text-sm">专访 {slide.author}</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#F5F7FA] mb-1">{slide.title}</h2>
-            <p className="text-[#B8C6D8]/70 mb-2">{slide.description}</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-1">{slide.title}</h2>
+            <p className="text-text-muted/70 mb-2">{slide.description}</p>
             <Link 
               to={slide.link}
               className={`${getButtonClass()} px-6 py-2 rounded-lg font-medium transition-colors self-start`}

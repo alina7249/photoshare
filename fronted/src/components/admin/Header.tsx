@@ -70,25 +70,25 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, sidebarCollapsed }) => {
   };
 
   return (
-    <header className="bg-[#2D3748] border-b border-[#4A5F8B] h-16 flex items-center px-6 justify-between">
+    <header className="bg-bg-card border-b border-accent h-16 flex items-center px-6 justify-between">
       {/* 左侧切换按钮 */}
       <div className="flex items-center">
         <button
           onClick={toggleSidebar}
-          className="mr-4 text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors p-2 rounded-lg hover:bg-[#4A5F8B]/20"
+          className="mr-4 text-text-muted hover:text-text-primary transition-colors p-2 rounded-lg hover:bg-accent/20"
           aria-label="Toggle sidebar"
         >
           <i className={`fa-solid ${sidebarCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'}`}></i>
         </button>
         
         {/* 面包屑导航 */}
-        <div className="hidden md:flex items-center text-sm text-[#B8C6D8]">
+        <div className="hidden md:flex items-center text-sm text-text-muted">
           {breadcrumbs.map((crumb, index) => (
             <React.Fragment key={crumb.path}>
               <a 
                 href={crumb.path} 
-                className={`hover:text-[#F5F7FA] transition-colors ${
-                  index === breadcrumbs.length - 1 ? 'text-[#F5F7FA]' : ''
+                className={`hover:text-text-primary transition-colors ${
+                  index === breadcrumbs.length - 1 ? 'text-text-primary' : ''
                 }`}
               >
                 {crumb.label}
@@ -110,15 +110,15 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, sidebarCollapsed }) => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="搜索..."
-            className="bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all w-64"
+            className="bg-bg-deep border border-accent text-text-primary rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all w-64"
           />
-          <i className="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-[#6B7C93]"></i>
+          <i className="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-accent-hover"></i>
         </form>
         
         {/* 通知图标 */}
         <button
           onClick={() => setShowNotifications(!showNotifications)}
-          className="relative p-2 text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors rounded-lg hover:bg-[#4A5F8B]/20"
+          className="relative p-2 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-accent/20"
         >
           <i className="fa-solid fa-bell"></i>
           <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
@@ -127,27 +127,27 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, sidebarCollapsed }) => {
         {/* 用户菜单 */}
         <div className="relative">
           <button
-            className="flex items-center space-x-2 p-1 rounded-lg hover:bg-[#4A5F8B]/20 transition-colors"
+            className="flex items-center space-x-2 p-1 rounded-lg hover:bg-accent/20 transition-colors"
           >
-            <div className="w-8 h-8 rounded-full bg-[#4A5F8B]/20 flex items-center justify-center text-[#4A5F8B]">
+            <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent">
               <i className="fa-solid fa-user-shield"></i>
             </div>
             <span className="hidden md:inline text-sm font-medium">管理员</span>
-            <i className="fa-solid fa-chevron-down text-xs text-[#6B7C93]"></i>
+            <i className="fa-solid fa-chevron-down text-xs text-accent-hover"></i>
           </button>
           
           {/* 下拉菜单 */}
-          <div className="absolute right-0 mt-2 w-48 bg-[#2D3748] border border-[#4A5F8B] rounded-lg shadow-lg py-2 z-10 hidden group-hover:block">
-            <button className="w-full text-left px-4 py-2 text-sm text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors">
+          <div className="absolute right-0 mt-2 w-48 bg-bg-card border border-accent rounded-lg shadow-lg py-2 z-10 hidden group-hover:block">
+            <button className="w-full text-left px-4 py-2 text-sm text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
               <i className="fa-solid fa-user mr-2"></i> 个人资料
             </button>
-            <button className="w-full text-left px-4 py-2 text-sm text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors">
+            <button className="w-full text-left px-4 py-2 text-sm text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
               <i className="fa-solid fa-cog mr-2"></i> 设置
             </button>
-            <div className="border-t border-[#4A5F8B] my-1"></div>
+            <div className="border-t border-accent my-1"></div>
             <button 
               onClick={handleLogout}
-              className="w-full text-left px-4 py-2 text-sm text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors"
+              className="w-full text-left px-4 py-2 text-sm text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
             >
               <i className="fa-solid fa-sign-out-alt mr-2"></i> 退出登录
             </button>

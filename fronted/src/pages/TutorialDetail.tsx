@@ -65,24 +65,24 @@ const TutorialDetail: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen flex items-center justify-center">
-        <div className="w-16 h-16 border-4 border-[#4A5F8B] border-t-transparent rounded-full animate-spin"></div>
+      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen flex items-center justify-center">
+        <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
 
   if (!tutorial) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
-          <div className="w-16 h-16 bg-[#4A5F8B] rounded-full flex items-center justify-center text-[#F5F7FA] mb-4">
+          <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-exclamation-circle text-2xl"></i>
           </div>
-          <h2 className="text-2xl font-bold text-[#F5F7FA] mb-2">未找到该教程</h2>
-          <p className="text-[#B8C6D8] mb-6 max-w-md">抱歉，您访问的教程不存在或已被删除</p>
+          <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该教程</h2>
+          <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的教程不存在或已被删除</p>
           <Link 
             to="/online-courses" 
-            className="px-6 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors border border-[#4A5F8B]"
+            className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent"
           >
             返回课程列表
           </Link>
@@ -92,7 +92,7 @@ const TutorialDetail: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -102,7 +102,7 @@ const TutorialDetail: React.FC = () => {
         <div className="mb-6">
           <Link
             to="/online-courses"
-            className="inline-flex items-center space-x-1 text-[#B8C6D8]/70 hover:text-[#B8C6D8] transition-colors"
+            className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>
             <span>返回课程列表</span>
@@ -110,24 +110,24 @@ const TutorialDetail: React.FC = () => {
         </div>
         
         {/* 教程封面 */}
-        <div className="bg-[#2D3748] rounded-xl overflow-hidden border border-[#4A5F8B] mb-8">
+        <div className="bg-bg-card rounded-xl overflow-hidden border border-accent mb-8">
           <div className="relative">
             <img
               src={tutorial.image}
               alt={tutorial.title}
               className="w-full h-64 object-cover"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1E2532] to-transparent p-6">
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-bg-deep to-transparent p-6">
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="px-3 py-1 bg-[#4A5F8B] text-[#F5F7FA] text-sm rounded-full border border-[#4A5F8B]">
+                <span className="px-3 py-1 bg-accent text-text-primary text-sm rounded-full border border-accent">
                   {tutorial.category}
                 </span>
-                <span className="px-3 py-1 bg-[#4A5F8B] text-[#F5F7FA] text-sm rounded-full border border-[#4A5F8B]">
+                <span className="px-3 py-1 bg-accent text-text-primary text-sm rounded-full border border-accent">
                   {tutorial.level}
                 </span>
               </div>
-              <h1 className="text-3xl font-bold text-[#F5F7FA] mb-2">{tutorial.title}</h1>
-              <div className="flex items-center space-x-4 text-sm text-[#B8C6D8]">
+              <h1 className="text-3xl font-bold text-text-primary mb-2">{tutorial.title}</h1>
+              <div className="flex items-center space-x-4 text-sm text-text-muted">
                 <div className="flex items-center">
                   <i className="fa-solid fa-clock mr-1"></i>
                   <span>{tutorial.duration}</span>
@@ -137,7 +137,7 @@ const TutorialDetail: React.FC = () => {
                   <span>{tutorial.views.toLocaleString()} 阅读</span>
                 </div>
                 <div className="flex items-center">
-                  <i className="fa-solid fa-heart mr-1 text-[#4A5F8B]"></i>
+                  <i className="fa-solid fa-heart mr-1 text-accent"></i>
                   <span>{likesCount.toLocaleString()} 喜欢</span>
                 </div>
               </div>
@@ -150,16 +150,16 @@ const TutorialDetail: React.FC = () => {
           {/* 教程正文 */}
           <div className="lg:col-span-2 space-y-6">
             {/* 教程描述 */}
-            <div className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B]">
-              <h2 className="text-xl font-bold text-[#F5F7FA] mb-4">教程简介</h2>
-              <p className="text-[#B8C6D8] leading-relaxed">
+            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+              <h2 className="text-xl font-bold text-text-primary mb-4">教程简介</h2>
+              <p className="text-text-muted leading-relaxed">
                 {tutorial.description}
               </p>
             </div>
             
             {/* 教程内容 */}
-            <div className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B]">
-              <h2 className="text-xl font-bold text-[#F5F7FA] mb-6">教程内容</h2>
+            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+              <h2 className="text-xl font-bold text-text-primary mb-6">教程内容</h2>
               
               {/* Markdown 内容渲染 */}
               <div className="prose prose-invert max-w-none">
@@ -167,19 +167,19 @@ const TutorialDetail: React.FC = () => {
                   // 处理标题
                   if (paragraph.startsWith('# ')) {
                     return (
-                      <h1 key={index} className="text-2xl font-bold text-[#F5F7FA] mb-4">
+                      <h1 key={index} className="text-2xl font-bold text-text-primary mb-4">
                         {paragraph.substring(2)}
                       </h1>
                     );
                   } else if (paragraph.startsWith('## ')) {
                     return (
-                      <h2 key={index} className="text-xl font-bold text-[#F5F7FA] mt-6 mb-3">
+                      <h2 key={index} className="text-xl font-bold text-text-primary mt-6 mb-3">
                         {paragraph.substring(3)}
                       </h2>
                     );
                   } else if (paragraph.startsWith('### ')) {
                     return (
-                      <h3 key={index} className="text-lg font-bold text-[#F5F7FA] mt-4 mb-2">
+                      <h3 key={index} className="text-lg font-bold text-text-primary mt-4 mb-2">
                         {paragraph.substring(4)}
                       </h3>
                     );
@@ -192,7 +192,7 @@ const TutorialDetail: React.FC = () => {
                   else if (paragraph.startsWith('- ')) {
                     return (
                       <ul key={index} className="list-disc pl-5 mb-3 space-y-1">
-                        <li className="text-[#B8C6D8]">{paragraph.substring(2)}</li>
+                        <li className="text-text-muted">{paragraph.substring(2)}</li>
                       </ul>
                     );
                   } 
@@ -200,14 +200,14 @@ const TutorialDetail: React.FC = () => {
                   else if (/^\d+\.\s/.test(paragraph)) {
                     return (
                       <ol key={index} className="list-decimal pl-5 mb-3 space-y-1">
-                        <li className="text-[#B8C6D8]">{paragraph.replace(/^\d+\.\s/, '')}</li>
+                        <li className="text-text-muted">{paragraph.replace(/^\d+\.\s/, '')}</li>
                       </ol>
                     );
                   } 
                   // 处理普通段落
                   else {
                     return (
-                      <p key={index} className="text-[#B8C6D8] mb-3 leading-relaxed">
+                      <p key={index} className="text-text-muted mb-3 leading-relaxed">
                         {paragraph}
                       </p>
                     );
@@ -220,40 +220,40 @@ const TutorialDetail: React.FC = () => {
           {/* 侧边栏 */}
           <div className="lg:col-span-1 space-y-6">
             {/* 作者信息 */}
-            <div className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B]">
-              <h2 className="text-xl font-bold text-[#F5F7FA] mb-4">作者信息</h2>
+            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+              <h2 className="text-xl font-bold text-text-primary mb-4">作者信息</h2>
               <div className="flex items-center mb-4">
                 <img
                   src={tutorial.author.avatar}
                   alt={tutorial.author.name}
-                  className="w-16 h-16 rounded-full mr-4 object-cover border-2 border-[#4A5F8B]"
+                  className="w-16 h-16 rounded-full mr-4 object-cover border-2 border-accent"
                 />
                 <div>
-                  <h3 className="font-bold text-[#F5F7FA]">{tutorial.author.name}</h3>
-                  <p className="text-sm text-[#B8C6D8]">摄影导师 / 专业摄影师</p>
+                  <h3 className="font-bold text-text-primary">{tutorial.author.name}</h3>
+                  <p className="text-sm text-text-muted">摄影导师 / 专业摄影师</p>
                 </div>
               </div>
-              <button className="w-full py-2 bg-[#1E2532] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]">
+              <button className="w-full py-2 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
                 关注作者
               </button>
             </div>
             
             {/* 操作按钮 */}
-            <div className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B]">
-              <h2 className="text-xl font-bold text-[#F5F7FA] mb-4">操作</h2>
+            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+              <h2 className="text-xl font-bold text-text-primary mb-4">操作</h2>
               <div className="space-y-3">
                 <button
                   onClick={handleLike}
                   className={`w-full py-3 flex items-center justify-center rounded-lg font-medium transition-colors ${
                     isLiked
-                      ? 'bg-[#4A5F8B] text-[#F5F7FA] border border-[#4A5F8B]'
-                      : 'bg-[#1E2532] text-[#B8C6D8] border border-[#4A5F8B] hover:bg-[#4A5F8B] hover:text-[#F5F7FA]'
+                      ? 'bg-accent text-text-primary border border-accent'
+                      : 'bg-bg-deep text-text-muted border border-accent hover:bg-accent hover:text-text-primary'
                   }`}
                 >
                   <i className={`fa-solid ${isLiked ? 'fa-heart' : 'fa-heart'} mr-2`}></i>
                   {isLiked ? '已喜欢' : '喜欢'}
                 </button>
-                <button className="w-full py-3 flex items-center justify-center bg-[#1E2532] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]">
+                <button className="w-full py-3 flex items-center justify-center bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
                   <i className="fa-solid fa-bookmark mr-2"></i>
                   收藏教程
                 </button>
@@ -266,12 +266,12 @@ const TutorialDetail: React.FC = () => {
                        toast.error('复制失败，请手动复制');
                      }
                    }}
-                   className="w-full py-3 flex items-center justify-center bg-[#1E2532] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B] relative z-10"
+                   className="w-full py-3 flex items-center justify-center bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent relative z-10"
                  >
                    <i className="fa-solid fa-share-alt mr-2"></i>
                    分享教程
                  </button>
-                <button className="w-full py-3 flex items-center justify-center bg-[#1E2532] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]">
+                <button className="w-full py-3 flex items-center justify-center bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
                   <i className="fa-solid fa-download mr-2"></i>
                   下载资料
                 </button>
@@ -279,13 +279,13 @@ const TutorialDetail: React.FC = () => {
             </div>
             
             {/* 标签 */}
-            <div className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B]">
-              <h2 className="text-xl font-bold text-[#F5F7FA] mb-4">相关标签</h2>
+            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+              <h2 className="text-xl font-bold text-text-primary mb-4">相关标签</h2>
               <div className="flex flex-wrap gap-2">
                 {tutorial.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-full text-sm border border-[#4A5F8B] hover:bg-[#6B7C93] transition-colors cursor-pointer"
+                    className="px-3 py-1 bg-accent text-text-primary rounded-full text-sm border border-accent hover:bg-accent-hover transition-colors cursor-pointer"
                   >
                     #{tag}
                   </span>
@@ -294,14 +294,14 @@ const TutorialDetail: React.FC = () => {
             </div>
             
             {/* 推荐教程 */}
-            <div className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B]">
-              <h2 className="text-xl font-bold text-[#F5F7FA] mb-4">推荐教程</h2>
+            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+              <h2 className="text-xl font-bold text-text-primary mb-4">推荐教程</h2>
               <div className="space-y-4">
-                <p className="text-sm text-[#6B7C93] text-center">暂无推荐教程</p>
+                <p className="text-sm text-accent-hover text-center">暂无推荐教程</p>
              </div>
              
              {/* 评论区 */}
-             <div className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B] mt-8">
+             <div className="bg-bg-card rounded-xl p-6 border border-accent mt-8">
                <CommentSection postId={tutorial.id} />
              </div>
           </div>

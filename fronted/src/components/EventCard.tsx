@@ -38,7 +38,7 @@ export const EventCard: React.FC<EventCardProps> = ({
   return (
     <motion.div
       whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-      className="bg-gradient-to-r from-[#4A5F8B] to-[#6B7C93] rounded-xl overflow-hidden border border-[#4A5F8B] transition-all shadow-sm"
+      className="bg-gradient-to-r from-accent to-accent-hover rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
     >
       {/* 活动/赛事图片 */}
       <div className="md:flex">
@@ -54,78 +54,78 @@ export const EventCard: React.FC<EventCardProps> = ({
         <div className="p-5 md:w-2/3">
           {/* 活动类型和标签 */}
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-[#F5F7FA] font-medium">{item.type}</span>
+            <span className="text-sm text-text-primary font-medium">{item.type}</span>
             {isContest ? (
               <span className={`text-xs px-2 py-1 rounded-full ${
                 item.status === '进行中'
-                  ? 'bg-[#2D3748]/50 text-[#F5F7FA]'
+                  ? 'bg-bg-card/50 text-text-primary'
                   : item.status === '已截止'
-                    ? 'bg-[#6B7C93] text-[#F5F7FA]'
-                    : 'bg-[#2D3748]/50 text-[#F5F7FA]'
+                    ? 'bg-accent-hover text-text-primary'
+                    : 'bg-bg-card/50 text-text-primary'
               }`}>
                 {item.status}
               </span>
             ) : (
-              <span className="text-xs px-2 py-1 bg-[#2D3748]/50 text-[#F5F7FA] rounded-full">
+              <span className="text-xs px-2 py-1 bg-bg-card/50 text-text-primary rounded-full">
                 {item.tags[0] || '其他'}
               </span>
             )}
           </div>
           
           {/* 活动/赛事标题 */}
-          <h3 className="text-lg font-bold text-[#F5F7FA] mb-2 hover:text-[#FFFFFF] transition-colors">
+          <h3 className="text-lg font-bold text-text-primary mb-2 hover:text-[#FFFFFF] transition-colors">
             {item.title}
           </h3>
           
           {/* 活动/赛事基本信息 */}
           <div className="space-y-1 mb-4">
             {!isContest && item.location && (
-              <div className="flex items-center text-sm text-[#F5F7FA]">
-                <i className="fa-solid fa-map-marker-alt mr-2 text-[#F5F7FA]"></i>
+              <div className="flex items-center text-sm text-text-primary">
+                <i className="fa-solid fa-map-marker-alt mr-2 text-text-primary"></i>
                 <span>{item.location}</span>
               </div>
             )}
             
-            <div className="flex items-center text-sm text-[#F5F7FA]">
-              <i className="fa-solid fa-calendar-alt mr-2 text-[#F5F7FA]"></i>
+            <div className="flex items-center text-sm text-text-primary">
+              <i className="fa-solid fa-calendar-alt mr-2 text-text-primary"></i>
               <span>{isContest ? `截止日期：${item.date}` : item.date}</span>
             </div>
             
             {!isContest && item.duration && (
-              <div className="flex items-center text-sm text-[#F5F7FA]">
-                <i className="fa-solid fa-clock mr-2 text-[#F5F7FA]"></i>
+              <div className="flex items-center text-sm text-text-primary">
+                <i className="fa-solid fa-clock mr-2 text-text-primary"></i>
                 <span>{item.duration}</span>
               </div>
             )}
             
             {isContest && (
-              <div className="flex items-center text-sm text-[#F5F7FA]">
-                <i className="fa-solid fa-user-group mr-2 text-[#F5F7FA]"></i>
+              <div className="flex items-center text-sm text-text-primary">
+                <i className="fa-solid fa-user-group mr-2 text-text-primary"></i>
                 <span>已有 {item.participants} 人{isContest ? '参赛' : '报名'}</span>
               </div>
             )}
             
             {isContest && item.worksCount && (
-              <div className="flex items-center text-sm text-[#F5F7FA]">
-                <i className="fa-solid fa-images mr-2 text-[#F5F7FA]"></i>
+              <div className="flex items-center text-sm text-text-primary">
+                <i className="fa-solid fa-images mr-2 text-text-primary"></i>
                 <span>共提交 {item.worksCount} 件作品</span>
               </div>
             )}
           </div>
           
           {/* 描述 */}
-          <p className="text-sm text-[#F5F7FA]/90 mb-4 line-clamp-2">
+          <p className="text-sm text-text-primary/90 mb-4 line-clamp-2">
             {item.description}
           </p>
           
           {/* 价格和参与人数 */}
           {!isContest && item.price !== undefined && (
             <div className="flex items-center justify-between mb-4">
-              <div className="text-lg font-bold text-[#F5F7FA]">
+              <div className="text-lg font-bold text-text-primary">
                 {item.price === 0 ? '免费' : `¥${item.price}`}
               </div>
               {item.maxParticipants && (
-                <div className="text-sm text-[#F5F7FA]">
+                <div className="text-sm text-text-primary">
                   {item.participants} 人已报名 / 限 {item.maxParticipants} 人
                 </div>
               )}
@@ -140,8 +140,8 @@ export const EventCard: React.FC<EventCardProps> = ({
                 onClick={() => toggleTag(tag)}
                 className={`px-2 py-1 rounded-full text-xs ${
                   selectedTags.includes(tag)
-                    ? 'bg-[#F5F7FA] text-[#4A5F8B]'
-                    : 'bg-[#2D3748]/50 text-[#F5F7FA] border border-[#6B7C93]/30'
+                    ? 'bg-text-primary text-accent'
+                    : 'bg-bg-card/50 text-text-primary border border-accent-hover/30'
                 } transition-colors`}
               >
                 #{tag}
@@ -153,12 +153,12 @@ export const EventCard: React.FC<EventCardProps> = ({
           <div className="flex space-x-2">
             <Link
               to={isContest ? `/contest/${item.id}` : `/event/${item.id}`}
-              className="flex-1 py-2 text-center bg-[#F5F7FA] text-[#4A5F8B] rounded-lg font-medium hover:bg-[#FFFFFF] transition-colors border border-[#F5F7FA]"
+              className="flex-1 py-2 text-center bg-text-primary text-accent rounded-lg font-medium hover:bg-[#FFFFFF] transition-colors border border-text-primary"
             >
               查看详情
             </Link>
             <button 
-              className="flex-1 py-2 text-center bg-[#F5F7FA] text-[#4A5F8B] rounded-lg font-medium hover:bg-[#FFFFFF] transition-colors border border-[#F5F7FA]"
+              className="flex-1 py-2 text-center bg-text-primary text-accent rounded-lg font-medium hover:bg-[#FFFFFF] transition-colors border border-text-primary"
               onClick={onRegister}
             >
               <i className="fa-solid fa-calendar-plus mr-1"></i> {isContest ? '立即参赛' : '立即报名'}

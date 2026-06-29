@@ -50,48 +50,48 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   // 根据主题获取样式类
   const getBgClass = () => {
     return theme === 'dark' 
-      ? 'bg-[#2D3748] border border-[#4A5F8B]' 
+      ? 'bg-bg-card border border-accent' 
       : 'bg-white border border-gray-200';
   };
   
   const getAvatarBorderClass = () => {
     return theme === 'dark' 
-      ? 'border-[#2D3748] border-[#4A5F8B]' 
+      ? 'border-bg-card border-accent' 
       : 'border-white border-gray-200';
   };
   
   const getTextClass = (isPrimary: boolean) => {
     return isPrimary 
-      ? (theme === 'dark' ? 'text-[#F5F7FA]' : 'text-[#1E2532]')
-      : (theme === 'dark' ? 'text-[#B8C6D8]' : 'text-[#6B7C93]');
+      ? (theme === 'dark' ? 'text-text-primary' : 'text-bg-deep')
+      : (theme === 'dark' ? 'text-text-muted' : 'text-accent-hover');
   };
   
   const getTagBgClass = () => {
     return theme === 'dark' 
-      ? 'bg-[#4A5F8B]/20 text-[#B8C6D8]' 
-      : 'bg-blue-50 text-[#63B3ED]';
+      ? 'bg-accent/20 text-text-muted' 
+      : 'bg-blue-50 text-light-accent';
   };
   
   const getProgressBgClass = () => {
-    return theme === 'dark' ? 'bg-[#1E2532]' : 'bg-gray-100';
+    return theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-100';
   };
   
   const getProgressFillClass = () => {
-    return theme === 'dark' ? 'bg-[#4A5F8B]' : 'bg-[#63B3ED]';
+    return theme === 'dark' ? 'bg-accent' : 'bg-light-accent';
   };
   
   const getButtonClass = () => {
     return theme === 'dark' 
-      ? 'bg-[#4A5F8B] text-[#F5F7FA] border border-[#4A5F8B] hover:bg-[#6B7C93]' 
-      : 'bg-[#63B3ED] text-white border border-[#63B3ED] hover:bg-[#4299E1]';
+      ? 'bg-accent text-text-primary border border-accent hover:bg-accent-hover' 
+      : 'bg-light-accent text-white border border-light-accent hover:bg-light-accent-hover';
   };
   
   const getIconClass = () => {
-    return theme === 'dark' ? 'text-[#B8C6D8]' : 'text-[#6B7C93]';
+    return theme === 'dark' ? 'text-text-muted' : 'text-accent-hover';
   };
   
   const getBorderClass = () => {
-    return theme === 'dark' ? 'border-[#4A5F8B]' : 'border-gray-200';
+    return theme === 'dark' ? 'border-accent' : 'border-gray-200';
   };
 
   return (
@@ -183,8 +183,8 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                 onClick={onFollow}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   isFollowing 
-                    ? 'bg-[#6B7C93] text-[#F5F7FA]' 
-                    : 'bg-[#4A5F8B] text-[#F5F7FA]'
+                    ? 'bg-accent-hover text-text-primary' 
+                    : 'bg-accent text-text-primary'
                 }`}
               >
                 {isFollowing ? (

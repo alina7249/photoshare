@@ -256,29 +256,29 @@ const PhotoComments: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen flex items-center justify-center">
-        <div className="w-16 h-16 border-4 border-[#4A5F8B] border-t-transparent rounded-full animate-spin"></div>
+      <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen flex items-center justify-center">
+        <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
 
   if (!photo) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
-          <div className="w-16 h-16 bg-[#4A5F8B] rounded-full flex items-center justify-center text-[#F5F7FA] mb-4">
+          <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-exclamation-circle text-2xl"></i>
           </div>
-          <h2 className="text-2xl font-bold text-[#F5F7FA] mb-2">未找到该作品</h2>
-          <p className="text-[#B8C6D8] mb-6 max-w-md">抱歉，您访问的作品不存在或已被删除</p>
-          <Link to="/profile-center" className="px-6 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors border border-[#4A5F8B]">返回作品集</Link>
+          <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该作品</h2>
+          <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的作品不存在或已被删除</p>
+          <Link to="/profile-center" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent">返回作品集</Link>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -288,7 +288,7 @@ const PhotoComments: React.FC = () => {
         <div className="mb-6">
           <Link
             to={`/photo/${id}`}
-            className="inline-flex items-center space-x-1 text-[#B8C6D8]/70 hover:text-[#B8C6D8] transition-colors"
+            className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>
             <span>返回作品详情</span>
@@ -297,17 +297,17 @@ const PhotoComments: React.FC = () => {
 
         {/* 页面标题 */}
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-[#F5F7FA] mb-2">作品评论</h1>
-          <p className="text-[#B8C6D8] max-w-2xl mx-auto">
+          <h1 className="text-3xl font-bold text-text-primary mb-2">作品评论</h1>
+          <p className="text-text-muted max-w-2xl mx-auto">
             参与讨论，分享您的想法和摄影技巧
           </p>
         </div>
 
         {/* 作品预览 */}
-        <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B] mb-8">
+        <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
           <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-6">
             <div className="w-full md:w-1/3">
-              <div className="bg-[#1E2532] rounded-lg overflow-hidden">
+              <div className="bg-bg-deep rounded-lg overflow-hidden">
                 <img
                   src={photo?.image}
                   alt={photo?.title}
@@ -316,7 +316,7 @@ const PhotoComments: React.FC = () => {
               </div>
             </div>
             <div className="w-full md:w-2/3">
-              <h2 className="text-xl font-bold text-[#F5F7FA] mb-3">{photo?.title}</h2>
+              <h2 className="text-xl font-bold text-text-primary mb-3">{photo?.title}</h2>
               <div className="flex items-center mb-4">
                 <img
                   src={photo?.author.avatar}
@@ -324,25 +324,25 @@ const PhotoComments: React.FC = () => {
                   className="w-10 h-10 rounded-full mr-3 object-cover"
                 />
                 <div>
-                  <span className="text-[#F5F7FA] font-medium">{photo?.author.name}</span>
-                  <span className="text-[#B8C6D8] text-sm ml-2">{photo?.date}</span>
+                  <span className="text-text-primary font-medium">{photo?.author.name}</span>
+                  <span className="text-text-muted text-sm ml-2">{photo?.date}</span>
                 </div>
               </div>
               <div className="flex flex-wrap gap-2 mb-4">
                 {photo?.tags.map((tag, index) => (
-                  <span key={index} className="px-2 py-1 bg-[#1E2532] text-[#B8C6D8] text-xs rounded-full">
+                  <span key={index} className="px-2 py-1 bg-bg-deep text-text-muted text-xs rounded-full">
                     #{tag}
                   </span>
                 ))}
               </div>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center">
-                  <i className="fa-solid fa-heart text-[#4A5F8B] mr-1"></i>
-                  <span className="text-[#B8C6D8]">{photo?.likes} 点赞</span>
+                  <i className="fa-solid fa-heart text-accent mr-1"></i>
+                  <span className="text-text-muted">{photo?.likes} 点赞</span>
                 </div>
                 <div className="flex items-center">
-                  <i className="fa-solid fa-comment text-[#4A5F8B] mr-1"></i>
-                  <span className="text-[#B8C6D8]">{comments.length} 评论</span>
+                  <i className="fa-solid fa-comment text-accent mr-1"></i>
+                  <span className="text-text-muted">{comments.length} 评论</span>
                 </div>
               </div>
             </div>
@@ -362,21 +362,21 @@ const PhotoComments: React.FC = () => {
               </div>
               <div className="flex-1">
                 <div className="mb-2 text-sm text-[#4A5059]/70">
-                  <i className="fa-solid fa-circle-info mr-1 text-[#4A5F8B]"></i>
+                  <i className="fa-solid fa-circle-info mr-1 text-accent"></i>
                   从艺术或技术角度分享您的见解，探讨构图、光影或创作理念
                 </div>
                 <textarea
                   value={commentText}
                   onChange={(e) => setCommentText(e.target.value)}
                   placeholder="分享您的艺术感悟或技术分析..."
-                  className="w-full px-4 py-3 rounded-lg bg-[#F5F7FA] border border-[#B8C6D8] focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] resize-none h-32 text-[#4A5059]"
+                  className="w-full px-4 py-3 rounded-lg bg-text-primary border border-text-muted focus:outline-none focus:ring-2 focus:ring-accent resize-none h-32 text-[#4A5059]"
                 ></textarea>
                 <div className="flex justify-end mt-3">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     type="submit"
-                    className="px-6 py-2 border-2 border-[#B8C6D8] hover:border-[#4A5F8B] bg-[#E6EBF2] text-[#4A5059] rounded-lg font-medium transition-colors shadow-[0_2px_8px_rgba(74,95,139,0.2)]"
+                    className="px-6 py-2 border-2 border-text-muted hover:border-accent bg-[#E6EBF2] text-[#4A5059] rounded-lg font-medium transition-colors shadow-[0_2px_8px_rgba(74,95,139,0.2)]"
                   >
                     发表评论
                   </motion.button>
@@ -385,20 +385,20 @@ const PhotoComments: React.FC = () => {
             </div>
           </form>
         ) : (
-          <div className="mb-8 p-4 bg-[#E6EBF2] rounded-lg border border-[#B8C6D8] text-center">
+          <div className="mb-8 p-4 bg-[#E6EBF2] rounded-lg border border-text-muted text-center">
             <p className="text-[#4A5059]/70 mb-3">
               登录后可以参与艺术摄影交流
             </p>
             <div className="flex justify-center space-x-3">
               <Link
                 to="/login"
-                className="px-4 py-2 text-sm font-medium text-[#F5F7FA] bg-[#4A5F8B] hover:bg-[#4A5059] rounded-lg transition-colors"
+                className="px-4 py-2 text-sm font-medium text-text-primary bg-accent hover:bg-[#4A5059] rounded-lg transition-colors"
               >
                 登录
               </Link>
               <Link
                 to="/register"
-                className="px-4 py-2 text-sm font-medium text-[#4A5F8B] border border-[#4A5F8B] rounded-lg hover:bg-[#4A5F8B]/20 transition-colors"
+                className="px-4 py-2 text-sm font-medium text-accent border border-accent rounded-lg hover:bg-accent/20 transition-colors"
               >
                 注册
               </Link>
@@ -409,7 +409,7 @@ const PhotoComments: React.FC = () => {
         {/* 评论列表 */}
         <div className="space-y-6">
           {comments.map((comment) => (
-            <div key={comment.id} className="bg-[#F5F7FA] rounded-lg p-4 border border-[#B8C6D8]">
+            <div key={comment.id} className="bg-text-primary rounded-lg p-4 border border-text-muted">
               <div className="flex space-x-3">
                 <Link to={`/profile/${comment.userId}`} className="flex-shrink-0">
                   <img
@@ -422,7 +422,7 @@ const PhotoComments: React.FC = () => {
                   <div className="flex items-center space-x-2 mb-1">
                     <Link
                       to={`/profile/${comment.userId}`}
-                      className="font-medium text-[#4A5059] hover:text-[#4A5F8B] transition-colors"
+                      className="font-medium text-[#4A5059] hover:text-accent transition-colors"
                     >
                       {comment.username}
                     </Link>
@@ -434,7 +434,7 @@ const PhotoComments: React.FC = () => {
                       onClick={() => handleLike(comment.id)}
                       className={`flex items-center space-x-1 text-sm transition-colors ${
                         comment.isLiked
-                          ? 'text-[#4A5F8B]'
+                          ? 'text-accent'
                           : 'text-[#4A5059]/50 hover:text-[#4A5059]'
                       }`}
                     >
@@ -475,11 +475,11 @@ const PhotoComments: React.FC = () => {
                           value={replyText}
                           onChange={(e) => setReplyText(e.target.value)}
                           placeholder={`回复 @${comment.username}...`}
-                          className="flex-1 px-3 py-2 rounded-lg bg-[#E6EBF2] border border-[#B8C6D8] focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] text-sm text-[#4A5059]"
+                          className="flex-1 px-3 py-2 rounded-lg bg-[#E6EBF2] border border-text-muted focus:outline-none focus:ring-2 focus:ring-accent text-sm text-[#4A5059]"
                         />
                         <button
                           onClick={() => handleSubmitReply(comment.id)}
-                          className="px-3 py-2 bg-[#4A5F8B] hover:bg-[#4A5059] text-[#F5F7FA] rounded-lg text-sm font-medium transition-colors"
+                          className="px-3 py-2 bg-accent hover:bg-[#4A5059] text-text-primary rounded-lg text-sm font-medium transition-colors"
                         >
                           回复
                         </button>
@@ -489,7 +489,7 @@ const PhotoComments: React.FC = () => {
 
                   {/* 回复列表 */}
                   {comment.replies && comment.replies.length > 0 && (
-                    <div className="mt-4 pl-4 border-l-2 border-[#B8C6D8] space-y-4">
+                    <div className="mt-4 pl-4 border-l-2 border-text-muted space-y-4">
                       {comment.replies.map((reply) => (
                         <div key={reply.id} className="flex space-x-3">
                           <Link to={`/profile/${reply.userId}`} className="flex-shrink-0">
@@ -503,7 +503,7 @@ const PhotoComments: React.FC = () => {
                             <div className="flex items-center space-x-2 mb-1">
                               <Link
                                 to={`/profile/${reply.userId}`}
-                                className="font-medium text-[#4A5059] hover:text-[#4A5F8B] transition-colors"
+                                className="font-medium text-[#4A5059] hover:text-accent transition-colors"
                               >
                                 {reply.username}
                               </Link>
@@ -514,7 +514,7 @@ const PhotoComments: React.FC = () => {
                               onClick={() => handleLike(comment.id, true, reply.id)}
                               className={`flex items-center space-x-1 text-xs transition-colors ${
                                 reply.isLiked
-                                  ? 'text-[#4A5F8B]'
+                                  ? 'text-accent'
                                   : 'text-[#4A5059]/50 hover:text-[#4A5059]'
                               }`}
                             >

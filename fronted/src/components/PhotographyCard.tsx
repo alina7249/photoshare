@@ -63,7 +63,7 @@ export const PhotographyCard: React.FC<PhotographyCardProps> = ({ post }) => {
   return (
     <motion.div
       whileHover={{ y: -5, borderColor: '#4A5F8B' }}
-      className="bg-[#2D3748] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-[#4A5F8B] h-[500px] flex flex-col"
+      className="bg-bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-accent h-[500px] flex flex-col"
     >
       {/* 图片容器 */}
       <div className="relative flex-shrink-0">
@@ -82,13 +82,13 @@ export const PhotographyCard: React.FC<PhotographyCardProps> = ({ post }) => {
           {post.tags.slice(0, 2).map((tag, index) => (
             <span
               key={index}
-              className="px-2 py-1 bg-[#4A5F8B] text-[#F5F7FA] text-xs rounded-full border border-[#4A5F8B]"
+              className="px-2 py-1 bg-accent text-text-primary text-xs rounded-full border border-accent"
             >
               #{tag}
             </span>
           ))}
           {post.tags.length > 2 && (
-            <span className="px-2 py-1 bg-[#4A5F8B] text-[#F5F7FA] text-xs rounded-full border border-[#4A5F8B]">
+            <span className="px-2 py-1 bg-accent text-text-primary text-xs rounded-full border border-accent">
               +{post.tags.length - 2}
             </span>
           )}
@@ -103,17 +103,17 @@ export const PhotographyCard: React.FC<PhotographyCardProps> = ({ post }) => {
             <img
               src={post.author.avatar}
               alt={post.author.name}
-              className="w-8 h-8 rounded-full object-cover border border-[#B8C6D8]"
+              className="w-8 h-8 rounded-full object-cover border border-text-muted"
             />
           </Link>
           <div>
             <Link
               to={`/profile/${post.author.id}`}
-              className="block font-medium text-[#F5F7FA] hover:text-[#4A5F8B] transition-colors"
+              className="block font-medium text-text-primary hover:text-accent transition-colors"
             >
               {post.author.name}
             </Link>
-            <p className="text-xs text-[#B8C6D8]">
+            <p className="text-xs text-text-muted">
               {post.date}
             </p>
           </div>
@@ -121,14 +121,14 @@ export const PhotographyCard: React.FC<PhotographyCardProps> = ({ post }) => {
 
         {/* 标题 */}
         <Link to={`/photo/${post.id}`} className="block mb-2">
-          <h3 className="text-lg font-bold text-[#F5F7FA] hover:text-[#4A5F8B] transition-colors">
+          <h3 className="text-lg font-bold text-text-primary hover:text-accent transition-colors">
             {post.title}
           </h3>
         </Link>
 
         {/* 设备参数 */}
          {equipmentParams && (
-          <p className="text-xs text-[#B8C6D8] mb-4 font-mono">{equipmentParams}</p>
+          <p className="text-xs text-text-muted mb-4 font-mono">{equipmentParams}</p>
         )}
 
         {/* 互动按钮 - 互动数据 (点赞/评论) 浅冷灰 #B8C6D8 */}
@@ -139,7 +139,7 @@ export const PhotographyCard: React.FC<PhotographyCardProps> = ({ post }) => {
               className={`flex items-center space-x-1 text-sm transition-colors ${
                 isLiked
                   ? 'text-red-500'
-                  : 'text-[#B8C6D8] hover:text-red-500'
+                  : 'text-text-muted hover:text-red-500'
               }`}
               aria-label={isLiked ? "取消点赞" : "点赞"}
             >
@@ -152,7 +152,7 @@ export const PhotographyCard: React.FC<PhotographyCardProps> = ({ post }) => {
             </button>
             <Link
               to={`/photo/${post.id}#comments`}
-              className="flex items-center space-x-1 text-sm text-[#B8C6D8] hover:text-[#4A5F8B] transition-colors"
+              className="flex items-center space-x-1 text-sm text-text-muted hover:text-accent transition-colors"
             >
               <i className="fa-solid fa-comment"></i>
               <span>{post.comments}</span>
@@ -164,7 +164,7 @@ export const PhotographyCard: React.FC<PhotographyCardProps> = ({ post }) => {
               className={`text-sm transition-colors ${
                 isBookmarked
                   ? 'text-yellow-500'
-                  : 'text-[#B8C6D8] hover:text-yellow-500'
+                  : 'text-text-muted hover:text-yellow-500'
               }`}
               aria-label={isBookmarked ? "取消收藏" : "收藏"}
             >

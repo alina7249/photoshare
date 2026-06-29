@@ -38,19 +38,19 @@ const Button: React.FC<ButtonProps> = ({
   const getVariantStyles = () => {
     if (theme === 'dark') {
       return {
-        primary: "bg-[#4A5F8B] text-[#F5F7FA] hover:bg-[#6B7C93] border border-[#4A5F8B]",
-        secondary: "bg-[#1E2532] text-[#B8C6D8] hover:bg-[#4A5F8B] border border-[#4A5F8B]",
-        outline: "bg-transparent text-[#4A5F8B] hover:bg-[#4A5F8B] hover:text-[#F5F7FA] border border-[#4A5F8B]",
-        danger: "bg-[#1E2532] text-[#B8C6D8] hover:bg-[#F56565] hover:text-[#F5F7FA] border border-[#4A5F8B]",
-        success: "bg-[#1E2532] text-[#B8C6D8] hover:bg-[#48BB78] hover:text-[#F5F7FA] border border-[#4A5F8B]"
+        primary: "bg-accent text-text-primary hover:bg-accent-hover border border-accent",
+        secondary: "bg-bg-deep text-text-muted hover:bg-accent border border-accent",
+        outline: "bg-transparent text-accent hover:bg-accent hover:text-text-primary border border-accent",
+        danger: "bg-bg-deep text-text-muted hover:bg-danger hover:text-text-primary border border-accent",
+        success: "bg-bg-deep text-text-muted hover:bg-success hover:text-text-primary border border-accent"
       };
     } else {
       return {
-        primary: "bg-[#63B3ED] text-white hover:bg-[#4299E1] border border-[#63B3ED]",
-        secondary: "bg-white text-[#1E2532] hover:bg-gray-100 border border-gray-300",
-        outline: "bg-transparent text-[#63B3ED] hover:bg-blue-50 hover:text-[#4299E1] border border-[#63B3ED]",
-        danger: "bg-white text-[#E53E3E] hover:bg-red-50 border border-red-300",
-        success: "bg-white text-[#48BB78] hover:bg-green-50 border border-green-300"
+        primary: "bg-light-accent text-white hover:bg-light-accent-hover border border-light-accent",
+        secondary: "bg-white text-bg-deep hover:bg-gray-100 border border-gray-300",
+        outline: "bg-transparent text-light-accent hover:bg-blue-50 hover:text-light-accent-hover border border-light-accent",
+        danger: "bg-white text-danger hover:bg-red-50 border border-red-300",
+        success: "bg-white text-success hover:bg-green-50 border border-green-300"
       };
     }
   };

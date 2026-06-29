@@ -290,29 +290,29 @@ const CourseDetail: React.FC = () => {
   
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen flex items-center justify-center">
-        <div className="w-16 h-16 border-4 border-[#4A5F8B] border-t-transparent rounded-full animate-spin"></div>
+      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen flex items-center justify-center">
+        <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
 
   if (!course) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
-          <div className="w-16 h-16 bg-[#4A5F8B] rounded-full flex items-center justify-center text-[#F5F7FA] mb-4">
+          <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-exclamation-circle text-2xl"></i>
           </div>
-          <h2 className="text-2xl font-bold text-[#F5F7FA] mb-2">未找到该课程</h2>
-          <p className="text-[#B8C6D8] mb-6 max-w-md">抱歉，您访问的课程不存在或已被删除</p>
-          <Link to="/online-courses" className="px-6 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors border border-[#4A5F8B]">返回课程列表</Link>
+          <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该课程</h2>
+          <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的课程不存在或已被删除</p>
+          <Link to="/online-courses" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent">返回课程列表</Link>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -322,7 +322,7 @@ const CourseDetail: React.FC = () => {
         <div className="mb-6">
           <Link
             to="/online-courses"
-            className="inline-flex items-center space-x-1 text-[#B8C6D8]/70 hover:text-[#B8C6D8] transition-colors"
+            className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>
             <span>返回课程列表</span>
@@ -334,18 +334,18 @@ const CourseDetail: React.FC = () => {
           <div className="flex flex-col lg:flex-row gap-6">
             {/* 课程封面和视频区域 */}
             <div className="lg:w-2/3">
-              <div className="relative bg-[#2D3748] rounded-xl overflow-hidden border border-[#4A5F8B] mb-6" id="course-video-section">
-                <div className="aspect-video bg-[#1E2532] flex items-center justify-center">
+              <div className="relative bg-bg-card rounded-xl overflow-hidden border border-accent mb-6" id="course-video-section">
+                <div className="aspect-video bg-bg-deep flex items-center justify-center">
                   {selectedLesson ? (
                     // 模拟视频播放器
                     <div className="text-center">
-                      <div className="mb-4 text-6xl text-[#4A5F8B]">
+                      <div className="mb-4 text-6xl text-accent">
                         <i className="fa-solid fa-play-circle"></i>
                       </div>
-                      <h3 className="text-xl font-bold text-[#F5F7FA] mb-2">{selectedLesson.title}</h3>
-                      <p className="text-[#B8C6D8]">{selectedLesson.duration}</p>
+                      <h3 className="text-xl font-bold text-text-primary mb-2">{selectedLesson.title}</h3>
+                      <p className="text-text-muted">{selectedLesson.duration}</p>
                       {!hasAccess() && !selectedLesson.isTrial && (
-                        <div className="mt-4 px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg inline-block">
+                        <div className="mt-4 px-4 py-2 bg-accent text-text-primary rounded-lg inline-block">
                           此内容需要登录才能访问
                         </div>
                       )}
@@ -359,19 +359,19 @@ const CourseDetail: React.FC = () => {
                         className="w-full h-full object-cover opacity-50"
                       />
                       <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-                        <h2 className="text-3xl font-bold text-[#F5F7FA] mb-4">{course.title}</h2>
-                        <p className="text-[#B8C6D8] mb-6 max-w-2xl">{course.description}</p>
+                        <h2 className="text-3xl font-bold text-text-primary mb-4">{course.title}</h2>
+                        <p className="text-text-muted mb-6 max-w-2xl">{course.description}</p>
                         <div className="flex flex-wrap justify-center gap-4">
                           {course.sections[0]?.lessons[0] && (
                             <button
                               onClick={() => handleLessonSelect(course.sections[0].lessons[0])}
-                              className="px-6 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors"
+                              className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors"
                             >
                               {course.type === '免费' ? '开始学习' : '免费试看'}
                             </button>
                           )}
                           {course.type !== '免费' && (
-                            <button className="px-6 py-3 bg-[#2D3748] text-[#F5F7FA] border border-[#4A5F8B] rounded-lg font-medium hover:bg-[#4A5F8B] transition-colors">
+                            <button className="px-6 py-3 bg-bg-card text-text-primary border border-accent rounded-lg font-medium hover:bg-accent transition-colors">
                               立即购买
                             </button>
                           )}
@@ -382,14 +382,14 @@ const CourseDetail: React.FC = () => {
                 </div>
                 
                 {selectedLesson && (
-                  <div className="p-4 bg-[#2D3748] border-t border-[#4A5F8B] flex justify-between items-center">
+                  <div className="p-4 bg-bg-card border-t border-accent flex justify-between items-center">
                     <div className="flex items-center space-x-4">
                       <button
                         onClick={handleMarkCompleted}
                         className={`flex items-center space-x-1 text-sm px-3 py-1 rounded-full ${
                           progress[selectedLesson.id]
-                            ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                            : 'bg-[#1E2532] text-[#B8C6D8]'
+                            ? 'bg-accent text-text-primary'
+                            : 'bg-bg-deep text-text-muted'
                         }`}
                       >
                         <i className={`fa-solid ${progress[selectedLesson.id] ? 'fa-check' : 'fa-circle-check'}`}></i>
@@ -397,13 +397,13 @@ const CourseDetail: React.FC = () => {
                       </button>
                       <button
                         onClick={() => setShowNotes(!showNotes)}
-                        className="flex items-center space-x-1 text-sm px-3 py-1 bg-[#1E2532] text-[#B8C6D8] rounded-full"
+                        className="flex items-center space-x-1 text-sm px-3 py-1 bg-bg-deep text-text-muted rounded-full"
                       >
                         <i className="fa-solid fa-pen-to-square"></i>
                         <span>笔记</span>
                       </button>
                     </div>
-                    <div className="text-sm text-[#B8C6D8]">
+                    <div className="text-sm text-text-muted">
                       {selectedLesson.duration}
                     </div>
                   </div>
@@ -415,19 +415,19 @@ const CourseDetail: React.FC = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="p-4 bg-[#1E2532] border-t border-[#4A5F8B]"
+                    className="p-4 bg-bg-deep border-t border-accent"
                   >
                     <div className="mb-4">
                       <textarea
                         value={newNote}
                         onChange={(e) => setNewNote(e.target.value)}
                         placeholder="添加学习笔记..."
-                        className="w-full px-4 py-3 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all resize-none h-24"
+                        className="w-full px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none h-24"
                       ></textarea>
                       <div className="flex justify-end mt-2">
                         <button
                           onClick={handleAddNote}
-                          className="px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg text-sm font-medium hover:bg-[#6B7C93] transition-colors"
+                          className="px-4 py-2 bg-accent text-text-primary rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors"
                         >
                           保存笔记
                         </button>
@@ -437,21 +437,21 @@ const CourseDetail: React.FC = () => {
                     {/* 笔记列表 */}
                     {notes.filter(note => note.lessonId === selectedLesson.id).length > 0 && (
                       <div className="mt-4">
-                        <h4 className="text-sm font-medium text-[#B8C6D8] mb-2">我的笔记</h4>
+                        <h4 className="text-sm font-medium text-text-muted mb-2">我的笔记</h4>
                         <div className="space-y-2">
                           {notes
                             .filter(note => note.lessonId === selectedLesson.id)
                             .map(note => (
-                              <div key={note.id} className="p-3 bg-[#2D3748] rounded-lg border border-[#4A5F8B]">
+                              <div key={note.id} className="p-3 bg-bg-card rounded-lg border border-accent">
                                 <div className="flex justify-between items-start mb-1">
-                                  <p className="text-sm text-[#F5F7FA]">{note.content}</p>
+                                  <p className="text-sm text-text-primary">{note.content}</p>
                                   <button
                                     onClick={() => handleDeleteNote(note.id)}
-                                    className="text-[#B8C6D8] hover:text-[#F5F7FA]"
+                                    className="text-text-muted hover:text-text-primary"
                                   >
                                     <i className="fa-solid fa-times"></i>
                                   </button>
-                                </div><p className="text-xs text-[#6B7C93]">{note.timestamp}</p>
+                                </div><p className="text-xs text-accent-hover">{note.timestamp}</p>
                               </div>
                             ))}
                         </div>
@@ -462,36 +462,36 @@ const CourseDetail: React.FC = () => {
               </div>
               
               {/* 课程描述 */}
-              <div className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B] mb-6">
-                <h3 className="text-xl font-bold text-[#F5F7FA] mb-4">课程介绍</h3>
-                <p className="text-[#B8C6D8] mb-4">
+              <div className="bg-bg-card rounded-xl p-6 border border-accent mb-6">
+                <h3 className="text-xl font-bold text-text-primary mb-4">课程介绍</h3>
+                <p className="text-text-muted mb-4">
                   {course.description}
                 </p>
-                <p className="text-[#B8C6D8]">
+                <p className="text-text-muted">
                   通过本课程的学习，你将掌握摄影曝光的核心原理，能够在不同场景下灵活运用光圈、快门和ISO的组合，拍出曝光准确、视觉效果出色的照片。课程包含丰富的实际案例分析和练习指导，帮助你快速将理论知识转化为实际拍摄技能。
                 </p>
               </div>
               
               {/* 课程评价 */}
-              <div className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B] mb-6">
-                <h3 className="text-xl font-bold text-[#F5F7FA] mb-4">课程评价</h3>
+              <div className="bg-bg-card rounded-xl p-6 border border-accent mb-6">
+                <h3 className="text-xl font-bold text-text-primary mb-4">课程评价</h3>
                 
                 <div className="flex items-center space-x-6 mb-6">
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-[#4A5F8B]">{course.rating}</div>
-                    <div className="flex items-center justify-center mt-1 text-[#4A5F8B]">
+                    <div className="text-4xl font-bold text-accent">{course.rating}</div>
+                    <div className="flex items-center justify-center mt-1 text-accent">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <i
                           key={i}
                           className={`fa-solid fa-star ${
                             i < Math.floor(course.rating)
-                              ? 'text-[#4A5F8B]'
-                              : 'text-[#4A5F8B]/30'
+                              ? 'text-accent'
+                              : 'text-accent/30'
                           }`}
                         ></i>
                       ))}
                     </div>
-                    <div className="text-sm text-[#B8C6D8] mt-1">课程评分</div>
+                    <div className="text-sm text-text-muted mt-1">课程评分</div>
                   </div>
                   
                   <div className="flex-1">
@@ -501,14 +501,14 @@ const CourseDetail: React.FC = () => {
                         const percentage = star === 5 ? 65 : star === 4 ? 20 : star === 3 ? 10 : star === 2 ? 3 : 2;
                         return (
                           <div key={star} className="flex items-center space-x-2">
-                            <div className="w-16 text-sm text-[#B8C6D8]">{star}星</div>
-                            <div className="flex-1 h-2 bg-[#1E2532] rounded-full overflow-hidden">
+                            <div className="w-16 text-sm text-text-muted">{star}星</div>
+                            <div className="flex-1 h-2 bg-bg-deep rounded-full overflow-hidden">
                               <div
-                                className="h-full bg-[#4A5F8B]"
+                                className="h-full bg-accent"
                                 style={{ width: `${percentage}%` }}
                               ></div>
                             </div>
-                            <div className="w-10 text-right text-sm text-[#B8C6D8]">{percentage}%</div>
+                            <div className="w-10 text-right text-sm text-text-muted">{percentage}%</div>
                           </div>
                         );
                       })}
@@ -519,7 +519,7 @@ const CourseDetail: React.FC = () => {
                 {/* 用户评分 */}
                 {isAuthenticated && (
                   <div className="mb-6">
-                    <h4 className="text-sm font-medium text-[#B8C6D8] mb-2">我的评分</h4>
+                    <h4 className="text-sm font-medium text-text-muted mb-2">我的评分</h4>
                     <div className="flex items-center space-x-3">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <button
@@ -534,7 +534,7 @@ const CourseDetail: React.FC = () => {
                       {userRating > 0 && (
                         <button
                           onClick={handleRatingSubmit}
-                          className="ml-4 px-4 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg text-sm font-medium hover:bg-[#6B7C93] transition-colors"
+                          className="ml-4 px-4 py-1 bg-accent text-text-primary rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors"
                         >
                           提交评分
                         </button>
@@ -551,7 +551,7 @@ const CourseDetail: React.FC = () => {
             {/* 课程大纲和侧边信息 */}
             <div className="lg:w-1/3">
               {/* 课程信息卡片 */}
-              <div className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B] mb-6">
+              <div className="bg-bg-card rounded-xl p-6 border border-accent mb-6">
                 <div className="flex items-center mb-4">
                   <img
                     src={course.instructor.avatar}
@@ -559,49 +559,49 @@ const CourseDetail: React.FC = () => {
                     className="w-12 h-12 rounded-full mr-3 object-cover"
                   />
                   <div>
-                    <h3 className="font-medium text-[#F5F7FA]">{course.instructor.name}</h3>
-                    <p className="text-sm text-[#B8C6D8]">{course.instructor.title}</p>
+                    <h3 className="font-medium text-text-primary">{course.instructor.name}</h3>
+                    <p className="text-sm text-text-muted">{course.instructor.title}</p>
                   </div>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="text-center p-3 bg-[#1E2532] rounded-lg">
-                    <p className="text-xl font-bold text-[#4A5F8B]">{course.instructor.students.toLocaleString()}</p>
-                    <p className="text-xs text-[#B8C6D8]">学员</p>
+                  <div className="text-center p-3 bg-bg-deep rounded-lg">
+                    <p className="text-xl font-bold text-accent">{course.instructor.students.toLocaleString()}</p>
+                    <p className="text-xs text-text-muted">学员</p>
                   </div>
-                  <div className="text-center p-3 bg-[#1E2532] rounded-lg">
-                    <p className="text-xl font-bold text-[#4A5F8B]">{course.instructor.courses}</p>
-                    <p className="text-xs text-[#B8C6D8]">课程</p>
+                  <div className="text-center p-3 bg-bg-deep rounded-lg">
+                    <p className="text-xl font-bold text-accent">{course.instructor.courses}</p>
+                    <p className="text-xs text-text-muted">课程</p>
                   </div>
                 </div>
                 
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-[#B8C6D8]">课程分类</span>
-                    <span className="text-sm text-[#F5F7FA]">{course.category}</span>
+                    <span className="text-sm text-text-muted">课程分类</span>
+                    <span className="text-sm text-text-primary">{course.category}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-[#B8C6D8]">难度级别</span>
-                    <span className="text-sm text-[#F5F7FA]">{course.level}</span>
+                    <span className="text-sm text-text-muted">难度级别</span>
+                    <span className="text-sm text-text-primary">{course.level}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-[#B8C6D8]">课程时长</span>
-                    <span className="text-sm text-[#F5F7FA]">{course.duration}</span>
+                    <span className="text-sm text-text-muted">课程时长</span>
+                    <span className="text-sm text-text-primary">{course.duration}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-[#B8C6D8]">课时数量</span>
-                    <span className="text-sm text-[#F5F7FA]">{course.lessons} 课时</span>
+                    <span className="text-sm text-text-muted">课时数量</span>
+                    <span className="text-sm text-text-primary">{course.lessons} 课时</span>
                   </div>
                 </div>
                 
-                <div className="mt-6 pt-6 border-t border-[#4A5F8B]">
+                <div className="mt-6 pt-6 border-t border-accent">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm text-[#B8C6D8]">学习进度</span>
-                    <span className="text-sm text-[#F5F7FA]">{overallProgress}%</span>
+                    <span className="text-sm text-text-muted">学习进度</span>
+                    <span className="text-sm text-text-primary">{overallProgress}%</span>
                   </div>
-                  <div className="w-full h-2 bg-[#1E2532] rounded-full overflow-hidden mb-4">
+                  <div className="w-full h-2 bg-bg-deep rounded-full overflow-hidden mb-4">
                     <div
-                      className="h-full bg-[#4A5F8B]"
+                      className="h-full bg-accent"
                       style={{ width: `${overallProgress}%` }}
                     ></div>
                   </div>
@@ -609,7 +609,7 @@ const CourseDetail: React.FC = () => {
                   {overallProgress === 100 && isAuthenticated && (
                     <button
                       onClick={() => setShowCertificate(true)}
-                      className="w-full py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors"
+                      className="w-full py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors"
                     >
                       <i className="fa-solid fa-certificate mr-1"></i>
                       领取课程证书
@@ -619,16 +619,16 @@ const CourseDetail: React.FC = () => {
               </div>
               
               {/* 课程大纲 */}
-              <div className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] overflow-hidden mb-6">
-                <div className="p-4 border-b border-[#4A5F8B] bg-[#2D3748]">
-                  <h3 className="font-bold text-[#F5F7FA]">课程大纲</h3>
+              <div className="bg-bg-card rounded-xl border border-accent overflow-hidden mb-6">
+                <div className="p-4 border-b border-accent bg-bg-card">
+                  <h3 className="font-bold text-text-primary">课程大纲</h3>
                 </div>
                 <div className="max-h-96 overflow-y-auto">
                   {course.sections.map((section) => (
                     <div key={section.id} className="mb-3">
-                      <div className="p-3 bg-[#2D3748] border-b border-[#4A5F8B] flex justify-between items-center">
-                        <h4 className="font-medium text-[#F5F7FA]">{section.title}</h4>
-                        <span className="text-xs text-[#B8C6D8]">{section.duration}</span>
+                      <div className="p-3 bg-bg-card border-b border-accent flex justify-between items-center">
+                        <h4 className="font-medium text-text-primary">{section.title}</h4>
+                        <span className="text-xs text-text-muted">{section.duration}</span>
                       </div>
                       <div className="space-y-1">
                         {section.lessons.map((lesson) => (
@@ -637,23 +637,23 @@ const CourseDetail: React.FC = () => {
                             onClick={() => handleLessonSelect(lesson)}
                             className={`w-full text-left p-3 ${
                               selectedLesson?.id === lesson.id
-                                ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                                : 'bg-[#1E2532] text-[#B8C6D8] hover:bg-[#2D3748]'
+                                ? 'bg-accent text-text-primary'
+                                : 'bg-bg-deep text-text-muted hover:bg-bg-card'
                             } flex justify-between items-center transition-colors`}
                             whileHover={{ x: 5 }}
                           >
                             <div className="flex items-center">
                               {progress[lesson.id] && (
-                                <i className="fa-solid fa-check-circle text-[#4A5F8B] mr-2"></i>
+                                <i className="fa-solid fa-check-circle text-accent mr-2"></i>
                               )}
                               <span>{lesson.title}</span>
                               {lesson.isTrial && (
-                                <span className="ml-2 px-1.5 py-0.5 bg-[#4A5F8B] text-[#F5F7FA] text-xs rounded">
+                                <span className="ml-2 px-1.5 py-0.5 bg-accent text-text-primary text-xs rounded">
                                   试看
                                 </span>
                               )}
                             </div>
-                            <span className="text-xs text-[#B8C6D8]">{lesson.duration}</span>
+                            <span className="text-xs text-text-muted">{lesson.duration}</span>
                           </motion.button>
                         ))}
                       </div>
@@ -663,12 +663,12 @@ const CourseDetail: React.FC = () => {
               </div>
               
               {/* 学习小组 */}
-              <div className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] overflow-hidden">
-                <div className="p-4 border-b border-[#4A5F8B] bg-[#2D3748] flex justify-between items-center">
-                  <h3 className="font-bold text-[#F5F7FA]">学习小组</h3>
+              <div className="bg-bg-card rounded-xl border border-accent overflow-hidden">
+                <div className="p-4 border-b border-accent bg-bg-card flex justify-between items-center">
+                  <h3 className="font-bold text-text-primary">学习小组</h3>
                   <button
                     onClick={() => setShowGroups(!showGroups)}
-                    className="text-sm text-[#4A5F8B] hover:text-[#6B7C93]"
+                    className="text-sm text-accent hover:text-accent-hover"
                   >
                     <i className={`fa-solid ${showGroups ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
                   </button>
@@ -685,11 +685,11 @@ const CourseDetail: React.FC = () => {
                             value={newGroupName}
                             onChange={(e) => setNewGroupName(e.target.value)}
                             placeholder="创建学习小组"
-                            className="flex-1 px-3 py-2 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all text-sm"
+                            className="flex-1 px-3 py-2 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all text-sm"
                           />
                           <button
                             onClick={handleCreateGroup}
-                            className="px-3 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg text-sm font-medium hover:bg-[#6B7C93] transition-colors"
+                            className="px-3 py-2 bg-accent text-text-primary rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors"
                           >
                             创建
                           </button>
@@ -700,20 +700,20 @@ const CourseDetail: React.FC = () => {
                     {/* 小组列表 */}
                     <div className="space-y-3">
                       {studyGroups.map((group) => (
-                        <div key={group.id} className="p-3 bg-[#1E2532] rounded-lg border border-[#4A5F8B]">
+                        <div key={group.id} className="p-3 bg-bg-deep rounded-lg border border-accent">
                           <div className="flex justify-between items-start mb-1">
-                            <h4 className="font-medium text-[#F5F7FA]">{group.name}</h4>
+                            <h4 className="font-medium text-text-primary">{group.name}</h4>
                             {isAuthenticated && (
                               <button
                                 onClick={() => handleJoinGroup(group)}
-                                className="px-2 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg text-xs font-medium hover:bg-[#6B7C93] transition-colors"
+                                className="px-2 py-1 bg-accent text-text-primary rounded-lg text-xs font-medium hover:bg-accent-hover transition-colors"
                               >
                                 加入
                               </button>
                             )}
                           </div>
-                          <p className="text-xs text-[#B8C6D8] mb-2 line-clamp-2">{group.description}</p>
-                          <div className="flex justify-between items-center text-xs text-[#6B7C93]">
+                          <p className="text-xs text-text-muted mb-2 line-clamp-2">{group.description}</p>
+                          <div className="flex justify-between items-center text-xs text-accent-hover">
                             <span><i className="fa-solid fa-users mr-1"></i>{group.members} 成员</span>
                             <span>{group.createdAt}</span>
                           </div>
@@ -729,45 +729,45 @@ const CourseDetail: React.FC = () => {
         
         {/* 推荐讲师部分 */}
         <div className="mt-12">
-          <h2 className="text-2xl font-bold text-[#F5F7FA] mb-6">推荐讲师</h2>
+          <h2 className="text-2xl font-bold text-text-primary mb-6">推荐讲师</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {instructors.map((instructor) => (
               <motion.div
                 key={instructor.id}
                 whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-                className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B] transition-all"
+                className="bg-bg-card rounded-xl p-6 border border-accent transition-all"
               >
                 <div className="flex items-center mb-4">
                   <img
                     src={instructor.avatar}
                     alt={instructor.name}
-                    className="w-16 h-16 rounded-full mr-4 object-cover border-2 border-[#4A5F8B]"
+                    className="w-16 h-16 rounded-full mr-4 object-cover border-2 border-accent"
                   />
                   <div>
-                    <h3 className="font-bold text-[#F5F7FA]">{instructor.name}</h3>
-                    <p className="text-sm text-[#B8C6D8]">{instructor.title}</p>
+                    <h3 className="font-bold text-text-primary">{instructor.name}</h3>
+                    <p className="text-sm text-text-muted">{instructor.title}</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center mb-4">
                   <div className="flex items-center mr-4">
-                    <i className="fa-solid fa-star text-[#4A5F8B] mr-1"></i>
-                    <span className="text-sm text-[#B8C6D8]">{instructor.rating}</span>
+                    <i className="fa-solid fa-star text-accent mr-1"></i>
+                    <span className="text-sm text-text-muted">{instructor.rating}</span>
                   </div>
                   <div className="flex items-center">
-                    <i className="fa-solid fa-users text-[#4A5F8B] mr-1"></i>
-                    <span className="text-sm text-[#B8C6D8]">{instructor.students.toLocaleString()} 学员</span>
+                    <i className="fa-solid fa-users text-accent mr-1"></i>
+                    <span className="text-sm text-text-muted">{instructor.students.toLocaleString()} 学员</span>
                   </div>
                 </div>
                 
-                <p className="text-sm text-[#B8C6D8] mb-4">{instructor.bio}</p>
+                <p className="text-sm text-text-muted mb-4">{instructor.bio}</p>
                 
                 <div className="flex space-x-3">
                   <button 
                     onClick={() => {
                       setSelectedInstructor(instructor);
                     }}
-                    className="flex-1 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors border border-[#4A5F8B]"
+                    className="flex-1 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent"
                   >
                     查看详情
                   </button>
@@ -775,7 +775,7 @@ const CourseDetail: React.FC = () => {
                     onClick={() => {
                       toast.success(`已关注讲师 ${instructor.name}`);
                     }}
-                    className="px-4 py-2 bg-[#1E2532] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]"
+                    className="px-4 py-2 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                   >
                     <i className="fa-solid fa-plus"></i>
                   </button>
@@ -799,37 +799,37 @@ const CourseDetail: React.FC = () => {
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 20 }}
-            className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-bg-card rounded-xl border border-accent max-w-2xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* 证书预览 */}
             <div className="bg-white p-8 m-4 rounded-lg">
               <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-[#4A5F8B] mb-2">摄影技能认证证书</h2>
-                <p className="text-lg text-[#6B7C93]">CERTIFICATE OF COMPLETION</p>
+                <h2 className="text-3xl font-bold text-accent mb-2">摄影技能认证证书</h2>
+                <p className="text-lg text-accent-hover">CERTIFICATE OF COMPLETION</p>
               </div>
               
               <div className="text-center mb-8">
-                <p className="text-xl text-[#4A5F8B] mb-1">兹证明</p>
-                <p className="text-3xl font-bold text-[#4A5F8B] mb-4">{user?.username}</p>
-                <p className="text-lg text-[#6B7C93]">已成功完成</p>
-                <p className="text-2xl font-bold text-[#4A5F8B] my-4">{course.title}</p>
-                <p className="text-lg text-[#6B7C93]">课程学习</p>
+                <p className="text-xl text-accent mb-1">兹证明</p>
+                <p className="text-3xl font-bold text-accent mb-4">{user?.username}</p>
+                <p className="text-lg text-accent-hover">已成功完成</p>
+                <p className="text-2xl font-bold text-accent my-4">{course.title}</p>
+                <p className="text-lg text-accent-hover">课程学习</p>
               </div>
               
               <div className="flex justify-between items-center mb-4">
                 <div className="text-center">
-                  <p className="text-sm text-[#6B7C93]">讲师</p>
-                  <p className="font-medium text-[#4A5F8B]">{course.instructor.name}</p>
+                  <p className="text-sm text-accent-hover">讲师</p>
+                  <p className="font-medium text-accent">{course.instructor.name}</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-sm text-[#6B7C93]">完成日期</p>
-                  <p className="font-medium text-[#4A5F8B]">{new Date().toLocaleDateString('zh-CN')}</p>
+                  <p className="text-sm text-accent-hover">完成日期</p>
+                  <p className="font-medium text-accent">{new Date().toLocaleDateString('zh-CN')}</p>
                 </div>
               </div>
               
               <div className="mt-12 text-center">
-                <div className="inline-block px-6 py-3 bg-[#4A5F8B] text-white rounded-lg font-medium">
+                <div className="inline-block px-6 py-3 bg-accent text-white rounded-lg font-medium">
                   <i className="fa-solid fa-certificate mr-2"></i>
                   摄影技能认证
                 </div>
@@ -837,16 +837,16 @@ const CourseDetail: React.FC = () => {
             </div>
             
             {/* 操作按钮 */}
-            <div className="p-4 flex justify-end space-x-3 border-t border-[#4A5F8B]">
+            <div className="p-4 flex justify-end space-x-3 border-t border-accent">
               <button
                 onClick={() => setShowCertificate(false)}
-                className="px-4 py-2 bg-[#2D3748] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]"
+                className="px-4 py-2 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
               >
                 关闭
               </button>
               <button
                 onClick={handleDownloadCertificate}
-                className="px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors"
+                className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors"
               >
                 <i className="fa-solid fa-download mr-1"></i>
                 下载证书
@@ -869,16 +869,16 @@ const CourseDetail: React.FC = () => {
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 20 }}
-            className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-bg-card rounded-xl border border-accent max-w-2xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* 讲师详情头部 */}
-            <div className="p-6 border-b border-[#4A5F8B]">
+            <div className="p-6 border-b border-accent">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-bold text-[#F5F7FA]">讲师详情</h3>
+                <h3 className="text-xl font-bold text-text-primary">讲师详情</h3>
                 <button
                   onClick={() => setSelectedInstructor(null)}
-                  className="text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors"
+                  className="text-text-muted hover:text-text-primary transition-colors"
                 >
                   <i className="fa-solid fa-times"></i>
                 </button>
@@ -888,7 +888,7 @@ const CourseDetail: React.FC = () => {
             {/* 讲师详情内容 */}
             <div className="p-6">
               <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-6 mb-6">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-[#4A5F8B]">
+                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-accent">
                   <img
                     src={selectedInstructor.avatar}
                     alt={selectedInstructor.name}
@@ -896,51 +896,51 @@ const CourseDetail: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-[#F5F7FA] mb-1">{selectedInstructor.name}</h4>
-                  <p className="text-sm text-[#B8C6D8] mb-3">{selectedInstructor.title}</p>
+                  <h4 className="text-xl font-bold text-text-primary mb-1">{selectedInstructor.name}</h4>
+                  <p className="text-sm text-text-muted mb-3">{selectedInstructor.title}</p>
                   <div className="flex items-center space-x-4">
                     <div className="flex items-center">
-                      <i className="fa-solid fa-star text-[#4A5F8B] mr-1"></i>
-                      <span className="text-sm text-[#B8C6D8]">{selectedInstructor.rating}</span>
+                      <i className="fa-solid fa-star text-accent mr-1"></i>
+                      <span className="text-sm text-text-muted">{selectedInstructor.rating}</span>
                     </div>
                     <div className="flex items-center">
-                      <i className="fa-solid fa-users text-[#4A5F8B] mr-1"></i>
-                      <span className="text-sm text-[#B8C6D8]">{selectedInstructor.students.toLocaleString()} 学员</span>
+                      <i className="fa-solid fa-users text-accent mr-1"></i>
+                      <span className="text-sm text-text-muted">{selectedInstructor.students.toLocaleString()} 学员</span>
                     </div>
                     <div className="flex items-center">
-                      <i className="fa-solid fa-book text-[#4A5F8B] mr-1"></i>
-                      <span className="text-sm text-[#B8C6D8]">{selectedInstructor.courses} 课程</span>
+                      <i className="fa-solid fa-book text-accent mr-1"></i>
+                      <span className="text-sm text-text-muted">{selectedInstructor.courses} 课程</span>
                     </div>
                   </div>
                 </div>
               </div>
               
               <div className="mb-6">
-                <h4 className="text-lg font-medium text-[#F5F7FA] mb-2">擅长领域</h4>
-                <span className="px-3 py-1 bg-[#1E2532] text-[#B8C6D8] rounded-full text-sm border border-[#4A5F8B]">
+                <h4 className="text-lg font-medium text-text-primary mb-2">擅长领域</h4>
+                <span className="px-3 py-1 bg-bg-deep text-text-muted rounded-full text-sm border border-accent">
                   {selectedInstructor.specialty}
                 </span>
               </div>
               
               <div className="mb-6">
-                <h4 className="text-lg font-medium text-[#F5F7FA] mb-2">个人简介</h4>
-                <p className="text-[#B8C6D8]">{selectedInstructor.bio}</p>
+                <h4 className="text-lg font-medium text-text-primary mb-2">个人简介</h4>
+                <p className="text-text-muted">{selectedInstructor.bio}</p>
               </div>
               
               <div className="mb-6">
-                <h4 className="text-lg font-medium text-[#F5F7FA] mb-2">代表课程</h4>
+                <h4 className="text-lg font-medium text-text-primary mb-2">代表课程</h4>
                 <div className="space-y-3">
                   {[1, 2].map((item) => (
-                    <div key={item} className="p-3 bg-[#1E2532] rounded-lg border border-[#4A5F8B] flex items-center justify-between">
+                    <div key={item} className="p-3 bg-bg-deep rounded-lg border border-accent flex items-center justify-between">
                       <div>
-                        <h5 className="font-medium text-[#F5F7FA]">
+                        <h5 className="font-medium text-text-primary">
                           {selectedInstructor.specialty}进阶课程 {item}
                         </h5>
-                        <p className="text-xs text-[#B8C6D8] mt-1">
+                        <p className="text-xs text-text-muted mt-1">
                           10课时 · 2小时 · 初级到中级
                         </p>
                       </div>
-                      <span className="text-[#4A5F8B] font-medium">
+                      <span className="text-accent font-medium">
                         {item === 1 ? '免费' : '¥199'}
                       </span>
                     </div>
@@ -950,10 +950,10 @@ const CourseDetail: React.FC = () => {
             </div>
             
             {/* 讲师详情底部 */}
-            <div className="p-4 border-t border-[#4A5F8B] flex justify-end space-x-3">
+            <div className="p-4 border-t border-accent flex justify-end space-x-3">
               <button
                 onClick={() => setSelectedInstructor(null)}
-                className="px-4 py-2 bg-[#2D3748] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]"
+                className="px-4 py-2 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
               >
                 关闭
               </button>
@@ -962,7 +962,7 @@ const CourseDetail: React.FC = () => {
                   toast.success(`已关注讲师 ${selectedInstructor.name}`);
                   setSelectedInstructor(null);
                 }}
-                className="px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors"
+                className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors"
               >
                 <i className="fa-solid fa-plus mr-1"></i>
                 关注讲师

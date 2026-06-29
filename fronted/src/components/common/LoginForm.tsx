@@ -191,8 +191,8 @@ const LoginForm: React.FC = () => {
             } ${
               theme === 'dark' 
                 ? 'bg-[#4A5568] text-[#FFFFFF]' 
-                : 'bg-white text-[#1E2532]'
-            } focus:outline-none focus:ring-2 focus:ring-[#63B3ED] transition-colors`}
+                : 'bg-white text-bg-deep'
+            } focus:outline-none focus:ring-2 focus:ring-light-accent transition-colors`}
             placeholder="请输入用户名"
           />
           {errors.username && (
@@ -230,14 +230,14 @@ const LoginForm: React.FC = () => {
               } ${
                 theme === 'dark' 
                   ? 'bg-[#4A5568] text-[#FFFFFF]' 
-                  : 'bg-white text-[#1E2532]'
-              } focus:outline-none focus:ring-2 focus:ring-[#63B3ED] transition-colors`}
+                  : 'bg-white text-bg-deep'
+              } focus:outline-none focus:ring-2 focus:ring-light-accent transition-colors`}
               placeholder="••••••••"
             />
             <button
               type="button"
               onClick={togglePasswordVisibility}
-              className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#718096] hover:text-[#B8C6D8]"
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#718096] hover:text-text-muted"
               aria-label={showPassword ? '隐藏密码' : '显示密码'}
             >
               <i className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
@@ -276,7 +276,7 @@ const LoginForm: React.FC = () => {
           <div>
             <a
               href="#"
-              className="text-sm font-medium text-[#63B3ED] hover:text-[#63B3ED] transition-colors"
+              className="text-sm font-medium text-light-accent hover:text-light-accent transition-colors"
             >
               忘记密码？
             </a>
@@ -288,7 +288,7 @@ const LoginForm: React.FC = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-3 px-4 bg-[#63B3ED] hover:bg-[#4299E1] text-[#0F1C2D] font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-[#63B3ED] transition-colors"
+          className="w-full py-3 px-4 bg-light-accent hover:bg-light-accent-hover text-[#0F1C2D] font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-light-accent transition-colors"
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center">

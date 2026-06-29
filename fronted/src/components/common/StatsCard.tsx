@@ -24,16 +24,16 @@ const StatsCard: React.FC<StatsCardProps> = ({
   className = ''
 }) => {
   return (
-    <div className={`bg-[#2D3748] rounded-xl p-5 border border-[#4A5F8B] ${className}`}>
+    <div className={`bg-bg-card rounded-xl p-5 border border-accent ${className}`}>
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-base font-medium text-[#F5F7FA] flex items-center">
-          <i className={`fa-solid ${icon} text-[#4A5F8B] mr-2`}></i>
+        <h3 className="text-base font-medium text-text-primary flex items-center">
+          <i className={`fa-solid ${icon} text-accent mr-2`}></i>
           {title}
         </h3>
         {actionText && (
           <button 
             onClick={onAction}
-            className="text-xs text-[#4A5F8B] hover:text-[#B8C6D8]"
+            className="text-xs text-accent hover:text-text-muted"
           >
             {actionText}
           </button>
@@ -41,12 +41,12 @@ const StatsCard: React.FC<StatsCardProps> = ({
       </div>
       
       {description && (
-        <p className="text-xs text-[#B8C6D8]/70 mb-4">{description}</p>
+        <p className="text-xs text-text-muted/70 mb-4">{description}</p>
       )}
       
       <div className="flex justify-between items-end">
         <div>
-          <div className="text-2xl font-bold text-[#F5F7FA]">{value}</div>
+          <div className="text-2xl font-bold text-text-primary">{value}</div>
           {trend && trendValue && (
             <div className={`flex items-center mt-1 text-xs ${
               trend === 'up' ? 'text-green-500' : trend === 'down' ? 'text-red-500' : 'text-gray-400'
@@ -58,7 +58,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
         </div>
         
         {onAction && (
-          <button className="px-3 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg text-xs hover:bg-[#6B7C93] transition-colors">
+          <button className="px-3 py-1 bg-accent text-text-primary rounded-lg text-xs hover:bg-accent-hover transition-colors">
             {actionText || '查看'}
           </button>
         )}

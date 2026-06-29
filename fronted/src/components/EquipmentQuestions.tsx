@@ -592,20 +592,20 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
   const getThemeClasses = () => {
     if (theme === 'dark') {
       return {
-        container: 'bg-[#2D3748] border-[#4A5F8B]',
-        text: 'text-[#B8C6D8]',
-        primaryText: 'text-[#F5F7FA]',
-        secondaryText: 'text-[#6B7C93]',
-        accentColor: 'text-[#4A5F8B]',
-        inputBg: 'bg-[#2D3748] border-[#4A5F8B] text-[#F5F7FA]',
-        cardBg: 'bg-[#1E2532]',
-        button: 'bg-[#4A5F8B] text-[#F5F7FA] hover:bg-[#6B7C93]',
-        buttonSecondary: 'bg-[#2D3748] text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA]',
-        border: 'border-[#4A5F8B]',
-        highlight: 'text-[#4A5F8B]',
-        likedColor: 'text-[#F56565]',
-        answeredTag: 'bg-[#48BB78] text-white',
-        unansweredTag: 'bg-[#F56565] text-white'
+        container: 'bg-bg-card border-accent',
+        text: 'text-text-muted',
+        primaryText: 'text-text-primary',
+        secondaryText: 'text-accent-hover',
+        accentColor: 'text-accent',
+        inputBg: 'bg-bg-card border-accent text-text-primary',
+        cardBg: 'bg-bg-deep',
+        button: 'bg-accent text-text-primary hover:bg-accent-hover',
+        buttonSecondary: 'bg-bg-card text-text-muted hover:bg-accent hover:text-text-primary',
+        border: 'border-accent',
+        highlight: 'text-accent',
+        likedColor: 'text-danger',
+        answeredTag: 'bg-success text-white',
+        unansweredTag: 'bg-danger text-white'
       };
     } else {
       return {
@@ -640,7 +640,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
             placeholder="搜索问题或作者.."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className={`w-full px-4 py-2 pl-10 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all`}
+            className={`w-full px-4 py-2 pl-10 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all`}
           />
           <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
         </div>
@@ -653,7 +653,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as 'latest' | 'popular' | 'unanswered')}
-              className={`px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer`}
+              className={`px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer`}
             >
               <option value="latest">最新发布</option>
               <option value="popular">最热问题</option>
@@ -670,7 +670,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
                 setFilterBy(e.target.value as 'all' | 'answered' | 'unanswered');
                 setCurrentPage(1);
               }}
-              className={`px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer`}
+              className={`px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer`}
             >
               <option value="all">全部问题</option>
               <option value="answered">已回答</option>
@@ -694,7 +694,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       {hotQuestions.length > 0 && (
         <div className="mb-6">
           <h3 className="text-lg font-semibold mb-4 flex items-center">
-            <i className="fa-solid fa-fire text-[#F56565] mr-2"></i>
+            <i className="fa-solid fa-fire text-danger mr-2"></i>
             热门问题
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -740,7 +740,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       
       {/* 用户提问区标题和按钮 */}
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-semibold text-[#F5F7FA]">用户提问区</h3>
+        <h3 className="text-lg font-semibold text-text-primary">用户提问区</h3>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -855,23 +855,23 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
               </AnimatePresence>
               
               <div className="mb-3">
-                <label className="block text-sm text-[#B8C6D8] mb-1">问题标题</label>
+                <label className="block text-sm text-text-muted mb-1">问题标题</label>
                 <input
                   type="text"
                   value={newQuestionTitle}
                   onChange={(e) => setNewQuestionTitle(e.target.value)}
                   placeholder="请输入问题标题..."
-                  className={`w-full px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all`}
+                  className={`w-full px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all`}
                 />
               </div>
               <div className="mb-3 relative">
-                <label className="block text-sm text-[#B8C6D8] mb-1">问题详情</label>
+                <label className="block text-sm text-text-muted mb-1">问题详情</label>
                 <textarea
                   ref={textareaRef}
                   value={newQuestionContent}
                   onChange={(e) => setNewQuestionContent(e.target.value)}
                   placeholder="请详细描述您的问题..."
-                  className={`w-full px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all resize-none min-h-[100px] max-h-[200px]`}
+                  className={`w-full px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none min-h-[100px] max-h-[200px]`}
                   style={{ overflow: 'hidden' }}
                   onInput={(e) => {
                     const target = e.target as HTMLTextAreaElement;
@@ -951,9 +951,9 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
           // 加载中状态
           <div className="py-12 text-center">
             <div className="w-16 h-16 mx-auto mb-4">
-              <i className="fa-solid fa-spinner fa-spin text-2xl text-[#4A5F8B]"></i>
+              <i className="fa-solid fa-spinner fa-spin text-2xl text-accent"></i>
             </div>
-            <p className="text-[#B8C6D8]">加载中..</p>
+            <p className="text-text-muted">加载中..</p>
           </div>
         ) : paginatedQuestions.length > 0 ? (
           paginatedQuestions.map((question) => (
@@ -985,7 +985,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
                     />
                     <div>
                       <div className="flex items-center space-x-2">
-                        <h4 className="font-medium text-[#F5F7FA]">{question.title}</h4>
+                        <h4 className="font-medium text-text-primary">{question.title}</h4>
                         <span className={`text-xs px-2 py-0.5 rounded-full ${
                           question.answers.length > 0 
                             ? themeClasses.answeredTag 
@@ -994,7 +994,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
                           {question.answers.length > 0 ? '已回答' : '未回答'}
                         </span>
                       </div>
-                      <p className="text-sm text-[#6B7C93] mt-1">
+                      <p className="text-sm text-accent-hover mt-1">
                         {question.author} · {formatRelativeTime(question.date)}
                       </p>
                     </div>
@@ -1049,7 +1049,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
                       whileTap={{ scale: 0.9 }}
                       onClick={() => handleLikeQuestion(question.id)}
                       className={`flex items-center text-sm transition-colors ${
-                        question.isLiked ? themeClasses.likedColor : 'text-[#B8C6D8] hover:text-[#F5F7FA]'
+                        question.isLiked ? themeClasses.likedColor : 'text-text-muted hover:text-text-primary'
                       }`}
                     >
                       <motion.i
@@ -1062,13 +1062,13 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
                   </div>
                 </div>
                 
-                <p className="mt-3 text-[#B8C6D8]">{question.content}</p>
+                <p className="mt-3 text-text-muted">{question.content}</p>
                 
                 <div className="mt-3 flex justify-between items-center">
                   {question.answers.length > 0 ? (
                     <button
                       onClick={() => setReplyingTo(replyingTo === question.id ? null : question.id)}
-                      className="text-sm text-[#4A5F8B] hover:text-[#6B7C93] transition-colors"
+                      className="text-sm text-accent hover:text-accent-hover transition-colors"
                     >
                       <i className="fa-solid fa-reply mr-1"></i>
                       {replyingTo === question.id ? '取消回复' : '回复'}
@@ -1076,7 +1076,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
                   ) : (
                     <button
                       onClick={() => setIsAnswering(isAnswering === question.id ? null : question.id)}
-                      className="text-sm text-[#4A5F8B] hover:text-[#6B7C93] transition-colors"
+                      className="text-sm text-accent hover:text-accent-hover transition-colors"
                     >
                       <i className="fa-solid fa-comment-dots mr-1"></i>
                       {isAnswering === question.id ? '取消回答' : '我来回答'}
@@ -1097,7 +1097,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
                         value={replyContent}
                         onChange={(e) => setReplyContent(e.target.value)}
                         placeholder="请输入您的回复..."
-                        className={`w-full px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all resize-none h-20`}
+                        className={`w-full px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none h-20`}
                       ></textarea>
                       <div className="flex justify-end space-x-2 mt-2">
                         <motion.button
@@ -1142,7 +1142,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
                         value={answerContent}
                         onChange={(e) => setAnswerContent(e.target.value)}
                         placeholder="请输入您的回答..."
-                        className={`w-full px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all resize-none h-32`}
+                        className={`w-full px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none h-32`}
                       ></textarea>
                       <div className="flex justify-end space-x-2 mt-2">
                         <motion.button
@@ -1177,9 +1177,9 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
               
               {/* 回答列表 */}
               {question.answers.length > 0 && (
-                <div className="border-t border-[#4A5F8B]">
+                <div className="border-t border-accent">
                   {question.answers.map((answer) => (
-                    <div key={answer.id} className="p-4 border-b border-[#4A5F8B]/30 last:border-b-0">
+                    <div key={answer.id} className="p-4 border-b border-accent/30 last:border-b-0">
                       <div className="flex items-start space-x-3">
                         <img
                           src={answer.authorAvatar}
@@ -1188,17 +1188,17 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
                         />
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
-                            <p className="text-sm font-medium text-[#F5F7FA]">{answer.author}</p>
-                            <p className="text-xs text-[#6B7C93]">{formatRelativeTime(answer.date)}</p>
+                            <p className="text-sm font-medium text-text-primary">{answer.author}</p>
+                            <p className="text-xs text-accent-hover">{formatRelativeTime(answer.date)}</p>
                           </div>
-                          <p className="mt-2 text-sm text-[#B8C6D8]">{answer.content}</p>
+                          <p className="mt-2 text-sm text-text-muted">{answer.content}</p>
                           <div className="mt-2">
                             <motion.button
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
                               onClick={() => handleLikeAnswer(question.id, answer.id)}
                               className={`flex items-center text-xs transition-colors ${
-                                answer.isLiked ? themeClasses.likedColor : 'text-[#6B7C93] hover:text-[#B8C6D8]'
+                                answer.isLiked ? themeClasses.likedColor : 'text-accent-hover hover:text-text-muted'
                               }`}
                             >
                               <i className={`fa-solid ${answer.isLiked ? 'fa-heart' : 'fa-heart'}`}></i>
@@ -1216,11 +1216,11 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
         ) : (
           // 空状态
           <div className="py-12 text-center">
-            <div className="w-16 h-16 bg-[#1E2532] rounded-full flex items-center justify-center text-[#4A5F8B] mx-auto mb-4">
+            <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
               <i className="fa-solid fa-question-circle text-2xl"></i>
             </div>
-            <h3 className="text-lg font-medium text-[#F5F7FA] mb-2">暂无相关问题</h3>
-            <p className="text-[#B8C6D8]">
+            <h3 className="text-lg font-medium text-text-primary mb-2">暂无相关问题</h3>
+            <p className="text-text-muted">
               暂无相关问题，快来发起提问吧！
             </p>
           </div>
@@ -1299,7 +1299,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
                   value={reportNote}
                   onChange={(e) => setReportNote(e.target.value)}
                   placeholder="请输入补充说明（可选）"
-                  className={`w-full px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all resize-none h-20`}
+                  className={`w-full px-3 py-2 ${themeClasses.inputBg} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none h-20`}
                 ></textarea>
               </div>
               

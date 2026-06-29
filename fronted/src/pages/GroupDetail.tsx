@@ -154,17 +154,17 @@ const GroupDetail: React.FC = () => {
   // 渲染加载状态
   if (isLoading || !group) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-[#4A5F8B] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-[#B8C6D8]">加载小组信息中...</p>
+          <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-text-muted">加载小组信息中...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -174,7 +174,7 @@ const GroupDetail: React.FC = () => {
         <div className="mb-6">
           <Link
             to="/groups"
-            className="inline-flex items-center space-x-1 text-[#B8C6D8]/70 hover:text-[#B8C6D8] transition-colors"
+            className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>
             <span>返回小组列表</span>
@@ -190,15 +190,15 @@ const GroupDetail: React.FC = () => {
               alt={`${group.name} cover`}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1E2532] to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-bg-deep to-transparent"></div>
           </div>
 
           {/* 小组信息卡片 */}
-          <div className="bg-[#2D3748] border border-[#4A5F8B] rounded-xl p-6 -mt-16 relative z-10">
+          <div className="bg-bg-card border border-accent rounded-xl p-6 -mt-16 relative z-10">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
               {/* 小组头像和名称 */}
               <div className="flex items-end gap-4">
-                <div className="w-24 h-24 rounded-full border-4 border-[#2D3748] overflow-hidden shadow-lg">
+                <div className="w-24 h-24 rounded-full border-4 border-bg-card overflow-hidden shadow-lg">
                   <img
                     src={group.avatar}
                     alt={group.name}
@@ -207,16 +207,16 @@ const GroupDetail: React.FC = () => {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h1 className="text-2xl md:text-3xl font-bold text-[#F5F7FA]">{group.name}</h1>
+                    <h1 className="text-2xl md:text-3xl font-bold text-text-primary">{group.name}</h1>
                     {!group.isPublic && (
-                      <span className="px-2 py-1 bg-[#1E2532] text-[#B8C6D8] rounded-full text-xs border border-[#4A5F8B]">
+                      <span className="px-2 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent">
                         <i className="fa-solid fa-lock mr-1"></i>私密
                       </span>
                     )}
                   </div>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {group.tags.map((tag, index) => (
-                      <span key={index} className="px-2 py-1 bg-[#1E2532] text-[#B8C6D8] rounded-full text-xs border border-[#4A5F8B]">#{tag}</span>
+                      <span key={index} className="px-2 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent">#{tag}</span>
                     ))}
                   </div>
                 </div>
@@ -229,7 +229,7 @@ const GroupDetail: React.FC = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleLeaveGroup}
-                    className="px-4 py-2 bg-[#F56565] text-white rounded-lg font-medium hover:bg-[#E53E3E] transition-colors"
+                    className="px-4 py-2 bg-danger text-white rounded-lg font-medium hover:bg-danger transition-colors"
                   >
                     退出小组
                   </motion.button>
@@ -238,7 +238,7 @@ const GroupDetail: React.FC = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setShowJoinModal(true)}
-                    className="px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors"
+                    className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors"
                   >
                     加入小组
                   </motion.button>
@@ -247,7 +247,7 @@ const GroupDetail: React.FC = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 bg-[#2D3748] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#4A5F8B] transition-colors border border-[#4A5F8B]"
+                    className="px-4 py-2 bg-bg-card text-text-primary rounded-lg font-medium hover:bg-accent transition-colors border border-accent"
                   >
                     <i className="fa-solid fa-bell mr-2"></i>
                     订阅通知
@@ -258,41 +258,41 @@ const GroupDetail: React.FC = () => {
 
             {/* 小组描述 */}
             <div className="mt-6">
-              <h2 className="text-lg font-bold text-[#F5F7FA] mb-2">小组介绍</h2>
-              <p className="text-[#B8C6D8] whitespace-pre-line">{group.description}</p>
+              <h2 className="text-lg font-bold text-text-primary mb-2">小组介绍</h2>
+              <p className="text-text-muted whitespace-pre-line">{group.description}</p>
             </div>
 
             {/* 小组数据统计 */}
             <div className="mt-6 grid grid-cols-3 md:grid-cols-4 gap-4">
-              <div className="bg-[#1E2532] p-3 rounded-lg text-center">
-                <p className="text-xs text-[#6B7C93] mb-1">成员数</p>
-                <p className="text-lg font-bold text-[#F5F7FA]">{group.members.length}</p>
+              <div className="bg-bg-deep p-3 rounded-lg text-center">
+                <p className="text-xs text-accent-hover mb-1">成员数</p>
+                <p className="text-lg font-bold text-text-primary">{group.members.length}</p>
               </div>
-              <div className="bg-[#1E2532] p-3 rounded-lg text-center">
-                <p className="text-xs text-[#6B7C93] mb-1">今日活跃度</p>
-                <p className="text-lg font-bold text-[#F5F7FA]">{group.activity.today}</p>
+              <div className="bg-bg-deep p-3 rounded-lg text-center">
+                <p className="text-xs text-accent-hover mb-1">今日活跃度</p>
+                <p className="text-lg font-bold text-text-primary">{group.activity.today}</p>
               </div>
-              <div className="bg-[#1E2532] p-3 rounded-lg text-center">
-                <p className="text-xs text-[#6B7C93] mb-1">本周活跃度</p>
-                <p className="text-lg font-bold text-[#F5F7FA]">{group.activity.thisWeek}</p>
+              <div className="bg-bg-deep p-3 rounded-lg text-center">
+                <p className="text-xs text-accent-hover mb-1">本周活跃度</p>
+                <p className="text-lg font-bold text-text-primary">{group.activity.thisWeek}</p>
               </div>
-              <div className="bg-[#1E2532] p-3 rounded-lg text-center">
-                <p className="text-xs text-[#6B7C93] mb-1">本月活跃度</p>
-                <p className="text-lg font-bold text-[#F5F7FA]">{group.activity.thisMonth}</p>
+              <div className="bg-bg-deep p-3 rounded-lg text-center">
+                <p className="text-xs text-accent-hover mb-1">本月活跃度</p>
+                <p className="text-lg font-bold text-text-primary">{group.activity.thisMonth}</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* 内容标签页 */}
-        <div className="bg-[#2D3748] border border-[#4A5F8B] rounded-xl mb-8">
-          <div className="flex border-b border-[#4A5F8B]">
+        <div className="bg-bg-card border border-accent rounded-xl mb-8">
+          <div className="flex border-b border-accent">
             <button
               onClick={() => setActiveTab('posts')}
               className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
                 activeTab === 'posts'
-                  ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                  : 'bg-[#2D3748] text-[#B8C6D8] hover:text-[#F5F7FA]'
+                  ? 'bg-accent text-text-primary'
+                  : 'bg-bg-card text-text-muted hover:text-text-primary'
               }`}
             >
               <i className="fa-solid fa-file-lines mr-2"></i>
@@ -302,8 +302,8 @@ const GroupDetail: React.FC = () => {
               onClick={() => setActiveTab('members')}
               className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
                 activeTab === 'members'
-                  ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                  : 'bg-[#2D3748] text-[#B8C6D8] hover:text-[#F5F7FA]'
+                  ? 'bg-accent text-text-primary'
+                  : 'bg-bg-card text-text-muted hover:text-text-primary'
               }`}
             >
               <i className="fa-solid fa-users mr-2"></i>
@@ -318,7 +318,7 @@ const GroupDetail: React.FC = () => {
               <>
                 {/* 发布帖子框 */}
                 {group.joined && (
-                  <div className="bg-[#1E2532] border border-[#4A5F8B] rounded-lg p-4 mb-6">
+                  <div className="bg-bg-deep border border-accent rounded-lg p-4 mb-6">
                     <form onSubmit={handlePostSubmit}>
                       <div className="flex items-start gap-3 mb-3">
                         <img
@@ -332,13 +332,13 @@ const GroupDetail: React.FC = () => {
                             value={newPostTitle}
                             onChange={(e) => setNewPostTitle(e.target.value)}
                             placeholder="输入帖子标题..."
-                            className="w-full px-4 py-2 mb-3 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                            className="w-full px-4 py-2 mb-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                           />
                           <textarea
                             value={newPostContent}
                             onChange={(e) => setNewPostContent(e.target.value)}
                             placeholder="分享你的摄影心得、作品或提问..."
-                            className="w-full px-4 py-3 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all min-h-[100px]"
+                            className="w-full px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[100px]"
                           ></textarea>
                         </div>
                       </div>
@@ -346,14 +346,14 @@ const GroupDetail: React.FC = () => {
                         <div className="flex space-x-3">
                           <button
                             type="button"
-                            className="px-3 py-1.5 text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors"
+                            className="px-3 py-1.5 text-text-muted hover:text-text-primary transition-colors"
                           >
                             <i className="fa-solid fa-image mr-1"></i>
                             添加图片
                           </button>
                           <button
                             type="button"
-                            className="px-3 py-1.5 text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors"
+                            className="px-3 py-1.5 text-text-muted hover:text-text-primary transition-colors"
                           >
                             <i className="fa-solid fa-tag mr-1"></i>
                             添加标签
@@ -361,7 +361,7 @@ const GroupDetail: React.FC = () => {
                         </div>
                         <button
                           type="submit"
-                          className="px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors"
+                          className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors"
                         >
                           发布帖子
                         </button>
@@ -373,11 +373,11 @@ const GroupDetail: React.FC = () => {
                 {/* 帖子列表 */}
                 {group.posts.length === 0 ? (
                   <div className="text-center py-12">
-                    <div className="w-16 h-16 bg-[#1E2532] rounded-full flex items-center justify-center text-[#4A5F8B] mx-auto mb-4">
+                    <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                       <i className="fa-solid fa-file-lines text-2xl"></i>
                     </div>
-                    <h3 className="text-lg font-medium text-[#F5F7FA] mb-2">暂无帖子</h3>
-                    <p className="text-[#B8C6D8]">
+                    <h3 className="text-lg font-medium text-text-primary mb-2">暂无帖子</h3>
+                    <p className="text-text-muted">
                       {group.joined ? "成为第一个发布帖子的人吧！" : "加入小组后可以查看和发布帖子"}
                     </p>
                   </div>
@@ -389,7 +389,7 @@ const GroupDetail: React.FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="bg-[#1E2532] border border-[#4A5F8B] rounded-lg p-4 hover:border-[#6B7C93] transition-colors"
+                        className="bg-bg-deep border border-accent rounded-lg p-4 hover:border-accent-hover transition-colors"
                       >
                         <div className="flex items-start gap-3 mb-3">
                           <img
@@ -399,11 +399,11 @@ const GroupDetail: React.FC = () => {
                           />
                           <div className="flex-1">
                             <div className="flex items-center justify-between mb-1">
-                              <h3 className="font-medium text-[#F5F7FA]">{post.author.name}</h3>
-                              <span className="text-xs text-[#6B7C93]">{new Date(post.createdAt).toLocaleString()}</span>
+                              <h3 className="font-medium text-text-primary">{post.author.name}</h3>
+                              <span className="text-xs text-accent-hover">{new Date(post.createdAt).toLocaleString()}</span>
                             </div>
-                            <h4 className="text-lg font-bold text-[#F5F7FA] mb-2">{post.title}</h4>
-                            <p className="text-[#B8C6D8] whitespace-pre-line mb-3">{post.content}</p>
+                            <h4 className="text-lg font-bold text-text-primary mb-2">{post.title}</h4>
+                            <p className="text-text-muted whitespace-pre-line mb-3">{post.content}</p>
                             
                             {/* 帖子图片 */}
                             {post.images && post.images.length > 0 && (
@@ -424,7 +424,7 @@ const GroupDetail: React.FC = () => {
                             {post.tags && post.tags.length > 0 && (
                               <div className="flex flex-wrap gap-1 mb-3">
                                 {post.tags.map((tag, index) => (
-                                  <span key={index} className="px-2 py-1 bg-[#2D3748] text-[#B8C6D8] rounded-full text-xs border border-[#4A5F8B]">#{tag}</span>
+                                  <span key={index} className="px-2 py-1 bg-bg-card text-text-muted rounded-full text-xs border border-accent">#{tag}</span>
                                 ))}
                               </div>
                             )}
@@ -432,20 +432,20 @@ const GroupDetail: React.FC = () => {
                             {/* 帖子操作 */}
                             <div className="flex items-center justify-between">
                               <div className="flex items-center space-x-4">
-                                <button className="flex items-center text-sm text-[#B8C6D8] hover:text-[#4A5F8B] transition-colors">
+                                <button className="flex items-center text-sm text-text-muted hover:text-accent transition-colors">
                                   <i className="fa-solid fa-thumbs-up mr-1"></i>
                                   <span>{post.likes}</span>
                                 </button>
-                                <button className="flex items-center text-sm text-[#B8C6D8] hover:text-[#4A5F8B] transition-colors">
+                                <button className="flex items-center text-sm text-text-muted hover:text-accent transition-colors">
                                   <i className="fa-solid fa-comment mr-1"></i>
                                   <span>{post.comments}</span>
                                 </button>
-                                <button className="flex items-center text-sm text-[#B8C6D8] hover:text-[#4A5F8B] transition-colors">
+                                <button className="flex items-center text-sm text-text-muted hover:text-accent transition-colors">
                                   <i className="fa-solid fa-share-nodes mr-1"></i>
                                   <span>分享</span>
                                 </button>
                               </div>
-                              <button className="text-sm text-[#B8C6D8] hover:text-[#4A5F8B] transition-colors">
+                              <button className="text-sm text-text-muted hover:text-accent transition-colors">
                                 <i className="fa-solid fa-ellipsis-vertical"></i>
                               </button>
                             </div>
@@ -471,7 +471,7 @@ const GroupDetail: React.FC = () => {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3 }}
-                      className="bg-[#1E2532] border border-[#4A5F8B] rounded-lg p-4 hover:border-[#6B7C93] transition-colors"
+                      className="bg-bg-deep border border-accent rounded-lg p-4 hover:border-accent-hover transition-colors"
                     >
                       <div className="flex items-center gap-3">
                         <img
@@ -481,19 +481,19 @@ const GroupDetail: React.FC = () => {
                         />
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
-                            <h3 className="font-medium text-[#F5F7FA]">{member.name}</h3>
+                            <h3 className="font-medium text-text-primary">{member.name}</h3>
                             <span className={`px-1.5 py-0.5 text-xs rounded ${
-                              member.role === 'owner' ? 'bg-[#F56565]/20 text-[#F56565]' : 
-                              member.role === 'admin' ? 'bg-[#4A5F8B]/20 text-[#4A5F8B]' : 
-                              'bg-[#48BB78]/20 text-[#48BB78]'
+                              member.role === 'owner' ? 'bg-danger/20 text-danger' : 
+                              member.role === 'admin' ? 'bg-accent/20 text-accent' : 
+                              'bg-success/20 text-success'
                             }`}>
                               {member.role === 'owner' ? '组长' : member.role === 'admin' ? '管理员' : '成员'}
                             </span>
                           </div>
-                          <p className="text-xs text-[#6B7C93]">加入于 {new Date(member.joinDate).toLocaleDateString()}</p>
+                          <p className="text-xs text-accent-hover">加入于 {new Date(member.joinDate).toLocaleDateString()}</p>
                         </div>
                         {member.id !== user?.id && (
-                          <button className="px-3 py-1 text-xs font-medium text-[#F5F7FA] bg-[#4A5F8B] hover:bg-[#6B7C93] rounded-full transition-colors">
+                          <button className="px-3 py-1 text-xs font-medium text-text-primary bg-accent hover:bg-accent-hover rounded-full transition-colors">
                             关注
                           </button>
                         )}
@@ -521,33 +521,33 @@ const GroupDetail: React.FC = () => {
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] w-full max-w-md"
+              className="bg-bg-card rounded-xl border border-accent w-full max-w-md"
               onClick={e => e.stopPropagation()}
             >
               <div className="p-6">
                 <div className="text-center mb-6">
-                  <div className="w-16 h-16 rounded-full border-4 border-[#4A5F8B] overflow-hidden mx-auto mb-4">
+                  <div className="w-16 h-16 rounded-full border-4 border-accent overflow-hidden mx-auto mb-4">
                     <img
                       src={group.avatar}
                       alt={group.name}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h2 className="text-xl font-bold text-[#F5F7FA] mb-2">加入"{group.name}"小组</h2>
-                  <p className="text-[#B8C6D8]">
+                  <h2 className="text-xl font-bold text-text-primary mb-2">加入"{group.name}"小组</h2>
+                  <p className="text-text-muted">
                     加入后你将可以：参与小组讨论、发布帖子、查看成员动态
                   </p>
                 </div>
                 <div className="flex space-x-3">
                   <button
                     onClick={() => setShowJoinModal(false)}
-                    className="flex-1 py-3 bg-[#2D3748] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]"
+                    className="flex-1 py-3 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                   >
                     取消
                   </button>
                   <button
                     onClick={handleJoinGroup}
-                    className="flex-1 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors"
+                    className="flex-1 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors"
                   >
                     确认加入
                   </button>

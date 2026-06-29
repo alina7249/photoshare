@@ -15,7 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex h-screen bg-[#1E2532] text-[#F5F7FA] overflow-hidden">
+    <div className="flex h-screen bg-bg-deep text-text-primary overflow-hidden">
       {/* 侧边栏 */}
       <Sidebar collapsed={sidebarCollapsed} />
       
@@ -25,7 +25,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <Header toggleSidebar={toggleSidebar} sidebarCollapsed={sidebarCollapsed} />
         
         {/* 页面内容 */}
-        <main className="flex-1 overflow-y-auto p-6 bg-[#1E2532]">
+        <main className="flex-1 overflow-y-auto p-6 bg-bg-deep">
           {children || <Outlet />}
         </main>
       </div>

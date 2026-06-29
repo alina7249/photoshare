@@ -129,7 +129,7 @@ const EquipmentReview: React.FC = () => {
   const filteredReviews = getFilteredReviews();
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -137,8 +137,8 @@ const EquipmentReview: React.FC = () => {
       >
         {/* 页面标题 */}
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-[#F5F7FA] mb-2">专业测评</h1>
-          <p className="text-[#B8C6D8] max-w-2xl mx-auto">
+          <h1 className="text-3xl font-bold text-text-primary mb-2">专业测评</h1>
+          <p className="text-text-muted max-w-2xl mx-auto">
             深入了解各类摄影器材的真实性能，专业编辑评测与用户实际使用体验分享
           </p>
         </div>
@@ -148,26 +148,26 @@ const EquipmentReview: React.FC = () => {
           {/* 主要内容 */}
           <div className="lg:col-span-2 space-y-6">
             {/* 功能导航卡片 */}
-            <div className="bg-gradient-to-r from-[#4A5F8B] to-[#6B7C93] rounded-xl p-6 shadow-sm text-white mb-6">
+            <div className="bg-gradient-to-r from-accent to-accent-hover rounded-xl p-6 shadow-sm text-white mb-6">
               <h3 className="text-lg font-bold mb-4 flex items-center">
                 <i className="fa-solid fa-lightbulb mr-2"></i>功能导航
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-white/10 p-4 rounded-lg">
                   <h4 className="font-medium mb-2 flex items-center">
-                    <i className="fa-solid fa-video mr-2 text-[#F5F7FA]"></i>视频测评集成
+                    <i className="fa-solid fa-video mr-2 text-text-primary"></i>视频测评集成
                   </h4>
                   <p className="text-sm text-white/80">在测评卡片图片上点击播放图标查看相关视频</p>
                 </div>
                 <div className="bg-white/10 p-4 rounded-lg">
                   <h4 className="font-medium mb-2 flex items-center">
-                    <i className="fa-solid fa-balance-scale mr-2 text-[#F5F7FA]"></i>对比测评功能
+                    <i className="fa-solid fa-balance-scale mr-2 text-text-primary"></i>对比测评功能
                   </h4>
                   <p className="text-sm text-white/80">点击卡片右上角勾选框选择测评，底部会出现对比按钮</p>
                 </div>
                 <div className="bg-white/10 p-4 rounded-lg">
                   <h4 className="font-medium mb-2 flex items-center">
-                    <i className="fa-solid fa-shield-alt mr-2 text-[#F5F7FA]"></i>可信度评分
+                    <i className="fa-solid fa-shield-alt mr-2 text-text-primary"></i>可信度评分
                   </h4>
                   <p className="text-sm text-white/80">每个测评卡片底部显示用户对测评真实性的评价</p>
                 </div>
@@ -175,19 +175,19 @@ const EquipmentReview: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                 <div className="bg-white/10 p-4 rounded-lg">
                   <h4 className="font-medium mb-2 flex items-center">
-                    <i className="fa-solid fa-lightbulb mr-2 text-[#F5F7FA]"></i>器材使用技巧
+                    <i className="fa-solid fa-lightbulb mr-2 text-text-primary"></i>器材使用技巧
                   </h4>
                   <p className="text-sm text-white/80">侧边栏下方"器材使用技巧"区域查看更多技巧</p>
                 </div>
                 <div className="bg-white/10 p-4 rounded-lg">
                   <h4 className="font-medium mb-2 flex items-center">
-                    <i className="fa-solid fa-question-circle mr-2 text-[#F5F7FA]"></i>常见问题解答
+                    <i className="fa-solid fa-question-circle mr-2 text-text-primary"></i>常见问题解答
                   </h4>
                   <p className="text-sm text-white/80">侧边栏下方"常见问题解答"区域查看FAQ汇总</p>
                 </div>
                 <div className="bg-white/10 p-4 rounded-lg">
                   <h4 className="font-medium mb-2 flex items-center">
-                    <i className="fa-solid fa-user-tie mr-2 text-[#F5F7FA]"></i>测评作者专栏
+                    <i className="fa-solid fa-user-tie mr-2 text-text-primary"></i>测评作者专栏
                   </h4>
                   <p className="text-sm text-white/80">点击测评卡片中作者头像或名称查看作者所有测评</p>
                 </div>
@@ -202,15 +202,15 @@ const EquipmentReview: React.FC = () => {
                   placeholder="搜索测评内容、器材型号或作者..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-4 py-3 pl-12 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all placeholder:text-[#B8C6D8]"
+                  className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                 />
-                <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-[#B8C6D8]"></i>
+                <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
               </div>
               
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-3 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer"
+                className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
               >
                 <option value="latest">最新发布</option>
                 <option value="popular">最多阅读</option>
@@ -219,7 +219,7 @@ const EquipmentReview: React.FC = () => {
             </div>
 
             {/* 测评分类选项卡 */}
-            <div className="bg-[#2D3748] rounded-xl shadow-sm border border-[#4A5F8B] overflow-hidden">
+            <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
               <div className="flex">
                 {reviewCategories.map((category) => (
                   <button
@@ -227,8 +227,8 @@ const EquipmentReview: React.FC = () => {
                     onClick={() => setActiveCategory(category.id)}
                     className={`px-6 py-4 font-medium transition-colors ${
                       activeCategory === category.id
-                        ? 'text-[#F5F7FA] border-b-2 border-[#4A5F8B]'
-                        : 'text-[#B8C6D8] hover:text-[#F5F7FA]'
+                        ? 'text-text-primary border-b-2 border-accent'
+                        : 'text-text-muted hover:text-text-primary'
                     }`}
                   >
                     {category.name} ({category.count})
@@ -243,13 +243,13 @@ const EquipmentReview: React.FC = () => {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B] overflow-hidden"
+                className="bg-bg-card rounded-xl p-6 border border-accent overflow-hidden"
               >
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-bold text-[#F5F7FA]">测评对比</h3>
+                  <h3 className="text-lg font-bold text-text-primary">测评对比</h3>
                   <button 
                     onClick={handleCloseComparison}
-                    className="text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors"
+                    className="text-text-muted hover:text-text-primary transition-colors"
                   >
                     <i className="fa-solid fa-times"></i>
                   </button>
@@ -312,7 +312,7 @@ const EquipmentReview: React.FC = () => {
                 <motion.div
                   key={review.id}
                   whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-                  className="bg-[#2D3748] rounded-xl overflow-hidden border border-[#4A5F8B] transition-all shadow-sm"
+                  className="bg-bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
                 >
                   {/* 测评图片 */}
                   <div className="md:flex">
@@ -334,8 +334,8 @@ const EquipmentReview: React.FC = () => {
                           onClick={() => toggleCompareReview(review.id)}
                           className={`w-6 h-6 rounded-full flex items-center justify-center ${
                             selectedReviews.includes(review.id)
-                              ? 'bg-[#4A5F8B] text-white'
-                              : 'bg-[#2D3748]/80 text-[#B8C6D8]'
+                              ? 'bg-accent text-white'
+                              : 'bg-bg-card/80 text-text-muted'
                           } transition-colors`}
                           title="添加到对比"
                         >
@@ -348,10 +348,10 @@ const EquipmentReview: React.FC = () => {
                     <div className="p-5 md:w-2/3">
                       {/* 测评类型和日期 */}
                       <div className="flex items-center justify-between mb-3">
-                        <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#1E2532] text-[#4A5F8B] border border-[#4A5F8B]">
+                        <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-bg-deep text-accent border border-accent">
                           {review.type}
                         </span>
-                        <div className="text-xs text-[#B8C6D8] flex items-center space-x-2">
+                        <div className="text-xs text-text-muted flex items-center space-x-2">
                           <span>{review.date}</span>
                           <span>•</span>
                           <span>{review.readTime}</span>
@@ -359,10 +359,10 @@ const EquipmentReview: React.FC = () => {
                       </div>
                       
                       {/* 标题和摘要 */}
-                      <h3 className="text-lg font-bold text-[#F5F7FA] mb-2 hover:text-[#4A5F8B] transition-colors">
+                      <h3 className="text-lg font-bold text-text-primary mb-2 hover:text-accent transition-colors">
                         {review.title}
                       </h3>
-                      <p className="text-sm text-[#B8C6D8] mb-4 line-clamp-2">
+                      <p className="text-sm text-text-muted mb-4 line-clamp-2">
                         {review.excerpt}
                       </p>
                       
@@ -371,11 +371,11 @@ const EquipmentReview: React.FC = () => {
                         <img
                           src={review.equipment.image}
                           alt={review.equipment.name}
-                          className="w-10 h-10 object-cover rounded border border-[#4A5F8B] mr-3"
+                          className="w-10 h-10 object-cover rounded border border-accent mr-3"
                         />
                         <div>
-                          <p className="text-sm font-medium text-[#F5F7FA]">{review.equipment.name}</p>
-                          <p className="text-xs text-[#B8C6D8]">{review.equipment.type}</p>
+                          <p className="text-sm font-medium text-text-primary">{review.equipment.name}</p>
+                          <p className="text-xs text-text-muted">{review.equipment.type}</p>
                         </div>
                       </div>
                       
@@ -387,8 +387,8 @@ const EquipmentReview: React.FC = () => {
                             onClick={() => toggleTag(tag)}
                             className={`px-2 py-1 rounded-full text-xs ${
                               selectedTags.includes(tag)
-                                ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                                : 'bg-[#1E2532] text-[#B8C6D8] border border-[#4A5F8B]'
+                                ? 'bg-accent text-text-primary'
+                                : 'bg-bg-deep text-text-muted border border-accent'
                             } transition-colors`}
                           >
                             #{tag}
@@ -399,9 +399,9 @@ const EquipmentReview: React.FC = () => {
                       {/* 可信度评分 */}
                       <div className="mb-4 flex items-center">
                         <div className="flex items-center">
-                          <i className="fa-solid fa-shield-alt text-[#4A5F8B] mr-2"></i>
-                          <span className="text-sm text-[#B8C6D8]">可信度评分：</span>
-                          <span className="text-sm font-bold text-[#4A5F8B] ml-1">{review.credibilityRating}/10</span>
+                          <i className="fa-solid fa-shield-alt text-accent mr-2"></i>
+                          <span className="text-sm text-text-muted">可信度评分：</span>
+                          <span className="text-sm font-bold text-accent ml-1">{review.credibilityRating}/10</span>
                         </div>
                       </div>
                       
@@ -412,14 +412,14 @@ const EquipmentReview: React.FC = () => {
                             <img
                               src={review.author.avatar}
                               alt={review.author.name}
-                              className="w-8 h-8 rounded-full mr-2 object-cover border border-[#4A5F8B]"
+                              className="w-8 h-8 rounded-full mr-2 object-cover border border-accent"
                             />
                             <div>
-                              <p className="text-sm font-medium text-[#F5F7FA] hover:text-[#4A5F8B] transition-colors">{review.author.name}</p><p className="text-xs text-[#B8C6D8]">{review.author.role}</p>
+                              <p className="text-sm font-medium text-text-primary hover:text-accent transition-colors">{review.author.name}</p><p className="text-xs text-text-muted">{review.author.role}</p>
                             </div>
                           </Link>
                         </div>
-                        <div className="flex items-center space-x-4 text-sm text-[#B8C6D8]">
+                        <div className="flex items-center space-x-4 text-sm text-text-muted">
                           <div className="flex items-center">
                             <i className="fa-solid fa-eye mr-1"></i>
                             <span>{review.views.toLocaleString()}</span>
@@ -438,49 +438,49 @@ const EquipmentReview: React.FC = () => {
                   </div>
                   
                   {/* 性能摘要 */}
-                  <div className="px-5 py-4 bg-[#1E2532] border-t border-[#4A5F8B]">
+                  <div className="px-5 py-4 bg-bg-deep border-t border-accent">
                     <div className="flex items-center justify-between mb-3">
-                      <h4 className="text-sm font-medium text-[#F5F7FA]">性能评分</h4>
+                      <h4 className="text-sm font-medium text-text-primary">性能评分</h4>
                       <div className="flex items-center">
-                        <span className="text-lg font-bold text-[#4A5F8B]">{review.rating}</span>
-                        <span className="text-sm text-[#B8C6D8] ml-1">/10</span>
+                        <span className="text-lg font-bold text-accent">{review.rating}</span>
+                        <span className="text-sm text-text-muted ml-1">/10</span>
                       </div>
                     </div>
                     
                     <div className="flex flex-wrap gap-3">
                       {Object.entries(review.performance || {}).slice(0, 4).map(([key, value]) => (
                         <div key={key} className="flex items-center">
-                          <span className="text-xs text-[#B8C6D8] mr-1">{translateKey(key)}:</span>
-                          <div className="w-16 bg-[#4A5F8B]/30 rounded-full h-1.5 overflow-hidden">
+                          <span className="text-xs text-text-muted mr-1">{translateKey(key)}:</span>
+                          <div className="w-16 bg-accent/30 rounded-full h-1.5 overflow-hidden">
                             <div
-                              className="h-full bg-[#4A5F8B] rounded-full"
+                              className="h-full bg-accent rounded-full"
                               style={{ width: `${(value as number) * 10}%` }}
                             ></div>
                           </div>
-                          <span className="text-xs font-medium text-[#F5F7FA] ml-1">{value}</span>
+                          <span className="text-xs font-medium text-text-primary ml-1">{value}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                   
                   {/* 底部操作按钮 */}
-                  <div className="px-5 py-4 border-t border-[#4A5F8B] bg-[#2D3748] flex items-center justify-between">
+                  <div className="px-5 py-4 border-t border-accent bg-bg-card flex items-center justify-between">
                     <Link
                       to={`/review/${review.id}`}
-                      className="px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors border border-[#4A5F8B]"
+                      className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent"
                     >
                       阅读全文
                     </Link>
                     <div className="flex items-center space-x-3">
-                      <button className="text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors">
+                      <button className="text-text-muted hover:text-text-primary transition-colors">
                         <i className="fa-solid fa-bookmark"></i>
                       </button>
-                      <button className="text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors">
+                      <button className="text-text-muted hover:text-text-primary transition-colors">
                         <i className="fa-solid fa-share-alt"></i>
                       </button>
                       <Link
                         to={`/equipment/${review.equipment.id}`}
-                        className="text-sm text-[#4A5F8B] hover:underline transition-colors"
+                        className="text-sm text-accent hover:underline transition-colors"
                       >
                         查看器材详情
                       </Link>
@@ -490,12 +490,12 @@ const EquipmentReview: React.FC = () => {
               ))}
               
               {filteredReviews.length === 0 && (
-                <div className="p-8 bg-[#2D3748] rounded-xl border border-[#4A5F8B] text-center">
-                  <div className="w-16 h-16 bg-[#1E2532] rounded-full flex items-center justify-center text-[#4A5F8B] mx-auto mb-4">
+                <div className="p-8 bg-bg-card rounded-xl border border-accent text-center">
+                  <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                     <i className="fa-solid fa-search text-2xl"></i>
                   </div>
-                  <h3 className="text-lg font-medium text-[#F5F7FA] mb-2">未找到相关测评</h3>
-                  <p className="text-[#B8C6D8]">
+                  <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关测评</h3>
+                  <p className="text-text-muted">
                     请尝试使用不同的关键词或筛选条件
                   </p>
                 </div>
@@ -505,21 +505,21 @@ const EquipmentReview: React.FC = () => {
             {/* 对比测评按钮 */}
             {selectedReviews.length > 0 && (
               <motion.div 
-                className="fixed bottom-0 left-0 right-0 bg-[#2D3748] border-t border-[#4A5F8B] py-3 px-4 z-10 shadow-lg"
+                className="fixed bottom-0 left-0 right-0 bg-bg-card border-t border-accent py-3 px-4 z-10 shadow-lg"
                 initial={{ y: 100 }}
                 animate={{ y: 0 }}
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}
               >
                 <div className="flex items-center justify-between max-w-5xl mx-auto">
                   <div className="flex items-center">
-                    <i className="fa-solid fa-balance-scale text-[#4A5F8B] mr-2"></i>
+                    <i className="fa-solid fa-balance-scale text-accent mr-2"></i>
                     <span className="text-[#4A5059]">已选择 {selectedReviews.length} 篇测评进行对比</span>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleShowComparison}
-                    className="px-6 py-2 bg-[#4A5F8B] text-white rounded-lg font-medium hover:bg-[#63B3ED] transition-colors"
+                    className="px-6 py-2 bg-accent text-white rounded-lg font-medium hover:bg-light-accent transition-colors"
                   >
                     查看对比
                   </motion.button>
@@ -530,21 +530,21 @@ const EquipmentReview: React.FC = () => {
             {/* 分页 */}
             {filteredReviews.length > 0 && (
               <div className="flex justify-center">
-                <nav className="flex items-center space-x-1 bg-[#E6EBF2] p-2 rounded-lg border border-[#B8C6D8]">
-                  <button className="px-3 py-2 rounded border border-[#B8C6D8] text-[#4A5059] hover:bg-[#F5F7FA] transition-colors">
+                <nav className="flex items-center space-x-1 bg-[#E6EBF2] p-2 rounded-lg border border-text-muted">
+                  <button className="px-3 py-2 rounded border border-text-muted text-[#4A5059] hover:bg-text-primary transition-colors">
                     <i className="fa-solid fa-chevron-left text-xs"></i>
                   </button>
-                  <button className="px-3 py-2 rounded border border-[#B8C6D8] bg-[#F5F7FA] text-[#4A5059]">
+                  <button className="px-3 py-2 rounded border border-text-muted bg-text-primary text-[#4A5059]">
                     1
                   </button>
-                  <button className="px-3 py-2 rounded border border-[#B8C6D8] text-[#4A5059] hover:bg-[#F5F7FA] transition-colors">
+                  <button className="px-3 py-2 rounded border border-text-muted text-[#4A5059] hover:bg-text-primary transition-colors">
                     2
                   </button>
                   <span className="px-2 text-[#4A5059]/70">...</span>
-                  <button className="px-3 py-2 rounded border border-[#B8C6D8] text-[#4A5059] hover:bg-[#F5F7FA] transition-colors">
+                  <button className="px-3 py-2 rounded border border-text-muted text-[#4A5059] hover:bg-text-primary transition-colors">
                     5
                   </button>
-                  <button className="px-3 py-2 rounded border border-[#B8C6D8] text-[#4A5059] hover:bg-[#F5F7FA] transition-colors">
+                  <button className="px-3 py-2 rounded border border-text-muted text-[#4A5059] hover:bg-text-primary transition-colors">
                     <i className="fa-solid fa-chevron-right text-xs"></i>
                   </button>
                 </nav>
@@ -555,7 +555,7 @@ const EquipmentReview: React.FC = () => {
           {/* 侧边栏 */}
           <div className="lg:col-span-1 space-y-6">
             {/* 测评标签筛选 */}
-            <div className="bg-[#F5F7FA] rounded-xl p-6 shadow-sm border border-[#B8C6D8]">
+            <div className="bg-text-primary rounded-xl p-6 shadow-sm border border-text-muted">
               <h3 className="text-lg font-bold mb-4 text-[#4A5059]">筛选标签</h3>
               
               {/* 器材类型 */}
@@ -567,8 +567,8 @@ const EquipmentReview: React.FC = () => {
                       onClick={() => toggleTag(tag)}
                       className={`px-3 py-1 rounded-full text-sm ${
                         selectedTags.includes(tag)
-                          ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                          : 'bg-[#E6EBF2] text-[#4A5059] border border-[#B8C6D8]/30'
+                          ? 'bg-accent text-text-primary'
+                          : 'bg-[#E6EBF2] text-[#4A5059] border border-text-muted/30'
                       } transition-colors`}
                     >
                       {tag}
@@ -587,8 +587,8 @@ const EquipmentReview: React.FC = () => {
                       onClick={() => toggleTag(tag)}
                       className={`px-3 py-1 rounded-full text-sm ${
                         selectedTags.includes(tag)
-                          ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                          : 'bg-[#E6EBF2] text-[#4A5059] border border-[#B8C6D8]/30'
+                          ? 'bg-accent text-text-primary'
+                          : 'bg-[#E6EBF2] text-[#4A5059] border border-text-muted/30'
                       } transition-colors`}
                     >
                       {tag}
@@ -607,8 +607,8 @@ const EquipmentReview: React.FC = () => {
                       onClick={() => toggleTag(tag)}
                       className={`px-3 py-1 rounded-full text-sm ${
                         selectedTags.includes(tag)
-                          ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                          : 'bg-[#E6EBF2] text-[#4A5059] border border-[#B8C6D8]/30'
+                          ? 'bg-accent text-text-primary'
+                          : 'bg-[#E6EBF2] text-[#4A5059] border border-text-muted/30'
                       } transition-colors`}
                     >
                       {tag}
@@ -621,7 +621,7 @@ const EquipmentReview: React.FC = () => {
               {selectedTags.length > 0 && (
                 <button
                   onClick={() => setSelectedTags([])}
-                  className="mt-4 w-full py-2 text-center text-sm text-[#4A5059] hover:text-[#4A5F8B] transition-colors"
+                  className="mt-4 w-full py-2 text-center text-sm text-[#4A5059] hover:text-accent transition-colors"
                 >
                   <i className="fa-solid fa-times mr-1"></i> 清除所有筛选
                 </button>
@@ -629,7 +629,7 @@ const EquipmentReview: React.FC = () => {
             </div>
             
             {/* 热门测评作者 */}
-            <div className="bg-[#F5F7FA] rounded-xl p-6 shadow-sm border border-[#B8C6D8]">
+            <div className="bg-text-primary rounded-xl p-6 shadow-sm border border-text-muted">
               <h3 className="text-lg font-bold mb-4 text-[#4A5059]">热门测评作者</h3>
               <div className="space-y-4">
                 {[
@@ -667,14 +667,14 @@ const EquipmentReview: React.FC = () => {
                       <img
                         src={author.avatar}
                         alt={author.name}
-                        className="w-12 h-12 rounded-full object-cover border border-[#B8C6D8]"
+                        className="w-12 h-12 rounded-full object-cover border border-text-muted"
                       />
                       <div>
                         <p className="font-medium text-[#4A5059]">{author.name}</p>
-                        <p className="text-xs text-[#4A5F8B]">{author.reviews} 篇测评</p>
+                        <p className="text-xs text-accent">{author.reviews} 篇测评</p>
                       </div>
                     </Link>
-                    <button className="px-3 py-1 text-xs font-medium text-[#4A5059] border border-[#B8C6D8] rounded-full hover:bg-[#E6EBF2] transition-colors">
+                    <button className="px-3 py-1 text-xs font-medium text-[#4A5059] border border-text-muted rounded-full hover:bg-[#E6EBF2] transition-colors">
                       关注
                     </button>
                   </motion.div>
@@ -682,7 +682,7 @@ const EquipmentReview: React.FC = () => {
               </div>
               <Link
                 to="#"
-                className="mt-4 inline-block text-sm text-[#4A5F8B] hover:underline transition-colors flex items-center justify-center"
+                className="mt-4 inline-block text-sm text-accent hover:underline transition-colors flex items-center justify-center"
               >
                 <span>查看更多作者</span>
                 <i className="fa-solid fa-arrow-right text-xs ml-1"></i>
@@ -690,7 +690,7 @@ const EquipmentReview: React.FC = () => {
             </div>
             
             {/* 器材使用技巧 */}
-            <div className="bg-[#F5F7FA] rounded-xl p-6 shadow-sm border border-[#B8C6D8]">
+            <div className="bg-text-primary rounded-xl p-6 shadow-sm border border-text-muted">
               <h3 className="text-lg font-bold mb-4 text-[#4A5059]">器材使用技巧</h3>
               <div className="space-y-3">
                 {[
@@ -720,7 +720,7 @@ const EquipmentReview: React.FC = () => {
                     whileHover={{ x: 5 }}
                     className="flex items-center justify-between"
                   >
-                    <p className="text-sm text-[#4A5059] hover:text-[#4A5F8B] transition-colors cursor-pointer">
+                    <p className="text-sm text-[#4A5059] hover:text-accent transition-colors cursor-pointer">
                       {tip.title}
                     </p>
                     <span className="text-xs text-[#4A5059]/70">{tip.views} 阅读</span>
@@ -729,7 +729,7 @@ const EquipmentReview: React.FC = () => {
               </div>
               <Link
                 to="#"
-                className="mt-4 inline-block text-sm text-[#4A5F8B] hover:underline transition-colors flex items-center justify-center"
+                className="mt-4 inline-block text-sm text-accent hover:underline transition-colors flex items-center justify-center"
               >
                 <span>查看更多技巧</span>
                 <i className="fa-solid fa-arrow-right text-xs ml-1"></i>
@@ -737,7 +737,7 @@ const EquipmentReview: React.FC = () => {
             </div>
             
             {/* 常见问题解答 */}
-            <div className="bg-[#F5F7FA] rounded-xl p-6 shadow-sm border border-[#B8C6D8]">
+            <div className="bg-text-primary rounded-xl p-6 shadow-sm border border-text-muted">
               <h3 className="text-lg font-bold mb-4 text-[#4A5059]">常见问题解答</h3>
               <div className="space-y-3">
                 {[
@@ -763,7 +763,7 @@ const EquipmentReview: React.FC = () => {
                     whileHover={{ x: 5 }}
                     className="border-b border-[#E6EBF2] pb-2"
                   >
-                    <p className="text-sm text-[#4A5059] hover:text-[#4A5F8B] transition-colors cursor-pointer">
+                    <p className="text-sm text-[#4A5059] hover:text-accent transition-colors cursor-pointer">
                       {faq.question}
                     </p>
                   </motion.div>
@@ -771,7 +771,7 @@ const EquipmentReview: React.FC = () => {
               </div>
               <Link
                 to="#"
-                className="mt-4 inline-block text-sm text-[#4A5F8B] hover:underline transition-colors flex items-center justify-center"
+                className="mt-4 inline-block text-sm text-accent hover:underline transition-colors flex items-center justify-center"
               >
                 <span>查看更多FAQ</span>
                 <i className="fa-solid fa-arrow-right text-xs ml-1"></i>
@@ -779,12 +779,12 @@ const EquipmentReview: React.FC = () => {
             </div>
             
             {/* 测评贡献者招募 */}
-            <div className="bg-gradient-to-r from-[#4A5F8B] to-[#B8C6D8] rounded-xl p-6 shadow-sm text-white">
+            <div className="bg-gradient-to-r from-accent to-text-muted rounded-xl p-6 shadow-sm text-white">
               <h3 className="text-lg font-bold mb-3">成为测评作者</h3>
               <p className="text-sm mb-4 text-white/90">
                 如果你对摄影器材有深入研究，欢迎加入我们的测评团队，分享你的专业见解
               </p>
-              <button className="w-full py-2 bg-white text-[#4A5F8B] font-medium rounded-lg hover:bg-[#E6EBF2] transition-colors">
+              <button className="w-full py-2 bg-white text-accent font-medium rounded-lg hover:bg-[#E6EBF2] transition-colors">
                 了解详情
               </button>
             </div>

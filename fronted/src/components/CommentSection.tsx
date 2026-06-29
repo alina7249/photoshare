@@ -386,9 +386,9 @@ export const CommentSection: React.FC<CommentSectionProps> = (
 
     const formatCommentText = (text: string) => {
         const mentionRegex = /@(\S+)/g;
-        const mentionFormatted = text.replace(mentionRegex, "<span class=\"text-[#4A5F8B] font-medium\">$&</span>");
+        const mentionFormatted = text.replace(mentionRegex, "<span class=\"text-accent font-medium\">$&</span>");
         const tagRegex = /#(\S+)/g;
-        const tagFormatted = mentionFormatted.replace(tagRegex, "<span class=\"text-[#4A5F8B] font-medium\">$&</span>");
+        const tagFormatted = mentionFormatted.replace(tagRegex, "<span class=\"text-accent font-medium\">$&</span>");
         const boldRegex = /\*\*([^*]+)\*\*/g;
         const boldFormatted = tagFormatted.replace(boldRegex, "<strong>$1</strong>");
         const italicRegex = /\*([^*]+)\*/g;
@@ -847,24 +847,24 @@ export const CommentSection: React.FC<CommentSectionProps> = (
 
     const getColorClasses = () => {
         return {
-            container: "bg-[#2D3748] border-[#4A5F8B]",
-            formBg: "bg-[#1E2532]",
-            text: "text-[#B8C6D8]",
-            primaryText: "text-[#F5F7FA]",
-            secondaryText: "text-[#6B7C93]",
-            button: "bg-[#4A5F8B] text-[#F5F7FA] border-[#4A5F8B]",
-            buttonHover: "hover:bg-[#6B7C93]",
-            linkHover: "hover:text-[#4A5F8B]",
-            inputBg: "bg-[#1E2532] border-[#4A5F8B] text-[#F5F7FA]",
-            placeholder: "placeholder:text-[#6B7C93]",
-            likeButton: "text-[#6B7C93] hover:text-[#F5F7FA]",
-            liked: "text-[#4A5F8B]",
-            notificationBg: "bg-[#1E2532] border-[#4A5F8B]",
-            loginPromptBg: "bg-[#1E2532] border-[#4A5F8B]",
-            loginPromptText: "text-[#B8C6D8]",
-            loginButton: "bg-[#4A5F8B] text-[#F5F7FA]",
-            loginButtonHover: "hover:bg-[#6B7C93]",
-            registerButton: "text-[#4A5F8B] border-[#4A5F8B] hover:bg-[#4A5F8B]/20"
+            container: "bg-bg-card border-accent",
+            formBg: "bg-bg-deep",
+            text: "text-text-muted",
+            primaryText: "text-text-primary",
+            secondaryText: "text-accent-hover",
+            button: "bg-accent text-text-primary border-accent",
+            buttonHover: "hover:bg-accent-hover",
+            linkHover: "hover:text-accent",
+            inputBg: "bg-bg-deep border-accent text-text-primary",
+            placeholder: "placeholder:text-accent-hover",
+            likeButton: "text-accent-hover hover:text-text-primary",
+            liked: "text-accent",
+            notificationBg: "bg-bg-deep border-accent",
+            loginPromptBg: "bg-bg-deep border-accent",
+            loginPromptText: "text-text-muted",
+            loginButton: "bg-accent text-text-primary",
+            loginButtonHover: "hover:bg-accent-hover",
+            registerButton: "text-accent border-accent hover:bg-accent/20"
         };
     };
 
@@ -883,35 +883,35 @@ export const CommentSection: React.FC<CommentSectionProps> = (
             {}
             <div className="flex flex-wrap justify-between items-center mb-6 gap-4">
                 <div className="flex items-center space-x-4">
-                    <h3 className="text-xl font-bold text-[#4A5F8B]">评论 ({comments.length})</h3>
+                    <h3 className="text-xl font-bold text-accent">评论 ({comments.length})</h3>
                     {unreadCount > 0 && <button
                         onClick={markAllAsRead}
-                        className="text-sm px-3 py-1 bg-[#4A5F8B]/20 text-[#4A5F8B] rounded-full hover:bg-[#4A5F8B]/30 transition-colors">未读({unreadCount})
+                        className="text-sm px-3 py-1 bg-accent/20 text-accent rounded-full hover:bg-accent/30 transition-colors">未读({unreadCount})
                                                                                     </button>}
                 </div>
                 <div className="flex items-center space-x-4">
                     <div className="flex items-center">
-                        <span className="text-sm text-[#4A5F8B] mr-2">排序:</span>
+                        <span className="text-sm text-accent mr-2">排序:</span>
                         <select
                             value={sortType}
                             onChange={e => {
                                 setSortType(e.target.value as "latest" | "popular");
                                 setCurrentPage(1);
                             }}
-                            className={`px-3 py-1 text-sm rounded border ${colors.inputBg} focus:outline-none focus:ring-2 focus:ring-[#4A5F8B]`}>
+                            className={`px-3 py-1 text-sm rounded border ${colors.inputBg} focus:outline-none focus:ring-2 focus:ring-accent`}>
                             <option value="latest">最新</option>
                             <option value="popular">最热</option>
                         </select>
                     </div>
                     <div className="flex items-center">
-                        <span className="text-sm text-[#4A5F8B] mr-2">筛选:</span>
+                        <span className="text-sm text-accent mr-2">筛选:</span>
                         <select
                             value={filterType}
                             onChange={e => {
                                 setFilterType(e.target.value as "all" | "my" | "author");
                                 setCurrentPage(1);
                             }}
-                            className={`px-3 py-1 text-sm rounded border ${colors.inputBg} focus:outline-none focus:ring-2 focus:ring-[#4A5F8B]`}>
+                            className={`px-3 py-1 text-sm rounded border ${colors.inputBg} focus:outline-none focus:ring-2 focus:ring-accent`}>
                             <option value="all">全部</option>
                             <option value="my">我的评论</option>
                             <option value="author">作者回复</option>
@@ -936,12 +936,12 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                             value={commentText}
                             onChange={handleCommentInputChange}
                             placeholder="分享您的艺术感悟或技术分析..."
-                            className={`w-full px-4 py-3 rounded-lg ${colors.inputBg} focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] resize-none h-32 ${colors.placeholder}`}></textarea>
+                            className={`w-full px-4 py-3 rounded-lg ${colors.inputBg} focus:outline-none focus:ring-2 focus:ring-accent resize-none h-32 ${colors.placeholder}`}></textarea>
                         {}
                         {imagePreviews.length > 0 && <div className="mt-2 flex flex-wrap gap-2">
                             {imagePreviews.map((preview, index) => <div
                                 key={index}
-                                className="relative w-20 h-20 rounded-md overflow-hidden border border-[#4A5F8B]">
+                                className="relative w-20 h-20 rounded-md overflow-hidden border border-accent">
                                 <img
                                     src={preview}
                                     alt={`Preview ${index + 1}`}
@@ -1008,7 +1008,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                             opacity: 0,
                             y: 10
                         }}
-                        className={`mt-2 p-3 rounded-lg ${colors.formBg} border border-[#4A5F8B] w-fit`}>
+                        className={`mt-2 p-3 rounded-lg ${colors.formBg} border border-accent w-fit`}>
                         <div className="grid grid-cols-8 gap-1">
                             {EMOJI_LIST.map((emoji, index) => <button
                                 key={index}
@@ -1016,7 +1016,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                                 onClick={() => {
                                     setCommentText(prev => prev + emoji);
                                 }}
-                                className="w-8 h-8 flex items-center justify-center rounded hover:bg-[#4A5F8B]/20 transition-colors"
+                                className="w-8 h-8 flex items-center justify-center rounded hover:bg-accent/20 transition-colors"
                                 title={emoji}>
                                 {emoji}
                             </button>)}
@@ -1038,10 +1038,10 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                             opacity: 0,
                             y: 10
                         }}
-                        className={`mt-2 p-2 rounded-lg ${colors.formBg} border border-[#4A5F8B] w-full max-w-xs absolute z-10`}>
+                        className={`mt-2 p-2 rounded-lg ${colors.formBg} border border-accent w-full max-w-xs absolute z-10`}>
                         {filteredUsers.map(user => <div
                             key={user.id}
-                            className="flex items-center p-2 hover:bg-[#4A5F8B]/20 rounded cursor-pointer"
+                            className="flex items-center p-2 hover:bg-accent/20 rounded cursor-pointer"
                             onClick={() => handleMentionSelect(user)}>
                             <img
                                 src={user.avatar}
@@ -1091,14 +1091,14 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                         backgroundColor: "transparent",
                         boxShadow: "rgba(0, 0, 0, 0.15) 0px 0px 30px 0px"
                     }}
-                    className={`bg-[#232D3F] border-[#4A5F8B] rounded-lg p-4 relative`}>
-                    {comment.isUnread && <span className="absolute top-4 right-4 w-2 h-2 bg-[#4A5F8B] rounded-full"></span>}
+                    className={`bg-[#232D3F] border-accent rounded-lg p-4 relative`}>
+                    {comment.isUnread && <span className="absolute top-4 right-4 w-2 h-2 bg-accent rounded-full"></span>}
                     <div className="flex space-x-3">
                         <Link to={`/profile/${comment.userId}`} className="flex-shrink-0">
                             <img
                                 src={comment.avatar}
                                 alt={comment.username}
-                                className={`w-10 h-10 rounded-full object-cover ${isAuthor(comment) ? "border-2 border-[#4A5F8B]" : ""}`} />
+                                className={`w-10 h-10 rounded-full object-cover ${isAuthor(comment) ? "border-2 border-accent" : ""}`} />
                         </Link>
                         <div className="flex-1">
                             <div className="flex items-center space-x-2 mb-1">
@@ -1109,7 +1109,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                                         {comment.username}
                                     </Link>
                                     {isAuthor(comment) && <span
-                                        className="px-1.5 py-0.5 bg-[#4A5F8B]/20 text-[#4A5F8B] text-xs rounded ml-1">作者</span>}
+                                        className="px-1.5 py-0.5 bg-accent/20 text-accent text-xs rounded ml-1">作者</span>}
                                 </div>
                                 <span className={`text-xs ${colors.secondaryText}`}>
                                     {formatRelativeTime(comment.date)}
@@ -1125,7 +1125,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                             {comment.images && comment.images.length > 0 && <div className="grid grid-cols-3 gap-2 mb-3">
                                 {comment.images.map((image, index) => <div
                                     key={index}
-                                    className="aspect-square rounded-md overflow-hidden border border-[#4A5F8B] cursor-pointer"
+                                    className="aspect-square rounded-md overflow-hidden border border-accent cursor-pointer"
                                     onClick={() => openImagePreview(image)}>
                                     <img
                                         src={image}
@@ -1238,7 +1238,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                                                 value={replyText}
                                                 onChange={handleReplyInputChange}
                                                 placeholder={`回复 @${replyingToUser}...`}
-                                                className={`flex-1 px-3 py-2 rounded-lg ${colors.inputBg} focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] text-sm ${colors.placeholder}`} />
+                                                className={`flex-1 px-3 py-2 rounded-lg ${colors.inputBg} focus:outline-none focus:ring-2 focus:ring-accent text-sm ${colors.placeholder}`} />
                                             <motion.button
                                                 whileHover={{
                                                     scale: 1.1
@@ -1248,7 +1248,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                                                 }}
                                                 type="button"
                                                 onClick={() => setShowReplyEmojiPicker(!showReplyEmojiPicker)}
-                                                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-[#4A5F8B]"
+                                                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-accent"
                                                 title="添加表情">
                                                 <i className="fa-solid fa-face-smile"></i>
                                             </motion.button>
@@ -1268,7 +1268,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                                                     opacity: 0,
                                                     y: 10
                                                 }}
-                                                className={`p-2 rounded-lg ${colors.formBg} border border-[#4A5F8B] w-full max-w-xs self-end`}>
+                                                className={`p-2 rounded-lg ${colors.formBg} border border-accent w-full max-w-xs self-end`}>
                                                 <div className="grid grid-cols-10 gap-1">
                                                     {EMOJI_LIST.slice(0, 30).map((emoji, index) => <button
                                                         key={index}
@@ -1276,7 +1276,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                                                         onClick={() => {
                                                             setReplyText(prev => prev + emoji);
                                                         }}
-                                                        className="w-6 h-6 flex items-center justify-center rounded hover:bg-[#4A5F8B]/20 transition-colors text-sm"
+                                                        className="w-6 h-6 flex items-center justify-center rounded hover:bg-accent/20 transition-colors text-sm"
                                                         title={emoji}>
                                                         {emoji}
                                                     </button>)}
@@ -1298,10 +1298,10 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                                                     opacity: 0,
                                                     y: 10
                                                 }}
-                                                className={`p-2 rounded-lg ${colors.formBg} border border-[#4A5F8B] w-full max-w-xs self-end z-10`}>
+                                                className={`p-2 rounded-lg ${colors.formBg} border border-accent w-full max-w-xs self-end z-10`}>
                                                 {filteredReplyUsers.map(user => <div
                                                     key={user.id}
-                                                    className="flex items-center p-2 hover:bg-[#4A5F8B]/20 rounded cursor-pointer"
+                                                    className="flex items-center p-2 hover:bg-accent/20 rounded cursor-pointer"
                                                     onClick={() => handleReplyMentionSelect(user)}>
                                                     <img
                                                         src={user.avatar}
@@ -1342,7 +1342,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                                 </motion.div>
                             </AnimatePresence>}
                             {}
-                            {comment.replies && comment.replies.length > 0 && <div className="mt-4 pl-4 border-l-2 border-[#B8C6D8] space-y-4">
+                            {comment.replies && comment.replies.length > 0 && <div className="mt-4 pl-4 border-l-2 border-text-muted space-y-4">
                                 {comment.replies.map((reply, replyIdx) => <motion.div
                                     key={reply.id}
                                     initial={{
@@ -1362,7 +1362,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                                         <img
                                             src={reply.avatar}
                                             alt={reply.username}
-                                            className={`w-8 h-8 rounded-full object-cover ${reply.isAuthor ? "border-2 border-[#4A5F8B]" : ""}`} />
+                                            className={`w-8 h-8 rounded-full object-cover ${reply.isAuthor ? "border-2 border-accent" : ""}`} />
                                     </Link>
                                     <div className="flex-1">
                                         <div className="flex items-center space-x-2 mb-1">
@@ -1373,7 +1373,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                                                     {reply.username}
                                                 </Link>
                                                 {reply.isAuthor && <span
-                                                    className="px-1.5 py-0.5 bg-[#4A5F8B]/20 text-[#4A5F8B] text-xs rounded ml-1">作者</span>}
+                                                    className="px-1.5 py-0.5 bg-accent/20 text-accent text-xs rounded ml-1">作者</span>}
                                             </div>
                                             <span className={`text-xs ${colors.secondaryText}`}>
                                                 {formatRelativeTime(reply.date)}
@@ -1479,16 +1479,16 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                     </div>
                 </motion.div>) : <div className="text-center py-12">
                     <div
-                        className="w-16 h-16 bg-[#4A5F8B]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i className="fa-solid fa-comment-slash text-2xl text-[#4A5F8B]"></i>
+                        className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i className="fa-solid fa-comment-slash text-2xl text-accent"></i>
                     </div>
-                    <h3 className="text-lg font-medium text-[#4A5F8B] mb-2">暂无评论，快来分享见解吧～</h3>
-                    <p className="text-sm text-[#6B7C93]">成为第一个评论的人</p>
+                    <h3 className="text-lg font-medium text-accent mb-2">暂无评论，快来分享见解吧～</h3>
+                    <p className="text-sm text-accent-hover">成为第一个评论的人</p>
                 </div>}
                 {}
                 {totalPages > 1 && <div className="flex justify-center mt-8">
                     <div
-                        className="inline-flex items-center rounded-md border border-[#4A5F8B] bg-[#1E2532] shadow-sm">
+                        className="inline-flex items-center rounded-md border border-accent bg-bg-deep shadow-sm">
                         <motion.button
                             whileHover={{
                                 scale: 1.1
@@ -1498,7 +1498,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                             }}
                             onClick={() => changePage(currentPage - 1)}
                             disabled={currentPage === 1}
-                            className={`px-3 py-2 text-sm font-medium ${currentPage === 1 ? "text-[#6B7C93] cursor-not-allowed" : "text-[#B8C6D8] hover:bg-[#4A5F8B]/20"}`}>
+                            className={`px-3 py-2 text-sm font-medium ${currentPage === 1 ? "text-accent-hover cursor-not-allowed" : "text-text-muted hover:bg-accent/20"}`}>
                             <i className="fa-solid fa-chevron-left"></i>
                         </motion.button>
                         {getPageRange().map(page => <motion.button
@@ -1510,7 +1510,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                                 scale: 0.9
                             }}
                             onClick={() => changePage(page)}
-                            className={`px-3 py-2 text-sm font-medium ${currentPage === page ? "bg-[#4A5F8B] text-white" : "text-[#B8C6D8] hover:bg-[#4A5F8B]/20"}`}>
+                            className={`px-3 py-2 text-sm font-medium ${currentPage === page ? "bg-accent text-white" : "text-text-muted hover:bg-accent/20"}`}>
                             {page}
                         </motion.button>)}
                         <motion.button
@@ -1522,7 +1522,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                             }}
                             onClick={() => changePage(currentPage + 1)}
                             disabled={currentPage === totalPages}
-                            className={`px-3 py-2 text-sm font-medium ${currentPage === totalPages ? "text-[#6B7C93] cursor-not-allowed" : "text-[#B8C6D8] hover:bg-[#4A5F8B]/20"}`}>
+                            className={`px-3 py-2 text-sm font-medium ${currentPage === totalPages ? "text-accent-hover cursor-not-allowed" : "text-text-muted hover:bg-accent/20"}`}>
                             <i className="fa-solid fa-chevron-right"></i>
                         </motion.button>
                     </div>
@@ -1557,14 +1557,14 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                         }}
                         className={`w-full max-w-lg ${colors.container} rounded-lg p-6`}
                         onClick={e => e.stopPropagation()}>
-                        <h3 className="text-xl font-bold text-[#4A5F8B] mb-4">编辑评论</h3>
+                        <h3 className="text-xl font-bold text-accent mb-4">编辑评论</h3>
                         <textarea
                             value={editingComment.content}
                             onChange={e => setEditingComment({
                                 ...editingComment,
                                 content: e.target.value
                             })}
-                            className={`w-full px-4 py-3 rounded-lg ${colors.inputBg} focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] resize-none h-32 ${colors.placeholder}`}></textarea>
+                            className={`w-full px-4 py-3 rounded-lg ${colors.inputBg} focus:outline-none focus:ring-2 focus:ring-accent resize-none h-32 ${colors.placeholder}`}></textarea>
                         <div className="flex justify-end space-x-3 mt-4">
                             <motion.button
                                 whileHover={{
@@ -1619,7 +1619,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                         }}
                         className={`w-full max-w-md ${colors.container} rounded-lg p-6`}
                         onClick={e => e.stopPropagation()}>
-                        <h3 className="text-xl font-bold text-[#4A5F8B] mb-4">确认删除</h3>
+                        <h3 className="text-xl font-bold text-accent mb-4">确认删除</h3>
                         <p className={`${colors.text} mb-6`}>确定要删除这条{deletingComment.id.includes("reply") ? "回复" : "评论"}吗？此操作无法撤销。</p>
                         <div className="flex justify-end space-x-3">
                             <motion.button
@@ -1640,7 +1640,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                                     scale: 0.95
                                 }}
                                 onClick={handleDeleteComment}
-                                className={`px-4 py-2 bg-[#F56565] text-white rounded-lg font-medium hover:bg-[#E53E3E] transition-colors`}>删除
+                                className={`px-4 py-2 bg-danger text-white rounded-lg font-medium hover:bg-danger transition-colors`}>删除
                                                                                             </motion.button>
                         </div>
                     </motion.div>
@@ -1675,14 +1675,14 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                         }}
                         className={`w-full max-w-md ${colors.container} rounded-lg p-6`}
                         onClick={e => e.stopPropagation()}>
-                        <h3 className="text-xl font-bold text-[#4A5F8B] mb-4">举报评论</h3>
+                        <h3 className="text-xl font-bold text-accent mb-4">举报评论</h3>
                         <p className={`${colors.text} mb-4`}>请选择举报原因：</p>
                         <div className="grid grid-cols-2 gap-2 mb-4">
                             {REPORT_REASONS.map((reason, index) => <button
                                 key={index}
                                 type="button"
                                 onClick={() => setReportReason(reason)}
-                                className={`px-3 py-2 rounded-lg text-sm ${reportReason === reason ? "bg-[#4A5F8B] text-white" : `${colors.button} ${colors.buttonHover}`} transition-colors`}>
+                                className={`px-3 py-2 rounded-lg text-sm ${reportReason === reason ? "bg-accent text-white" : `${colors.button} ${colors.buttonHover}`} transition-colors`}>
                                 {reason}
                             </button>)}
                         </div>
@@ -1690,7 +1690,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                             value={reportNote}
                             onChange={e => setReportNote(e.target.value)}
                             placeholder="请输入补充说明（可选）"
-                            className={`w-full px-4 py-3 rounded-lg ${colors.inputBg} focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] resize-none h-20 ${colors.placeholder}`}></textarea>
+                            className={`w-full px-4 py-3 rounded-lg ${colors.inputBg} focus:outline-none focus:ring-2 focus:ring-accent resize-none h-20 ${colors.placeholder}`}></textarea>
                         <div className="flex justify-end space-x-3 mt-4">
                             <motion.button
                                 whileHover={{

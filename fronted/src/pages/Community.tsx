@@ -207,15 +207,15 @@ const ContributionCalendar: React.FC = () => {
 
     const getColorByCount = (count: number) => {
         if (count === 0)
-            return "bg-[#1E2532]";
+            return "bg-bg-deep";
 
         if (count === 1)
-            return "bg-[#4A5F8B]/30";
+            return "bg-accent/30";
 
         if (count === 2)
-            return "bg-[#4A5F8B]/60";
+            return "bg-accent/60";
 
-        return "bg-[#4A5F8B]";
+        return "bg-accent";
     };
 
     const handleDayClick = (day: ContributionDay, event: React.MouseEvent) => {
@@ -244,25 +244,25 @@ const ContributionCalendar: React.FC = () => {
     const firstDayOfWeek = new Date(2023, 0, 2).getDay();
 
     return (
-        <div className="bg-[#2D3748] border border-[#4A5F8B] rounded-lg p-6">
-            <h3 className="text-lg font-bold text-[#F5F7FA] mb-4">用户贡献</h3>
+        <div className="bg-bg-card border border-accent rounded-lg p-6">
+            <h3 className="text-lg font-bold text-text-primary mb-4">用户贡献</h3>
             {}
             <div className="flex items-center justify-between mb-4">
-                <div className="text-xs text-[#B8C6D8]">过去一个月的活动</div>
+                <div className="text-xs text-text-muted">过去一个月的活动</div>
                 <div className="flex items-center space-x-2">
-                    <div className="text-xs text-[#B8C6D8]">较少</div>
-                    <div className="w-3 h-3 bg-[#1E2532] rounded-full"></div>
-                    <div className="w-3 h-3 bg-[#4A5F8B]/30 rounded-full"></div>
-                    <div className="w-3 h-3 bg-[#4A5F8B]/60 rounded-full"></div>
-                    <div className="w-3 h-3 bg-[#4A5F8B] rounded-full"></div>
-                    <div className="text-xs text-[#B8C6D8]">较多</div>
+                    <div className="text-xs text-text-muted">较少</div>
+                    <div className="w-3 h-3 bg-bg-deep rounded-full"></div>
+                    <div className="w-3 h-3 bg-accent/30 rounded-full"></div>
+                    <div className="w-3 h-3 bg-accent/60 rounded-full"></div>
+                    <div className="w-3 h-3 bg-accent rounded-full"></div>
+                    <div className="text-xs text-text-muted">较多</div>
                 </div>
             </div>
             {}
             <div className="grid grid-cols-12 gap-1 mb-2">
                 {monthNames.map((month, index) => <div
                     key={index}
-                    className="text-center text-xs text-[#B8C6D8]"
+                    className="text-center text-xs text-text-muted"
                     style={{
                         gridColumnStart: index * 4.33 + 1
                     }}>
@@ -271,7 +271,7 @@ const ContributionCalendar: React.FC = () => {
             </div>
             {}
             <div className="grid grid-cols-7 gap-1 mb-2">
-                {["一", "二", "三", "四", "五", "六", "日"].map(day => <div key={day} className="text-center text-xs text-[#B8C6D8]">
+                {["一", "二", "三", "四", "五", "六", "日"].map(day => <div key={day} className="text-center text-xs text-text-muted">
                     {day}
                 </div>)}
             </div>
@@ -286,12 +286,12 @@ const ContributionCalendar: React.FC = () => {
                 {}
                 {contributionData.map((day, index) => <div
                     key={day.date}
-                    className={`w-3 h-3 rounded-full ${getColorByCount(day.count)} cursor-pointer hover:ring-2 hover:ring-[#F5F7FA]/50 transition-all`}
+                    className={`w-3 h-3 rounded-full ${getColorByCount(day.count)} cursor-pointer hover:ring-2 hover:ring-text-primary/50 transition-all`}
                     onClick={e => handleDayClick(day, e)}
                     title={`${day.date}: ${day.count} 次活动`}></div>)}
             </div>
             {}
-            <div className="mt-4 flex justify-between text-sm text-[#B8C6D8]">
+            <div className="mt-4 flex justify-between text-sm text-text-muted">
                 <div>总活动天数: {contributionData.filter(day => day.count > 0).length}</div>
                 <div>平均每天: {(contributionData.reduce((sum, day) => sum + day.count, 0) / contributionData.length).toFixed(1)}次</div>
                 <div>总计: {contributionData.reduce((sum, day) => sum + day.count, 0)}次</div>
@@ -311,14 +311,14 @@ const ContributionCalendar: React.FC = () => {
                         opacity: 0,
                         scale: 0.9
                     }}
-                    className="fixed bg-[#2D3748] border border-[#4A5F8B] rounded-lg p-3 shadow-lg z-50"
+                    className="fixed bg-bg-card border border-accent rounded-lg p-3 shadow-lg z-50"
                     style={{
                         left: tooltipPosition.x,
                         top: tooltipPosition.y
                     }}>
-                    <div className="font-medium text-[#F5F7FA]">{`${selectedDay.year}年${selectedDay.month + 1}月${selectedDay.day}日`}</div>
-                    <div className="text-[#B8C6D8] text-sm">{`${selectedDay.count} 次活动`}</div>
-                    {selectedDay.count > 0 && <div className="text-xs text-[#6B7C93] mt-1">
+                    <div className="font-medium text-text-primary">{`${selectedDay.year}年${selectedDay.month + 1}月${selectedDay.day}日`}</div>
+                    <div className="text-text-muted text-sm">{`${selectedDay.count} 次活动`}</div>
+                    {selectedDay.count > 0 && <div className="text-xs text-accent-hover mt-1">
                         {selectedDay.count === 1 && "发布了1篇帖子"}
                         {selectedDay.count === 2 && "发布了1篇帖子，回复了1次"}
                         {selectedDay.count === 3 && "发布了1篇帖子，回复了2次"}
@@ -349,8 +349,8 @@ const ActivityTrendChart: React.FC = () => {
     }, [timeRange]);
 
     return (
-        <div className="bg-[#2D3748] border border-[#4A5F8B] rounded-lg p-6">
-            <h3 className="text-lg font-bold text-[#F5F7FA] mb-4">活跃度趋势</h3>
+        <div className="bg-bg-card border border-accent rounded-lg p-6">
+            <h3 className="text-lg font-bold text-text-primary mb-4">活跃度趋势</h3>
             {}
             <div className="flex space-x-2 mb-6">
                 <motion.button
@@ -361,7 +361,7 @@ const ActivityTrendChart: React.FC = () => {
                         scale: 0.95
                     }}
                     onClick={() => setTimeRange("7days")}
-                    className={`px-3 py-1.5 rounded-lg text-sm ${timeRange === "7days" ? "bg-[#4A5F8B] text-[#F5F7FA]" : "bg-[#1E2532] text-[#B8C6D8] hover:bg-[#4A5F8B]/50"} transition-colors`}>7天
+                    className={`px-3 py-1.5 rounded-lg text-sm ${timeRange === "7days" ? "bg-accent text-text-primary" : "bg-bg-deep text-text-muted hover:bg-accent/50"} transition-colors`}>7天
                                                                             </motion.button>
                 <motion.button
                     whileHover={{
@@ -371,7 +371,7 @@ const ActivityTrendChart: React.FC = () => {
                         scale: 0.95
                     }}
                     onClick={() => setTimeRange("30days")}
-                    className={`px-3 py-1.5 rounded-lg text-sm ${timeRange === "30days" ? "bg-[#4A5F8B] text-[#F5F7FA]" : "bg-[#1E2532] text-[#B8C6D8] hover:bg-[#4A5F8B]/50"} transition-colors`}>30天
+                    className={`px-3 py-1.5 rounded-lg text-sm ${timeRange === "30days" ? "bg-accent text-text-primary" : "bg-bg-deep text-text-muted hover:bg-accent/50"} transition-colors`}>30天
                                                                             </motion.button>
                 <motion.button
                     whileHover={{
@@ -381,7 +381,7 @@ const ActivityTrendChart: React.FC = () => {
                         scale: 0.95
                     }}
                     onClick={() => setTimeRange("90days")}
-                    className={`px-3 py-1.5 rounded-lg text-sm ${timeRange === "90days" ? "bg-[#4A5F8B] text-[#F5F7FA]" : "bg-[#1E2532] text-[#B8C6D8] hover:bg-[#4A5F8B]/50"} transition-colors`}>90天
+                    className={`px-3 py-1.5 rounded-lg text-sm ${timeRange === "90days" ? "bg-accent text-text-primary" : "bg-bg-deep text-text-muted hover:bg-accent/50"} transition-colors`}>90天
                                                                             </motion.button>
             </div>
             {}
@@ -458,21 +458,21 @@ const ActivityTrendChart: React.FC = () => {
             </div>
             {}
             <div className="mt-4 grid grid-cols-3 gap-4 text-center">
-                <div className="bg-[#1E2532] p-3 rounded-lg">
-                    <div className="text-xs text-[#6B7C93]">总发帖数</div>
-                    <div className="text-lg font-bold text-[#F5F7FA]">
+                <div className="bg-bg-deep p-3 rounded-lg">
+                    <div className="text-xs text-accent-hover">总发帖数</div>
+                    <div className="text-lg font-bold text-text-primary">
                         {activityData.reduce((sum, day) => sum + day.posts, 0)}
                     </div>
                 </div>
-                <div className="bg-[#1E2532] p-3 rounded-lg">
-                    <div className="text-xs text-[#6B7C93]">总回复数</div>
-                    <div className="text-lg font-bold text-[#F5F7FA]">
+                <div className="bg-bg-deep p-3 rounded-lg">
+                    <div className="text-xs text-accent-hover">总回复数</div>
+                    <div className="text-lg font-bold text-text-primary">
                         {activityData.reduce((sum, day) => sum + day.replies, 0)}
                     </div>
                 </div>
-                <div className="bg-[#1E2532] p-3 rounded-lg">
-                    <div className="text-xs text-[#6B7C93]">活跃用户</div>
-                    <div className="text-lg font-bold text-[#F5F7FA]">
+                <div className="bg-bg-deep p-3 rounded-lg">
+                    <div className="text-xs text-accent-hover">活跃用户</div>
+                    <div className="text-lg font-bold text-text-primary">
                         {Math.max(...activityData.map(day => day.users))}
                     </div>
                 </div>
@@ -585,18 +585,18 @@ export const Poll: React.FC<PollProps> = (
         return (
             <div key={option.id} className="mb-3">
                 <div
-                    className={`p-3 rounded-lg cursor-pointer transition-all ${voted ? isVotedFor ? "bg-[#4A5F8B]/20 border border-[#4A5F8B]" : "bg-[#2D3748] border border-[#4A5F8B]/30" : isSelected ? "bg-[#4A5F8B]/20 border border-[#4A5F8B]" : "bg-[#2D3748] border border-[#4A5F8B]/30 hover:border-[#4A5F8B]"}`}
+                    className={`p-3 rounded-lg cursor-pointer transition-all ${voted ? isVotedFor ? "bg-accent/20 border border-accent" : "bg-bg-card border border-accent/30" : isSelected ? "bg-accent/20 border border-accent" : "bg-bg-card border border-accent/30 hover:border-accent"}`}
                     onClick={() => handleOptionSelect(option.id)}>
                     <div className="flex items-center mb-2">
                         <div
-                            className={`w-5 h-5 rounded-full border-2 mr-2 flex-shrink-0 flex items-center justify-center ${voted ? isVotedFor ? `border-${option.color} bg-${option.color}` : "border-[#6B7C93]" : isSelected ? `border-${option.color} bg-${option.color}` : "border-[#6B7C93]"}`}>
+                            className={`w-5 h-5 rounded-full border-2 mr-2 flex-shrink-0 flex items-center justify-center ${voted ? isVotedFor ? `border-${option.color} bg-${option.color}` : "border-accent-hover" : isSelected ? `border-${option.color} bg-${option.color}` : "border-accent-hover"}`}>
                             {voted && isVotedFor && <i className="fa-solid fa-check text-white text-xs"></i>}
                             {!voted && isSelected && <i className="fa-solid fa-check text-white text-xs"></i>}
                         </div>
-                        <span className="text-[#F5F7FA]">{option.text}</span>
+                        <span className="text-text-primary">{option.text}</span>
                     </div>
                     {voted && <div className="space-y-1">
-                        <div className="w-full bg-[#1E2532] h-2 rounded-full overflow-hidden">
+                        <div className="w-full bg-bg-deep h-2 rounded-full overflow-hidden">
                             <motion.div
                                 initial={{
                                     width: 0
@@ -613,7 +613,7 @@ export const Poll: React.FC<PollProps> = (
                                     backgroundColor: option.color
                                 }}></motion.div>
                         </div>
-                        <div className="flex justify-between text-xs text-[#B8C6D8]">
+                        <div className="flex justify-between text-xs text-text-muted">
                             <span>{option.votes}票</span>
                             <span>{percentage.toFixed(1)}%</span>
                         </div>
@@ -702,7 +702,7 @@ export const GroupCard: React.FC<GroupCardProps> = (
                 transformStyle: "preserve-3d",
                 backgroundColor: "transparent"
             }}
-            className="bg-[#2D3748] border border-[#4A5F8B] rounded-lg overflow-hidden shadow-sm">
+            className="bg-bg-card border border-accent rounded-lg overflow-hidden shadow-sm">
             <div className="relative h-32">
                 <img
                     src={group.coverImage}
@@ -710,7 +710,7 @@ export const GroupCard: React.FC<GroupCardProps> = (
                     className="w-full h-full object-cover" />
                 <div className="absolute top-3 left-3">
                     <div
-                        className="w-16 h-16 rounded-full border-2 border-[#2D3748] overflow-hidden">
+                        className="w-16 h-16 rounded-full border-2 border-bg-card overflow-hidden">
                         <img
                             src={group.avatar}
                             alt={group.name}
@@ -718,30 +718,30 @@ export const GroupCard: React.FC<GroupCardProps> = (
                     </div>
                 </div>
                 {!group.isPublic && <div
-                    className="absolute top-3 right-3 px-2 py-1 bg-[#1E2532]/80 text-white text-xs rounded-full">
+                    className="absolute top-3 right-3 px-2 py-1 bg-bg-deep/80 text-white text-xs rounded-full">
                     <i className="fa-solid fa-lock mr-1"></i>私密
                                                                             </div>}
             </div>
             <div className="p-4">
-                <h3 className="text-lg font-bold text-[#F5F7FA] mb-1">{group.name}</h3>
-                <p className="text-sm text-[#B8C6D8] mb-3 line-clamp-2">{group.description}</p>
+                <h3 className="text-lg font-bold text-text-primary mb-1">{group.name}</h3>
+                <p className="text-sm text-text-muted mb-3 line-clamp-2">{group.description}</p>
                 <div className="flex justify-between items-center mb-3">
                     <div className="flex items-center">
-                        <span className="text-sm text-[#B8C6D8]">
+                        <span className="text-sm text-text-muted">
                             {group.members.length}成员
                                                                                  </span>
-                        <span className="mx-2 text-[#6B7C93]">•</span>
-                        <span className="text-sm text-[#B8C6D8]">
+                        <span className="mx-2 text-accent-hover">•</span>
+                        <span className="text-sm text-text-muted">
                             {group.posts}帖子
                                                                                  </span>
                     </div>
-                    <span className="text-xs text-[#6B7C93]">创建于 {new Date(group.createdAt).toLocaleDateString()}
+                    <span className="text-xs text-accent-hover">创建于 {new Date(group.createdAt).toLocaleDateString()}
                     </span>
                 </div>
                 <div className="flex flex-wrap gap-1 mb-3">
                     {group.tags.map((tag, index) => <span
                         key={index}
-                        className="px-2 py-1 bg-[#1E2532] text-[#B8C6D8] rounded-full text-xs border border-[#4A5F8B]">#{tag}
+                        className="px-2 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent">#{tag}
                     </span>)}
                 </div>
                 <motion.button
@@ -752,7 +752,7 @@ export const GroupCard: React.FC<GroupCardProps> = (
                         scale: 0.97
                     }}
                     onClick={handleJoinLeave}
-                    className={`w-full py-2 rounded-lg font-medium transition-colors ${group.joined ? "bg-[#F56565] text-white hover:bg-[#E53E3E]" : "bg-[#4A5F8B] text-[#F5F7FA] hover:bg-[#6B7C93]"}`}>
+                    className={`w-full py-2 rounded-lg font-medium transition-colors ${group.joined ? "bg-danger text-white hover:bg-danger" : "bg-accent text-text-primary hover:bg-accent-hover"}`}>
                     {group.joined ? "退出小组" : "加入小组"}
                 </motion.button>
             </div>
@@ -920,14 +920,14 @@ const CreateGroupForm: React.FC<{ isOpen: boolean; onClose: () => void; onCreate
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 20 }}
-        className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] w-full max-w-2xl max-h-[80vh] overflow-y-auto"
+        className="bg-bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[80vh] overflow-y-auto"
         onClick={e => e.stopPropagation()}
       >
         <div className="p-6">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-bold text-[#F5F7FA]">创建摄影小组</h2>
+            <h2 className="text-xl font-bold text-text-primary">创建摄影小组</h2>
             <button
-              className="text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors"
+              className="text-text-muted hover:text-text-primary transition-colors"
               onClick={onClose}
             >
               <i className="fa-solid fa-times text-lg"></i>
@@ -936,33 +936,33 @@ const CreateGroupForm: React.FC<{ isOpen: boolean; onClose: () => void; onCreate
           
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block text-sm font-medium text-[#B8C6D8] mb-1">小组名称 <span className="text-[#F56565]">*</span></label>
+              <label className="block text-sm font-medium text-text-muted mb-1">小组名称 <span className="text-danger">*</span></label>
               <input
                 type="text"
                 value={groupName}
                 onChange={(e) => setGroupName(e.target.value)}
                 placeholder="请输入小组名称"
-                className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                 maxLength={50}
                 required
               />
-              <p className="text-xs text-[#6B7C93] mt-1">2-50个字符，简洁明了地表达小组主题</p>
+              <p className="text-xs text-accent-hover mt-1">2-50个字符，简洁明了地表达小组主题</p>
             </div>
             
             <div className="mb-4">
-              <label className="block text-sm font-medium text-[#B8C6D8] mb-1">小组描述</label>
+              <label className="block text-sm font-medium text-text-muted mb-1">小组描述</label>
               <textarea
                 value={groupDescription}
                 onChange={(e) => setGroupDescription(e.target.value)}
                 placeholder="介绍你的小组主题、目标和成员可以获得什么..."
-                className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all min-h-[120px]"
+                className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[120px]"
                 maxLength={500}
               />
-              <p className="text-xs text-[#6B7C93] mt-1">最多500个字符，详细的介绍能吸引更多成员</p>
+              <p className="text-xs text-accent-hover mt-1">最多500个字符，详细的介绍能吸引更多成员</p>
             </div>
             
             <div className="mb-4">
-              <label className="block text-sm font-medium text-[#B8C6D8] mb-1">小组类型</label>
+              <label className="block text-sm font-medium text-text-muted mb-1">小组类型</label>
               <div className="flex space-x-4">
                 <label className="flex items-center cursor-pointer">
                   <input
@@ -971,9 +971,9 @@ const CreateGroupForm: React.FC<{ isOpen: boolean; onClose: () => void; onCreate
                     value="public"
                     checked={groupType === "public"}
                     onChange={(e) => setGroupType(e.target.value)}
-                    className="w-4 h-4 text-[#4A5F8B] bg-[#1E2532] border-[#4A5F8B] rounded focus:ring-[#4A5F8B]"
+                    className="w-4 h-4 text-accent bg-bg-deep border-accent rounded focus:ring-accent"
                   />
-                  <span className="ml-2 text-[#B8C6D8]">公开小组</span>
+                  <span className="ml-2 text-text-muted">公开小组</span>
                 </label>
                 <label className="flex items-center cursor-pointer">
                   <input
@@ -982,37 +982,37 @@ const CreateGroupForm: React.FC<{ isOpen: boolean; onClose: () => void; onCreate
                     value="private"
                     checked={groupType === "private"}
                     onChange={(e) => setGroupType(e.target.value)}
-                    className="w-4 h-4 text-[#4A5F8B] bg-[#1E2532] border-[#4A5F8B] rounded focus:ring-[#4A5F8B]"
+                    className="w-4 h-4 text-accent bg-bg-deep border-accent rounded focus:ring-accent"
                   />
-                  <span className="ml-2 text-[#B8C6D8]">私密小组</span>
+                  <span className="ml-2 text-text-muted">私密小组</span>
                 </label>
               </div>
-              <p className="text-xs text-[#6B7C93] mt-1">公开小组：任何人都可以发现并加入；私密小组：只有通过邀请才能加入</p>
+              <p className="text-xs text-accent-hover mt-1">公开小组：任何人都可以发现并加入；私密小组：只有通过邀请才能加入</p>
             </div>
             
             <div className="mb-6">
-              <label className="block text-sm font-medium text-[#B8C6D8] mb-1">标签</label>
+              <label className="block text-sm font-medium text-text-muted mb-1">标签</label>
               <input
                 type="text"
                 value={groupTags}
                 onChange={(e) => setGroupTags(e.target.value)}
                 placeholder="输入标签，用逗号分隔，最多5个标签"
-                className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
               />
-              <p className="text-xs text-[#6B7C93] mt-1">添加相关标签，让更多志同道合的人找到你的小组</p>
+              <p className="text-xs text-accent-hover mt-1">添加相关标签，让更多志同道合的人找到你的小组</p>
             </div>
             
             <div className="flex space-x-3">
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 py-3 bg-[#2D3748] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]"
+                className="flex-1 py-3 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
               >
                 取消
               </button>
               <button
                 type="submit"
-                className="flex-1 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors flex items-center justify-center"
+                className="flex-1 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors flex items-center justify-center"
               >
                 <i className="fa-solid fa-plus-circle mr-2"></i>
                 创建小组
@@ -1098,7 +1098,7 @@ const Community: React.FC = () => {
             return "bg-blue-800 text-white";
 
         if (level >= 5)
-            return "bg-[#4A5F8B] text-white";
+            return "bg-accent text-white";
 
         if (level >= 3)
             return "bg-gray-600 text-white";
@@ -1226,7 +1226,7 @@ const Community: React.FC = () => {
 
     return (
         <div
-            className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen">
+            className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
             <motion.div
                 initial={{
                     opacity: 0,
@@ -1241,8 +1241,8 @@ const Community: React.FC = () => {
                 }}>
                 {}
                 <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-[#F5F7FA] mb-2">摄影社区</h1>
-                    <p className="text-[#B8C6D8]">与全球摄影爱好者分享交流，探讨摄影技术与艺术</p>
+                    <h1 className="text-3xl font-bold text-text-primary mb-2">摄影社区</h1>
+                    <p className="text-text-muted">与全球摄影爱好者分享交流，探讨摄影技术与艺术</p>
                 </div>
                 {}
                 <div
@@ -1254,30 +1254,30 @@ const Community: React.FC = () => {
                             placeholder="搜索话题、用户或标签..."
                             value={searchQuery}
                             onChange={e => setSearchQuery(e.target.value)}
-                            className="w-full px-4 py-3 pl-12 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all placeholder:text-[#B8C6D8]" />
+                            className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted" />
                         <i
-                            className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-[#B8C6D8]"></i>
+                            className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
                     </div>
                     <div className="flex items-center space-x-4 w-full md:w-auto">
                         {}
                         <div className="flex items-center space-x-4 w-full md:w-auto">
                             <div className="flex items-center">
-                                <span className="text-sm text-[#B8C6D8] mr-2">筛选:</span>
+                                <span className="text-sm text-text-muted mr-2">筛选:</span>
                                 <select
                                     value={filterType}
                                     onChange={e => setFilterType(e.target.value)}
-                                    className="px-3 py-2 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer">
+                                    className="px-3 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                                     <option value="all">全部话题</option>
                                     <option value="essential">精华话题</option>
                                     <option value="sticky">置顶话题</option>
                                 </select>
                             </div>
                             <div className="flex items-center">
-                                <span className="text-sm text-[#B8C6D8] mr-2">排序:</span>
+                                <span className="text-sm text-text-muted mr-2">排序:</span>
                                 <select
                                     value={sortType}
                                     onChange={e => setSortType(e.target.value)}
-                                    className="px-3 py-2 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer">
+                                    className="px-3 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                                     <option value="latest">最新发布</option>
                                     <option value="popular">最多点赞</option>
                                     <option value="comments">最多评论</option>
@@ -1293,7 +1293,7 @@ const Community: React.FC = () => {
                                 scale: 0.95
                             }}
                             onClick={toggleBatchMode}
-                            className="px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors flex items-center">
+                            className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors flex items-center">
                             <i className={`fa-solid ${batchMode ? "fa-xmark" : "fa-list-check"} mr-2`}></i>
                             {batchMode ? "退出批量操作" : "批量管理"}
                         </motion.button>
@@ -1307,10 +1307,10 @@ const Community: React.FC = () => {
                                     scale: 0.95
                                 }}
                                 onClick={() => setShowNotifications(!showNotifications)}
-                                className="w-10 h-10 rounded-full bg-[#4A5F8B] text-[#F5F7FA] flex items-center justify-center hover:bg-[#6B7C93] transition-colors">
+                                className="w-10 h-10 rounded-full bg-accent text-text-primary flex items-center justify-center hover:bg-accent-hover transition-colors">
                                 <i className="fa-solid fa-bell"></i>
                                 {unreadCount > 0 && <span
-                                    className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#F56565] text-white text-xs flex items-center justify-center">
+                                    className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-danger text-white text-xs flex items-center justify-center">
                                     {unreadCount}
                                 </span>}
                             </motion.button>
@@ -1329,13 +1329,13 @@ const Community: React.FC = () => {
                                         opacity: 0,
                                         y: -10
                                     }}
-                                    className="absolute right-0 mt-2 w-80 bg-[#2D3748] border border-[#4A5F8B] rounded-lg shadow-lg z-10">
+                                    className="absolute right-0 mt-2 w-80 bg-bg-card border border-accent rounded-lg shadow-lg z-10">
                                     <div
-                                        className="flex justify-between items-center p-4 border-b border-[#4A5F8B]">
-                                        <h3 className="font-medium text-[#F5F7FA]">通知</h3>
+                                        className="flex justify-between items-center p-4 border-b border-accent">
+                                        <h3 className="font-medium text-text-primary">通知</h3>
                                         {unreadCount > 0 && <button
                                             onClick={markAllAsRead}
-                                            className="text-xs text-[#4A5F8B] hover:text-[#B8C6D8]">全部已读
+                                            className="text-xs text-accent hover:text-text-muted">全部已读
                                                                                                                                                              </button>}
                                     </div>
                                     <div className="max-h-80 overflow-y-auto">
@@ -1352,19 +1352,19 @@ const Community: React.FC = () => {
                                             transition={{
                                                 duration: 0.3
                                             }}
-                                            className={`p-4 border-b border-[#4A5F8B] ${notification.isRead ? "" : "bg-[#4A5F8B]/20"}`}>
+                                            className={`p-4 border-b border-accent ${notification.isRead ? "" : "bg-accent/20"}`}>
                                             <div className="flex items-start">
                                                 <div
                                                     className={`p-2 rounded-full ${getNotificationColorClass(notification.type)} mr-3`}>
                                                     <i className={`fa-solid ${getNotificationIcon(notification.type)}`}></i>
                                                 </div>
                                                 <div className="flex-1">
-                                                    <p className="text-sm text-[#F5F7FA]">{notification.content}</p>
-                                                    <p className="text-xs text-[#6B7C93] mt-1">{notification.createdAt}</p>
+                                                    <p className="text-sm text-text-primary">{notification.content}</p>
+                                                    <p className="text-xs text-accent-hover mt-1">{notification.createdAt}</p>
                                                 </div>
-                                                {!notification.isRead && <span className="w-2 h-2 rounded-full bg-[#F56565]"></span>}
+                                                {!notification.isRead && <span className="w-2 h-2 rounded-full bg-danger"></span>}
                                             </div>
-                                        </motion.div>) : <div className="p-6 text-center text-[#B8C6D8]">
+                                        </motion.div>) : <div className="p-6 text-center text-text-muted">
                                             <i className="fa-solid fa-bell-slash text-2xl mb-2"></i>
                                             <p>暂无通知</p>
                                         </div>}
@@ -1389,15 +1389,15 @@ const Community: React.FC = () => {
                             opacity: 0,
                             height: 0
                         }}
-                        className="mb-6 bg-[#2D3748] rounded-lg border border-[#4A5F8B] p-4">
+                        className="mb-6 bg-bg-card rounded-lg border border-accent p-4">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">
                                 <input
                                     type="checkbox"
                                     checked={selectedTopics.length > 0 && selectedTopics.length === topics.length}
                                     onChange={toggleSelectAll}
-                                    className="w-4 h-4 bg-[#2D3748] border-[#4A5F8B] text-[#4A5F8B] rounded focus:ring-[#4A5F8B] mr-2" />
-                                <span className="text-[#B8C6D8]">已选择 {selectedTopics.length}个话题</span>
+                                    className="w-4 h-4 bg-bg-card border-accent text-accent rounded focus:ring-accent mr-2" />
+                                <span className="text-text-muted">已选择 {selectedTopics.length}个话题</span>
                             </div>
                             <div className="flex space-x-3">
                                 <motion.button
@@ -1407,7 +1407,7 @@ const Community: React.FC = () => {
                                         scale: 0.95
                                     }}
                                     disabled={selectedTopics.length === 0}
-                                    className={`px-3 py-1.5 rounded-lg flex items-center text-sm ${selectedTopics.length === 0 ? "bg-[#6B7C93]/50 text-[#B8C6D8] cursor-not-allowed" : "bg-[#4A5F8B] text-[#F5F7FA] hover:bg-[#6B7C93]"}`}>
+                                    className={`px-3 py-1.5 rounded-lg flex items-center text-sm ${selectedTopics.length === 0 ? "bg-accent-hover/50 text-text-muted cursor-not-allowed" : "bg-accent text-text-primary hover:bg-accent-hover"}`}>
                                     <i className="fa-solid fa-star mr-1"></i>设为精华
                                                                                                                                </motion.button>
                                 <motion.button
@@ -1418,7 +1418,7 @@ const Community: React.FC = () => {
                                         scale: 0.95
                                     }}
                                     disabled={selectedTopics.length === 0}
-                                    className={`px-3 py-1.5 rounded-lg flex items-center text-sm ${selectedTopics.length === 0 ? "bg-[#6B7C93]/50 text-[#B8C6D8] cursor-not-allowed" : "bg-[#4A5F8B] text-[#F5F7FA] hover:bg-[#6B7C93]"}`}>
+                                    className={`px-3 py-1.5 rounded-lg flex items-center text-sm ${selectedTopics.length === 0 ? "bg-accent-hover/50 text-text-muted cursor-not-allowed" : "bg-accent text-text-primary hover:bg-accent-hover"}`}>
                                     <i className="fa-solid fa-thumbtack mr-1"></i>置顶
                                                                                                                                </motion.button>
                                 <motion.button
@@ -1429,7 +1429,7 @@ const Community: React.FC = () => {
                                         scale: 0.95
                                     }}
                                     disabled={selectedTopics.length === 0}
-                                    className={`px-3 py-1.5 rounded-lg flex items-center text-sm ${selectedTopics.length === 0 ? "bg-[#6B7C93]/50 text-[#B8C6D8] cursor-not-allowed" : "bg-[#F56565] text-white hover:bg-[#E53E3E]"}`}>
+                                    className={`px-3 py-1.5 rounded-lg flex items-center text-sm ${selectedTopics.length === 0 ? "bg-accent-hover/50 text-text-muted cursor-not-allowed" : "bg-danger text-white hover:bg-danger"}`}>
                                     <i className="fa-solid fa-trash mr-1"></i>删除
                                                                                                                                </motion.button>
                             </div>
@@ -1441,7 +1441,7 @@ const Community: React.FC = () => {
                  {/* 小组入口 */}
                 <div className="mb-12">
                   <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-2xl font-bold text-[#F5F7FA]">摄影小组</h2>
+                    <h2 className="text-2xl font-bold text-text-primary">摄影小组</h2>
                     <motion.button
                       whileHover={{
                         scale: 1.05
@@ -1449,7 +1449,7 @@ const Community: React.FC = () => {
                       whileTap={{
                         scale: 0.95
                       }}
-                      className="px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors flex items-center">
+                      className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors flex items-center">
                       <i className="fa-solid fa-users mr-2"></i>
                       查看所有小组
                     </motion.button>
@@ -1476,7 +1476,7 @@ const Community: React.FC = () => {
                         whileTap={{
                           scale: 0.97
                         }}
-                        className="px-6 py-2 bg-[#2D3748] text-[#B8C6D8] border border-[#4A5F8B] rounded-lg hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors"
+                        className="px-6 py-2 bg-bg-card text-text-muted border border-accent rounded-lg hover:bg-accent hover:text-text-primary transition-colors"
                       >
                         查看全部小组 <i className="fa-solid fa-chevron-right ml-1"></i>
                       </motion.button>
@@ -1515,7 +1515,7 @@ const Community: React.FC = () => {
                                 transformStyle: "preserve-3d",
                                 backgroundColor: "transparent"
                             }}
-                            className={`bg-[#2D3748] border border-[#4A5F8B] rounded-lg overflow-hidden shadow-sm cursor-pointer relative ${topic.isSelected ? "ring-2 ring-[#4A5F8B]" : ""}`}
+                            className={`bg-bg-card border border-accent rounded-lg overflow-hidden shadow-sm cursor-pointer relative ${topic.isSelected ? "ring-2 ring-accent" : ""}`}
                             onClick={() => window.location.href = `/post/${topic.id}`}>
                             <div className="p-6">
                                 {}
@@ -1530,32 +1530,32 @@ const Community: React.FC = () => {
                                         type="checkbox"
                                         checked={selectedTopics.includes(topic.id)}
                                         onChange={() => toggleTopicSelection(topic.id)}
-                                        className="w-4 h-4 bg-[#2D3748] border-[#4A5F8B] text-[#4A5F8B] rounded focus:ring-[#4A5F8B] mt-1" />
+                                        className="w-4 h-4 bg-bg-card border-accent text-accent rounded focus:ring-accent mt-1" />
                                 </div>}
                                 {}
                                 <div className="flex items-center space-x-2 mb-3">
                                     {topic.isEssential && <span
-                                        className="px-2 py-1 bg-[#F56565]/20 text-[#F56565] text-xs rounded-full flex items-center">
+                                        className="px-2 py-1 bg-danger/20 text-danger text-xs rounded-full flex items-center">
                                         <i className="fa-solid fa-star mr-1"></i>精华
                                                                                                                                                </span>}
                                     {topic.isSticky && <span
-                                        className="px-2 py-1 bg-[#48BB78]/20 text-[#48BB78] text-xs rounded-full flex items-center">
+                                        className="px-2 py-1 bg-success/20 text-success text-xs rounded-full flex items-center">
                                         <i className="fa-solid fa-thumbtack mr-1"></i>置顶
                                                                                                                                                </span>}
                                 </div>
                                 {}
-                                <h2 className="text-xl font-bold text-[#F5F7FA] mb-3">
+                                <h2 className="text-xl font-bold text-text-primary mb-3">
                                     {topic.title}
                                 </h2>
                                 {}
-                                <p className="text-[#B8C6D8] mb-4 line-clamp-2">
+                                <p className="text-text-muted mb-4 line-clamp-2">
                                     {topic.content}
                                 </p>
                                 {}
                                 <div className="flex flex-wrap gap-2 mb-4">
                                     {topic.tags.map((tag, index) => <span
                                         key={index}
-                                        className="px-2 py-1 bg-[#1E2532] text-[#B8C6D8] rounded-full text-xs border border-[#4A5F8B]">
+                                        className="px-2 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent">
                                         {tag}
                                     </span>)}
                                 </div>
@@ -1568,36 +1568,36 @@ const Community: React.FC = () => {
                                             className="w-10 h-10 rounded-full object-cover mr-3" />
                                         <div>
                                             <div className="flex items-center">
-                                                <span className="text-[#F5F7FA] font-medium">{topic.author.name}</span>
+                                                <span className="text-text-primary font-medium">{topic.author.name}</span>
                                                 <div className="ml-2 relative group">
                                                     <span
                                                         className={`text-xs px-1.5 py-0.5 rounded ${getLevelBadgeClass(topic.author.level)}`}>Lv{topic.author.level}
                                                     </span>
                                                     <div
-                                                        className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 w-48 bg-[#1E2532] text-[#B8C6D8] text-xs rounded p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10 whitespace-nowrap pointer-events-none">发帖: {topic.author.stats.posts}| 获赞: {topic.author.stats.likes}| 活跃: {topic.author.stats.days}天
+                                                        className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 w-48 bg-bg-deep text-text-muted text-xs rounded p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10 whitespace-nowrap pointer-events-none">发帖: {topic.author.stats.posts}| 获赞: {topic.author.stats.likes}| 活跃: {topic.author.stats.days}天
                                                                                                                                                                                                      </div>
                                                 </div>
                                             </div>
-                                            <p className="text-xs text-[#6B7C93]">{topic.createdAt}</p>
+                                            <p className="text-xs text-accent-hover">{topic.createdAt}</p>
                                         </div>
                                     </div>
                                     <div className="flex items-center space-x-4">
-                                        <div className="flex items-center text-[#6B7C93]">
+                                        <div className="flex items-center text-accent-hover">
                                             <i className="fa-solid fa-heart mr-1"></i>
                                             <span>{topic.likes}</span>
                                         </div>
-                                        <div className="flex items-center text-[#6B7C93]">
+                                        <div className="flex items-center text-accent-hover">
                                             <i className="fa-solid fa-comment mr-1"></i>
                                             <span>{topic.comments}</span>
                                         </div>
-                                        <div className="flex items-center text-[#6B7C93]">
+                                        <div className="flex items-center text-accent-hover">
                                             <i className="fa-solid fa-eye mr-1"></i>
                                             <span>{topic.views}</span>
                                         </div>
                                     </div>
                                 </div>
                                 {}
-                                {bookmarkPositions[topic.id] !== undefined && <div className="mt-4 flex items-center text-xs text-[#4A5F8B]">
+                                {bookmarkPositions[topic.id] !== undefined && <div className="mt-4 flex items-center text-xs text-accent">
                                     <i className="fa-solid fa-bookmark mr-1"></i>
                                     <span>上次阅读进度已保存</span>
                                 </div>}
@@ -1649,8 +1649,8 @@ const Community: React.FC = () => {
                             expiresAt="2025-12-31" />
                         {}
                         {}
-                        <div className="bg-[#2D3748] border border-[#4A5F8B] rounded-lg p-6">
-                            <h3 className="text-lg font-bold text-[#F5F7FA] mb-4">话题分布</h3>
+                        <div className="bg-bg-card border border-accent rounded-lg p-6">
+                            <h3 className="text-lg font-bold text-text-primary mb-4">话题分布</h3>
                             <div className="h-64">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <PieChart>

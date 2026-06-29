@@ -41,9 +41,9 @@ const EquipmentHub: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#1E2532]">
+    <div className="min-h-screen bg-bg-deep">
       {/* Tab 导航 */}
-      <div className="bg-[#2D3748] border-b border-[#4A5F8B] sticky top-0 z-40">
+      <div className="bg-bg-card border-b border-accent sticky top-0 z-40">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-1">
@@ -55,8 +55,8 @@ const EquipmentHub: React.FC = () => {
                   onClick={() => handleTabChange(tab.id)}
                   className={`flex items-center px-6 py-4 font-medium transition-all border-b-2 -mb-px ${
                     activeTab === tab.id
-                      ? 'border-[#4A5F8B] text-[#F5F7FA]'
-                      : 'border-transparent text-[#B8C6D8] hover:text-[#F5F7FA]'
+                      ? 'border-accent text-text-primary'
+                      : 'border-transparent text-text-muted hover:text-text-primary'
                   }`}
                 >
                   <i className={`fa-solid ${tab.icon} mr-2`}></i>

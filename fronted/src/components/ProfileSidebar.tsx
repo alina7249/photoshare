@@ -51,13 +51,13 @@ export const ProfileSidebar: React.FC<ProfileSidebarProps> = ({
         animate={{ x: 0 }}
         exit={{ x: '100%' }}
         transition={{ type: 'spring', damping: 20 }}
-        className="absolute top-0 right-0 h-full w-[320px] max-w-[90%] bg-[#1E2532] border-l border-[#4A5F8B] star-texture overflow-y-auto"
+        className="absolute top-0 right-0 h-full w-[320px] max-w-[90%] bg-bg-deep border-l border-accent star-texture overflow-y-auto"
       >
         {/* 顶部关闭按钮 */}
         <div className="flex justify-end p-4">
           <button 
             onClick={onClose}
-            className="w-8 h-8 rounded-full flex items-center justify-center text-[#F5F7FA] hover:bg-[#2D3748] transition-colors"
+            className="w-8 h-8 rounded-full flex items-center justify-center text-text-primary hover:bg-bg-card transition-colors"
           >
             <i className="fa-solid fa-times"></i>
           </button>
@@ -66,50 +66,50 @@ export const ProfileSidebar: React.FC<ProfileSidebarProps> = ({
         {/* 顶部身份信息区 */}
         <div className="px-6 mb-6">
           <div className="text-center mb-4">
-            <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-4 border-[#4A5F8B]">
+            <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-4 border-accent">
               <img 
                 src="https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc"
                 alt="User avatar"
                 className="w-full h-full object-cover"
               />
             </div>
-            <h2 className="text-xl font-bold text-[#F5F7FA] mb-1">{username}</h2>
-            <p className="text-[#B8C6D8]/70 text-sm">风光/人像双题材创作者</p>
+            <h2 className="text-xl font-bold text-text-primary mb-1">{username}</h2>
+            <p className="text-text-muted/70 text-sm">风光/人像双题材创作者</p>
           </div>
           
           {/* 等级和进度条 */}
-          <div className="bg-[#2D3748] rounded-lg p-4 mb-4">
+          <div className="bg-bg-card rounded-lg p-4 mb-4">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-[#4A5F8B] text-sm">{level} LV.{levelNum}</span>
-              <span className="text-[#4A5F8B] text-xs">{progress}/{progressMax}成长值</span>
+              <span className="text-accent text-sm">{level} LV.{levelNum}</span>
+              <span className="text-accent text-xs">{progress}/{progressMax}成长值</span>
             </div>
-            <div className="w-full h-2 bg-[#1E2532] rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-bg-deep rounded-full overflow-hidden">
               <div 
-                className="h-full bg-[#4A5F8B]" 
+                className="h-full bg-accent" 
                 style={{ width: `${(progress / progressMax) * 100}%` }}
               ></div>
             </div>
           </div>
           
           {/* 会员标识 */}
-          <div className="bg-[#4A5F8B] text-[#F5F7FA] text-sm font-medium py-2 px-4 rounded-full text-center border border-[#4A5F8B]">
+          <div className="bg-accent text-text-primary text-sm font-medium py-2 px-4 rounded-full text-center border border-accent">
             银河会员·年卡（剩余128天）
           </div>
         </div>
         
         {/* 中间核心数据统计区 */}
         <div className="grid grid-cols-3 gap-1 px-6 mb-6">
-          <div className="bg-[#2D3748] rounded-lg p-3 text-center">
-            <p className="text-[#B8C6D8] text-sm mb-1">作品</p>
-            <p className="text-[#F5F7FA] font-bold text-lg">{stats.posts}</p>
+          <div className="bg-bg-card rounded-lg p-3 text-center">
+            <p className="text-text-muted text-sm mb-1">作品</p>
+            <p className="text-text-primary font-bold text-lg">{stats.posts}</p>
           </div>
-          <div className="bg-[#2D3748] rounded-lg p-3 text-center">
-            <p className="text-[#B8C6D8] text-sm mb-1">获赞</p>
-            <p className="text-[#F5F7FA] font-bold text-lg">{stats.likes}</p>
+          <div className="bg-bg-card rounded-lg p-3 text-center">
+            <p className="text-text-muted text-sm mb-1">获赞</p>
+            <p className="text-text-primary font-bold text-lg">{stats.likes}</p>
           </div>
-          <div className="bg-[#2D3748] rounded-lg p-3 text-center">
-            <p className="text-[#B8C6D8] text-sm mb-1">收藏</p>
-            <p className="text-[#F5F7FA] font-bold text-lg">{stats.collections}</p>
+          <div className="bg-bg-card rounded-lg p-3 text-center">
+            <p className="text-text-muted text-sm mb-1">收藏</p>
+            <p className="text-text-primary font-bold text-lg">{stats.collections}</p>
           </div>
         </div>
         
@@ -121,7 +121,7 @@ export const ProfileSidebar: React.FC<ProfileSidebarProps> = ({
               to={item.link}
               onClick={onClose}
               className={`flex items-center py-3 px-4 mb-1 rounded-lg transition-colors ${
-                item.id === 'center' ? 'bg-[#4A5F8B] text-[#F5F7FA]' : 'text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA]'
+                item.id === 'center' ? 'bg-accent text-text-primary' : 'text-text-muted hover:bg-accent hover:text-text-primary'
               }`}
             >
               <i className={`fa-solid ${item.icon} mr-3`}></i>

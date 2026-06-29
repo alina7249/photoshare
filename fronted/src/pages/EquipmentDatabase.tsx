@@ -66,15 +66,15 @@ const equipmentTypes = [
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
-        className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] w-full max-w-2xl"
+        className="bg-bg-card rounded-xl border border-accent w-full max-w-2xl"
       >
-        <div className="flex justify-between items-center p-4 border-b border-[#4A5F8B]">
-          <h3 className="font-bold text-[#F5F7FA] flex items-center">
-            <i className="fa-solid fa-robot text-[#4A5F8B] mr-2"></i>
+        <div className="flex justify-between items-center p-4 border-b border-accent">
+          <h3 className="font-bold text-text-primary flex items-center">
+            <i className="fa-solid fa-robot text-accent mr-2"></i>
             AI器材推荐
           </h3>
           <button
-            className="text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors"
+            className="text-text-muted hover:text-text-primary transition-colors"
             onClick={onClose}
           >
             <i className="fa-solid fa-times"></i>
@@ -84,18 +84,18 @@ const equipmentTypes = [
         <div className="p-6">
           {/* 输入区域 */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-[#B8C6D8] mb-2">描述你的需求</label>
+            <label className="block text-sm font-medium text-text-muted mb-2">描述你的需求</label>
             <textarea
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="例如：预算 5000 元，拍人像，新手适用"
-              className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all resize-none h-24"
+              className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none h-24"
             ></textarea>
           </div>
           
           {/* 示例标签 */}
           <div className="mb-6">
-            <label className="block text-sm font-medium text-[#B8C6D8] mb-2">快速选择</label>
+            <label className="block text-sm font-medium text-text-muted mb-2">快速选择</label>
             <div className="flex flex-wrap gap-2">
               {examplePrompts.map((example, index) => (
                 <motion.button
@@ -103,7 +103,7 @@ const equipmentTypes = [
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setPrompt(example)}
-                  className="px-3 py-1.5 bg-[#1E2532] text-[#B8C6D8] rounded-lg text-sm hover:bg-[#4A5F8B]/30 transition-colors border border-[#4A5F8B]"
+                  className="px-3 py-1.5 bg-bg-deep text-text-muted rounded-lg text-sm hover:bg-accent/30 transition-colors border border-accent"
                 >
                   {example}
                 </motion.button>
@@ -115,14 +115,14 @@ const equipmentTypes = [
           <div className="flex space-x-3">
             <button
               onClick={onClose}
-              className="flex-1 py-2 bg-[#2D3748] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]"
+              className="flex-1 py-2 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
             >
               取消
             </button>
             <button
               onClick={onSubmitPrompt}
               disabled={isLoading}
-              className="flex-1 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors flex items-center justify-center"
+              className="flex-1 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors flex items-center justify-center"
             >
               {isLoading ? (
                 <>
@@ -142,13 +142,13 @@ const equipmentTypes = [
           {aiConversation.length > 0 && (
             <div className="mt-6 space-y-4">
               {/* 对话历史 */}
-              <div className="bg-[#1E2532] p-4 rounded-lg">
+              <div className="bg-bg-deep p-4 rounded-lg">
                 {aiConversation.map((message, index) => (
                   <div key={index} className={`mb-3 last:mb-0 ${message.role === 'user' ? 'text-right' : 'text-left'}`}>
                     <div className={`inline-block max-w-[80%] p-3 rounded-lg ${
                       message.role === 'user' 
-                        ? 'bg-[#4A5F8B] text-[#F5F7FA] rounded-br-none' 
-                        : 'bg-[#2D3748] text-[#B8C6D8] rounded-bl-none'
+                        ? 'bg-accent text-text-primary rounded-br-none' 
+                        : 'bg-bg-card text-text-muted rounded-bl-none'
                     }`}>
                       <p>{message.content}</p>
                     </div>
@@ -159,13 +159,13 @@ const equipmentTypes = [
               {/* 推荐结果 */}
               {recommendations.length > 0 && (
                 <div>
-                  <h4 className="text-md font-medium text-[#B8C6D8] mb-3">根据您的需求，为您推荐以下器材：</h4>
+                  <h4 className="text-md font-medium text-text-muted mb-3">根据您的需求，为您推荐以下器材：</h4>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {recommendations.map((equipment) => (
                       <motion.div
                         key={equipment.id}
                         whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-                        className="bg-[#1E2532] rounded-lg overflow-hidden border border-[#4A5F8B] transition-all cursor-pointer"
+                        className="bg-bg-deep rounded-lg overflow-hidden border border-accent transition-all cursor-pointer"
                         onClick={() => {
                           setSelectedEquipment(equipment);
                           onClose();
@@ -179,23 +179,23 @@ const equipmentTypes = [
                           />
                         </div>
                         <div className="p-3">
-                          <h5 className="font-medium text-[#F5F7FA] mb-1 line-clamp-1">{equipment.name}</h5>
-                          <p className="text-xs text-[#6B7C93] mb-2">{equipment.brand} | {equipment.type}</p>
-                          <p className="text-sm font-bold text-[#4A5F8B]">¥{parseInt(equipment.price).toLocaleString()}</p>
+                          <h5 className="font-medium text-text-primary mb-1 line-clamp-1">{equipment.name}</h5>
+                          <p className="text-xs text-accent-hover mb-2">{equipment.brand} | {equipment.type}</p>
+                          <p className="text-sm font-bold text-accent">¥{parseInt(equipment.price).toLocaleString()}</p>
                           
                           {/* 显示推荐理由 */}
                           <div className="mt-2">
                             {equipment.tags.includes('便携') && (
-                              <span className="inline-block px-2 py-0.5 bg-[#4A5F8B]/20 text-[#4A5F8B] text-xs rounded mr-1 mb-1">便携设计</span>
+                              <span className="inline-block px-2 py-0.5 bg-accent/20 text-accent text-xs rounded mr-1 mb-1">便携设计</span>
                             )}
                             {equipment.tags.includes('入门') && (
-                              <span className="inline-block px-2 py-0.5 bg-[#4A5F8B]/20 text-[#4A5F8B] text-xs rounded mr-1 mb-1">适合新手</span>
+                              <span className="inline-block px-2 py-0.5 bg-accent/20 text-accent text-xs rounded mr-1 mb-1">适合新手</span>
                             )}
                             {parseInt(equipment.price) < 6000 && (
-                              <span className="inline-block px-2 py-0.5 bg-[#4A5F8B]/20 text-[#4A5F8B] text-xs rounded mr-1 mb-1">性价比高</span>
+                              <span className="inline-block px-2 py-0.5 bg-accent/20 text-accent text-xs rounded mr-1 mb-1">性价比高</span>
                             )}
                             {equipment.performance && equipment.performance.autofocus > 9 && (
-                              <span className="inline-block px-2 py-0.5 bg-[#4A5F8B]/20 text-[#4A5F8B] text-xs rounded mr-1 mb-1">对焦迅速</span>
+                              <span className="inline-block px-2 py-0.5 bg-accent/20 text-accent text-xs rounded mr-1 mb-1">对焦迅速</span>
                             )}
                           </div>
                         </div>
@@ -582,7 +582,7 @@ const equipmentTypes = [
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -590,8 +590,8 @@ const equipmentTypes = [
       >
         {/* 页面标题 */}
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-[#F5F7FA] mb-2">器材数据库</h1>
-          <p className="text-[#B8C6D8] max-w-2xl mx-auto">
+          <h1 className="text-3xl font-bold text-text-primary mb-2">器材数据库</h1>
+          <p className="text-text-muted max-w-2xl mx-auto">
             探索专业摄影器材的详细参数、实测性能和用户评价，为您的创作选择最合适的工具
           </p>
         </div>
@@ -602,7 +602,7 @@ const equipmentTypes = [
         // 器材列表视图
         <>
           {/* 搜索和筛选 */}
-          <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B] mb-8">
+          <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
               <div className="relative flex-1">
                 <input
@@ -610,15 +610,15 @@ const equipmentTypes = [
                   placeholder="搜索器材型号、品牌或功能..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-4 py-3 pl-12 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all placeholder:text-[#B8C6D8]"
+                  className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                 />
-                <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-[#B8C6D8]"></i>
+                <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
               </div>
               
               <select
                 value={selectedBrand}
                 onChange={(e) => setSelectedBrand(e.target.value)}
-                className="px-4 py-3 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer"
+                className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
               >
                 {brands.map((brand) => (
                   <option key={brand} value={brand}>{brand}</option>
@@ -630,7 +630,7 @@ const equipmentTypes = [
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowAISuggestionModal(true)}
-                className="px-4 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors border border-[#4A5F8B] flex items-center justify-center space-x-2"
+                className="px-4 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent flex items-center justify-center space-x-2"
               >
                 <i className="fa-solid fa-robot"></i>
                 <span>AI推荐</span>
@@ -647,11 +647,11 @@ const equipmentTypes = [
                       onClick={() => setActiveType(type.id)}
                       className={`py-4 rounded-xl flex flex-col items-center justify-center transition-all ${
                         activeType === type.id
-                          ? 'bg-[#4A5F8B] border-2 border-[#4A5F8B] text-[#F5F7FA] shadow-md'
-                          : 'bg-[#2D3748] border border-[#4A5F8B] text-[#B8C6D8] hover:border-[#4A5F8B]'
+                          ? 'bg-accent border-2 border-accent text-text-primary shadow-md'
+                          : 'bg-bg-card border border-accent text-text-muted hover:border-accent'
                       }`}
                     >
-                      <i className={`fa-solid ${type.icon} text-2xl mb-2 text-[#F5F7FA]`}></i>
+                      <i className={`fa-solid ${type.icon} text-2xl mb-2 text-text-primary`}></i>
                       <span className="font-medium">{type.name}</span>
                     </motion.button>
                   ))}
@@ -659,16 +659,16 @@ const equipmentTypes = [
 
                 {/* 对比工具栏 */}
                 {selectedItems.length > 0 && (
-                  <div className="fixed bottom-0 left-0 right-0 bg-[#2D3748] border-t border-[#4A5F8B] py-3 px-4 z-50 flex items-center justify-between shadow-lg">
+                  <div className="fixed bottom-0 left-0 right-0 bg-bg-card border-t border-accent py-3 px-4 z-50 flex items-center justify-between shadow-lg">
                     <div className="flex items-center">
-                      <i className="fa-solid fa-balance-scale text-[#4A5F8B] mr-2"></i>
-                      <span className="text-[#F5F7FA]">已选择 {selectedItems.length}/3 件器材进行对比</span>
+                      <i className="fa-solid fa-balance-scale text-accent mr-2"></i>
+                      <span className="text-text-primary">已选择 {selectedItems.length}/3 件器材进行对比</span>
                     </div>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={viewComparison}
-                      className="px-6 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#4A5F8B] transition-colors"
+                      className="px-6 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent transition-colors"
                     >
                       查看对比
                     </motion.button>
@@ -681,7 +681,7 @@ const equipmentTypes = [
            <motion.div
              key={item.id}
              whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)', rotateY: 5, translateZ: 10 }}
-             className="bg-[#2D3748] rounded-xl overflow-hidden border border-[#4A5F8B] transition-all shadow-sm cursor-pointer"
+             className="bg-bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm cursor-pointer"
              onClick={() => handleViewDetails(item)}
              style={{ transformStyle: 'preserve-3d' }}
            >
@@ -700,7 +700,7 @@ const equipmentTypes = [
                />
                {/* 二手标签 - 如果是二手器材 */}
                {item.secondHandLink && (
-                 <div className="absolute top-3 left-3 px-2 py-1 bg-[#4A5F8B] text-[#F5F7FA] text-xs font-medium">
+                 <div className="absolute top-3 left-3 px-2 py-1 bg-accent text-text-primary text-xs font-medium">
                    二手
                  </div>
                )}
@@ -711,8 +711,8 @@ const equipmentTypes = [
                  }}
                  className={`absolute top-3 right-3 w-6 h-6 rounded-full flex items-center justify-center ${
                    selectedItems.includes(item.id)
-                     ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                     : 'bg-[#2D3748]/80 text-[#B8C6D8]'
+                     ? 'bg-accent text-text-primary'
+                     : 'bg-bg-card/80 text-text-muted'
                  } transition-colors`}
                  title={selectedItems.includes(item.id) ? '取消对比' : '添加对比'}
                >
@@ -721,15 +721,15 @@ const equipmentTypes = [
              </div>
              
              {/* 器材信息 */}
-             <div className="p-5 bg-[#2D3748]">
+             <div className="p-5 bg-bg-card">
                {/* 品牌和类型 */}
                <div className="flex items-center justify-between mb-2">
-                 <span className="text-sm text-[#6B7C93] font-medium">{item.brand}</span><span className="text-xs px-2 py-1 bg-[#2D3748] text-[#B8C6D8] rounded-full border border-[#4A5F8B]">{item.type}</span>
+                 <span className="text-sm text-accent-hover font-medium">{item.brand}</span><span className="text-xs px-2 py-1 bg-bg-card text-text-muted rounded-full border border-accent">{item.type}</span>
                </div>
                
                {/* 器材名称和价格 */}
-                <h3 className="text-lg font-bold text-[#F5F7FA] mb-2">{item.name}</h3>
-                 <p className="text-[#6B7C93] mb-4">¥{parseInt(item.price).toLocaleString()}</p>
+                <h3 className="text-lg font-bold text-text-primary mb-2">{item.name}</h3>
+                 <p className="text-accent-hover mb-4">¥{parseInt(item.price).toLocaleString()}</p>
                
                {/* 评分 */}
                <div className="flex items-center mb-4">
@@ -739,13 +739,13 @@ const equipmentTypes = [
                        key={i}
                        className={`fa-solid fa-star ${
                          i < Math.floor(item.rating / 2)
-                           ? 'text-[#4A5F8B]'
-                           : 'text-[#B8C6D8]'
+                           ? 'text-accent'
+                           : 'text-text-muted'
                        }`}
                      ></i>
                    ))}
                  </div>
-                <span className="text-sm text-[#6B7C93]">{item.rating}/10 ({item.reviewCount} 评价)</span>
+                <span className="text-sm text-accent-hover">{item.rating}/10 ({item.reviewCount} 评价)</span>
                </div>
                
                {/* 适用场景标签 */}
@@ -753,7 +753,7 @@ const equipmentTypes = [
                  {item.suitableFor.slice(0, 3).map((scenario, index) => (
                   <span
                     key={index}
-                     className="px-2 py-1 bg-[#2D3748] text-[#B8C6D8] rounded-full text-xs border border-[#4A5F8B]"
+                     className="px-2 py-1 bg-bg-card text-text-muted rounded-full text-xs border border-accent"
                   >
                     {scenario}
                   </span>
@@ -767,7 +767,7 @@ const equipmentTypes = [
                      e.stopPropagation();
                      handleViewDetails(item);
                    }}
-                   className="py-2 text-center bg-gradient-to-r from-[#4A5F8B] to-[#2D3748] text-[#F5F7FA] rounded-lg font-medium transition-colors border border-[#4A5F8B]"
+                   className="py-2 text-center bg-gradient-to-r from-accent to-bg-card text-text-primary rounded-lg font-medium transition-colors border border-accent"
                  >
                    查看详情
                  </button>
@@ -777,7 +777,7 @@ const equipmentTypes = [
                        e.stopPropagation();
                        handleRental(item.price);
                      }}
-                     className="py-2 text-center bg-[#2D3748] text-[#F5F7FA] rounded-lg font-medium transition-colors border border-[#4A5F8B] hover:bg-[#4A5F8B]"
+                     className="py-2 text-center bg-bg-card text-text-primary rounded-lg font-medium transition-colors border border-accent hover:bg-accent"
                    >
                      租赁
                    </button>
@@ -795,8 +795,8 @@ const equipmentTypes = [
                  text="未找到相关器材"
                  helperText="请尝试调整筛选条件或搜索其他关键词"
                  icon="fa-search"
-                 backgroundColor="bg-[#2D3748]"
-                 textColor="text-[#F5F7FA]"
+                 backgroundColor="bg-bg-card"
+                 textColor="text-text-primary"
                />
              </div>
            )}
@@ -805,11 +805,11 @@ const equipmentTypes = [
          {/* 分页控件 */}
          {totalPages > 1 && (
            <div className="flex justify-center mt-8">
-             <nav className="inline-flex items-center rounded-md border border-[#4A5F8B] bg-[#1E2532] shadow-sm">
+             <nav className="inline-flex items-center rounded-md border border-accent bg-bg-deep shadow-sm">
                <button
                  onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                  disabled={currentPage === 1}
-                 className={`px-3 py-2 text-sm font-medium ${currentPage === 1 ? 'opacity-50 cursor-not-allowed text-[#6B7C93]' : 'text-[#B8C6D8] hover:bg-[#4A5F8B]'}`}
+                 className={`px-3 py-2 text-sm font-medium ${currentPage === 1 ? 'opacity-50 cursor-not-allowed text-accent-hover' : 'text-text-muted hover:bg-accent'}`}
                >
                  <i className="fa-solid fa-chevron-left"></i>
                </button>
@@ -817,7 +817,7 @@ const equipmentTypes = [
                  <button
                    key={page}
                    onClick={() => setCurrentPage(page)}
-                   className={`px-3 py-2 text-sm font-medium ${currentPage === page ? 'bg-[#4A5F8B] text-white' : 'text-[#B8C6D8] hover:bg-[#4A5F8B]'}`}
+                   className={`px-3 py-2 text-sm font-medium ${currentPage === page ? 'bg-accent text-white' : 'text-text-muted hover:bg-accent'}`}
                  >
                    {page}
                  </button>
@@ -825,7 +825,7 @@ const equipmentTypes = [
                <button
                  onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                  disabled={currentPage === totalPages}
-                 className={`px-3 py-2 text-sm font-medium ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed text-[#6B7C93]' : 'text-[#B8C6D8] hover:bg-[#4A5F8B]'}`}
+                 className={`px-3 py-2 text-sm font-medium ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed text-accent-hover' : 'text-text-muted hover:bg-accent'}`}
                >
                  <i className="fa-solid fa-chevron-right"></i>
                </button>
@@ -838,14 +838,14 @@ const equipmentTypes = [
               <div>{/* 返回按钮 */}
                 <button
                   onClick={handleBackToList}
-                  className="inline-flex items-center space-x-1 text-[#B8C6D8]/70 hover:text-[#B8C6D8] transition-colors mb-6"
+                  className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors mb-6"
                 >
                   <i className="fa-solid fa-arrow-left"></i>
                   <span>返回器材列表</span>
                 </button>
                 
                 {/* 器材详情 */}
-                <div className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] overflow-hidden mb-8">
+                <div className="bg-bg-card rounded-xl border border-accent overflow-hidden mb-8">
                   <div className="md:flex">
                     {/* 器材图片 */}
                     <div className="md:w-1/2">
@@ -860,13 +860,13 @@ const equipmentTypes = [
                     <div className="md:w-1/2 p-6">
                       {/* 品牌和类型 */}
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm text-[#4A5F8B] font-medium">{selectedEquipment.brand}</span>
-                        <span className="text-xs px-2 py-1 bg-[#2D3748] text-[#B8C6D8] rounded-full border border-[#4A5F8B]">{selectedEquipment.type}</span>
+                        <span className="text-sm text-accent font-medium">{selectedEquipment.brand}</span>
+                        <span className="text-xs px-2 py-1 bg-bg-card text-text-muted rounded-full border border-accent">{selectedEquipment.type}</span>
                       </div>
                       
                       {/* 器材名称和价格 */}
-                      <h2 className="text-2xl font-bold text-[#F5F7FA] mb-2">{selectedEquipment.name}</h2>
-                      <p className="text-xl font-bold text-[#4A5F8B] mb-4">¥{parseInt(selectedEquipment.price).toLocaleString()}</p>
+                      <h2 className="text-2xl font-bold text-text-primary mb-2">{selectedEquipment.name}</h2>
+                      <p className="text-xl font-bold text-accent mb-4">¥{parseInt(selectedEquipment.price).toLocaleString()}</p>
                       
                       {/* 评分 */}
                       <div className="flex items-center mb-6">
@@ -876,40 +876,40 @@ const equipmentTypes = [
                               key={i}
                               className={`fa-solid fa-star ${
                                 i < Math.floor(selectedEquipment.rating / 2)
-                                  ? 'text-[#4A5F8B]'
-                                  : 'text-[#B8C6D8]'
+                                  ? 'text-accent'
+                                  : 'text-text-muted'
                               }`}
                             ></i>
                           ))}
                         </div>
-                        <span className="text-sm text-[#6B7C93]">{selectedEquipment.rating}/10 ({selectedEquipment.reviewCount} 评价)</span>
+                        <span className="text-sm text-accent-hover">{selectedEquipment.rating}/10 ({selectedEquipment.reviewCount} 评价)</span>
                       </div>
                       
                       {/* 优缺点 */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                         <div>
-                          <h3 className="text-sm font-medium text-[#F5F7FA] mb-2 flex items-center">
-                            <i className="fa-solid fa-plus-circle text-[#4A5F8B] mr-2"></i>
+                          <h3 className="text-sm font-medium text-text-primary mb-2 flex items-center">
+                            <i className="fa-solid fa-plus-circle text-accent mr-2"></i>
                             优点
                           </h3>
                           <ul className="space-y-1">
                             {selectedEquipment.pros.map((pro, index) => (
-                              <li key={index} className="text-sm text-[#B8C6D8] flex items-start">
-                                <i className="fa-solid fa-check text-[#4A5F8B] mt-1 mr-2"></i>
+                              <li key={index} className="text-sm text-text-muted flex items-start">
+                                <i className="fa-solid fa-check text-accent mt-1 mr-2"></i>
                                 <span>{pro}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
                         <div>
-                          <h3 className="text-sm font-medium text-[#F5F7FA] mb-2 flex items-center">
-                            <i className="fa-solid fa-minus-circle text-[#4A5F8B] mr-2"></i>
+                          <h3 className="text-sm font-medium text-text-primary mb-2 flex items-center">
+                            <i className="fa-solid fa-minus-circle text-accent mr-2"></i>
                             缺点
                           </h3>
                           <ul className="space-y-1">
                             {selectedEquipment.cons.map((con, index) => (
-                              <li key={index} className="text-sm text-[#B8C6D8] flex items-start">
-                                <i className="fa-solid fa-times text-[#4A5F8B] mt-1 mr-2"></i>
+                              <li key={index} className="text-sm text-text-muted flex items-start">
+                                <i className="fa-solid fa-times text-accent mt-1 mr-2"></i>
                                 <span>{con}</span>
                               </li>
                             ))}
@@ -919,12 +919,12 @@ const equipmentTypes = [
                       
                       {/* 适用场景 */}
                       <div className="mb-6">
-                        <h3 className="text-sm font-medium text-[#F5F7FA] mb-2">适用场景</h3>
+                        <h3 className="text-sm font-medium text-text-primary mb-2">适用场景</h3>
                         <div className="flex flex-wrap gap-2">
                           {selectedEquipment.suitableFor.map((scenario, index) => (
                             <span
                               key={index}
-                              className="px-2 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-full text-xs"
+                              className="px-2 py-1 bg-accent text-text-primary rounded-full text-xs"
                             >
                               {scenario}
                             </span>
@@ -934,12 +934,12 @@ const equipmentTypes = [
                       
                       {/* 标签 */}
                       <div>
-                        <h3 className="text-sm font-medium text-[#F5F7FA] mb-2">标签</h3>
+                        <h3 className="text-sm font-medium text-text-primary mb-2">标签</h3>
                         <div className="flex flex-wrap gap-2">
                           {selectedEquipment.tags.map((tag, index) => (
                             <span
                               key={index}
-                              className="px-2 py-1 bg-[#2D3748] text-[#B8C6D8] rounded-full text-xs border border-[#4A5F8B]"
+                              className="px-2 py-1 bg-bg-card text-text-muted rounded-full text-xs border border-accent"
                             >
                               {tag}
                             </span>
@@ -950,12 +950,12 @@ const equipmentTypes = [
                   </div>
                   
                   {/* 详细规格 */}
-                  <div className="p-6 border-t border-[#4A5F8B]">
-                    <h3 className="text-lg font-bold text-[#F5F7FA] mb-4">详细规格</h3>
+                  <div className="p-6 border-t border-accent">
+                    <h3 className="text-lg font-bold text-text-primary mb-4">详细规格</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
                       {Object.entries(selectedEquipment.specs).map(([key, value]) => (
                         <div key={key} className="flex justify-between">
-                          <span className="text-sm text-[#B8C6D8]">
+                          <span className="text-sm text-text-muted">
                             {key === 'sensor' ? '传感器' : 
                              key === 'processor' ? '处理器' :
                              key === 'iso' ? 'ISO范围' :
@@ -996,7 +996,7 @@ const equipmentTypes = [
                              key === 'tripodMount' ? '三脚架接口' :
                              key}
                           </span>
-                          <span className="text-sm text-[#F5F7FA] font-medium">{value}</span>
+                          <span className="text-sm text-text-primary font-medium">{value}</span>
                         </div>
                       ))}
                     </div>
@@ -1004,17 +1004,17 @@ const equipmentTypes = [
                 </div>
                 
                  {/* 租赁信息和二手交易链接 */}
-                <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B] mb-8">
-                  <h3 className="text-lg font-bold text-[#B8C6D8] mb-4">购买与租赁</h3>
+                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
+                  <h3 className="text-lg font-bold text-text-muted mb-4">购买与租赁</h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* 租赁信息 */}
-                    <div className="bg-[#1E2532] p-4 rounded-lg">
-                      <h4 className="font-medium text-[#B8C6D8] mb-2 flex items-center">
-                        <i className="fa-solid fa-calendar-days text-[#4A5F8B] mr-2"></i>
+                    <div className="bg-bg-deep p-4 rounded-lg">
+                      <h4 className="font-medium text-text-muted mb-2 flex items-center">
+                        <i className="fa-solid fa-calendar-days text-accent mr-2"></i>
                         租赁信息
                       </h4>
-                      <div className="space-y-2 text-sm text-[#B8C6D8]">
+                      <div className="space-y-2 text-sm text-text-muted">
                         <div className="flex justify-between">
                           <span>日租金</span>
                           <span>¥{Math.round(parseInt(selectedEquipment.price) * 0.02)}/天</span>
@@ -1032,26 +1032,26 @@ const equipmentTypes = [
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         onClick={() => handleRental(selectedEquipment.price)}
-                        className="w-full mt-3 py-2 bg-[#2D3748] text-[#B8C6D8] border border-[#4A5F8B] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors text-sm"
+                        className="w-full mt-3 py-2 bg-bg-card text-text-muted border border-accent rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors text-sm"
                       >
                         立即租赁
                       </motion.button>
                     </div>
                     
                     {/* 二手交易 */}
-                    <div className="bg-[#1E2532] p-4 rounded-lg">
-                      <h4 className="font-medium text-[#B8C6D8] mb-2 flex items-center">
-                        <i className="fa-solid fa-recycle text-[#4A5F8B] mr-2"></i>
+                    <div className="bg-bg-deep p-4 rounded-lg">
+                      <h4 className="font-medium text-text-muted mb-2 flex items-center">
+                        <i className="fa-solid fa-recycle text-accent mr-2"></i>
                         二手交易
                       </h4>
-                      <p className="text-sm text-[#B8C6D8] mb-3">
+                      <p className="text-sm text-text-muted mb-3">
                         查看该器材的二手市场行情和在售商品
                       </p>
                      <motion.a 
                        whileHover={{ scale: 1.03 }}
                        whileTap={{ scale: 0.97 }}
                        href="/equipment-trade"
-                       className="w-full block text-center py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors text-sm"
+                       className="w-full block text-center py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors text-sm"
                      >
                        查看平台
                      </motion.a>
@@ -1088,7 +1088,7 @@ const equipmentTypes = [
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.9 }}
                       transition={{ duration: 0.3 }}
-                      className="bg-[#2D3748] border border-[#4A5F8B] rounded-xl overflow-hidden max-w-4xl max-h-[90vh] relative"
+                      className="bg-bg-card border border-accent rounded-xl overflow-hidden max-w-4xl max-h-[90vh] relative"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <button
@@ -1106,7 +1106,7 @@ const equipmentTypes = [
                         <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="px-4 py-2 bg-[#2D3748] text-[#F5F7FA] rounded-lg font-medium border border-[#4A5F8B]"
+                          className="px-4 py-2 bg-bg-card text-text-primary rounded-lg font-medium border border-accent"
                         >
                           <i className="fa-solid fa-download mr-2"></i>
                           保存图片
@@ -1114,7 +1114,7 @@ const equipmentTypes = [
                         <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium"
+                          className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium"
                         >
                           <i className="fa-solid fa-share-nodes mr-2"></i>
                           分享
@@ -1138,13 +1138,13 @@ const equipmentTypes = [
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.9 }}
                       transition={{ duration: 0.3 }}
-                      className="bg-[#2D3748] border border-[#4A5F8B] rounded-xl overflow-hidden max-w-md w-full"
+                      className="bg-bg-card border border-accent rounded-xl overflow-hidden max-w-md w-full"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <div className="p-4 border-b border-[#4A5F8B] flex justify-between items-center">
-                        <h3 className="text-lg font-bold text-[#F5F7FA]">器材租赁</h3>
+                      <div className="p-4 border-b border-accent flex justify-between items-center">
+                        <h3 className="text-lg font-bold text-text-primary">器材租赁</h3>
                         <button
-                          className="text-[#B8C6D8] hover:text-[#F5F7FA]"
+                          className="text-text-muted hover:text-text-primary"
                           onClick={() => setShowRentalModal(false)}
                         >
                           <i className="fa-solid fa-times"></i>
@@ -1152,14 +1152,14 @@ const equipmentTypes = [
                       </div>
                       <div className="p-6">
                         <div className="mb-6">
-                          <h4 className="text-sm font-medium text-[#B8C6D8] mb-3">选择租赁时长</h4>
+                          <h4 className="text-sm font-medium text-text-muted mb-3">选择租赁时长</h4>
                           <div className="flex space-x-3">
                             <motion.button
                               whileHover={{ scale: 1.03 }}
                               whileTap={{ scale: 0.97 }}
                               onClick={() => setRentalDuration('daily')}
                               className={`flex-1 py-2 rounded-lg font-medium transition-colors ${
-                                rentalDuration === 'daily' ? 'bg-[#4A5F8B] text-[#F5F7FA]' : 'bg-[#2D3748] text-[#B8C6D8] border border-[#4A5F8B]'
+                                rentalDuration === 'daily' ? 'bg-accent text-text-primary' : 'bg-bg-card text-text-muted border border-accent'
                               }`}
                             >
                               按天
@@ -1169,7 +1169,7 @@ const equipmentTypes = [
                               whileTap={{ scale: 0.97 }}
                               onClick={() => setRentalDuration('weekly')}
                               className={`flex-1 py-2 rounded-lg font-medium transition-colors ${
-                                rentalDuration === 'weekly' ? 'bg-[#4A5F8B] text-[#F5F7FA]' : 'bg-[#2D3748] text-[#B8C6D8] border border-[#4A5F8B]'
+                                rentalDuration === 'weekly' ? 'bg-accent text-text-primary' : 'bg-bg-card text-text-muted border border-accent'
                               }`}
                             >
                               按周
@@ -1179,7 +1179,7 @@ const equipmentTypes = [
                               whileTap={{ scale: 0.97 }}
                               onClick={() => setRentalDuration('monthly')}
                               className={`flex-1 py-2 rounded-lg font-medium transition-colors ${
-                                rentalDuration === 'monthly' ? 'bg-[#4A5F8B] text-[#F5F7FA]' : 'bg-[#2D3748] text-[#B8C6D8] border border-[#4A5F8B]'
+                                rentalDuration === 'monthly' ? 'bg-accent text-text-primary' : 'bg-bg-card text-text-muted border border-accent'
                               }`}
                             >
                               按月
@@ -1188,13 +1188,13 @@ const equipmentTypes = [
                         </div>
                         
                         <div className="mb-6">
-                          <h4 className="text-sm font-medium text-[#B8C6D8] mb-3">租赁总价</h4>
-                          <div className="bg-[#1E2532] p-4 rounded-lg">
+                          <h4 className="text-sm font-medium text-text-muted mb-3">租赁总价</h4>
+                          <div className="bg-bg-deep p-4 rounded-lg">
                             <div className="flex justify-between items-center">
-                              <span className="text-sm text-[#B8C6D8]">
+                              <span className="text-sm text-text-muted">
                                 {rentalDuration === 'daily' ? '日租金' : rentalDuration === 'weekly' ? '周租金' : '月租金'}
                               </span>
-                              <span className="text-xl font-bold text-[#4A5F8B]">
+                              <span className="text-xl font-bold text-accent">
                                 ¥{rentalDuration === 'daily' 
                                   ? Math.round(equipmentPrice * 0.02) 
                                   : rentalDuration === 'weekly' 
@@ -1205,7 +1205,7 @@ const equipmentTypes = [
                           </div>
                         </div>
                         
-                        <div className="mb-6 text-sm text-[#B8C6D8]">
+                        <div className="mb-6 text-sm text-text-muted">
                           <p>需缴纳押金（设备价值的30%），归还后全额退还</p>
                           <p className="font-medium mt-1">押金金额：¥{Math.round(equipmentPrice * 0.3)}</p>
                         </div>
@@ -1213,7 +1213,7 @@ const equipmentTypes = [
                         <motion.button
                           whileHover={{ scale: 1.03 }}
                           whileTap={{ scale: 0.97 }}
-                          className="w-full py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors"
+                          className="w-full py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors"
                         >
                           确认租赁
                         </motion.button>
@@ -1230,35 +1230,35 @@ const equipmentTypes = [
             {/* 返回按钮 */}
             <button
               onClick={() => setIsComparisonMode(false)}
-              className="inline-flex items-center space-x-1 text-[#B8C6D8]/70 hover:text-[#B8C6D8] transition-colors mb-6"
+              className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors mb-6"
             >
               <i className="fa-solid fa-arrow-left"></i>
               <span>返回器材列表</span>
             </button>
             
             {/* 对比标题 */}
-            <h2 className="text-2xl font-bold text-[#F5F7FA] mb-6">器材对比</h2>
+            <h2 className="text-2xl font-bold text-text-primary mb-6">器材对比</h2>
             
             {/* 对比表格 */}
-            <div className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] overflow-hidden mb-8">
+            <div className="bg-bg-card rounded-xl border border-accent overflow-hidden mb-8">
               <div className="overflow-x-auto">
                 <table className="min-w-full">
                   <thead>
-                    <tr className="bg-[#2D3748] border-b border-[#4A5F8B]">
-                      <th className="px-6 py-4 text-left text-sm font-medium text-[#F5F7FA]">参数</th>
+                    <tr className="bg-bg-card border-b border-accent">
+                      <th className="px-6 py-4 text-left text-sm font-medium text-text-primary">参数</th>
                       {comparisonData.map((item, index) => (
-                        <th key={index} className="px-6 py-4 text-left text-sm font-medium text-[#F5F7FA]">
+                        <th key={index} className="px-6 py-4 text-left text-sm font-medium text-text-primary">
                           <div className="flex items-center">
                             <button
                               onClick={() => toggleCompareItem(item.id)}
-                              className="w-5 h-5 rounded-full flex items-center justify-center bg-[#2D3748] text-[#4A5F8B] mr-2 text-xs"
+                              className="w-5 h-5 rounded-full flex items-center justify-center bg-bg-card text-accent mr-2 text-xs"
                               title="移除对比"
                             >
                               <i className="fa-solid fa-times"></i>
                             </button>
                             <div>
-                              <p className="font-bold text-[#F5F7FA]">{item.name}</p>
-                              <p className="text-xs text-[#B8C6D8]">{item.brand}</p>
+                              <p className="font-bold text-text-primary">{item.name}</p>
+                              <p className="text-xs text-text-muted">{item.brand}</p>
                             </div>
                           </div>
                         </th>
@@ -1267,35 +1267,35 @@ const equipmentTypes = [
                   </thead>
                   <tbody>
                     {/* 器材图片 */}
-                    <tr className="border-b border-[#4A5F8B]">
-                      <td className="px-6 py-4 text-sm text-[#F5F7FA] font-medium">外观</td>
+                    <tr className="border-b border-accent">
+                      <td className="px-6 py-4 text-sm text-text-primary font-medium">外观</td>
                       {comparisonData.map((item, index) => (
-                        <td key={index} className="px-6 py-4 text-[#F5F7FA]">
+                        <td key={index} className="px-6 py-4 text-text-primary">
                           <img
                             src={item.image}
                             alt={item.name}
-                            className="w-24 h-16 object-cover rounded border border-[#4A5F8B]"
+                            className="w-24 h-16 object-cover rounded border border-accent"
                           />
                         </td>
                       ))}
                     </tr>
                     
                     {/* 价格 */}
-                    <tr className="border-b border-[#4A5F8B]">
-                     <td className="px-6 py-4 text-sm text-[#F5F7FA] font-medium">价格</td>
+                    <tr className="border-b border-accent">
+                     <td className="px-6 py-4 text-sm text-text-primary font-medium">价格</td>
                       {comparisonData.map((item, index) => {
                         const isLowestPrice = comparisonData.length > 1 && 
                           item.price === Math.min(...comparisonData.map(i => parseInt(i.price))).toString();
                         return (
                           <td key={index} className={`px-6 py-4 text-sm ${
                             isLowestPrice
-                              ? 'bg-[#4A5F8B] font-medium text-[#F5F7FA]'
-                              : 'text-[#F5F7FA]'
+                              ? 'bg-accent font-medium text-text-primary'
+                              : 'text-text-primary'
                           }`}>
                             <div className="flex items-center justify-between">
                               <span>¥{parseInt(item.price).toLocaleString()}</span>
                               {isLowestPrice && (
-                                <span className="text-xs px-2 py-0.5 bg-[#F5F7FA] text-[#4A5F8B] rounded-full">
+                                <span className="text-xs px-2 py-0.5 bg-text-primary text-accent rounded-full">
                                   最低价
                                 </span>
                               )}
@@ -1309,8 +1309,8 @@ const equipmentTypes = [
                     {(comparisonData[0].specs && Object.keys(comparisonData[0].specs).length > 0) && (
                       <>
                         {Object.entries(comparisonData[0].specs).map(([key, _], rowIndex) => (
-                          <tr key={rowIndex} className="border-b border-[#4A5F8B]">
-                            <td className="px-6 py-4 text-sm text-[#F5F7FA] font-medium">
+                          <tr key={rowIndex} className="border-b border-accent">
+                            <td className="px-6 py-4 text-sm text-text-primary font-medium">
                               {key === 'sensor' ? '传感器' : 
                                key === 'processor' ? '处理器' :
                                key === 'iso' ? 'ISO范围' :
@@ -1335,7 +1335,7 @@ const equipmentTypes = [
                                key}
                             </td>
                             {comparisonData.map((item, index) => (
-                              <td key={index} className="px-6 py-4 text-sm text-[#F5F7FA]">
+                              <td key={index} className="px-6 py-4 text-sm text-text-primary">
                                 {item.specs && item.specs[key as keyof typeof item.specs]}
                               </td>
                             ))}
@@ -1345,10 +1345,10 @@ const equipmentTypes = [
                     )}
                     
                     {/* 优缺点 */}
-                    <tr className="border-b border-[#4A5F8B]">
-                      <td className="px-6 py-4 text-sm text-[#F5F7FA] font-medium">优点</td>
+                    <tr className="border-b border-accent">
+                      <td className="px-6 py-4 text-sm text-text-primary font-medium">优点</td>
                       {comparisonData.map((item, index) => (
-                        <td key={index} className="px-6 py-4 text-sm text-[#F5F7FA]">
+                        <td key={index} className="px-6 py-4 text-sm text-text-primary">
                           <ul className="list-disc pl-5 space-y-1">
                             {item.pros.slice(0, 3).map((pro, i) => (
                               <li key={i}>{pro}</li>
@@ -1357,10 +1357,10 @@ const equipmentTypes = [
                         </td>
                       ))}
                     </tr>
-                    <tr className="border-b border-[#4A5F8B]">
-                      <td className="px-6 py-4 text-sm text-[#F5F7FA] font-medium">缺点</td>
+                    <tr className="border-b border-accent">
+                      <td className="px-6 py-4 text-sm text-text-primary font-medium">缺点</td>
                       {comparisonData.map((item, index) => (
-                        <td key={index} className="px-6 py-4 text-sm text-[#F5F7FA]">
+                        <td key={index} className="px-6 py-4 text-sm text-text-primary">
                           <ul className="list-disc pl-5 space-y-1">
                             {item.cons.slice(0, 3).map((con, i) => (
                               <li key={i}>{con}</li>
@@ -1371,15 +1371,15 @@ const equipmentTypes = [
                     </tr>
                     
                     {/* 适用场景 */}
-                    <tr className="border-b border-[#4A5F8B]">
-                      <td className="px-6 py-4 text-sm text-[#F5F7FA] font-medium">适用场景</td>
+                    <tr className="border-b border-accent">
+                      <td className="px-6 py-4 text-sm text-text-primary font-medium">适用场景</td>
                       {comparisonData.map((item, index) => (
-                        <td key={index} className="px-6 py-4 text-sm text-[#F5F7FA]">
+                        <td key={index} className="px-6 py-4 text-sm text-text-primary">
                           <div className="flex flex-wrap gap-1">
                             {item.suitableFor.map((scenario, i) => (
                               <span
                                 key={i}
-                                className="px-2 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-full text-xs"
+                                className="px-2 py-1 bg-accent text-text-primary rounded-full text-xs"
                               >
                                 {scenario}
                               </span>
@@ -1395,8 +1395,8 @@ const equipmentTypes = [
             
             {/* 性能对比雷达图 */}
             {comparisonData.length > 0 && (
-              <div className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] p-6 mb-8">
-                <h3 className="text-lg font-bold text-[#F5F7FA] mb-4">性能对比</h3>
+              <div className="bg-bg-card rounded-xl border border-accent p-6 mb-8">
+                <h3 className="text-lg font-bold text-text-primary mb-4">性能对比</h3>
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart outerRadius={90} data={radarData}>
@@ -1422,7 +1422,7 @@ const equipmentTypes = [
                         className="w-3 h-3 rounded-full mr-2"
                         style={{ backgroundColor: COLORS[index % COLORS.length] }}
                       ></span>
-                      <span className="text-sm text-[#F5F7FA]">{item.name}</span>
+                      <span className="text-sm text-text-primary">{item.name}</span>
                     </div>
                   ))}
                 </div>
@@ -1432,17 +1432,17 @@ const equipmentTypes = [
             {/* 推荐购买链接 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {comparisonData.map((item, index) => (
-                <div key={index} className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] p-4">
-                  <h4 className="text-md font-medium text-[#F5F7FA] mb-3">{item.name}</h4>
-                  <p className="text-lg font-bold text-[#F5F7FA] mb-4">¥{parseInt(item.price).toLocaleString()}</p>
+                <div key={index} className="bg-bg-card rounded-xl border border-accent p-4">
+                  <h4 className="text-md font-medium text-text-primary mb-3">{item.name}</h4>
+                  <p className="text-lg font-bold text-text-primary mb-4">¥{parseInt(item.price).toLocaleString()}</p>
                   <div className="flex justify-between">
                     <button
                       onClick={() => setSelectedEquipment(item)}
-                      className="px-4 py-2 bg-[#2D3748] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors text-sm border border-[#4A5F8B]"
+                      className="px-4 py-2 bg-bg-card text-text-primary rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors text-sm border border-accent"
                     >
                       查看详情
                     </button>
-                    <button className="px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#4A5F8B] transition-colors text-sm border border-[#4A5F8B]">
+                    <button className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent transition-colors text-sm border border-accent">
                       立即购买
                     </button>
                   </div>

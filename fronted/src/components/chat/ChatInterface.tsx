@@ -42,14 +42,14 @@ export const ChatInterface: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`flex flex-col h-[calc(100vh-160px)] ${theme === 'dark' ? 'bg-[#2D3748]' : 'bg-white'} rounded-xl shadow-xl overflow-hidden border ${theme === 'dark' ? 'border-[#4A5F8B]' : 'border-gray-200'}`}
+      className={`flex flex-col h-[calc(100vh-160px)] ${theme === 'dark' ? 'bg-bg-card' : 'bg-white'} rounded-xl shadow-xl overflow-hidden border ${theme === 'dark' ? 'border-accent' : 'border-gray-200'}`}
     >
       {/* 聊天头部 - 增强版 */}
-      <div className={`p-4 border-b ${theme === 'dark' ? 'border-[#4A5F8B] bg-[#1E2532]' : 'border-gray-200 bg-gray-50'} flex justify-between items-center`}>
+      <div className={`p-4 border-b ${theme === 'dark' ? 'border-accent bg-bg-deep' : 'border-gray-200 bg-gray-50'} flex justify-between items-center`}>
         <div className="flex items-center space-x-3">
           {/* AI角色头像 */}
           {selectedRole && (
-            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#4A5F8B]">
+            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-accent">
               <img 
                 src={selectedRole.avatar} 
                 alt={selectedRole.name}
@@ -62,14 +62,14 @@ export const ChatInterface: React.FC = () => {
               {selectedRole?.name || '智能摄影助手'}
             </h2>
             <div className="flex items-center">
-              <span className={`inline-flex items-center text-xs ${theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-500'}`}>
+              <span className={`inline-flex items-center text-xs ${theme === 'dark' ? 'text-text-muted' : 'text-gray-500'}`}>
                 {isTyping ? (
                   <div className="flex items-center">
                     <span className="mr-1">正在输入...</span>
                     <div className="flex space-x-0.5">
-                      <div className={`w-1.5 h-1.5 rounded-full ${theme === 'dark' ? 'bg-[#4A5F8B]' : 'bg-gray-400'} animate-bounce [animation-delay:-0.3s]`}></div>
-                      <div className={`w-1.5 h-1.5 rounded-full ${theme === 'dark' ? 'bg-[#4A5F8B]' : 'bg-gray-400'} animate-bounce [animation-delay:-0.15s]`}></div>
-                      <div className={`w-1.5 h-1.5 rounded-full ${theme === 'dark' ? 'bg-[#4A5F8B]' : 'bg-gray-400'} animate-bounce`}></div>
+                      <div className={`w-1.5 h-1.5 rounded-full ${theme === 'dark' ? 'bg-accent' : 'bg-gray-400'} animate-bounce [animation-delay:-0.3s]`}></div>
+                      <div className={`w-1.5 h-1.5 rounded-full ${theme === 'dark' ? 'bg-accent' : 'bg-gray-400'} animate-bounce [animation-delay:-0.15s]`}></div>
+                      <div className={`w-1.5 h-1.5 rounded-full ${theme === 'dark' ? 'bg-accent' : 'bg-gray-400'} animate-bounce`}></div>
                     </div>
                   </div>
                 ) : (
@@ -83,7 +83,7 @@ export const ChatInterface: React.FC = () => {
           <motion.button 
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className={`p-2 rounded-full ${theme === 'dark' ? 'hover:bg-[#4A5F8B] text-[#B8C6D8]' : 'hover:bg-gray-200 text-gray-600'}`}
+            className={`p-2 rounded-full ${theme === 'dark' ? 'hover:bg-accent text-text-muted' : 'hover:bg-gray-200 text-gray-600'}`}
             title="新建对话"
             onClick={createNewChat}
           >
@@ -92,7 +92,7 @@ export const ChatInterface: React.FC = () => {
           <motion.button 
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className={`p-2 rounded-full ${theme === 'dark' ? 'hover:bg-[#4A5F8B] text-[#B8C6D8]' : 'hover:bg-gray-200 text-gray-600'}`}
+            className={`p-2 rounded-full ${theme === 'dark' ? 'hover:bg-accent text-text-muted' : 'hover:bg-gray-200 text-gray-600'}`}
             title="清空对话"
             onClick={useChatStore.getState().clearCurrentChat}
           >
@@ -101,7 +101,7 @@ export const ChatInterface: React.FC = () => {
           <motion.button 
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className={`p-2 rounded-full ${theme === 'dark' ? 'hover:bg-[#4A5F8B] text-[#B8C6D8]' : 'hover:bg-gray-200 text-gray-600'}`}
+            className={`p-2 rounded-full ${theme === 'dark' ? 'hover:bg-accent text-text-muted' : 'hover:bg-gray-200 text-gray-600'}`}
             title="更多选项"
           >
             <i className="fa-solid fa-ellipsis-vertical"></i>
@@ -124,7 +124,7 @@ export const ChatInterface: React.FC = () => {
       </div>
       
       {/* 输入区域 - 固定在底部 */}
-      <div className={`p-4 border-t ${theme === 'dark' ? 'border-[#4A5F8B]' : 'border-gray-200'} z-10`}>
+      <div className={`p-4 border-t ${theme === 'dark' ? 'border-accent' : 'border-gray-200'} z-10`}>
         <InputArea />
       </div>
     </motion.div>

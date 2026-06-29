@@ -23,8 +23,8 @@ const TabNavigation: React.FC<TabNavigationProps> = ({
 }) => {
   return (
     <div className={`${variant === 'primary' 
-      ? 'bg-[#2D3748] rounded-xl p-1 border border-[#4A5F8B]' 
-      : 'border-b border-[#4A5F8B]'
+      ? 'bg-bg-card rounded-xl p-1 border border-accent' 
+      : 'border-b border-accent'
     } ${className}`}>
       <div className="flex">
         {tabs.map((tab) => (
@@ -34,11 +34,11 @@ const TabNavigation: React.FC<TabNavigationProps> = ({
             className={`flex items-center py-3 px-4 text-center font-medium transition-colors ${
               activeTab === tab.id
                 ? variant === 'primary' 
-                  ? 'bg-[#4A5F8B] text-[#F5F7FA] rounded-lg' 
-                  : 'text-[#F5F7FA] border-b-2 border-[#4A5F8B]'
+                  ? 'bg-accent text-text-primary rounded-lg' 
+                  : 'text-text-primary border-b-2 border-accent'
                 : variant === 'primary'
-                  ? 'bg-[#2D3748] text-[#B8C6D8] hover:text-[#F5F7FA]'
-                  : 'text-[#B8C6D8]/70 hover:text-[#F5F7FA]'
+                  ? 'bg-bg-card text-text-muted hover:text-text-primary'
+                  : 'text-text-muted/70 hover:text-text-primary'
             }`}
           >
             <span>{tab.label}</span>

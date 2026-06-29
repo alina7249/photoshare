@@ -13,10 +13,10 @@ export const EquipmentRecommendations: React.FC<EquipmentRecommendationsProps> =
   recommendedEquipment 
 }) => {
   return (
-    <div className="mt-6 p-4 bg-[#2D3748] rounded-lg border border-[#4A5F8B]">
-      <h3 className="text-lg font-semibold text-[#F5F7FA] mb-4">搭配推荐</h3>
+    <div className="mt-6 p-4 bg-bg-card rounded-lg border border-accent">
+      <h3 className="text-lg font-semibold text-text-primary mb-4">搭配推荐</h3>
       
-      <p className="text-sm text-[#B8C6D8] mb-3">
+      <p className="text-sm text-text-muted mb-3">
         根据{currentEquipment.name}，我们为您推荐以下搭配器材：
       </p>
       
@@ -25,7 +25,7 @@ export const EquipmentRecommendations: React.FC<EquipmentRecommendationsProps> =
           <motion.div
             key={equipment.id}
             whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-            className="bg-[#1E2532] rounded-lg overflow-hidden border border-[#4A5F8B] transition-all"
+            className="bg-bg-deep rounded-lg overflow-hidden border border-accent transition-all"
           >
             <div className="flex">
               <div className="w-24 h-24">
@@ -36,12 +36,12 @@ export const EquipmentRecommendations: React.FC<EquipmentRecommendationsProps> =
                 />
               </div>
               <div className="p-3 flex-1">
-                <h4 className="font-medium text-[#F5F7FA] mb-1 line-clamp-1">{equipment.name}</h4>
-                <p className="text-xs text-[#6B7C93] mb-2">{equipment.brand} | {equipment.type}</p>
-                <p className="text-sm font-bold text-[#4A5F8B]">¥{parseInt(equipment.price).toLocaleString()}</p>
+                <h4 className="font-medium text-text-primary mb-1 line-clamp-1">{equipment.name}</h4>
+                <p className="text-xs text-accent-hover mb-2">{equipment.brand} | {equipment.type}</p>
+                <p className="text-sm font-bold text-accent">¥{parseInt(equipment.price).toLocaleString()}</p>
                 <Link
                   to={`/equipment/${equipment.id}`}
-                  className="inline-block mt-2 px-3 py-1 text-xs bg-[#4A5F8B] text-[#F5F7FA] rounded-lg hover:bg-[#6B7C93] transition-colors"
+                  className="inline-block mt-2 px-3 py-1 text-xs bg-accent text-text-primary rounded-lg hover:bg-accent-hover transition-colors"
                 >
                   查看详情
                 </Link>
@@ -51,9 +51,9 @@ export const EquipmentRecommendations: React.FC<EquipmentRecommendationsProps> =
         ))}
       </div>
       
-      <div className="mt-4 bg-[#1E2532] p-3 rounded-lg border border-[#4A5F8B]">
-        <h4 className="text-sm font-medium text-[#F5F7FA] mb-2">搭配理由</h4>
-        <ul className="list-disc pl-5 space-y-1 text-sm text-[#B8C6D8]">
+      <div className="mt-4 bg-bg-deep p-3 rounded-lg border border-accent">
+        <h4 className="text-sm font-medium text-text-primary mb-2">搭配理由</h4>
+        <ul className="list-disc pl-5 space-y-1 text-sm text-text-muted">
           <li>与{currentEquipment.name}在性能和风格上高度匹配</li>
           <li>能够扩展您的创作可能性，适应更多拍摄场景</li>
           <li>在用户评价和专业测试中表现优异</li>

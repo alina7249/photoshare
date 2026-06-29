@@ -266,28 +266,28 @@ export const EquipmentComparisonChart: React.FC<EquipmentComparisonChartProps> =
   const getThemeStyles = () => {
     if (darkMode) {
       return {
-        container: "bg-[#2D3748] border-[#4A5F8B]",
-        text: "text-[#B8C6D8]",
-        primaryText: "text-[#F5F7FA]",
-        secondaryText: "text-[#6B7C93]",
-        button: "bg-[#4A5F8B] text-[#F5F7FA] hover:bg-[#6B7C93]",
-        buttonSecondary: "bg-[#1E2532] text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA]",
-        input: "bg-[#1E2532] border-[#4A5F8B] text-[#F5F7FA] placeholder:text-[#6B7C93]",
-        chartContainer: "bg-[#1E2532] border-[#4A5F8B]",
-        highlight: "text-[#4A5F8B]"
+        container: "bg-bg-card border-accent",
+        text: "text-text-muted",
+        primaryText: "text-text-primary",
+        secondaryText: "text-accent-hover",
+        button: "bg-accent text-text-primary hover:bg-accent-hover",
+        buttonSecondary: "bg-bg-deep text-text-muted hover:bg-accent hover:text-text-primary",
+        input: "bg-bg-deep border-accent text-text-primary placeholder:text-accent-hover",
+        chartContainer: "bg-bg-deep border-accent",
+        highlight: "text-accent"
       };
     }
     
     return {
-      container: "bg-[#F5F7FA] border-[#B8C6D8]",
+      container: "bg-text-primary border-text-muted",
       text: "text-[#4A5059]",
       primaryText: "text-[#4A5059]",
-      secondaryText: "text-[#6B7C93]",
-      button: "bg-[#4A5F8B] text-white hover:bg-[#6B7C93]",
-      buttonSecondary: "bg-white text-[#4A5F8B] hover:bg-[#E6EBF2]",
-      input: "bg-white border-[#B8C6D8] text-[#4A5059] placeholder:text-[#6B7C93]",
-      chartContainer: "bg-white border-[#B8C6D8]",
-      highlight: "text-[#4A5F8B]"
+      secondaryText: "text-accent-hover",
+      button: "bg-accent text-white hover:bg-accent-hover",
+      buttonSecondary: "bg-white text-accent hover:bg-[#E6EBF2]",
+      input: "bg-white border-text-muted text-[#4A5059] placeholder:text-accent-hover",
+      chartContainer: "bg-white border-text-muted",
+      highlight: "text-accent"
     };
   };
   
@@ -399,7 +399,7 @@ export const EquipmentComparisonChart: React.FC<EquipmentComparisonChartProps> =
                   value={newEquipmentName}
                   onChange={(e) => setNewEquipmentName(e.target.value)}
                   placeholder="请输入器材名称"
-                  className={`w-full px-4 py-2 rounded-lg ${theme.input} focus:outline-none focus:ring-2 focus:ring-[#4A5F8B]`}
+                  className={`w-full px-4 py-2 rounded-lg ${theme.input} focus:outline-none focus:ring-2 focus:ring-accent`}
                 />
               </div>
               
@@ -421,7 +421,7 @@ export const EquipmentComparisonChart: React.FC<EquipmentComparisonChartProps> =
                         step="0.5"
                         value={newEquipmentPerformance[key] || value}
                         onChange={(e) => handleNewEquipmentPerformanceChange(key, parseFloat(e.target.value))}
-                        className="w-full h-2 rounded-lg appearance-none bg-[#1E2532] outline-none"
+                        className="w-full h-2 rounded-lg appearance-none bg-bg-deep outline-none"
                       />
                     </div>
                   ))}
@@ -462,7 +462,7 @@ export const EquipmentComparisonChart: React.FC<EquipmentComparisonChartProps> =
             <span>{eq.name}</span>
             <button
               onClick={() => handleRemoveCompareEquipment(eq.id)}
-              className="ml-2 text-[#F56565] hover:text-[#E53E3E]"
+              className="ml-2 text-danger hover:text-danger"
             >
               <i className="fa-solid fa-times"></i>
             </button>
@@ -561,9 +561,9 @@ export const EquipmentComparisonChart: React.FC<EquipmentComparisonChartProps> =
             value={filterKeyword}
             onChange={(e) => setFilterKeyword(e.target.value)}
             placeholder="搜索性能类别..."
-            className={`w-full pl-10 pr-4 py-2 rounded-lg ${theme.input} focus:outline-none focus:ring-2 focus:ring-[#4A5F8B]`}
+            className={`w-full pl-10 pr-4 py-2 rounded-lg ${theme.input} focus:outline-none focus:ring-2 focus:ring-accent`}
           />
-          <i className="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-[#6B7C93]"></i>
+          <i className="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-accent-hover"></i>
         </div>
       </div>
       
@@ -619,7 +619,7 @@ export const EquipmentComparisonChart: React.FC<EquipmentComparisonChartProps> =
         </div>
         
         {/* 使用场景建议 */}
-        <div className={`pt-3 border-t ${darkMode ? 'border-[#4A5F8B]' : 'border-[#B8C6D8]'}`}>
+        <div className={`pt-3 border-t ${darkMode ? 'border-accent' : 'border-text-muted'}`}>
           <h5 className={`text-xs uppercase tracking-wider ${theme.secondaryText} mb-2`}>适用场景建议</h5>
           <p className={theme.text}>
             根据性能分析，该器材特别适合{usageScenarios}。

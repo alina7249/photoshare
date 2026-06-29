@@ -341,7 +341,7 @@ const EventsAndContests: React.FC = () => {
   const filteredContests = getFilteredContests();
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -349,10 +349,10 @@ const EventsAndContests: React.FC = () => {
       >
         {/* 页面标题 */}
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-[#F5F7FA] mb-2">
+          <h1 className="text-3xl font-bold text-text-primary mb-2">
             活动与赛事
           </h1>
-          <p className="text-[#B8C6D8] max-w-2xl mx-auto">
+          <p className="text-text-muted max-w-2xl mx-auto">
             参与摄影活动和赛事，提升技能，结交同好，展示才华
           </p>
         </div>
@@ -362,14 +362,14 @@ const EventsAndContests: React.FC = () => {
           {/* 主要内容 */}
           <div className="lg:col-span-2 space-y-6">
             {/* 顶部功能标签 */}
-            <div className="bg-[#2D3748] rounded-xl shadow-sm border border-[#4A5F8B] overflow-hidden">
+            <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
               <div className="flex">
                 <button
                   onClick={() => setActiveTab('events')}
                   className={`flex-1 py-4 px-6 text-center font-medium transition-all duration-300 ${
                     activeTab === 'events'
-                      ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                      : 'bg-[#2D3748] text-[#B8C6D8] hover:text-[#F5F7FA]'
+                      ? 'bg-accent text-text-primary'
+                      : 'bg-bg-card text-text-muted hover:text-text-primary'
                   }`}
                 >
                   线下活动
@@ -378,8 +378,8 @@ const EventsAndContests: React.FC = () => {
                   onClick={() => setActiveTab('contests')}
                   className={`flex-1 py-4 px-6 text-center font-medium transition-all duration-300 ${
                     activeTab === 'contests'
-                      ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                      : 'bg-[#2D3748] text-[#B8C6D8] hover:text-[#F5F7FA]'
+                      ? 'bg-accent text-text-primary'
+                      : 'bg-bg-card text-text-muted hover:text-text-primary'
                   }`}
                 >
                   摄影赛事
@@ -406,16 +406,16 @@ const EventsAndContests: React.FC = () => {
                       placeholder="搜索活动、地点或主题..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full px-4 py-3 pl-12 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all placeholder:text-[#B8C6D8]"
+                      className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                     />
-                    <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-[#B8C6D8]"></i>
+                    <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
                   </div>
 
                   {/* 活动类型和分类选项卡 */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-[#2D3748] rounded-xl shadow-sm border border-[#4A5F8B] overflow-hidden">
-                      <div className="p-3 border-b border-[#4A5F8B]">
-                        <h4 className="text-sm font-medium text-[#F5F7FA]">活动类型</h4>
+                    <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+                      <div className="p-3 border-b border-accent">
+                        <h4 className="text-sm font-medium text-text-primary">活动类型</h4>
                       </div>
                       <div className="grid grid-cols-3 p-2">
                         {eventTypes.map((type) => (
@@ -424,8 +424,8 @@ const EventsAndContests: React.FC = () => {
                             onClick={() => setSelectedEventType(type)}
                             className={`py-2 px-1 text-center text-sm font-medium transition-colors ${
                               selectedEventType === type
-                                ? 'bg-[#4A5F8B] text-[#F5F7FA] rounded-lg'
-                                : 'bg-[#2D3748] text-[#B8C6D8] hover:bg-[#4A5F8B]/50'
+                                ? 'bg-accent text-text-primary rounded-lg'
+                                : 'bg-bg-card text-text-muted hover:bg-accent/50'
                             }`}
                           >
                             {type}
@@ -434,9 +434,9 @@ const EventsAndContests: React.FC = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-[#2D3748] rounded-xl shadow-sm border border-[#4A5F8B] overflow-hidden">
-                      <div className="p-3 border-b border-[#4A5F8B]">
-                        <h4 className="text-sm font-medium text-[#F5F7FA]">活动分类</h4>
+                    <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+                      <div className="p-3 border-b border-accent">
+                        <h4 className="text-sm font-medium text-text-primary">活动分类</h4>
                       </div>
                       <div className="grid grid-cols-4 p-2">
                         {eventCategories.map((category) => (
@@ -445,8 +445,8 @@ const EventsAndContests: React.FC = () => {
                             onClick={() => setSelectedEventCategory(category)}
                             className={`py-2 px-1 text-center text-sm font-medium transition-colors ${
                               selectedEventCategory === category
-                                ? 'bg-[#4A5F8B] text-[#F5F7FA] rounded-lg'
-                                : 'bg-[#2D3748] text-[#B8C6D8] hover:bg-[#4A5F8B]/50'
+                                ? 'bg-accent text-text-primary rounded-lg'
+                                : 'bg-bg-card text-text-muted hover:bg-accent/50'
                             }`}
                           >
                             {category}
@@ -470,12 +470,12 @@ const EventsAndContests: React.FC = () => {
                     ))}
                     
                     {filteredEvents.length === 0 && (
-                      <div className="p-8 bg-[#2D3748] rounded-xl border border-[#4A5F8B] text-center">
-                        <div className="w-16 h-16 bg-[#1E2532] rounded-full flex items-center justify-center text-[#4A5F8B] mx-auto mb-4">
+                      <div className="p-8 bg-bg-card rounded-xl border border-accent text-center">
+                        <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                           <i className="fa-solid fa-search text-2xl"></i>
                         </div>
-                        <h3 className="text-lg font-medium text-[#F5F7FA] mb-2">未找到相关活动</h3>
-                        <p className="text-[#B8C6D8]">
+                        <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关活动</h3>
+                        <p className="text-text-muted">
                           请尝试使用不同的关键词或筛选条件
                         </p>
                       </div>
@@ -494,16 +494,16 @@ const EventsAndContests: React.FC = () => {
                       placeholder="搜索赛事、主题或关键词..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full px-4 py-3 pl-12 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all placeholder:text-[#B8C6D8]"
+                      className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                     />
-                    <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-[#B8C6D8]"></i>
+                    <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
                   </div>
 
                   {/* 赛事类型和状态选项卡 */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-[#2D3748] rounded-xl shadow-sm border border-[#4A5F8B] overflow-hidden">
-                      <div className="p-3 border-b border-[#4A5F8B]">
-                        <h4 className="text-sm font-medium text-[#F5F7FA]">赛事类型</h4>
+                    <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+                      <div className="p-3 border-b border-accent">
+                        <h4 className="text-sm font-medium text-text-primary">赛事类型</h4>
                       </div>
                       <div className="grid grid-cols-3 p-2">
                         {contestTypes.map((type) => (
@@ -512,8 +512,8 @@ const EventsAndContests: React.FC = () => {
                             onClick={() => setSelectedContestType(type)}
                             className={`py-2 px-1 text-center text-sm font-medium transition-colors ${
                               selectedContestType === type
-                                ? 'bg-[#4A5F8B] text-[#F5F7FA] rounded-lg'
-                                : 'bg-[#2D3748] text-[#B8C6D8] hover:bg-[#4A5F8B]/50'
+                                ? 'bg-accent text-text-primary rounded-lg'
+                                : 'bg-bg-card text-text-muted hover:bg-accent/50'
                             }`}
                           >
                             {type}
@@ -522,9 +522,9 @@ const EventsAndContests: React.FC = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-[#2D3748] rounded-xl shadow-sm border border-[#4A5F8B] overflow-hidden">
-                      <div className="p-3 border-b border-[#4A5F8B]">
-                        <h4 className="text-sm font-medium text-[#F5F7FA]">赛事状态</h4>
+                    <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+                      <div className="p-3 border-b border-accent">
+                        <h4 className="text-sm font-medium text-text-primary">赛事状态</h4>
                       </div>
                       <div className="grid grid-cols-3 p-2">
                         {contestStatuses.map((status) => (
@@ -533,8 +533,8 @@ const EventsAndContests: React.FC = () => {
                             onClick={() => setSelectedContestStatus(status)}
                             className={`py-2 px-1 text-center text-sm font-medium transition-colors ${
                               selectedContestStatus === status
-                                ? 'bg-[#4A5F8B] text-[#F5F7FA] rounded-lg'
-                                : 'bg-[#2D3748] text-[#B8C6D8] hover:bg-[#4A5F8B]/50'
+                                ? 'bg-accent text-text-primary rounded-lg'
+                                : 'bg-bg-card text-text-muted hover:bg-accent/50'
                             }`}
                           >
                             {status}
@@ -558,12 +558,12 @@ const EventsAndContests: React.FC = () => {
                     ))}
                     
                     {filteredContests.length === 0 && (
-                      <div className="p-8 bg-[#2D3748] rounded-xl border border-[#4A5F8B] text-center">
-                        <div className="w-16 h-16 bg-[#1E2532] rounded-full flex items-center justify-center text-[#4A5F8B] mx-auto mb-4">
+                      <div className="p-8 bg-bg-card rounded-xl border border-accent text-center">
+                        <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                           <i className="fa-solid fa-search text-2xl"></i>
                         </div>
-                        <h3 className="text-lg font-medium text-[#F5F7FA] mb-2">未找到相关赛事</h3>
-                        <p className="text-[#B8C6D8]">
+                        <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关赛事</h3>
+                        <p className="text-text-muted">
                           请尝试使用不同的关键词或筛选条件
                         </p>
                       </div>
@@ -577,8 +577,8 @@ const EventsAndContests: React.FC = () => {
           {/* 侧边栏内容 */}
           <div className="lg:col-span-1 space-y-6">
             {/* 热门标签模块 */}
-            <div className="bg-[#4A5F8B] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
-              <h3 className="text-lg font-bold mb-4 text-[#F5F7FA]">热门标签</h3>
+            <div className="bg-accent rounded-xl p-6 shadow-sm border border-accent">
+              <h3 className="text-lg font-bold mb-4 text-text-primary">热门标签</h3>
               <div className="flex flex-wrap gap-2">
                 {popularTags.map((tag) => (
                   <button
@@ -586,8 +586,8 @@ const EventsAndContests: React.FC = () => {
                     onClick={() => toggleTag(tag.name)}
                     className={`px-3 py-1 rounded-full text-sm ${
                       selectedTags.includes(tag.name)
-                        ? 'bg-[#F5F7FA] text-[#4A5F8B]'
-                        : 'bg-[#6B7C93] text-[#F5F7FA] border border-[#6B7C93]'
+                        ? 'bg-text-primary text-accent'
+                        : 'bg-accent-hover text-text-primary border border-accent-hover'
                     } transition-colors`}
                   >
                     #{tag.name} ({tag.count})
@@ -599,7 +599,7 @@ const EventsAndContests: React.FC = () => {
               {selectedTags.length > 0 && (
                 <button
                   onClick={() => setSelectedTags([])}
-                  className="mt-4 w-full py-2 text-center text-sm text-[#F5F7FA] hover:text-[#FFFFFF] transition-colors"
+                  className="mt-4 w-full py-2 text-center text-sm text-text-primary hover:text-[#FFFFFF] transition-colors"
                 >
                   <i className="fa-solid fa-times mr-1"></i> 清除所有标签
                 </button>
@@ -607,7 +607,7 @@ const EventsAndContests: React.FC = () => {
             </div>
             
             {/* 发布入口 */}
-            <div className="bg-gradient-to-r from-[#4A5F8B] to-[#6B7C93] rounded-xl p-6 shadow-sm text-white">
+            <div className="bg-gradient-to-r from-accent to-accent-hover rounded-xl p-6 shadow-sm text-white">
               <h3 className="text-lg font-bold mb-3">发布{activeTab === 'events' ? '活动' : '赛事'}</h3>
               <p className="text-sm mb-4 text-white/90">
                 {activeTab === 'events' 
@@ -618,7 +618,7 @@ const EventsAndContests: React.FC = () => {
   <motion.button
     whileHover={{ scale: 1.02 }}
     whileTap={{ scale: 0.98 }}
-    className="w-full py-3 bg-[#F5F7FA] text-[#4A5F8B] font-medium rounded-lg hover:bg-[#FFFFFF] transition-colors border border-[#F5F7FA]"
+    className="w-full py-3 bg-text-primary text-accent font-medium rounded-lg hover:bg-[#FFFFFF] transition-colors border border-text-primary"
     onClick={() => {
       if (!isAuthenticated) {
         toast.info('请先登录后再发布');
@@ -638,8 +638,8 @@ const EventsAndContests: React.FC = () => {
             </div>
             
             {/* 即将开始/截止提醒 */}
-            <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
-              <h3 className="text-lg font-bold mb-4 text-[#F5F7FA]">
+            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+              <h3 className="text-lg font-bold mb-4 text-text-primary">
                 {activeTab === 'events' ? '即将开始' : '即将截止'}
               </h3>
               <div className="space-y-4">
@@ -664,7 +664,7 @@ const EventsAndContests: React.FC = () => {
                         whileHover={{ x: 5 }}
                         className="flex space-x-3 cursor-pointer"
                       >
-                        <div className="w-16 h-16 flex-shrink-0 flex flex-col items-center justify-center bg-[#4A5F8B]/30 rounded-lg text-[#F5F7FA]">
+                        <div className="w-16 h-16 flex-shrink-0 flex flex-col items-center justify-center bg-accent/30 rounded-lg text-text-primary">
                           {diffDays > 0 ? (
                             <>
                               <span className="text-lg font-bold">{diffDays}</span>
@@ -678,10 +678,10 @@ const EventsAndContests: React.FC = () => {
                           )}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-[#F5F7FA] hover:text-[#FFFFFF] transition-colors truncate">
+                          <h4 className="font-medium text-text-primary hover:text-[#FFFFFF] transition-colors truncate">
                             {item.title}
                           </h4>
-                          <div className="flex items-center space-x-2 mt-1 text-xs text-[#F5F7FA]/80">
+                          <div className="flex items-center space-x-2 mt-1 text-xs text-text-primary/80">
                             <span>{activeTab === 'events' ? item.type : item.type}</span>
                             <span>•</span>
                             <span>{activeTab === 'events' ? `${item.participants} 人报名` : `${item.participants} 人参赛`}</span>
@@ -694,28 +694,28 @@ const EventsAndContests: React.FC = () => {
             </div>
             
             {/* 常见问题 */}
-            <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
-              <h3 className="text-lg font-bold mb-4 text-[#F5F7FA]">
+            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+              <h3 className="text-lg font-bold mb-4 text-text-primary">
                 {activeTab === 'events' ? '活动常见问题' : '参赛指南'}
               </h3>
               <div className="space-y-3">
                 {activeTab === 'events' ? (
                   <>
                     <div>
-                      <h4 className="font-medium text-[#F5F7FA] mb-1">如何参加活动？</h4>
-                      <p className="text-sm text-[#B8C6D8]">
+                      <h4 className="font-medium text-text-primary mb-1">如何参加活动？</h4>
+                      <p className="text-sm text-text-muted">
                         浏览感兴趣的活动，点击"立即报名"按钮，按照要求提交信息即可完成报名。
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-medium text-[#F5F7FA] mb-1">活动有什么要求？</h4>
-                      <p className="text-sm text-[#B8C6D8]">
+                      <h4 className="font-medium text-text-primary mb-1">活动有什么要求？</h4>
+                      <p className="text-sm text-text-muted">
                         不同活动有不同的要求，包括摄影器材、经验水平等，请仔细阅读每个活动的详情。
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-medium text-[#F5F7FA] mb-1">与资源模块的区别？</h4>
-                      <p className="text-sm text-[#B8C6D8]">
+                      <h4 className="font-medium text-text-primary mb-1">与资源模块的区别？</h4>
+                      <p className="text-sm text-text-muted">
                         线下活动提供集体参与的摄影体验，而资源模块是摄影师与客户之间的商业交易平台。
                       </p>
                     </div>
@@ -723,20 +723,20 @@ const EventsAndContests: React.FC = () => {
                 ) : (
                   <>
                     <div>
-                      <h4 className="font-medium text-[#F5F7FA] mb-1">如何参赛？</h4>
-                      <p className="text-sm text-[#B8C6D8]">
+                      <h4 className="font-medium text-text-primary mb-1">如何参赛？</h4>
+                      <p className="text-sm text-text-muted">
                         浏览感兴趣的赛事，点击"立即参赛"按钮，按照要求上传作品并填写相关信息即可完成报名。
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-medium text-[#F5F7FA] mb-1">作品有什么要求？</h4>
-                      <p className="text-sm text-[#B8C6D8]">
+                      <h4 className="font-medium text-text-primary mb-1">作品有什么要求？</h4>
+                      <p className="text-sm text-text-muted">
                         不同赛事有不同的作品要求，包括题材、格式、大小等，请务必仔细阅读每个赛事的具体规则。
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-medium text-[#F5F7FA] mb-1">与资源模块的区别？</h4>
-                      <p className="text-sm text-[#B8C6D8]">
+                      <h4 className="font-medium text-text-primary mb-1">与资源模块的区别？</h4>
+                      <p className="text-sm text-text-muted">
                         摄影赛事是展示作品、交流学习的平台，而资源模块专注于商业摄影服务的交易。
                       </p>
                     </div>
@@ -745,13 +745,13 @@ const EventsAndContests: React.FC = () => {
               </div>
               
               {/* 相关链接 */}
-              <div className="mt-6 pt-4 border-t border-[#4A5F8B]">
-                <p className="text-sm text-[#B8C6D8] mb-2">您可能还对以下内容感兴趣：</p>
+              <div className="mt-6 pt-4 border-t border-accent">
+                <p className="text-sm text-text-muted mb-2">您可能还对以下内容感兴趣：</p>
                 <div className="flex flex-wrap gap-2">
-                  <Link to="/resources" className="px-3 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-full text-xs hover:bg-[#6B7C93] transition-colors">
+                  <Link to="/resources" className="px-3 py-1 bg-accent text-text-primary rounded-full text-xs hover:bg-accent-hover transition-colors">
                     资源交易
                   </Link>
-                  <Link to="/equipment-database" className="px-3 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-full text-xs hover:bg-[#6B7C93] transition-colors">
+                  <Link to="/equipment-database" className="px-3 py-1 bg-accent text-text-primary rounded-full text-xs hover:bg-accent-hover transition-colors">
                     器材数据库
                   </Link>
                 </div>
@@ -771,12 +771,12 @@ const EventsAndContests: React.FC = () => {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+            className="bg-bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[90vh] overflow-y-auto"
           >
-            <div className="flex justify-between items-center p-6 border-b border-[#4A5F8B]">
-              <h3 className="text-xl font-bold text-[#F5F7FA]">发布活动</h3>
+            <div className="flex justify-between items-center p-6 border-b border-accent">
+              <h3 className="text-xl font-bold text-text-primary">发布活动</h3>
               <button 
-                className="text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors"
+                className="text-text-muted hover:text-text-primary transition-colors"
                 onClick={() => setShowEventForm(false)}
               >
                 <i className="fa-solid fa-times"></i>
@@ -786,7 +786,7 @@ const EventsAndContests: React.FC = () => {
             <form onSubmit={handleSubmitEvent} className="p-6 space-y-6">
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="event-title" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                  <label htmlFor="event-title" className="block text-sm font-medium text-text-primary mb-1">
                     活动标题 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -794,7 +794,7 @@ const EventsAndContests: React.FC = () => {
                     type="text"
                     value={newEventData.title}
                     onChange={(e) => setNewEventData({...newEventData, title: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入活动标题"
                     required
                   />
@@ -802,14 +802,14 @@ const EventsAndContests: React.FC = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="event-type" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                    <label htmlFor="event-type" className="block text-sm font-medium text-text-primary mb-1">
                       活动类型 <span className="text-red-500">*</span>
                     </label>
                     <select
                       id="event-type"
                       value={newEventData.type}
                       onChange={(e) => setNewEventData({...newEventData, type: e.target.value})}
-                      className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                      className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                       required
                     >
                       <option value="">请选择活动类型</option>
@@ -820,7 +820,7 @@ const EventsAndContests: React.FC = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="event-location" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                    <label htmlFor="event-location" className="block text-sm font-medium text-text-primary mb-1">
                       活动地点 <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -828,7 +828,7 @@ const EventsAndContests: React.FC = () => {
                       type="text"
                       value={newEventData.location}
                       onChange={(e) => setNewEventData({...newEventData, location: e.target.value})}
-                      className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                      className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                       placeholder="请输入活动地点"
                       required
                     />
@@ -837,7 +837,7 @@ const EventsAndContests: React.FC = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="event-date" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                    <label htmlFor="event-date" className="block text-sm font-medium text-text-primary mb-1">
                       活动日期 <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -845,14 +845,14 @@ const EventsAndContests: React.FC = () => {
                       type="text"
                       value={newEventData.date}
                       onChange={(e) => setNewEventData({...newEventData, date: e.target.value})}
-                      className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                      className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                       placeholder="例如：2025-12-15 至 2025-12-22"
                       required
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="event-duration" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                    <label htmlFor="event-duration" className="block text-sm font-medium text-text-primary mb-1">
                       活动时长 <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -860,7 +860,7 @@ const EventsAndContests: React.FC = () => {
                       type="text"
                       value={newEventData.duration}
                       onChange={(e) => setNewEventData({...newEventData, duration: e.target.value})}
-                      className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                      className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                       placeholder="例如：8天7晚"
                       required
                     />
@@ -868,21 +868,21 @@ const EventsAndContests: React.FC = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="event-description" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                  <label htmlFor="event-description" className="block text-sm font-medium text-text-primary mb-1">
                     活动描述 <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     id="event-description"
                     value={newEventData.description}
                     onChange={(e) => setNewEventData({...newEventData, description: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all min-h-[150px]"
+                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[150px]"
                     placeholder="请详细描述活动内容、亮点和安排"
                     required
                   ></textarea>
                 </div>
                 
                 <div>
-                  <label htmlFor="event-tags" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                  <label htmlFor="event-tags" className="block text-sm font-medium text-text-primary mb-1">
                     活动标签
                   </label>
                   <input
@@ -890,23 +890,23 @@ const EventsAndContests: React.FC = () => {
                     type="text"
                     value={newEventData.tags}
                     onChange={(e) => setNewEventData({...newEventData, tags: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入标签，用逗号分隔"
                   />
                 </div>
               </div>
               
-              <div className="flex justify-end space-x-3 pt-4 border-t border-[#4A5F8B]">
+              <div className="flex justify-end space-x-3 pt-4 border-t border-accent">
                 <button 
                   type="button"
-                  className="px-6 py-3 bg-[#1E2532] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]"
+                  className="px-6 py-3 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                   onClick={() => setShowEventForm(false)}
                 >
                   取消
                 </button>
                 <button 
                   type="submit"
-                  className="px-6 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors border border-[#4A5F8B]"
+                  className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent"
                 >
                   发布活动
                 </button>
@@ -926,12 +926,12 @@ const EventsAndContests: React.FC = () => {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+            className="bg-bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[90vh] overflow-y-auto"
           >
-            <div className="flex justify-between items-center p-6 border-b border-[#4A5F8B]">
-              <h3 className="text-xl font-bold text-[#F5F7FA]">发布赛事</h3>
+            <div className="flex justify-between items-center p-6 border-b border-accent">
+              <h3 className="text-xl font-bold text-text-primary">发布赛事</h3>
               <button 
-                className="text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors"
+                className="text-text-muted hover:text-text-primary transition-colors"
                 onClick={() => setShowContestForm(false)}
               >
                 <i className="fa-solid fa-times"></i>
@@ -941,7 +941,7 @@ const EventsAndContests: React.FC = () => {
             <form onSubmit={handleSubmitContest} className="p-6 space-y-6">
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="contest-title" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                  <label htmlFor="contest-title" className="block text-sm font-medium text-text-primary mb-1">
                     赛事标题 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -949,21 +949,21 @@ const EventsAndContests: React.FC = () => {
                     type="text"
                     value={newContestData.title}
                     onChange={(e) => setNewContestData({...newContestData, title: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入赛事标题"
                     required
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="contest-type" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                  <label htmlFor="contest-type" className="block text-sm font-medium text-text-primary mb-1">
                     赛事类型 <span className="text-red-500">*</span>
                   </label>
                   <select
                     id="contest-type"
                     value={newContestData.type}
                     onChange={(e) => setNewContestData({...newContestData, type: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     required
                   >
                     <option value="">请选择赛事类型</option>
@@ -974,7 +974,7 @@ const EventsAndContests: React.FC = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="contest-deadline" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                  <label htmlFor="contest-deadline" className="block text-sm font-medium text-text-primary mb-1">
                     截止日期 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -982,28 +982,28 @@ const EventsAndContests: React.FC = () => {
                     type="text"
                     value={newContestData.deadline}
                     onChange={(e) => setNewContestData({...newContestData, deadline: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="例如：2025-12-31"
                     required
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="contest-description" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                  <label htmlFor="contest-description" className="block text-sm font-medium text-text-primary mb-1">
                     赛事描述 <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     id="contest-description"
                     value={newContestData.description}
                     onChange={(e) => setNewContestData({...newContestData, description: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all min-h-[150px]"
+                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[150px]"
                     placeholder="请详细描述赛事主题、规则和奖励"
                     required
                   ></textarea>
                 </div>
                 
                 <div>
-                  <label htmlFor="contest-tags" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                  <label htmlFor="contest-tags" className="block text-sm font-medium text-text-primary mb-1">
                     赛事标签
                   </label>
                   <input
@@ -1011,23 +1011,23 @@ const EventsAndContests: React.FC = () => {
                     type="text"
                     value={newContestData.tags}
                     onChange={(e) => setNewContestData({...newContestData, tags: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入标签，用逗号分隔"
                   />
                 </div>
               </div>
               
-              <div className="flex justify-end space-x-3 pt-4 border-t border-[#4A5F8B]">
+              <div className="flex justify-end space-x-3 pt-4 border-t border-accent">
                 <button 
                   type="button"
-                  className="px-6 py-3 bg-[#1E2532] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]"
+                  className="px-6 py-3 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                   onClick={() => setShowContestForm(false)}
                 >
                   取消
                 </button>
                 <button 
                   type="submit"
-                  className="px-6 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors border border-[#4A5F8B]"
+                  className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent"
                 >
                   发布赛事
                 </button>
@@ -1048,12 +1048,12 @@ const EventsAndContests: React.FC = () => {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+            className="bg-bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[90vh] overflow-y-auto"
           >
-            <div className="flex justify-between items-center p-6 border-b border-[#4A5F8B]">
-              <h3 className="text-xl font-bold text-[#F5F7FA]">报名活动：{selectedEvent.title}</h3>
+            <div className="flex justify-between items-center p-6 border-b border-accent">
+              <h3 className="text-xl font-bold text-text-primary">报名活动：{selectedEvent.title}</h3>
               <button 
-                className="text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors"
+                className="text-text-muted hover:text-text-primary transition-colors"
                 onClick={() => setShowRegistrationForm(false)}
               >
                 <i className="fa-solid fa-times"></i>
@@ -1063,7 +1063,7 @@ const EventsAndContests: React.FC = () => {
             <form onSubmit={handleSubmitRegistration} className="p-6 space-y-6">
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-text-primary mb-1">
                     姓名 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -1071,14 +1071,14 @@ const EventsAndContests: React.FC = () => {
                     type="text"
                     value={registrationData.name}
                     onChange={(e) => setRegistrationData({...registrationData, name: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入您的姓名"
                     required
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                  <label htmlFor="phone" className="block text-sm font-medium text-text-primary mb-1">
                     手机号码 <span className="text-red-500">*</span>
                   </label>
               <input
@@ -1086,16 +1086,16 @@ const EventsAndContests: React.FC = () => {
                 type="tel"
                 value={registrationData.phone}
                 onChange={(e) => setRegistrationData({...registrationData, phone: e.target.value})}
-                className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                 placeholder="请输入11位手机号码"
                 pattern="^1[3-9]\d{9}$"
                 required
               />
-              <p className="text-xs text-[#4A5F8B] mt-1">请输入有效的11位手机号码</p>
+              <p className="text-xs text-accent mt-1">请输入有效的11位手机号码</p>
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-text-primary mb-1">
                     电子邮箱 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -1103,21 +1103,21 @@ const EventsAndContests: React.FC = () => {
                     type="email"
                     value={registrationData.email}
                     onChange={(e) => setRegistrationData({...registrationData, email: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入您的电子邮箱"
                     required
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="experience" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                  <label htmlFor="experience" className="block text-sm font-medium text-text-primary mb-1">
                     摄影经验
                   </label>
                   <select
                     id="experience"
                     value={registrationData.experience}
                     onChange={(e) => setRegistrationData({...registrationData, experience: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                   >
                     <option value="">请选择您的摄影经验</option>
                     <option value="beginner">初学者 (0-1年)</option>
@@ -1128,14 +1128,14 @@ const EventsAndContests: React.FC = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="specialRequests" className="block text-sm font-medium text-[#F5F7FA] mb-1">
+                  <label htmlFor="specialRequests" className="block text-sm font-medium text-text-primary mb-1">
                     特殊需求
                   </label>
                   <textarea
                     id="specialRequests"
                     value={registrationData.specialRequests}
                     onChange={(e) => setRegistrationData({...registrationData, specialRequests: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all min-h-[100px]"
+                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[100px]"
                     placeholder="如有任何特殊需求，请在此说明"
                   ></textarea>
                 </div>
@@ -1146,32 +1146,32 @@ const EventsAndContests: React.FC = () => {
                     type="checkbox"
                     checked={registrationData.agreement}
                     onChange={(e) => setRegistrationData({...registrationData, agreement: e.target.checked})}
-                    className="mt-1 h-4 w-4 text-[#4A5F8B] focus:ring-[#4A5F8B] rounded border-[#4A5F8B] bg-[#1E2532]"
+                    className="mt-1 h-4 w-4 text-accent focus:ring-accent rounded border-accent bg-bg-deep"
                     required
                   />
-                  <label htmlFor="agreement" className="ml-2 block text-sm text-[#B8C6D8]">
-                    我已阅读并同意<a href="#" className="text-[#4A5F8B] hover:underline">活动协议</a>和<a href="#" className="text-[#4A5F8B] hover:underline">隐私政策</a>
+                  <label htmlFor="agreement" className="ml-2 block text-sm text-text-muted">
+                    我已阅读并同意<a href="#" className="text-accent hover:underline">活动协议</a>和<a href="#" className="text-accent hover:underline">隐私政策</a>
                   </label>
                 </div>
               </div>
               
-              <div className="flex justify-between items-center pt-4 border-t border-[#4A5F8B]">
-                <div className="text-[#B8C6D8] text-sm">
-                  活动费用: <span className="font-bold text-[#F5F7FA]">
+              <div className="flex justify-between items-center pt-4 border-t border-accent">
+                <div className="text-text-muted text-sm">
+                  活动费用: <span className="font-bold text-text-primary">
                     {selectedEvent.price === 0 ? '免费' : `¥${selectedEvent.price}`}
                   </span>
                 </div>
                 <div className="flex space-x-3">
                   <button 
                     type="button"
-                    className="px-6 py-3 bg-[#1E2532] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]"
+                    className="px-6 py-3 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                     onClick={() => setShowRegistrationForm(false)}
                   >
                     取消
                   </button>
                   <button 
                     type="submit"
-                    className="px-6 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors border border-[#4A5F8B]"
+                    className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent"
                   >
                     确认报名
                   </button>

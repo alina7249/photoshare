@@ -30,10 +30,10 @@ const parseMarkdown = (text: string): string => {
   parsedText = parsedText.replace(/_(.*?)_/g, '<em>$1</em>');
   
   // 处理代码
-  parsedText = parsedText.replace(/`(.*?)`/g, '<code class="bg-gray-100 dark:bg-[#4A5F8B] px-1 py-0.5 rounded text-sm">$1</code>');
+  parsedText = parsedText.replace(/`(.*?)`/g, '<code class="bg-gray-100 dark:bg-accent px-1 py-0.5 rounded text-sm">$1</code>');
   
   // 处理代码块
-  parsedText = parsedText.replace(/```([^\n]*)\n([\s\S]*?)```/g, '<pre class="bg-gray-100 dark:bg-[#4A5F8B] p-4 rounded-lg overflow-x-auto text-sm my-3"><code>$2</code></pre>');
+  parsedText = parsedText.replace(/```([^\n]*)\n([\s\S]*?)```/g, '<pre class="bg-gray-100 dark:bg-accent p-4 rounded-lg overflow-x-auto text-sm my-3"><code>$2</code></pre>');
   
   // 处理有序列表
   parsedText = parsedText.replace(/^\d+\. (.*$)/gm, '<li>$1</li>');
@@ -132,14 +132,14 @@ export const MessageList: React.FC = () => {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className={`w-20 h-20 rounded-full flex items-center justify-center mb-4 ${theme === 'dark' ? 'bg-[#4A5F8B]' : 'bg-gray-100'}`}
+          className={`w-20 h-20 rounded-full flex items-center justify-center mb-4 ${theme === 'dark' ? 'bg-accent' : 'bg-gray-100'}`}
         >
           <i className={`fa-solid fa-robot text-3xl ${theme === 'dark' ? 'text-white' : 'text-gray-600'}`}></i>
         </motion.div>
           <h3 className={`text-xl font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
             欢迎使用AI助手
           </h3>
-          <p className={`max-w-md ${theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-600'}`}>
+          <p className={`max-w-md ${theme === 'dark' ? 'text-text-muted' : 'text-gray-600'}`}>
             我是您的智能摄影助手，有什么摄影相关的问题都可以问我。我可以提供器材建议、技术指导、后期处理技巧等。
         </p>
         
@@ -157,7 +157,7 @@ export const MessageList: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className={`px-4 py-2 text-sm rounded-full ${
                 theme === 'dark' 
-                  ? 'bg-[#4A5F8B]/20 text-[#B8C6D8] hover:bg-[#4A5F8B]/40' 
+                  ? 'bg-accent/20 text-text-muted hover:bg-accent/40' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               } transition-colors`}
               onClick={() => {
@@ -198,10 +198,10 @@ export const MessageList: React.FC = () => {
             className={`max-w-[80%] rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow duration-300 ${
               message.sender === 'user'
                 ? theme === 'dark' 
-                  ? 'bg-[#4A5F8B] text-white' 
+                  ? 'bg-accent text-white' 
                   : 'bg-blue-500 text-white'
                 : theme === 'dark'
-                  ? 'bg-[#1E2532] text-[#F5F7FA] border border-[#4A5F8B]'
+                  ? 'bg-bg-deep text-text-primary border border-accent'
                   : 'bg-gray-50 text-gray-800 border border-gray-200'
             }`}
           >
@@ -211,7 +211,7 @@ export const MessageList: React.FC = () => {
             {/* 消息时间戳 */}
             <div className={`mt-2 flex justify-between items-center`}>
               <span className={`text-xs opacity-70 ${
-                theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-500'
+                theme === 'dark' ? 'text-text-muted' : 'text-gray-500'
               }`}>
                 {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </span>
@@ -226,7 +226,7 @@ export const MessageList: React.FC = () => {
                     theme === 'dark' 
                       ? message.isFavorite 
                         ? 'text-yellow-400' 
-                        : 'hover:bg-[#6B7C93] text-[#B8C6D8]' 
+                        : 'hover:bg-accent-hover text-text-muted' 
                       : message.isFavorite 
                         ? 'text-yellow-500' 
                         : 'hover:bg-gray-300 text-gray-600'
@@ -242,7 +242,7 @@ export const MessageList: React.FC = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   className={`p-1 rounded-full text-xs ${
-                    theme === 'dark' ? 'hover:bg-[#6B7C93] text-[#B8C6D8]' : 'hover:bg-gray-300 text-gray-600'
+                    theme === 'dark' ? 'hover:bg-accent-hover text-text-muted' : 'hover:bg-gray-300 text-gray-600'
                   }`}
                   onClick={() => handleCopyMessage(message)}
                   title="复制"
@@ -255,7 +255,7 @@ export const MessageList: React.FC = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   className={`p-1 rounded-full text-xs ${
-                    theme === 'dark' ? 'hover:bg-[#6B7C93] text-[#B8C6D8]' : 'hover:bg-gray-300 text-gray-600'
+                    theme === 'dark' ? 'hover:bg-accent-hover text-text-muted' : 'hover:bg-gray-300 text-gray-600'
                   }`}
                   onClick={() => handleQuoteMessage(message)}
                   title="引用"
@@ -268,7 +268,7 @@ export const MessageList: React.FC = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   className={`p-1 rounded-full text-xs ${
-                    theme === 'dark' ? 'hover:bg-[#6B7C93] text-[#B8C6D8]' : 'hover:bg-gray-300 text-gray-600'
+                    theme === 'dark' ? 'hover:bg-accent-hover text-text-muted' : 'hover:bg-gray-300 text-gray-600'
                   }`}
                   onClick={() => handleShareMessage(message)}
                   title="分享"
@@ -293,13 +293,13 @@ export const MessageList: React.FC = () => {
           </div>
           <div className={`p-4 rounded-2xl ${
             theme === 'dark' 
-              ? 'bg-[#1E2532] text-[#F5F7FA] border border-[#4A5F8B]' 
+              ? 'bg-bg-deep text-text-primary border border-accent' 
               : 'bg-gray-50 text-gray-800 border border-gray-200'
           }`}>
             <div className="flex space-x-1">
-              <div className={`w-2 h-2 rounded-full ${theme === 'dark' ? 'bg-[#4A5F8B]' : 'bg-gray-400'} animate-bounce [animation-delay:-0.3s]`}></div>
-              <div className={`w-2 h-2 rounded-full ${theme === 'dark' ? 'bg-[#4A5F8B]' : 'bg-gray-400'} animate-bounce [animation-delay:-0.15s]`}></div>
-              <div className={`w-2 h-2 rounded-full ${theme === 'dark' ? 'bg-[#4A5F8B]' : 'bg-gray-400'} animate-bounce`}></div>
+              <div className={`w-2 h-2 rounded-full ${theme === 'dark' ? 'bg-accent' : 'bg-gray-400'} animate-bounce [animation-delay:-0.3s]`}></div>
+              <div className={`w-2 h-2 rounded-full ${theme === 'dark' ? 'bg-accent' : 'bg-gray-400'} animate-bounce [animation-delay:-0.15s]`}></div>
+              <div className={`w-2 h-2 rounded-full ${theme === 'dark' ? 'bg-accent' : 'bg-gray-400'} animate-bounce`}></div>
             </div>
           </div>
         </div>

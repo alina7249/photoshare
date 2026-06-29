@@ -7,13 +7,13 @@ const Footer: React.FC = () => {
   
   // 根据主题获取样式类
   const getBgClass = () => {
-    return theme === 'dark' ? 'bg-[#1E2532]' : 'bg-gray-100';
+    return theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-100';
   };
   
   const getTextClass = (isPrimary: boolean) => {
     return isPrimary 
-      ? (theme === 'dark' ? 'text-[#E0E5EC]' : 'text-[#1E2532]')
-      : (theme === 'dark' ? 'text-[#718096]' : 'text-[#4A5F8B]');
+      ? (theme === 'dark' ? 'text-[#E0E5EC]' : 'text-bg-deep')
+      : (theme === 'dark' ? 'text-[#718096]' : 'text-accent');
   };
   
   const getCardBgClass = () => {
@@ -22,26 +22,26 @@ const Footer: React.FC = () => {
   
   const getLinkClass = () => {
     return theme === 'dark' 
-      ? 'text-[#E2E8F0] hover:text-[#63B3ED]' 
-      : 'text-[#4A5F8B] hover:text-[#63B3ED]';
+      ? 'text-[#E2E8F0] hover:text-light-accent' 
+      : 'text-accent hover:text-light-accent';
   };
   
   const getSubscribeInputClass = () => {
     return theme === 'dark' 
-      ? 'bg-[#4A5568] text-[#FFFFFF] focus:ring-[#63B3ED]' 
-      : 'bg-white text-[#1E2532] border-gray-300 focus:ring-[#63B3ED] focus:border-[#63B3ED]';
+      ? 'bg-[#4A5568] text-[#FFFFFF] focus:ring-light-accent' 
+      : 'bg-white text-bg-deep border-gray-300 focus:ring-light-accent focus:border-light-accent';
   };
   
   const getSubscribeButtonClass = () => {
     return theme === 'dark' 
-      ? 'bg-[#63B3ED] text-[#0F1C2D] hover:bg-[#4299E1]' 
-      : 'bg-[#4A5F8B] text-white hover:bg-[#6B7C93]';
+      ? 'bg-light-accent text-[#0F1C2D] hover:bg-light-accent-hover' 
+      : 'bg-accent text-white hover:bg-accent-hover';
   };
   
   const getSocialIconClass = () => {
     return theme === 'dark' 
-      ? 'text-[#E2E8F0] hover:text-[#63B3ED]' 
-      : 'text-[#4A5F8B] hover:text-[#63B3ED]';
+      ? 'text-[#E2E8F0] hover:text-light-accent' 
+      : 'text-accent hover:text-light-accent';
   };
   
   return (

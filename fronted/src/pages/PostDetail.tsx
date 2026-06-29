@@ -109,7 +109,7 @@ const PostDetail: React.FC = () => {
   const getLevelBadgeClass = (level: number) => {
     if (level >= 9) return 'bg-gradient-to-r from-yellow-400 to-amber-600 text-white';
     if (level >= 7) return 'bg-blue-800 text-white';
-    if (level >= 5) return 'bg-[#4A5F8B] text-white';
+    if (level >= 5) return 'bg-accent text-white';
     if (level >= 3) return 'bg-gray-600 text-white';
     return 'bg-gray-300 text-gray-800';
   };
@@ -138,14 +138,14 @@ const PostDetail: React.FC = () => {
 
   if (!post) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen flex items-center justify-center">
-        <div className="text-[#B8C6D8]">加载中...</div>
+      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen flex items-center justify-center">
+        <div className="text-text-muted">加载中...</div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -155,7 +155,7 @@ const PostDetail: React.FC = () => {
         <div className="mb-6">
           <Link
             to="/community"
-            className="inline-flex items-center space-x-1 text-[#B8C6D8]/70 hover:text-[#B8C6D8] transition-colors"
+            className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors"
           >
             <i className="fa-solid fa-arrow-left"></i>
             <span>返回社区</span>
@@ -181,25 +181,25 @@ const PostDetail: React.FC = () => {
                 transformStyle: 'preserve-3d',
                 backgroundColor: "transparent",
               }}
-              className="bg-[#2D3748] border border-[#4A5F8B] rounded-lg overflow-hidden shadow-sm"
+              className="bg-bg-card border border-accent rounded-lg overflow-hidden shadow-sm"
             >
               <div className="p-6">
                 {/* 话题标签 */}
                 <div className="flex items-center space-x-2 mb-3">
                   {post.isEssential && (
-                    <span className="px-2 py-1 bg-[#F56565]/20 text-[#F56565] text-xs rounded-full flex items-center">
+                    <span className="px-2 py-1 bg-danger/20 text-danger text-xs rounded-full flex items-center">
                       <i className="fa-solid fa-star mr-1"></i> 精华
                     </span>
                   )}
                   {post.isSticky && (
-                    <span className="px-2 py-1 bg-[#48BB78]/20 text-[#48BB78] text-xs rounded-full flex items-center">
+                    <span className="px-2 py-1 bg-success/20 text-success text-xs rounded-full flex items-center">
                       <i className="fa-solid fa-thumbtack mr-1"></i> 置顶
                     </span>
                   )}
                 </div>
                 
                 {/* 帖子标题 */}
-                <h1 className="text-2xl font-bold text-[#F5F7FA] mb-4">
+                <h1 className="text-2xl font-bold text-text-primary mb-4">
                   {post.title}
                 </h1>
                 
@@ -213,19 +213,19 @@ const PostDetail: React.FC = () => {
                     />
                     <div>
                       <div className="flex items-center">
-                        <Link to={`/profile/${post.author.id}`} className="font-medium text-[#F5F7FA] hover:text-[#4A5F8B] transition-colors">
+                        <Link to={`/profile/${post.author.id}`} className="font-medium text-text-primary hover:text-accent transition-colors">
                           {post.author.name}
                         </Link>
                         <div className="ml-2 relative group">
                           <span className={`text-xs px-1.5 py-0.5 rounded ${getLevelBadgeClass(post.author.level)}`}>
                             Lv{post.author.level}
                           </span>
-                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 w-48 bg-[#1E2532] text-[#B8C6D8] text-xs rounded p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10 whitespace-nowrap pointer-events-none">
+                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 w-48 bg-bg-deep text-text-muted text-xs rounded p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10 whitespace-nowrap pointer-events-none">
                             发帖: {post.author.stats.posts} | 获赞: {post.author.stats.likes} | 活跃: {post.author.stats.days}天
                           </div>
                         </div>
                       </div>
-                      <p className="text-xs text-[#6B7C93]">{formatRelativeTime(post.createdAt)} · {post.views} 浏览</p>
+                      <p className="text-xs text-accent-hover">{formatRelativeTime(post.createdAt)} · {post.views} 浏览</p>
                     </div>
                   </div>
                 </div>
@@ -237,14 +237,14 @@ const PostDetail: React.FC = () => {
                     if (paragraph.startsWith('## ')) {
                       const title = paragraph.replace('## ', '');
                       return (
-                        <h2 key={index} className="text-xl font-bold text-[#F5F7FA] mt-6 mb-3">
+                        <h2 key={index} className="text-xl font-bold text-text-primary mt-6 mb-3">
                           {title}
                         </h2>
                       );
                     } else if (paragraph.startsWith('### ')) {
                       const title = paragraph.replace('### ', '');
                       return (
-                        <h3 key={index} className="text-lg font-bold text-[#F5F7FA] mt-5 mb-2">
+                        <h3 key={index} className="text-lg font-bold text-text-primary mt-5 mb-2">
                           {title}
                         </h3>
                       );
@@ -253,7 +253,7 @@ const PostDetail: React.FC = () => {
                       return (
                         <ul key={index} className="list-disc pl-5 space-y-1 mt-2 mb-4">
                           {items.map((item, idx) => (
-                            <li key={idx} className="text-[#B8C6D8]">
+                            <li key={idx} className="text-text-muted">
                               {item.replace('- ', '')}
                             </li>
                           ))}
@@ -261,7 +261,7 @@ const PostDetail: React.FC = () => {
                       );
                     } else {
                       return (
-                        <p key={index} className="text-[#B8C6D8] mb-4 leading-relaxed">
+                        <p key={index} className="text-text-muted mb-4 leading-relaxed">
                           {paragraph}
                         </p>
                       );
@@ -274,7 +274,7 @@ const PostDetail: React.FC = () => {
                   {post.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-[#1E2532] text-[#B8C6D8] rounded-full text-xs border border-[#4A5F8B]"
+                      className="px-3 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent"
                     >
                       #{tag}
                     </span>
@@ -282,14 +282,14 @@ const PostDetail: React.FC = () => {
                 </div>
                 
                 {/* 互动按钮 */}
-                <div className="flex justify-between items-center pt-4 border-t border-[#4A5F8B]">
+                <div className="flex justify-between items-center pt-4 border-t border-accent">
                   <div className="flex items-center space-x-6">
                     <motion.button
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       onClick={handleLike}
                       className={`flex items-center space-x-1 transition-colors ${
-                        isLiked ? 'text-[#F56565]' : 'text-[#6B7C93] hover:text-[#B8C6D8]'
+                        isLiked ? 'text-danger' : 'text-accent-hover hover:text-text-muted'
                       }`}
                     >
                       <motion.i
@@ -301,7 +301,7 @@ const PostDetail: React.FC = () => {
                     </motion.button>
                     
                     <button
-                      className="flex items-center space-x-1 text-[#6B7C93] hover:text-[#B8C6D8] transition-colors"
+                      className="flex items-center space-x-1 text-accent-hover hover:text-text-muted transition-colors"
                     >
                       <i className="fa-solid fa-comment"></i>
                       <span>{post.comments}</span>
@@ -312,7 +312,7 @@ const PostDetail: React.FC = () => {
                       whileTap={{ scale: 0.9 }}
                       onClick={handleBookmark}
                       className={`flex items-center space-x-1 transition-colors ${
-                        isBookmarked ? 'text-[#F6AD55]' : 'text-[#6B7C93] hover:text-[#B8C6D8]'
+                        isBookmarked ? 'text-[#F6AD55]' : 'text-accent-hover hover:text-text-muted'
                       }`}
                     >
                       <i className={`fa-solid ${isBookmarked ? 'fa-bookmark' : 'fa-bookmark'}`}></i>
@@ -323,7 +323,7 @@ const PostDetail: React.FC = () => {
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       onClick={() => saveReadingProgress()}
-                      className="text-[#6B7C93] hover:text-[#B8C6D8] transition-colors"
+                      className="text-accent-hover hover:text-text-muted transition-colors"
                       title="保存阅读进度"
                     >
                       <i className="fa-solid fa-save"></i>
@@ -346,9 +346,9 @@ const PostDetail: React.FC = () => {
           {/* 右侧边栏 */}
           <div className="space-y-6">
             {/* 作者信息卡片 */}
-            <div className="bg-[#2D3748] border border-[#4A5F8B] rounded-lg p-6">
+            <div className="bg-bg-card border border-accent rounded-lg p-6">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#4A5F8B]">
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-accent">
                   <img
                     src={post.author.avatar}
                     alt={post.author.name}
@@ -356,31 +356,31 @@ const PostDetail: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#F5F7FA]">{post.author.name}</h3>
-                  <p className="text-xs text-[#4A5F8B]">Lv{post.author.level}</p>
+                  <h3 className="font-bold text-text-primary">{post.author.name}</h3>
+                  <p className="text-xs text-accent">Lv{post.author.level}</p>
                 </div>
               </div>
               
               <div className="grid grid-cols-3 gap-2 mb-4">
                 <div className="text-center">
-                  <p className="font-bold text-[#F5F7FA]">{post.author.stats.posts}</p>
-                  <p className="text-xs text-[#B8C6D8]">帖子</p>
+                  <p className="font-bold text-text-primary">{post.author.stats.posts}</p>
+                  <p className="text-xs text-text-muted">帖子</p>
                 </div>
                 <div className="text-center">
-                  <p className="font-bold text-[#F5F7FA]">{post.author.stats.likes}</p>
-                  <p className="text-xs text-[#B8C6D8]">获赞</p>
+                  <p className="font-bold text-text-primary">{post.author.stats.likes}</p>
+                  <p className="text-xs text-text-muted">获赞</p>
                 </div>
                 <div className="text-center">
-                  <p className="font-bold text-[#F5F7FA]">{post.author.stats.days}</p>
-                  <p className="text-xs text-[#B8C6D8]">活跃天</p>
+                  <p className="font-bold text-text-primary">{post.author.stats.days}</p>
+                  <p className="text-xs text-text-muted">活跃天</p>
                 </div>
               </div>
               
                <button 
                  className={`w-full py-2 rounded-lg font-medium transition-colors ${
                    isFollowing 
-                     ? 'bg-[#6B7C93] text-[#F5F7FA] hover:bg-[#718096]' 
-                     : 'bg-[#4A5F8B] text-[#F5F7FA] hover:bg-[#6B7C93]'
+                     ? 'bg-accent-hover text-text-primary hover:bg-[#718096]' 
+                     : 'bg-accent text-text-primary hover:bg-accent-hover'
                  }`}
                  onClick={() => {
                    if (!isAuthenticated) {
@@ -397,8 +397,8 @@ const PostDetail: React.FC = () => {
             </div>
             
             {/* 相关帖子 */}
-            <div className="bg-[#2D3748] border border-[#4A5F8B] rounded-lg p-6">
-              <h3 className="text-lg font-bold text-[#F5F7FA] mb-4">相关帖子</h3>
+            <div className="bg-bg-card border border-accent rounded-lg p-6">
+              <h3 className="text-lg font-bold text-text-primary mb-4">相关帖子</h3>
               <div className="space-y-4">
                 {relatedPosts.map((relatedPost) => (
                   <motion.div
@@ -407,11 +407,11 @@ const PostDetail: React.FC = () => {
                     className="group"
                   >
                     <Link to={`/post/${relatedPost.id}`} className="block">
-                      <div className="bg-[#1E2532] rounded-lg p-4 border border-[#4A5F8B] group-hover:border-[#4A5F8B] transition-colors">
-                        <h4 className="font-medium text-[#F5F7FA] group-hover:text-[#4A5F8B] transition-colors mb-1 line-clamp-2">
+                      <div className="bg-bg-deep rounded-lg p-4 border border-accent group-hover:border-accent transition-colors">
+                        <h4 className="font-medium text-text-primary group-hover:text-accent transition-colors mb-1 line-clamp-2">
                           {relatedPost.title}
                         </h4>
-                        <p className="text-xs text-[#B8C6D8]">
+                        <p className="text-xs text-text-muted">
                           {relatedPost.author.name} · {formatRelativeTime(relatedPost.createdAt)}
                         </p>
                       </div>
@@ -422,14 +422,14 @@ const PostDetail: React.FC = () => {
             </div>
             
             {/* 热门标签 */}
-            <div className="bg-[#2D3748] border border-[#4A5F8B] rounded-lg p-6">
-              <h3 className="text-lg font-bold text-[#F5F7FA] mb-4">热门标签</h3>
+            <div className="bg-bg-card border border-accent rounded-lg p-6">
+              <h3 className="text-lg font-bold text-text-primary mb-4">热门标签</h3>
               <div className="flex flex-wrap gap-2">
                 {post?.tags.map((tag, index) => (
                     <a
                       key={index}
                       href={`/search?tag=${tag}`}
-                      className="px-3 py-1 bg-[#1E2532] text-[#B8C6D8] rounded-full text-xs border border-[#4A5F8B] hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors"
+                      className="px-3 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent hover:bg-accent hover:text-text-primary transition-colors"
                     >
                       #{tag}
                     </a>

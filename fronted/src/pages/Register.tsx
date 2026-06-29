@@ -16,7 +16,7 @@ const Register: React.FC = () => {
           <div className="absolute inset-0 bg-[url('https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=galaxy%20background%20stars%20purple%20blue&sign=9a9229c82aef2e4f5ac40648383863bf')] bg-cover opacity-10 rounded-full w-20 h-20 mx-auto -mt-12"></div>
           <motion.div
             whileHover={{ rotate: 10 }}
-            className="relative inline-flex items-center justify-center mb-4 text-3xl text-[#63B3ED]"
+            className="relative inline-flex items-center justify-center mb-4 text-3xl text-light-accent"
           >
             <i className="fa-solid fa-camera"></i>
           </motion.div>
@@ -71,7 +71,7 @@ const Register: React.FC = () => {
             已有账号？{' '}
             <Link
               to="/login"
-              className="font-medium text-[#63B3ED] hover:text-[#63B3ED] transition-colors"
+              className="font-medium text-light-accent hover:text-light-accent transition-colors"
             >
               立即登录
             </Link>

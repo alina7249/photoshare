@@ -46,17 +46,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #1E2532;
+  background: var(--deep-cool-gray);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4A5F8B;
+  background: var(--light-blue-gray);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6B7C93;
+  background: var(--medium-blue-gray);
 }
 
  /* 动画效果 */
@@ -168,16 +168,16 @@ img.loading {
 
 /* 按钮基础样式 */
 .btn-primary {
-  @apply bg-[#4A5F8B] text-[#F5F7FA] font-medium rounded-lg px-4 py-2 transition-colors border border-[#4A5F8B];
+  @apply bg-accent text-text-primary font-medium rounded-lg px-4 py-2 transition-colors border border-accent;
 }
 
 .btn-secondary {
-  @apply bg-[#2D3748] text-[#F5F7FA] border border-[#4A5F8B] font-medium rounded-lg px-4 py-2 transition-colors hover:bg-[#4A5F8B];
+  @apply bg-bg-card text-text-primary border border-accent font-medium rounded-lg px-4 py-2 transition-colors hover:bg-accent;
 }
 
 /* 输入框基础样式 */
 .input {
-  @apply bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all placeholder:text-[#B8C6D8];
+  @apply bg-bg-card border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted;
 }
 
 /* 自定义滚动条样式增强 */
@@ -186,17 +186,17 @@ img.loading {
 }
 
 .course-outline::-webkit-scrollbar-track {
-  background: #1E2532;
+  background: var(--deep-cool-gray);
   border-radius: 3px;
 }
 
 .course-outline::-webkit-scrollbar-thumb {
-  background: #4A5F8B;
+  background: var(--light-blue-gray);
   border-radius: 3px;
 }
 
 .course-outline::-webkit-scrollbar-thumb:hover {
-  background: #6B7C93;
+  background: var(--medium-blue-gray);
 }
 
 /* 标题排版优化 */

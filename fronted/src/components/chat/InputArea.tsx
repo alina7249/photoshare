@@ -223,21 +223,21 @@ export const InputArea: React.FC = () => {
     <div className="space-y-4">
       {/* 文件上传进度条 */}
       {isFileUploading && (
-        <div className={`rounded-lg overflow-hidden ${theme === 'dark' ? 'bg-[#1E2532]' : 'bg-gray-100'}`}>
+        <div className={`rounded-lg overflow-hidden ${theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-100'}`}>
           <div 
-            className={`h-1.5 ${theme === 'dark' ? 'bg-[#4A5F8B]' : 'bg-blue-500'}`} 
+            className={`h-1.5 ${theme === 'dark' ? 'bg-accent' : 'bg-blue-500'}`} 
             style={{ width: `${uploadingProgress}%` }}
           />
           <div className="flex justify-between items-center p-2 text-xs">
-            <span className={`${theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-600'}`}>上传文件中...</span>
-            <span className={`${theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-600'}`}>{uploadingProgress}%</span>
+            <span className={`${theme === 'dark' ? 'text-text-muted' : 'text-gray-600'}`}>上传文件中...</span>
+            <span className={`${theme === 'dark' ? 'text-text-muted' : 'text-gray-600'}`}>{uploadingProgress}%</span>
           </div>
         </div>
       )}
       
       {/* 输入框区域 */}
       <div className={`rounded-xl p-3 flex items-end space-x-2 ${
-        theme === 'dark' ? 'bg-[#1E2532] border border-[#4A5F8B]' : 'bg-gray-100'
+        theme === 'dark' ? 'bg-bg-deep border border-accent' : 'bg-gray-100'
       } shadow-sm`}>
         <input
           type="file"
@@ -255,10 +255,10 @@ export const InputArea: React.FC = () => {
             className={`p-2 rounded-lg transition-colors ${
               isUploading
                 ? theme === 'dark' 
-                  ? 'text-[#4A5F8B] cursor-not-allowed' 
+                  ? 'text-accent cursor-not-allowed' 
                   : 'text-gray-400 cursor-not-allowed'
                 : theme === 'dark' 
-                  ? 'hover:bg-[#4A5F8B] text-[#B8C6D8]' 
+                  ? 'hover:bg-accent text-text-muted' 
                   : 'hover:bg-gray-200 text-gray-600'
             }`}
             title="上传文件（TXT/PDF/图片）"
@@ -271,10 +271,10 @@ export const InputArea: React.FC = () => {
             className={`p-2 rounded-lg transition-colors ${
               isUploading || !message.trim()
                 ? theme === 'dark' 
-                  ? 'text-[#4A5F8B] cursor-not-allowed' 
+                  ? 'text-accent cursor-not-allowed' 
                   : 'text-gray-400 cursor-not-allowed'
                 : theme === 'dark' 
-                  ? 'hover:bg-[#4A5F8B] text-[#B8C6D8]' 
+                  ? 'hover:bg-accent text-text-muted' 
                   : 'hover:bg-gray-200 text-gray-600'
             }`}
             title="格式化"
@@ -291,7 +291,7 @@ export const InputArea: React.FC = () => {
           onKeyDown={handleKeyDown}
           placeholder="输入您的问题，按Enter发送，Shift+Enter换行..."
           className={`flex-1 p-2 bg-transparent resize-none focus:outline-none ${
-            theme === 'dark' ? 'text-white placeholder:text-[#6B7C93]' : 'text-gray-800 placeholder:text-gray-500'
+            theme === 'dark' ? 'text-white placeholder:text-accent-hover' : 'text-gray-800 placeholder:text-gray-500'
           }`}
           rows={1}
           disabled={isUploading}
@@ -305,10 +305,10 @@ export const InputArea: React.FC = () => {
             className={`p-2 rounded-lg transition-colors ${
               isUploading
                 ? theme === 'dark' 
-                  ? 'text-[#4A5F8B] cursor-not-allowed' 
+                  ? 'text-accent cursor-not-allowed' 
                   : 'text-gray-400 cursor-not-allowed'
                 : theme === 'dark' 
-                  ? 'hover:bg-[#4A5F8B] text-[#B8C6D8]' 
+                  ? 'hover:bg-accent text-text-muted' 
                   : 'hover:bg-gray-200 text-gray-600'
             }`}
             title="更多选项"
@@ -318,14 +318,14 @@ export const InputArea: React.FC = () => {
           
           {isOptionsOpen && (
             <div className={`absolute right-0 bottom-full mb-2 w-48 rounded-lg shadow-xl z-20 ${
-              theme === 'dark' ? 'bg-[#2D3748] border border-[#4A5F8B]' : 'bg-white border border-gray-200'
+              theme === 'dark' ? 'bg-bg-card border border-accent' : 'bg-white border border-gray-200'
             }`}>
               <div className="py-1">
                 <button
                   onClick={handleClearChat}
                   className={`w-full text-left px-4 py-2 text-sm transition-colors ${
                     theme === 'dark' 
-                      ? 'hover:bg-[#4A5F8B]/20 text-[#B8C6D8]' 
+                      ? 'hover:bg-accent/20 text-text-muted' 
                       : 'hover:bg-gray-100 text-gray-700'
                   }`}
                 >
@@ -335,17 +335,17 @@ export const InputArea: React.FC = () => {
                   onClick={handleExportChat}
                   className={`w-full text-left px-4 py-2 text-sm transition-colors ${
                     theme === 'dark' 
-                      ? 'hover:bg-[#4A5F8B]/20 text-[#B8C6D8]' 
+                      ? 'hover:bg-accent/20 text-text-muted' 
                       : 'hover:bg-gray-100 text-gray-700'
                   }`}
                 >
                   <i className="fa-solid fa-file-export mr-2"></i>导出对话
                 </button>
-                <div className="border-t border-dashed my-1 border-gray-300 dark:border-[#4A5F8B]"></div>
+                <div className="border-t border-dashed my-1 border-gray-300 dark:border-accent"></div>
                 <button
                   className={`w-full text-left px-4 py-2 text-sm transition-colors ${
                     theme === 'dark' 
-                      ? 'hover:bg-[#4A5F8B]/20 text-[#B8C6D8]' 
+                      ? 'hover:bg-accent/20 text-text-muted' 
                       : 'hover:bg-gray-100 text-gray-700'
                   }`}
                 >
@@ -364,10 +364,10 @@ export const InputArea: React.FC = () => {
             className={`p-2 rounded-lg transition-colors flex items-center space-x-1 ${
               isUploading
                 ? theme === 'dark' 
-                  ? 'text-[#4A5F8B] cursor-not-allowed' 
+                  ? 'text-accent cursor-not-allowed' 
                   : 'text-gray-400 cursor-not-allowed'
                 : theme === 'dark' 
-                  ? 'hover:bg-[#4A5F8B] text-[#B8C6D8]' 
+                  ? 'hover:bg-accent text-text-muted' 
                   : 'hover:bg-gray-200 text-gray-600'
             }`}
             title="选择AI角色"
@@ -380,11 +380,11 @@ export const InputArea: React.FC = () => {
           
           {isRoleDropdownOpen && (
             <div className={`absolute right-0 bottom-full mb-2 w-64 rounded-lg shadow-xl z-20 ${
-              theme === 'dark' ? 'bg-[#2D3748] border border-[#4A5F8B]' : 'bg-white border border-gray-200'
+              theme === 'dark' ? 'bg-bg-card border border-accent' : 'bg-white border border-gray-200'
             }`}>
-              <div className="p-3 border-b border-gray-200 dark:border-[#4A5F8B]">
+              <div className="p-3 border-b border-gray-200 dark:border-accent">
                 <h4 className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>选择AI助手</h4>
-                <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-500'}`}>
+                <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-text-muted' : 'text-gray-500'}`}>
                   不同角色提供不同专业领域的回答
                 </p>
               </div>
@@ -396,10 +396,10 @@ export const InputArea: React.FC = () => {
                     className={`w-full text-left px-4 py-3 text-sm transition-colors flex items-center ${
                       selectedRole?.id === role.id
                         ? theme === 'dark' 
-                          ? 'bg-[#4A5F8B]/30 text-white' 
+                          ? 'bg-accent/30 text-white' 
                           : 'bg-blue-50 text-blue-700'
                         : theme === 'dark' 
-                          ? 'hover:bg-[#4A5F8B]/10 text-[#B8C6D8]' 
+                          ? 'hover:bg-accent/10 text-text-muted' 
                           : 'hover:bg-gray-100 text-gray-700'
                     }`}
                   >
@@ -412,7 +412,7 @@ export const InputArea: React.FC = () => {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="truncate">{role.name}</p>
-                      <p className={`text-xs truncate mt-0.5 ${theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'}`}>
+                      <p className={`text-xs truncate mt-0.5 ${theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'}`}>
                         {role.description}
                       </p>
                     </div>
@@ -433,9 +433,9 @@ export const InputArea: React.FC = () => {
           className={`p-2.5 rounded-full transition-colors shadow-sm ${
             !message.trim() || isUploading
               ? theme === 'dark' 
-                ? 'bg-[#4A5F8B] text-[#6B7C93] cursor-not-allowed' 
+                ? 'bg-accent text-accent-hover cursor-not-allowed' 
                 : 'bg-blue-300 text-blue-100 cursor-not-allowed'
-              : theme === 'dark'? 'bg-[#4A5F8B] text-white hover:bg-[#6B7C93] shadow-[0_2px_10px_rgba(74,95,139,0.3)]' 
+              : theme === 'dark'? 'bg-accent text-white hover:bg-accent-hover shadow-[0_2px_10px_rgba(74,95,139,0.3)]' 
                 : 'bg-blue-500 text-white hover:bg-blue-600 shadow-[0_2px_10px_rgba(59,130,246,0.3)]'
           }`}
           title="发送消息"
@@ -446,7 +446,7 @@ export const InputArea: React.FC = () => {
       
       {/* 使用提示 */}
       <div className="text-xs text-center">
-        <span className={theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'}>
+        <span className={theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'}>
           提示：您可以咨询摄影技术、器材选择、后期处理等问题 | 支持拖拽文件上传
         </span>
       </div>

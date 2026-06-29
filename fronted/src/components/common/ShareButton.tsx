@@ -69,7 +69,7 @@ export const ShareButton: React.FC<ShareButtonProps> = ({
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setShowMenu(!showMenu)}
-        className={`${getSizeStyles()} bg-[#4A5F8B] text-[#F5F7FA] rounded-full flex items-center justify-center hover:bg-[#6B7C93] transition-colors`}
+        className={`${getSizeStyles()} bg-accent text-text-primary rounded-full flex items-center justify-center hover:bg-accent-hover transition-colors`}
         aria-label="分享"
       >
         <i className="fa-solid fa-share-nodes"></i>
@@ -81,28 +81,28 @@ export const ShareButton: React.FC<ShareButtonProps> = ({
             initial={{ opacity: 0, scale: 0.9, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: -10 }}
-            className="absolute right-0 mt-2 w-48 bg-[#2D3748] rounded-lg shadow-lg border border-[#4A5F8B] py-2 z-50"
+            className="absolute right-0 mt-2 w-48 bg-bg-card rounded-lg shadow-lg border border-accent py-2 z-50"
           >
             <button 
-              className="w-full text-left px-4 py-2 text-[#F5F7FA] hover:bg-[#4A5F8B] transition-colors flex items-center"
+              className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"
               onClick={() => shareToPlatform('weibo')}
             >
               <i className="fa-brands fa-weibo mr-2 text-[#E6162D]"></i> 分享到微博
             </button>
             <button 
-              className="w-full text-left px-4 py-2 text-[#F5F7FA] hover:bg-[#4A5F8B] transition-colors flex items-center"
+              className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"
               onClick={() => shareToPlatform('qq')}
             >
               <i className="fa-brands fa-qq mr-2 text-[#12B7F5]"></i> 分享到QQ
             </button>
             <button 
-              className="w-full text-left px-4 py-2 text-[#F5F7FA] hover:bg-[#4A5F8B] transition-colors flex items-center"
+              className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"
               onClick={() => shareToPlatform('wechat')}
             >
               <i className="fa-brands fa-weixin mr-2 text-[#07C160]"></i> 分享到微信
             </button>
             <button 
-              className="w-full text-left px-4 py-2 text-[#F5F7FA] hover:bg-[#4A5F8B] transition-colors flex items-center"
+              className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"
               onClick={copyToClipboard}
             >
               <i className="fa-solid fa-link mr-2"></i> 复制链接

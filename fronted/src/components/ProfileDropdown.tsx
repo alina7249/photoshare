@@ -70,13 +70,13 @@ export const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        className="absolute top-16 right-4 w-[320px] max-w-[90%] bg-[#1E2532] border border-[#4A5F8B] rounded-lg shadow-lg overflow-hidden z-50 profile-dropdown-container"
+        className="absolute top-16 right-4 w-[320px] max-w-[90%] bg-bg-deep border border-accent rounded-lg shadow-lg overflow-hidden z-50 profile-dropdown-container"
       >
         {/* 顶部身份信息区 */}
-        <div className="px-6 py-4 border-b border-[#4A5F8B]">
+        <div className="px-6 py-4 border-b border-accent">
           <div className="flex items-center space-x-4">
             {/* 头像 */}
-            <div className="w-16 h-16 rounded-full border-2 border-[#4A5F8B] overflow-hidden shadow-md">
+            <div className="w-16 h-16 rounded-full border-2 border-accent overflow-hidden shadow-md">
               <img 
                 src={avatarSrc}
                 alt="User avatar"
@@ -86,18 +86,18 @@ export const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
             
             {/* 用户信息 */}
             <div className="flex-1">
-              <h2 className="text-lg font-bold text-[#F5F7FA] mb-1">{username}</h2>
-              <p className="text-[#B8C6D8]/70 text-sm">风光/人像双题材创作者</p>
+              <h2 className="text-lg font-bold text-text-primary mb-1">{username}</h2>
+              <p className="text-text-muted/70 text-sm">风光/人像双题材创作者</p>
               
               {/* 等级和进度条 */}
               <div className="mt-2">
                 <div className="flex justify-between items-center mb-1">
-                  <span className="text-[#4A5F8B] text-xs">{level} LV.{levelNum}</span>
-                  <span className="text-[#4A5F8B] text-xs">{progress}/{progressMax}成长值</span>
+                  <span className="text-accent text-xs">{level} LV.{levelNum}</span>
+                  <span className="text-accent text-xs">{progress}/{progressMax}成长值</span>
                 </div>
-                <div className="w-full h-1.5 bg-[#2D3748] rounded-full overflow-hidden">
+                <div className="w-full h-1.5 bg-bg-card rounded-full overflow-hidden">
                   <div 
-                    className="h-full bg-[#4A5F8B]" 
+                    className="h-full bg-accent" 
                     style={{ width: `${(progress / progressMax) * 100}%` }}
                   ></div>
                 </div>
@@ -106,24 +106,24 @@ export const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
           </div>
           
           {/* 会员标识 */}
-          <div className="mt-4 bg-[#4A5F8B]/20 text-[#B8C6D8] text-xs font-medium py-1.5 px-3 rounded-full text-center border border-[#4A5F8B]">
+          <div className="mt-4 bg-accent/20 text-text-muted text-xs font-medium py-1.5 px-3 rounded-full text-center border border-accent">
             银河会员·年卡（剩余128天）
           </div>
         </div>
         
         {/* 中间核心数据统计区 */}
-        <div className="grid grid-cols-3 gap-1 px-4 py-3 bg-[#2D3748]">
+        <div className="grid grid-cols-3 gap-1 px-4 py-3 bg-bg-card">
           <div className="text-center">
-            <p className="text-[#B8C6D8]/70 text-xs mb-1">作品</p>
-            <p className="text-[#F5F7FA] font-bold text-lg">{stats.posts}</p>
+            <p className="text-text-muted/70 text-xs mb-1">作品</p>
+            <p className="text-text-primary font-bold text-lg">{stats.posts}</p>
           </div>
           <div className="text-center">
-            <p className="text-[#B8C6D8]/70 text-xs mb-1">获赞</p>
-            <p className="text-[#F5F7FA] font-bold text-lg">{stats.likes}</p>
+            <p className="text-text-muted/70 text-xs mb-1">获赞</p>
+            <p className="text-text-primary font-bold text-lg">{stats.likes}</p>
           </div>
           <div className="text-center">
-            <p className="text-[#B8C6D8]/70 text-xs mb-1">收藏</p>
-            <p className="text-[#F5F7FA] font-bold text-lg">{stats.collections}</p>
+            <p className="text-text-muted/70 text-xs mb-1">收藏</p>
+            <p className="text-text-primary font-bold text-lg">{stats.collections}</p>
           </div>
         </div>
         
@@ -134,9 +134,9 @@ export const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
                 key={item.id}
                 to={item.link}
                 onClick={onClose}
-                className="flex items-center py-3 px-6 text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors"
+                className="flex items-center py-3 px-6 text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
               >
-                <i className={`fa-solid ${item.icon} mr-3 text-[#4A5F8B]`}></i>
+                <i className={`fa-solid ${item.icon} mr-3 text-accent`}></i>
                 <span>{item.text}</span>
               </Link>
             ))}

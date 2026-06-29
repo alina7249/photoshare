@@ -173,9 +173,9 @@ const ContentManagement: React.FC = () => {
       case 'pending':
         return <span className="px-2 py-1 bg-[#F6AD55]/20 text-[#F6AD55] text-xs rounded-full">待审核</span>;
       case 'banned':
-        return <span className="px-2 py-1 bg-[#F56565]/20 text-[#F56565] text-xs rounded-full">已禁用</span>;
+        return <span className="px-2 py-1 bg-danger/20 text-danger text-xs rounded-full">已禁用</span>;
       default:
-        return <span className="px-2 py-1 bg-[#6B7C93]/20 text-[#6B7C93] text-xs rounded-full">未知</span>;
+        return <span className="px-2 py-1 bg-accent-hover/20 text-accent-hover text-xs rounded-full">未知</span>;
     }
   };
 
@@ -183,11 +183,11 @@ const ContentManagement: React.FC = () => {
   const renderTypeBadge = (type: string) => {
     switch (type) {
       case 'photo':
-        return <span className="px-2 py-1 bg-[#4A5F8B]/20 text-[#4A5F8B] text-xs rounded-full">摄影作品</span>;
+        return <span className="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">摄影作品</span>;
       case 'post':
         return <span className="px-2 py-1 bg-[#9F7AEA]/20 text-[#9F7AEA] text-xs rounded-full">社区帖子</span>;
       default:
-        return <span className="px-2 py-1 bg-[#6B7C93]/20 text-[#6B7C93] text-xs rounded-full">未知类型</span>;
+        return <span className="px-2 py-1 bg-accent-hover/20 text-accent-hover text-xs rounded-full">未知类型</span>;
     }
   };
 
@@ -196,8 +196,8 @@ const ContentManagement: React.FC = () => {
       {/* 页面标题 */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-[#F5F7FA]">内容管理</h1>
-          <p className="text-[#B8C6D8] mt-1">查看和管理所有用户发布的内容</p>
+          <h1 className="text-2xl font-bold text-text-primary">内容管理</h1>
+          <p className="text-text-muted mt-1">查看和管理所有用户发布的内容</p>
         </div>
         <div className="mt-4 md:mt-0">
           <Button>
@@ -208,7 +208,7 @@ const ContentManagement: React.FC = () => {
       </div>
 
       {/* 筛选和搜索 */}
-      <div className="bg-[#2D3748] p-4 rounded-xl border border-[#4A5F8B]">
+      <div className="bg-bg-card p-4 rounded-xl border border-accent">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="relative">
             <input
@@ -216,15 +216,15 @@ const ContentManagement: React.FC = () => {
               placeholder="搜索标题或作者..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-2 pl-10 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+              className="w-full px-4 py-2 pl-10 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
             />
-            <i className="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-[#6B7C93]"></i>
+            <i className="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-accent-hover"></i>
           </div>
           
           <select
             value={contentType}
             onChange={(e) => setContentType(e.target.value)}
-            className="bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none"
+            className="bg-bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
           >
             <option value="all">全部类型</option>
             <option value="photo">摄影作品</option>
@@ -234,7 +234,7 @@ const ContentManagement: React.FC = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none"
+            className="bg-bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
           >
             <option value="all">全部状态</option>
             <option value="active">活跃</option>
@@ -245,7 +245,7 @@ const ContentManagement: React.FC = () => {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none"
+            className="bg-bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
           >
             <option value="createdAt">按发布日期排序</option>
             <option value="title">按标题排序</option>
@@ -260,28 +260,28 @@ const ContentManagement: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-[#4A5F8B] p-3 rounded-xl flex items-center justify-between"
+          className="bg-accent p-3 rounded-xl flex items-center justify-between"
         >
-          <div className="flex items-center text-[#F5F7FA]">
+          <div className="flex items-center text-text-primary">
             <i className="fa-solid fa-check-square mr-2"></i>
             <span>已选择 {selectedContent.length} 项</span>
           </div>
           <div className="flex items-center space-x-2">
             <button
               onClick={() => handleBulkAction('active')}
-              className="px-3 py-1 bg-[#2D3748] text-[#F5F7FA] rounded-lg hover:bg-[#4A5F8B] transition-colors text-sm"
+              className="px-3 py-1 bg-bg-card text-text-primary rounded-lg hover:bg-accent transition-colors text-sm"
             >
               启用
             </button>
             <button
               onClick={() => handleBulkAction('banned')}
-              className="px-3 py-1 bg-[#2D3748] text-[#F5F7FA] rounded-lg hover:bg-[#4A5F8B] transition-colors text-sm"
+              className="px-3 py-1 bg-bg-card text-text-primary rounded-lg hover:bg-accent transition-colors text-sm"
             >
               禁用
             </button>
             <button
               onClick={() => handleBulkAction('delete')}
-              className="px-3 py-1 bg-[#F56565] text-white rounded-lg hover:bg-[#E53E3E] transition-colors text-sm"
+              className="px-3 py-1 bg-danger text-white rounded-lg hover:bg-danger transition-colors text-sm"
             >
               删除
             </button>
@@ -290,7 +290,7 @@ const ContentManagement: React.FC = () => {
                 setSelectedContent([]);
                 setShowBulkActions(false);
               }}
-              className="p-1 text-[#F5F7FA] hover:text-[#B8C6D8] transition-colors"
+              className="p-1 text-text-primary hover:text-text-muted transition-colors"
             >
               <i className="fa-solid fa-times"></i>
             </button>
@@ -299,48 +299,48 @@ const ContentManagement: React.FC = () => {
       )}
 
       {/* 内容列表 */}
-      <div className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] overflow-hidden">
+      <div className="bg-bg-card rounded-xl border border-accent overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-[#4A5F8B]">
+          <table className="min-w-full divide-y divide-accent">
             <thead>
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-[#B8C6D8] uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">
                   <div className="flex items-center">
                     <input
                       type="checkbox"
                       checked={selectedContent.length === filteredContent.length && filteredContent.length > 0}
                       onChange={handleSelectAll}
-                      className="h-4 w-4 text-[#4A5F8B] focus:ring-[#4A5F8B] border-[#4A5F8B] rounded bg-[#1E2532]"
+                      className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep"
                     />
                   </div>
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-[#B8C6D8] uppercase tracking-wider">预览</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-[#B8C6D8] uppercase tracking-wider">标题</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-[#B8C6D8] uppercase tracking-wider">类型</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-[#B8C6D8] uppercase tracking-wider">作者</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-[#B8C6D8] uppercase tracking-wider">状态</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-[#B8C6D8] uppercase tracking-wider">发布日期</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-[#B8C6D8] uppercase tracking-wider">浏览</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-[#B8C6D8] uppercase tracking-wider">点赞</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-[#B8C6D8] uppercase tracking-wider">评论</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-[#B8C6D8] uppercase tracking-wider">操作</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">预览</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">标题</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">类型</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">作者</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">状态</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">发布日期</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">浏览</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">点赞</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">评论</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">操作</th>
               </tr>
             </thead>
-            <tbody className="bg-[#1E2532] divide-y divide-[#4A5F8B]">
+            <tbody className="bg-bg-deep divide-y divide-accent">
               {filteredContent.map((item) => (
                 <motion.tr
                   key={item.id}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
-                  className="hover:bg-[#2D3748] transition-colors"
+                  className="hover:bg-bg-card transition-colors"
                 >
                   <td className="px-6 py-4 whitespace-nowrap">
                     <input
                       type="checkbox"
                       checked={selectedContent.includes(item.id)}
                       onChange={() => handleSelectContent(item.id)}
-                      className="h-4 w-4 text-[#4A5F8B] focus:ring-[#4A5F8B] border-[#4A5F8B] rounded bg-[#1E2532]"
+                      className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep"
                     />
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -353,12 +353,12 @@ const ContentManagement: React.FC = () => {
                         />
                       </div>
                     ) : (
-                      <div className="w-16 h-16 rounded-lg bg-[#4A5F8B]/20 flex items-center justify-center text-[#4A5F8B]">
+                      <div className="w-16 h-16 rounded-lg bg-accent/20 flex items-center justify-center text-accent">
                         <i className="fa-solid fa-file-lines text-xl"></i>
                       </div>
                     )}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#F5F7FA]">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-primary">
                     {item.title}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -373,7 +373,7 @@ const ContentManagement: React.FC = () => {
                           alt={item.author.name}
                         />
                       </div>
-                      <div className="ml-2 text-sm text-[#B8C6D8]">
+                      <div className="ml-2 text-sm text-text-muted">
                         {item.author.name}
                       </div>
                     </div>
@@ -381,30 +381,30 @@ const ContentManagement: React.FC = () => {
                   <td className="px-6 py-4 whitespace-nowrap">
                     {renderStatusBadge(item.status)}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#B8C6D8]">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-text-muted">
                     {item.createdAt}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#B8C6D8]">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-text-muted">
                     {item.views}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#B8C6D8]">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-text-muted">
                     {item.likes}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#B8C6D8]">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-text-muted">
                     {item.comments}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
                     <div className="flex justify-end space-x-2">
                       <button
                         onClick={() => handleContentAction(item.id, 'view')}
-                        className="text-[#4A5F8B] hover:text-[#6B7C93] transition-colors p-1"
+                        className="text-accent hover:text-accent-hover transition-colors p-1"
                         title="查看详情"
                       >
                         <i className="fa-solid fa-eye"></i>
                       </button>
                       <button
                         onClick={() => handleContentAction(item.id, 'edit')}
-                        className="text-[#4A5F8B] hover:text-[#6B7C93] transition-colors p-1"
+                        className="text-accent hover:text-accent-hover transition-colors p-1"
                         title="编辑内容"
                       >
                         <i className="fa-solid fa-pen-to-square"></i>
@@ -412,7 +412,7 @@ const ContentManagement: React.FC = () => {
                       {item.status === 'active' ? (
                         <button
                           onClick={() => handleContentAction(item.id, 'ban')}
-                          className="text-[#F56565] hover:text-[#E53E3E] transition-colors p-1"
+                          className="text-danger hover:text-danger transition-colors p-1"
                           title="禁用内容"
                         >
                           <i className="fa-solid fa-ban"></i>
@@ -428,7 +428,7 @@ const ContentManagement: React.FC = () => {
                       ) : (
                         <button
                           onClick={() => handleContentAction(item.id, 'ban')}
-                          className="text-[#F56565] hover:text-[#E53E3E] transition-colors p-1"
+                          className="text-danger hover:text-danger transition-colors p-1"
                           title="拒绝审核"
                         >
                           <i className="fa-solid fa-times-circle"></i>
@@ -436,7 +436,7 @@ const ContentManagement: React.FC = () => {
                       )}
                       <button
                         onClick={() => handleContentAction(item.id, 'delete')}
-                        className="text-[#F56565] hover:text-[#E53E3E] transition-colors p-1"
+                        className="text-danger hover:text-danger transition-colors p-1"
                         title="删除内容"
                       >
                         <i className="fa-solid fa-trash"></i>
@@ -452,26 +452,26 @@ const ContentManagement: React.FC = () => {
         {/* 空状态 */}
         {filteredContent.length === 0 && (
           <div className="p-12 text-center">
-            <div className="w-16 h-16 bg-[#1E2532] rounded-full flex items-center justify-center text-[#4A5F8B] mx-auto mb-4">
+            <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
               <i className="fa-solid fa-images text-2xl"></i>
             </div>
-            <h3 className="text-lg font-medium text-[#F5F7FA] mb-2">暂无内容</h3>
-            <p className="text-[#B8C6D8]">当前没有符合条件的内容</p>
+            <h3 className="text-lg font-medium text-text-primary mb-2">暂无内容</h3>
+            <p className="text-text-muted">当前没有符合条件的内容</p>
           </div>
         )}
         
         {/* 分页 */}
         {filteredContent.length > 0 && (
-          <div className="px-6 py-4 bg-[#1E2532] border-t border-[#4A5F8B] flex items-center justify-between">
-            <div className="text-sm text-[#B8C6D8]">
+          <div className="px-6 py-4 bg-bg-deep border-t border-accent flex items-center justify-between">
+            <div className="text-sm text-text-muted">
               显示 1 到 {filteredContent.length} 条，共 {filteredContent.length} 条
             </div>
             <nav className="flex items-center space-x-1">
-              <button className="px-3 py-1 border border-[#4A5F8B] rounded-lg text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors">
+              <button className="px-3 py-1 border border-accent rounded-lg text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                 <i className="fa-solid fa-chevron-left text-xs"></i>
               </button>
-              <button className="px-3 py-1 border border-[#4A5F8B] rounded-lg bg-[#4A5F8B] text-[#F5F7FA]">1</button>
-              <button className="px-3 py-1 border border-[#4A5F8B] rounded-lg text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors">
+              <button className="px-3 py-1 border border-accent rounded-lg bg-accent text-text-primary">1</button>
+              <button className="px-3 py-1 border border-accent rounded-lg text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                 <i className="fa-solid fa-chevron-right text-xs"></i>
               </button>
             </nav>

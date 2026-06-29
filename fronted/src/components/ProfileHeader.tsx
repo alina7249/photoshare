@@ -34,7 +34,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     <>
       {/* 用户信息部分 */}
       {avatarSrc && (
-        <div className="w-16 h-16 rounded-full border-2 border-[#4A5F8B] overflow-hidden shadow-md mb-3">
+        <div className="w-16 h-16 rounded-full border-2 border-accent overflow-hidden shadow-md mb-3">
           <img 
             src={avatarSrc}
             alt="User avatar"
@@ -43,41 +43,41 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
         </div>
       )}
       
-      <h2 className="text-lg font-bold text-[#F5F7FA] mb-1">{username}</h2>
-      <p className="text-[#B8C6D8]/70 text-sm mb-3">风光/人像双题材创作者</p>
+      <h2 className="text-lg font-bold text-text-primary mb-1">{username}</h2>
+      <p className="text-text-muted/70 text-sm mb-3">风光/人像双题材创作者</p>
       
       {/* 等级和进度条 */}
-      <div className="bg-[#2D3748] p-3 rounded-lg mb-4">
+      <div className="bg-bg-card p-3 rounded-lg mb-4">
         <div className="flex justify-between items-center mb-1">
-          <span className="text-[#4A5F8B] text-xs">{level} LV.{levelNum}</span>
-          <span className="text-[#4A5F8B] text-xs">{progress}/{progressMax}成长值</span>
+          <span className="text-accent text-xs">{level} LV.{levelNum}</span>
+          <span className="text-accent text-xs">{progress}/{progressMax}成长值</span>
         </div>
-        <div className="w-full h-1.5 bg-[#1E2532] rounded-full overflow-hidden">
+        <div className="w-full h-1.5 bg-bg-deep rounded-full overflow-hidden">
           <div 
-            className="h-full bg-[#4A5F8B]" 
+            className="h-full bg-accent" 
             style={{ width: `${progressPercentage}%` }}
           ></div>
         </div>
       </div>
       
       {/* 会员标识 */}
-      <div className="bg-[#4A5F8B]/20 text-[#B8C6D8] text-xs font-medium py-1.5 px-3 rounded-full text-center border border-[#4A5F8B] mb-4">
+      <div className="bg-accent/20 text-text-muted text-xs font-medium py-1.5 px-3 rounded-full text-center border border-accent mb-4">
         银河会员·年卡（剩余128天）
       </div>
       
       {/* 核心数据统计区 */}
-      <div className="grid grid-cols-3 gap-1 px-4 py-3 bg-[#2D3748] rounded-lg">
+      <div className="grid grid-cols-3 gap-1 px-4 py-3 bg-bg-card rounded-lg">
         <div className="text-center">
-          <p className="text-[#B8C6D8]/70 text-xs mb-1">作品</p>
-          <p className="text-[#F5F7FA] font-bold text-lg">{stats.posts}</p>
+          <p className="text-text-muted/70 text-xs mb-1">作品</p>
+          <p className="text-text-primary font-bold text-lg">{stats.posts}</p>
         </div>
         <div className="text-center">
-          <p className="text-[#B8C6D8]/70 text-xs mb-1">获赞</p>
-          <p className="text-[#F5F7FA] font-bold text-lg">{stats.likes}</p>
+          <p className="text-text-muted/70 text-xs mb-1">获赞</p>
+          <p className="text-text-primary font-bold text-lg">{stats.likes}</p>
         </div>
         <div className="text-center">
-          <p className="text-[#B8C6D8]/70 text-xs mb-1">收藏</p>
-          <p className="text-[#F5F7FA] font-bold text-lg">{stats.collections}</p>
+          <p className="text-text-muted/70 text-xs mb-1">收藏</p>
+          <p className="text-text-primary font-bold text-lg">{stats.collections}</p>
         </div>
       </div>
     </>

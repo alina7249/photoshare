@@ -20,42 +20,42 @@ export const EquipmentRentalInfo: React.FC<RentalInfoProps> = ({ rentalInfo, sec
   }
 
   return (
-    <div className="mt-4 p-4 bg-[#2D3748] rounded-lg border border-[#4A5F8B]">
-      <h3 className="text-lg font-semibold text-[#F5F7FA] mb-3">租赁与二手信息</h3>
+    <div className="mt-4 p-4 bg-bg-card rounded-lg border border-accent">
+      <h3 className="text-lg font-semibold text-text-primary mb-3">租赁与二手信息</h3>
       
       {rentalInfo && (
         <div className="mb-4">
-          <h4 className="text-sm font-medium text-[#B8C6D8] mb-2">租赁渠道</h4>
+          <h4 className="text-sm font-medium text-text-muted mb-2">租赁渠道</h4>
           <div className="flex flex-wrap gap-2 mb-3">
             {rentalInfo.rentalChannels.map((channel, index) => (
               <span
                 key={index}
-                className="px-3 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-full text-xs"
+                className="px-3 py-1 bg-accent text-text-primary rounded-full text-xs"
               >
                 {channel}
               </span>
             ))}
           </div>
           
-          <h4 className="text-sm font-medium text-[#B8C6D8] mb-2">租赁价格</h4>
+          <h4 className="text-sm font-medium text-text-muted mb-2">租赁价格</h4>
           <div className="grid grid-cols-3 gap-2 mb-3">
-            <div className="text-center p-2 bg-[#1E2532] rounded-lg">
-              <p className="text-xs text-[#B8C6D8]">日租</p>
-              <p className="text-lg font-bold text-[#4A5F8B]">¥{rentalInfo.rentalPrice.daily}</p>
+            <div className="text-center p-2 bg-bg-deep rounded-lg">
+              <p className="text-xs text-text-muted">日租</p>
+              <p className="text-lg font-bold text-accent">¥{rentalInfo.rentalPrice.daily}</p>
             </div>
-            <div className="text-center p-2 bg-[#1E2532] rounded-lg">
-              <p className="text-xs text-[#B8C6D8]">周租</p>
-              <p className="text-lg font-bold text-[#4A5F8B]">¥{rentalInfo.rentalPrice.weekly}</p>
+            <div className="text-center p-2 bg-bg-deep rounded-lg">
+              <p className="text-xs text-text-muted">周租</p>
+              <p className="text-lg font-bold text-accent">¥{rentalInfo.rentalPrice.weekly}</p>
             </div>
-            <div className="text-center p-2 bg-[#1E2532] rounded-lg">
-              <p className="text-xs text-[#B8C6D8]">月租</p>
-              <p className="text-lg font-bold text-[#4A5F8B]">¥{rentalInfo.rentalPrice.monthly}</p>
+            <div className="text-center p-2 bg-bg-deep rounded-lg">
+              <p className="text-xs text-text-muted">月租</p>
+              <p className="text-lg font-bold text-accent">¥{rentalInfo.rentalPrice.monthly}</p>
             </div>
           </div>
           
           <div className="flex items-center">
             <div className={`w-2 h-2 rounded-full mr-2 ${rentalInfo.availability ? 'bg-green-500' : 'bg-red-500'}`}></div>
-            <span className="text-sm text-[#B8C6D8]">
+            <span className="text-sm text-text-muted">
               {rentalInfo.availability ? '当前可租' : '暂时缺货'}
             </span>
           </div>
@@ -69,7 +69,7 @@ export const EquipmentRentalInfo: React.FC<RentalInfoProps> = ({ rentalInfo, sec
           href={secondHandLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block w-full py-2 text-center bg-gradient-to-r from-[#4A5F8B] to-[#6B7C93] text-[#F5F7FA] rounded-lg font-medium hover:from-[#6B7C93] hover:to-[#4A5F8B] transition-colors border border-[#4A5F8B]"
+          className="inline-block w-full py-2 text-center bg-gradient-to-r from-accent to-accent-hover text-text-primary rounded-lg font-medium hover:from-accent-hover hover:to-accent transition-colors border border-accent"
         >
           <i className="fa-solid fa-recycle mr-1"></i>
           查看二手市场

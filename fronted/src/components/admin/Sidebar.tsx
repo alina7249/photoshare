@@ -26,19 +26,19 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed }) => {
   };
 
   return (
-    <div className={`bg-[#2D3748] border-r border-[#4A5F8B] transition-all duration-300 ${
+    <div className={`bg-bg-card border-r border-accent transition-all duration-300 ${
       collapsed ? 'w-16' : 'w-64'
     } flex flex-col h-full`}>
       {/* 品牌标识 */}
-      <div className={`flex items-center justify-center p-4 border-b border-[#4A5F8B] ${collapsed ? 'justify-center' : 'justify-start'} px-4`}>
+      <div className={`flex items-center justify-center p-4 border-b border-accent ${collapsed ? 'justify-center' : 'justify-start'} px-4`}>
         {!collapsed && (
           <div className="flex items-center">
-            <i className="fa-solid fa-camera-retro text-2xl text-[#4A5F8B] mr-2"></i>
+            <i className="fa-solid fa-camera-retro text-2xl text-accent mr-2"></i>
             <span className="text-xl font-bold">影研社管理</span>
           </div>
         )}
         {collapsed && (
-          <i className="fa-solid fa-camera-retro text-2xl text-[#4A5F8B]"></i>
+          <i className="fa-solid fa-camera-retro text-2xl text-accent"></i>
         )}
       </div>
       
@@ -51,8 +51,8 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed }) => {
                 to={item.path}
                 className={`flex items-center p-3 rounded-lg transition-colors ${
                   isActive(item.path)
-                    ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                    : 'text-[#B8C6D8] hover:bg-[#4A5F8B]/20'
+                    ? 'bg-accent text-text-primary'
+                    : 'text-text-muted hover:bg-accent/20'
                 }`}
               >
                 <i className={`fa-solid ${item.icon} text-lg ${collapsed ? 'justify-center' : ''}`}></i>
@@ -68,8 +68,8 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed }) => {
                         to={child.path}
                         className={`flex items-center p-2 rounded-lg transition-colors ${
                           isActive(child.path)
-                            ? 'bg-[#4A5F8B]/50 text-[#F5F7FA]'
-                            : 'text-[#B8C6D8] hover:bg-[#4A5F8B]/20'
+                            ? 'bg-accent/50 text-text-primary'
+                            : 'text-text-muted hover:bg-accent/20'
                         }`}
                       >
                         <span>{child.label}</span>
@@ -85,14 +85,14 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed }) => {
       
       {/* 底部用户信息 */}
       {!collapsed && (
-        <div className="p-4 border-t border-[#4A5F8B]">
+        <div className="p-4 border-t border-accent">
           <div className="flex items-center">
-            <div className="w-10 h-10 rounded-full bg-[#4A5F8B]/20 flex items-center justify-center text-[#4A5F8B] mr-3">
+            <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-3">
               <i className="fa-solid fa-user-shield"></i>
             </div>
             <div>
               <div className="text-sm font-medium">管理员</div>
-              <div className="text-xs text-[#6B7C93]">{userRole === 'superAdmin' ? '超级管理员' : userRole === 'admin' ? '普通管理员' : '运营人员'}</div>
+              <div className="text-xs text-accent-hover">{userRole === 'superAdmin' ? '超级管理员' : userRole === 'admin' ? '普通管理员' : '运营人员'}</div>
             </div>
           </div>
         </div>

@@ -111,18 +111,18 @@ const Captcha: React.FC<CaptchaProps> = ({ onChange, value = '', className = '' 
           type="text"
           value={value}
           onChange={handleInputChange}
-          className={`w-full px-4 py-2 rounded-lg border border-[#4A5F8B] ${
+          className={`w-full px-4 py-2 rounded-lg border border-accent ${
             theme === 'dark' 
               ? 'bg-[#4A5568] text-[#FFFFFF]' 
-              : 'bg-white text-[#1E2532]'
-          } focus:outline-none focus:ring-2 focus:ring-[#63B3ED] transition-colors`}
+              : 'bg-white text-bg-deep'
+          } focus:outline-none focus:ring-2 focus:ring-light-accent transition-colors`}
           placeholder="请输入验证码"
           maxLength={6}
         />
       </div>
       <canvas
         ref={canvasRef}
-        className="cursor-pointer rounded-lg border border-[#4A5F8B]"
+        className="cursor-pointer rounded-lg border border-accent"
         onClick={refreshCaptcha}
         title="点击刷新验证码"
       />

@@ -158,15 +158,15 @@ const OnlineCourses: React.FC = () => {
   const filteredTextTutorials = getFilteredTextTutorials();
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-[#1E2532] min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         {/* 页面标题 */}<div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-[#F5F7FA] mb-2">线上课程</h1>
-          <p className="text-[#B8C6D8] max-w-2xl mx-auto">
+          <h1 className="text-3xl font-bold text-text-primary mb-2">线上课程</h1>
+          <p className="text-text-muted max-w-2xl mx-auto">
             学习专业摄影技巧，提升创作水平，从基础到精通的全面摄影课程和文字教程
           </p>
         </div>
@@ -183,15 +183,15 @@ const OnlineCourses: React.FC = () => {
                   placeholder="搜索课程、讲师或关键词..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-4 py-3 pl-12 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all placeholder:text-[#B8C6D8]"
+                  className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                 />
-                <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-[#B8C6D8]"></i>
+                <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
               </div>
               
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-3 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer"
+                className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
               >
                 <option value="recommended">推荐排序</option>
                 <option value="newest">最新发布</option>
@@ -202,7 +202,7 @@ const OnlineCourses: React.FC = () => {
             </div>
 
             {/* 课程分类选项卡 */}
-            <div className="bg-[#2D3748] rounded-xl shadow-sm border border-[#4A5F8B] overflow-hidden">
+            <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
               <div className="overflow-x-auto">
                 <div className="flex min-w-max">
                   {courseCategories.map((category) => (
@@ -211,8 +211,8 @@ const OnlineCourses: React.FC = () => {
                       onClick={() => setActiveCategory(category.id)}
                       className={`px-6 py-4 whitespace-nowrap font-medium transition-colors ${
                         activeCategory === category.id
-                          ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                          : 'bg-[#2D3748] text-[#B8C6D8] hover:text-[#F5F7FA]'
+                          ? 'bg-accent text-text-primary'
+                          : 'bg-bg-card text-text-muted hover:text-text-primary'
                       }`}
                     >
                       {category.name} ({category.count})
@@ -223,14 +223,14 @@ const OnlineCourses: React.FC = () => {
             </div>
 
             {/* 内容类型切换 */}
-            <div className="bg-[#2D3748] rounded-xl p-2 shadow-sm border border-[#4A5F8B]">
+            <div className="bg-bg-card rounded-xl p-2 shadow-sm border border-accent">
               <div className="flex space-x-2">
                 <button
                   onClick={() => setActiveTab('courses')}
                   className={`flex-1 py-2 px-4 rounded-lg transition-colors ${
                     activeTab === 'courses'
-                      ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                      : 'bg-[#2D3748] text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA]'
+                      ? 'bg-accent text-text-primary'
+                      : 'bg-bg-card text-text-muted hover:bg-accent hover:text-text-primary'
                   }`}
                 >
                   视频课程
@@ -239,8 +239,8 @@ const OnlineCourses: React.FC = () => {
                   onClick={() => setActiveTab('textTutorials')}
                   className={`flex-1 py-2 px-4 rounded-lg transition-colors ${
                     activeTab === 'textTutorials'
-                      ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                      : 'bg-[#2D3748] text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA]'
+                      ? 'bg-accent text-text-primary'
+                      : 'bg-bg-card text-text-muted hover:bg-accent hover:text-text-primary'
                   }`}
                 >
                   文字教程
@@ -256,7 +256,7 @@ const OnlineCourses: React.FC = () => {
                   <motion.div
                     key={course.id}
                     whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-                    className="bg-[#2D3748] rounded-xl overflow-hidden border border-[#4A5F8B] transition-all shadow-sm"
+                    className="bg-bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
                   >
                     {/* 课程封面图 */}
                     <div className="relative">
@@ -265,10 +265,10 @@ const OnlineCourses: React.FC = () => {
                         alt={course.title}
                         className="w-full h-48 object-cover"
                       />
-                      <div className="absolute top-3 right-3 px-2 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-full text-xs font-medium">
+                      <div className="absolute top-3 right-3 px-2 py-1 bg-accent text-text-primary rounded-full text-xs font-medium">
                         {course.type}
                       </div>
-                      <div className="absolute bottom-3 right-3 px-2 py-1 bg-[#1E2532]/80 text-[#B8C6D8] rounded-full text-xs backdrop-blur-sm">
+                      <div className="absolute bottom-3 right-3 px-2 py-1 bg-bg-deep/80 text-text-muted rounded-full text-xs backdrop-blur-sm">
                         {course.duration}
                       </div>
                     </div>
@@ -277,17 +277,17 @@ const OnlineCourses: React.FC = () => {
                     <div className="p-5">
                       {/* 分类和级别 */}
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm text-[#4A5F8B] font-medium">{course.category}</span>
-                        <span className="text-xs px-2 py-1 bg-[#1E2532] text-[#B8C6D8] rounded-full">{course.level}</span>
+                        <span className="text-sm text-accent font-medium">{course.category}</span>
+                        <span className="text-xs px-2 py-1 bg-bg-deep text-text-muted rounded-full">{course.level}</span>
                       </div>
                       
                       {/* 课程标题 */}
-                      <h3 className="text-lg font-bold text-[#F5F7FA] mb-2 hover:text-[#4A5F8B] transition-colors">
+                      <h3 className="text-lg font-bold text-text-primary mb-2 hover:text-accent transition-colors">
                         {course.title}
                       </h3>
                       
                       {/* 课程描述 */}
-                      <p className="text-sm text-[#B8C6D8] mb-4 line-clamp-2">
+                      <p className="text-sm text-text-muted mb-4 line-clamp-2">
                         {course.description}
                       </p>
                       
@@ -296,27 +296,27 @@ const OnlineCourses: React.FC = () => {
                         <img
                           src={course.instructor.avatar}
                           alt={course.instructor.name}
-                          className="w-8 h-8 rounded-full mr-2 object-cover border border-[#4A5F8B]"
+                          className="w-8 h-8 rounded-full mr-2 object-cover border border-accent"
                         />
                         <div>
-                          <p className="text-sm font-medium text-[#F5F7FA]">{course.instructor.name}</p>
-                          <p className="text-xs text-[#B8C6D8]">{course.instructor.title}</p>
+                          <p className="text-sm font-medium text-text-primary">{course.instructor.name}</p>
+                          <p className="text-xs text-text-muted">{course.instructor.title}</p>
                         </div>
                       </div>
                       
                       {/* 课程统计 */}
                       <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center space-x-4 text-sm text-[#B8C6D8]">
+                        <div className="flex items-center space-x-4 text-sm text-text-muted">
                           <div className="flex items-center">
                             <i className="fa-solid fa-user mr-1"></i>
                             <span>{course.students.toLocaleString()} 学员</span>
                           </div>
                           <div className="flex items-center">
-                            <i className="fa-solid fa-star mr-1 text-[#4A5F8B]"></i>
+                            <i className="fa-solid fa-star mr-1 text-accent"></i>
                             <span>{course.rating} ({course.reviews.toLocaleString()} 评价)</span>
                           </div>
                         </div>
-                        <div className="text-lg font-bold text-[#4A5F8B]">
+                        <div className="text-lg font-bold text-accent">
                           {course.price === 0 ? '免费' : `¥${course.price}`}
                         </div>
                       </div>
@@ -329,8 +329,8 @@ const OnlineCourses: React.FC = () => {
                             onClick={() => toggleTag(tag)}
                             className={`px-2 py-1 rounded-full text-xs ${
                               selectedTags.includes(tag)
-                                ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                                : 'bg-[#1E2532] text-[#B8C6D8] border border-[#4A5F8B]'
+                                ? 'bg-accent text-text-primary'
+                                : 'bg-bg-deep text-text-muted border border-accent'
                             } transition-colors`}
                           >
                             #{tag}
@@ -341,7 +341,7 @@ const OnlineCourses: React.FC = () => {
                        {/* 操作按钮 - 查看课程 */}
                       <Link
                         to={`/course/${course.id}`}
-                        className="block w-full py-2 text-center bg-gradient-to-r from-[#4A5F8B] to-[#2D3748] text-[#F5F7FA] rounded-lg font-medium transition-colors border border-[#4A5F8B]"
+                        className="block w-full py-2 text-center bg-gradient-to-r from-accent to-bg-card text-text-primary rounded-lg font-medium transition-colors border border-accent"
                       >
                         {course.type === '免费' ? '立即学习' : '开始学习'}
                       </Link>
@@ -354,7 +354,7 @@ const OnlineCourses: React.FC = () => {
                   <motion.div
                     key={tutorial.id}
                     whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-                    className="bg-[#2D3748] rounded-xl overflow-hidden border border-[#4A5F8B] transition-all shadow-sm"
+                    className="bg-bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
                   >
                     {/* 教程图片 */}
                     <div className="relative">
@@ -363,10 +363,10 @@ const OnlineCourses: React.FC = () => {
                         alt={tutorial.title}
                         className="w-full h-48 object-cover"
                       />
-                      <div className="absolute top-3 right-3 px-2 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-full text-xs font-medium">
+                      <div className="absolute top-3 right-3 px-2 py-1 bg-accent text-text-primary rounded-full text-xs font-medium">
                         文字教程
                       </div>
-                      <div className="absolute bottom-3 right-3 px-2 py-1 bg-[#1E2532]/80 text-[#B8C6D8] rounded-full text-xs backdrop-blur-sm">
+                      <div className="absolute bottom-3 right-3 px-2 py-1 bg-bg-deep/80 text-text-muted rounded-full text-xs backdrop-blur-sm">
                         {tutorial.duration}
                       </div>
                     </div>
@@ -375,17 +375,17 @@ const OnlineCourses: React.FC = () => {
                     <div className="p-5">
                       {/* 分类和级别 */}
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm text-[#4A5F8B] font-medium">{tutorial.category}</span>
-                        <span className="text-xs px-2 py-1 bg-[#1E2532] text-[#B8C6D8] rounded-full">{tutorial.level}</span>
+                        <span className="text-sm text-accent font-medium">{tutorial.category}</span>
+                        <span className="text-xs px-2 py-1 bg-bg-deep text-text-muted rounded-full">{tutorial.level}</span>
                       </div>
                       
                       {/* 教程标题 */}
-                      <h3 className="text-lg font-bold text-[#F5F7FA] mb-2 hover:text-[#4A5F8B] transition-colors">
+                      <h3 className="text-lg font-bold text-text-primary mb-2 hover:text-accent transition-colors">
                         {tutorial.title}
                       </h3>
                       
                       {/* 教程描述 */}
-                      <p className="text-sm text-[#B8C6D8] mb-4 line-clamp-2">
+                      <p className="text-sm text-text-muted mb-4 line-clamp-2">
                         {tutorial.description}
                       </p>
                       
@@ -394,21 +394,21 @@ const OnlineCourses: React.FC = () => {
                         <img
                           src={tutorial.author.avatar}
                           alt={tutorial.author.name}
-                          className="w-8 h-8 rounded-full mr-2 object-cover border border-[#4A5F8B]"
+                          className="w-8 h-8 rounded-full mr-2 object-cover border border-accent"
                         />
                         <div>
-                          <p className="text-sm font-medium text-[#F5F7FA]">{tutorial.author.name}</p>
+                          <p className="text-sm font-medium text-text-primary">{tutorial.author.name}</p>
                         </div></div>
                       
                       {/* 教程统计 */}
                       <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center space-x-4 text-sm text-[#B8C6D8]">
+                        <div className="flex items-center space-x-4 text-sm text-text-muted">
                           <div className="flex items-center">
                             <i className="fa-solid fa-eye mr-1"></i>
                             <span>{tutorial.views.toLocaleString()} 阅读</span>
                           </div>
                           <div className="flex items-center">
-                            <i className="fa-solid fa-heart mr-1 text-[#4A5F8B]"></i>
+                            <i className="fa-solid fa-heart mr-1 text-accent"></i>
                             <span>{tutorial.likes.toLocaleString()} 喜欢</span>
                           </div>
                         </div>
@@ -422,8 +422,8 @@ const OnlineCourses: React.FC = () => {
                             onClick={() => toggleTag(tag)}
                             className={`px-2 py-1 rounded-full text-xs ${
                               selectedTags.includes(tag)
-                                ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                                : 'bg-[#1E2532] text-[#B8C6D8] border border-[#4A5F8B]'
+                                ? 'bg-accent text-text-primary'
+                                : 'bg-bg-deep text-text-muted border border-accent'
                             } transition-colors`}
                           >
                             #{tag}
@@ -434,7 +434,7 @@ const OnlineCourses: React.FC = () => {
                        {/* 操作按钮 - 阅读教程 */}
                       <Link
                         to={`/tutorial/${tutorial.id}`}
-                        className="block w-full py-2 text-center bg-gradient-to-r from-[#4A5F8B] to-[#2D3748] text-[#F5F7FA] rounded-lg font-medium transition-colors border border-[#4A5F8B] hover:from-[#6B7C93] hover:to-[#4A5F8B]"
+                        className="block w-full py-2 text-center bg-gradient-to-r from-accent to-bg-card text-text-primary rounded-lg font-medium transition-colors border border-accent hover:from-accent-hover hover:to-accent"
                       >
                         阅读教程
                       </Link>
@@ -445,12 +445,12 @@ const OnlineCourses: React.FC = () => {
               
               {((activeTab === 'courses' && filteredCourses.length === 0) || 
                 (activeTab === 'textTutorials' && filteredTextTutorials.length === 0)) && (
-                <div className="col-span-full p-8 bg-[#2D3748] rounded-xl border border-[#4A5F8B] text-center">
-                  <div className="w-16 h-16 bg-[#1E2532] rounded-full flex items-center justify-center text-[#4A5F8B] mx-auto mb-4">
+                <div className="col-span-full p-8 bg-bg-card rounded-xl border border-accent text-center">
+                  <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                     <i className="fa-solid fa-search text-2xl"></i>
                   </div>
-                  <h3 className="text-lg font-medium text-[#F5F7FA] mb-2">未找到相关{activeTab === 'courses' ? '课程' : '教程'}</h3>
-                  <p className="text-[#B8C6D8]">
+                  <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关{activeTab === 'courses' ? '课程' : '教程'}</h3>
+                  <p className="text-text-muted">
                     请尝试使用不同的关键词或筛选条件
                   </p>
                 </div>
@@ -461,21 +461,21 @@ const OnlineCourses: React.FC = () => {
             {((activeTab === 'courses' && filteredCourses.length > 0) || 
               (activeTab === 'textTutorials' && filteredTextTutorials.length > 0)) && (
               <div className="flex justify-center">
-                <nav className="flex items-center space-x-1 bg-[#2D3748] p-2 rounded-lg border border-[#4A5F8B]">
-                  <button className="px-3 py-2 rounded border border-[#4A5F8B] text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors">
+                <nav className="flex items-center space-x-1 bg-bg-card p-2 rounded-lg border border-accent">
+                  <button className="px-3 py-2 rounded border border-accent text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                     <i className="fa-solid fa-chevron-left text-xs"></i>
                   </button>
-                  <button className="px-3 py-2 rounded border border-[#4A5F8B] bg-[#4A5F8B] text-[#F5F7FA]">
+                  <button className="px-3 py-2 rounded border border-accent bg-accent text-text-primary">
                     1
                   </button>
-                  <button className="px-3 py-2 rounded border border-[#4A5F8B] text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors">
+                  <button className="px-3 py-2 rounded border border-accent text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                     2
                   </button>
-                  <span className="px-2 text-[#B8C6D8]">...</span>
-                  <button className="px-3 py-2 rounded border border-[#4A5F8B] text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors">
+                  <span className="px-2 text-text-muted">...</span>
+                  <button className="px-3 py-2 rounded border border-accent text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                     6
                   </button>
-                  <button className="px-3 py-2 rounded border border-[#4A5F8B] text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors">
+                  <button className="px-3 py-2 rounded border border-accent text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                     <i className="fa-solid fa-chevron-right text-xs"></i>
                   </button>
                 </nav>
@@ -486,12 +486,12 @@ const OnlineCourses: React.FC = () => {
           {/* 侧边栏 */}
           <div className="lg:col-span-1 space-y-6">
             {/* 课程筛选 */}
-            <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
-              <h3 className="text-lg font-bold mb-4 text-[#F5F7FA]">筛选条件</h3>
+            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+              <h3 className="text-lg font-bold mb-4 text-text-primary">筛选条件</h3>
               
               {/* 课程类型 */}
               <div className="mb-6">
-                <h4 className="text-sm font-medium text-[#B8C6D8] mb-3">课程类型</h4>
+                <h4 className="text-sm font-medium text-text-muted mb-3">课程类型</h4>
                 <div className="space-y-2">
                   {courseTypes.map((type) => (
                     <div key={type} className="flex items-center">
@@ -501,11 +501,11 @@ const OnlineCourses: React.FC = () => {
                         name="course-type"
                         checked={selectedType === type}
                         onChange={() => setSelectedType(type)}
-                        className="h-4 w-4 text-[#4A5F8B] focus:ring-[#4A5F8B] border-[#4A5F8B] bg-[#1E2532]"
+                        className="h-4 w-4 text-accent focus:ring-accent border-accent bg-bg-deep"
                       />
                       <label
                         htmlFor={`type-${type}`}
-                        className="ml-2 text-sm text-[#B8C6D8]"
+                        className="ml-2 text-sm text-text-muted"
                       >
                         {type}
                       </label>
@@ -516,7 +516,7 @@ const OnlineCourses: React.FC = () => {
               
               {/* 难度级别 */}
               <div className="mb-6">
-                <h4 className="text-sm font-medium text-[#B8C6D8] mb-3">难度级别</h4>
+                <h4 className="text-sm font-medium text-text-muted mb-3">难度级别</h4>
                 <div className="space-y-2">
                   {difficultyLevels.map((level) => (
                     <div key={level} className="flex items-center">
@@ -526,11 +526,11 @@ const OnlineCourses: React.FC = () => {
                         name="difficulty-level"
                         checked={selectedLevel === level}
                         onChange={() => setSelectedLevel(level)}
-                        className="h-4 w-4 text-[#4A5F8B] focus:ring-[#4A5F8B] border-[#4A5F8B] bg-[#1E2532]"
+                        className="h-4 w-4 text-accent focus:ring-accent border-accent bg-bg-deep"
                       />
                       <label
                         htmlFor={`level-${level}`}
-                        className="ml-2 text-sm text-[#B8C6D8]"
+                        className="ml-2 text-sm text-text-muted"
                       >
                         {level}
                       </label>
@@ -541,16 +541,16 @@ const OnlineCourses: React.FC = () => {
               
               {/* 价格范围 */}
               <div className="mb-6">
-                <h4 className="text-sm font-medium text-[#B8C6D8] mb-3">价格范围</h4>
+                <h4 className="text-sm font-medium text-text-muted mb-3">价格范围</h4>
                 <div className="px-2">
                   <input
                     type="range"
                     min="0"
                     max="500"
                     step="10"
-                    className="w-full h-2 bg-[#1E2532] rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-2 bg-bg-deep rounded-lg appearance-none cursor-pointer"
                   />
-                  <div className="flex justify-between mt-2 text-xs text-[#B8C6D8]">
+                  <div className="flex justify-between mt-2 text-xs text-text-muted">
                     <span>¥0</span>
                     <span>¥500</span>
                   </div>
@@ -558,14 +558,14 @@ const OnlineCourses: React.FC = () => {
               </div>
               
               {/* 应用筛选按钮 */}
-              <button className="w-full py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#3A4B6F] transition-colors border border-[#4A5F8B]">
+              <button className="w-full py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-[#3A4B6F] transition-colors border border-accent">
                 应用筛选
               </button>
             </div>
             
             {/* 热门标签 */}
-            <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
-              <h3 className="text-lg font-bold mb-4 text-[#F5F7FA]">热门标签</h3>
+            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+              <h3 className="text-lg font-bold mb-4 text-text-primary">热门标签</h3>
               <div className="flex flex-wrap gap-2">
                 {popularTags.map((tag) => (
                   <button
@@ -573,8 +573,8 @@ const OnlineCourses: React.FC = () => {
                     onClick={() => toggleTag(tag.name)}
                     className={`px-3 py-1 rounded-full text-sm ${
                       selectedTags.includes(tag.name)
-                        ? 'bg-[#4A5F8B] text-[#F5F7FA] border border-[#4A5F8B]'
-                        : 'bg-[#2D3748] text-[#B8C6D8] border border-[#4A5F8B]'
+                        ? 'bg-accent text-text-primary border border-accent'
+                        : 'bg-bg-card text-text-muted border border-accent'
                     } transition-colors`}
                   >
                     #{tag.name} ({tag.count})
@@ -586,7 +586,7 @@ const OnlineCourses: React.FC = () => {
               {selectedTags.length > 0 && (
                 <button
                   onClick={() => setSelectedTags([])}
-                  className="mt-4 w-full py-2 text-center text-sm text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors"
+                  className="mt-4 w-full py-2 text-center text-sm text-text-muted hover:text-text-primary transition-colors"
                 >
                   <i className="fa-solid fa-times mr-1"></i> 清除所有标签
                 </button>
@@ -594,8 +594,8 @@ const OnlineCourses: React.FC = () => {
             </div>
             
             {/* 推荐讲师 */}
-            <div className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
-              <h3 className="text-lg font-bold mb-4 text-[#F5F7FA]">推荐讲师</h3>
+            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+              <h3 className="text-lg font-bold mb-4 text-text-primary">推荐讲师</h3>
               <div className="space-y-4">
                 {[
                 ].map((instructor) => (
@@ -604,14 +604,14 @@ const OnlineCourses: React.FC = () => {
                       <img
                         src={instructor.avatar}
                         alt={instructor.name}
-                        className="w-12 h-12 rounded-full object-cover border border-[#4A5F8B]"
+                        className="w-12 h-12 rounded-full object-cover border border-accent"
                       />
                       <div>
-                        <p className="font-medium text-[#F5F7FA]">{instructor.name}</p>
-                        <p className="text-xs text-[#4A5F8B]">{instructor.courses} 门课程</p>
+                        <p className="font-medium text-text-primary">{instructor.name}</p>
+                        <p className="text-xs text-accent">{instructor.courses} 门课程</p>
                       </div>
                     </div>
-                    <button className="px-3 py-1 text-xs font-medium text-[#F5F7FA] bg-[#4A5F8B] hover:bg-[#3A4B6F] rounded-full transition-colors">
+                    <button className="px-3 py-1 text-xs font-medium text-text-primary bg-accent hover:bg-[#3A4B6F] rounded-full transition-colors">
                       查看
                     </button>
                   </div>
@@ -620,9 +620,9 @@ const OnlineCourses: React.FC = () => {
             </div>
             
             {/* 会员专区 */}
-            <div className="bg-gradient-to-r from-[#4A5F8B] to-[#6B7C93] rounded-xl p-6 shadow-sm text-[#F5F7FA]">
+            <div className="bg-gradient-to-r from-accent to-accent-hover rounded-xl p-6 shadow-sm text-text-primary">
               <h3 className="text-lg font-bold mb-3">会员专享</h3>
-              <p className="text-sm mb-4 text-[#F5F7FA]">
+              <p className="text-sm mb-4 text-text-primary">
                 开通会员，畅享全部课程，获取专属学习资料和一对一指导
               </p>
               <div className="space-y-2 mb-4">
@@ -643,7 +643,7 @@ const OnlineCourses: React.FC = () => {
                   <span>获取专属学习路径</span>
                 </div>
               </div>
-              <button className="w-full py-2 bg-[#F5F7FA] text-[#4A5F8B] font-medium rounded-lg hover:bg-[#B8C6D8] transition-colors">
+              <button className="w-full py-2 bg-text-primary text-accent font-medium rounded-lg hover:bg-text-muted transition-colors">
                 立即开通
               </button>
             </div>

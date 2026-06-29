@@ -74,7 +74,7 @@ const GroupCard: React.FC<GroupCardProps> = (
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="bg-[#2D3748] rounded-xl overflow-hidden border border-[#4A5F8B] hover:shadow-lg transition-shadow"
+      className="bg-bg-card rounded-xl overflow-hidden border border-accent hover:shadow-lg transition-shadow"
     >
       {/* 封面图 */}
       <div className="relative h-32">
@@ -87,7 +87,7 @@ const GroupCard: React.FC<GroupCardProps> = (
         
         {/* 小组头像 */}
         <div className="absolute bottom-0 left-4 transform translate-y-1/2">
-          <div className="w-16 h-16 rounded-full border-4 border-[#2D3748] overflow-hidden">
+          <div className="w-16 h-16 rounded-full border-4 border-bg-card overflow-hidden">
             <img
               src={group.avatar}
               alt={group.name}
@@ -101,7 +101,7 @@ const GroupCard: React.FC<GroupCardProps> = (
       <div className="p-4 pt-6">
         <div className="flex justify-between items-start mb-2">
           <h3 className="text-lg font-semibold text-white">
-            <Link to={`/groups/${group.id}`} className="hover:text-[#63B3ED] transition-colors">
+            <Link to={`/groups/${group.id}`} className="hover:text-light-accent transition-colors">
               {group.name}
             </Link>
           </h3>
@@ -116,7 +116,7 @@ const GroupCard: React.FC<GroupCardProps> = (
           )}
         </div>
 
-        <p className="text-[#B8C6D8] text-sm mb-3 line-clamp-2">
+        <p className="text-text-muted text-sm mb-3 line-clamp-2">
           {group.description}
         </p>
 
@@ -126,13 +126,13 @@ const GroupCard: React.FC<GroupCardProps> = (
             {group.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-0.5 bg-[#4A5F8B]/30 text-[#B8C6D8] text-xs rounded-full"
+                className="px-2 py-0.5 bg-accent/30 text-text-muted text-xs rounded-full"
               >
                 {tag}
               </span>
             ))}
             {group.tags.length > 3 && (
-              <span className="px-2 py-0.5 bg-[#4A5F8B]/30 text-[#B8C6D8] text-xs rounded-full">
+              <span className="px-2 py-0.5 bg-accent/30 text-text-muted text-xs rounded-full">
                 +{group.tags.length - 3}
               </span>
             )}
@@ -142,11 +142,11 @@ const GroupCard: React.FC<GroupCardProps> = (
         {/* 统计信息和操作按钮 */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4 text-sm">
-            <span className="text-[#B8C6D8]">
+            <span className="text-text-muted">
               <i className="fa-solid fa-users mr-1" />
               {group.members}
             </span>
-            <span className="text-[#B8C6D8]">
+            <span className="text-text-muted">
               <i className="fa-solid fa-message-circle mr-1" />
               {group.posts}
             </span>
@@ -156,8 +156,8 @@ const GroupCard: React.FC<GroupCardProps> = (
             onClick={handleJoinLeave}
             className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               group.joined
-                ? 'bg-[#4A5F8B]/30 text-[#B8C6D8] hover:bg-[#4A5F8B]/50'
-                : 'bg-[#63B3ED] text-white hover:bg-[#4A9DE6]'
+                ? 'bg-accent/30 text-text-muted hover:bg-accent/50'
+                : 'bg-light-accent text-white hover:bg-[#4A9DE6]'
             }`}
           >
             {group.joined ? '退出' : '加入'}

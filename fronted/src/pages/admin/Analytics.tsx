@@ -46,24 +46,24 @@ const Analytics: React.FC = () => {
       {/* 页面标题 */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-[#F5F7FA]">数据分析</h1>
-          <p className="text-[#B8C6D8] mt-1">查看系统各项数据分析报表</p>
+          <h1 className="text-2xl font-bold text-text-primary">数据分析</h1>
+          <p className="text-text-muted mt-1">查看系统各项数据分析报表</p>
         </div>
         <div className="mt-4 md:mt-0 flex items-center space-x-3">
-          <div className="flex bg-[#2D3748] rounded-lg overflow-hidden">
+          <div className="flex bg-bg-card rounded-lg overflow-hidden">
             {['day', 'week', 'month', 'year'].map((range) => (
               <button
                 key={range}
                 onClick={() => setTimeRange(range as 'day' | 'week' | 'month' | 'year')}
                 className={`px-3 py-2 text-sm transition-colors ${
-                  timeRange === range ? 'bg-[#4A5F8B] text-[#F5F7FA]' : 'text-[#B8C6D8] hover:bg-[#4A5F8B]/20'
+                  timeRange === range ? 'bg-accent text-text-primary' : 'text-text-muted hover:bg-accent/20'
                 }`}
               >
                 {range === 'day' ? '日' : range === 'week' ? '周' : range === 'month' ? '月' : '年'}
               </button>
             ))}
           </div>
-          <button className="px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg hover:bg-[#6B7C93] transition-colors text-sm flex items-center">
+          <button className="px-4 py-2 bg-accent text-text-primary rounded-lg hover:bg-accent-hover transition-colors text-sm flex items-center">
             <i className="fa-solid fa-download mr-2"></i>
             导出报表
           </button>
@@ -107,14 +107,14 @@ const Analytics: React.FC = () => {
       </div>
 
       {/* 分析类型标签页 */}
-      <div className="bg-[#2D3748] border border-[#4A5F8B] rounded-xl overflow-hidden">
-        <div className="flex border-b border-[#4A5F8B] flex-wrap">
+      <div className="bg-bg-card border border-accent rounded-xl overflow-hidden">
+        <div className="flex border-b border-accent flex-wrap">
           <button
             onClick={() => setActiveTab('overview')}
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'overview'
-                ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                : 'bg-[#2D3748] text-[#B8C6D8] hover:text-[#F5F7FA]'
+                ? 'bg-accent text-text-primary'
+                : 'bg-bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-chart-pie mr-2"></i>
@@ -124,8 +124,8 @@ const Analytics: React.FC = () => {
             onClick={() => setActiveTab('users')}
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'users'
-                ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                : 'bg-[#2D3748] text-[#B8C6D8] hover:text-[#F5F7FA]'
+                ? 'bg-accent text-text-primary'
+                : 'bg-bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-users mr-2"></i>
@@ -135,8 +135,8 @@ const Analytics: React.FC = () => {
             onClick={() => setActiveTab('content')}
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'content'
-                ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                : 'bg-[#2D3748] text-[#B8C6D8] hover:text-[#F5F7FA]'
+                ? 'bg-accent text-text-primary'
+                : 'bg-bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-images mr-2"></i>
@@ -146,8 +146,8 @@ const Analytics: React.FC = () => {
             onClick={() => setActiveTab('revenue')}
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'revenue'
-                ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                : 'bg-[#2D3748] text-[#B8C6D8] hover:text-[#F5F7FA]'
+                ? 'bg-accent text-text-primary'
+                : 'bg-bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-chart-line mr-2"></i>
@@ -157,8 +157,8 @@ const Analytics: React.FC = () => {
             onClick={() => setActiveTab('engagement')}
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'engagement'
-                ? 'bg-[#4A5F8B] text-[#F5F7FA]'
-                : 'bg-[#2D3748] text-[#B8C6D8] hover:text-[#F5F7FA]'
+                ? 'bg-accent text-text-primary'
+                : 'bg-bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-heart mr-2"></i>
@@ -177,18 +177,18 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-[#1E2532] rounded-xl p-6 border border-[#4A5F8B]"
+                  className="bg-bg-deep rounded-xl p-6 border border-accent"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-lg font-bold text-[#F5F7FA]">用户增长趋势</h2>
+                    <h2 className="text-lg font-bold text-text-primary">用户增长趋势</h2>
                     <div className="flex space-x-2">
                       <div className="flex items-center">
-                        <span className="w-3 h-3 bg-[#4A5F8B] rounded-full mr-1"></span>
-                        <span className="text-xs text-[#B8C6D8]">总用户</span>
+                        <span className="w-3 h-3 bg-accent rounded-full mr-1"></span>
+                        <span className="text-xs text-text-muted">总用户</span>
                       </div>
                       <div className="flex items-center">
-                        <span className="w-3 h-3 bg-[#6B7C93] rounded-full mr-1"></span>
-                        <span className="text-xs text-[#B8C6D8]">新增用户</span>
+                        <span className="w-3 h-3 bg-accent-hover rounded-full mr-1"></span>
+                        <span className="text-xs text-text-muted">新增用户</span>
                       </div>
                     </div>
                   </div>
@@ -235,9 +235,9 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="bg-[#1E2532] rounded-xl p-6 border border-[#4A5F8B]"
+                  className="bg-bg-deep rounded-xl p-6 border border-accent"
                 >
-                  <h2 className="text-lg font-bold text-[#F5F7FA] mb-4">用户活跃度分布</h2>
+                  <h2 className="text-lg font-bold text-text-primary mb-4">用户活跃度分布</h2>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div className="h-60">
                       <ResponsiveContainer width="100%" height="100%">
@@ -272,9 +272,9 @@ const Analytics: React.FC = () => {
                                 className="w-4 h-4 rounded-full mr-2"
                                 style={{ backgroundColor: COLORS[index % COLORS.length] }}
                               ></span>
-                              <span className="text-sm text-[#B8C6D8]">{item.name}</span>
+                              <span className="text-sm text-text-muted">{item.name}</span>
                             </div>
-                            <span className="font-medium text-[#F5F7FA]">{item.value}</span>
+                            <span className="font-medium text-text-primary">{item.value}</span>
                           </div>
                         ))}
                       </div>
@@ -289,22 +289,22 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="bg-[#1E2532] rounded-xl p-6 border border-[#4A5F8B]"
+                  className="bg-bg-deep rounded-xl p-6 border border-accent"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-lg font-bold text-[#F5F7FA]">内容类型统计</h2>
+                    <h2 className="text-lg font-bold text-text-primary">内容类型统计</h2>
                     <div className="flex space-x-2">
                       <div className="flex items-center">
-                        <span className="w-3 h-3 bg-[#4A5F8B] rounded-full mr-1"></span>
-                        <span className="text-xs text-[#B8C6D8]">摄影作品</span>
+                        <span className="w-3 h-3 bg-accent rounded-full mr-1"></span>
+                        <span className="text-xs text-text-muted">摄影作品</span>
                       </div>
                       <div className="flex items-center">
-                        <span className="w-3 h-3 bg-[#6B7C93] rounded-full mr-1"></span>
-                        <span className="text-xs text-[#B8C6D8]">社区帖子</span>
+                        <span className="w-3 h-3 bg-accent-hover rounded-full mr-1"></span>
+                        <span className="text-xs text-text-muted">社区帖子</span>
                       </div>
                       <div className="flex items-center">
                         <span className="w-3 h-3 bg-[#38B2AC] rounded-full mr-1"></span>
-                        <span className="text-xs text-[#B8C6D8]">评论</span>
+                        <span className="text-xs text-text-muted">评论</span>
                       </div>
                     </div>
                   </div>
@@ -331,9 +331,9 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  className="bg-[#1E2532] rounded-xl p-6 border border-[#4A5F8B]"
+                  className="bg-bg-deep rounded-xl p-6 border border-accent"
                 >
-                  <h2 className="text-lg font-bold text-[#F5F7FA] mb-4">热门摄影分类占比</h2>
+                  <h2 className="text-lg font-bold text-text-primary mb-4">热门摄影分类占比</h2>
                   <div className="h-60">
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
@@ -372,10 +372,10 @@ const Analytics: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="bg-[#1E2532] rounded-xl p-6 border border-[#4A5F8B]"
+                className="bg-bg-deep rounded-xl p-6 border border-accent"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-lg font-bold text-[#F5F7FA]">用户增长趋势</h2>
+                  <h2 className="text-lg font-bold text-text-primary">用户增长趋势</h2>
                 </div>
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
@@ -406,9 +406,9 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-[#1E2532] rounded-xl p-6 border border-[#4A5F8B]"
+                  className="bg-bg-deep rounded-xl p-6 border border-accent"
                 >
-                  <h2 className="text-lg font-bold text-[#F5F7FA] mb-4">用户活跃度分布</h2>
+                  <h2 className="text-lg font-bold text-text-primary mb-4">用户活跃度分布</h2>
                   <div className="h-60">
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
@@ -439,9 +439,9 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-[#1E2532] rounded-xl p-6 border border-[#4A5F8B]"
+                  className="bg-bg-deep rounded-xl p-6 border border-accent"
                 >
-                  <h2 className="text-lg font-bold text-[#F5F7FA] mb-4">热门摄影分类占比</h2>
+                  <h2 className="text-lg font-bold text-text-primary mb-4">热门摄影分类占比</h2>
                   <div className="h-60">
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
@@ -480,22 +480,22 @@ const Analytics: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="bg-[#1E2532] rounded-xl p-6 border border-[#4A5F8B]"
+                className="bg-bg-deep rounded-xl p-6 border border-accent"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-lg font-bold text-[#F5F7FA]">内容类型统计</h2>
+                  <h2 className="text-lg font-bold text-text-primary">内容类型统计</h2>
                   <div className="flex space-x-2">
                     <div className="flex items-center">
-                      <span className="w-3 h-3 bg-[#4A5F8B] rounded-full mr-1"></span>
-                      <span className="text-xs text-[#B8C6D8]">摄影作品</span>
+                      <span className="w-3 h-3 bg-accent rounded-full mr-1"></span>
+                      <span className="text-xs text-text-muted">摄影作品</span>
                     </div>
                     <div className="flex items-center">
-                      <span className="w-3 h-3 bg-[#6B7C93] rounded-full mr-1"></span>
-                      <span className="text-xs text-[#B8C6D8]">社区帖子</span>
+                      <span className="w-3 h-3 bg-accent-hover rounded-full mr-1"></span>
+                      <span className="text-xs text-text-muted">社区帖子</span>
                     </div>
                     <div className="flex items-center">
                       <span className="w-3 h-3 bg-[#38B2AC] rounded-full mr-1"></span>
-                      <span className="text-xs text-[#B8C6D8]">评论</span>
+                      <span className="text-xs text-text-muted">评论</span>
                     </div>
                   </div>
                 </div>
@@ -527,10 +527,10 @@ const Analytics: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="bg-[#1E2532] rounded-xl p-6 border border-[#4A5F8B]"
+                className="bg-bg-deep rounded-xl p-6 border border-accent"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-lg font-bold text-[#F5F7FA]">收入趋势</h2>
+                  <h2 className="text-lg font-bold text-text-primary">收入趋势</h2>
                 </div>
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
@@ -560,10 +560,10 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-[#1E2532] rounded-xl p-6 border border-[#4A5F8B]"
+                  className="bg-bg-deep rounded-xl p-6 border border-accent"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-lg font-bold text-[#F5F7FA]">互动趋势</h2>
+                    <h2 className="text-lg font-bold text-text-primary">互动趋势</h2>
                   </div>
                   <div className="h-80">
                     <ResponsiveContainer width="100%" height="100%">
@@ -593,9 +593,9 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="bg-[#1E2532] rounded-xl p-6 border border-[#4A5F8B]"
+                  className="bg-bg-deep rounded-xl p-6 border border-accent"
                 >
-                  <h2 className="text-lg font-bold text-[#F5F7FA] mb-4">热门摄影分类占比</h2>
+                  <h2 className="text-lg font-bold text-text-primary mb-4">热门摄影分类占比</h2>
                   <div className="h-60">
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>

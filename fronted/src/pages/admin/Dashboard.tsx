@@ -52,7 +52,7 @@ const Dashboard: React.FC = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="w-16 h-16 border-4 border-[#4A5F8B] border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -62,17 +62,17 @@ const Dashboard: React.FC = () => {
       {/* 页面标题 */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-[#F5F7FA]">仪表盘</h1>
-          <p className="text-[#B8C6D8] mt-1">欢迎回来，查看系统运行情况</p>
+          <h1 className="text-2xl font-bold text-text-primary">仪表盘</h1>
+          <p className="text-text-muted mt-1">欢迎回来，查看系统运行情况</p>
         </div>
         <div className="flex items-center space-x-3">
-          <div className="flex bg-[#2D3748] rounded-lg overflow-hidden">
+          <div className="flex bg-bg-card rounded-lg overflow-hidden">
             {['day', 'week', 'month'].map((range) => (
               <button
                 key={range}
                 onClick={() => setTimeRange(range as 'day' | 'week' | 'month')}
                 className={`px-4 py-2 text-sm transition-colors ${
-                  timeRange === range ? 'bg-[#4A5F8B] text-[#F5F7FA]' : 'text-[#B8C6D8] hover:bg-[#4A5F8B]/20'
+                  timeRange === range ? 'bg-accent text-text-primary' : 'text-text-muted hover:bg-accent/20'
                 }`}
               >
                 {range === 'day' ? '今日' : range === 'week' ? '本周' : '本月'}
@@ -125,17 +125,17 @@ const Dashboard: React.FC = () => {
       {/* 图表区域 */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* 用户增长趋势 */}
-        <div className="lg:col-span-2 bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B]">
+        <div className="lg:col-span-2 bg-bg-card rounded-xl p-6 border border-accent">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold text-[#F5F7FA]">用户增长趋势</h2>
+            <h2 className="text-lg font-bold text-text-primary">用户增长趋势</h2>
             <div className="flex space-x-2">
               <div className="flex items-center">
-                <span className="w-3 h-3 bg-[#4A5F8B] rounded-full mr-1"></span>
-                <span className="text-xs text-[#B8C6D8]">总用户</span>
+                <span className="w-3 h-3 bg-accent rounded-full mr-1"></span>
+                <span className="text-xs text-text-muted">总用户</span>
               </div>
               <div className="flex items-center">
-                <span className="w-3 h-3 bg-[#6B7C93] rounded-full mr-1"></span>
-                <span className="text-xs text-[#B8C6D8]">新增用户</span>
+                <span className="w-3 h-3 bg-accent-hover rounded-full mr-1"></span>
+                <span className="text-xs text-text-muted">新增用户</span>
               </div>
             </div>
           </div>
@@ -171,8 +171,8 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* 内容分布 */}
-        <div className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B]">
-          <h2 className="text-lg font-bold text-[#F5F7FA] mb-4">内容分布</h2>
+        <div className="bg-bg-card rounded-xl p-6 border border-accent">
+          <h2 className="text-lg font-bold text-text-primary mb-4">内容分布</h2>
           <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -204,8 +204,8 @@ const Dashboard: React.FC = () => {
                   className="w-3 h-3 rounded-full mr-2"
                   style={{ backgroundColor: COLORS[index % COLORS.length] }}
                 ></span>
-                <span className="text-sm text-[#B8C6D8]">{item.name}</span>
-                <span className="ml-auto text-sm font-medium text-[#F5F7FA]">{item.value}</span>
+                <span className="text-sm text-text-muted">{item.name}</span>
+                <span className="ml-auto text-sm font-medium text-text-primary">{item.value}</span>
               </div>
             ))}
           </div>
@@ -215,8 +215,8 @@ const Dashboard: React.FC = () => {
       {/* 订单统计和最近活动 */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* 订单统计 */}
-        <div className="bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B]">
-          <h2 className="text-lg font-bold text-[#F5F7FA] mb-4">订单收入</h2>
+        <div className="bg-bg-card rounded-xl p-6 border border-accent">
+          <h2 className="text-lg font-bold text-text-primary mb-4">订单收入</h2>
           <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={orderStatsData}>
@@ -235,8 +235,8 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* 最近活动 */}
-        <div className="lg:col-span-2 bg-[#2D3748] rounded-xl p-6 border border-[#4A5F8B]">
-          <h2 className="text-lg font-bold text-[#F5F7FA] mb-4">最近活动</h2>
+        <div className="lg:col-span-2 bg-bg-card rounded-xl p-6 border border-accent">
+          <h2 className="text-lg font-bold text-text-primary mb-4">最近活动</h2>
           <div className="space-y-4">
             {recentActivities.map((activity) => (
               <motion.div
@@ -244,9 +244,9 @@ const Dashboard: React.FC = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: activity.id * 0.1 }}
-                className="flex items-start p-3 bg-[#1E2532] rounded-lg border border-[#4A5F8B] hover:border-[#6B7C93] transition-colors"
+                className="flex items-start p-3 bg-bg-deep rounded-lg border border-accent hover:border-accent-hover transition-colors"
               >
-                <div className="w-10 h-10 rounded-full bg-[#4A5F8B]/20 flex items-center justify-center text-[#4A5F8B] mr-3 flex-shrink-0">
+                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-3 flex-shrink-0">
                   <i className={`fa-solid ${
                     activity.type === '用户注册' ? 'fa-user-plus' :
                     activity.type === '作品发布' ? 'fa-image' :
@@ -258,27 +258,27 @@ const Dashboard: React.FC = () => {
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-1">
                     <div className="flex items-center">
-                      <span className="font-medium text-[#F5F7FA]">{activity.user}</span>
-                      <span className="mx-2 text-[#6B7C93]">•</span>
-                      <span className="text-sm text-[#6B7C93]">{activity.time}</span>
+                      <span className="font-medium text-text-primary">{activity.user}</span>
+                      <span className="mx-2 text-accent-hover">•</span>
+                      <span className="text-sm text-accent-hover">{activity.time}</span>
                     </div>
                     <span className={`text-xs px-2 py-0.5 rounded-full ${
                       activity.type === '用户注册' ? 'bg-[#38B2AC]/20 text-[#38B2AC]' :
-                      activity.type === '作品发布' ? 'bg-[#4A5F8B]/20 text-[#4A5F8B]' :
-                      activity.type === '评论' ? 'bg-[#6B7C93]/20 text-[#6B7C93]' :
+                      activity.type === '作品发布' ? 'bg-accent/20 text-accent' :
+                      activity.type === '评论' ? 'bg-accent-hover/20 text-accent-hover' :
                       activity.type === '订单' ? 'bg-[#F6AD55]/20 text-[#F6AD55]' :
                       activity.type === '小组创建' ? 'bg-[#9F7AEA]/20 text-[#9F7AEA]' : 'bg-[#F687B3]/20 text-[#F687B3]'
                     }`}>
                       {activity.type}
                     </span>
                   </div>
-                  <p className="text-[#B8C6D8]">{activity.action}</p>
+                  <p className="text-text-muted">{activity.action}</p>
                 </div>
               </motion.div>
             ))}
           </div>
           <div className="mt-4 text-center">
-            <button className="text-sm text-[#4A5F8B] hover:text-[#6B7C93] transition-colors">
+            <button className="text-sm text-accent hover:text-accent-hover transition-colors">
               查看全部活动
               <i className="fa-solid fa-chevron-right ml-1 text-xs"></i>
             </button>

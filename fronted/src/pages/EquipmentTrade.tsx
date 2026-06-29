@@ -177,15 +177,15 @@ const ContactSellerModal: React.FC<{
           opacity: 0,
           scale: 0.9
         }}
-        className={`w-full max-w-2xl max-h-[90vh] flex flex-col ${theme === 'dark' ? 'bg-[#2D3748] border-[#4A5F8B]' : 'bg-white border-gray-200'} rounded-xl border shadow-lg`}>
+        className={`w-full max-w-2xl max-h-[90vh] flex flex-col ${theme === 'dark' ? 'bg-bg-card border-accent' : 'bg-white border-gray-200'} rounded-xl border shadow-lg`}>
         {/* 模态框头部 */}
         <div
-          className={`flex justify-between items-center p-4 border-b ${theme === 'dark' ? 'border-[#4A5F8B]' : 'border-gray-200'}`}>
-          <h3 className={`font-bold flex items-center ${theme === 'dark' ? 'text-[#F5F7FA]' : 'text-gray-800'}`}>
+          className={`flex justify-between items-center p-4 border-b ${theme === 'dark' ? 'border-accent' : 'border-gray-200'}`}>
+          <h3 className={`font-bold flex items-center ${theme === 'dark' ? 'text-text-primary' : 'text-gray-800'}`}>
             <i className="fa-solid fa-comment-dots mr-2"></i>联系卖家
           </h3>
           <button
-            className={`${theme === 'dark' ? 'text-[#B8C6D8] hover:text-[#F5F7FA]' : 'text-gray-500 hover:text-gray-800'} transition-colors p-1 rounded-full hover:bg-opacity-10`}
+            className={`${theme === 'dark' ? 'text-text-muted hover:text-text-primary' : 'text-gray-500 hover:text-gray-800'} transition-colors p-1 rounded-full hover:bg-opacity-10`}
             onClick={onClose}>
             <i className="fa-solid fa-times"></i>
           </button>
@@ -193,17 +193,17 @@ const ContactSellerModal: React.FC<{
         
         <div className="flex-1 overflow-y-auto flex flex-col">
           {/* 卖家信息 */}
-          <div className={`p-4 border-b ${theme === 'dark' ? 'border-[#4A5F8B]' : 'border-gray-200'}`}>
+          <div className={`p-4 border-b ${theme === 'dark' ? 'border-accent' : 'border-gray-200'}`}>
             <div className="flex items-center">
               <img
                 src={seller.avatar}
                 alt={seller.name}
-                className="w-14 h-14 rounded-full mr-4 object-cover border-2 border-[#4A5F8B]" />
+                className="w-14 h-14 rounded-full mr-4 object-cover border-2 border-accent" />
               <div className="flex-1">
                 <div className="flex items-center justify-between">
-                  <p className={`text-lg font-medium ${theme === 'dark' ? 'text-[#F5F7FA]' : 'text-gray-800'}`}>{seller.name}</p>
+                  <p className={`text-lg font-medium ${theme === 'dark' ? 'text-text-primary' : 'text-gray-800'}`}>{seller.name}</p>
                   {seller.isOfficial && (
-                    <span className="px-2 py-1 bg-[#4A5F8B] text-white text-xs rounded-full flex items-center">
+                    <span className="px-2 py-1 bg-accent text-white text-xs rounded-full flex items-center">
                       <i className="fa-solid fa-check-circle mr-1"></i>官方认证
                     </span>
                   )}
@@ -215,29 +215,29 @@ const ContactSellerModal: React.FC<{
                         key={i}
                         className={`fa-solid fa-star text-xs ${
                           i < Math.floor(seller.rating) 
-                            ? 'text-[#4A5F8B]' 
-                            : theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-300'
+                            ? 'text-accent' 
+                            : theme === 'dark' ? 'text-accent-hover' : 'text-gray-300'
                         }`}
                       ></i>
                     ))}
                   </div>
-                  <span className={`text-xs ml-1 ${theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'}`}>{seller.rating}</span>
-                  <span className={`text-xs mx-1 ${theme === 'dark' ? 'text-[#4A5F8B]' : 'text-gray-400'}`}>|</span>
-                  <span className={`text-xs ${theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'}`}>{seller.completedTransactions}单</span>
-                  <span className={`text-xs mx-1 ${theme === 'dark' ? 'text-[#4A5F8B]' : 'text-gray-400'}`}>|</span>
-                  <span className={`text-xs ${theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'}`}>好评率 {seller.positiveRate || 95}%</span>
+                  <span className={`text-xs ml-1 ${theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'}`}>{seller.rating}</span>
+                  <span className={`text-xs mx-1 ${theme === 'dark' ? 'text-accent' : 'text-gray-400'}`}>|</span>
+                  <span className={`text-xs ${theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'}`}>{seller.completedTransactions}单</span>
+                  <span className={`text-xs mx-1 ${theme === 'dark' ? 'text-accent' : 'text-gray-400'}`}>|</span>
+                  <span className={`text-xs ${theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'}`}>好评率 {seller.positiveRate || 95}%</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <span className={`text-xs ${theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'}`}><i className="fa-solid fa-location-dot mr-1"></i>{seller.location}</span>
-                  <span className={`text-xs ${theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'}`}><i className="fa-solid fa-clock mr-1"></i>平均回复 {seller.avgResponseTime || '30分钟'}</span>
-                  <span className={`text-xs ${theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'}`}><i className="fa-solid fa-calendar-days mr-1"></i>加入 {new Date(seller.joinDate || '2023-01-01').getFullYear()}年</span>
+                  <span className={`text-xs ${theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'}`}><i className="fa-solid fa-location-dot mr-1"></i>{seller.location}</span>
+                  <span className={`text-xs ${theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'}`}><i className="fa-solid fa-clock mr-1"></i>平均回复 {seller.avgResponseTime || '30分钟'}</span>
+                  <span className={`text-xs ${theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'}`}><i className="fa-solid fa-calendar-days mr-1"></i>加入 {new Date(seller.joinDate || '2023-01-01').getFullYear()}年</span>
                 </div>
               </div>
             </div>
           </div>
           
           {/* 消息历史 */}
-          <div className={`flex-1 p-4 space-y-4 overflow-y-auto ${theme === 'dark' ? 'bg-[#1E2532]' : 'bg-gray-50'}`}>
+          <div className={`flex-1 p-4 space-y-4 overflow-y-auto ${theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-50'}`}>
             {messageHistory.length > 0 ? (
               messageHistory.map(msg => (
                 <div 
@@ -248,13 +248,13 @@ const ContactSellerModal: React.FC<{
                     <img
                       src={seller.avatar}
                       alt={seller.name}
-                      className="w-8 h-8 rounded-full mr-2 object-cover border border-[#4A5F8B] flex-shrink-0 mt-1" />
+                      className="w-8 h-8 rounded-full mr-2 object-cover border border-accent flex-shrink-0 mt-1" />
                   )}
                   <div className={`max-w-[80%] ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
                     <div className={`p-3 rounded-lg ${
                       msg.sender === 'user' 
-                        ? `${theme === 'dark' ? 'bg-[#4A5F8B] text-[#F5F7FA]' : 'bg-blue-500 text-white'} rounded-br-none` 
-                        : `${theme === 'dark' ? 'bg-[#2D3748] text-[#F5F7FA]' : 'bg-white text-gray-800 border border-gray-200'} rounded-bl-none`
+                        ? `${theme === 'dark' ? 'bg-accent text-text-primary' : 'bg-blue-500 text-white'} rounded-br-none` 
+                        : `${theme === 'dark' ? 'bg-bg-card text-text-primary' : 'bg-white text-gray-800 border border-gray-200'} rounded-bl-none`
                     }`}>
                       <p>{msg.content}</p>
                       
@@ -262,7 +262,7 @@ const ContactSellerModal: React.FC<{
                       {msg.files && msg.files.length > 0 && (
                         <div className="mt-2 flex flex-wrap gap-2 justify-start">
                           {msg.files.map((file, index) => (
-                            <div key={index} className={`p-2 rounded ${theme === 'dark' ? 'bg-[#1E2532]' : 'bg-gray-100'} flex items-center text-xs`}>
+                            <div key={index} className={`p-2 rounded ${theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-100'} flex items-center text-xs`}>
                               <i className={`fa-solid ${file.type.includes('image') ? 'fa-image' : 'fa-file'} mr-1`}></i>
                               <span className="truncate max-w-[120px]">{file.name}</span>
                             </div>
@@ -270,14 +270,14 @@ const ContactSellerModal: React.FC<{
                         </div>
                       )}
                     </div>
-                    <div className={`mt-1 text-xs ${theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'}`}>
+                    <div className={`mt-1 text-xs ${theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'}`}>
                       {msg.timestamp} {msg.sender === 'user' && msg.isRead && <><i className="fa-solid fa-check-double ml-1 text-green-500"></i> 已读</>}
                     </div>
                   </div>
                 </div>
               ))
             ) : (
-              <div className={`text-center py-8 ${theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-500'}`}>
+              <div className={`text-center py-8 ${theme === 'dark' ? 'text-text-muted' : 'text-gray-500'}`}>
                 <i className="fa-solid fa-comment-slash text-4xl mb-2"></i>
                 <p>暂无消息记录，开始您的对话吧</p>
               </div>
@@ -285,7 +285,7 @@ const ContactSellerModal: React.FC<{
             
             {isMessageSent && (
               <div className="text-center animate-pulse">
-                <span className={`inline-block px-4 py-2 rounded-lg ${theme === 'dark' ? 'bg-[#2D3748]' : 'bg-gray-100'}`}>
+                <span className={`inline-block px-4 py-2 rounded-lg ${theme === 'dark' ? 'bg-bg-card' : 'bg-gray-100'}`}>
                   消息发送中...
                 </span>
               </div>
@@ -293,10 +293,10 @@ const ContactSellerModal: React.FC<{
           </div>
           
           {/* 表单区域 */}
-          <div className={`p-4 border-t ${theme === 'dark' ? 'border-[#4A5F8B] bg-[#2D3748]' : 'border-gray-200 bg-white'}`}>
+          <div className={`p-4 border-t ${theme === 'dark' ? 'border-accent bg-bg-card' : 'border-gray-200 bg-white'}`}>
             {/* 消息模板 */}
             <div className="mb-4">
-              <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-700'}`}>快速模板</label>
+              <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-text-muted' : 'text-gray-700'}`}>快速模板</label>
               <div className="flex flex-wrap gap-2">
                 {messageTemplates.map((template, index) => (
                   <motion.button
@@ -306,7 +306,7 @@ const ContactSellerModal: React.FC<{
                     onClick={() => selectTemplate(template)}
                     className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${
                       theme === 'dark' 
-                        ? 'bg-[#1E2532] text-[#B8C6D8] hover:bg-[#4A5F8B]/30 border border-[#4A5F8B]' 
+                        ? 'bg-bg-deep text-text-muted hover:bg-accent/30 border border-accent' 
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
                     }`}>
                     {template}
@@ -317,7 +317,7 @@ const ContactSellerModal: React.FC<{
             
             {/* 联系方式 */}
             <div className="mb-4">
-              <label className={`block text-sm font-medium mb-1 ${theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-700'}`}>联系方式 <span className="text-red-500">*</span></label>
+              <label className={`block text-sm font-medium mb-1 ${theme === 'dark' ? 'text-text-muted' : 'text-gray-700'}`}>联系方式 <span className="text-red-500">*</span></label>
               <input
                 type="text"
                 value={contactInfo}
@@ -330,18 +330,18 @@ const ContactSellerModal: React.FC<{
                 placeholder="请输入邮箱或手机号"
                 className={`w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 transition-all ${
                   theme === 'dark' 
-                    ? `bg-[#1E2532] border ${errors.contactInfo ? 'border-[#F56565]' : 'border-[#4A5F8B]'} text-[#F5F7FA] focus:ring-[#4A5F8B]` 
+                    ? `bg-bg-deep border ${errors.contactInfo ? 'border-danger' : 'border-accent'} text-text-primary focus:ring-accent` 
                     : `bg-white border ${errors.contactInfo ? 'border-red-500' : 'border-gray-300'} text-gray-800 focus:ring-blue-500`
                 }`}
               />
               {errors.contactInfo && (
-                <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#F56565]' : 'text-red-500'}`}>{errors.contactInfo}</p>
+                <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-danger' : 'text-red-500'}`}>{errors.contactInfo}</p>
               )}
             </div>
             
             {/* 消息输入框 */}
             <div className="mb-4">
-              <label className={`block text-sm font-medium mb-1 ${theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-700'}`}>发送消息 <span className="text-red-500">*</span></label>
+              <label className={`block text-sm font-medium mb-1 ${theme === 'dark' ? 'text-text-muted' : 'text-gray-700'}`}>发送消息 <span className="text-red-500">*</span></label>
               <textarea
                 value={message}
                 onChange={e => {
@@ -353,21 +353,21 @@ const ContactSellerModal: React.FC<{
                 placeholder="请输入您想咨询的内容..."
                 className={`w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 transition-all resize-none h-32 ${
                   theme === 'dark' 
-                    ? `bg-[#1E2532] border ${errors.message ? 'border-[#F56565]' : 'border-[#4A5F8B]'} text-[#F5F7FA] focus:ring-[#4A5F8B]` 
+                    ? `bg-bg-deep border ${errors.message ? 'border-danger' : 'border-accent'} text-text-primary focus:ring-accent` 
                     : `bg-white border ${errors.message ? 'border-red-500' : 'border-gray-300'} text-gray-800 focus:ring-blue-500`
                 }`}
               ></textarea>
               {errors.message && (
-                <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#F56565]' : 'text-red-500'}`}>{errors.message}</p>
+                <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-danger' : 'text-red-500'}`}>{errors.message}</p>
               )}
             </div>
             
             {/* 文件上传区域 */}
             <div className="mb-4">
-              <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-700'}`}>上传附件</label>
+              <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-text-muted' : 'text-gray-700'}`}>上传附件</label>
               <div className={`border-2 border-dashed rounded-lg p-4 text-center cursor-pointer transition-all ${
                 theme === 'dark' 
-                  ? 'border-[#4A5F8B] hover:border-[#6B7C93] hover:bg-[#1E2532]' 
+                  ? 'border-accent hover:border-accent-hover hover:bg-bg-deep' 
                   : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
               }`}>
                 <input
@@ -379,9 +379,9 @@ const ContactSellerModal: React.FC<{
                   accept="image/*,.pdf,.doc,.docx"
                 />
                 <label htmlFor="file-upload" className="cursor-pointer">
-                  <i className={`fa-solid fa-cloud-arrow-up text-2xl mb-2 ${theme === 'dark' ? 'text-[#4A5F8B]' : 'text-gray-500'}`}></i>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-[#F5F7FA]' : 'text-gray-800'}`}>点击上传附件或拖拽文件到此处</p>
-                  <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'}`}>支持 JPG、PNG、PDF、Word 格式，单个文件不超过 10MB，最多上传3个文件</p>
+                  <i className={`fa-solid fa-cloud-arrow-up text-2xl mb-2 ${theme === 'dark' ? 'text-accent' : 'text-gray-500'}`}></i>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-text-primary' : 'text-gray-800'}`}>点击上传附件或拖拽文件到此处</p>
+                  <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'}`}>支持 JPG、PNG、PDF、Word 格式，单个文件不超过 10MB，最多上传3个文件</p>
                 </label>
               </div>
               
@@ -389,17 +389,17 @@ const ContactSellerModal: React.FC<{
               {uploadedFiles.length > 0 && (
                 <div className="mt-3 space-y-2">
                   {uploadedFiles.map((file, index) => (
-                    <div key={index} className={`flex items-center justify-between p-2 rounded-lg ${theme === 'dark' ? 'bg-[#1E2532]' : 'bg-gray-100'}`}>
+                    <div key={index} className={`flex items-center justify-between p-2 rounded-lg ${theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-100'}`}>
                       <div className="flex items-center">
-                        <i className={`fa-solid ${file.type.includes('image') ? 'fa-image' : 'fa-file'} mr-2 ${theme === 'dark' ? 'text-[#4A5F8B]' : 'text-gray-500'}`}></i>
-                        <span className={`text-sm truncate max-w-[200px] ${theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-700'}`}>{file.name}</span>
-                        <span className={`text-xs ml-2 ${theme === 'dark' ? 'text-[#6B7C93]' : 'text-gray-500'}`}>
+                        <i className={`fa-solid ${file.type.includes('image') ? 'fa-image' : 'fa-file'} mr-2 ${theme === 'dark' ? 'text-accent' : 'text-gray-500'}`}></i>
+                        <span className={`text-sm truncate max-w-[200px] ${theme === 'dark' ? 'text-text-muted' : 'text-gray-700'}`}>{file.name}</span>
+                        <span className={`text-xs ml-2 ${theme === 'dark' ? 'text-accent-hover' : 'text-gray-500'}`}>
                           {(file.size / 1024 / 1024).toFixed(1)}MB
                         </span>
                       </div>
                       <button
                         onClick={() => removeFile(index)}
-                        className={`p-1 rounded-full ${theme === 'dark' ? 'hover:bg-[#4A5F8B] text-[#F5F7FA]' : 'hover:bg-gray-200 text-gray-700'}`}
+                        className={`p-1 rounded-full ${theme === 'dark' ? 'hover:bg-accent text-text-primary' : 'hover:bg-gray-200 text-gray-700'}`}
                       >
                         <i className="fa-solid fa-times"></i>
                       </button>
@@ -411,7 +411,7 @@ const ContactSellerModal: React.FC<{
               {isUploading && (
                 <div className="mt-3 flex items-center">
                   <i className="fa-solid fa-spinner fa-spin mr-2"></i>
-                  <span className={`text-sm ${theme === 'dark' ? 'text-[#B8C6D8]' : 'text-gray-700'}`}>上传中...</span>
+                  <span className={`text-sm ${theme === 'dark' ? 'text-text-muted' : 'text-gray-700'}`}>上传中...</span>
                 </div>
               )}
             </div>
@@ -422,7 +422,7 @@ const ContactSellerModal: React.FC<{
                 onClick={onClose}
                 className={`flex-1 py-3 rounded-lg font-medium transition-colors ${
                   theme === 'dark' 
-                    ? 'bg-[#2D3748] text-[#B8C6D8] hover:bg-[#4A5F8B] hover:text-[#F5F7FA] border border-[#4A5F8B]' 
+                    ? 'bg-bg-card text-text-muted hover:bg-accent hover:text-text-primary border border-accent' 
                     : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
                 }`}>
                 取消
@@ -431,7 +431,7 @@ const ContactSellerModal: React.FC<{
                 onClick={handleSubmit}
                 className={`flex-1 py-3 rounded-lg font-medium transition-colors flex items-center justify-center ${
                   theme === 'dark' 
-                    ? 'bg-[#4A5F8B] text-[#F5F7FA] hover:bg-[#6B7C93]' 
+                    ? 'bg-accent text-text-primary hover:bg-accent-hover' 
                     : 'bg-blue-500 text-white hover:bg-blue-600'
                 }`}>
                 {isUploading ? (
@@ -693,8 +693,8 @@ const PublishEquipmentForm: React.FC<{
                                     (currentStep === 'details' && step.id === 'basicInfo') || 
                                     (currentStep === 'images' && (step.id === 'basicInfo' || step.id === 'details')) ||
                                     (currentStep === 'review' && (step.id === 'basicInfo' || step.id === 'details' || step.id === 'images'))
-                                        ? 'bg-[#4A5F8B] text-white'
-                                        : 'bg-[#2D3748] text-[#6B7C93] border border-[#4A5F8B]'
+                                        ? 'bg-accent text-white'
+                                        : 'bg-bg-card text-accent-hover border border-accent'
                                 }`}
                             >
                                 <i className={`fa-solid ${step.icon}`}></i>
@@ -702,17 +702,17 @@ const PublishEquipmentForm: React.FC<{
                             <span 
                                 className={`text-xs ${
                                     currentStep === step.id 
-                                        ? 'text-[#F5F7FA] font-medium' 
-                                        : 'text-[#6B7C93]'
+                                        ? 'text-text-primary font-medium' 
+                                        : 'text-accent-hover'
                                 }`}
                             >
                                 {step.label}
                             </span>
                         </div>
                         {step.id !== 'review' && (
-                            <div className="flex-1 h-1 mx-2 bg-[#2D3748]">
+                            <div className="flex-1 h-1 mx-2 bg-bg-card">
                                 <div 
-                                    className="h-full bg-[#4A5F8B] transition-all duration-500"
+                                    className="h-full bg-accent transition-all duration-500"
                                     style={{
                                         width: 
                                             currentStep === 'basicInfo' ? '0%' :
@@ -726,7 +726,7 @@ const PublishEquipmentForm: React.FC<{
                 ))}
             </div>
             {Object.keys(errors).length > 0 && (
-                <div className="bg-[#4A1A1A]/30 border border-[#F56565]/50 rounded-lg p-3 text-[#F56565] text-sm mt-4">
+                <div className="bg-[#4A1A1A]/30 border border-danger/50 rounded-lg p-3 text-danger text-sm mt-4">
                     <i className="fa-solid fa-exclamation-circle mr-1"></i>
                     {Object.values(errors)[0]}
                 </div>
@@ -743,44 +743,44 @@ const PublishEquipmentForm: React.FC<{
             className="space-y-6"
         >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className={`space-y-1.5 ${errors.name ? 'text-[#F56565]' : 'text-[#B8C6D8]'}`}>
+                <div className={`space-y-1.5 ${errors.name ? 'text-danger' : 'text-text-muted'}`}>
                     <label className="block text-sm font-medium">器材名称 *</label>
                     <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-3 bg-[#1E2532] border ${errors.name ? 'border-[#F56565]' : 'border-[#4A5F8B]'} text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all`}
+                        className={`w-full px-4 py-3 bg-bg-deep border ${errors.name ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all`}
                         placeholder="例如：索尼 A7R IV" 
                     />
                     {errors.name && <p className="text-xs mt-1">{errors.name}</p>}
                 </div>
-                <div className={`space-y-1.5 ${errors.type ? 'text-[#F56565]' : 'text-[#B8C6D8]'}`}>
+                <div className={`space-y-1.5 ${errors.type ? 'text-danger' : 'text-text-muted'}`}>
                     <label className="block text-sm font-medium">器材类型 *</label>
                     <select
                         name="type"
                         value={formData.type}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-3 bg-[#1E2532] border ${errors.type ? 'border-[#F56565]' : 'border-[#4A5F8B]'} text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer`}
+                        className={`w-full px-4 py-3 bg-bg-deep border ${errors.type ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer`}
                     >
                         {equipmentTypes.filter(t => t !== "全部").map(type => <option key={type} value={type}>{type}</option>)}
                     </select>
                     {errors.type && <p className="text-xs mt-1">{errors.type}</p>}
                 </div>
-                <div className={`space-y-1.5 ${errors.brand ? 'text-[#F56565]' : 'text-[#B8C6D8]'}`}>
+                <div className={`space-y-1.5 ${errors.brand ? 'text-danger' : 'text-text-muted'}`}>
                     <label className="block text-sm font-medium">品牌 *</label>
                     <select
                         name="brand"
                         value={formData.brand}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-3 bg-[#1E2532] border ${errors.brand ? 'border-[#F56565]' : 'border-[#4A5F8B]'} text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer`}
+                        className={`w-full px-4 py-3 bg-bg-deep border ${errors.brand ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer`}
                     >
                         <option value="">请选择品牌</option>
                         {brands.filter(b => b !== "全部").map(brand => <option key={brand} value={brand}>{brand}</option>)}
                     </select>
                     {errors.brand && <p className="text-xs mt-1">{errors.brand}</p>}
                 </div>
-                <div className={`space-y-1.5 ${errors.price ? 'text-[#F56565]' : 'text-[#B8C6D8]'}`}>
+                <div className={`space-y-1.5 ${errors.price ? 'text-danger' : 'text-text-muted'}`}>
                     <label className="block text-sm font-medium">价格 *</label>
                     <div className="relative">
                         <input
@@ -788,56 +788,56 @@ const PublishEquipmentForm: React.FC<{
                             name="price"
                             value={formData.price}
                             onChange={handleInputChange}
-                            className={`w-full pl-10 pr-4 py-3 bg-[#1E2532] border ${errors.price ? 'border-[#F56565]' : 'border-[#4A5F8B]'} text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all`}
+                            className={`w-full pl-10 pr-4 py-3 bg-bg-deep border ${errors.price ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all`}
                             placeholder="请输入价格" 
                             min="0"
                             step="0.01"
                         />
-                        <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#6B7C93]">¥</div>
+                        <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-accent-hover">¥</div>
                     </div>
                     {errors.price && <p className="text-xs mt-1">{errors.price}</p>}
                 </div>
-                <div className={`space-y-1.5 ${errors.condition ? 'text-[#F56565]' : 'text-[#B8C6D8]'}`}>
+                <div className={`space-y-1.5 ${errors.condition ? 'text-danger' : 'text-text-muted'}`}>
                     <label className="block text-sm font-medium">成色 *</label>
                     <select
                         name="condition"
                         value={formData.condition}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-3 bg-[#1E2532] border ${errors.condition ? 'border-[#F56565]' : 'border-[#4A5F8B]'} text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer`}
+                        className={`w-full px-4 py-3 bg-bg-deep border ${errors.condition ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer`}
                     >
                         {conditions.filter(c => c !== "全部").map(condition => <option key={condition} value={condition}>{condition}</option>)}
                     </select>
                     {errors.condition && <p className="text-xs mt-1">{errors.condition}</p>}
                 </div>
-                <div className="space-y-1.5 text-[#B8C6D8]">
+                <div className="space-y-1.5 text-text-muted">
                     <label className="block text-sm font-medium">使用时长</label>
                     <input
                         type="text"
                         name="usageTime"
                         value={formData.usageTime}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                        className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                         placeholder="例如：约1年" 
                     />
                 </div>
-                <div className="space-y-1.5 text-[#B8C6D8]">
+                <div className="space-y-1.5 text-text-muted">
                     <label className="block text-sm font-medium">快门次数（相机）</label>
                     <input
                         type="text"
                         name="shutterCount"
                         value={formData.shutterCount}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                        className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                         placeholder="例如：8500次" 
                     />
                 </div>
-                <div className="space-y-1.5 text-[#B8C6D8]">
+                <div className="space-y-1.5 text-text-muted">
                     <label className="block text-sm font-medium">维修记录</label>
                     <select
                         name="repairHistory"
                         value={formData.repairHistory}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer"
+                        className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
                     >
                         <option value="">请选择</option>
                         <option value="无维修记录">无维修记录</option>
@@ -857,18 +857,18 @@ const PublishEquipmentForm: React.FC<{
             transition={{ duration: 0.3 }}
             className="space-y-6"
         >
-            <div className={`space-y-1.5 ${errors.description ? 'text-[#F56565]' : 'text-[#B8C6D8]'}`}>
+            <div className={`space-y-1.5 ${errors.description ? 'text-danger' : 'text-text-muted'}`}>
                 <label className="block text-sm font-medium">器材描述 *</label>
                 <textarea
                     name="description"
                     value={formData.description}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 bg-[#1E2532] border ${errors.description ? 'border-[#F56565]' : 'border-[#4A5F8B]'} text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all resize-none min-h-[120px]`}
+                    className={`w-full px-4 py-3 bg-bg-deep border ${errors.description ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none min-h-[120px]`}
                     placeholder="请详细描述器材的使用情况、外观状态、购买时间等信息..."
                     rows={5}
                 ></textarea>
                 {errors.description && <p className="text-xs mt-1">{errors.description}</p>}
-                <div className="flex justify-between text-xs text-[#6B7C93]">
+                <div className="flex justify-between text-xs text-accent-hover">
                     <span>建议填写10-500字，越详细越容易出售</span>
                     <span>{formData.description.length}/500</span>
                 </div>
@@ -876,12 +876,12 @@ const PublishEquipmentForm: React.FC<{
             
             <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                    <label className="block text-sm font-medium text-[#B8C6D8]">配件清单</label>
+                    <label className="block text-sm font-medium text-text-muted">配件清单</label>
                     <button
                         type="button"
                         onClick={addAccessory}
                         disabled={formData.accessories.length >= 10}
-                        className={`text-sm px-3 py-1 rounded-lg ${formData.accessories.length >= 10 ? 'bg-[#2D3748] text-[#6B7C93] cursor-not-allowed' : 'bg-[#4A5F8B] text-[#F5F7FA] hover:bg-[#6B7C93]'} transition-colors flex items-center`}
+                        className={`text-sm px-3 py-1 rounded-lg ${formData.accessories.length >= 10 ? 'bg-bg-card text-accent-hover cursor-not-allowed' : 'bg-accent text-text-primary hover:bg-accent-hover'} transition-colors flex items-center`}
                     >
                         <i className="fa-solid fa-plus mr-1"></i>添加配件
                     </button>
@@ -900,13 +900,13 @@ const PublishEquipmentForm: React.FC<{
                                 type="text"
                                 value={accessory}
                                 onChange={e => handleAccessoryChange(index, e.target.value)}
-                                className="flex-1 px-4 py-3 bg-[#1E2532] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all"
+                                className="flex-1 px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                                 placeholder={`配件 ${index + 1}（例如：原装电池、充电器、相机包等）`} 
                             />
                             <button
                                 type="button"
                                 onClick={() => removeAccessory(index)}
-                                className="ml-2 w-10 h-10 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#F56565] transition-colors flex items-center justify-center"
+                                className="ml-2 w-10 h-10 bg-accent text-text-primary rounded-lg font-medium hover:bg-danger transition-colors flex items-center justify-center"
                                 disabled={formData.accessories.length <= 1}
                             >
                                 <i className="fa-solid fa-minus"></i>
@@ -926,10 +926,10 @@ const PublishEquipmentForm: React.FC<{
             transition={{ duration: 0.3 }}
             className="space-y-6"
         >
-            <div className={`space-y-1.5 ${errors.images ? 'text-[#F56565]' : 'text-[#B8C6D8]'}`}>
+            <div className={`space-y-1.5 ${errors.images ? 'text-danger' : 'text-text-muted'}`}>
                 <label className="block text-sm font-medium">上传图片（至少一张）</label>
                 <div 
-                    className={`border-2 ${errors.images ? 'border-[#F56565]' : 'border-[#4A5F8B]'} ${isDragOver ? 'border-dotted border-[#4A5F8B] bg-[#1E2532]' : 'border-dashed bg-transparent'} rounded-lg p-8 text-center hover:bg-[#1E2532] transition-all cursor-pointer relative overflow-hidden`}
+                    className={`border-2 ${errors.images ? 'border-danger' : 'border-accent'} ${isDragOver ? 'border-dotted border-accent bg-bg-deep' : 'border-dashed bg-transparent'} rounded-lg p-8 text-center hover:bg-bg-deep transition-all cursor-pointer relative overflow-hidden`}
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
                     onDrop={handleDrop}
@@ -947,10 +947,10 @@ const PublishEquipmentForm: React.FC<{
                             animate={isDragOver ? { scale: 1.1 } : { scale: 1 }}
                             transition={{ duration: 0.3 }}
                         >
-                            <i className="fa-solid fa-cloud-arrow-up text-3xl text-[#4A5F8B] mb-3"></i>
-                            <p className="text-sm font-medium text-[#F5F7FA] mb-1">点击或拖拽文件到此处上传</p>
-                            <p className="text-xs text-[#6B7C93]">支持 JPG、PNG 格式，单张最大 10MB，最多上传8张</p>
-                            <div className="mt-4 inline-block px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg text-sm font-medium hover:bg-[#6B7C93] transition-colors">
+                            <i className="fa-solid fa-cloud-arrow-up text-3xl text-accent mb-3"></i>
+                            <p className="text-sm font-medium text-text-primary mb-1">点击或拖拽文件到此处上传</p>
+                            <p className="text-xs text-accent-hover">支持 JPG、PNG 格式，单张最大 10MB，最多上传8张</p>
+                            <div className="mt-4 inline-block px-4 py-2 bg-accent text-text-primary rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors">
                                 选择图片
                             </div>
                         </motion.div>
@@ -961,7 +961,7 @@ const PublishEquipmentForm: React.FC<{
             
             {formData.images.length > 0 && (
                 <div>
-                    <p className="text-sm text-[#6B7C93] mb-3">已上传 {formData.images.length} 张图片</p>
+                    <p className="text-sm text-accent-hover mb-3">已上传 {formData.images.length} 张图片</p>
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                         {formData.images.map((image, index) => (
                             <motion.div 
@@ -980,7 +980,7 @@ const PublishEquipmentForm: React.FC<{
                                     <button
                                         type="button"
                                         onClick={() => removeImage(index)}
-                                        className="w-8 h-8 rounded-full bg-[#F56565] text-white flex items-center justify-center hover:bg-[#E53E3E] transition-colors"
+                                        className="w-8 h-8 rounded-full bg-danger text-white flex items-center justify-center hover:bg-danger transition-colors"
                                     >
                                         <i className="fa-solid fa-trash text-xs"></i>
                                     </button>
@@ -994,22 +994,22 @@ const PublishEquipmentForm: React.FC<{
                 </div>
             )}
             
-            <div className="bg-[#1E2532] border border-[#4A5F8B] rounded-lg p-4">
-                <h4 className="text-sm font-medium text-[#F5F7FA] mb-2 flex items-center">
-                    <i className="fa-solid fa-circle-info text-[#4A5F8B] mr-2"></i>
+            <div className="bg-bg-deep border border-accent rounded-lg p-4">
+                <h4 className="text-sm font-medium text-text-primary mb-2 flex items-center">
+                    <i className="fa-solid fa-circle-info text-accent mr-2"></i>
                     图片上传小贴士
                 </h4>
-                <ul className="text-xs text-[#B8C6D8] space-y-1">
+                <ul className="text-xs text-text-muted space-y-1">
                     <li className="flex items-start">
-                        <i className="fa-solid fa-check-circle text-[#48BB78] mr-2 mt-0.5"></i>
+                        <i className="fa-solid fa-check-circle text-success mr-2 mt-0.5"></i>
                         <span>拍摄多角度清晰图片，包括主体、细节和配件</span>
                     </li>
                     <li className="flex items-start">
-                        <i className="fa-solid fa-check-circle text-[#48BB78] mr-2 mt-0.5"></i>
+                        <i className="fa-solid fa-check-circle text-success mr-2 mt-0.5"></i>
                         <span>突出显示成色、划痕等重要细节</span>
                     </li>
                     <li className="flex items-start">
-                        <i className="fa-solid fa-check-circle text-[#48BB78] mr-2 mt-0.5"></i>
+                        <i className="fa-solid fa-check-circle text-success mr-2 mt-0.5"></i>
                         <span>在光线充足的环境下拍摄，避免模糊和反光</span>
                     </li>
                 </ul>
@@ -1025,68 +1025,68 @@ const PublishEquipmentForm: React.FC<{
             transition={{ duration: 0.3 }}
             className="space-y-6"
         >
-            <div className="bg-[#1E2532] rounded-lg p-6 border border-[#4A5F8B]">
-                <h3 className="text-lg font-bold text-[#F5F7FA] mb-4">确认发布信息</h3>
+            <div className="bg-bg-deep rounded-lg p-6 border border-accent">
+                <h3 className="text-lg font-bold text-text-primary mb-4">确认发布信息</h3>
                 <div className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <p className="text-xs text-[#6B7C93] mb-1">器材名称</p>
-                            <p className="font-medium text-[#F5F7FA]">{formData.name}</p>
+                            <p className="text-xs text-accent-hover mb-1">器材名称</p>
+                            <p className="font-medium text-text-primary">{formData.name}</p>
                         </div>
                         <div>
-                            <p className="text-xs text-[#6B7C93] mb-1">器材类型</p>
-                            <p className="font-medium text-[#F5F7FA]">{formData.type}</p>
+                            <p className="text-xs text-accent-hover mb-1">器材类型</p>
+                            <p className="font-medium text-text-primary">{formData.type}</p>
                         </div>
                         <div>
-                            <p className="text-xs text-[#6B7C93] mb-1">品牌</p>
-                            <p className="font-medium text-[#F5F7FA]">{formData.brand}</p>
+                            <p className="text-xs text-accent-hover mb-1">品牌</p>
+                            <p className="font-medium text-text-primary">{formData.brand}</p>
                         </div>
                         <div>
-                            <p className="text-xs text-[#6B7C93] mb-1">价格</p>
-                            <p className="font-medium text-[#F56565]">¥{formData.price}</p>
+                            <p className="text-xs text-accent-hover mb-1">价格</p>
+                            <p className="font-medium text-danger">¥{formData.price}</p>
                         </div>
                         <div>
-                            <p className="text-xs text-[#6B7C93] mb-1">成色</p>
-                            <p className="font-medium text-[#F5F7FA]">{formData.condition}</p>
+                            <p className="text-xs text-accent-hover mb-1">成色</p>
+                            <p className="font-medium text-text-primary">{formData.condition}</p>
                         </div>
                         <div>
-                            <p className="text-xs text-[#6B7C93] mb-1">使用时长</p>
-                            <p className="font-medium text-[#F5F7FA]">{formData.usageTime || '未填写'}</p>
+                            <p className="text-xs text-accent-hover mb-1">使用时长</p>
+                            <p className="font-medium text-text-primary">{formData.usageTime || '未填写'}</p>
                         </div>
                         <div>
-                            <p className="text-xs text-[#6B7C93] mb-1">快门次数</p>
-                            <p className="font-medium text-[#F5F7FA]">{formData.shutterCount || '未填写'}</p>
+                            <p className="text-xs text-accent-hover mb-1">快门次数</p>
+                            <p className="font-medium text-text-primary">{formData.shutterCount || '未填写'}</p>
                         </div>
                         <div>
-                            <p className="text-xs text-[#6B7C93] mb-1">维修记录</p>
-                            <p className="font-medium text-[#F5F7FA]">{formData.repairHistory || '未填写'}</p>
+                            <p className="text-xs text-accent-hover mb-1">维修记录</p>
+                            <p className="font-medium text-text-primary">{formData.repairHistory || '未填写'}</p>
                         </div>
                     </div>
                     
                     <div>
-                        <p className="text-xs text-[#6B7C93] mb-1">器材描述</p>
-                        <p className="font-medium text-[#F5F7FA] whitespace-pre-wrap">{formData.description}</p>
+                        <p className="text-xs text-accent-hover mb-1">器材描述</p>
+                        <p className="font-medium text-text-primary whitespace-pre-wrap">{formData.description}</p>
                     </div>
                     
                     <div>
-                        <p className="text-xs text-[#6B7C93] mb-1">配件清单</p>
+                        <p className="text-xs text-accent-hover mb-1">配件清单</p>
                         <div className="flex flex-wrap gap-2">
                             {formData.accessories.filter(a => a.trim()).map((accessory, index) => (
                                 <span 
                                     key={index} 
-                                    className="px-3 py-1 bg-[#4A5F8B]/20 text-[#4A5F8B] text-xs rounded-full"
+                                    className="px-3 py-1 bg-accent/20 text-accent text-xs rounded-full"
                                 >
                                     {accessory}
                                 </span>
                             ))}
                             {formData.accessories.filter(a => a.trim()).length === 0 && (
-                                <span className="text-xs text-[#6B7C93]">未填写配件</span>
+                                <span className="text-xs text-accent-hover">未填写配件</span>
                             )}
                         </div>
                     </div>
                     
                     <div>
-                        <p className="text-xs text-[#6B7C93] mb-2">上传图片 ({formData.images.length}张)</p>
+                        <p className="text-xs text-accent-hover mb-2">上传图片 ({formData.images.length}张)</p>
                         <div className="flex overflow-x-auto gap-2 pb-2">
                             {formData.images.map((image, index) => (
                                 <div key={index} className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden">
@@ -1102,22 +1102,22 @@ const PublishEquipmentForm: React.FC<{
                 </div>
             </div>
             
-            <div className="bg-[#1E2532] border border-[#4A5F8B] rounded-lg p-4">
-                <h4 className="text-sm font-medium text-[#F5F7FA] mb-2 flex items-center">
-                    <i className="fa-solid fa-shield-alt text-[#4A5F8B] mr-2"></i>
+            <div className="bg-bg-deep border border-accent rounded-lg p-4">
+                <h4 className="text-sm font-medium text-text-primary mb-2 flex items-center">
+                    <i className="fa-solid fa-shield-alt text-accent mr-2"></i>
                     交易保障提示
                 </h4>
-                <ul className="text-xs text-[#B8C6D8] space-y-1">
+                <ul className="text-xs text-text-muted space-y-1">
                     <li className="flex items-start">
-                        <i className="fa-solid fa-check-circle text-[#48BB78] mr-2 mt-0.5"></i>
+                        <i className="fa-solid fa-check-circle text-success mr-2 mt-0.5"></i>
                         <span>发布信息将经过平台审核，请确保信息真实准确</span>
                     </li>
                     <li className="flex items-start">
-                        <i className="fa-solid fa-check-circle text-[#48BB78] mr-2 mt-0.5"></i>
+                        <i className="fa-solid fa-check-circle text-success mr-2 mt-0.5"></i>
                         <span>建议通过平台担保交易，保障资金安全</span>
                     </li>
                     <li className="flex items-start">
-                        <i className="fa-solid fa-check-circle text-[#48BB78] mr-2 mt-0.5"></i>
+                        <i className="fa-solid fa-check-circle text-success mr-2 mt-0.5"></i>
                         <span>禁止发布违法违规内容，包括虚假宣传、盗窃物品等</span>
                     </li>
                 </ul>
@@ -1138,11 +1138,11 @@ const PublishEquipmentForm: React.FC<{
     
     // 渲染底部操作按钮
     const renderActions = () => (
-        <div className="flex justify-between items-center mt-8 pt-6 border-t border-[#4A5F8B] sticky bottom-0 bg-[#2D3748] z-10">
+        <div className="flex justify-between items-center mt-8 pt-6 border-t border-accent sticky bottom-0 bg-bg-card z-10">
             <button
                 type="button"
                 onClick={onClose}
-                className="px-6 py-3 bg-[#2D3748] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]"
+                className="px-6 py-3 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
             >
                 取消
             </button>
@@ -1154,7 +1154,7 @@ const PublishEquipmentForm: React.FC<{
                         whileTap={{ scale: 0.97 }}
                         type="button"
                         onClick={prevStep}
-                        className="px-6 py-3 bg-[#2D3748] text-[#B8C6D8] rounded-lg font-medium hover:bg-[#4A5F8B] hover:text-[#F5F7FA] transition-colors border border-[#4A5F8B]"
+                        className="px-6 py-3 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                     >
                         <i className="fa-solid fa-arrow-left mr-2"></i>
                         上一步
@@ -1167,7 +1167,7 @@ const PublishEquipmentForm: React.FC<{
                         whileTap={{ scale: 0.97 }}
                         type="button"
                         onClick={nextStep}
-                        className="px-6 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors flex items-center"
+                        className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors flex items-center"
                     >
                         下一步
                         <i className="fa-solid fa-arrow-right ml-2"></i>
@@ -1178,7 +1178,7 @@ const PublishEquipmentForm: React.FC<{
                         whileTap={{ scale: 0.97 }}
                         type="button"
                         onClick={handleSubmit}
-                        className="px-6 py-3 bg-[#48BB78] text-white rounded-lg font-medium hover:bg-[#38A169] transition-colors flex items-center"
+                        className="px-6 py-3 bg-success text-white rounded-lg font-medium hover:bg-[#38A169] transition-colors flex items-center"
                     >
                         <i className="fa-solid fa-paper-plane mr-2"></i>
                         发布器材
@@ -1197,17 +1197,17 @@ const PublishEquipmentForm: React.FC<{
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="bg-[#2D3748] rounded-xl border border-[#4A5F8B] w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl"
+                className="bg-bg-card rounded-xl border border-accent w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl"
                 onClick={e => e.stopPropagation()}
             >
-                <div className="sticky top-0 bg-[#2D3748] z-10 border-b border-[#4A5F8B]">
+                <div className="sticky top-0 bg-bg-card z-10 border-b border-accent">
                     <div className="flex justify-between items-center p-5">
-                        <h3 className="font-bold text-[#F5F7FA] flex items-center text-lg">
-                            <i className="fa-solid fa-plus-circle mr-2 text-[#4A5F8B]"></i>
+                        <h3 className="font-bold text-text-primary flex items-center text-lg">
+                            <i className="fa-solid fa-plus-circle mr-2 text-accent"></i>
                             发布二手器材
                         </h3>
                         <button
-                            className="text-[#B8C6D8] hover:text-[#F5F7FA] transition-colors p-1 rounded-full hover:bg-[#4A5F8B]/20"
+                            className="text-text-muted hover:text-text-primary transition-colors p-1 rounded-full hover:bg-accent/20"
                             onClick={onClose}
                             aria-label="关闭"
                         >
@@ -1287,18 +1287,18 @@ const EquipmentDetail: React.FC = () => {
     if (!equipment) {
         return (
             <div
-                className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen flex items-center justify-center">
+                className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen flex items-center justify-center">
                 <div className="text-center">
                     <div
-                        className="w-16 h-16 bg-[#4A5F8B] rounded-full flex items-center justify-center text-[#F5F7FA] mb-4">
+                        className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
                         <i className="fa-solid fa-search text-2xl"></i>
                     </div>
-                    <h3 className="text-lg font-medium text-[#F5F7FA] mb-2">未找到该器材</h3>
-                    <p className="text-[#B8C6D8] mb-6">请检查器材ID是否正确或返回上一页
+                    <h3 className="text-lg font-medium text-text-primary mb-2">未找到该器材</h3>
+                    <p className="text-text-muted mb-6">请检查器材ID是否正确或返回上一页
                                   </p>
                     <Link
                         to="/equipment-trade"
-                        className="px-6 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors">返回交易平台
+                        className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors">返回交易平台
                                   </Link>
                 </div>
             </div>
@@ -1316,11 +1316,11 @@ const EquipmentDetail: React.FC = () => {
 
     return (
         <div
-            className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen">
+            className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
             <div className="mb-6">
                 <Link
                     to="/equipment-trade"
-                    className="inline-flex items-center space-x-1 text-[#B8C6D8]/70 hover:text-[#B8C6D8] transition-colors">
+                    className="inline-flex items-center space-x-1 text-text-muted/70 hover:text-text-muted transition-colors">
                     <i className="fa-solid fa-arrow-left"></i>
                     <span>返回器材交易平台</span>
                 </Link>
@@ -1337,11 +1337,11 @@ const EquipmentDetail: React.FC = () => {
                 transition={{
                     duration: 0.5
                 }}>
-                <h1 className="text-3xl font-bold text-[#F5F7FA] mb-6">{equipment.name}</h1>
+                <h1 className="text-3xl font-bold text-text-primary mb-6">{equipment.name}</h1>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {}
                     <div className="lg:col-span-2">
-                        <div className="bg-[#2D3748] rounded-xl p-4 shadow-sm border border-[#4A5F8B]">
+                        <div className="bg-bg-card rounded-xl p-4 shadow-sm border border-accent">
                           {/* 主图片，点击可放大 */}
                           <motion.div 
                             className="cursor-pointer relative overflow-hidden rounded-lg"
@@ -1362,7 +1362,7 @@ const EquipmentDetail: React.FC = () => {
                             {equipment.images.map((img, index) => (
                               <motion.div
                                 key={index}
-                                className="aspect-square rounded overflow-hidden border-2 border-transparent hover:border-[#4A5F8B] transition-colors cursor-pointer"
+                                className="aspect-square rounded overflow-hidden border-2 border-transparent hover:border-accent transition-colors cursor-pointer"
                                 whileHover={{ scale: 1.05 }}
                                 onClick={() => openImagePreview(index)}
                               >
@@ -1376,24 +1376,24 @@ const EquipmentDetail: React.FC = () => {
                           
                           {/* 器材详情 */}
                           <div className="mt-6">
-                                <h2 className="text-xl font-bold text-[#F5F7FA] mb-3">器材详情</h2>
-                                <div className="bg-[#1E2532] p-4 rounded-lg">
-                                    <p className="text-[#B8C6D8] whitespace-pre-line">{equipment.description}</p>
+                                <h2 className="text-xl font-bold text-text-primary mb-3">器材详情</h2>
+                                <div className="bg-bg-deep p-4 rounded-lg">
+                                    <p className="text-text-muted whitespace-pre-line">{equipment.description}</p>
                                 </div>
                             </div>
                             
                             {/* 成色描述带示意图 */}
                             {equipment.condition && equipment.conditionDescription && (
                               <div className="mt-6">
-                                <h2 className="text-xl font-bold text-[#F5F7FA] mb-3">成色描述</h2>
-                                <div className="bg-[#1E2532] p-4 rounded-lg">
+                                <h2 className="text-xl font-bold text-text-primary mb-3">成色描述</h2>
+                                <div className="bg-bg-deep p-4 rounded-lg">
                                   <div className="flex items-center mb-3">
-                                    <div className="w-16 h-16 rounded-full bg-[#4A5F8B]/20 flex items-center justify-center text-[#4A5F8B] mr-4 flex-shrink-0">
+                                    <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-4 flex-shrink-0">
                                       <i className="fa-solid fa-camera text-xl"></i>
                                     </div>
                                     <div>
-                                      <h3 className="font-medium text-[#F5F7FA]">{equipment.condition}</h3>
-                                      <p className="text-sm text-[#B8C6D8]">{equipment.conditionDescription}</p>
+                                      <h3 className="font-medium text-text-primary">{equipment.condition}</h3>
+                                      <p className="text-sm text-text-muted">{equipment.conditionDescription}</p>
                                     </div>
                                   </div>
                                   {/* 成色示意图 */}
@@ -1403,8 +1403,8 @@ const EquipmentDetail: React.FC = () => {
                                         key={level} 
                                         className={`text-center p-2 rounded-lg transition-colors ${
                                           level === equipment.condition 
-                                            ? 'bg-[#4A5F8B] text-[#F5F7FA]' 
-                                            : 'bg-[#2D3748] text-[#6B7C93] hover:bg-[#4A5F8B]/30'
+                                            ? 'bg-accent text-text-primary' 
+                                            : 'bg-bg-card text-accent-hover hover:bg-accent/30'
                                         }`}
                                       >
                                         <p className="text-sm">{level}</p>
@@ -1420,23 +1420,23 @@ const EquipmentDetail: React.FC = () => {
                             
                             {/* 技术参数 */}
                             {equipment.type === "相机" && <div className="mt-6">
-                                <h2 className="text-xl font-bold text-[#F5F7FA] mb-3">技术参数</h2>
-                                <div className="bg-[#1E2532] p-4 rounded-lg grid grid-cols-2 gap-4">
+                                <h2 className="text-xl font-bold text-text-primary mb-3">技术参数</h2>
+                                <div className="bg-bg-deep p-4 rounded-lg grid grid-cols-2 gap-4">
                                     <div>
-                                        <p className="text-sm text-[#B8C6D8] mb-1">传感器</p>
-                                        <p className="text-[#F5F7FA]">全画幅 CMOS</p>
+                                        <p className="text-sm text-text-muted mb-1">传感器</p>
+                                        <p className="text-text-primary">全画幅 CMOS</p>
                                     </div>
                                     <div>
-                                        <p className="text-sm text-[#B8C6D8] mb-1">有效像素</p>
-                                        <p className="text-[#F5F7FA]">4500万</p>
+                                        <p className="text-sm text-text-muted mb-1">有效像素</p>
+                                        <p className="text-text-primary">4500万</p>
                                     </div>
                                     <div>
-                                        <p className="text-sm text-[#B8C6D8] mb-1">ISO范围</p>
-                                        <p className="text-[#F5F7FA]">100-51200</p>
+                                        <p className="text-sm text-text-muted mb-1">ISO范围</p>
+                                        <p className="text-text-primary">100-51200</p>
                                     </div>
                                     <div>
-                                        <p className="text-sm text-[#B8C6D8] mb-1">对焦系统</p>
-                                        <p className="text-[#F5F7FA]">425点相位检测</p>
+                                        <p className="text-sm text-text-muted mb-1">对焦系统</p>
+                                        <p className="text-text-primary">425点相位检测</p>
                                     </div>
                                 </div>
                             </div>}
@@ -1445,10 +1445,10 @@ const EquipmentDetail: React.FC = () => {
                             <div className="mt-6">
                               <button 
                                 onClick={() => setShowTradeProcess(!showTradeProcess)}
-                                className="w-full flex items-center justify-between py-3 px-4 bg-[#1E2532] rounded-lg text-[#F5F7FA] hover:bg-[#2D3748] transition-colors"
+                                className="w-full flex items-center justify-between py-3 px-4 bg-bg-deep rounded-lg text-text-primary hover:bg-bg-card transition-colors"
                               >
                                 <div className="flex items-center">
-                                  <i className="fa-solid fa-shopping-cart mr-2 text-[#4A5F8B]"></i>
+                                  <i className="fa-solid fa-shopping-cart mr-2 text-accent"></i>
                                   <span>交易流程</span>
                                 </div>
                                 <i className={`fa-solid transition-transform duration-300 ${showTradeProcess ? 'fa-chevron-down rotate-180' : 'fa-chevron-down'}`}></i>
@@ -1459,22 +1459,22 @@ const EquipmentDetail: React.FC = () => {
                                   initial={{ opacity: 0, height: 0 }}
                                   animate={{ opacity: 1, height: 'auto' }}
                                   exit={{ opacity: 0, height: 0 }}
-                                  className="mt-2 bg-[#1E2532] rounded-lg p-4"
+                                  className="mt-2 bg-bg-deep rounded-lg p-4"
                                 >
                                   <div className="relative">
                                     {/* 连接线 */}
-                                    <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-[#4A5F8B]"></div>
+                                    <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-accent"></div>
                                     
                                     {/* 步骤列表 */}
                                     <div className="space-y-6">
                                       {tradeSteps.map((step, index) => (
                                         <div key={index} className="flex">
-                                          <div className="w-12 h-12 rounded-full bg-[#4A5F8B] flex items-center justify-center text-white z-10 mr-4 flex-shrink-0">
+                                          <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center text-white z-10 mr-4 flex-shrink-0">
                                             <i className={`fa-solid ${step.icon}`}></i>
                                           </div>
                                           <div>
-                                            <h3 className="font-medium text-[#F5F7FA]">{step.title}</h3>
-                                            <p className="text-sm text-[#B8C6D8] mt-1">{step.description}</p></div>
+                                            <h3 className="font-medium text-text-primary">{step.title}</h3>
+                                            <p className="text-sm text-text-muted mt-1">{step.description}</p></div>
                                         </div>
                                       ))}
                                     </div>
@@ -1487,63 +1487,63 @@ const EquipmentDetail: React.FC = () => {
                     {}
                     <div className="lg:col-span-1">
                         <div
-                            className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B] sticky top-24">
+                            className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent sticky top-24">
                             <div className="flex items-center justify-between mb-4">
-                                <h3 className="text-sm text-[#6B7C93] font-medium">{equipment.brand} {equipment.type}</h3>
+                                <h3 className="text-sm text-accent-hover font-medium">{equipment.brand} {equipment.type}</h3>
                                 <span
-                                    className="text-xs px-2 py-1 bg-[#2D3748] text-[#B8C6D8] rounded-full border border-[#4A5F8B]">{equipment.type}</span>
+                                    className="text-xs px-2 py-1 bg-bg-card text-text-muted rounded-full border border-accent">{equipment.type}</span>
                             </div>
-                            <h2 className="text-xl font-bold text-[#F5F7FA] mb-4">{equipment.name}</h2>
+                            <h2 className="text-xl font-bold text-text-primary mb-4">{equipment.name}</h2>
                             <div className="flex items-center mb-6">
-                                <p className="text-2xl font-bold text-[#4A5F8B]">¥{parseInt(equipment.price).toLocaleString()}</p>
+                                <p className="text-2xl font-bold text-accent">¥{parseInt(equipment.price).toLocaleString()}</p>
                                 {equipment.originalPrice !== equipment.price && <p className="text-sm text-[#718096] line-through ml-2">¥{parseInt(equipment.originalPrice).toLocaleString()}</p>}
                             </div>
                             {}
                             {equipment.condition && <div className="space-y-3 mb-6 text-sm">
                                 <div className="flex justify-between">
-                                    <span className="text-[#B8C6D8]">成色:</span>
-                                    <span className="text-[#F5F7FA] font-medium">{equipment.condition}</span>
+                                    <span className="text-text-muted">成色:</span>
+                                    <span className="text-text-primary font-medium">{equipment.condition}</span>
                                 </div>
                                 {equipment.usageTime && <div className="flex justify-between">
-                                    <span className="text-[#B8C6D8]">使用时长:</span>
-                                    <span className="text-[#F5F7FA]">{equipment.usageTime}</span>
+                                    <span className="text-text-muted">使用时长:</span>
+                                    <span className="text-text-primary">{equipment.usageTime}</span>
                                 </div>}
                                 {equipment.shutterCount && <div className="flex justify-between">
-                                    <span className="text-[#B8C6D8]">快门次数:</span>
-                                    <span className="text-[#F5F7FA]">{equipment.shutterCount}</span>
+                                    <span className="text-text-muted">快门次数:</span>
+                                    <span className="text-text-primary">{equipment.shutterCount}</span>
                                 </div>}
                                 {equipment.repairHistory && <div className="flex justify-between">
-                                    <span className="text-[#B8C6D8]">维修记录:</span>
-                                    <span className="text-[#F5F7FA]">{equipment.repairHistory}</span>
+                                    <span className="text-text-muted">维修记录:</span>
+                                    <span className="text-text-primary">{equipment.repairHistory}</span>
                                 </div>}
                             </div>}
                             {}
                             {equipment.warranty && <div className="space-y-3 mb-6 text-sm">
                                 <div className="flex justify-between">
-                                    <span className="text-[#B8C6D8]">保修:</span>
-                                    <span className="text-[#F5F7FA] font-medium">{equipment.warranty}</span>
+                                    <span className="text-text-muted">保修:</span>
+                                    <span className="text-text-primary font-medium">{equipment.warranty}</span>
                                 </div>
                             </div>}
                             {}
                             {equipment.accessories && equipment.accessories.length > 0 && <div className="mb-6">
-                                <h3 className="text-sm font-medium text-[#F5F7FA] mb-2">包含配件</h3>
-                                <ul className="text-sm text-[#B8C6D8] space-y-1">
+                                <h3 className="text-sm font-medium text-text-primary mb-2">包含配件</h3>
+                                <ul className="text-sm text-text-muted space-y-1">
                                     {equipment.accessories.map((accessory, index) => <li key={index} className="flex items-center">
-                                        <i className="fa-solid fa-check-circle text-[#4A5F8B] mr-2"></i>
+                                        <i className="fa-solid fa-check-circle text-accent mr-2"></i>
                                         {accessory}
                                     </li>)}
                                 </ul>
                             </div>}
                             {}
-                            <div className="border-t border-b border-[#4A5F8B] py-4 mb-6">
-                                <h3 className="text-sm font-medium text-[#F5F7FA] mb-3">卖家信息</h3>
+                            <div className="border-t border-b border-accent py-4 mb-6">
+                                <h3 className="text-sm font-medium text-text-primary mb-3">卖家信息</h3>
                                 <div className="flex items-center">
                                     <img
                                         src={equipment.seller.avatar}
                                         alt={equipment.seller.name}
-                                        className="w-12 h-12 rounded-full mr-3 object-cover border border-[#B8C6D8]" />
+                                        className="w-12 h-12 rounded-full mr-3 object-cover border border-text-muted" />
                                     <div>
-                                        <p className="text-base font-medium text-[#F5F7FA]">{equipment.seller.name}</p>
+                                        <p className="text-base font-medium text-text-primary">{equipment.seller.name}</p>
                                         <div className="flex items-center mt-1">
                                           <div className="flex items-center">
                                             {[...Array(5)].map((_, i) => (
@@ -1551,31 +1551,31 @@ const EquipmentDetail: React.FC = () => {
                                                 key={i}
                                                 className={`fa-solid fa-star text-xs ${
                                                   i < Math.floor(equipment.seller.rating) 
-                                                    ? 'text-[#4A5F8B]' 
-                                                    : 'text-[#6B7C93]'
+                                                    ? 'text-accent' 
+                                                    : 'text-accent-hover'
                                                 }`}
                                               ></i>
                                             ))}
                                           </div>
-                                            <span className="text-xs text-[#6B7C93] ml-1">{equipment.seller.rating}</span>
-                                            <span className="text-xs text-[#4A5F8B] mx-1">|</span>
-                                            <span className="text-xs text-[#6B7C93]">{equipment.seller.completedTransactions}单</span>
+                                            <span className="text-xs text-accent-hover ml-1">{equipment.seller.rating}</span>
+                                            <span className="text-xs text-accent mx-1">|</span>
+                                            <span className="text-xs text-accent-hover">{equipment.seller.completedTransactions}单</span>
                                         </div>
-                                        <p className="text-xs text-[#6B7C93] mt-1">{equipment.seller.location}</p>
+                                        <p className="text-xs text-accent-hover mt-1">{equipment.seller.location}</p>
                                         
                                         {/* 卖家信誉数据 */}
                                         <div className="mt-3 grid grid-cols-3 gap-2">
                                           <div className="text-center">
-                                            <p className="text-xs text-[#6B7C93]">好评率</p>
-                                            <p className="text-sm font-medium text-[#F5F7FA]">{equipment.seller.positiveRate || 95}%</p>
+                                            <p className="text-xs text-accent-hover">好评率</p>
+                                            <p className="text-sm font-medium text-text-primary">{equipment.seller.positiveRate || 95}%</p>
                                           </div>
                                           <div className="text-center">
-                                            <p className="text-xs text-[#6B7C93]">成交</p>
-                                            <p className="text-sm font-medium text-[#F5F7FA]">{equipment.seller.completedTransactions}</p>
+                                            <p className="text-xs text-accent-hover">成交</p>
+                                            <p className="text-sm font-medium text-text-primary">{equipment.seller.completedTransactions}</p>
                                           </div>
                                           <div className="text-center">
-                                            <p className="text-xs text-[#6B7C93]">回复</p>
-                                            <p className="text-sm font-medium text-[#F5F7FA]">{equipment.seller.avgResponseTime || '3小时'}</p>
+                                            <p className="text-xs text-accent-hover">回复</p>
+                                            <p className="text-sm font-medium text-text-primary">{equipment.seller.avgResponseTime || '3小时'}</p>
                                           </div>
                                         </div>
                                     </div>
@@ -1584,12 +1584,12 @@ const EquipmentDetail: React.FC = () => {
                                 {/* 卖家近期成交记录 */}
                                 {equipment.seller.recentTransactions && (
                                   <div className="mt-4">
-                                    <h4 className="text-xs font-medium text-[#B8C6D8] mb-2">近期成交</h4>
+                                    <h4 className="text-xs font-medium text-text-muted mb-2">近期成交</h4>
                                     <div className="space-y-2">
                                       {equipment.seller.recentTransactions.slice(0, 3).map((transaction) => (
                                         <div key={transaction.id} className="flex items-center">
-                                          <div className="w-1 h-1 rounded-full bg-[#4A5F8B] mr-2"></div>
-                                          <p className="text-xs text-[#B8C6D8]">{transaction.description}</p>
+                                          <div className="w-1 h-1 rounded-full bg-accent mr-2"></div>
+                                          <p className="text-xs text-text-muted">{transaction.description}</p>
                                         </div>
                                       ))}
                                     </div>
@@ -1599,37 +1599,37 @@ const EquipmentDetail: React.FC = () => {
                             {}
                             <div className="space-y-3">
                                 <button
-                                    className="w-full py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors"
+                                    className="w-full py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors"
                                     onClick={() => handleContactSeller(equipment.seller)}>
                                     {equipment.originalPrice !== equipment.price ? "联系卖家" : "立即购买"}
                                 </button>
                                 <button
-                                    className="w-full py-3 bg-[#2D3748] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#4A5F8B] transition-colors border border-[#4A5F8B]">收藏
+                                    className="w-full py-3 bg-bg-card text-text-primary rounded-lg font-medium hover:bg-accent transition-colors border border-accent">收藏
                                             </button>
                             </div>
                             {}
-                            <div className="mt-6 pt-4 border-t border-[#4A5F8B]">
-                                <h3 className="text-sm font-medium text-[#F5F7FA] mb-3">交易保障</h3>
+                            <div className="mt-6 pt-4 border-t border-accent">
+                                <h3 className="text-sm font-medium text-text-primary mb-3">交易保障</h3>
                                 <div className="grid grid-cols-2 gap-3">
                                   {equipment.tradeGuarantees && equipment.tradeGuarantees.map((guarantee, index) => (
-                                    <div key={index} className="flex items-center text-sm text-[#B8C6D8]">
-                                      <i className="fa-solid fa-shield-alt text-[#4A5F8B] mr-2"></i>
+                                    <div key={index} className="flex items-center text-sm text-text-muted">
+                                      <i className="fa-solid fa-shield-alt text-accent mr-2"></i>
                                       {guarantee}
                                     </div>
                                   ))}
                                   {(!equipment.tradeGuarantees || equipment.tradeGuarantees.length === 0) && (
                                     <>
-                                      <div className="flex items-center text-sm text-[#B8C6D8]">
-                                        <i className="fa-solid fa-check-circle text-[#4A5F8B] mr-2"></i>专业验机
+                                      <div className="flex items-center text-sm text-text-muted">
+                                        <i className="fa-solid fa-check-circle text-accent mr-2"></i>专业验机
                                       </div>
-                                      <div className="flex items-center text-sm text-[#B8C6D8]">
-                                        <i className="fa-solid fa-check-circle text-[#4A5F8B] mr-2"></i>资金担保
+                                      <div className="flex items-center text-sm text-text-muted">
+                                        <i className="fa-solid fa-check-circle text-accent mr-2"></i>资金担保
                                       </div>
-                                      <div className="flex items-center text-sm text-[#B8C6D8]">
-                                        <i className="fa-solid fa-check-circle text-[#4A5F8B] mr-2"></i>7天无理由退
+                                      <div className="flex items-center text-sm text-text-muted">
+                                        <i className="fa-solid fa-check-circle text-accent mr-2"></i>7天无理由退
                                       </div>
-                                      <div className="flex items-center text-sm text-[#B8C6D8]">
-                                        <i className="fa-solid fa-check-circle text-[#4A5F8B] mr-2"></i>专业鉴定
+                                      <div className="flex items-center text-sm text-text-muted">
+                                        <i className="fa-solid fa-check-circle text-accent mr-2"></i>专业鉴定
                                       </div>
                                     </>
                                   )}
@@ -1656,14 +1656,14 @@ const EquipmentDetail: React.FC = () => {
         onClick={closeImagePreview}
       >
         <button
-          className="absolute top-4 right-4 text-white text-2xl z-10 hover:text-[#4A5F8B]"
+          className="absolute top-4 right-4 text-white text-2xl z-10 hover:text-accent"
           onClick={closeImagePreview}
         >
           <i className="fa-solid fa-times"></i>
         </button>
         
         <button
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl z-10 hover:text-[#4A5F8B]"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl z-10 hover:text-accent"
           onClick={(e) => {
             e.stopPropagation();
             prevImage();
@@ -1690,7 +1690,7 @@ const EquipmentDetail: React.FC = () => {
         </div>
         
         <button
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl z-10 hover:text-[#4A5F8B]"
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl z-10 hover:text-accent"
           onClick={(e) => {
             e.stopPropagation();
             nextImage();
@@ -1852,7 +1852,7 @@ const EquipmentTrade: React.FC = () => {
 
     return (
         <div
-            className="container mx-auto px-4 py-8 bg-[#1E2532] star-texture min-h-screen">
+            className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
             <motion.div
                 initial={{
                     opacity: 0,
@@ -1867,8 +1867,8 @@ const EquipmentTrade: React.FC = () => {
                 }}>
                 {}
                 <div className="mb-8 text-center">
-                    <h1 className="text-3xl font-bold text-[#F5F7FA] mb-2">器材交易平台</h1>
-                    <p className="text-[#B8C6D8] max-w-2xl mx-auto">安全可靠的摄影器材交易平台，提供专业验机、资金担保等服务，让您买卖无忧
+                    <h1 className="text-3xl font-bold text-text-primary mb-2">器材交易平台</h1>
+                    <p className="text-text-muted max-w-2xl mx-auto">安全可靠的摄影器材交易平台，提供专业验机、资金担保等服务，让您买卖无忧
                                   </p>
                 </div>
                 {}
@@ -1881,7 +1881,7 @@ const EquipmentTrade: React.FC = () => {
                             scale: 0.95
                         }}
                         onClick={() => setTradeType("used")}
-                        className={`py-4 rounded-xl flex items-center justify-center transition-all ${tradeType === "used" ? "bg-[#4A5F8B] border-2 border-[#4A5F8B] text-[#F5F7FA] shadow-md" : "bg-[#2D3748] border border-[#4A5F8B] text-[#B8C6D8]"}`}>
+                        className={`py-4 rounded-xl flex items-center justify-center transition-all ${tradeType === "used" ? "bg-accent border-2 border-accent text-text-primary shadow-md" : "bg-bg-card border border-accent text-text-muted"}`}>
                         <i className="fa-solid fa-recycle text-xl mr-2"></i>
                         <span className="font-medium">二手器材</span>
                     </motion.button>
@@ -1893,14 +1893,14 @@ const EquipmentTrade: React.FC = () => {
                             scale: 0.95
                         }}
                         onClick={() => setTradeType("new")}
-                        className={`py-4 rounded-xl flex items-center justify-center transition-all ${tradeType === "new" ? "bg-[#4A5F8B] border-2 border-[#4A5F8B] text-[#F5F7FA] shadow-md" : "bg-[#2D3748] border border-[#4A5F8B] text-[#B8C6D8]"}`}>
+                        className={`py-4 rounded-xl flex items-center justify-center transition-all ${tradeType === "new" ? "bg-accent border-2 border-accent text-text-primary shadow-md" : "bg-bg-card border border-accent text-text-muted"}`}>
                         <i className="fa-solid fa-box-open text-xl mr-2"></i>
                         <span className="font-medium">全新器材</span>
                     </motion.button>
                 </div>
                 {}
                 <div
-                    className="bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B] mb-8">
+                    className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
                     <div
                         className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mb-4">
                         <div className="relative flex-1">
@@ -1909,32 +1909,32 @@ const EquipmentTrade: React.FC = () => {
                                 placeholder={`搜索${tradeType === "used" ? "二手" : "全新"}器材...`}
                                 value={searchTerm}
                                 onChange={e => setSearchTerm(e.target.value)}
-                                className="w-full px-4 py-3 pl-12 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all placeholder:text-[#B8C6D8]" />
+                                className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted" />
                             <i
-                                className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-[#B8C6D8]"></i>
+                                className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
                         </div>
                         <select
                             value={selectedType}
                             onChange={e => setSelectedType(e.target.value)}
-                            className="px-4 py-3 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer">
+                            className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                             {equipmentTypes.map(type => <option key={type} value={type}>{type}</option>)}
                         </select>
                         <select
                             value={selectedBrand}
                             onChange={e => setSelectedBrand(e.target.value)}
-                            className="px-4 py-3 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer">
+                            className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                             {brands.map(brand => <option key={brand} value={brand}>{brand}</option>)}
                         </select>
                         <select
                             value={selectedPriceRange}
                             onChange={e => setSelectedPriceRange(e.target.value)}
-                            className="px-4 py-3 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer">
+                            className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                             {priceRanges.map(range => <option key={range} value={range}>{range}</option>)}
                         </select>
                         {tradeType === "used" && <select
                             value={selectedCondition}
                             onChange={e => setSelectedCondition(e.target.value)}
-                            className="px-4 py-3 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer">
+                            className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                             {conditions.map(
                                 condition => <option key={condition} value={condition}>{condition}</option>
                             )}
@@ -1945,7 +1945,7 @@ const EquipmentTrade: React.FC = () => {
                         <select
                             value={sortBy}
                             onChange={e => setSortBy(e.target.value)}
-                            className="px-4 py-2 bg-[#2D3748] border border-[#4A5F8B] text-[#F5F7FA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A5F8B] transition-all appearance-none cursor-pointer">
+                            className="px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                             <option value="recommended">推荐排序</option>
                             <option value="price-asc">价格从低到高</option>
                             <option value="price-desc">价格从高到低</option>
@@ -1961,53 +1961,53 @@ const EquipmentTrade: React.FC = () => {
                             y: -5,
                             boxShadow: "0 2px 12px rgba(74, 95, 139, 0.3)"
                         }}
-                        className="bg-[#2D3748] rounded-xl overflow-hidden border border-[#4A5F8B] transition-all shadow-sm cursor-pointer">
+                        className="bg-bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm cursor-pointer">
                         {}
                         <div className="relative">
                             <img src={item.image} alt={item.name} className="w-full h-48 object-cover" />
                             {tradeType === "used" && <div
-                                className="absolute top-3 left-3 px-2 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-full text-xs font-medium">
+                                className="absolute top-3 left-3 px-2 py-1 bg-accent text-text-primary rounded-full text-xs font-medium">
                                 {item.condition}
                             </div>}
                             {item.seller.isOfficial && <div
-                                className="absolute top-3 left-3 px-2 py-1 bg-[#4A5F8B] text-[#F5F7FA] rounded-full text-xs font-medium">官方授权
+                                className="absolute top-3 left-3 px-2 py-1 bg-accent text-text-primary rounded-full text-xs font-medium">官方授权
                                                   </div>}
                         </div>
                         {}
-                        <div className="p-5 bg-[#2D3748]">
+                        <div className="p-5 bg-bg-card">
                             {}
                             <div className="flex items-center justify-between mb-2">
-                                <span className="text-sm text-[#6B7C93] font-medium">{item.brand}</span>
+                                <span className="text-sm text-accent-hover font-medium">{item.brand}</span>
                                 <span
-                                    className="text-xs px-2 py-1 bg-[#2D3748] text-[#B8C6D8] rounded-full border border-[#4A5F8B]">{item.type}</span>
+                                    className="text-xs px-2 py-1 bg-bg-card text-text-muted rounded-full border border-accent">{item.type}</span>
                             </div>
                             {}
-                            <h3 className="text-lg font-bold text-[#F5F7FA] mb-2">{item.name}</h3>
+                            <h3 className="text-lg font-bold text-text-primary mb-2">{item.name}</h3>
                             {}
                             <div className="flex items-center mb-4">
-                                <p className="text-lg font-bold text-[#4A5F8B]">¥{parseInt(item.price).toLocaleString()}</p>
+                                <p className="text-lg font-bold text-accent">¥{parseInt(item.price).toLocaleString()}</p>
                                 {item.originalPrice !== item.price && <p className="text-sm text-[#718096] line-through ml-2">¥{parseInt(item.originalPrice).toLocaleString()}</p>}
                             </div>
                             {}
                             {tradeType === "used" && <div className="space-y-1 mb-4 text-sm">
                                 <div className="flex justify-between">
-                                    <span className="text-[#B8C6D8]">使用时长:</span>
-                                    <span className="text-[#F5F7FA]">{item.usageTime}</span>
+                                    <span className="text-text-muted">使用时长:</span>
+                                    <span className="text-text-primary">{item.usageTime}</span>
                                 </div>
                                 {item.shutterCount && <div className="flex justify-between">
-                                    <span className="text-[#B8C6D8]">快门次数:</span>
-                                    <span className="text-[#F5F7FA]">{item.shutterCount}</span>
+                                    <span className="text-text-muted">快门次数:</span>
+                                    <span className="text-text-primary">{item.shutterCount}</span>
                                 </div>}
                                 <div className="flex justify-between">
-                                    <span className="text-[#B8C6D8]">维修记录:</span>
-                                    <span className="text-[#F5F7FA]">{item.repairHistory}</span>
+                                    <span className="text-text-muted">维修记录:</span>
+                                    <span className="text-text-primary">{item.repairHistory}</span>
                                 </div>
                             </div>}
                             {}
                             {tradeType === "new" && <div className="mb-4 text-sm">
                                 <div className="flex justify-between">
-                                    <span className="text-[#B8C6D8]">保修:</span>
-                                    <span className="text-[#F5F7FA]">{item.warranty}</span>
+                                    <span className="text-text-muted">保修:</span>
+                                    <span className="text-text-primary">{item.warranty}</span>
                                 </div>
                             </div>}
                             {}
@@ -2016,27 +2016,27 @@ const EquipmentTrade: React.FC = () => {
                                     <img
                                         src={item.seller.avatar}
                                         alt={item.seller.name}
-                                        className="w-8 h-8 rounded-full mr-2 object-cover border border-[#B8C6D8]" />
+                                        className="w-8 h-8 rounded-full mr-2 object-cover border border-text-muted" />
                                     <div>
-                                        <p className="text-sm font-medium text-[#F5F7FA]">{item.seller.name}</p>
+                                        <p className="text-sm font-medium text-text-primary">{item.seller.name}</p>
                                         <div className="flex items-center">
-                                            <i className="fa-solid fa-star text-xs text-[#4A5F8B]"></i>
-                                            <span className="text-xs text-[#6B7C93] ml-1">{item.seller.rating}</span>
-                                            <span className="text-xs text-[#4A5F8B] mx-1">|</span>
-                                            <span className="text-xs text-[#6B7C93]">{item.seller.completedTransactions}单</span>
+                                            <i className="fa-solid fa-star text-xs text-accent"></i>
+                                            <span className="text-xs text-accent-hover ml-1">{item.seller.rating}</span>
+                                            <span className="text-xs text-accent mx-1">|</span>
+                                            <span className="text-xs text-accent-hover">{item.seller.completedTransactions}单</span>
                                         </div>
                                     </div>
                                 </div>
-                                <span className="text-xs text-[#6B7C93]">{item.seller.location}</span>
+                                <span className="text-xs text-accent-hover">{item.seller.location}</span>
                             </div>
                             {}
                             <div className="flex items-center space-x-3">
                                 <Link
                                     to={`/equipment-detail/${item.id}`}
-                                    className="flex-1 py-2 text-center bg-gradient-to-r from-[#4A5F8B] to-[#2D3748] text-[#F5F7FA] rounded-lg font-medium transition-colors border border-[#4A5F8B]">查看详情
+                                    className="flex-1 py-2 text-center bg-gradient-to-r from-accent to-bg-card text-text-primary rounded-lg font-medium transition-colors border border-accent">查看详情
                                                       </Link>
                                 <button
-                                    className="px-4 py-2 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors"
+                                    className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors"
                                     onClick={() => handleContactSeller(item.seller)}>
                                     {tradeType === "used" ? "联系卖家" : "立即购买"}
                                 </button>
@@ -2044,51 +2044,51 @@ const EquipmentTrade: React.FC = () => {
                         </div>
                     </motion.div>)}
                     {currentEquipment.length === 0 && <div
-                        className="col-span-full p-8 bg-[#2D3748] rounded-xl border border-[#4A5F8B] text-center">
+                        className="col-span-full p-8 bg-bg-card rounded-xl border border-accent text-center">
                         <div
-                            className="w-16 h-16 bg-[#1E2A3A] rounded-full flex items-center justify-center text-[#4A5F8B] mx-auto mb-4 border border-[#4A5F8B]">
+                            className="w-16 h-16 bg-[#1E2A3A] rounded-full flex items-center justify-center text-accent mx-auto mb-4 border border-accent">
                             <i className="fa-solid fa-search text-2xl"></i>
                         </div>
-                        <h3 className="text-lg font-medium text-[#F5F7FA] mb-2">未找到相关器材</h3>
-                        <p className="text-[#B8C6D8]">请尝试调整筛选条件或搜索其他关键词
+                        <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关器材</h3>
+                        <p className="text-text-muted">请尝试调整筛选条件或搜索其他关键词
                                           </p>
                     </div>}
                 </div>
                 {}
                 <div
-                    className="mt-12 bg-[#2D3748] rounded-xl p-6 shadow-sm border border-[#4A5F8B]">
-                    <h2 className="text-xl font-bold text-[#F5F7FA] mb-4">交易保障</h2>
+                    className="mt-12 bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                    <h2 className="text-xl font-bold text-text-primary mb-4">交易保障</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="flex items-start">
                             <div
-                                className="w-10 h-10 rounded-full bg-[#1E2A3A] flex items-center justify-center text-[#4A5F8B] mr-3 flex-shrink-0">
+                                className="w-10 h-10 rounded-full bg-[#1E2A3A] flex items-center justify-center text-accent mr-3 flex-shrink-0">
                                 <i className="fa-solid fa-check-circle"></i>
                             </div>
                             <div>
-                                <h3 className="font-medium text-[#F5F7FA] mb-1">专业验机服务</h3>
-                                <p className="text-sm text-[#B8C6D8]">提供第三方专业机构验机服务，确保器材真实状况与描述一致
+                                <h3 className="font-medium text-text-primary mb-1">专业验机服务</h3>
+                                <p className="text-sm text-text-muted">提供第三方专业机构验机服务，确保器材真实状况与描述一致
                                                     </p>
                             </div>
                         </div>
                         <div className="flex items-start">
                             <div
-                                className="w-10 h-10 rounded-full bg-[#1E2A3A] flex items-center justify-center text-[#4A5F8B] mr-3 flex-shrink-0">
+                                className="w-10 h-10 rounded-full bg-[#1E2A3A] flex items-center justify-center text-accent mr-3 flex-shrink-0">
                                 <i className="fa-solid fa-shield-alt"></i>
                             </div>
                             <div>
-                                <h3 className="font-medium text-[#F5F7FA] mb-1">资金担保</h3>
-                                <p className="text-sm text-[#B8C6D8]">平台提供资金担保服务，买家确认收货后卖家才能收到款项
+                                <h3 className="font-medium text-text-primary mb-1">资金担保</h3>
+                                <p className="text-sm text-text-muted">平台提供资金担保服务，买家确认收货后卖家才能收到款项
                                                     </p>
                             </div>
                         </div>
                         <div className="flex items-start">
                             <div
-                                className="w-10 h-10 rounded-full bg-[#1E2A3A] flex items-center justify-center text-[#4A5F8B] mr-3 flex-shrink-0">
+                                className="w-10 h-10 rounded-full bg-[#1E2A3A] flex items-center justify-center text-accent mr-3 flex-shrink-0">
                                 <i className="fa-solid fa-headset"></i>
                             </div>
                             <div>
-                                <h3 className="font-medium text-[#F5F7FA] mb-1">7天无理由退换</h3>
-                                <p className="text-sm text-[#B8C6D8]">支持7天无理由退换货，让您购物无忧
+                                <h3 className="font-medium text-text-primary mb-1">7天无理由退换</h3>
+                                <p className="text-sm text-text-muted">支持7天无理由退换货，让您购物无忧
                                                     </p>
                             </div>
                         </div>
@@ -2101,7 +2101,7 @@ const EquipmentTrade: React.FC = () => {
              whileHover={{ scale: 1.05 }}
              whileTap={{ scale: 0.95 }}
              onClick={() => setShowPublishForm(true)}
-             className="px-6 py-3 bg-[#4A5F8B] text-[#F5F7FA] rounded-lg font-medium hover:bg-[#6B7C93] transition-colors flex items-center">
+             className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors flex items-center">
              <i className="fa-solid fa-plus-circle mr-2"></i>
              发布二手器材
           </motion.button>

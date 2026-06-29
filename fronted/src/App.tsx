@@ -74,7 +74,7 @@ export default function App() {
       <main className="flex-1">
         <Suspense fallback={
           <div className="container mx-auto px-4 py-8 h-80 flex items-center justify-center">
-            <div className="w-16 h-16 border-4 border-[#4A5F8B] border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
           </div>
         }>
           <Routes>
@@ -228,9 +228,9 @@ export default function App() {
       </main>
       {showFooter && (
         <Suspense fallback={
-          <div className={`w-full py-10 mt-12 ${theme === 'dark' ? 'bg-[#1E2532]' : 'bg-gray-100'}`}>
-            <div className="container mx-auto px-4 text-center text-[#B8C6D8]">
-              <div className="w-16 h-16 border-4 border-[#4A5F8B] border-t-transparent rounded-full animate-spin mx-auto"></div>
+          <div className={`w-full py-10 mt-12 ${theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-100'}`}>
+            <div className="container mx-auto px-4 text-center text-text-muted">
+              <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin mx-auto"></div>
               <p className="mt-4">加载页脚中...</p>
             </div>
           </div>
