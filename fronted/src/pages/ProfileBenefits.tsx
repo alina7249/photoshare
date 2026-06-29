@@ -55,7 +55,7 @@ const ProfileBenefits: React.FC = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-[#1E2A3A] min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-bg-dark-alt min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
           <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-user-lock text-2xl"></i>
@@ -895,7 +895,7 @@ const ProfileBenefits: React.FC = () => {
                             <div className={`text-sm font-medium ${
                               totalPoints >= reward.points && reward.available
                                 ? 'text-accent'
-                                : 'text-[#ED8936]'
+                                : 'text-orange-dark'
                             }`}>
                               {reward.available && totalPoints < reward.points && `还需${reward.points - totalPoints}点`}
                             </div>

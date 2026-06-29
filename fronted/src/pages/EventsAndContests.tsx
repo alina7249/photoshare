@@ -599,7 +599,7 @@ const EventsAndContests: React.FC = () => {
               {selectedTags.length > 0 && (
                 <button
                   onClick={() => setSelectedTags([])}
-                  className="mt-4 w-full py-2 text-center text-sm text-text-primary hover:text-[#FFFFFF] transition-colors"
+                  className="mt-4 w-full py-2 text-center text-sm text-text-primary hover:text-surface-light-hover transition-colors"
                 >
                   <i className="fa-solid fa-times mr-1"></i> 清除所有标签
                 </button>
@@ -618,7 +618,7 @@ const EventsAndContests: React.FC = () => {
   <motion.button
     whileHover={{ scale: 1.02 }}
     whileTap={{ scale: 0.98 }}
-    className="w-full py-3 bg-text-primary text-accent font-medium rounded-lg hover:bg-[#FFFFFF] transition-colors border border-text-primary"
+    className="w-full py-3 bg-text-primary text-accent font-medium rounded-lg hover:bg-surface-light-hover transition-colors border border-text-primary"
     onClick={() => {
       if (!isAuthenticated) {
         toast.info('请先登录后再发布');
@@ -678,7 +678,7 @@ const EventsAndContests: React.FC = () => {
                           )}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-text-primary hover:text-[#FFFFFF] transition-colors truncate">
+                          <h4 className="font-medium text-text-primary hover:text-surface-light-hover transition-colors truncate">
                             {item.title}
                           </h4>
                           <div className="flex items-center space-x-2 mt-1 text-xs text-text-primary/80">

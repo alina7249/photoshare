@@ -558,7 +558,7 @@ const OnlineCourses: React.FC = () => {
               </div>
               
               {/* 应用筛选按钮 */}
-              <button className="w-full py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-[#3A4B6F] transition-colors border border-accent">
+              <button className="w-full py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-bg-dark-hover transition-colors border border-accent">
                 应用筛选
               </button>
             </div>
@@ -611,7 +611,7 @@ const OnlineCourses: React.FC = () => {
                         <p className="text-xs text-accent">{instructor.courses} 门课程</p>
                       </div>
                     </div>
-                    <button className="px-3 py-1 text-xs font-medium text-text-primary bg-accent hover:bg-[#3A4B6F] rounded-full transition-colors">
+                    <button className="px-3 py-1 text-xs font-medium text-text-primary bg-accent hover:bg-bg-dark-hover rounded-full transition-colors">
                       查看
                     </button>
                   </div>

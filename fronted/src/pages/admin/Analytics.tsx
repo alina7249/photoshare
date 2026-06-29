@@ -303,7 +303,7 @@ const Analytics: React.FC = () => {
                         <span className="text-xs text-text-muted">社区帖子</span>
                       </div>
                       <div className="flex items-center">
-                        <span className="w-3 h-3 bg-[#38B2AC] rounded-full mr-1"></span>
+                        <span className="w-3 h-3 bg-teal rounded-full mr-1"></span>
                         <span className="text-xs text-text-muted">评论</span>
                       </div>
                     </div>
@@ -494,7 +494,7 @@ const Analytics: React.FC = () => {
                       <span className="text-xs text-text-muted">社区帖子</span>
                     </div>
                     <div className="flex items-center">
-                      <span className="w-3 h-3 bg-[#38B2AC] rounded-full mr-1"></span>
+                      <span className="w-3 h-3 bg-teal rounded-full mr-1"></span>
                       <span className="text-xs text-text-muted">评论</span>
                     </div>
                   </div>

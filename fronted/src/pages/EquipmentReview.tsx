@@ -290,16 +290,16 @@ const EquipmentReview: React.FC = () => {
                 
                 {/* 对比文字分析 */}
                 <div className="space-y-4">
-                  <p className="text-sm text-[#4A5059]">
+                  <p className="text-sm text-text-light">
                     <strong>分辨率对比：</strong> A7R V以9.8分领先，EOS R5和Z 7II紧随其后，三者在高分辨率拍摄方面都有出色表现。
                   </p>
-                  <p className="text-sm text-[#4A5059]">
+                  <p className="text-sm text-text-light">
                     <strong>自动对焦对比：</strong> A7R V的自动对焦系统表现最为出色，尤其在复杂光线条件下的追踪能力优秀。
                   </p>
-                  <p className="text-sm text-[#4A5059]">
+                  <p className="text-sm text-text-light">
                     <strong>视频能力对比：</strong> EOS R5在视频规格和质量上略占优势，支持8K 30p和4K 120p拍摄。
                   </p>
-                  <p className="text-sm text-[#4A5059]">
+                  <p className="text-sm text-text-light">
                     <strong>性价比对比：</strong> Z 7II在三者中性价比最高，提供了专业级性能但价格更为亲民。
                   </p>
                 </div>
@@ -513,7 +513,7 @@ const EquipmentReview: React.FC = () => {
                 <div className="flex items-center justify-between max-w-5xl mx-auto">
                   <div className="flex items-center">
                     <i className="fa-solid fa-balance-scale text-accent mr-2"></i>
-                    <span className="text-[#4A5059]">已选择 {selectedReviews.length} 篇测评进行对比</span>
+                    <span className="text-text-light">已选择 {selectedReviews.length} 篇测评进行对比</span>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -530,21 +530,21 @@ const EquipmentReview: React.FC = () => {
             {/* 分页 */}
             {filteredReviews.length > 0 && (
               <div className="flex justify-center">
-                <nav className="flex items-center space-x-1 bg-[#E6EBF2] p-2 rounded-lg border border-text-muted">
-                  <button className="px-3 py-2 rounded border border-text-muted text-[#4A5059] hover:bg-text-primary transition-colors">
+                <nav className="flex items-center space-x-1 bg-surface-light-card p-2 rounded-lg border border-text-muted">
+                  <button className="px-3 py-2 rounded border border-text-muted text-text-light hover:bg-text-primary transition-colors">
                     <i className="fa-solid fa-chevron-left text-xs"></i>
                   </button>
-                  <button className="px-3 py-2 rounded border border-text-muted bg-text-primary text-[#4A5059]">
+                  <button className="px-3 py-2 rounded border border-text-muted bg-text-primary text-text-light">
                     1
                   </button>
-                  <button className="px-3 py-2 rounded border border-text-muted text-[#4A5059] hover:bg-text-primary transition-colors">
+                  <button className="px-3 py-2 rounded border border-text-muted text-text-light hover:bg-text-primary transition-colors">
                     2
                   </button>
-                  <span className="px-2 text-[#4A5059]/70">...</span>
-                  <button className="px-3 py-2 rounded border border-text-muted text-[#4A5059] hover:bg-text-primary transition-colors">
+                  <span className="px-2 text-text-light/70">...</span>
+                  <button className="px-3 py-2 rounded border border-text-muted text-text-light hover:bg-text-primary transition-colors">
                     5
                   </button>
-                  <button className="px-3 py-2 rounded border border-text-muted text-[#4A5059] hover:bg-text-primary transition-colors">
+                  <button className="px-3 py-2 rounded border border-text-muted text-text-light hover:bg-text-primary transition-colors">
                     <i className="fa-solid fa-chevron-right text-xs"></i>
                   </button>
                 </nav>
@@ -556,10 +556,10 @@ const EquipmentReview: React.FC = () => {
           <div className="lg:col-span-1 space-y-6">
             {/* 测评标签筛选 */}
             <div className="bg-text-primary rounded-xl p-6 shadow-sm border border-text-muted">
-              <h3 className="text-lg font-bold mb-4 text-[#4A5059]">筛选标签</h3>
+              <h3 className="text-lg font-bold mb-4 text-text-light">筛选标签</h3>
               
               {/* 器材类型 */}
-              <div className="mb-6"><h4 className="text-sm font-medium text-[#4A5059] mb-3">器材类型</h4>
+              <div className="mb-6"><h4 className="text-sm font-medium text-text-light mb-3">器材类型</h4>
                 <div className="flex flex-wrap gap-2">
                   {equipmentTypeTags.map((tag) => (
                     <button
@@ -568,7 +568,7 @@ const EquipmentReview: React.FC = () => {
                       className={`px-3 py-1 rounded-full text-sm ${
                         selectedTags.includes(tag)
                           ? 'bg-accent text-text-primary'
-                          : 'bg-[#E6EBF2] text-[#4A5059] border border-text-muted/30'
+                          : 'bg-surface-light-card text-text-light border border-text-muted/30'
                       } transition-colors`}
                     >
                       {tag}
@@ -579,7 +579,7 @@ const EquipmentReview: React.FC = () => {
               
               {/* 价格区间 */}
               <div className="mb-6">
-                <h4 className="text-sm font-medium text-[#4A5059] mb-3">价格区间</h4>
+                <h4 className="text-sm font-medium text-text-light mb-3">价格区间</h4>
                 <div className="flex flex-wrap gap-2">
                   {priceRangeTags.map((tag) => (
                     <button
@@ -588,7 +588,7 @@ const EquipmentReview: React.FC = () => {
                       className={`px-3 py-1 rounded-full text-sm ${
                         selectedTags.includes(tag)
                           ? 'bg-accent text-text-primary'
-                          : 'bg-[#E6EBF2] text-[#4A5059] border border-text-muted/30'
+                          : 'bg-surface-light-card text-text-light border border-text-muted/30'
                       } transition-colors`}
                     >
                       {tag}
@@ -599,7 +599,7 @@ const EquipmentReview: React.FC = () => {
               
               {/* 使用场景 */}
               <div>
-                <h4 className="text-sm font-medium text-[#4A5059] mb-3">使用场景</h4>
+                <h4 className="text-sm font-medium text-text-light mb-3">使用场景</h4>
                 <div className="flex flex-wrap gap-2">
                   {usageScenarioTags.map((tag) => (
                     <button
@@ -608,7 +608,7 @@ const EquipmentReview: React.FC = () => {
                       className={`px-3 py-1 rounded-full text-sm ${
                         selectedTags.includes(tag)
                           ? 'bg-accent text-text-primary'
-                          : 'bg-[#E6EBF2] text-[#4A5059] border border-text-muted/30'
+                          : 'bg-surface-light-card text-text-light border border-text-muted/30'
                       } transition-colors`}
                     >
                       {tag}
@@ -621,7 +621,7 @@ const EquipmentReview: React.FC = () => {
               {selectedTags.length > 0 && (
                 <button
                   onClick={() => setSelectedTags([])}
-                  className="mt-4 w-full py-2 text-center text-sm text-[#4A5059] hover:text-accent transition-colors"
+                  className="mt-4 w-full py-2 text-center text-sm text-text-light hover:text-accent transition-colors"
                 >
                   <i className="fa-solid fa-times mr-1"></i> 清除所有筛选
                 </button>
@@ -630,7 +630,7 @@ const EquipmentReview: React.FC = () => {
             
             {/* 热门测评作者 */}
             <div className="bg-text-primary rounded-xl p-6 shadow-sm border border-text-muted">
-              <h3 className="text-lg font-bold mb-4 text-[#4A5059]">热门测评作者</h3>
+              <h3 className="text-lg font-bold mb-4 text-text-light">热门测评作者</h3>
               <div className="space-y-4">
                 {[
                   {
@@ -670,11 +670,11 @@ const EquipmentReview: React.FC = () => {
                         className="w-12 h-12 rounded-full object-cover border border-text-muted"
                       />
                       <div>
-                        <p className="font-medium text-[#4A5059]">{author.name}</p>
+                        <p className="font-medium text-text-light">{author.name}</p>
                         <p className="text-xs text-accent">{author.reviews} 篇测评</p>
                       </div>
                     </Link>
-                    <button className="px-3 py-1 text-xs font-medium text-[#4A5059] border border-text-muted rounded-full hover:bg-[#E6EBF2] transition-colors">
+                    <button className="px-3 py-1 text-xs font-medium text-text-light border border-text-muted rounded-full hover:bg-surface-light-card transition-colors">
                       关注
                     </button>
                   </motion.div>
@@ -691,7 +691,7 @@ const EquipmentReview: React.FC = () => {
             
             {/* 器材使用技巧 */}
             <div className="bg-text-primary rounded-xl p-6 shadow-sm border border-text-muted">
-              <h3 className="text-lg font-bold mb-4 text-[#4A5059]">器材使用技巧</h3>
+              <h3 className="text-lg font-bold mb-4 text-text-light">器材使用技巧</h3>
               <div className="space-y-3">
                 {[
                   {
@@ -720,10 +720,10 @@ const EquipmentReview: React.FC = () => {
                     whileHover={{ x: 5 }}
                     className="flex items-center justify-between"
                   >
-                    <p className="text-sm text-[#4A5059] hover:text-accent transition-colors cursor-pointer">
+                    <p className="text-sm text-text-light hover:text-accent transition-colors cursor-pointer">
                       {tip.title}
                     </p>
-                    <span className="text-xs text-[#4A5059]/70">{tip.views} 阅读</span>
+                    <span className="text-xs text-text-light/70">{tip.views} 阅读</span>
                   </motion.div>
                 ))}
               </div>
@@ -738,7 +738,7 @@ const EquipmentReview: React.FC = () => {
             
             {/* 常见问题解答 */}
             <div className="bg-text-primary rounded-xl p-6 shadow-sm border border-text-muted">
-              <h3 className="text-lg font-bold mb-4 text-[#4A5059]">常见问题解答</h3>
+              <h3 className="text-lg font-bold mb-4 text-text-light">常见问题解答</h3>
               <div className="space-y-3">
                 {[
                   {
@@ -761,9 +761,9 @@ const EquipmentReview: React.FC = () => {
                   <motion.div
                     key={faq.id}
                     whileHover={{ x: 5 }}
-                    className="border-b border-[#E6EBF2] pb-2"
+                    className="border-b border-surface-light-card pb-2"
                   >
-                    <p className="text-sm text-[#4A5059] hover:text-accent transition-colors cursor-pointer">
+                    <p className="text-sm text-text-light hover:text-accent transition-colors cursor-pointer">
                       {faq.question}
                     </p>
                   </motion.div>
@@ -784,7 +784,7 @@ const EquipmentReview: React.FC = () => {
               <p className="text-sm mb-4 text-white/90">
                 如果你对摄影器材有深入研究，欢迎加入我们的测评团队，分享你的专业见解
               </p>
-              <button className="w-full py-2 bg-white text-accent font-medium rounded-lg hover:bg-[#E6EBF2] transition-colors">
+              <button className="w-full py-2 bg-white text-accent font-medium rounded-lg hover:bg-surface-light-card transition-colors">
                 了解详情
               </button>
             </div>

@@ -22,12 +22,12 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#0F1C2D]">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-text-dark-inverse">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-md w-full space-y-8 bg-[#1E2A3A] p-8 rounded-xl shadow-xl border border-accent"
+        className="max-w-md w-full space-y-8 bg-bg-dark-alt p-8 rounded-xl shadow-xl border border-accent"
       >
         <div className="text-center relative">
           <div className="absolute inset-0 bg-[url('https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=galaxy%20background%20stars%20purple%20blue&sign=9a9229c82aef2e4f5ac40648383863bf')] bg-cover opacity-10 rounded-full w-20 h-20 mx-auto -mt-12"></div>
@@ -37,8 +37,8 @@ const Login: React.FC = () => {
           >
             <i className="fa-solid fa-camera"></i>
           </motion.div>
-          <h1 className="text-2xl font-bold text-[#FFFFFF]">登录 影研社</h1>
-          <p className="mt-2 text-sm text-[#E2E8F0]">
+          <h1 className="text-2xl font-bold text-surface-light-hover">登录 影研社</h1>
+          <p className="mt-2 text-sm text-text-light-label">
             专业摄影创作与交流平台，连接全球摄影人
           </p>
         </div>
@@ -51,7 +51,7 @@ const Login: React.FC = () => {
             <div className="w-full border-t border-accent"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-[#1E2A3A] text-[#718096]">
+            <span className="px-2 bg-bg-dark-alt text-text-light-muted">
               或通过以下方式登录
             </span>
           </div>
@@ -61,7 +61,7 @@ const Login: React.FC = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex justify-center items-center px-4 py-2 border border-accent rounded-lg bg-[#1E2A3A] text-[#E2E8F0] hover:bg-accent transition-colors"
+            className="inline-flex justify-center items-center px-4 py-2 border border-accent rounded-lg bg-bg-dark-alt text-text-light-label hover:bg-accent transition-colors"
           >
             <i className="fa-brands fa-weixin text-green-500"></i>
           </motion.button>
@@ -69,7 +69,7 @@ const Login: React.FC = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex justify-center items-center px-4 py-2 border border-accent rounded-lg bg-[#1E2A3A] text-[#E2E8F0] hover:bg-accent transition-colors"
+            className="inline-flex justify-center items-center px-4 py-2 border border-accent rounded-lg bg-bg-dark-alt text-text-light-label hover:bg-accent transition-colors"
           >
             <i className="fa-brands fa-weibo text-red-500"></i>
           </motion.button>
@@ -77,14 +77,14 @@ const Login: React.FC = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex justify-center items-center px-4 py-2 border border-accent rounded-lg bg-[#1E2A3A] text-[#E2E8F0] hover:bg-accent transition-colors"
+            className="inline-flex justify-center items-center px-4 py-2 border border-accent rounded-lg bg-bg-dark-alt text-text-light-label hover:bg-accent transition-colors"
           >
             <i className="fa-brands fa-qq text-blue-400"></i>
           </motion.button>
         </div>
         
         <div className="text-center mt-6">
-          <p className="text-sm text-[#718096]">
+          <p className="text-sm text-text-light-muted">
             还没有账号？{' '}
             <Link
               to="/register"

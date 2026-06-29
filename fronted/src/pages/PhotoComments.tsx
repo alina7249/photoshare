@@ -361,7 +361,7 @@ const PhotoComments: React.FC = () => {
                 />
               </div>
               <div className="flex-1">
-                <div className="mb-2 text-sm text-[#4A5059]/70">
+                <div className="mb-2 text-sm text-text-light/70">
                   <i className="fa-solid fa-circle-info mr-1 text-accent"></i>
                   从艺术或技术角度分享您的见解，探讨构图、光影或创作理念
                 </div>
@@ -369,14 +369,14 @@ const PhotoComments: React.FC = () => {
                   value={commentText}
                   onChange={(e) => setCommentText(e.target.value)}
                   placeholder="分享您的艺术感悟或技术分析..."
-                  className="w-full px-4 py-3 rounded-lg bg-text-primary border border-text-muted focus:outline-none focus:ring-2 focus:ring-accent resize-none h-32 text-[#4A5059]"
+                  className="w-full px-4 py-3 rounded-lg bg-text-primary border border-text-muted focus:outline-none focus:ring-2 focus:ring-accent resize-none h-32 text-text-light"
                 ></textarea>
                 <div className="flex justify-end mt-3">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     type="submit"
-                    className="px-6 py-2 border-2 border-text-muted hover:border-accent bg-[#E6EBF2] text-[#4A5059] rounded-lg font-medium transition-colors shadow-[0_2px_8px_rgba(74,95,139,0.2)]"
+                    className="px-6 py-2 border-2 border-text-muted hover:border-accent bg-surface-light-card text-text-light rounded-lg font-medium transition-colors shadow-[0_2px_8px_rgba(74,95,139,0.2)]"
                   >
                     发表评论
                   </motion.button>
@@ -385,14 +385,14 @@ const PhotoComments: React.FC = () => {
             </div>
           </form>
         ) : (
-          <div className="mb-8 p-4 bg-[#E6EBF2] rounded-lg border border-text-muted text-center">
-            <p className="text-[#4A5059]/70 mb-3">
+          <div className="mb-8 p-4 bg-surface-light-card rounded-lg border border-text-muted text-center">
+            <p className="text-text-light/70 mb-3">
               登录后可以参与艺术摄影交流
             </p>
             <div className="flex justify-center space-x-3">
               <Link
                 to="/login"
-                className="px-4 py-2 text-sm font-medium text-text-primary bg-accent hover:bg-[#4A5059] rounded-lg transition-colors"
+                className="px-4 py-2 text-sm font-medium text-text-primary bg-accent hover:bg-text-light rounded-lg transition-colors"
               >
                 登录
               </Link>
@@ -422,20 +422,20 @@ const PhotoComments: React.FC = () => {
                   <div className="flex items-center space-x-2 mb-1">
                     <Link
                       to={`/profile/${comment.userId}`}
-                      className="font-medium text-[#4A5059] hover:text-accent transition-colors"
+                      className="font-medium text-text-light hover:text-accent transition-colors"
                     >
                       {comment.username}
                     </Link>
-                    <span className="text-xs text-[#4A5059]/70">{comment.date}</span>
+                    <span className="text-xs text-text-light/70">{comment.date}</span>
                   </div>
-                  <p className="text-[#4A5059] mb-3">{comment.content}</p>
+                  <p className="text-text-light mb-3">{comment.content}</p>
                   <div className="flex items-center space-x-4">
                     <button
                       onClick={() => handleLike(comment.id)}
                       className={`flex items-center space-x-1 text-sm transition-colors ${
                         comment.isLiked
                           ? 'text-accent'
-                          : 'text-[#4A5059]/50 hover:text-[#4A5059]'
+                          : 'text-text-light/50 hover:text-text-light'
                       }`}
                     >
                       <motion.i
@@ -447,7 +447,7 @@ const PhotoComments: React.FC = () => {
                     </button>
                     <button
                       onClick={() => setReplyingTo(replyingTo === comment.id ? null : comment.id)}
-                      className="flex items-center space-x-1 text-sm text-[#4A5059]/50 hover:text-[#4A5059] transition-colors"
+                      className="flex items-center space-x-1 text-sm text-text-light/50 hover:text-text-light transition-colors"
                     >
                       <i className="fa-solid fa-reply"></i>
                       <span>回复</span>
@@ -475,11 +475,11 @@ const PhotoComments: React.FC = () => {
                           value={replyText}
                           onChange={(e) => setReplyText(e.target.value)}
                           placeholder={`回复 @${comment.username}...`}
-                          className="flex-1 px-3 py-2 rounded-lg bg-[#E6EBF2] border border-text-muted focus:outline-none focus:ring-2 focus:ring-accent text-sm text-[#4A5059]"
+                          className="flex-1 px-3 py-2 rounded-lg bg-surface-light-card border border-text-muted focus:outline-none focus:ring-2 focus:ring-accent text-sm text-text-light"
                         />
                         <button
                           onClick={() => handleSubmitReply(comment.id)}
-                          className="px-3 py-2 bg-accent hover:bg-[#4A5059] text-text-primary rounded-lg text-sm font-medium transition-colors"
+                          className="px-3 py-2 bg-accent hover:bg-text-light text-text-primary rounded-lg text-sm font-medium transition-colors"
                         >
                           回复
                         </button>
@@ -503,19 +503,19 @@ const PhotoComments: React.FC = () => {
                             <div className="flex items-center space-x-2 mb-1">
                               <Link
                                 to={`/profile/${reply.userId}`}
-                                className="font-medium text-[#4A5059] hover:text-accent transition-colors"
+                                className="font-medium text-text-light hover:text-accent transition-colors"
                               >
                                 {reply.username}
                               </Link>
-                              <span className="text-xs text-[#4A5059]/70">{reply.date}</span>
+                              <span className="text-xs text-text-light/70">{reply.date}</span>
                             </div>
-                            <p className="text-[#4A5059] mb-2 text-sm">{reply.content}</p>
+                            <p className="text-text-light mb-2 text-sm">{reply.content}</p>
                             <button
                               onClick={() => handleLike(comment.id, true, reply.id)}
                               className={`flex items-center space-x-1 text-xs transition-colors ${
                                 reply.isLiked
                                   ? 'text-accent'
-                                  : 'text-[#4A5059]/50 hover:text-[#4A5059]'
+                                  : 'text-text-light/50 hover:text-text-light'
                               }`}
                             >
                               <i className={`fa-solid ${reply.isLiked ? 'fa-heart' : 'fa-heart'}`}></i>

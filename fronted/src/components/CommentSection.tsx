@@ -1091,7 +1091,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                         backgroundColor: "transparent",
                         boxShadow: "rgba(0, 0, 0, 0.15) 0px 0px 30px 0px"
                     }}
-                    className={`bg-[#232D3F] border-accent rounded-lg p-4 relative`}>
+                    className={`bg-bg-dark-tertiary border-accent rounded-lg p-4 relative`}>
                     {comment.isUnread && <span className="absolute top-4 right-4 w-2 h-2 bg-accent rounded-full"></span>}
                     <div className="flex space-x-3">
                         <Link to={`/profile/${comment.userId}`} className="flex-shrink-0">

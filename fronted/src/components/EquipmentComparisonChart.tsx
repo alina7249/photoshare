@@ -280,12 +280,12 @@ export const EquipmentComparisonChart: React.FC<EquipmentComparisonChartProps> =
     
     return {
       container: "bg-text-primary border-text-muted",
-      text: "text-[#4A5059]",
-      primaryText: "text-[#4A5059]",
+      text: "text-text-light",
+      primaryText: "text-text-light",
       secondaryText: "text-accent-hover",
       button: "bg-accent text-white hover:bg-accent-hover",
-      buttonSecondary: "bg-white text-accent hover:bg-[#E6EBF2]",
-      input: "bg-white border-text-muted text-[#4A5059] placeholder:text-accent-hover",
+      buttonSecondary: "bg-white text-accent hover:bg-surface-light-card",
+      input: "bg-white border-text-muted text-text-light placeholder:text-accent-hover",
       chartContainer: "bg-white border-text-muted",
       highlight: "text-accent"
     };

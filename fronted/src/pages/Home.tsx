@@ -459,7 +459,7 @@ export default function Home() {
                                         </div>
                                     </div>
                                     <button
-                                        className="px-3 py-1 text-xs font-medium text-text-primary bg-accent hover:bg-[#3A4B6F] rounded-full transition-colors">
+                                        className="px-3 py-1 text-xs font-medium text-text-primary bg-accent hover:bg-bg-dark-hover rounded-full transition-colors">
                                         关注
                                     </button>
                                 </div>

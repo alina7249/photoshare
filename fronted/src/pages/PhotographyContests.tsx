@@ -136,7 +136,7 @@ const PhotographyContests: React.FC = () => {
             </div>
             <h2 className="text-2xl font-bold text-text-primary mb-2">请先登录</h2>
             <p className="text-text-muted mb-6 max-w-md">登录后查看您参加的摄影赛事</p>
-            <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-[#3A4B6F] transition-colors">
+            <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-bg-dark-hover transition-colors">
               立即登录
             </Link>
           </div>
@@ -279,7 +279,7 @@ const PhotographyContests: React.FC = () => {
                       </div>
                       
                       {/* 赛事标题和主办方 */}
-                      <h3 className="text-lg font-bold text-text-primary mb-2 hover:text-[#FFFFFF] transition-colors">
+                      <h3 className="text-lg font-bold text-text-primary mb-2 hover:text-surface-light-hover transition-colors">
                         {contest.title}
                       </h3>
                       {contest.organizer && (
@@ -374,7 +374,7 @@ const PhotographyContests: React.FC = () => {
                          {/* 查看详情按钮 */}
                          <Link
                            to={`/contest/${contest.id}`}
-                           className="flex-1 py-2 text-center bg-text-primary text-accent rounded-lg font-medium hover:bg-[#FFFFFF] transition-colors border border-text-primary"
+                           className="flex-1 py-2 text-center bg-text-primary text-accent rounded-lg font-medium hover:bg-surface-light-hover transition-colors border border-text-primary"
                          >
                            查看详情
                          </Link>
@@ -395,19 +395,19 @@ const PhotographyContests: React.FC = () => {
                                   className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"
                                   onClick={() => shareContest(contest.id, '微博')}
                                 >
-                                  <i className="fa-brands fa-weibo mr-2 text-[#E6162D]"></i> 分享到微博
+                                  <i className="fa-brands fa-weibo mr-2 text-red-weibo"></i> 分享到微博
                                 </button>
                                 <button 
                                   className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"
                                   onClick={() => shareContest(contest.id, '微信')}
                                 >
-                                  <i className="fa-brands fa-weixin mr-2 text-[#07C160]"></i> 分享到微信
+                                  <i className="fa-brands fa-weixin mr-2 text-brand-wechat"></i> 分享到微信
                                 </button>
                                 <button 
                                   className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"
                                   onClick={() => shareContest(contest.id, 'QQ')}
                                 >
-                                  <i className="fa-brands fa-qq mr-2 text-[#12B7F5]"></i> 分享到QQ
+                                  <i className="fa-brands fa-qq mr-2 text-brand-qq"></i> 分享到QQ
                                 </button>
                                 <button 
                                   className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"
@@ -432,7 +432,7 @@ const PhotographyContests: React.FC = () => {
               
                {filteredContests.length === 0 && (
                 <div className="p-8 bg-bg-card rounded-xl border border-accent text-center">
-                  <div className="w-16 h-16 bg-[#1E2A3A] rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+                  <div className="w-16 h-16 bg-bg-dark-alt rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                     <i className={isUserPersonalContests ? "fa-solid fa-trophy text-2xl" : "fa-solid fa-search text-2xl"}></i>
                   </div>
                   <h3 className="text-lg font-medium text-text-primary mb-2">
@@ -445,7 +445,7 @@ const PhotographyContests: React.FC = () => {
                     }
                   </p>
                   {isUserPersonalContests && (
-                    <Link to="/photography-contests" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-[#3A4B6F] transition-colors inline-flex items-center">
+                    <Link to="/photography-contests" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-bg-dark-hover transition-colors inline-flex items-center">
                       <i className="fa-solid fa-compass mr-2"></i>
                       浏览更多赛事
                     </Link>
@@ -506,7 +506,7 @@ const PhotographyContests: React.FC = () => {
               {selectedTags.length > 0 && (
                 <button
                   onClick={() => setSelectedTags([])}
-                  className="mt-4 w-full py-2 text-center text-sm text-text-primary hover:text-[#FFFFFF] transition-colors"
+                  className="mt-4 w-full py-2 text-center text-sm text-text-primary hover:text-surface-light-hover transition-colors"
                 >
                   <i className="fa-solid fa-times mr-1"></i> 清除所有标签
                 </button>
@@ -539,7 +539,7 @@ const PhotographyContests: React.FC = () => {
                           <span className="text-xs">天后截止</span>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-text-primary hover:text-[#FFFFFF] transition-colors truncate">
+                          <h4 className="font-medium text-text-primary hover:text-surface-light-hover transition-colors truncate">
                             {contest.title}
                           </h4>
                           <div className="flex items-center space-x-2 mt-1 text-xs text-text-primary/80">
@@ -556,7 +556,7 @@ const PhotographyContests: React.FC = () => {
               </div>
               <Link
                 to="#"
-                className="mt-4 inline-block text-sm text-text-primary hover:text-[#FFFFFF] transition-colors flex items-center justify-center w-full"
+                className="mt-4 inline-block text-sm text-text-primary hover:text-surface-light-hover transition-colors flex items-center justify-center w-full"
               >
                 <span>查看全部即将截止的赛事</span>
               </Link>
@@ -650,7 +650,7 @@ const PhotographyContests: React.FC = () => {
   <motion.button
     whileHover={{ scale: 1.02 }}
     whileTap={{ scale: 0.98 }}
-    className="w-full py-2 bg-text-primary text-accent font-medium rounded-lg hover:bg-[#FFFFFF] transition-colors"
+    className="w-full py-2 bg-text-primary text-accent font-medium rounded-lg hover:bg-surface-light-hover transition-colors"
     onClick={() => {
       if (!isAuthenticated) {
         toast.info('请先登录后再创建赛事');

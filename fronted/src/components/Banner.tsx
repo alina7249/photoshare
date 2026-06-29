@@ -88,7 +88,7 @@ export const Banner: React.FC = () => {
   const getButtonClass = () => {
     return theme === 'dark' 
       ? 'border-2 border-accent bg-gradient-to-r from-accent to-bg-card text-text-primary hover:from-accent-hover hover:to-accent' 
-      : 'border-2 border-light-accent bg-gradient-to-r from-light-accent to-light-accent-hover text-white hover:from-light-accent-hover hover:to-[#3182CE]';
+      : 'border-2 border-light-accent bg-gradient-to-r from-light-accent to-light-accent-hover text-white hover:from-light-accent-hover hover:to-blue-dark';
   };
   
   const getAvatarBorderClass = () => {

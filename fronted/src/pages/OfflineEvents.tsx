@@ -103,7 +103,7 @@ const OfflineEvents: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">请先登录</h2>
           <p className="text-text-muted mb-6 max-w-md">登录后查看您已报名的摄影活动</p>
-          <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-[#3A4B6F] transition-colors">
+          <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-bg-dark-hover transition-colors">
             立即登录
           </Link>
         </div>
@@ -235,7 +235,7 @@ const OfflineEvents: React.FC = () => {
                       </div>
                       
                       {/* 活动标题 */}
-                      <h3 className="text-lg font-bold text-text-primary mb-2 hover:text-[#FFFFFF] transition-colors">
+                      <h3 className="text-lg font-bold text-text-primary mb-2 hover:text-surface-light-hover transition-colors">
                         {event.title}
                       </h3>
                       
@@ -304,7 +304,7 @@ const OfflineEvents: React.FC = () => {
                       <div className="flex space-x-2">
                         <Link
                           to={`/event/${event.id}`}
-                          className="flex-1 py-2 text-center bg-text-primary text-accent rounded-lg font-medium hover:bg-[#FFFFFF] transition-colors border border-text-primary"
+                          className="flex-1 py-2 text-center bg-text-primary text-accent rounded-lg font-medium hover:bg-surface-light-hover transition-colors border border-text-primary"
                         >
                           查看详情
                         </Link>
@@ -313,7 +313,7 @@ const OfflineEvents: React.FC = () => {
                             <i className="fa-solid fa-calendar-check mr-1"></i> 已报名
                           </button>
                         ) : (
-                          <button className="flex-1 py-2 text-center bg-text-primary text-accent rounded-lg font-medium hover:bg-[#FFFFFF] transition-colors border border-text-primary">
+                          <button className="flex-1 py-2 text-center bg-text-primary text-accent rounded-lg font-medium hover:bg-surface-light-hover transition-colors border border-text-primary">
                             <i className="fa-solid fa-calendar-plus mr-1"></i> 立即报名
                           </button>
                         )}
@@ -325,7 +325,7 @@ const OfflineEvents: React.FC = () => {
               
               {filteredEvents.length === 0 && (
                 <div className="p-8 bg-bg-card rounded-xl border border-accent text-center">
-                  <div className="w-16 h-16 bg-[#1E2A3A] rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+                  <div className="w-16 h-16 bg-bg-dark-alt rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                     <i className="fa-solid fa-search text-2xl"></i>
                   </div>
                   <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关活动</h3>
@@ -389,7 +389,7 @@ const OfflineEvents: React.FC = () => {
                   {selectedTags.length > 0 && (
                     <button
                       onClick={() => setSelectedTags([])}
-                      className="mt-4 w-full py-2 text-center text-sm text-text-primary hover:text-[#FFFFFF] transition-colors"
+                      className="mt-4 w-full py-2 text-center text-sm text-text-primary hover:text-surface-light-hover transition-colors"
                     >
                       <i className="fa-solid fa-times mr-1"></i> 清除所有标签
                     </button>
@@ -447,7 +447,7 @@ const OfflineEvents: React.FC = () => {
                       <p className="text-xs text-text-primary/90 mt-1">10月28日 · 剩余12个名额</p>
                     </div>
                   </div>
-                  <button className="w-full py-2 bg-text-primary text-accent font-medium rounded-lg hover:bg-[#FFFFFF] transition-colors">
+                  <button className="w-full py-2 bg-text-primary text-accent font-medium rounded-lg hover:bg-surface-light-hover transition-colors">
                     查看全部活动
                   </button>
                 </div>

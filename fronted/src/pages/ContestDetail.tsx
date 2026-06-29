@@ -56,7 +56,7 @@ const ContestDetail: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该赛事</h2>
           <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的赛事不存在或已被删除</p>
-          <Link to="/photography-contests" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-[#3A4B6F] transition-colors">
+          <Link to="/photography-contests" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-bg-dark-hover transition-colors">
             返回赛事列表
           </Link>
         </div>
@@ -109,7 +109,7 @@ const ContestDetail: React.FC = () => {
               </span>
               <span className={`px-3 py-1 text-sm rounded-full ${
                 contest.status === '进行中'
-                  ? 'bg-[#38B2AC] text-text-primary'
+                  ? 'bg-teal text-text-primary'
                   : contest.status === '已截止'
                     ? 'bg-accent-hover text-text-primary'
                     : 'bg-bg-card text-text-primary'
@@ -117,7 +117,7 @@ const ContestDetail: React.FC = () => {
                 {contest.status}
               </span>
               {contest.status === '进行中' && (
-                <span className="px-3 py-1 bg-[#ED8936] text-text-primary text-sm rounded-full">
+                <span className="px-3 py-1 bg-orange-dark text-text-primary text-sm rounded-full">
                   还剩 {daysLeft} 天截止
                 </span>
               )}
@@ -242,14 +242,14 @@ const ContestDetail: React.FC = () => {
                 </div>
               </div>
               {contest.status === '进行中' && (
-                <div className="mt-4 p-3 bg-[#ED8936]/20 border border-[#ED8936] rounded-lg">
+                <div className="mt-4 p-3 bg-orange-dark/20 border border-orange-dark rounded-lg">
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-sm text-text-muted">剩余时间</span>
                     <span className="text-sm font-medium text-text-primary">{daysLeft} 天</span>
                   </div>
                   <div className="w-full h-2 bg-bg-deep rounded-full overflow-hidden">
                     <div 
-                      className="h-full bg-[#ED8936]" 
+                      className="h-full bg-orange-dark" 
                       style={{ width: `${Math.max(0, (daysLeft / 60) * 100)}%` }}
                     ></div>
                   </div>

@@ -157,7 +157,7 @@ const GroupCard: React.FC<GroupCardProps> = (
             className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
               group.joined
                 ? 'bg-accent/30 text-text-muted hover:bg-accent/50'
-                : 'bg-light-accent text-white hover:bg-[#4A9DE6]'
+                : 'bg-light-accent text-white hover:bg-blue-medium'
             }`}
           >
             {group.joined ? '退出' : '加入'}

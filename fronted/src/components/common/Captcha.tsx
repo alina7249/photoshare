@@ -103,7 +103,7 @@ const Captcha: React.FC<CaptchaProps> = ({ onChange, value = '', className = '' 
   return (
     <div className={`flex items-center space-x-3 ${className}`}>
       <div className="relative flex-1">
-        <label htmlFor="captcha" className="block text-sm font-medium text-[#E2E8F0] mb-1">
+        <label htmlFor="captcha" className="block text-sm font-medium text-text-light-label mb-1">
           验证码
         </label>
         <input
@@ -113,7 +113,7 @@ const Captcha: React.FC<CaptchaProps> = ({ onChange, value = '', className = '' 
           onChange={handleInputChange}
           className={`w-full px-4 py-2 rounded-lg border border-accent ${
             theme === 'dark' 
-              ? 'bg-[#4A5568] text-[#FFFFFF]' 
+              ? 'bg-border-light-form text-surface-light-hover' 
               : 'bg-white text-bg-deep'
           } focus:outline-none focus:ring-2 focus:ring-light-accent transition-colors`}
           placeholder="请输入验证码"

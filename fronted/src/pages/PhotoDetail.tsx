@@ -299,7 +299,7 @@ const PhotoDetail: React.FC = () => {
                <button 
                   className={`w-full py-2 rounded-lg font-medium transition-colors ${
                     isFollowing 
-                      ? 'bg-accent-hover text-text-primary hover:bg-[#718096]' 
+                      ? 'bg-accent-hover text-text-primary hover:bg-text-light-muted' 
                       : 'bg-accent text-text-primary hover:bg-accent-hover'
                   }`}
                   onClick={() => {
@@ -329,12 +329,12 @@ const PhotoDetail: React.FC = () => {
                   <span className={`text-sm ${isLiked ? 'text-danger' : 'text-text-muted'}`}>{likes}</span>
                 </button>
                 <button 
-                  className={`flex flex-col items-center justify-center ${isBookmarked ? 'text-[#F6AD55]' : 'text-accent'}`}
+                  className={`flex flex-col items-center justify-center ${isBookmarked ? 'text-orange' : 'text-accent'}`}
                   onClick={handleBookmark}
                   aria-label={isBookmarked ? "取消收藏" : "收藏"}
                 >
-                  <div className={`w-12 h-12 rounded-full ${isBookmarked ? 'bg-[#F6AD55]/20' : 'bg-accent/20'} flex items-center justify-center mb-2`}>
-                    <i className={`fa-solid fa-bookmark text-xl ${isBookmarked ? 'text-[#F6AD55]' : 'text-accent'}`}></i>
+                  <div className={`w-12 h-12 rounded-full ${isBookmarked ? 'bg-orange/20' : 'bg-accent/20'} flex items-center justify-center mb-2`}>
+                    <i className={`fa-solid fa-bookmark text-xl ${isBookmarked ? 'text-orange' : 'text-accent'}`}></i>
                     </div>
                    <span className="text-sm text-text-muted">{collections}</span>
                 </button>
@@ -354,7 +354,7 @@ const PhotoDetail: React.FC = () => {
                  </button>
                  <button 
                    onClick={handleDonation}
-                   className="w-full py-2 bg-gradient-to-r from-danger to-[#ED8936] text-text-primary rounded-lg font-medium hover:from-danger hover:to-[#DD6B20] transition-colors flex items-center justify-center border border-danger"
+                   className="w-full py-2 bg-gradient-to-r from-danger to-orange-dark text-text-primary rounded-lg font-medium hover:from-danger hover:to-orange-darker transition-colors flex items-center justify-center border border-danger"
                  >
                    <i className="fa-solid fa-coins mr-2"></i>
                    打赏作者
@@ -582,7 +582,7 @@ const PhotoDetail: React.FC = () => {
               </button>
               <button 
                 onClick={handlePayDonation}
-                className="flex-1 py-3 bg-gradient-to-r from-danger to-[#ED8936] text-text-primary rounded-lg font-medium hover:from-danger hover:to-[#DD6B20] transition-colors border border-danger"
+                className="flex-1 py-3 bg-gradient-to-r from-danger to-orange-dark text-text-primary rounded-lg font-medium hover:from-danger hover:to-orange-darker transition-colors border border-danger"
               >
                 确认支付 ¥{selectedDonation?.id === 'custom' ? customDonationAmount : selectedDonation?.amount || 0}
               </button>

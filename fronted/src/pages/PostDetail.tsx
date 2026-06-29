@@ -312,7 +312,7 @@ const PostDetail: React.FC = () => {
                       whileTap={{ scale: 0.9 }}
                       onClick={handleBookmark}
                       className={`flex items-center space-x-1 transition-colors ${
-                        isBookmarked ? 'text-[#F6AD55]' : 'text-accent-hover hover:text-text-muted'
+                        isBookmarked ? 'text-orange' : 'text-accent-hover hover:text-text-muted'
                       }`}
                     >
                       <i className={`fa-solid ${isBookmarked ? 'fa-bookmark' : 'fa-bookmark'}`}></i>
@@ -379,7 +379,7 @@ const PostDetail: React.FC = () => {
                <button 
                  className={`w-full py-2 rounded-lg font-medium transition-colors ${
                    isFollowing 
-                     ? 'bg-accent-hover text-text-primary hover:bg-[#718096]' 
+                     ? 'bg-accent-hover text-text-primary hover:bg-text-light-muted' 
                      : 'bg-accent text-text-primary hover:bg-accent-hover'
                  }`}
                  onClick={() => {

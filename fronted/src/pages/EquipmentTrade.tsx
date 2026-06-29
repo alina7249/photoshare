@@ -726,7 +726,7 @@ const PublishEquipmentForm: React.FC<{
                 ))}
             </div>
             {Object.keys(errors).length > 0 && (
-                <div className="bg-[#4A1A1A]/30 border border-danger/50 rounded-lg p-3 text-danger text-sm mt-4">
+                <div className="bg-danger-dark/30 border border-danger/50 rounded-lg p-3 text-danger text-sm mt-4">
                     <i className="fa-solid fa-exclamation-circle mr-1"></i>
                     {Object.values(errors)[0]}
                 </div>
@@ -1178,7 +1178,7 @@ const PublishEquipmentForm: React.FC<{
                         whileTap={{ scale: 0.97 }}
                         type="button"
                         onClick={handleSubmit}
-                        className="px-6 py-3 bg-success text-white rounded-lg font-medium hover:bg-[#38A169] transition-colors flex items-center"
+                        className="px-6 py-3 bg-success text-white rounded-lg font-medium hover:bg-success-dark transition-colors flex items-center"
                     >
                         <i className="fa-solid fa-paper-plane mr-2"></i>
                         发布器材
@@ -1496,7 +1496,7 @@ const EquipmentDetail: React.FC = () => {
                             <h2 className="text-xl font-bold text-text-primary mb-4">{equipment.name}</h2>
                             <div className="flex items-center mb-6">
                                 <p className="text-2xl font-bold text-accent">¥{parseInt(equipment.price).toLocaleString()}</p>
-                                {equipment.originalPrice !== equipment.price && <p className="text-sm text-[#718096] line-through ml-2">¥{parseInt(equipment.originalPrice).toLocaleString()}</p>}
+                                {equipment.originalPrice !== equipment.price && <p className="text-sm text-text-light-muted line-through ml-2">¥{parseInt(equipment.originalPrice).toLocaleString()}</p>}
                             </div>
                             {}
                             {equipment.condition && <div className="space-y-3 mb-6 text-sm">
@@ -1986,7 +1986,7 @@ const EquipmentTrade: React.FC = () => {
                             {}
                             <div className="flex items-center mb-4">
                                 <p className="text-lg font-bold text-accent">¥{parseInt(item.price).toLocaleString()}</p>
-                                {item.originalPrice !== item.price && <p className="text-sm text-[#718096] line-through ml-2">¥{parseInt(item.originalPrice).toLocaleString()}</p>}
+                                {item.originalPrice !== item.price && <p className="text-sm text-text-light-muted line-through ml-2">¥{parseInt(item.originalPrice).toLocaleString()}</p>}
                             </div>
                             {}
                             {tradeType === "used" && <div className="space-y-1 mb-4 text-sm">
@@ -2046,7 +2046,7 @@ const EquipmentTrade: React.FC = () => {
                     {currentEquipment.length === 0 && <div
                         className="col-span-full p-8 bg-bg-card rounded-xl border border-accent text-center">
                         <div
-                            className="w-16 h-16 bg-[#1E2A3A] rounded-full flex items-center justify-center text-accent mx-auto mb-4 border border-accent">
+                            className="w-16 h-16 bg-bg-dark-alt rounded-full flex items-center justify-center text-accent mx-auto mb-4 border border-accent">
                             <i className="fa-solid fa-search text-2xl"></i>
                         </div>
                         <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关器材</h3>
@@ -2061,7 +2061,7 @@ const EquipmentTrade: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="flex items-start">
                             <div
-                                className="w-10 h-10 rounded-full bg-[#1E2A3A] flex items-center justify-center text-accent mr-3 flex-shrink-0">
+                                className="w-10 h-10 rounded-full bg-bg-dark-alt flex items-center justify-center text-accent mr-3 flex-shrink-0">
                                 <i className="fa-solid fa-check-circle"></i>
                             </div>
                             <div>
@@ -2072,7 +2072,7 @@ const EquipmentTrade: React.FC = () => {
                         </div>
                         <div className="flex items-start">
                             <div
-                                className="w-10 h-10 rounded-full bg-[#1E2A3A] flex items-center justify-center text-accent mr-3 flex-shrink-0">
+                                className="w-10 h-10 rounded-full bg-bg-dark-alt flex items-center justify-center text-accent mr-3 flex-shrink-0">
                                 <i className="fa-solid fa-shield-alt"></i>
                             </div>
                             <div>
@@ -2083,7 +2083,7 @@ const EquipmentTrade: React.FC = () => {
                         </div>
                         <div className="flex items-start">
                             <div
-                                className="w-10 h-10 rounded-full bg-[#1E2A3A] flex items-center justify-center text-accent mr-3 flex-shrink-0">
+                                className="w-10 h-10 rounded-full bg-bg-dark-alt flex items-center justify-center text-accent mr-3 flex-shrink-0">
                                 <i className="fa-solid fa-headset"></i>
                             </div>
                             <div>

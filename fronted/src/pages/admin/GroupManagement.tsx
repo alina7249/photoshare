@@ -164,9 +164,9 @@ const GroupManagement: React.FC = () => {
   const renderStatusBadge = (status: string) => {
     switch (status) {
       case 'active':
-        return <span className="px-2 py-1 bg-[#38B2AC]/20 text-[#38B2AC] text-xs rounded-full">活跃</span>;
+        return <span className="px-2 py-1 bg-teal/20 text-teal text-xs rounded-full">活跃</span>;
       case 'pending':
-        return <span className="px-2 py-1 bg-[#F6AD55]/20 text-[#F6AD55] text-xs rounded-full">待审核</span>;
+        return <span className="px-2 py-1 bg-orange/20 text-orange text-xs rounded-full">待审核</span>;
       case 'banned':
         return <span className="px-2 py-1 bg-danger/20 text-danger text-xs rounded-full">已禁用</span>;
       default:
@@ -367,7 +367,7 @@ const GroupManagement: React.FC = () => {
                 ) : group.status === 'banned' ? (
                   <button
                     onClick={() => handleGroupAction(group.id, 'unban')}
-                    className="px-3 py-2 bg-[#38B2AC] text-white rounded-lg text-sm font-medium hover:bg-[#38A169] transition-colors"
+                    className="px-3 py-2 bg-teal text-white rounded-lg text-sm font-medium hover:bg-success-dark transition-colors"
                   >
                     <i className="fa-solid fa-check-circle"></i>
                   </button>

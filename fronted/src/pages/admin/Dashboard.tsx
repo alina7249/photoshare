@@ -263,11 +263,11 @@ const Dashboard: React.FC = () => {
                       <span className="text-sm text-accent-hover">{activity.time}</span>
                     </div>
                     <span className={`text-xs px-2 py-0.5 rounded-full ${
-                      activity.type === '用户注册' ? 'bg-[#38B2AC]/20 text-[#38B2AC]' :
+                      activity.type === '用户注册' ? 'bg-teal/20 text-teal' :
                       activity.type === '作品发布' ? 'bg-accent/20 text-accent' :
                       activity.type === '评论' ? 'bg-accent-hover/20 text-accent-hover' :
-                      activity.type === '订单' ? 'bg-[#F6AD55]/20 text-[#F6AD55]' :
-                      activity.type === '小组创建' ? 'bg-[#9F7AEA]/20 text-[#9F7AEA]' : 'bg-[#F687B3]/20 text-[#F687B3]'
+                      activity.type === '订单' ? 'bg-orange/20 text-orange' :
+                      activity.type === '小组创建' ? 'bg-purple/20 text-purple' : 'bg-pink/20 text-pink'
                     }`}>
                       {activity.type}
                     </span>

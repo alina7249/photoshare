@@ -171,7 +171,7 @@ const Settings: React.FC = () => {
                           onChange={(e) => setMaintenanceMode(e.target.checked)}
                           className="sr-only peer" 
                         />
-                        <div className="w-9 h-5 bg-accent peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#38B2AC]"></div>
+                        <div className="w-9 h-5 bg-accent peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-teal"></div>
                       </label>
                     </div>
                   </div>
@@ -189,7 +189,7 @@ const Settings: React.FC = () => {
                           onChange={(e) => setEnableRegistration(e.target.checked)}
                           className="sr-only peer" 
                         />
-                        <div className="w-9 h-5 bg-accent peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#38B2AC]"></div>
+                        <div className="w-9 h-5 bg-accent peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-teal"></div>
                       </label>
                     </div>
                   </div>
@@ -212,7 +212,7 @@ const Settings: React.FC = () => {
                   <div>
                     <label className="block text-sm font-medium text-text-muted mb-2">API接口状态</label>
                     <div className="flex items-center p-2 bg-bg-card border border-accent text-text-primary rounded-lg">
-                      <span className="w-3 h-3 bg-[#38B2AC] rounded-full mr-2"></span>
+                      <span className="w-3 h-3 bg-teal rounded-full mr-2"></span>
                       <span>已启用</span>
                     </div>
                   </div>
@@ -290,7 +290,7 @@ const Settings: React.FC = () => {
                           onChange={(e) => setTwoFactorAuth(e.target.checked)}
                           className="sr-only peer" 
                         />
-                        <div className="w-9 h-5 bg-accent peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#38B2AC]"></div>
+                        <div className="w-9 h-5 bg-accent peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-teal"></div>
                       </label>
                     </div>
                   </div>
@@ -472,7 +472,7 @@ const Settings: React.FC = () => {
                           checked
                           className="sr-only peer" 
                         />
-                        <div className="w-9 h-5 bg-accent peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#38B2AC]"></div>
+                        <div className="w-9 h-5 bg-accent peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-teal"></div>
                       </label>
                     </div>
                   </div>
@@ -584,7 +584,7 @@ const Settings: React.FC = () => {
                                 <button className="text-accent hover:text-accent-hover transition-colors">
                                   <i className="fa-solid fa-download"></i>
                                 </button>
-                                <button className="text-[#38B2AC] hover:text-[#38A169] transition-colors">
+                                <button className="text-teal hover:text-success-dark transition-colors">
                                   <i className="fa-solid fa-rotate-left"></i>
                                 </button>
                                 <button className="text-danger hover:text-danger transition-colors">
@@ -605,7 +605,7 @@ const Settings: React.FC = () => {
                                 <button className="text-accent hover:text-accent-hover transition-colors">
                                   <i className="fa-solid fa-download"></i>
                                 </button>
-                                <button className="text-[#38B2AC] hover:text-[#38A169] transition-colors">
+                                <button className="text-teal hover:text-success-dark transition-colors">
                                   <i className="fa-solid fa-rotate-left"></i>
                                 </button>
                                 <button className="text-danger hover:text-danger transition-colors">
@@ -617,7 +617,7 @@ const Settings: React.FC = () => {
                           <tr>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-text-primary">媒体文件备份_20231015</td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                              <span className="px-2 py-1 bg-[#38B2AC]/20 text-[#38B2AC] text-xs rounded-full">媒体文件备份</span>
+                              <span className="px-2 py-1 bg-teal/20 text-teal text-xs rounded-full">媒体文件备份</span>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-text-muted">980 MB</td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-text-muted">2023-10-15 02:00:00</td>
@@ -626,7 +626,7 @@ const Settings: React.FC = () => {
                                 <button className="text-accent hover:text-accent-hover transition-colors">
                                   <i className="fa-solid fa-download"></i>
                                 </button>
-                                <button className="text-[#38B2AC] hover:text-[#38A169] transition-colors">
+                                <button className="text-teal hover:text-success-dark transition-colors">
                                   <i className="fa-solid fa-rotate-left"></i>
                                 </button>
                                 <button className="text-danger hover:text-danger transition-colors">
@@ -653,7 +653,7 @@ const Settings: React.FC = () => {
                             checked
                             className="sr-only peer" 
                           />
-                          <div className="w-9 h-5 bg-accent peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#38B2AC]"></div>
+                          <div className="w-9 h-5 bg-accent peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-teal"></div>
                         </label>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

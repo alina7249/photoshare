@@ -12,35 +12,35 @@ const Footer: React.FC = () => {
   
   const getTextClass = (isPrimary: boolean) => {
     return isPrimary 
-      ? (theme === 'dark' ? 'text-[#E0E5EC]' : 'text-bg-deep')
-      : (theme === 'dark' ? 'text-[#718096]' : 'text-accent');
+      ? (theme === 'dark' ? 'text-text-light-footer' : 'text-bg-deep')
+      : (theme === 'dark' ? 'text-text-light-muted' : 'text-accent');
   };
   
   const getCardBgClass = () => {
-    return theme === 'dark' ? 'bg-[#1E2A3A] border-[#4A5568]' : 'bg-white border-gray-200';
+    return theme === 'dark' ? 'bg-bg-dark-alt border-border-light-form' : 'bg-white border-gray-200';
   };
   
   const getLinkClass = () => {
     return theme === 'dark' 
-      ? 'text-[#E2E8F0] hover:text-light-accent' 
+      ? 'text-text-light-label hover:text-light-accent' 
       : 'text-accent hover:text-light-accent';
   };
   
   const getSubscribeInputClass = () => {
     return theme === 'dark' 
-      ? 'bg-[#4A5568] text-[#FFFFFF] focus:ring-light-accent' 
+      ? 'bg-border-light-form text-surface-light-hover focus:ring-light-accent' 
       : 'bg-white text-bg-deep border-gray-300 focus:ring-light-accent focus:border-light-accent';
   };
   
   const getSubscribeButtonClass = () => {
     return theme === 'dark' 
-      ? 'bg-light-accent text-[#0F1C2D] hover:bg-light-accent-hover' 
+      ? 'bg-light-accent text-text-dark-inverse hover:bg-light-accent-hover' 
       : 'bg-accent text-white hover:bg-accent-hover';
   };
   
   const getSocialIconClass = () => {
     return theme === 'dark' 
-      ? 'text-[#E2E8F0] hover:text-light-accent' 
+      ? 'text-text-light-label hover:text-light-accent' 
       : 'text-accent hover:text-light-accent';
   };
   
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
     <footer className={`w-full py-10 mt-12 ${getBgClass()}`}>
       <div className="container mx-auto px-4">
         {/* 上下区域过渡条 */}
-        <div className="h-4 bg-[#1E2A3A] rounded-t-xl mb-8"></div>
+        <div className="h-4 bg-bg-dark-alt rounded-t-xl mb-8"></div>
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* 品牌信息 */}

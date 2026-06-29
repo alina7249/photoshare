@@ -119,7 +119,7 @@ const EventDetail: React.FC = () => {
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该活动</h2>
           <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的活动不存在或已被删除</p>
-          <Link to="/offline-events" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-[#3A4B6F] transition-colors">
+          <Link to="/offline-events" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-bg-dark-hover transition-colors">
             返回活动列表
           </Link>
              </div>

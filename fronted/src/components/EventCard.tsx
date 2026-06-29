@@ -73,7 +73,7 @@ export const EventCard: React.FC<EventCardProps> = ({
           </div>
           
           {/* 活动/赛事标题 */}
-          <h3 className="text-lg font-bold text-text-primary mb-2 hover:text-[#FFFFFF] transition-colors">
+          <h3 className="text-lg font-bold text-text-primary mb-2 hover:text-surface-light-hover transition-colors">
             {item.title}
           </h3>
           
@@ -153,12 +153,12 @@ export const EventCard: React.FC<EventCardProps> = ({
           <div className="flex space-x-2">
             <Link
               to={isContest ? `/contest/${item.id}` : `/event/${item.id}`}
-              className="flex-1 py-2 text-center bg-text-primary text-accent rounded-lg font-medium hover:bg-[#FFFFFF] transition-colors border border-text-primary"
+              className="flex-1 py-2 text-center bg-text-primary text-accent rounded-lg font-medium hover:bg-surface-light-hover transition-colors border border-text-primary"
             >
               查看详情
             </Link>
             <button 
-              className="flex-1 py-2 text-center bg-text-primary text-accent rounded-lg font-medium hover:bg-[#FFFFFF] transition-colors border border-text-primary"
+              className="flex-1 py-2 text-center bg-text-primary text-accent rounded-lg font-medium hover:bg-surface-light-hover transition-colors border border-text-primary"
               onClick={onRegister}
             >
               <i className="fa-solid fa-calendar-plus mr-1"></i> {isContest ? '立即参赛' : '立即报名'}

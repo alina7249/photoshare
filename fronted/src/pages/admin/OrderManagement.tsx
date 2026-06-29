@@ -142,9 +142,9 @@ const OrderManagement: React.FC = () => {
   const renderStatusBadge = (status: string) => {
     switch (status) {
       case 'pending':
-        return <span className="px-2 py-1 bg-[#F6AD55]/20 text-[#F6AD55] text-xs rounded-full">待支付</span>;
+        return <span className="px-2 py-1 bg-orange/20 text-orange text-xs rounded-full">待支付</span>;
       case 'paid':
-        return <span className="px-2 py-1 bg-[#38B2AC]/20 text-[#38B2AC] text-xs rounded-full">已支付</span>;
+        return <span className="px-2 py-1 bg-teal/20 text-teal text-xs rounded-full">已支付</span>;
       case 'cancelled':
         return <span className="px-2 py-1 bg-danger/20 text-danger text-xs rounded-full">已取消</span>;
       default:

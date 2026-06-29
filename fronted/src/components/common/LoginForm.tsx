@@ -174,7 +174,7 @@ const LoginForm: React.FC = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
       <div className="space-y-4">
         <div>
-          <label htmlFor="username" className="block text-sm font-medium text-[#E2E8F0] mb-1">
+          <label htmlFor="username" className="block text-sm font-medium text-text-light-label mb-1">
             用户名
           </label>
           <input
@@ -187,10 +187,10 @@ const LoginForm: React.FC = () => {
             className={`w-full px-4 py-3 rounded-lg border ${
               errors.username 
                 ? 'border-red-500' 
-                : 'border-[#4A5568]'
+                : 'border-border-light-form'
             } ${
               theme === 'dark' 
-                ? 'bg-[#4A5568] text-[#FFFFFF]' 
+                ? 'bg-border-light-form text-surface-light-hover' 
                 : 'bg-white text-bg-deep'
             } focus:outline-none focus:ring-2 focus:ring-light-accent transition-colors`}
             placeholder="请输入用户名"
@@ -201,7 +201,7 @@ const LoginForm: React.FC = () => {
         </div>
         
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-[#E2E8F0] mb-1">
+          <label htmlFor="password" className="block text-sm font-medium text-text-light-label mb-1">
             密码
           </label>
           <div className="relative">
@@ -226,10 +226,10 @@ const LoginForm: React.FC = () => {
               className={`w-full px-4 py-3 pr-10 rounded-lg border ${
                 errors.password 
                   ? 'border-red-500' 
-                  : 'border-[#4A5568]'
+                  : 'border-border-light-form'
               } ${
                 theme === 'dark' 
-                  ? 'bg-[#4A5568] text-[#FFFFFF]' 
+                  ? 'bg-border-light-form text-surface-light-hover' 
                   : 'bg-white text-bg-deep'
               } focus:outline-none focus:ring-2 focus:ring-light-accent transition-colors`}
               placeholder="••••••••"
@@ -237,7 +237,7 @@ const LoginForm: React.FC = () => {
             <button
               type="button"
               onClick={togglePasswordVisibility}
-              className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#718096] hover:text-text-muted"
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-text-light-muted hover:text-text-muted"
               aria-label={showPassword ? '隐藏密码' : '显示密码'}
             >
               <i className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
@@ -266,9 +266,9 @@ const LoginForm: React.FC = () => {
               id="remember-me"
               type="checkbox"
               {...register('rememberMe')}
-              className="h-4 w-4 text-[#38B2AC] focus:ring-[#38B2AC] border-[#4A5568] rounded bg-[#1E2A3A]"
+              className="h-4 w-4 text-teal focus:ring-teal border-border-light-form rounded bg-bg-dark-alt"
             />
-            <label htmlFor="remember-me" className="ml-2 block text-sm text-[#E2E8F0]">
+            <label htmlFor="remember-me" className="ml-2 block text-sm text-text-light-label">
               记住我
             </label>
           </div>
@@ -288,7 +288,7 @@ const LoginForm: React.FC = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-3 px-4 bg-light-accent hover:bg-light-accent-hover text-[#0F1C2D] font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-light-accent transition-colors"
+          className="w-full py-3 px-4 bg-light-accent hover:bg-light-accent-hover text-text-dark-inverse font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-light-accent transition-colors"
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center">

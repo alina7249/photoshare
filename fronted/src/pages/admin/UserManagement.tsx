@@ -186,9 +186,9 @@ const UserManagement: React.FC = () => {
   const renderStatusBadge = (status: string) => {
     switch (status) {
       case 'active':
-        return <span className="px-2 py-1 bg-[#38B2AC]/20 text-[#38B2AC] text-xs rounded-full">活跃</span>;
+        return <span className="px-2 py-1 bg-teal/20 text-teal text-xs rounded-full">活跃</span>;
       case 'pending':
-        return <span className="px-2 py-1 bg-[#F6AD55]/20 text-[#F6AD55] text-xs rounded-full">待审核</span>;
+        return <span className="px-2 py-1 bg-orange/20 text-orange text-xs rounded-full">待审核</span>;
       case 'banned':
         return <span className="px-2 py-1 bg-danger/20 text-danger text-xs rounded-full">已禁用</span>;
       default:
@@ -202,9 +202,9 @@ const UserManagement: React.FC = () => {
       case 'user':
         return <span className="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">普通用户</span>;
       case 'photographer':
-        return <span className="px-2 py-1 bg-[#9F7AEA]/20 text-[#9F7AEA] text-xs rounded-full">摄影师</span>;
+        return <span className="px-2 py-1 bg-purple/20 text-purple text-xs rounded-full">摄影师</span>;
       case 'admin':
-        return <span className="px-2 py-1 bg-[#F687B3]/20 text-[#F687B3] text-xs rounded-full">管理员</span>;
+        return <span className="px-2 py-1 bg-pink/20 text-pink text-xs rounded-full">管理员</span>;
       default:
         return <span className="px-2 py-1 bg-accent-hover/20 text-accent-hover text-xs rounded-full">未知</span>;
     }
@@ -429,7 +429,7 @@ const UserManagement: React.FC = () => {
                       ) : user.status === 'banned' ? (
                         <button
                           onClick={() => handleUserAction(user.id, 'unban')}
-                          className="text-[#38B2AC] hover:text-[#38A169] transition-colors p-1"
+                          className="text-teal hover:text-success-dark transition-colors p-1"
                           title="解除禁用"
                         >
                           <i className="fa-solid fa-check-circle"></i>

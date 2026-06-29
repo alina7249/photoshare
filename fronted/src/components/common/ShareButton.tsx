@@ -87,19 +87,19 @@ export const ShareButton: React.FC<ShareButtonProps> = ({
               className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"
               onClick={() => shareToPlatform('weibo')}
             >
-              <i className="fa-brands fa-weibo mr-2 text-[#E6162D]"></i> 分享到微博
+              <i className="fa-brands fa-weibo mr-2 text-red-weibo"></i> 分享到微博
             </button>
             <button 
               className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"
               onClick={() => shareToPlatform('qq')}
             >
-              <i className="fa-brands fa-qq mr-2 text-[#12B7F5]"></i> 分享到QQ
+              <i className="fa-brands fa-qq mr-2 text-brand-qq"></i> 分享到QQ
             </button>
             <button 
               className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"
               onClick={() => shareToPlatform('wechat')}
             >
-              <i className="fa-brands fa-weixin mr-2 text-[#07C160]"></i> 分享到微信
+              <i className="fa-brands fa-weixin mr-2 text-brand-wechat"></i> 分享到微信
             </button>
             <button 
               className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"
