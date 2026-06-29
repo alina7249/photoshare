@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 import { CommentSection } from '../components/CommentSection';
 import { ShareButton } from '../components/common/ShareButton';
 import { apiGet } from '../lib/api';
+import { HOVER_SHADOWS } from '../constants/theme';
 
 // 帖子接口定义
 interface Post {
@@ -174,7 +175,7 @@ const PostDetail: React.FC = () => {
               whileHover={{ 
                 rotateY: 1.5, 
                 scale: 1.02,
-                boxShadow: "0 8px 24px rgba(74,95,139,0.3)",
+                boxShadow: HOVER_SHADOWS.ACCENT_LG,
                 transition: { duration: 0.3 }
               }}
               style={{ 

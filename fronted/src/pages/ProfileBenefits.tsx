@@ -6,6 +6,8 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pi
 import { toast } from 'sonner';
 import { apiGet } from '../lib/api';
 
+import { CHART_COLORS, HOVER_SHADOWS } from '../constants/theme';
+
 // 饼图数据处理
 const getPieChartData = (membershipData: any) => {
   if (!membershipData?.growthSystem?.usageChartData) return { data: [], COLORS: [] };
@@ -15,8 +17,7 @@ const getPieChartData = (membershipData: any) => {
     fullValue: item.total
   }));
   
-  // 对应 CSS 变量: --light-blue-gray, --medium-blue-gray, --chart-teal, --chart-green, --light-cool-gray
-const COLORS = ['#4A5F8B', '#6B7C93', '#38B2AC', '#68D391', '#B8C6D8'];
+  const COLORS = [...CHART_COLORS.FULL];
   
   return { data, COLORS };
 };
@@ -848,7 +849,7 @@ const ProfileBenefits: React.FC = () => {
                     {filteredRewards.map((reward) => (
                       <motion.div
                         key={reward.id}
-                        whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
+                        whileHover={{ y: -5, boxShadow: HOVER_SHADOWS.ACCENT_MD }}
                         className={`bg-deep rounded-xl overflow-hidden border transition-all ${
                           reward.available 
                             ? 'border-accent' 

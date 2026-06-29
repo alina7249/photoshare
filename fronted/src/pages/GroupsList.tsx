@@ -1,3 +1,4 @@
+import { buildCozeImageUrl } from '../constants/api';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -92,12 +93,12 @@ const GroupsList: React.FC = () => {
       id: `g${Date.now()}`,
       name: groupName,
       description: groupDescription,
-      coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=default%20group%20cover%20photography&sign=3bc880c564b24e50436a36ff7e049628",
-      avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=default%20group%20logo%20photography&sign=dffce2dd824c325946b2f4c9d5864412",
+      coverImage: buildCozeImageUrl('default group cover photography', '3bc880c564b24e50436a36ff7e049628', 'landscape_16_9'),
+      avatar: buildCozeImageUrl('default group logo photography', 'dffce2dd824c325946b2f4c9d5864412', 'square'),
       members: [{
         id: user?.id || "current-user",
         name: user?.username || "当前用户",
-        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=default%20user%20avatar&sign=a323de447d924f02db241a15b12a9a1e",
+        avatar: buildCozeImageUrl('default user avatar', 'a323de447d924f02db241a15b12a9a1e', 'square'),
         role: "owner",
         joinDate: new Date().toISOString()
       }],

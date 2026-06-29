@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { useAuthStore } from '../../store/authStore';
+import { HOVER_SHADOWS } from '../../constants/theme';
 
 interface CardProps {
   children: ReactNode;
@@ -37,7 +38,7 @@ const Card: React.FC<CardProps> = ({
     hover: { 
       y: -5,
       boxShadow: theme === 'dark' 
-        ? "0 10px 25px -5px rgba(74, 95, 139, 0.2)" 
+        ? HOVER_SHADOWS.ACCENT_XL
         : "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
       transition: { duration: 0.3 }
     }

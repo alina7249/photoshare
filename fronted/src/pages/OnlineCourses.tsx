@@ -8,6 +8,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { HOVER_SHADOWS } from '../constants/theme';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { apiGet } from '../lib/api';
 
@@ -255,7 +256,7 @@ const OnlineCourses: React.FC = () => {
                 filteredCourses.map((course) => (
                   <motion.div
                     key={course.id}
-                    whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
+                    whileHover={{ y: -5, boxShadow: HOVER_SHADOWS.ACCENT_MD }}
                     className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
                   >
                     {/* 课程封面图 */}
@@ -353,7 +354,7 @@ const OnlineCourses: React.FC = () => {
                 filteredTextTutorials.map((tutorial) => (
                   <motion.div
                     key={tutorial.id}
-                    whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
+                    whileHover={{ y: -5, boxShadow: HOVER_SHADOWS.ACCENT_MD }}
                     className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
                   >
                     {/* 教程图片 */}

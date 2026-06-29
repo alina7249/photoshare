@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../constants/api';
 
 // 创建 axios 实例
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8121', // 后端 API 基础地址
+  baseURL: API_BASE_URL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

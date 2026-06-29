@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } from 'recharts';
 import { Equipment } from '../lib/equipmentData';
 import { apiGet } from '../lib/api';
+import { CHART_COLORS, HOVER_SHADOWS } from '../constants/theme';
+import { EQUIPMENT_TYPE } from '../constants/enums';
 
 import { EquipmentQuestions } from '../components/EquipmentQuestions';
 import { toast } from 'sonner';
@@ -20,8 +22,8 @@ const brands = ['全部', 'Sony', 'Canon', 'Nikon', 'Fujifilm', 'Panasonic', 'Le
 
 // 器材类型
 const equipmentTypes = [
-  { id: 'cameras', name: '相机', icon: 'fa-camera' },
-  { id: 'lenses', name: '镜头', icon: 'fa-video' },
+  { id: 'cameras', name: EQUIPMENT_TYPE.CAMERA, icon: 'fa-camera' },
+  { id: 'lenses', name: EQUIPMENT_TYPE.LENS, icon: 'fa-video' },
   { id: 'accessories', name: '配件', icon: 'fa-toolbox' }
 ];
 
@@ -164,7 +166,7 @@ const equipmentTypes = [
                     {recommendations.map((equipment) => (
                       <motion.div
                         key={equipment.id}
-                        whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
+                        whileHover={{ y: -5, boxShadow: HOVER_SHADOWS.ACCENT_MD }}
                         className="bg-deep rounded-lg overflow-hidden border border-accent transition-all cursor-pointer"
                         onClick={() => {
                           setSelectedEquipment(equipment);
@@ -253,9 +255,9 @@ const equipmentTypes = [
   }, []);
 
   // 按类型派生器材数组
-  const cameras = useMemo(() => allEquipments.filter(e => e.type === '相机' || e.type === '无人机'), [allEquipments]);
-  const lenses = useMemo(() => allEquipments.filter(e => e.type === '镜头'), [allEquipments]);
-  const accessories = useMemo(() => allEquipments.filter(e => e.type !== '相机' && e.type !== '无人机' && e.type !== '镜头'), [allEquipments]);
+  const cameras = useMemo(() => allEquipments.filter(e => e.type === EQUIPMENT_TYPE.CAMERA || e.type === EQUIPMENT_TYPE.DRONE), [allEquipments]);
+  const lenses = useMemo(() => allEquipments.filter(e => e.type === EQUIPMENT_TYPE.LENS), [allEquipments]);
+  const accessories = useMemo(() => allEquipments.filter(e => e.type !== EQUIPMENT_TYPE.CAMERA && e.type !== EQUIPMENT_TYPE.DRONE && e.type !== EQUIPMENT_TYPE.LENS), [allEquipments]);
 
   // 过滤器材
   const getFilteredEquipment = () => {
@@ -356,8 +358,7 @@ const equipmentTypes = [
   };
 
   // 颜色配置
-  // 对应 CSS 变量: --light-blue-gray, --chart-purple, --light-cool-gray, --surface-light-card
-const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
+const COLORS = [...CHART_COLORS.DATABASE];
 
   // 获取推荐器材
   const getRecommendedEquipment = (equipment: Equipment) => {
@@ -508,7 +509,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
     if (prompt.includes('旅行') || prompt.includes('便携')) {
       // 推荐便携器材
       recommendations = allEquipments.filter(item => 
-        (item.type === '相机' || item.type === '无人机') && 
+        (item.type === EQUIPMENT_TYPE.CAMERA || item.type === EQUIPMENT_TYPE.DRONE) && 
         (item.tags.includes('便携') || item.weight && parseFloat(item.weight.replace('g', '')) < 700)
       ).slice(0, 3);
       message = '根据您的需求，我为您推荐了几款便携的摄影器材，非常适合旅行携带。';
@@ -516,13 +517,13 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
       // 推荐入门器材
       recommendations = allEquipments.filter(item => 
         item.tags.includes('入门') || 
-        (item.type === '相机' && parseInt(item.price) < 6000)
+        (item.type === EQUIPMENT_TYPE.CAMERA && parseInt(item.price) < 6000)
       ).slice(0, 3);
       message = '对于摄影新手，这些器材操作简单，性价比高，非常适合您入门学习。';
     } else if (prompt.includes('长焦') || prompt.includes('远摄')) {
       // 推荐长焦镜头
       recommendations = allEquipments.filter(item => 
-        item.type === '镜头' &&
+        item.type === EQUIPMENT_TYPE.LENS &&
         item.focalLength && 
         (item.focalLength.includes('70-200') || 
          item.focalLength.includes('100-400') || 
@@ -681,7 +682,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
          {paginatedEquipment.map((item) => (
            <motion.div
              key={item.id}
-             whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)', rotateY: 5, translateZ: 10 }}
+             whileHover={{ y: -5, boxShadow: HOVER_SHADOWS.ACCENT_MD, rotateY: 5, translateZ: 10 }}
              className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm cursor-pointer"
              onClick={() => handleViewDetails(item)}
              style={{ transformStyle: 'preserve-3d' }}

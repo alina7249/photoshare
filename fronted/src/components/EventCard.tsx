@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { HOVER_SHADOWS } from '../constants/theme';
 
 interface EventType {
   id: string;
@@ -37,7 +38,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 }) => {
   return (
     <motion.div
-      whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
+      whileHover={{ y: -5, boxShadow: HOVER_SHADOWS.ACCENT_MD }}
       className="bg-gradient-to-r from-accent to-accent-hover rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
     >
       {/* 活动/赛事图片 */}

@@ -1,3 +1,4 @@
+import { buildCozeImageUrl } from '../constants/api';
 // EventsAndContests.tsx - 活动与赛事主页面
 // 整合线下活动和摄影赛事，采用与资源模块类似的标签切换格式
 
@@ -293,7 +294,7 @@ const EventsAndContests: React.FC = () => {
         instructor: {
           id: 'organizer',
           name: '赛事主办方',
-          avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=event%20organizer%20avatar&sign=efef52c916bdf2cefedc9df51f81ca5b',
+          avatar: buildCozeImageUrl('event organizer avatar', 'efef52c916bdf2cefedc9df51f81ca5b', 'square'),
           title: '赛事组织方',
           experience: '专业'
         },

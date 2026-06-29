@@ -1,3 +1,4 @@
+import { buildCozeImageUrl } from '../constants/api';
 // Hover效果描述：
 // 1. 地图标记点：使用framer-motion的whileHover属性，实现标记点缩放效果(scale: 1.2)
 // 2. 位置列表卡片：使用framer-motion的whileHover属性，实现卡片向上平移(y: -5)
@@ -92,30 +93,30 @@ const PhotoLocations: React.FC = () => {
     // 为每个位置生成固定的作品数据，使用常量URL
     const locationImages: Record<string, string[]> = {
       '1': [
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=shanghai%20bund%20night%20photography%201&sign=c8632ab0baac9118aae370c9eba03560",
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=shanghai%20bund%20architecture%20photography%202&sign=73abc13d604aacd63477f0e580ab50a8",
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=shanghai%20skyline%20photography%203&sign=176e9027d3008a6f4f33eebb8fa8a29e"
+        buildCozeImageUrl('shanghai bund night photography 1', 'c8632ab0baac9118aae370c9eba03560', 'landscape_4_3'),
+        buildCozeImageUrl('shanghai bund architecture photography 2', '73abc13d604aacd63477f0e580ab50a8', 'landscape_4_3'),
+        buildCozeImageUrl('shanghai skyline photography 3', '176e9027d3008a6f4f33eebb8fa8a29e', 'landscape_4_3')
       ],
       '2': [
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=beijing%20forbidden%20city%20sunset%20photography%201&sign=73f666bf8bd3385d90765b17645661f0",
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=beijing%20ancient%20architecture%20photography%202&sign=62eb7f3ee8320f591b037414b2d69358"
+        buildCozeImageUrl('beijing forbidden city sunset photography 1', '73f666bf8bd3385d90765b17645661f0', 'landscape_4_3'),
+        buildCozeImageUrl('beijing ancient architecture photography 2', '62eb7f3ee8320f591b037414b2d69358', 'landscape_4_3')
       ],
       '3': [
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=hangzhou%20west%20lake%20morning%20photography%201&sign=fffc651f0aa5ad61cf22a9fa5d243683",
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=west%20lake%20pagoda%20photography%202&sign=4590a8dda0aac1ed428c53a8b561cb71",
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=hangzhou%20garden%20photography%203&sign=ea347165f0dc375a7ebda5fb1aa035c4"
+        buildCozeImageUrl('hangzhou west lake morning photography 1', 'fffc651f0aa5ad61cf22a9fa5d243683', 'landscape_4_3'),
+        buildCozeImageUrl('west lake pagoda photography 2', '4590a8dda0aac1ed428c53a8b561cb71', 'landscape_4_3'),
+        buildCozeImageUrl('hangzhou garden photography 3', 'ea347165f0dc375a7ebda5fb1aa035c4', 'landscape_4_3')
       ],
       '4': [
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=chengdu%20jinli%20ancient%20street%20night%201&sign=4afd852ddebde6f9093ea00d9c6247e3",
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=jinli%20traditional%20architecture%202&sign=c206a633862358ad06e149b114bd0672"
+        buildCozeImageUrl('chengdu jinli ancient street night 1', '4afd852ddebde6f9093ea00d9c6247e3', 'landscape_4_3'),
+        buildCozeImageUrl('jinli traditional architecture 2', 'c206a633862358ad06e149b114bd0672', 'landscape_4_3')
       ],
       '5': [
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=zhangjiajie%20mountains%20cloud%20photography%201&sign=55a785ce2ab9c389fc508cf4e996e71e",
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=zhangjiajie%20forest%20park%202&sign=7e44e8a25986262bd92f640e276d0541"
+        buildCozeImageUrl('zhangjiajie mountains cloud photography 1', '55a785ce2ab9c389fc508cf4e996e71e', 'landscape_4_3'),
+        buildCozeImageUrl('zhangjiajie forest park 2', '7e44e8a25986262bd92f640e276d0541', 'landscape_4_3')
       ],
       '6': [
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=guangzhou%20tower%20night%20photography%201&sign=e22b19a088cd6bd7acc85661bac8b588",
-        "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=guangzhou%20cbd%20skyline%20photography%202&sign=6d76ebd95c29e78ec9e5cfef5445c71c"
+        buildCozeImageUrl('guangzhou tower night photography 1', 'e22b19a088cd6bd7acc85661bac8b588', 'landscape_4_3'),
+        buildCozeImageUrl('guangzhou cbd skyline photography 2', '6d76ebd95c29e78ec9e5cfef5445c71c', 'landscape_4_3')
       ]
     };
     
@@ -550,7 +551,7 @@ const PhotoLocations: React.FC = () => {
                   }}
                 >
                   <img 
-                    src="https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=world%20map%20vintage%20paper%20texture%20blue&sign=a7e6038b84e3276bdf4bf7abc3a1ddb7"
+                    src={buildCozeImageUrl('world map vintage paper texture blue', 'a7e6038b84e3276bdf4bf7abc3a1ddb7', 'landscape_16_9')}
                     alt="Map background"
                     className="w-full h-full object-cover"
                   />

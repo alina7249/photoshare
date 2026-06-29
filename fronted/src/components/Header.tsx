@@ -1,3 +1,4 @@
+import { buildCozeImageUrl } from '../constants/api';
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -73,7 +74,7 @@ export const Header: React.FC = () => {
         setIsProfileDropdownOpen(!isProfileDropdownOpen);
     };
 
-    const userAvatar = user?.avatar || "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional&sign=b0609ecfca466fa5510f7df4adb33529";
+    const userAvatar = user?.avatar || buildCozeImageUrl('photographer avatar professional', 'b0609ecfca466fa5510f7df4adb33529', 'square');
     const username = user?.username || userData?.username;
 
     const getBgClass = () => {
@@ -154,7 +155,7 @@ export const Header: React.FC = () => {
                                                 </Link>
                             <Link
                                 to="/register"
-                                className={`px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "text-deep bg-accent hover:bg-accent-hover shadow-[0_2px_8px_rgba(74,95,139,0.3)]" : "text-white bg-light-accent hover:bg-light-accent-hover shadow-[0_2px_8px_rgba(99,179,237,0.3)]"} transition-colors`}>注册
+                                className={`px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "text-deep bg-accent hover:bg-accent-hover shadow-accent-md" : "text-white bg-light-accent hover:bg-light-accent-hover shadow-light-accent-sm"} transition-colors`}>注册
                                                 </Link>
                         </div>}
                     </nav>

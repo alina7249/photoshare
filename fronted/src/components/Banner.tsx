@@ -1,3 +1,4 @@
+import { buildCozeImageUrl } from '../constants/api';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -21,29 +22,29 @@ export const Banner: React.FC = () => {
   const slides: BannerSlide[] = [
     {
       id: "1",
-      image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=minimalist%20black%20and%20white%20photography%20architecture%20geometric&sign=6a132f48365a1faa666584d6144957fd",
+      image: buildCozeImageUrl('minimalist black and white photography architecture geometric', '6a132f48365a1faa666584d6144957fd', 'landscape_16_9'),
       title: "极简黑白建筑摄影展",
       description: "探索建筑中的几何美感与光影艺术",
       author: "林风",
-      avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=minimalist%20photographer%20male%20serious&sign=fded36172bb86afa4dc326776156459c",
+      avatar: buildCozeImageUrl('minimalist photographer male serious', 'fded36172bb86afa4dc326776156459c', 'square'),
       link: "/exhibition/minimalist-architecture"
     },
     {
       id: "2",
-      image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=film%20photography%20portrait%20vintage%20style%20natural%20light&sign=04b4b9f4517dc870e3dfeac483c020d4",
+      image: buildCozeImageUrl('film photography portrait vintage style natural light', '04b4b9f4517dc870e3dfeac483c020d4', 'landscape_16_9'),
       title: "胶片摄影的永恒魅力",
       description: "专访胶片摄影师安娜，探讨传统摄影的现代意义",
       author: "安娜",
-      avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=film%20photographer%20female%20vintage%20style&sign=5ec915debce76b46483be485e236cee2",
+      avatar: buildCozeImageUrl('film photographer female vintage style', '5ec915debce76b46483be485e236cee2', 'square'),
       link: "/interview/film-photography"
     },
     {
       id: "3",
-      image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=moody%20dark%20portrait%20atmospheric%20lighting&sign=aa5713a64a57d8212d2c074cb9e608d2",
+      image: buildCozeImageUrl('moody dark portrait atmospheric lighting', 'aa5713a64a57d8212d2c074cb9e608d2', 'landscape_16_9'),
       title: "暗调摄影的情绪表达",
       description: "如何通过暗调摄影传达深沉的情感与故事",
       author: "李明",
-      avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=moody%20photographer%20male%20creative&sign=b74f18a9e01693163824506fbbcc8c47",
+      avatar: buildCozeImageUrl('moody photographer male creative', 'b74f18a9e01693163824506fbbcc8c47', 'square'),
       link: "/tutorial/moody-photography"
     }
   ];

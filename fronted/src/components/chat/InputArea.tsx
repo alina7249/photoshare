@@ -435,8 +435,8 @@ export const InputArea: React.FC = () => {
               ? theme === 'dark' 
                 ? 'bg-accent text-accent-hover cursor-not-allowed' 
                 : 'bg-blue-300 text-blue-100 cursor-not-allowed'
-              : theme === 'dark'? 'bg-accent text-white hover:bg-accent-hover shadow-[0_2px_10px_rgba(74,95,139,0.3)]' 
-                : 'bg-blue-500 text-white hover:bg-blue-600 shadow-[0_2px_10px_rgba(59,130,246,0.3)]'
+              : theme === 'dark'? 'bg-accent text-white hover:bg-accent-hover shadow-accent-md' 
+                : 'bg-blue-500 text-white hover:bg-blue-600 shadow-blue-md'
           }`}
           title="发送消息"
         >

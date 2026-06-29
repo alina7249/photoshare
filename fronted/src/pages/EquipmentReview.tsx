@@ -1,12 +1,13 @@
+import { buildCozeImageUrl } from '../constants/api';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend } from 'recharts';
 import { apiGet } from '../lib/api';
+import { CHART_COLORS, HOVER_SHADOWS } from '../constants/theme';
 
 // 雷达图颜色
-// 对应 CSS 变量: --light-blue-gray, --chart-purple, --light-cool-gray
-const RADAR_COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8'];
+const RADAR_COLORS = [...CHART_COLORS.RADAR];
 
 const EquipmentReview: React.FC = () => {
   const [reviews, setReviews] = useState<any[]>([]);
@@ -312,7 +313,7 @@ const EquipmentReview: React.FC = () => {
               {filteredReviews.map((review) => (
                 <motion.div
                   key={review.id}
-                  whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
+                  whileHover={{ y: -5, boxShadow: HOVER_SHADOWS.ACCENT_MD }}
                   className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
                 >
                   {/* 测评图片 */}
@@ -637,7 +638,7 @@ const EquipmentReview: React.FC = () => {
                   {
                     id: '101',
                     name: '器材专家张明',
-                    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography%20equipment%20expert%20male%20professional&sign=56fa5f34db1fbce04f76c7576c6ad020',
+                    avatar: buildCozeImageUrl('photography equipment expert male professional', '56fa5f34db1fbce04f76c7576c6ad020', 'square'),
                     reviews: 48,
                     followers: 12543,
                     rating: 9.4
@@ -645,7 +646,7 @@ const EquipmentReview: React.FC = () => {
                   {
                     id: '104',
                     name: '镜头专家刘芳',
-                    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography%20lens%20expert%20female%20professional&sign=c9dd2373388218683b3e980d22233258',
+                    avatar: buildCozeImageUrl('photography lens expert female professional', 'c9dd2373388218683b3e980d22233258', 'square'),
                     reviews: 36,
                     followers: 9876,
                     rating: 9.5
@@ -653,7 +654,7 @@ const EquipmentReview: React.FC = () => {
                   {
                     id: '102',
                     name: '婚礼摄影师李华',
-                    avatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=wedding%20photographer%20male%20creative&sign=82c2687369cb5518e618423326b5a47c',
+                    avatar: buildCozeImageUrl('wedding photographer male creative', '82c2687369cb5518e618423326b5a47c', 'square'),
                     reviews: 24,
                     followers: 7654,
                     rating: 9.2

@@ -1,3 +1,5 @@
+import { buildCozeImageUrl } from '../constants/api';
+import { HOVER_SHADOWS } from '../constants/theme';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -122,7 +124,7 @@ const EquipmentLibrary: React.FC = () => {
       model: newEquipment.model,
       purchaseDate: newEquipment.purchaseDate,
       condition: newEquipment.condition as 'new' | 'like-new' | 'good' | 'used',
-      image: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=camera%20equipment%20placeholder&sign=3b459504fe868e742ae48b1a1488be95',
+      image: buildCozeImageUrl('camera equipment placeholder', '3b459504fe868e742ae48b1a1488be95', 'square'),
       serialNumber: newEquipment.serialNumber,
       notes: newEquipment.notes,
       isPublic: newEquipment.isPublic || false
@@ -403,7 +405,7 @@ const EquipmentLibrary: React.FC = () => {
           {filteredEquipment.map((equipment) => (
             <motion.div
               key={equipment.id}
-              whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
+              whileHover={{ y: -5, boxShadow: HOVER_SHADOWS.ACCENT_MD }}
               className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
             >
               {/* 器材图片 */}

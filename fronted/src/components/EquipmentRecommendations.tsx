@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Equipment } from '../lib/equipmentData';
+import { HOVER_SHADOWS } from '../constants/theme';
 
 interface EquipmentRecommendationsProps {
   currentEquipment: Equipment;
@@ -24,7 +25,7 @@ export const EquipmentRecommendations: React.FC<EquipmentRecommendationsProps> =
         {recommendedEquipment.map((equipment) => (
           <motion.div
             key={equipment.id}
-            whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
+            whileHover={{ y: -5, boxShadow: HOVER_SHADOWS.ACCENT_MD }}
             className="bg-deep rounded-lg overflow-hidden border border-accent transition-all"
           >
             <div className="flex">

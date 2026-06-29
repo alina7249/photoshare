@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/authContext';
 import { apiGet } from '../lib/api';
+import { HOVER_SHADOWS } from '../constants/theme';
 
 const OfflineEvents: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
@@ -213,7 +214,7 @@ const OfflineEvents: React.FC = () => {
               {filteredEvents.map((event) => (
                 <motion.div
                   key={event.id}
-                  whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
+                  whileHover={{ y: -5, boxShadow: HOVER_SHADOWS.ACCENT_MD }}
                   className="bg-gradient-to-r from-accent to-accent-hover rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
                 >
                   {/* 活动图片 */}

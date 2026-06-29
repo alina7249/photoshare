@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { apiGet } from '../lib/api';
+import { HOVER_SHADOWS } from '../constants/theme';
 
 const categories: string[] = ['全部'];
 
@@ -246,7 +247,7 @@ const TutorialResources: React.FC = () => {
                 {filteredAddedTools.map((tool) => (
                   <motion.div
                     key={tool.id}
-                    whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
+                    whileHover={{ y: -5, boxShadow: HOVER_SHADOWS.ACCENT_MD }}
                     className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
                   >
                     {/* 工具缩略图 */}
@@ -313,7 +314,7 @@ const TutorialResources: React.FC = () => {
                 {filteredRecommendedTools.map((tool) => (
                   <motion.div
                     key={tool.id}
-                    whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
+                    whileHover={{ y: -5, boxShadow: HOVER_SHADOWS.ACCENT_MD }}
                     className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
                   >
                     {/* 工具缩略图 */}

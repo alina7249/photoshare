@@ -1,3 +1,4 @@
+import { buildCozeImageUrl } from '../constants/api';
 // ProfileSidebar.tsx - 移动端侧边栏组件
 // 提供完整的个人中心导航功能，包含用户信息、等级进度和菜单列表
 import React from 'react';
@@ -68,7 +69,7 @@ export const ProfileSidebar: React.FC<ProfileSidebarProps> = ({
           <div className="text-center mb-4">
             <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-4 border-accent">
               <img 
-                src="https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc"
+                src={buildCozeImageUrl('photographer avatar professional male', '00137c6d096d210d6579740e0bc1a5cc', 'square')}
                 alt="User avatar"
                 className="w-full h-full object-cover"
               />

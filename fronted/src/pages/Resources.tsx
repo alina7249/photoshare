@@ -6,6 +6,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { toast } from "sonner";
 import { useEffect } from "react";
 import { apiGet } from "../lib/api";
+import { HOVER_SHADOWS } from "../constants/theme";
 
 interface Project {
     id: string;
@@ -525,7 +526,7 @@ const Resources: React.FC = () => {
                                         key={project.id}
                                         whileHover={{
                                             y: -3,
-                                            boxShadow: "0 2px 12px rgba(74, 95, 139, 0.3)"
+                                            boxShadow: HOVER_SHADOWS.ACCENT_MD
                                         }}
                                         className="bg-gradient-to-r from-accent to-accent-hover rounded-xl overflow-hidden border border-accent transition-all shadow-sm">
                                         {}

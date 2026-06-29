@@ -1,3 +1,4 @@
+import { buildCozeImageUrl } from '../constants/api';
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -453,17 +454,17 @@ const PhotoDetail: React.FC = () => {
                   {
                     id: 1,
                     title: "极简建筑 1",
-                    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=minimalist%20architecture%20photography%20black%20and%20white%201&sign=d0546c60c1bbd9a7507d312c4d6d4b5f"
+                    image: buildCozeImageUrl('minimalist architecture photography black and white 1', 'd0546c60c1bbd9a7507d312c4d6d4b5f', 'landscape_4_3')
                   },
                   {
                     id: 2,
                     title: "极简建筑 2",
-                    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=minimalist%20architecture%20photography%20black%20and%20white%202&sign=16a505f957970330b69ed04cdc252cc8"
+                    image: buildCozeImageUrl('minimalist architecture photography black and white 2', '16a505f957970330b69ed04cdc252cc8', 'landscape_4_3')
                   },
                   {
                     id: 3,
                     title: "极简建筑 3",
-                    image: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_4_3&prompt=minimalist%20architecture%20photography%20black%20and%20white%203&sign=0f5af92197c024eba069c42c1da74ad2"
+                    image: buildCozeImageUrl('minimalist architecture photography black and white 3', '0f5af92197c024eba069c42c1da74ad2', 'landscape_4_3')
                   }
                 ].map((related) => (
                   <motion.div

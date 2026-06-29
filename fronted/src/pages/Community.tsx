@@ -1,3 +1,5 @@
+import { buildCozeImageUrl } from '../constants/api';
+import { HOVER_SHADOWS } from '../constants/theme';
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -692,7 +694,7 @@ export const GroupCard: React.FC<GroupCardProps> = (
         <motion.div
             whileHover={{
                 y: -5,
-                boxShadow: "0 8px 24px rgba(74,95,139,0.3)",
+                boxShadow: HOVER_SHADOWS.ACCENT_LG,
 
                 transition: {
                     duration: 0.3
@@ -1211,8 +1213,8 @@ const Community: React.FC = () => {
         id: `g${Date.now()}`,
         name: newGroup.name || "",
         description: newGroup.description || "",
-        coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=default%20group%20cover%20photography&sign=3bc880c564b24e50436a36ff7e049628",
-        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=default%20group%20logo%20photography&sign=dffce2dd824c325946b2f4c9d5864412",
+        coverImage: buildCozeImageUrl('default group cover photography', '3bc880c564b24e50436a36ff7e049628', 'landscape_16_9'),
+        avatar: buildCozeImageUrl('default group logo photography', 'dffce2dd824c325946b2f4c9d5864412', 'square'),
         members: [], // 创建者为初始成员
         posts: 0,
         createdAt: new Date().toISOString(),
@@ -1505,7 +1507,7 @@ const Community: React.FC = () => {
                             whileHover={{
                                 rotateY: 1.5,
                                 scale: 1.02,
-                                boxShadow: "0 8px 24px rgba(74,95,139,0.3)",
+                                boxShadow: HOVER_SHADOWS.ACCENT_LG,
 
                                 transition: {
                                     duration: 0.3

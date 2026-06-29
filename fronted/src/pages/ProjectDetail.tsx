@@ -6,6 +6,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { toast } from "sonner";
 import { CommentSection } from '../components/CommentSection';
 import { apiGet } from '../lib/api';
+import { CHART_COLORS } from '../constants/theme';
 
 interface Project {
     id: string;
@@ -154,8 +155,7 @@ const ProjectDetail: React.FC = () => {
         value: 100 - (project.progress || 0)
     }];
 
-    // 对应 CSS 变量: --light-blue-gray, --deep-cool-gray
-    const COLORS = ["#4A5F8B", "#1E2532"];
+    const COLORS = [...CHART_COLORS.PROJECT];
 
     return (
         <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">

@@ -1,3 +1,4 @@
+import { buildCozeImageUrl, APP_BASE_URL } from '../constants/api';
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -75,9 +76,9 @@ const ProfileSettings: React.FC = () => {
         phone: "138****6789",
         bio: "热爱风光和人像摄影，正在不断学习和进步中",
         location: "上海",
-        website: "https://photographer.example.com",
-        avatar: user?.avatar || "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photographer%20avatar%20professional%20male&sign=00137c6d096d210d6579740e0bc1a5cc",
-        coverImage: "https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=photography%20studio%20background%20professional&sign=47d4a7099d77fa3997b410d6959c5bc6"
+        website: APP_BASE_URL,
+        avatar: user?.avatar || buildCozeImageUrl('photographer avatar professional male', '00137c6d096d210d6579740e0bc1a5cc', 'square'),
+        coverImage: buildCozeImageUrl('photography studio background professional', '47d4a7099d77fa3997b410d6959c5bc6', 'landscape_16_9')
     });
 
     const [privacySettings, setPrivacySettings] = useState<PrivacySettings>({

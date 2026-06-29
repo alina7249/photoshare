@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { useAuth } from "../contexts/authContext";
 import { useTheme } from "../hooks/useTheme";
 import { apiGet } from "../lib/api";
+import { HOVER_SHADOWS } from "../constants/theme";
 
 // 联系卖家模态框组件
 const ContactSellerModal: React.FC<{
@@ -1959,7 +1960,7 @@ const EquipmentTrade: React.FC = () => {
                         key={item.id}
                         whileHover={{
                             y: -5,
-                            boxShadow: "0 2px 12px rgba(74, 95, 139, 0.3)"
+                            boxShadow: HOVER_SHADOWS.ACCENT_MD
                         }}
                         className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm cursor-pointer">
                         {}

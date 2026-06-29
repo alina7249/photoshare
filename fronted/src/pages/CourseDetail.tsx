@@ -6,6 +6,7 @@ import { CommentSection } from '../components/CommentSection';
 import { toast } from 'sonner';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { apiGet } from '../lib/api';
+import { HOVER_SHADOWS } from '../constants/theme';
 
 // 课程类型定义
 interface CourseType {
@@ -526,7 +527,7 @@ const CourseDetail: React.FC = () => {
                           key={i}
                           onClick={() => setUserRating(i + 1)}
                           className="text-2xl"
-                          style={{ color: i < userRating ? 'var(--light-blue-gray)' : '#4A5F8B/30' }}
+                          style={{ color: 'var(--light-blue-gray)', opacity: i < userRating ? 1 : 0.3 }}
                         >
                           <i className="fa-solid fa-star"></i>
                         </button>
@@ -734,7 +735,7 @@ const CourseDetail: React.FC = () => {
             {instructors.map((instructor) => (
               <motion.div
                 key={instructor.id}
-                whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
+                whileHover={{ y: -5, boxShadow: HOVER_SHADOWS.ACCENT_MD }}
                 className="bg-card rounded-xl p-6 border border-accent transition-all"
               >
                 <div className="flex items-center mb-4">

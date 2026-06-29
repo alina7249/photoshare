@@ -18,9 +18,9 @@ import {
 } from 'recharts';
 import StatsCard from '../../components/common/StatsCard';
 import Button from '../../components/common/Button';
+import { CHART_COLORS } from '../../constants/theme';
 
-// 对应 CSS 变量: --light-blue-gray, --medium-blue-gray, --chart-teal, --chart-green
-const COLORS = ['#4A5F8B', '#6B7C93', '#38B2AC', '#68D391'];
+const COLORS = [...CHART_COLORS.EXTENDED];
 
 const Dashboard: React.FC = () => {
   const [timeRange, setTimeRange] = useState<'day' | 'week' | 'month'>('month');

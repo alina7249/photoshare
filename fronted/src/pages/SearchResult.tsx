@@ -108,7 +108,7 @@ const SearchResult: React.FC = () => {
 
         {/* 结果分类选项卡 */}
         {!isLoading && (
-          <div className="mb-8 bg-border-light rounded-xl shadow-[0_2px_8px_rgba(43,52,69,0.1)] border border-dark-surface">
+          <div className="mb-8 bg-border-light rounded-xl shadow-light-sm border border-dark-surface">
             <div className="flex overflow-x-auto">
               <button
                 onClick={() => setSearchType('all')}
@@ -195,7 +195,7 @@ const SearchResult: React.FC = () => {
               </div>
             ) : (
               // 无结果状态
-              <div className="bg-border-light rounded-xl p-12 text-center shadow-[0_2px_8px_rgba(43,52,69,0.1)] border border-dark-surface">
+              <div className="bg-border-light rounded-xl p-12 text-center shadow-light-sm border border-dark-surface">
                 <div className="w-24 h-24 bg-surface-light rounded-full flex items-center justify-center text-border-light mx-auto mb-6">
                   <i className="fa-solid fa-search text-3xl"></i>
                 </div>
@@ -207,7 +207,7 @@ const SearchResult: React.FC = () => {
                 </p>
                 <Link
                   to="/"
-                  className="inline-flex items-center px-6 py-3 border-2 border-dark-surface bg-gradient-to-br from-border-light to-surface-light-alt hover:from-surface-light-alt hover:to-border-light text-dark-surface rounded-lg font-medium transition-colors shadow-[0_2px_8px_rgba(43,52,69,0.1)]"
+                  className="inline-flex items-center px-6 py-3 border-2 border-dark-surface bg-gradient-to-br from-border-light to-surface-light-alt hover:from-surface-light-alt hover:to-border-light text-dark-surface rounded-lg font-medium transition-colors shadow-light-sm"
                 >
                   <i className="fa-solid fa-home mr-2"></i>
                   返回首页
@@ -243,7 +243,7 @@ const SearchResult: React.FC = () => {
           {/* 侧边栏 */}
           <div className="lg:col-span-1 space-y-6">
             {/* 搜索建议 */}
-            <div className="bg-border-light rounded-xl p-6 shadow-[0_2px_8px_rgba(43,52,69,0.1)] border border-dark-surface">
+            <div className="bg-border-light rounded-xl p-6 shadow-light-sm border border-dark-surface">
               <h3 className="text-lg font-bold mb-4 text-gray-dark">搜索建议</h3>
               <div className="flex flex-wrap gap-2">
                 {suggestedSearches.map((suggestion) => (
@@ -261,7 +261,7 @@ const SearchResult: React.FC = () => {
             </div>
 
             {/* 热门搜索 */}
-            <div className="bg-border-light rounded-xl p-6 shadow-[0_2px_8px_rgba(43,52,69,0.1)] border border-dark-surface">
+            <div className="bg-border-light rounded-xl p-6 shadow-light-sm border border-dark-surface">
               <h3 className="text-lg font-bold mb-4 text-gray-dark">热门搜索</h3>
               <div className="space-y-3">
                 {suggestedSearches.slice(0, 10).map((term, index) => (
@@ -294,7 +294,7 @@ const SearchResult: React.FC = () => {
             </div>
 
             {/* 相关标签 */}
-            <div className="bg-border-light rounded-xl p-6 shadow-[0_2px_8px_rgba(43,52,69,0.1)] border border-dark-surface">
+            <div className="bg-border-light rounded-xl p-6 shadow-light-sm border border-dark-surface">
               <h3 className="text-lg font-bold mb-4 text-gray-dark">相关标签</h3>
               <div className="flex flex-wrap gap-2">
                 {['摄影技巧', '器材推荐', '后期修图', '拍摄地点', '摄影比赛', '新手入门', '约拍活动'].map((tag) => (

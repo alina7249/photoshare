@@ -1,3 +1,4 @@
+import { buildCozeImageUrl } from '../constants/api';
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -128,7 +129,7 @@ const GroupDetail: React.FC = () => {
       author: {
         id: user?.id || "current-user",
         name: user?.username || "当前用户",
-        avatar: "https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=default%20user%20avatar&sign=a323de447d924f02db241a15b12a9a1e"
+        avatar: buildCozeImageUrl('default user avatar', 'a323de447d924f02db241a15b12a9a1e', 'square')
       },
       createdAt: new Date().toISOString(),
       likes: 0,
@@ -322,7 +323,7 @@ const GroupDetail: React.FC = () => {
                     <form onSubmit={handlePostSubmit}>
                       <div className="flex items-start gap-3 mb-3">
                         <img
-                          src="https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=default%20user%20avatar&sign=a323de447d924f02db241a15b12a9a1e"
+                          src={buildCozeImageUrl('default user avatar', 'a323de447d924f02db241a15b12a9a1e', 'square')}
                           alt="Your avatar"
                           className="w-10 h-10 rounded-full object-cover flex-shrink-0"
                         />

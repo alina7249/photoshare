@@ -1,7 +1,8 @@
 // API 基础工具函数
 // 请根据实际的 API 地址修改 BASE_URL
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+import { API_BASE_URL } from '../constants/api';
+const BASE_URL = `${API_BASE_URL}/api`;
 
 async function request<T = any>(url: string, options?: RequestInit): Promise<T> {
   const token = localStorage.getItem('token');

@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { CHART_COLORS } from '../constants/theme';
 import { 
   RadarChart, 
   PolarGrid, 
@@ -161,8 +162,7 @@ export const EquipmentComparisonChart: React.FC<EquipmentComparisonChartProps> =
   }, [performance]);
   
   // 图表颜色配置
-  // 对应 CSS 变量: --light-blue-gray, --chart-purple, --medium-blue-gray, --chart-mint
-const COLORS = ['#4A5F8B', '#8884d8', '#6B7C93', '#4CAF50'];
+const COLORS = [...CHART_COLORS.COMPARISON];
   
   // 图表高度（响应式）
   const chartHeight = useMemo(() => {

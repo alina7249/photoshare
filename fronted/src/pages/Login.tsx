@@ -1,3 +1,4 @@
+import { buildCozeImageUrl } from '../constants/api';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -30,7 +31,7 @@ const Login: React.FC = () => {
         className="max-w-md w-full space-y-8 bg-dark-alt p-8 rounded-xl shadow-xl border border-accent"
       >
         <div className="text-center relative">
-          <div className="absolute inset-0 bg-[url('https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=galaxy%20background%20stars%20purple%20blue&sign=9a9229c82aef2e4f5ac40648383863bf')] bg-cover opacity-10 rounded-full w-20 h-20 mx-auto -mt-12"></div>
+          <div className="absolute inset-0 bg-cover opacity-10 rounded-full w-20 h-20 mx-auto -mt-12" style={{ backgroundImage: `url(${buildCozeImageUrl('galaxy background stars purple blue', '9a9229c82aef2e4f5ac40648383863bf', 'landscape_16_9')})` }}></div>
           <motion.div
             whileHover={{ rotate: 10 }}
             className="relative inline-flex items-center justify-center mb-4 text-3xl text-text-muted"

@@ -1,9 +1,11 @@
+import { buildCozeImageUrl } from '../constants/api';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
 import { useTheme } from '../hooks/useTheme';
 import { useAuth } from '../contexts/authContext';
 import { apiGet } from '../lib/api';
+import { HOVER_SHADOWS } from '../constants/theme';
 
 interface Answer {
   id: string;
@@ -81,7 +83,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       title: '这款器材的续航能力如何？适合长时间外出拍摄吗？',
       content: '最近打算入手这款器材用于户外拍摄，想了解一下实际使用中的续航表现如何？在寒冷天气下有什么需要注意的吗？',
       author: '摄影爱好者',
-      authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography+enthusiast+male+casual&sign=baaa24d00499bfa62c3331c6bf8fac63',
+      authorAvatar: buildCozeImageUrl('photography enthusiast male casual', 'baaa24d00499bfa62c3331c6bf8fac63', 'square'),
       date: '2023-10-20',
       likes: 24,
       isLiked: false,
@@ -90,7 +92,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
           id: 'a1-1',
           content: '这款器材的续航表现非常出色，满电状态下可以支持约800张照片的拍摄，完全适合一天的外出拍摄需求。建议长时间外出时携带一块备用电池以确保万无一失。在寒冷天气下，电池续航会有所下降，建议将备用电池放在贴身口袋保暖。',
           author: '专业摄影师',
-          authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=professional+photographer+male+serious&sign=d191f4ad9c14b22a1a115bafed6ee0ed',
+          authorAvatar: buildCozeImageUrl('professional photographer male serious', 'd191f4ad9c14b22a1a115bafed6ee0ed', 'square'),
           date: '2023-10-20',
           likes: 18,
           isLiked: false
@@ -99,7 +101,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
           id: 'a1-2',
           content: '补充一点，使用取景器比使用屏幕可以节省大约30%的电量，这在户外拍摄时非常实用。',
           author: '器材专家',
-          authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=equipment+expert+male+glasses&sign=8d8319579a6ab06ca40149f75a43e06b',
+          authorAvatar: buildCozeImageUrl('equipment expert male glasses', '8d8319579a6ab06ca40149f75a43e06b', 'square'),
           date: '2023-10-21',
           likes: 7,
           isLiked: false
@@ -111,7 +113,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       title: '与同价位竞品相比，这款器材的最大优势是什么？',
       content: '在预算有限的情况下，纠结于这款和另外几款同价位的器材，想听听大家的使用体验和建议。',
       author: '器材纠结者',
-      authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=camera+lover+male+thinking&sign=b4c3b2a13ef3cc80ca680a6123c78331',
+      authorAvatar: buildCozeImageUrl('camera lover male thinking', 'b4c3b2a13ef3cc80ca680a6123c78331', 'square'),
       date: '2023-10-15',
       likes: 42,
       isLiked: false,
@@ -120,7 +122,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
           id: 'a2-1',
           content: '相比同价位竞品，这款器材在自动对焦速度、低光拍摄能力和视频性能方面表现更为出色，特别是其对焦系统在复杂环境下的追踪能力非常稳定可靠。如果您经常拍摄动态场景或在弱光环境下工作，这款会是更好的选择。',
           author: '专业摄影师',
-          authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=professional+photographer+male+serious&sign=d191f4ad9c14b22a1a115bafed6ee0ed',
+          authorAvatar: buildCozeImageUrl('professional photographer male serious', 'd191f4ad9c14b22a1a115bafed6ee0ed', 'square'),
           date: '2023-10-15',
           likes: 35,
           isLiked: false
@@ -132,7 +134,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       title: '新手入门推荐购买这款器材吗？操作难度如何？',
       content: '刚接触摄影，想一步到位买个好点的器材，不知道这款是否适合新手使用。',
       author: '摄影新手',
-      authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=young+photographer+student+male&sign=c8c88269cfd5ed96c4081bb7a4ed50b8',
+      authorAvatar: buildCozeImageUrl('young photographer student male', 'c8c88269cfd5ed96c4081bb7a4ed50b8', 'square'),
       date: '2023-10-08',
       likes: 36,
       isLiked: false,
@@ -141,7 +143,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
           id: 'a3-1',
           content: '对于新手来说，这款器材的操作相对友好，具有完善的自动模式和入门引导功能。不过考虑到其价格和专业性，更适合有一定预算且计划长期学习摄影的新手，纯入门用户可以考虑更基础的型号。',
           author: '摄影导师',
-          authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=photography+teacher+female+experienced&sign=a5b88cad9fb822a07468f9c7f743556f',
+          authorAvatar: buildCozeImageUrl('photography teacher female experienced', 'a5b88cad9fb822a07468f9c7f743556f', 'square'),
           date: '2023-10-08',
           likes: 29,
           isLiked: false
@@ -153,7 +155,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       title: '这款器材的视频拍摄能力怎么样？',
       content: '主要用于视频创作，想了解一下这款器材的视频性能如何，比如对焦速度、防抖效果等。',
       author: '视频创作者',
-      authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=video+creator+male+creative&sign=09d8f710e0b9d12cb440bd6682ba86f4',
+      authorAvatar: buildCozeImageUrl('video creator male creative', '09d8f710e0b9d12cb440bd6682ba86f4', 'square'),
       date: '2023-10-10',
       likes: 15,
       isLiked: false,
@@ -164,7 +166,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       title: '长时间使用后，器材的稳定性如何？',
       content: '担心长时间使用后会出现性能下降的问题，想了解一下耐用性。',
       author: '职业摄影师',
-      authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=professional+photographer+female+professional&sign=99e7157c8ef5fcd38b7174df209fe12f',
+      authorAvatar: buildCozeImageUrl('professional photographer female professional', '99e7157c8ef5fcd38b7174df209fe12f', 'square'),
       date: '2023-10-05',
       likes: 18,
       isLiked: false,
@@ -175,7 +177,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       title: '与其他品牌同级别产品相比，性价比如何？',
       content: '在几款产品之间犹豫，想听听客观的比较意见。',
       author: '理性消费者',
-      authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=smart+consumer+male+analytical&sign=acf27482099641676ade13677c24a73c',
+      authorAvatar: buildCozeImageUrl('smart consumer male analytical', 'acf27482099641676ade13677c24a73c', 'square'),
       date: '2023-10-01',
       likes: 21,
       isLiked: false,
@@ -186,7 +188,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       title: '这款器材的配件兼容性怎么样？',
       content: '想知道是否容易找到兼容的第三方配件，比如电池、存储卡等。',
       author: '配件控',
-      authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=tech+enthusiast+male+geek&sign=9edb5962d4309f865b1d31389fb0bdd2',
+      authorAvatar: buildCozeImageUrl('tech enthusiast male geek', '9edb5962d4309f865b1d31389fb0bdd2', 'square'),
       date: '2023-09-28',
       likes: 12,
       isLiked: false,
@@ -197,7 +199,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       title: '在恶劣环境下使用需要注意什么？',
       content: '经常需要在户外、雨天等环境下拍摄，想了解防护措施。',
       author: '户外摄影师',
-      authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=outdoor+photographer+male+adventurous&sign=ddabeb9b7009e2cb7a4dc17ecc54ed69',
+      authorAvatar: buildCozeImageUrl('outdoor photographer male adventurous', 'ddabeb9b7009e2cb7a4dc17ecc54ed69', 'square'),
       date: '2023-09-25',
       likes: 14,
       isLiked: false,
@@ -208,7 +210,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       title: '这款器材的固件更新频繁吗？',
       content: '想知道厂商是否经常提供固件更新来改善性能。',
       author: '技术关注者',
-      authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=tech+follower+male+knowledgeable&sign=abd9c099c0ee17f2fbd8ce20dbab9ba9',
+      authorAvatar: buildCozeImageUrl('tech follower male knowledgeable', 'abd9c099c0ee17f2fbd8ce20dbab9ba9', 'square'),
       date: '2023-09-20',
       likes: 9,
       isLiked: false,
@@ -219,7 +221,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       title: '购买后有哪些增值服务？',
       content: '想了解保修政策、延长服务等信息。',
       author: '潜在买家',
-      authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=potential+buyer+male+curious&sign=d178e0686a62ab4b42065552a21a4e02',
+      authorAvatar: buildCozeImageUrl('potential buyer male curious', 'd178e0686a62ab4b42065552a21a4e02', 'square'),
       date: '2023-09-18',
       likes: 7,
       isLiked: false,
@@ -336,7 +338,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       title: newQuestionTitle,
       content: newQuestionContent,
       author: '我',
-      authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=default+user+avatar&sign=a323de447d924f02db241a15b12a9a1e',
+      authorAvatar: buildCozeImageUrl('default user avatar', 'a323de447d924f02db241a15b12a9a1e', 'square'),
       date: new Date().toLocaleDateString(),
       likes: 0,
       isLiked: false,
@@ -369,7 +371,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       id: `a-${Date.now()}`,
       content: replyContent,
       author: '我',
-      authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=default+user+avatar&sign=a323de447d924f02db241a15b12a9a1e',
+      authorAvatar: buildCozeImageUrl('default user avatar', 'a323de447d924f02db241a15b12a9a1e', 'square'),
       date: new Date().toLocaleDateString(),
       likes: 0,
       isLiked: false
@@ -401,7 +403,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
       id: `a-${Date.now()}`,
       content: answerContent,
       author: '我',
-      authorAvatar: 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=default+user+avatar&sign=a323de447d924f02db241a15b12a9a1e',
+      authorAvatar: buildCozeImageUrl('default user avatar', 'a323de447d924f02db241a15b12a9a1e', 'square'),
       date: new Date().toLocaleDateString(),
       likes: 0,
       isLiked: false
@@ -965,7 +967,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
                         whileHover={{ 
                           rotateY: 1.5, 
                           scale: 1.02,
-                          boxShadow: theme === 'dark' ? "0 8px 24px rgba(74,95,139,0.3)" : "0 8px 24px rgba(0,0,0,0.1)",
+                          boxShadow: theme === 'dark' ? HOVER_SHADOWS.ACCENT_LG : "0 8px 24px rgba(0,0,0,0.1)",
                           transition: { duration: 0.3 }
                         }}
                         style={{ 
