@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiGet } from '../../lib/api';
 import { motion } from 'framer-motion';
 import {
   LineChart,
@@ -18,56 +19,26 @@ import {
 import StatsCard from '../../components/common/StatsCard';
 import Button from '../../components/common/Button';
 
-// 模拟数据
-const userGrowthData = [
-  { date: '1月', users: 4000, newUsers: 2400 },
-  { date: '2月', users: 3000, newUsers: 1398 },
-  { date: '3月', users: 2000, newUsers: 9800 },
-  { date: '4月', users: 2780, newUsers: 3908 },
-  { date: '5月', users: 1890, newUsers: 4800 },
-  { date: '6月', users: 2390, newUsers: 3800 },
-  { date: '7月', users: 3490, newUsers: 4300 }
-];
-
-const contentStatsData = [
-  { name: '摄影作品', value: 400 },
-  { name: '社区帖子', value: 300 },
-  { name: '评论', value: 300 },
-  { name: '小组', value: 200 }
-];
-
-const orderStatsData = [
-  { month: '1月', amount: 2400 },
-  { month: '2月', amount: 1398 },
-  { month: '3月', amount: 9800 },
-  { month: '4月', amount: 3908 },
-  { month: '5月', amount: 4800 },
-  { month: '6月', amount: 3800 },
-  { month: '7月', amount: 4300 }
-];
-
 const COLORS = ['#4A5F8B', '#6B7C93', '#38B2AC', '#68D391'];
-
-const recentActivities = [
-  { id: 1, type: '用户注册', user: '张三', time: '10分钟前', action: '注册了新账号' },
-  { id: 2, type: '作品发布', user: '李四', time: '25分钟前', action: '发布了新作品《城市风光》' },
-  { id: 3, type: '评论', user: '王五', time: '45分钟前', action: '评论了作品《山水之间》' },
-  { id: 4, type: '订单', user: '赵六', time: '1小时前', action: '购买了会员服务' },
-  { id: 5, type: '小组创建', user: '孙七', time: '2小时前', action: '创建了新小组《人像摄影爱好者》' },
-  { id: 6, type: '点赞', user: '周八', time: '3小时前', action: '点赞了作品《星空》' }
-];
 
 const Dashboard: React.FC = () => {
   const [timeRange, setTimeRange] = useState<'day' | 'week' | 'month'>('month');
   const [loading, setLoading] = useState(true);
+  const [userGrowthData, setUserGrowthData] = useState<any[]>([]);
+  const [contentStatsData, setContentStatsData] = useState<any[]>([]);
+  const [orderStatsData, setOrderStatsData] = useState<any[]>([]);
+  const [recentActivities, setRecentActivities] = useState<any[]>([]);
 
   useEffect(() => {
-    // 模拟数据加载
-    const timer = setTimeout(() => {
+    setLoading(true);
+    apiGet('/dashboard/stats').then((res: any) => {
+      setUserGrowthData(res.userGrowthData || []);
+      setContentStatsData(res.contentStatsData || []);
+      setOrderStatsData(res.orderStatsData || []);
+      setRecentActivities(res.recentActivities || []);
+    }).finally(() => {
       setLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
+    });
   }, []);
 
   // 模拟刷新数据

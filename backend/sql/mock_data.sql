@@ -826,3 +826,159 @@ INSERT INTO `question_user` (`id`, `username`, `avatar`) VALUES
 ('u6', '摄影学习者小张', 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=young%20photographer%20student%20male&sign=c8c88269cfd5ed96c4081bb7a4ed50b8'),
 ('u7', '艺术摄影师陈默', 'https://space.coze.cn/api/coze_space/gen_image?image_size=square&prompt=art%20photographer%20male%20creative&sign=bceaa07bd21b90efedda5c86e7059959');
 
+-- ============================================================
+-- 24. 分析数据 - 用户增长 (7条)
+-- ============================================================
+DROP TABLE IF EXISTS `analytics_user_growth`;
+CREATE TABLE `analytics_user_growth` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `period` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `users` int DEFAULT 0,
+  `new_users` int DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `analytics_user_growth` (`period`, `users`, `new_users`) VALUES
+('1月', 4000, 2400),
+('2月', 3000, 1398),
+('3月', 2000, 9800),
+('4月', 2780, 3908),
+('5月', 1890, 4800),
+('6月', 2390, 3800),
+('7月', 3490, 4300);
+
+-- ============================================================
+-- 25. 分析数据 - 内容统计 (7条)
+-- ============================================================
+DROP TABLE IF EXISTS `analytics_content_stats`;
+CREATE TABLE `analytics_content_stats` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `period` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `photos` int DEFAULT 0,
+  `posts` int DEFAULT 0,
+  `comments` int DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `analytics_content_stats` (`period`, `photos`, `posts`, `comments`) VALUES
+('1月', 400, 240, 1800),
+('2月', 300, 139, 1200),
+('3月', 200, 98, 900),
+('4月', 278, 190, 1500),
+('5月', 189, 148, 1300),
+('6月', 239, 138, 1100),
+('7月', 349, 200, 1700);
+
+-- ============================================================
+-- 26. 分析数据 - 收入统计 (7条)
+-- ============================================================
+DROP TABLE IF EXISTS `analytics_revenue`;
+CREATE TABLE `analytics_revenue` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `period` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `amount` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `analytics_revenue` (`period`, `amount`) VALUES
+('1月', 2400.00),
+('2月', 1398.00),
+('3月', 9800.00),
+('4月', 3908.00),
+('5月', 4800.00),
+('6月', 3800.00),
+('7月', 4300.00);
+
+-- ============================================================
+-- 27. 分析数据 - 用户活跃度 (3条)
+-- ============================================================
+DROP TABLE IF EXISTS `analytics_user_activity`;
+CREATE TABLE `analytics_user_activity` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `value` int DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `analytics_user_activity` (`name`, `value`) VALUES
+('活跃用户', 6500),
+('较活跃用户', 2500),
+('不活跃用户', 1000);
+
+-- ============================================================
+-- 28. 分析数据 - 热门分类 (6条)
+-- ============================================================
+DROP TABLE IF EXISTS `analytics_popular_categories`;
+CREATE TABLE `analytics_popular_categories` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `value` int DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `analytics_popular_categories` (`name`, `value`) VALUES
+('风光摄影', 35),
+('人像摄影', 25),
+('城市摄影', 15),
+('黑白摄影', 10),
+('生态摄影', 8),
+('其他', 7);
+
+-- ============================================================
+-- 29. 仪表盘 - 内容分布 (4条)
+-- ============================================================
+DROP TABLE IF EXISTS `dashboard_content_stats`;
+CREATE TABLE `dashboard_content_stats` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `value` int DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `dashboard_content_stats` (`name`, `value`) VALUES
+('摄影作品', 400),
+('社区帖子', 300),
+('评论', 300),
+('小组', 200);
+
+-- ============================================================
+-- 30. 仪表盘 - 订单统计 (7条)
+-- ============================================================
+DROP TABLE IF EXISTS `dashboard_order_stats`;
+CREATE TABLE `dashboard_order_stats` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `period` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `amount` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `dashboard_order_stats` (`period`, `amount`) VALUES
+('1月', 2400.00),
+('2月', 1398.00),
+('3月', 9800.00),
+('4月', 3908.00),
+('5月', 4800.00),
+('6月', 3800.00),
+('7月', 4300.00);
+
+-- ============================================================
+-- 31. 仪表盘 - 最近活动 (6条)
+-- ============================================================
+DROP TABLE IF EXISTS `dashboard_recent_activities`;
+CREATE TABLE `dashboard_recent_activities` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `type` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `time_ago` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `action` varchar(512) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `dashboard_recent_activities` (`type`, `user_name`, `time_ago`, `action`) VALUES
+('用户注册', '张三', '10分钟前', '注册了新账号'),
+('作品发布', '李四', '25分钟前', '发布了新作品《城市风光》'),
+('评论', '王五', '45分钟前', '评论了作品《山水之间》'),
+('订单', '赵六', '1小时前', '购买了会员服务'),
+('小组创建', '孙七', '2小时前', '创建了新小组《人像摄影爱好者》'),
+('点赞', '周八', '3小时前', '点赞了作品《星空》');
+

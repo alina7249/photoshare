@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { apiGet } from '../../lib/api';
 import { motion } from 'framer-motion';
 import {
   LineChart,
@@ -19,57 +20,26 @@ import {
 } from 'recharts';
 import StatsCard from '../../components/common/StatsCard';
 
-// 模拟数据
-const userGrowthData = [
-  { date: '1月', users: 4000, newUsers: 2400 },
-  { date: '2月', users: 3000, newUsers: 1398 },
-  { date: '3月', users: 2000, newUsers: 9800 },
-  { date: '4月', users: 2780, newUsers: 3908 },
-  { date: '5月', users: 1890, newUsers: 4800 },
-  { date: '6月', users: 2390, newUsers: 3800 },
-  { date: '7月', users: 3490, newUsers: 4300 }
-];
-
-const contentStatsData = [
-  { date: '1月', photos: 400, posts: 240, comments: 1800 },
-  { date: '2月', photos: 300, posts: 139, comments: 1200 },
-  { date: '3月', photos: 200, posts: 98, comments: 900 },
-  { date: '4月', photos: 278, posts: 190, comments: 1500 },
-  { date: '5月', photos: 189, posts: 148, comments: 1300 },
-  { date: '6月', photos: 239, posts: 138, comments: 1100 },
-  { date: '7月', photos: 349, posts: 200, comments: 1700 }
-];
-
-const revenueData = [
-  { month: '1月', amount: 2400 },
-  { month: '2月', amount: 1398 },
-  { month: '3月', amount: 9800 },
-  { month: '4月', amount: 3908 },
-  { month: '5月', amount: 4800 },
-  { month: '6月', amount: 3800 },
-  { month: '7月', amount: 4300 }
-];
-
-const userActivityData = [
-  { name: '活跃用户', value: 6500 },
-  { name: '较活跃用户', value: 2500 },
-  { name: '不活跃用户', value: 1000 }
-];
-
 const COLORS = ['#4A5F8B', '#6B7C93', '#38B2AC'];
-
-const popularCategoriesData = [
-  { name: '风光摄影', value: 35 },
-  { name: '人像摄影', value: 25 },
-  { name: '城市摄影', value: 15 },
-  { name: '黑白摄影', value: 10 },
-  { name: '生态摄影', value: 8 },
-  { name: '其他', value: 7 }
-];
 
 const Analytics: React.FC = () => {
   const [timeRange, setTimeRange] = useState<'day' | 'week' | 'month' | 'year'>('month');
   const [activeTab, setActiveTab] = useState<'overview' | 'users' | 'content' | 'revenue' | 'engagement'>('overview');
+  const [userGrowthData, setUserGrowthData] = useState<any[]>([]);
+  const [contentStatsData, setContentStatsData] = useState<any[]>([]);
+  const [revenueData, setRevenueData] = useState<any[]>([]);
+  const [userActivityData, setUserActivityData] = useState<any[]>([]);
+  const [popularCategoriesData, setPopularCategoriesData] = useState<any[]>([]);
+
+  useEffect(() => {
+    apiGet('/analytics/dashboard').then((res: any) => {
+      setUserGrowthData(res.userGrowthData || []);
+      setContentStatsData(res.contentStatsData || []);
+      setRevenueData(res.revenueData || []);
+      setUserActivityData(res.userActivityData || []);
+      setPopularCategoriesData(res.popularCategoriesData || []);
+    });
+  }, []);
 
   return (
     <div className="space-y-6">
