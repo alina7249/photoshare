@@ -341,7 +341,7 @@ const PhotoLocations: React.FC = () => {
   
   if (!isAuthenticated) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
           <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-user-lock text-2xl"></i>
@@ -359,7 +359,7 @@ const PhotoLocations: React.FC = () => {
   const selectedLocationData = selectedLocation ? locations.find(loc => loc.id === selectedLocation) : null;
   
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -396,7 +396,7 @@ const PhotoLocations: React.FC = () => {
         </div>
         
         {/* 搜索和筛选 */}
-        <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
+        <div className="bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="relative">
               <input
@@ -404,7 +404,7 @@ const PhotoLocations: React.FC = () => {
                 placeholder="搜索地点名称或地址..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 pl-12 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                className="w-full px-4 py-3 pl-12 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
               />
               <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
             </div>
@@ -412,7 +412,7 @@ const PhotoLocations: React.FC = () => {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+              className="px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
             >
               {allCategories.map(category => (
                 <option key={category} value={category}>{category}</option>
@@ -422,7 +422,7 @@ const PhotoLocations: React.FC = () => {
             <select
               value={selectedTimeFilter}
               onChange={(e) => setSelectedTimeFilter(e.target.value)}
-              className="px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+              className="px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
             >
               <option value="全部">全部时间</option>
               <option value="一周内">一周内</option>
@@ -434,7 +434,7 @@ const PhotoLocations: React.FC = () => {
             <select
               value={selectedActivityFilter}
               onChange={(e) => setSelectedActivityFilter(e.target.value)}
-              className="px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+              className="px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
             >
               <option value="全部">全部活跃度</option>
               <option value="高活跃">高活跃 (≥10次)</option>
@@ -445,7 +445,7 @@ const PhotoLocations: React.FC = () => {
         </div>
         
         {/* 数据统计 */}
-        <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
+        <div className="bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
           <h3 className="text-lg font-bold text-text-primary mb-4">拍摄地点统计</h3>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
@@ -466,7 +466,7 @@ const PhotoLocations: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-            <div className="bg-bg-deep p-4 rounded-lg border border-accent">
+            <div className="bg-deep p-4 rounded-lg border border-accent">
               <div className="flex items-center">
                 <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-3">
                   <i className="fa-solid fa-map-pin"></i>
@@ -478,7 +478,7 @@ const PhotoLocations: React.FC = () => {
               </div>
             </div>
             
-            <div className="bg-bg-deep p-4 rounded-lg border border-accent">
+            <div className="bg-deep p-4 rounded-lg border border-accent">
               <div className="flex items-center">
                 <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-3">
                   <i className="fa-solid fa-camera"></i>
@@ -490,7 +490,7 @@ const PhotoLocations: React.FC = () => {
               </div>
             </div>
             
-            <div className="bg-bg-deep p-4 rounded-lg border border-accent">
+            <div className="bg-deep p-4 rounded-lg border border-accent">
               <div className="flex items-center">
                 <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-3">
                   <i className="fa-solid fa-star"></i>
@@ -508,25 +508,25 @@ const PhotoLocations: React.FC = () => {
           {/* 左侧位置列表 */}
           <div className="lg:col-span-2 space-y-6">
             {/* 模拟地图区域 */}
-            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-bold text-text-primary">拍摄地点地图</h3>
                 <div className="flex space-x-2">
                   <button 
                     onClick={() => setMapZoom(1)}
-                    className="p-2 bg-bg-deep rounded-lg text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
+                    className="p-2 bg-deep rounded-lg text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
                   >
                     <i className="fa-solid fa-location-crosshairs"></i>
                   </button>
                   <button 
                     onClick={() => setMapZoom(prev => Math.min(prev + 0.2, 3))}
-                    className="p-2 bg-bg-deep rounded-lg text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
+                    className="p-2 bg-deep rounded-lg text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
                   >
                     <i className="fa-solid fa-plus"></i>
                   </button>
                   <button 
                     onClick={() => setMapZoom(prev => Math.max(prev - 0.2, 0.5))}
-                    className="p-2 bg-bg-deep rounded-lg text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
+                    className="p-2 bg-deep rounded-lg text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
                   >
                     <i className="fa-solid fa-minus"></i>
                   </button>
@@ -535,7 +535,7 @@ const PhotoLocations: React.FC = () => {
               
               <div 
                 ref={mapRef}
-                className="h-[500px] relative bg-bg-deep rounded-lg overflow-hidden cursor-move"
+                className="h-[500px] relative bg-deep rounded-lg overflow-hidden cursor-move"
                 onWheel={handleMapWheel}
                 onMouseDown={handleMapMouseDown}
                 style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
@@ -567,7 +567,7 @@ const PhotoLocations: React.FC = () => {
                     }}
                     whileHover={{ scale: 1.2 }}
                     className={`absolute w-6 h-6 rounded-full cursor-pointer shadow-lg ${
-                      selectedLocation === location.id ? 'bg-accent border-2 border-text-primary' : 'bg-accent-hover border-2 border-bg-card'
+                      selectedLocation === location.id ? 'bg-accent border-2 border-text-primary' : 'bg-accent-hover border-2 border-card'
                     }`}
                     style={{
                       left: `${(location.longitude + 180) / 360 * 100}%`,
@@ -578,7 +578,7 @@ const PhotoLocations: React.FC = () => {
                     onClick={() => openDetailModal(location.id)}
                   >
                     <motion.div 
-                      className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-bg-card text-text-primary text-xs rounded whitespace-nowrap opacity-0"
+                      className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-card text-text-primary text-xs rounded whitespace-nowrap opacity-0"
                       whileHover={{ opacity: 1 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -606,7 +606,7 @@ const PhotoLocations: React.FC = () => {
             </div>
             
             {/* 位置列表 */}
-            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-bold text-text-primary">位置列表</h3>
                 <span className="text-sm text-text-muted">{filteredLocations.length} 个地点</span>
@@ -617,7 +617,7 @@ const PhotoLocations: React.FC = () => {
                   <motion.div
                     key={location.id}
                     whileHover={{ y: -5 }}
-                    className={`bg-bg-deep rounded-xl overflow-hidden border transition-all cursor-pointer ${
+                    className={`bg-deep rounded-xl overflow-hidden border transition-all cursor-pointer ${
                       selectedLocation === location.id 
                         ? 'border-accent shadow-lg' 
                         : 'border-accent hover:border-accent'
@@ -630,11 +630,11 @@ const PhotoLocations: React.FC = () => {
                         className="w-full h-40 object-cover"
                       />
                       <div className="absolute top-2 right-2 flex space-x-2">
-                        <div className="bg-bg-deep/80 text-text-primary text-xs px-2 py-1 rounded-full">
+                        <div className="bg-deep/80 text-text-primary text-xs px-2 py-1 rounded-full">
                           {location.photos} 张作品
                         </div>
                         {location.isFavorite && (
-                          <div className="bg-bg-deep/80 text-yellow-400 text-xs px-2 py-1 rounded-full flex items-center">
+                          <div className="bg-deep/80 text-yellow-400 text-xs px-2 py-1 rounded-full flex items-center">
                             <i className="fa-solid fa-star mr-1"></i> 收藏
                           </div>
                         )}
@@ -655,7 +655,7 @@ const PhotoLocations: React.FC = () => {
                       <p className="text-sm text-text-muted mb-3 line-clamp-1">{location.address}</p>
                       <div className="flex flex-wrap gap-1 mb-3">
                         {location.categories.map((category, index) => (
-                          <span key={index} className="px-2 py-0.5 bg-bg-card text-text-muted text-xs rounded">
+                          <span key={index} className="px-2 py-0.5 bg-card text-text-muted text-xs rounded">
                             {category}
                           </span>
                         ))}
@@ -671,7 +671,7 @@ const PhotoLocations: React.FC = () => {
               
               {filteredLocations.length === 0 && (
                 <div className="p-8 text-center">
-                  <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+                  <div className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                     <i className="fa-solid fa-map-marker-alt text-2xl"></i>
                   </div>
                   <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关地点</h3>
@@ -709,7 +709,7 @@ const PhotoLocations: React.FC = () => {
                                 // 模拟切换收藏状态
                                 toast.success(location.isFavorite ? '已取消收藏' : '已添加到收藏');
                               }}
-                              className={`p-1.5 rounded-full ${location.isFavorite ? 'bg-yellow-400 text-bg-deep' : 'bg-bg-card/50 text-text-primary'}`}
+                              className={`p-1.5 rounded-full ${location.isFavorite ? 'bg-yellow-400 text-deep' : 'bg-card/50 text-text-primary'}`}
                               title={location.isFavorite ? '取消收藏' : '收藏地点'}
                             >
                               <i className="fa-solid fa-star"></i>
@@ -751,7 +751,7 @@ const PhotoLocations: React.FC = () => {
                         
                         <div className="flex flex-wrap gap-1">
                           {location.categories.map((category, index) => (
-                            <span key={index} className="px-2 py-0.5 bg-bg-card/50 text-text-primary text-xs rounded-full">
+                            <span key={index} className="px-2 py-0.5 bg-card/50 text-text-primary text-xs rounded-full">
                               {category}
                             </span>
                           ))}
@@ -760,13 +760,13 @@ const PhotoLocations: React.FC = () => {
                         <div className="mt-4 flex space-x-2">
                           <button 
                             onClick={() => openEditLocationModal(location)}
-                            className="flex-1 py-2 bg-bg-card text-text-primary rounded-lg text-sm font-medium hover:bg-accent transition-colors"
+                            className="flex-1 py-2 bg-card text-text-primary rounded-lg text-sm font-medium hover:bg-accent transition-colors"
                           >
                             <i className="fa-solid fa-pen-to-square mr-1"></i> 编辑
                           </button>
                           <button 
                             onClick={() => navigate(`/profile-center/works?location=${location.id}`)}
-                            className="flex-1 py-2 bg-bg-card text-text-primary rounded-lg text-sm font-medium hover:bg-accent transition-colors"
+                            className="flex-1 py-2 bg-card text-text-primary rounded-lg text-sm font-medium hover:bg-accent transition-colors"
                           >
                             <i className="fa-solid fa-images mr-1"></i> 查看作品
                           </button>
@@ -777,14 +777,14 @@ const PhotoLocations: React.FC = () => {
                 </div>
                 
                 {/* 位置相关作品 */}
-                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                   <h3 className="text-lg font-bold text-text-primary mb-4">该地点的作品</h3>
                   <div className="space-y-4">
                     {locationPhotos.map((photo) => (
                       <motion.div
                         key={photo.id}
                         whileHover={{ scale: 1.02 }}
-                        className="flex space-x-3 p-3 bg-bg-deep rounded-lg border border-accent hover:border-accent transition-colors"
+                        className="flex space-x-3 p-3 bg-deep rounded-lg border border-accent hover:border-accent transition-colors"
                         onClick={(e) => {
                           e.stopPropagation(); // 防止触发父元素的点击事件
                           navigate(`/photo/${photo.id}`);
@@ -838,10 +838,10 @@ const PhotoLocations: React.FC = () => {
                 </div>
                 
                 {/* 拍摄建议 */}
-                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                   <h3 className="text-lg font-bold text-text-primary mb-4">拍摄建议</h3>
                   {selectedLocationData?.notes && (
-                    <div className="mb-4 p-3 bg-bg-deep rounded-lg border border-accent text-sm text-text-muted">
+                    <div className="mb-4 p-3 bg-deep rounded-lg border border-accent text-sm text-text-muted">
                       {selectedLocationData.notes}
                     </div>
                   )}
@@ -874,13 +874,13 @@ const PhotoLocations: React.FC = () => {
                 </div>
               </>
             ) : (
-              <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+              <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                 <h3 className="text-lg font-bold text-text-primary mb-2">位置详情</h3>
                 <p className="text-text-muted">
                   从地图或位置列表中选择一个地点，查看详细信息和相关作品
                 </p>
                 <div className="mt-6 flex flex-col space-y-3">
-                  <div className="p-3 bg-bg-deep rounded-lg border border-accent">
+                  <div className="p-3 bg-deep rounded-lg border border-accent">
                     <h4 className="font-medium text-text-primary mb-1 flex items-center">
                       <i className="fa-solid fa-info-circle text-accent mr-2"></i>
                       如何添加新地点？
@@ -889,7 +889,7 @@ const PhotoLocations: React.FC = () => {
                       点击"添加新地点"按钮，填写地点信息，系统会自动将其添加到您的地点列表中
                     </p>
                   </div>
-                  <div className="p-3 bg-bg-deep rounded-lg border border-accent">
+                  <div className="p-3 bg-deep rounded-lg border border-accent">
                     <h4 className="font-medium text-text-primary mb-1 flex items-center">
                       <i className="fa-solid fa-lightbulb text-accent mr-2"></i>
                       创作提示
@@ -918,7 +918,7 @@ const PhotoLocations: React.FC = () => {
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 20 }}
-            className="bg-bg-card rounded-xl border border-accent max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-card rounded-xl border border-accent max-w-4xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative">
@@ -933,7 +933,7 @@ const PhotoLocations: React.FC = () => {
                     // 模拟切换收藏状态
                     toast.success(selectedLocationData.isFavorite ? '已取消收藏' : '已添加到收藏');
                   }}
-                  className={`p-2 rounded-full ${selectedLocationData.isFavorite ? 'bg-yellow-400 text-bg-deep' : 'bg-bg-deep/80 text-text-primary'}`}
+                  className={`p-2 rounded-full ${selectedLocationData.isFavorite ? 'bg-yellow-400 text-deep' : 'bg-deep/80 text-text-primary'}`}
                   title={selectedLocationData.isFavorite ? '取消收藏' : '收藏地点'}
                 >
                   <i className="fa-solid fa-star"></i>
@@ -945,7 +945,7 @@ const PhotoLocations: React.FC = () => {
                 />
                 <button
                   onClick={() => setIsDetailModalOpen(false)}
-                  className="p-2 bg-bg-deep/80 text-text-primary rounded-full hover:bg-accent transition-colors"
+                  className="p-2 bg-deep/80 text-text-primary rounded-full hover:bg-accent transition-colors"
                 >
                   <i className="fa-solid fa-times"></i>
                 </button>
@@ -972,7 +972,7 @@ const PhotoLocations: React.FC = () => {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <div className="p-4 bg-bg-deep rounded-lg border border-accent">
+                <div className="p-4 bg-deep rounded-lg border border-accent">
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-3">
                       <i className="fa-solid fa-camera"></i>
@@ -984,7 +984,7 @@ const PhotoLocations: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="p-4 bg-bg-deep rounded-lg border border-accent">
+                <div className="p-4 bg-deep rounded-lg border border-accent">
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-3">
                       <i className="fa-solid fa-history"></i>
@@ -996,7 +996,7 @@ const PhotoLocations: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="p-4 bg-bg-deep rounded-lg border border-accent">
+                <div className="p-4 bg-deep rounded-lg border border-accent">
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-3">
                       <i className="fa-solid fa-calendar-alt"></i>
@@ -1008,7 +1008,7 @@ const PhotoLocations: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="p-4 bg-bg-deep rounded-lg border border-accent">
+                <div className="p-4 bg-deep rounded-lg border border-accent">
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-3">
                       <i className="fa-solid fa-calendar-check"></i>
@@ -1025,7 +1025,7 @@ const PhotoLocations: React.FC = () => {
                 <h3 className="text-lg font-bold text-text-primary mb-3">地点分类</h3>
                 <div className="flex flex-wrap gap-2">
                   {selectedLocationData.categories.map((category, index) => (
-                    <span key={index} className="px-3 py-1.5 bg-bg-deep text-text-muted rounded-full text-sm border border-accent">
+                    <span key={index} className="px-3 py-1.5 bg-deep text-text-muted rounded-full text-sm border border-accent">
                       {category}
                     </span>
                   ))}
@@ -1035,11 +1035,11 @@ const PhotoLocations: React.FC = () => {
               <div className="mb-6">
                 <h3 className="text-lg font-bold text-text-primary mb-3">拍摄笔记</h3>
                 {selectedLocationData.notes ? (
-                  <div className="p-4 bg-bg-deep rounded-lg border border-accent text-text-muted">
+                  <div className="p-4 bg-deep rounded-lg border border-accent text-text-muted">
                     {selectedLocationData.notes}
                   </div>
                 ) : (
-                  <div className="p-4 bg-bg-deep rounded-lg border border-accent text-text-muted text-center">
+                  <div className="p-4 bg-deep rounded-lg border border-accent text-text-muted text-center">
                     <p>暂无拍摄笔记</p>
                   </div>
                 )}
@@ -1047,7 +1047,7 @@ const PhotoLocations: React.FC = () => {
               
               <div className="mb-6">
                 <h3 className="text-lg font-bold text-text-primary mb-3">坐标信息</h3>
-                <div className="p-4 bg-bg-deep rounded-lg border border-accent flex justify-between items-center">
+                <div className="p-4 bg-deep rounded-lg border border-accent flex justify-between items-center">
                   <div>
                     <p className="text-text-primary">{selectedLocationData.latitude.toFixed(6)}, {selectedLocationData.longitude.toFixed(6)}</p>
                     <p className="text-xs text-text-muted mt-1">点击复制坐标</p>
@@ -1087,7 +1087,7 @@ const PhotoLocations: React.FC = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="p-4 bg-bg-deep rounded-lg border border-accent text-center">
+                  <div className="p-4 bg-deep rounded-lg border border-accent text-center">
                     <p className="text-text-muted">暂无相关作品</p>
                     <button
                       onClick={() => navigate('/profile-center/works?action=upload')}
@@ -1108,7 +1108,7 @@ const PhotoLocations: React.FC = () => {
                 </button>
                 <button
                   onClick={() => navigate(`/profile-center/works?location=${selectedLocationData.id}`)}
-                  className="flex-1 py-3 bg-bg-card text-text-primary border border-accent rounded-lg font-medium hover:bg-accent transition-colors"
+                  className="flex-1 py-3 bg-card text-text-primary border border-accent rounded-lg font-medium hover:bg-accent transition-colors"
                 >
                   <i className="fa-solid fa-images mr-2"></i> 查看全部作品
                 </button>
@@ -1137,7 +1137,7 @@ const PhotoLocations: React.FC = () => {
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 20 }}
-            className="bg-bg-card rounded-xl border border-accent max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-card rounded-xl border border-accent max-w-2xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-6 border-b border-accent">
@@ -1161,7 +1161,7 @@ const PhotoLocations: React.FC = () => {
                     value={newLocationForm.name}
                     onChange={(e) => setNewLocationForm(prev => ({ ...prev, name: e.target.value }))}
                     placeholder="请输入地点名称"
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                   />
                 </div>
                 
@@ -1172,7 +1172,7 @@ const PhotoLocations: React.FC = () => {
                     value={newLocationForm.address}
                     onChange={(e) => setNewLocationForm(prev => ({ ...prev, address: e.target.value }))}
                     placeholder="请输入详细地址"
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                   />
                 </div>
                 
@@ -1185,7 +1185,7 @@ const PhotoLocations: React.FC = () => {
                       onChange={(e) => setNewLocationForm(prev => ({ ...prev, latitude: parseFloat(e.target.value) }))}
                       step="0.000001"
                       placeholder="请输入纬度"
-                      className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                      className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                     />
                   </div>
                   
@@ -1197,7 +1197,7 @@ const PhotoLocations: React.FC = () => {
                       onChange={(e) => setNewLocationForm(prev => ({ ...prev, longitude: parseFloat(e.target.value) }))}
                       step="0.000001"
                       placeholder="请输入经度"
-                      className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                      className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                     />
                   </div>
                 </div>
@@ -1227,7 +1227,7 @@ const PhotoLocations: React.FC = () => {
                         key={i}
                         type="button"
                         onClick={() => setNewLocationForm(prev => ({ ...prev, rating: i + 1 }))}
-                        className={`p-2 rounded-lg transition-colors ${newLocationForm.rating >= i + 1 ? 'text-yellow-400 bg-bg-deep' : 'text-accent'}`}
+                        className={`p-2 rounded-lg transition-colors ${newLocationForm.rating >= i + 1 ? 'text-yellow-400 bg-deep' : 'text-accent'}`}
                       >
                         <i className="fa-solid fa-star"></i>
                       </button>
@@ -1241,7 +1241,7 @@ const PhotoLocations: React.FC = () => {
                     value={newLocationForm.notes}
                     onChange={(e) => setNewLocationForm(prev => ({ ...prev, notes: e.target.value }))}
                     placeholder="记录该地点的拍摄建议、最佳时间等信息"
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted h-32 resize-none"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted h-32 resize-none"
                   />
                 </div>
               </div>
@@ -1250,7 +1250,7 @@ const PhotoLocations: React.FC = () => {
             <div className="p-4 border-t border-accent flex justify-end space-x-3">
               <button
                 onClick={() => setIsNewLocationModalOpen(false)}
-                className="px-6 py-3 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                className="px-6 py-3 bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
               >
                 取消
               </button>

@@ -41,7 +41,7 @@ const ContestDetail: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-4 py-8 bg-deep min-h-screen flex items-center justify-center">
         <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
@@ -49,14 +49,14 @@ const ContestDetail: React.FC = () => {
 
   if (!contest) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
           <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-exclamation-circle text-2xl"></i>
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该赛事</h2>
           <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的赛事不存在或已被删除</p>
-          <Link to="/photography-contests" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-bg-dark-hover transition-colors">
+          <Link to="/photography-contests" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors">
             返回赛事列表
           </Link>
         </div>
@@ -77,7 +77,7 @@ const ContestDetail: React.FC = () => {
   const daysLeft = calculateDaysLeft();
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -95,13 +95,13 @@ const ContestDetail: React.FC = () => {
         </div>
 
         {/* 赛事主图 */}
-        <div className="relative rounded-xl overflow-hidden mb-8 bg-bg-card border border-accent">
+        <div className="relative rounded-xl overflow-hidden mb-8 bg-card border border-accent">
           <img
             src={contest.image}
             alt={contest.title}
             className="w-full h-[50vh] object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg-deep to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-deep to-transparent"></div>
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
             <div className="flex flex-wrap items-center gap-2 mb-3">
               <span className="px-3 py-1 bg-accent text-text-primary text-sm rounded-full">
@@ -112,7 +112,7 @@ const ContestDetail: React.FC = () => {
                   ? 'bg-teal text-text-primary'
                   : contest.status === '已截止'
                     ? 'bg-accent-hover text-text-primary'
-                    : 'bg-bg-card text-text-primary'
+                    : 'bg-card text-text-primary'
               }`}>
                 {contest.status}
               </span>
@@ -135,7 +135,7 @@ const ContestDetail: React.FC = () => {
         </div>
 
         {/* 统计数据和参赛按钮 */}
-        <div className="flex flex-col sm:flex-row justify-between items-center bg-bg-card rounded-xl p-6 mb-8 border border-accent">
+        <div className="flex flex-col sm:flex-row justify-between items-center bg-card rounded-xl p-6 mb-8 border border-accent">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
             <div className="text-center">
               <h3 className="text-lg font-medium text-text-muted mb-1">参与人数</h3>
@@ -172,7 +172,7 @@ const ContestDetail: React.FC = () => {
           {/* 左侧主要内容 */}
           <div className="lg:col-span-2 space-y-8">
             {/* 赛事详情 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">赛事详情</h2>
               <div className="prose prose-invert max-w-none">
                 <p className="text-text-muted leading-relaxed">
@@ -185,7 +185,7 @@ const ContestDetail: React.FC = () => {
                 {contest.categories.map((category: string, index: number) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-bg-deep text-text-muted rounded-full text-sm"
+                    className="px-3 py-1 bg-deep text-text-muted rounded-full text-sm"
                   >
                     {category}
                   </span>
@@ -194,11 +194,11 @@ const ContestDetail: React.FC = () => {
             </div>
 
             {/* 奖项设置 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">奖项设置</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {contest.prizes.map((prize: any, index: number) => (
-                  <div key={index} className="p-4 bg-bg-deep rounded-lg border border-accent">
+                  <div key={index} className="p-4 bg-deep rounded-lg border border-accent">
                     <div className="flex justify-between items-center mb-2">
                       <h3 className="font-bold text-text-primary">{prize.rank}</h3>
                       <span className="text-sm text-accent">{prize.count}名</span>
@@ -210,7 +210,7 @@ const ContestDetail: React.FC = () => {
             </div>
 
             {/* 参赛规则 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">参赛规则</h2>
               <ul className="space-y-3">
                 {contest.rules.map((rule: string, index: number) => (
@@ -228,9 +228,9 @@ const ContestDetail: React.FC = () => {
           {/* 右侧边栏 */}
           <div className="lg:col-span-1 space-y-6">
             {/* 赛事日历 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">赛事日历</h2>
-              <div className="p-4 bg-bg-deep rounded-lg text-center">
+              <div className="p-4 bg-deep rounded-lg text-center">
                 <div className="text-sm text-text-muted mb-1">
                   截止日期
                 </div>
@@ -247,7 +247,7 @@ const ContestDetail: React.FC = () => {
                     <span className="text-sm text-text-muted">剩余时间</span>
                     <span className="text-sm font-medium text-text-primary">{daysLeft} 天</span>
                   </div>
-                  <div className="w-full h-2 bg-bg-deep rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-deep rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-orange-dark" 
                       style={{ width: `${Math.max(0, (daysLeft / 60) * 100)}%` }}
@@ -258,13 +258,13 @@ const ContestDetail: React.FC = () => {
             </div>
 
             {/* 赛事标签 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">赛事标签</h2>
               <div className="flex flex-wrap gap-2">
                 {contest.tags.map((tag: string, index: number) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-bg-deep text-text-muted rounded-full text-sm"
+                    className="px-3 py-1 bg-deep text-text-muted rounded-full text-sm"
                   >
                     #{tag}
                   </span>
@@ -273,14 +273,14 @@ const ContestDetail: React.FC = () => {
             </div>
 
              {/* 分享 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">分享赛事</h2>
               <div className="grid grid-cols-4 gap-3">
                 <button 
                   onClick={() => {
                     toast.info('请在微信中打开此链接进行分享');
                   }}
-                  className="w-full h-12 bg-bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
+                  className="w-full h-12 bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
                 >
                   <i className="fa-brands fa-weixin text-xl"></i>
                 </button>
@@ -289,7 +289,7 @@ const ContestDetail: React.FC = () => {
                     const shareUrl = `https://service.weibo.com/share/share.php?url=${encodeURIComponent(`${window.location.origin}/contest/${id}`)}&title=${encodeURIComponent(contest.title)}`;
                     window.open(shareUrl, '_blank', 'width=600,height=400');
                   }}
-                  className="w-full h-12 bg-bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
+                  className="w-full h-12 bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
                 >
                   <i className="fa-brands fa-weibo text-xl"></i>
                 </button>
@@ -298,7 +298,7 @@ const ContestDetail: React.FC = () => {
                     const shareUrl = `https://connect.qq.com/widget/shareqq/index.html?url=${encodeURIComponent(`${window.location.origin}/contest/${id}`)}&title=${encodeURIComponent(contest.title)}`;
                     window.open(shareUrl, '_blank', 'width=600,height=400');
                   }}
-                  className="w-full h-12 bg-bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
+                  className="w-full h-12 bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
                 >
                   <i className="fa-brands fa-qq text-xl"></i>
                 </button>
@@ -311,7 +311,7 @@ const ContestDetail: React.FC = () => {
                       toast.error('复制失败，请手动复制');
                     }
                   }}
-                  className="w-full h-12 bg-bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
+                  className="w-full h-12 bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
                 >
                   <i className="fa-solid fa-link text-xl"></i>
                 </button>
@@ -319,7 +319,7 @@ const ContestDetail: React.FC = () => {
             </div>
 
             {/* 常见问题 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">参赛须知</h2>
               <div className="space-y-4">
                 <div>
@@ -340,7 +340,7 @@ const ContestDetail: React.FC = () => {
         </div>
         
         {/* 评论区 */}
-        <div className="bg-bg-card rounded-xl p-6 border border-accent mt-8">
+        <div className="bg-card rounded-xl p-6 border border-accent mt-8">
           <CommentSection postId={contest.id} />
         </div>
       </motion.div>

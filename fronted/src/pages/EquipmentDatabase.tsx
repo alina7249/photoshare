@@ -66,7 +66,7 @@ const equipmentTypes = [
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
-        className="bg-bg-card rounded-xl border border-accent w-full max-w-2xl"
+        className="bg-card rounded-xl border border-accent w-full max-w-2xl"
       >
         <div className="flex justify-between items-center p-4 border-b border-accent">
           <h3 className="font-bold text-text-primary flex items-center">
@@ -89,7 +89,7 @@ const equipmentTypes = [
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="例如：预算 5000 元，拍人像，新手适用"
-              className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none h-24"
+              className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none h-24"
             ></textarea>
           </div>
           
@@ -103,7 +103,7 @@ const equipmentTypes = [
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setPrompt(example)}
-                  className="px-3 py-1.5 bg-bg-deep text-text-muted rounded-lg text-sm hover:bg-accent/30 transition-colors border border-accent"
+                  className="px-3 py-1.5 bg-deep text-text-muted rounded-lg text-sm hover:bg-accent/30 transition-colors border border-accent"
                 >
                   {example}
                 </motion.button>
@@ -115,7 +115,7 @@ const equipmentTypes = [
           <div className="flex space-x-3">
             <button
               onClick={onClose}
-              className="flex-1 py-2 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+              className="flex-1 py-2 bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
             >
               取消
             </button>
@@ -142,13 +142,13 @@ const equipmentTypes = [
           {aiConversation.length > 0 && (
             <div className="mt-6 space-y-4">
               {/* 对话历史 */}
-              <div className="bg-bg-deep p-4 rounded-lg">
+              <div className="bg-deep p-4 rounded-lg">
                 {aiConversation.map((message, index) => (
                   <div key={index} className={`mb-3 last:mb-0 ${message.role === 'user' ? 'text-right' : 'text-left'}`}>
                     <div className={`inline-block max-w-[80%] p-3 rounded-lg ${
                       message.role === 'user' 
                         ? 'bg-accent text-text-primary rounded-br-none' 
-                        : 'bg-bg-card text-text-muted rounded-bl-none'
+                        : 'bg-card text-text-muted rounded-bl-none'
                     }`}>
                       <p>{message.content}</p>
                     </div>
@@ -165,7 +165,7 @@ const equipmentTypes = [
                       <motion.div
                         key={equipment.id}
                         whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-                        className="bg-bg-deep rounded-lg overflow-hidden border border-accent transition-all cursor-pointer"
+                        className="bg-deep rounded-lg overflow-hidden border border-accent transition-all cursor-pointer"
                         onClick={() => {
                           setSelectedEquipment(equipment);
                           onClose();
@@ -583,7 +583,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -603,7 +603,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
         // 器材列表视图
         <>
           {/* 搜索和筛选 */}
-          <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
+          <div className="bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
               <div className="relative flex-1">
                 <input
@@ -611,7 +611,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                   placeholder="搜索器材型号、品牌或功能..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                  className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                 />
                 <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
               </div>
@@ -619,7 +619,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
               <select
                 value={selectedBrand}
                 onChange={(e) => setSelectedBrand(e.target.value)}
-                className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
               >
                 {brands.map((brand) => (
                   <option key={brand} value={brand}>{brand}</option>
@@ -649,7 +649,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                       className={`py-4 rounded-xl flex flex-col items-center justify-center transition-all ${
                         activeType === type.id
                           ? 'bg-accent border-2 border-accent text-text-primary shadow-md'
-                          : 'bg-bg-card border border-accent text-text-muted hover:border-accent'
+                          : 'bg-card border border-accent text-text-muted hover:border-accent'
                       }`}
                     >
                       <i className={`fa-solid ${type.icon} text-2xl mb-2 text-text-primary`}></i>
@@ -660,7 +660,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
 
                 {/* 对比工具栏 */}
                 {selectedItems.length > 0 && (
-                  <div className="fixed bottom-0 left-0 right-0 bg-bg-card border-t border-accent py-3 px-4 z-50 flex items-center justify-between shadow-lg">
+                  <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-accent py-3 px-4 z-50 flex items-center justify-between shadow-lg">
                     <div className="flex items-center">
                       <i className="fa-solid fa-balance-scale text-accent mr-2"></i>
                       <span className="text-text-primary">已选择 {selectedItems.length}/3 件器材进行对比</span>
@@ -682,7 +682,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
            <motion.div
              key={item.id}
              whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)', rotateY: 5, translateZ: 10 }}
-             className="bg-bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm cursor-pointer"
+             className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm cursor-pointer"
              onClick={() => handleViewDetails(item)}
              style={{ transformStyle: 'preserve-3d' }}
            >
@@ -713,7 +713,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                  className={`absolute top-3 right-3 w-6 h-6 rounded-full flex items-center justify-center ${
                    selectedItems.includes(item.id)
                      ? 'bg-accent text-text-primary'
-                     : 'bg-bg-card/80 text-text-muted'
+                     : 'bg-card/80 text-text-muted'
                  } transition-colors`}
                  title={selectedItems.includes(item.id) ? '取消对比' : '添加对比'}
                >
@@ -722,10 +722,10 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
              </div>
              
              {/* 器材信息 */}
-             <div className="p-5 bg-bg-card">
+             <div className="p-5 bg-card">
                {/* 品牌和类型 */}
                <div className="flex items-center justify-between mb-2">
-                 <span className="text-sm text-accent-hover font-medium">{item.brand}</span><span className="text-xs px-2 py-1 bg-bg-card text-text-muted rounded-full border border-accent">{item.type}</span>
+                 <span className="text-sm text-accent-hover font-medium">{item.brand}</span><span className="text-xs px-2 py-1 bg-card text-text-muted rounded-full border border-accent">{item.type}</span>
                </div>
                
                {/* 器材名称和价格 */}
@@ -754,7 +754,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                  {item.suitableFor.slice(0, 3).map((scenario, index) => (
                   <span
                     key={index}
-                     className="px-2 py-1 bg-bg-card text-text-muted rounded-full text-xs border border-accent"
+                     className="px-2 py-1 bg-card text-text-muted rounded-full text-xs border border-accent"
                   >
                     {scenario}
                   </span>
@@ -768,7 +768,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                      e.stopPropagation();
                      handleViewDetails(item);
                    }}
-                   className="py-2 text-center bg-gradient-to-r from-accent to-bg-card text-text-primary rounded-lg font-medium transition-colors border border-accent"
+                   className="py-2 text-center bg-gradient-to-r from-accent to-card text-text-primary rounded-lg font-medium transition-colors border border-accent"
                  >
                    查看详情
                  </button>
@@ -778,7 +778,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                        e.stopPropagation();
                        handleRental(item.price);
                      }}
-                     className="py-2 text-center bg-bg-card text-text-primary rounded-lg font-medium transition-colors border border-accent hover:bg-accent"
+                     className="py-2 text-center bg-card text-text-primary rounded-lg font-medium transition-colors border border-accent hover:bg-accent"
                    >
                      租赁
                    </button>
@@ -796,7 +796,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                  text="未找到相关器材"
                  helperText="请尝试调整筛选条件或搜索其他关键词"
                  icon="fa-search"
-                 backgroundColor="bg-bg-card"
+                 backgroundColor="bg-card"
                  textColor="text-text-primary"
                />
              </div>
@@ -806,7 +806,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
          {/* 分页控件 */}
          {totalPages > 1 && (
            <div className="flex justify-center mt-8">
-             <nav className="inline-flex items-center rounded-md border border-accent bg-bg-deep shadow-sm">
+             <nav className="inline-flex items-center rounded-md border border-accent bg-deep shadow-sm">
                <button
                  onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                  disabled={currentPage === 1}
@@ -846,7 +846,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                 </button>
                 
                 {/* 器材详情 */}
-                <div className="bg-bg-card rounded-xl border border-accent overflow-hidden mb-8">
+                <div className="bg-card rounded-xl border border-accent overflow-hidden mb-8">
                   <div className="md:flex">
                     {/* 器材图片 */}
                     <div className="md:w-1/2">
@@ -862,7 +862,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                       {/* 品牌和类型 */}
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm text-accent font-medium">{selectedEquipment.brand}</span>
-                        <span className="text-xs px-2 py-1 bg-bg-card text-text-muted rounded-full border border-accent">{selectedEquipment.type}</span>
+                        <span className="text-xs px-2 py-1 bg-card text-text-muted rounded-full border border-accent">{selectedEquipment.type}</span>
                       </div>
                       
                       {/* 器材名称和价格 */}
@@ -940,7 +940,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                           {selectedEquipment.tags.map((tag, index) => (
                             <span
                               key={index}
-                              className="px-2 py-1 bg-bg-card text-text-muted rounded-full text-xs border border-accent"
+                              className="px-2 py-1 bg-card text-text-muted rounded-full text-xs border border-accent"
                             >
                               {tag}
                             </span>
@@ -1005,12 +1005,12 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                 </div>
                 
                  {/* 租赁信息和二手交易链接 */}
-                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
+                <div className="bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
                   <h3 className="text-lg font-bold text-text-muted mb-4">购买与租赁</h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* 租赁信息 */}
-                    <div className="bg-bg-deep p-4 rounded-lg">
+                    <div className="bg-deep p-4 rounded-lg">
                       <h4 className="font-medium text-text-muted mb-2 flex items-center">
                         <i className="fa-solid fa-calendar-days text-accent mr-2"></i>
                         租赁信息
@@ -1033,14 +1033,14 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         onClick={() => handleRental(selectedEquipment.price)}
-                        className="w-full mt-3 py-2 bg-bg-card text-text-muted border border-accent rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors text-sm"
+                        className="w-full mt-3 py-2 bg-card text-text-muted border border-accent rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors text-sm"
                       >
                         立即租赁
                       </motion.button>
                     </div>
                     
                     {/* 二手交易 */}
-                    <div className="bg-bg-deep p-4 rounded-lg">
+                    <div className="bg-deep p-4 rounded-lg">
                       <h4 className="font-medium text-text-muted mb-2 flex items-center">
                         <i className="fa-solid fa-recycle text-accent mr-2"></i>
                         二手交易
@@ -1089,7 +1089,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.9 }}
                       transition={{ duration: 0.3 }}
-                      className="bg-bg-card border border-accent rounded-xl overflow-hidden max-w-4xl max-h-[90vh] relative"
+                      className="bg-card border border-accent rounded-xl overflow-hidden max-w-4xl max-h-[90vh] relative"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <button
@@ -1107,7 +1107,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                         <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="px-4 py-2 bg-bg-card text-text-primary rounded-lg font-medium border border-accent"
+                          className="px-4 py-2 bg-card text-text-primary rounded-lg font-medium border border-accent"
                         >
                           <i className="fa-solid fa-download mr-2"></i>
                           保存图片
@@ -1139,7 +1139,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.9 }}
                       transition={{ duration: 0.3 }}
-                      className="bg-bg-card border border-accent rounded-xl overflow-hidden max-w-md w-full"
+                      className="bg-card border border-accent rounded-xl overflow-hidden max-w-md w-full"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <div className="p-4 border-b border-accent flex justify-between items-center">
@@ -1160,7 +1160,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                               whileTap={{ scale: 0.97 }}
                               onClick={() => setRentalDuration('daily')}
                               className={`flex-1 py-2 rounded-lg font-medium transition-colors ${
-                                rentalDuration === 'daily' ? 'bg-accent text-text-primary' : 'bg-bg-card text-text-muted border border-accent'
+                                rentalDuration === 'daily' ? 'bg-accent text-text-primary' : 'bg-card text-text-muted border border-accent'
                               }`}
                             >
                               按天
@@ -1170,7 +1170,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                               whileTap={{ scale: 0.97 }}
                               onClick={() => setRentalDuration('weekly')}
                               className={`flex-1 py-2 rounded-lg font-medium transition-colors ${
-                                rentalDuration === 'weekly' ? 'bg-accent text-text-primary' : 'bg-bg-card text-text-muted border border-accent'
+                                rentalDuration === 'weekly' ? 'bg-accent text-text-primary' : 'bg-card text-text-muted border border-accent'
                               }`}
                             >
                               按周
@@ -1180,7 +1180,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                               whileTap={{ scale: 0.97 }}
                               onClick={() => setRentalDuration('monthly')}
                               className={`flex-1 py-2 rounded-lg font-medium transition-colors ${
-                                rentalDuration === 'monthly' ? 'bg-accent text-text-primary' : 'bg-bg-card text-text-muted border border-accent'
+                                rentalDuration === 'monthly' ? 'bg-accent text-text-primary' : 'bg-card text-text-muted border border-accent'
                               }`}
                             >
                               按月
@@ -1190,7 +1190,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
                         
                         <div className="mb-6">
                           <h4 className="text-sm font-medium text-text-muted mb-3">租赁总价</h4>
-                          <div className="bg-bg-deep p-4 rounded-lg">
+                          <div className="bg-deep p-4 rounded-lg">
                             <div className="flex justify-between items-center">
                               <span className="text-sm text-text-muted">
                                 {rentalDuration === 'daily' ? '日租金' : rentalDuration === 'weekly' ? '周租金' : '月租金'}
@@ -1241,18 +1241,18 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
             <h2 className="text-2xl font-bold text-text-primary mb-6">器材对比</h2>
             
             {/* 对比表格 */}
-            <div className="bg-bg-card rounded-xl border border-accent overflow-hidden mb-8">
+            <div className="bg-card rounded-xl border border-accent overflow-hidden mb-8">
               <div className="overflow-x-auto">
                 <table className="min-w-full">
                   <thead>
-                    <tr className="bg-bg-card border-b border-accent">
+                    <tr className="bg-card border-b border-accent">
                       <th className="px-6 py-4 text-left text-sm font-medium text-text-primary">参数</th>
                       {comparisonData.map((item, index) => (
                         <th key={index} className="px-6 py-4 text-left text-sm font-medium text-text-primary">
                           <div className="flex items-center">
                             <button
                               onClick={() => toggleCompareItem(item.id)}
-                              className="w-5 h-5 rounded-full flex items-center justify-center bg-bg-card text-accent mr-2 text-xs"
+                              className="w-5 h-5 rounded-full flex items-center justify-center bg-card text-accent mr-2 text-xs"
                               title="移除对比"
                             >
                               <i className="fa-solid fa-times"></i>
@@ -1396,7 +1396,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
             
             {/* 性能对比雷达图 */}
             {comparisonData.length > 0 && (
-              <div className="bg-bg-card rounded-xl border border-accent p-6 mb-8">
+              <div className="bg-card rounded-xl border border-accent p-6 mb-8">
                 <h3 className="text-lg font-bold text-text-primary mb-4">性能对比</h3>
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
@@ -1433,13 +1433,13 @@ const COLORS = ['#4A5F8B', '#8884d8', '#B8C6D8', '#E6EBF2'];
             {/* 推荐购买链接 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {comparisonData.map((item, index) => (
-                <div key={index} className="bg-bg-card rounded-xl border border-accent p-4">
+                <div key={index} className="bg-card rounded-xl border border-accent p-4">
                   <h4 className="text-md font-medium text-text-primary mb-3">{item.name}</h4>
                   <p className="text-lg font-bold text-text-primary mb-4">¥{parseInt(item.price).toLocaleString()}</p>
                   <div className="flex justify-between">
                     <button
                       onClick={() => setSelectedEquipment(item)}
-                      className="px-4 py-2 bg-bg-card text-text-primary rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors text-sm border border-accent"
+                      className="px-4 py-2 bg-card text-text-primary rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors text-sm border border-accent"
                     >
                       查看详情
                     </button>

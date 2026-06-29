@@ -117,7 +117,7 @@ const ProjectDetail: React.FC = () => {
     if (loading) {
         return (
             <div
-                className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen flex items-center justify-center">
+                className="container mx-auto px-4 py-8 bg-deep min-h-screen flex items-center justify-center">
                 <div
                     className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
             </div>
@@ -126,7 +126,7 @@ const ProjectDetail: React.FC = () => {
 
     if (!project) {
         return (
-            <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+            <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
                 <div
                     className="flex flex-col items-center justify-center h-[60vh] text-center">
                     <div
@@ -158,7 +158,7 @@ const ProjectDetail: React.FC = () => {
     const COLORS = ["#4A5F8B", "#1E2532"];
 
     return (
-        <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+        <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
             <motion.div
                 initial={{
                     opacity: 0,
@@ -187,7 +187,7 @@ const ProjectDetail: React.FC = () => {
                         <div>
                             <div className="flex flex-wrap items-center gap-2 mb-3">
                                 <span
-                                    className="px-3 py-1 bg-bg-deep text-text-primary text-sm rounded-full border border-accent">
+                                    className="px-3 py-1 bg-deep text-text-primary text-sm rounded-full border border-accent">
                                     {project.type}
                                 </span>
                                 {project.status && <span
@@ -231,7 +231,7 @@ const ProjectDetail: React.FC = () => {
                             <span>项目进度</span>
                             <span>{project.progress}%</span>
                         </div>
-                        <div className="w-full h-3 bg-bg-deep rounded-full overflow-hidden">
+                        <div className="w-full h-3 bg-deep rounded-full overflow-hidden">
                             <div
                                 className="h-full bg-accent"
                                 style={{
@@ -243,7 +243,7 @@ const ProjectDetail: React.FC = () => {
                     <div className="flex flex-wrap gap-2">
                         {project.tags.map((tag, index) => <span
                             key={index}
-                            className="px-3 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent">#{tag}
+                            className="px-3 py-1 bg-deep text-text-muted rounded-full text-xs border border-accent">#{tag}
                         </span>)}
                     </div>
                 </div>
@@ -252,14 +252,14 @@ const ProjectDetail: React.FC = () => {
                     {}
                     <div className="lg:col-span-2 space-y-8">
                         {}
-                        <div className="bg-bg-card rounded-xl p-6 border border-accent">
+                        <div className="bg-card rounded-xl p-6 border border-accent">
                             <h2 className="text-xl font-bold text-text-primary mb-4">项目描述</h2>
                             <p className="text-text-muted leading-relaxed">
                                 {project.description}
                             </p>
                         </div>
                         {}
-                        <div className="bg-bg-card rounded-xl p-6 border border-accent">
+                        <div className="bg-card rounded-xl p-6 border border-accent">
                             <h2 className="text-xl font-bold text-text-primary mb-4">项目要求</h2>
                             <ul className="space-y-3">
                                 {project.requirements.map(
@@ -272,10 +272,10 @@ const ProjectDetail: React.FC = () => {
                             </ul>
                         </div>
                         {}
-                        {project.status && (project.contractSigned !== undefined || project.paymentStatus || project.deliveryStatus) && <div className="bg-bg-card rounded-xl p-6 border border-accent">
+                        {project.status && (project.contractSigned !== undefined || project.paymentStatus || project.deliveryStatus) && <div className="bg-card rounded-xl p-6 border border-accent">
                             <h2 className="text-xl font-bold text-text-primary mb-4">项目状态详情</h2>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                {project.contractSigned && <div className="p-4 bg-bg-deep rounded-lg border border-accent">
+                                {project.contractSigned && <div className="p-4 bg-deep rounded-lg border border-accent">
                                     <div className="flex justify-between items-center mb-2">
                                         <span className="text-sm text-text-muted">合同状态</span>
                                         <span
@@ -285,7 +285,7 @@ const ProjectDetail: React.FC = () => {
                                     <p className="text-xs text-text-muted">合同已于 {project.deadline}前签署完成
                                                               </p>
                                 </div>}
-                                {project.paymentStatus && <div className="p-4 bg-bg-deep rounded-lg border border-accent">
+                                {project.paymentStatus && <div className="p-4 bg-deep rounded-lg border border-accent">
                                     <div className="flex justify-between items-center mb-2">
                                         <span className="text-sm text-text-muted">支付状态</span>
                                         <span
@@ -297,7 +297,7 @@ const ProjectDetail: React.FC = () => {
                                         {project.paymentStatus === "escrowed" ? "资金已存入平台托管账户，待项目完成后释放" : project.paymentStatus === "released" ? "项目已完成，资金已释放给摄影师" : project.paymentStatus === "refunded" ? "项目已取消，资金已退还客户" : "等待客户支付项目费用"}
                                     </p>
                                 </div>}
-                                {project.deliveryStatus && <div className="p-4 bg-bg-deep rounded-lg border border-accent">
+                                {project.deliveryStatus && <div className="p-4 bg-deep rounded-lg border border-accent">
                                     <div className="flex justify-between items-center mb-2">
                                         <span className="text-sm text-text-muted">交付状态</span>
                                         <span
@@ -312,14 +312,14 @@ const ProjectDetail: React.FC = () => {
                             </div>
                         </div>}
                         {}
-                        {project.matchedPhotographers && project.matchedPhotographers.length > 0 && <div className="bg-bg-card rounded-xl p-6 border border-accent">
+                        {project.matchedPhotographers && project.matchedPhotographers.length > 0 && <div className="bg-card rounded-xl p-6 border border-accent">
                             <h2 className="text-xl font-bold text-text-primary mb-4">已匹配摄影师</h2>
                             <div className="space-y-4">
                                 {project.matchedPhotographers.map(photographer => <></>)}
                             </div>
                         </div>}
                         {}
-                        {isAuthenticated && project.status !== "completed" && project.status !== "cancelled" && <div className="bg-bg-card rounded-xl p-6 border border-accent">
+                        {isAuthenticated && project.status !== "completed" && project.status !== "cancelled" && <div className="bg-card rounded-xl p-6 border border-accent">
                             <h2 className="text-xl font-bold text-text-primary mb-4">申请该项目</h2>
                             <form onSubmit={handleSubmitApplication}>
                                 <div className="mb-4">
@@ -331,7 +331,7 @@ const ProjectDetail: React.FC = () => {
                                         id="application"
                                         value={applicationText}
                                         onChange={e => setApplicationText(e.target.value)}
-                                        className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted h-32 resize-none"
+                                        className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted h-32 resize-none"
                                         placeholder="请简要描述您为什么适合该项目，以及您的相关经验和优势..."></textarea>
                                 </div>
                                 <div className="flex justify-end">
@@ -358,7 +358,7 @@ const ProjectDetail: React.FC = () => {
                     {}
                     <div className="lg:col-span-1 space-y-6">
                         {}
-                        <div className="bg-bg-card rounded-xl p-6 border border-accent">
+                        <div className="bg-card rounded-xl p-6 border border-accent">
                             <h2 className="text-xl font-bold text-text-primary mb-4">客户信息</h2>
                             <div className="flex items-center mb-4">
                                 <div className="relative">
@@ -367,7 +367,7 @@ const ProjectDetail: React.FC = () => {
                                         alt={project.company.name}
                                         className="w-16 h-16 rounded-full mr-4 object-cover border-2 border-accent" />
                                     {project.company.verified && <div
-                                        className="absolute bottom-0 right-0 w-4 h-4 bg-accent rounded-full border-2 border-bg-card flex items-center justify-center">
+                                        className="absolute bottom-0 right-0 w-4 h-4 bg-accent rounded-full border-2 border-card flex items-center justify-center">
                                         <i className="fa-solid fa-check text-text-primary text-xs"></i>
                                     </div>}
                                 </div>
@@ -390,11 +390,11 @@ const ProjectDetail: React.FC = () => {
                                   // 查看客户主页
                                   toast.success(`查看客户 ${project.company.name} 主页`);
                                 }}
-                                className="w-full py-2 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">查看客户主页
+                                className="w-full py-2 bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">查看客户主页
                                              </button>
                         </div>
                         {}
-                        {(project.status === "inProgress" || project.status === "completed") && <div className="bg-bg-card rounded-xl p-6 border border-accent">
+                        {(project.status === "inProgress" || project.status === "completed") && <div className="bg-card rounded-xl p-6 border border-accent">
                             <h2 className="text-xl font-bold text-text-primary mb-4">项目进度</h2>
                             <div className="h-40">
                                 <ResponsiveContainer width="100%" height="100%">
@@ -425,12 +425,12 @@ const ProjectDetail: React.FC = () => {
                             </div>
                         </div>}
                         {}
-                        <div className="bg-bg-card rounded-xl p-6 border border-accent">
+                        <div className="bg-card rounded-xl p-6 border border-accent">
                             <h2 className="text-xl font-bold text-text-primary mb-4">快捷操作</h2>
                             <div className="space-y-3">
                                 <button
                                     onClick={handleFavoriteProject}
-                                    className="w-full py-2 flex items-center justify-center bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
+                                    className="w-full py-2 flex items-center justify-center bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
                                     <i className="fa-solid fa-bookmark mr-2"></i>收藏项目
                                                     </button>
                                  <button
@@ -442,11 +442,11 @@ const ProjectDetail: React.FC = () => {
                                          toast.error('复制失败，请手动复制');
                                        }
                                      }}
-                                     className="w-full py-2 flex items-center justify-center bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent relative z-10">
+                                     className="w-full py-2 flex items-center justify-center bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent relative z-10">
                                      <i className="fa-solid fa-share-alt mr-2"></i>分享项目
                                  </button>
                                 <button
-                                    className="w-full py-2 flex items-center justify-center bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
+                                    className="w-full py-2 flex items-center justify-center bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
                                     <i className="fa-solid fa-download mr-2"></i>下载项目资料
                                                     </button>
                                 {isAuthenticated && project.status !== "completed" && project.status !== "cancelled" && <motion.button
@@ -462,19 +462,19 @@ const ProjectDetail: React.FC = () => {
                             </div>
                         </div>
                         {}
-                        <div className="bg-bg-card rounded-xl p-6 border border-accent">
+                        <div className="bg-card rounded-xl p-6 border border-accent">
                             <h2 className="text-xl font-bold text-text-primary mb-4">项目咨询</h2>
                             <p className="text-sm text-text-muted mb-4">如有任何疑问，可以直接联系客户进行咨询
                                               </p>
                             <button
-                                className="w-full py-2 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
+                                className="w-full py-2 bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
                                 <i className="fa-solid fa-comment-dots mr-2"></i>联系客户
                                               </button>
                         </div>
                     </div>
                 </div>
                 {/* 评论区 */}
-                <div className="bg-bg-card rounded-xl p-6 border border-accent mt-8">
+                <div className="bg-card rounded-xl p-6 border border-accent mt-8">
                   <CommentSection postId={project.id} />
                 </div>
             </motion.div>

@@ -45,13 +45,13 @@ export const Feature: React.FC = () => {
   // 根据主题获取样式类
   const getBgClass = () => {
     return theme === 'dark' 
-      ? 'bg-bg-card border border-accent' 
+      ? 'bg-card border border-accent' 
       : 'bg-white border border-gray-200';
   };
   
   const getTextClass = (isPrimary: boolean) => {
     return isPrimary 
-      ? (theme === 'dark' ? 'text-text-primary' : 'text-bg-deep')
+      ? (theme === 'dark' ? 'text-text-primary' : 'text-deep')
       : (theme === 'dark' ? 'text-text-muted' : 'text-accent-hover');
   };
   
@@ -89,7 +89,7 @@ export const Feature: React.FC = () => {
               alt={feature.title} 
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
             />
-            <div className={`absolute inset-0 bg-gradient-to-t ${theme === 'dark' ? 'from-bg-deep/80' : 'from-black/60'} to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end`}>
+            <div className={`absolute inset-0 bg-gradient-to-t ${theme === 'dark' ? 'from-deep/80' : 'from-black/60'} to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end`}>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
                 <p className="text-gray-300">{feature.description}</p>

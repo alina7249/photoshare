@@ -267,7 +267,7 @@ const Resources: React.FC = () => {
     const filteredProjects = getFilteredProjects();
 
     return (
-        <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+        <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
             <motion.div
                 initial={{
                     opacity: 0,
@@ -293,15 +293,15 @@ const Resources: React.FC = () => {
                     <div className="lg:col-span-2 space-y-6">
                         {}
                         <div
-                            className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+                            className="bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
                             <div className="flex">
                                 <button
                                     onClick={() => setActiveTab("browse")}
-                                    className={`flex-1 py-4 px-6 text-center font-medium transition-all duration-300 ${activeTab === "browse" ? "bg-accent text-text-primary" : "bg-bg-card text-text-muted hover:text-text-primary"}`}>浏览项目
+                                    className={`flex-1 py-4 px-6 text-center font-medium transition-all duration-300 ${activeTab === "browse" ? "bg-accent text-text-primary" : "bg-card text-text-muted hover:text-text-primary"}`}>浏览项目
                                                     </button>
                                 <button
                                     onClick={handleSwitchToPost}
-                                    className={`flex-1 py-4 px-6 text-center font-medium transition-all duration-300 ${activeTab === "post" ? "bg-accent text-text-primary" : "bg-bg-card text-text-muted hover:text-text-primary"}`}>发布需求
+                                    className={`flex-1 py-4 px-6 text-center font-medium transition-all duration-300 ${activeTab === "post" ? "bg-accent text-text-primary" : "bg-card text-text-muted hover:text-text-primary"}`}>发布需求
                                                     </button>
                             </div>
                         </div>
@@ -325,7 +325,7 @@ const Resources: React.FC = () => {
                             }}
                             className="overflow-hidden">
                             {}
-                            {activeTab === "post" && <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                            {activeTab === "post" && <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                                 <h3 className="text-xl font-bold text-text-primary mb-4">发布项目需求</h3>
                                 <form onSubmit={handleSubmitProject}>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -341,7 +341,7 @@ const Resources: React.FC = () => {
                                                     ...newProjectData,
                                                     title: e.target.value
                                                 })}
-                                                className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                                                className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                                                 placeholder="请输入项目标题" />
                                         </div>
                                         <div>
@@ -355,7 +355,7 @@ const Resources: React.FC = () => {
                                                     ...newProjectData,
                                                     type: e.target.value
                                                 })}
-                                                className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
+                                                className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                                                 <option value="">请选择项目类型</option>
                                                 <option value="人像摄影">人像摄影</option>
                                                 <option value="产品摄影">产品摄影</option>
@@ -379,7 +379,7 @@ const Resources: React.FC = () => {
                                                     ...newProjectData,
                                                     location: e.target.value
                                                 })}
-                                                className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                                                className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                                                 placeholder="请输入项目地点" />
                                         </div>
                                         <div>
@@ -393,7 +393,7 @@ const Resources: React.FC = () => {
                                                     ...newProjectData,
                                                     priceRange: e.target.value
                                                 })}
-                                                className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
+                                                className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                                                 <option value="">请选择预算范围</option>
                                                 <option value="0-3000">3000元以下</option>
                                                 <option value="3000-6000">3000-6000元</option>
@@ -415,7 +415,7 @@ const Resources: React.FC = () => {
                                                 ...newProjectData,
                                                 deadline: e.target.value
                                             })}
-                                            className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted" />
+                                            className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted" />
                                     </div>
                                     <div className="mb-4">
                                         <label
@@ -428,7 +428,7 @@ const Resources: React.FC = () => {
                                                 ...newProjectData,
                                                 description: e.target.value
                                             })}
-                                            className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted h-32 resize-none"
+                                            className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted h-32 resize-none"
                                             placeholder="请详细描述您的项目需求，包括拍摄内容、风格要求、交付标准等" />
                                     </div>
                                     <div className="mb-4">
@@ -438,7 +438,7 @@ const Resources: React.FC = () => {
                                                 type="text"
                                                 value={req}
                                                 onChange={e => handleRequirementChange(index, e.target.value)}
-                                                className="flex-1 px-4 py-2 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                                                className="flex-1 px-4 py-2 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                                                 placeholder={`要求 ${index + 1}`} />
                                             <button
                                                 type="button"
@@ -467,14 +467,14 @@ const Resources: React.FC = () => {
                                                 ...newProjectData,
                                                 tags: e.target.value
                                             })}
-                                            className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                                            className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                                             placeholder="请输入标签，用逗号分隔，如：商业,人像,后期" />
                                     </div>
                                     <div className="flex justify-end space-x-3">
                                         <button
                                             type="button"
                                             onClick={() => setActiveTab("browse")}
-                                            className="px-6 py-2 bg-bg-deep text-text-muted border border-accent rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors">取消
+                                            className="px-6 py-2 bg-deep text-text-muted border border-accent rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors">取消
                                                                   </button>
                                         <button
                                             type="submit"
@@ -494,14 +494,14 @@ const Resources: React.FC = () => {
                                             placeholder="搜索项目、客户或关键词..."
                                             value={searchTerm}
                                             onChange={e => setSearchTerm(e.target.value)}
-                                            className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted" />
+                                            className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted" />
                                         <i
                                             className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
                                     </div>
                                     <select
                                         value={sortBy}
                                         onChange={e => setSortBy(e.target.value)}
-                                        className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
+                                        className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                                         <option value="recommended">推荐排序</option>
                                         <option value="newest">最新发布</option>
                                         <option value="price-asc">价格从低到高</option>
@@ -509,12 +509,12 @@ const Resources: React.FC = () => {
                                     </select>
                                 </div>
                                 {}
-                                <div className="bg-bg-card rounded-xl p-4 shadow-sm border border-accent">
+                                <div className="bg-card rounded-xl p-4 shadow-sm border border-accent">
                                     <div className="flex flex-wrap gap-2">
                                         {[].map(type => <button
                                             key={type.id}
                                             onClick={() => setSelectedType(type.id)}
-                                            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${selectedType === type.id ? "bg-accent text-text-primary" : "bg-bg-card text-text-muted border border-accent hover:border-accent"}`}>
+                                            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${selectedType === type.id ? "bg-accent text-text-primary" : "bg-card text-text-muted border border-accent hover:border-accent"}`}>
                                             {type.name}
                                         </button>)}
                                     </div>
@@ -536,7 +536,7 @@ const Resources: React.FC = () => {
                                                         {project.title}
                                                     </h3>
                                                     <div className="flex items-center space-x-3 text-sm text-text-muted">
-                                                        <span className="px-2 py-0.5 bg-bg-deep rounded-md border border-accent">
+                                                        <span className="px-2 py-0.5 bg-deep rounded-md border border-accent">
                                                             {project.type}
                                                         </span>
                                                         <div className="flex items-center">
@@ -570,7 +570,7 @@ const Resources: React.FC = () => {
                                                     <span>项目进度</span>
                                                     <span>{project.progress}%</span>
                                                 </div>
-                                                <div className="w-full h-2 bg-bg-deep rounded-full overflow-hidden">
+                                                <div className="w-full h-2 bg-deep rounded-full overflow-hidden">
                                                     <div
                                                         className="h-full bg-accent"
                                                         style={{
@@ -610,7 +610,7 @@ const Resources: React.FC = () => {
                                                             alt={project.company.name}
                                                             className="w-10 h-10 rounded-full object-cover border border-accent" />
                                                         {project.company.verified && <div
-                                                            className="absolute bottom-0 right-0 w-3 h-3 bg-accent rounded-full border-2 border-bg-card"></div>}
+                                                            className="absolute bottom-0 right-0 w-3 h-3 bg-accent rounded-full border-2 border-card"></div>}
                                                     </div>
                                                     <div className="ml-3">
                                                         <p className="font-medium text-text-primary">{project.company.name}</p>
@@ -645,7 +645,7 @@ const Resources: React.FC = () => {
                                             <div className="flex flex-wrap gap-2">
                                                 {project.tags.map((tag, index) => <span
                                                     key={index}
-                                                    className="px-2 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent">#{tag}
+                                                    className="px-2 py-1 bg-deep text-text-muted rounded-full text-xs border border-accent">#{tag}
                                                 </span>)}
                                             </div>
                                         </div>
@@ -659,26 +659,26 @@ const Resources: React.FC = () => {
                        className={`px-4 py-2 border rounded-lg font-medium transition-colors ${
                          favoriteProjects.includes(project.id) 
                            ? 'bg-accent text-text-primary border-accent' 
-                           : 'bg-bg-deep text-text-muted border-accent hover:bg-accent hover:text-text-primary'
+                           : 'bg-deep text-text-muted border-accent hover:bg-accent hover:text-text-primary'
                        }`}>
                        <i className={`fa-solid ${favoriteProjects.includes(project.id) ? 'fa-bookmark-check' : 'fa-bookmark'} mr-2`}></i>
                        {favoriteProjects.includes(project.id) ? '已收藏' : '收藏'}
                      </button>
                                                 {isAuthenticated && project.status === "completed" && <button
-                                                    className="px-4 py-2 bg-bg-deep text-text-muted border border-accent rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors">
+                                                    className="px-4 py-2 bg-deep text-text-muted border border-accent rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors">
                                                     <i className="fa-solid fa-star mr-2"></i>评价
                                                                                   </button>}
                                             </div>
                      <Link
                        to={`/project/${project.id}`}
-                       className="px-6 py-2 bg-gradient-to-r from-accent to-bg-card text-text-primary rounded-lg font-medium transition-colors border border-accent hover:from-accent-hover hover:to-accent">查看详情
+                       className="px-6 py-2 bg-gradient-to-r from-accent to-card text-text-primary rounded-lg font-medium transition-colors border border-accent hover:from-accent-hover hover:to-accent">查看详情
                      </Link>
                                         </div>
                                     </motion.div>)}
                                     {filteredProjects.length === 0 && <div
-                                        className="p-8 bg-bg-card rounded-xl border border-accent text-center">
+                                        className="p-8 bg-card rounded-xl border border-accent text-center">
                                         <div
-                                            className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+                                            className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                                             <i className="fa-solid fa-search text-2xl"></i>
                                         </div>
                                         <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关项目</h3>
@@ -689,7 +689,7 @@ const Resources: React.FC = () => {
                                 {}
                                 {filteredProjects.length > 0 && <div className="flex justify-center">
                                     <nav
-                                        className="flex items-center space-x-1 bg-bg-card p-2 rounded-lg border border-accent">
+                                        className="flex items-center space-x-1 bg-card p-2 rounded-lg border border-accent">
                                         <button
                                             className="px-3 py-2 rounded border border-accent text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                                             <i className="fa-solid fa-chevron-left text-xs"></i>
@@ -716,7 +716,7 @@ const Resources: React.FC = () => {
                     {}
                     <div className="lg:col-span-1 space-y-6">
                         {}
-                        <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                        <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                             <h3 className="text-lg font-bold mb-4 text-text-primary">平台服务</h3>
                             <div className="space-y-4">
                                 {[].map(service => <div key={service.id} className="flex items-start">
@@ -746,7 +746,7 @@ const Resources: React.FC = () => {
                             </div>
                         </div>
                         {}
-                        <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                        <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                             <h3 className="text-lg font-bold mb-4 text-text-primary">安全支付流程</h3>
                             <div className="relative">
                                 {}
@@ -767,7 +767,7 @@ const Resources: React.FC = () => {
                             </div>
                         </div>
                         {}
-                        <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                        <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                             <h3 className="text-lg font-bold mb-4 text-text-primary">价格区间</h3>
                             <div className="space-y-2">
                                 {[].map(range => <div key={range.id} className="flex items-center">
@@ -777,7 +777,7 @@ const Resources: React.FC = () => {
                                         name="price-range"
                                         checked={selectedPriceRange === range.id}
                                         onChange={() => setSelectedPriceRange(range.id)}
-                                        className="h-4 w-4 text-accent focus:ring-accent border-accent bg-bg-deep" />
+                                        className="h-4 w-4 text-accent focus:ring-accent border-accent bg-deep" />
                                     <label htmlFor={`price-${range.id}`} className="ml-2 text-sm text-text-muted">
                                         {range.name}
                                     </label>
@@ -785,13 +785,13 @@ const Resources: React.FC = () => {
                             </div>
                         </div>
                         {}
-                        <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                        <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                             <h3 className="text-lg font-bold mb-4 text-text-primary">热门标签</h3>
                             <div className="flex flex-wrap gap-2">
                                 {[].map(tag => <button
                                     key={tag.id}
                                     onClick={() => toggleTag(tag.name)}
-                                    className={`px-3 py-1 rounded-full text-sm transition-colors ${selectedTags.includes(tag.name) ? "bg-accent text-text-primary border border-accent" : "bg-bg-card text-text-muted border border-accent"}`}>#{tag.name}({tag.count})
+                                    className={`px-3 py-1 rounded-full text-sm transition-colors ${selectedTags.includes(tag.name) ? "bg-accent text-text-primary border border-accent" : "bg-card text-text-muted border border-accent"}`}>#{tag.name}({tag.count})
                                                       </button>)}
                             </div>
                             {}
@@ -802,7 +802,7 @@ const Resources: React.FC = () => {
                                                 </button>}
                         </div>
                         {}
-                        <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                        <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                             <h3 className="text-lg font-bold mb-4 text-text-primary">摄影师入驻指南</h3>
                             <div className="space-y-6">
                                 {[].map((step, index) => <div key={step.id} className="flex">

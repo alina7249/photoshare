@@ -160,7 +160,7 @@ const EquipmentLibrary: React.FC = () => {
   
   if (!isAuthenticated) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
           <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-user-lock text-2xl"></i>
@@ -176,7 +176,7 @@ const EquipmentLibrary: React.FC = () => {
   }
   
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -220,7 +220,7 @@ const EquipmentLibrary: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8"
+            className="bg-card rounded-xl p-6 shadow-sm border border-accent mb-8"
           >
             <h3 className="text-lg font-bold text-text-primary mb-6">添加新器材</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -230,7 +230,7 @@ const EquipmentLibrary: React.FC = () => {
                   type="text"
                   value={newEquipment.name}
                   onChange={(e) => setNewEquipment({ ...newEquipment, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                  className="w-full px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                   placeholder="例如：索尼 A7R IV"
                 />
               </div>
@@ -239,7 +239,7 @@ const EquipmentLibrary: React.FC = () => {
                 <select
                   value={newEquipment.type}
                   onChange={(e) => setNewEquipment({ ...newEquipment, type: e.target.value as any })}
-                  className="w-full px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
                 >
                   <option value="camera">相机</option>
                   <option value="lens">镜头</option>
@@ -254,7 +254,7 @@ const EquipmentLibrary: React.FC = () => {
                   type="text"
                   value={newEquipment.brand}
                   onChange={(e) => setNewEquipment({ ...newEquipment, brand: e.target.value })}
-                  className="w-full px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                  className="w-full px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                   placeholder="例如：Sony"
                 />
               </div>
@@ -264,7 +264,7 @@ const EquipmentLibrary: React.FC = () => {
                   type="text"
                   value={newEquipment.model}
                   onChange={(e) => setNewEquipment({ ...newEquipment, model: e.target.value })}
-                  className="w-full px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                  className="w-full px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                   placeholder="例如：A7R IV"
                 />
               </div>
@@ -274,7 +274,7 @@ const EquipmentLibrary: React.FC = () => {
                   type="date"
                   value={newEquipment.purchaseDate}
                   onChange={(e) => setNewEquipment({ ...newEquipment, purchaseDate: e.target.value })}
-                  className="w-full px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                  className="w-full px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                 />
               </div>
               <div>
@@ -282,7 +282,7 @@ const EquipmentLibrary: React.FC = () => {
                 <select
                   value={newEquipment.condition}
                   onChange={(e) => setNewEquipment({ ...newEquipment, condition: e.target.value as any })}
-                  className="w-full px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
                 >
                   <option value="new">全新</option>
                   <option value="like-new">几乎全新</option>
@@ -296,7 +296,7 @@ const EquipmentLibrary: React.FC = () => {
                   type="text"
                   value={newEquipment.serialNumber}
                   onChange={(e) => setNewEquipment({ ...newEquipment, serialNumber: e.target.value })}
-                  className="w-full px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                  className="w-full px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                   placeholder="输入器材序列号"
                 />
               </div>
@@ -306,7 +306,7 @@ const EquipmentLibrary: React.FC = () => {
                   value={newEquipment.notes}
                   onChange={(e) => setNewEquipment({ ...newEquipment, notes: e.target.value })}
                   rows={3}
-                  className="w-full px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none placeholder:text-text-muted"
+                  className="w-full px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none placeholder:text-text-muted"
                   placeholder="输入器材相关备注信息"
                 />
               </div>
@@ -316,7 +316,7 @@ const EquipmentLibrary: React.FC = () => {
                   id="is-public"
                   checked={newEquipment.isPublic}
                   onChange={(e) => setNewEquipment({ ...newEquipment, isPublic: e.target.checked })}
-                  className="w-4 h-4 bg-bg-card border-accent text-accent rounded focus:ring-accent"
+                  className="w-4 h-4 bg-card border-accent text-accent rounded focus:ring-accent"
                 />
                 <label htmlFor="is-public" className="ml-2 text-text-muted">
                   设为公开，允许其他用户查看
@@ -337,7 +337,7 @@ const EquipmentLibrary: React.FC = () => {
         )}
         
         {/* 搜索和筛选 */}
-        <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
+        <div className="bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
             <div className="relative flex-1">
               <input
@@ -345,7 +345,7 @@ const EquipmentLibrary: React.FC = () => {
                 placeholder="搜索器材名称、品牌或型号..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
               />
               <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
             </div>
@@ -354,7 +354,7 @@ const EquipmentLibrary: React.FC = () => {
               <select
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
-                className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
               >
                 <option value="all">全部类型</option>
                 <option value="camera">相机</option>
@@ -367,7 +367,7 @@ const EquipmentLibrary: React.FC = () => {
               <select
                 value={selectedBrand}
                 onChange={(e) => setSelectedBrand(e.target.value)}
-                className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
               >
                 {allBrands.map(brand => (
                   <option key={brand} value={brand}>{brand === 'all' ? '全部品牌' : brand}</option>
@@ -377,7 +377,7 @@ const EquipmentLibrary: React.FC = () => {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
               >
                 <option value="recent">最新添加</option>
                 <option value="name">按名称排序</option>
@@ -404,7 +404,7 @@ const EquipmentLibrary: React.FC = () => {
             <motion.div
               key={equipment.id}
               whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-              className="bg-bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
+              className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
             >
               {/* 器材图片 */}
               <div className="relative">
@@ -469,14 +469,14 @@ const EquipmentLibrary: React.FC = () => {
                 <div className="flex space-x-2">
                   <button 
                     onClick={() => togglePublicStatus(equipment.id)}
-                    className="flex-1 py-2 text-center bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors text-sm border border-accent"
+                    className="flex-1 py-2 text-center bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors text-sm border border-accent"
                   >
                     <i className={`fa-solid mr-1 ${equipment.isPublic ? 'fa-lock' : 'fa-globe'}`}></i>
                     {equipment.isPublic ? '设为私密' : '设为公开'}
                   </button>
                   <button 
                     onClick={() => handleDeleteEquipment(equipment.id)}
-                    className="px-3 py-2 text-center bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent-hover hover:text-text-primary transition-colors text-sm border border-accent"
+                    className="px-3 py-2 text-center bg-card text-text-muted rounded-lg font-medium hover:bg-accent-hover hover:text-text-primary transition-colors text-sm border border-accent"
                   >
                     <i className="fa-solid fa-trash"></i>
                   </button>
@@ -488,8 +488,8 @@ const EquipmentLibrary: React.FC = () => {
         )}
         
         {!loading && filteredEquipment.length === 0 && (
-          <div className="p-8 bg-bg-card rounded-xl border border-accent text-center mt-8">
-            <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+          <div className="p-8 bg-card rounded-xl border border-accent text-center mt-8">
+            <div className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
               <i className="fa-solid fa-video text-2xl"></i>
             </div>
             <h3 className="text-lg font-medium text-text-primary mb-2">暂无器材</h3>

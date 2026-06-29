@@ -7,17 +7,17 @@ const Footer: React.FC = () => {
   
   // 根据主题获取样式类
   const getBgClass = () => {
-    return theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-100';
+    return theme === 'dark' ? 'bg-deep' : 'bg-gray-100';
   };
   
   const getTextClass = (isPrimary: boolean) => {
     return isPrimary 
-      ? (theme === 'dark' ? 'text-text-light-footer' : 'text-bg-deep')
+      ? (theme === 'dark' ? 'text-text-light-footer' : 'text-deep')
       : (theme === 'dark' ? 'text-text-light-muted' : 'text-accent');
   };
   
   const getCardBgClass = () => {
-    return theme === 'dark' ? 'bg-bg-dark-alt border-border-light-form' : 'bg-white border-gray-200';
+    return theme === 'dark' ? 'bg-dark-alt border-border-light-form' : 'bg-white border-gray-200';
   };
   
   const getLinkClass = () => {
@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
   const getSubscribeInputClass = () => {
     return theme === 'dark' 
       ? 'bg-border-light-form text-surface-light-hover focus:ring-light-accent' 
-      : 'bg-white text-bg-deep border-gray-300 focus:ring-light-accent focus:border-light-accent';
+      : 'bg-white text-deep border-gray-300 focus:ring-light-accent focus:border-light-accent';
   };
   
   const getSubscribeButtonClass = () => {
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
     <footer className={`w-full py-10 mt-12 ${getBgClass()}`}>
       <div className="container mx-auto px-4">
         {/* 上下区域过渡条 */}
-        <div className="h-4 bg-bg-dark-alt rounded-t-xl mb-8"></div>
+        <div className="h-4 bg-dark-alt rounded-t-xl mb-8"></div>
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* 品牌信息 */}

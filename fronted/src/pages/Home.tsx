@@ -192,7 +192,7 @@ export default function Home() {
     
     // 根据主题获取背景和文本颜色类
     const getBgClass = () => {
-      return theme === 'dark' ? 'bg-bg-deep' : 'bg-white';
+      return theme === 'dark' ? 'bg-deep' : 'bg-white';
     };
 
     return (
@@ -201,7 +201,7 @@ export default function Home() {
             <Banner />
             
             {/* 天气预报卡片 */}
-            <div className="bg-bg-card border border-accent rounded-xl p-6 shadow-sm mb-12">
+            <div className="bg-card border border-accent rounded-xl p-6 shadow-sm mb-12">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
                     <div className="flex items-center mb-4 md:mb-0">
                         <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center mr-4">
@@ -225,25 +225,25 @@ export default function Home() {
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    <div className="bg-bg-deep rounded-lg p-3 text-center">
+                    <div className="bg-deep rounded-lg p-3 text-center">
                         <p className="text-sm text-text-muted mb-1">湿度</p>
                         <p className="text-lg font-medium text-text-primary flex items-center justify-center">
                             <i className="fa-solid fa-tint mr-1 text-accent"></i>45%
                         </p>
                     </div>
-                    <div className="bg-bg-deep rounded-lg p-3 text-center">
+                    <div className="bg-deep rounded-lg p-3 text-center">
                         <p className="text-sm text-text-muted mb-1">风速</p>
                         <p className="text-lg font-medium text-text-primary flex items-center justify-center">
                             <i className="fa-solid fa-wind mr-1 text-accent"></i>3级
                         </p>
                     </div>
-                    <div className="bg-bg-deep rounded-lg p-3 text-center">
+                    <div className="bg-deep rounded-lg p-3 text-center">
                         <p className="text-sm text-text-muted mb-1">紫外线</p>
                         <p className="text-lg font-medium text-text-primary flex items-center justify-center">
                             <i className="fa-solid fa-sun mr-1 text-accent"></i>弱
                         </p>
                     </div>
-                    <div className="bg-bg-deep rounded-lg p-3 text-center">
+                    <div className="bg-deep rounded-lg p-3 text-center">
                         <p className="text-sm text-text-muted mb-1">日出日落</p>
                         <p className="text-lg font-medium text-text-primary flex items-center justify-center">
                             <i className="fa-solid fa-sunrise mr-1 text-accent"></i>06:58/17:05
@@ -251,7 +251,7 @@ export default function Home() {
                     </div>
                 </div>
                 
-                <div className="bg-bg-deep rounded-lg p-4">
+                <div className="bg-deep rounded-lg p-4">
                     <h4 className="text-base font-medium text-text-primary mb-3 flex items-center">
                         <i className="fa-solid fa-lightbulb text-accent mr-2"></i>今日摄影建议
                     </h4>
@@ -262,7 +262,7 @@ export default function Home() {
                             <div className="flex justify-center">
                                 {[...Array(5)].map((_, i) => <i
                                     key={i}
-                                    className={`fa-solid fa-star text-sm ${i < 4 ? "text-accent" : "text-bg-deep"}`}></i>)}
+                                    className={`fa-solid fa-star text-sm ${i < 4 ? "text-accent" : "text-deep"}`}></i>)}
                             </div>
                         </div>
                         <div className="p-3 rounded-lg text-center bg-accent/20 border border-accent">
@@ -270,7 +270,7 @@ export default function Home() {
                             <div className="flex justify-center">
                                 {[...Array(5)].map((_, i) => <i
                                     key={i}
-                                    className={`fa-solid fa-star text-sm ${i < 5 ? "text-accent" : "text-bg-deep"}`}></i>)}
+                                    className={`fa-solid fa-star text-sm ${i < 5 ? "text-accent" : "text-deep"}`}></i>)}
                             </div>
                         </div>
                         <div className="p-3 rounded-lg text-center bg-accent/20 border border-accent">
@@ -278,7 +278,7 @@ export default function Home() {
                             <div className="flex justify-center">
                                 {[...Array(5)].map((_, i) => <i
                                     key={i}
-                                    className={`fa-solid fa-star text-sm ${i < 4 ? "text-accent" : "text-bg-deep"}`}></i>)}
+                                    className={`fa-solid fa-star text-sm ${i < 4 ? "text-accent" : "text-deep"}`}></i>)}
                             </div>
                         </div>
                         <div className="p-3 rounded-lg text-center bg-accent/20 border border-accent">
@@ -286,7 +286,7 @@ export default function Home() {
                             <div className="flex justify-center">
                                 {[...Array(5)].map((_, i) => <i
                                     key={i}
-                                    className={`fa-solid fa-star text-sm ${i < 3 ? "text-accent" : "text-bg-deep"}`}></i>)}
+                                    className={`fa-solid fa-star text-sm ${i < 3 ? "text-accent" : "text-deep"}`}></i>)}
                             </div>
                         </div>
                     </div>
@@ -322,7 +322,7 @@ export default function Home() {
                             icon: "fa-cloud"
                         }].map((day, index) => <div
                             key={index}
-                            className="flex-shrink-0 w-24 bg-bg-deep rounded-lg p-3 text-center">
+                            className="flex-shrink-0 w-24 bg-deep rounded-lg p-3 text-center">
                             <p className="text-sm text-text-primary mb-2">{day.day}</p>
                             <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-2">
                                 <i className={`fa-solid ${day.icon} text-accent`}></i>
@@ -344,7 +344,7 @@ export default function Home() {
                     {inspirationItems.map(item => <motion.div
                         key={item.id}
                         whileHover={{ y: -5 }}
-                        className="flex-shrink-0 w-80 bg-bg-card border border-accent rounded-lg overflow-hidden shadow-sm">
+                        className="flex-shrink-0 w-80 bg-card border border-accent rounded-lg overflow-hidden shadow-sm">
                         <div className="h-48 overflow-hidden">
                             <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                         </div>
@@ -369,27 +369,27 @@ export default function Home() {
                         <div className="flex space-x-2 min-w-max">
                             <button
                                 onClick={() => setSelectedCategory("all")}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${selectedCategory === "all" ? "bg-accent text-text-primary" : "bg-bg-card text-text-muted border border-accent hover:border-accent"}`}>
+                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${selectedCategory === "all" ? "bg-accent text-text-primary" : "bg-card text-text-muted border border-accent hover:border-accent"}`}>
                                 全部
                             </button>
                             <button
                                 onClick={() => setSelectedCategory("极简主义")}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${selectedCategory === "极简主义" ? "bg-accent text-text-primary" : "bg-bg-card text-text-muted border border-accent hover:border-accent"}`}>
+                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${selectedCategory === "极简主义" ? "bg-accent text-text-primary" : "bg-card text-text-muted border border-accent hover:border-accent"}`}>
                                 极简主义
                             </button>
                             <button
                                 onClick={() => setSelectedCategory("黑白")}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${selectedCategory === "黑白" ? "bg-accent text-text-primary" : "bg-bg-card text-text-muted border border-accent hover:border-accent"}`}>
+                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${selectedCategory === "黑白" ? "bg-accent text-text-primary" : "bg-card text-text-muted border border-accent hover:border-accent"}`}>
                                 黑白
                             </button>
                             <button
                                 onClick={() => setSelectedCategory("胶片")}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${selectedCategory === "胶片" ? "bg-accent text-text-primary" : "bg-bg-card text-text-muted border border-accent hover:border-accent"}`}>
+                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${selectedCategory === "胶片" ? "bg-accent text-text-primary" : "bg-card text-text-muted border border-accent hover:border-accent"}`}>
                                 胶片质感
                             </button>
                             <button
                                 onClick={() => setSelectedCategory("暗调")}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${selectedCategory === "暗调" ? "bg-accent text-text-primary" : "bg-bg-card text-text-muted border border-accent hover:border-accent"}`}>暗调氛围
+                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${selectedCategory === "暗调" ? "bg-accent text-text-primary" : "bg-card text-text-muted border border-accent hover:border-accent"}`}>暗调氛围
                             </button>
                         </div>
                     </div>
@@ -410,7 +410,7 @@ export default function Home() {
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="px-8 py-3 bg-bg-card text-text-muted border border-accent hover:border-accent rounded-lg font-medium transition-colors">
+                            className="px-8 py-3 bg-card text-text-muted border border-accent hover:border-accent rounded-lg font-medium transition-colors">
                             加载更多作品
                         </motion.button>
                     </div>
@@ -423,24 +423,24 @@ export default function Home() {
                         <input
                             type="text"
                             placeholder="搜索作品、摄影师或风格..."
-                            className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted" />
+                            className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted" />
                         <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
                     </div>
                     
                     {/* 热门标签 */}
-                    <div className="bg-bg-card border border-accent rounded-lg p-6">
+                    <div className="bg-card border border-accent rounded-lg p-6">
                         <h3 className="text-lg font-bold mb-4 text-text-primary">热门风格</h3>
                         <div className="flex flex-wrap gap-2">
                             {popularTags.map(tag => <Link
                                 key={tag.id}
                                 to={`/search?tag=${tag.name}`}
-                                className="px-3 py-1 bg-bg-card text-text-muted rounded-full text-sm hover:bg-accent hover:text-text-primary transition-colors border border-accent">#{tag.name}({tag.count})
+                                className="px-3 py-1 bg-card text-text-muted rounded-full text-sm hover:bg-accent hover:text-text-primary transition-colors border border-accent">#{tag.name}({tag.count})
                             </Link>)}
                         </div>
                     </div>
                     
                     {/* 推荐艺术家 */}
-                    <div className="bg-bg-card border border-accent rounded-lg p-6">
+                    <div className="bg-card border border-accent rounded-lg p-6">
                         <h3 className="text-lg font-bold mb-4 text-text-primary">推荐艺术家</h3>
                         <div className="space-y-4">
                             {featuredPhotographers.map(
@@ -459,7 +459,7 @@ export default function Home() {
                                         </div>
                                     </div>
                                     <button
-                                        className="px-3 py-1 text-xs font-medium text-text-primary bg-accent hover:bg-bg-dark-hover rounded-full transition-colors">
+                                        className="px-3 py-1 text-xs font-medium text-text-primary bg-accent hover:bg-dark-hover rounded-full transition-colors">
                                         关注
                                     </button>
                                 </div>
@@ -468,7 +468,7 @@ export default function Home() {
                     </div>
                     
                     {/* 专题推荐 */}
-                    <div className="bg-bg-card border border-accent rounded-lg p-6">
+                    <div className="bg-card border border-accent rounded-lg p-6">
                         <h3 className="text-lg font-bold mb-3 text-text-primary">黑白影像专题</h3>
                         <p className="text-sm text-text-muted mb-4">探索黑白摄影的艺术魅力，感受光影交织的视觉语言和情感表达</p>
                         <img
@@ -476,7 +476,7 @@ export default function Home() {
                             alt="黑白影像专题"
                             className="w-full h-40 object-cover rounded-lg mb-4" />
                         <button
-                            className="w-full py-2 bg-gradient-to-r from-accent to-bg-card text-text-primary rounded-lg font-medium transition-colors border border-accent">
+                            className="w-full py-2 bg-gradient-to-r from-accent to-card text-text-primary rounded-lg font-medium transition-colors border border-accent">
                             探索专题
                         </button>
                     </div>

@@ -847,20 +847,20 @@ export const CommentSection: React.FC<CommentSectionProps> = (
 
     const getColorClasses = () => {
         return {
-            container: "bg-bg-card border-accent",
-            formBg: "bg-bg-deep",
+            container: "bg-card border-accent",
+            formBg: "bg-deep",
             text: "text-text-muted",
             primaryText: "text-text-primary",
             secondaryText: "text-accent-hover",
             button: "bg-accent text-text-primary border-accent",
             buttonHover: "hover:bg-accent-hover",
             linkHover: "hover:text-accent",
-            inputBg: "bg-bg-deep border-accent text-text-primary",
+            inputBg: "bg-deep border-accent text-text-primary",
             placeholder: "placeholder:text-accent-hover",
             likeButton: "text-accent-hover hover:text-text-primary",
             liked: "text-accent",
-            notificationBg: "bg-bg-deep border-accent",
-            loginPromptBg: "bg-bg-deep border-accent",
+            notificationBg: "bg-deep border-accent",
+            loginPromptBg: "bg-deep border-accent",
             loginPromptText: "text-text-muted",
             loginButton: "bg-accent text-text-primary",
             loginButtonHover: "hover:bg-accent-hover",
@@ -1091,7 +1091,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                         backgroundColor: "transparent",
                         boxShadow: "rgba(0, 0, 0, 0.15) 0px 0px 30px 0px"
                     }}
-                    className={`bg-bg-dark-tertiary border-accent rounded-lg p-4 relative`}>
+                    className={`bg-dark-tertiary border-accent rounded-lg p-4 relative`}>
                     {comment.isUnread && <span className="absolute top-4 right-4 w-2 h-2 bg-accent rounded-full"></span>}
                     <div className="flex space-x-3">
                         <Link to={`/profile/${comment.userId}`} className="flex-shrink-0">
@@ -1488,7 +1488,7 @@ export const CommentSection: React.FC<CommentSectionProps> = (
                 {}
                 {totalPages > 1 && <div className="flex justify-center mt-8">
                     <div
-                        className="inline-flex items-center rounded-md border border-accent bg-bg-deep shadow-sm">
+                        className="inline-flex items-center rounded-md border border-accent bg-deep shadow-sm">
                         <motion.button
                             whileHover={{
                                 scale: 1.1

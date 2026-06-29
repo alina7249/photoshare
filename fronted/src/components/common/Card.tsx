@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({
   
   // 根据主题获取背景和边框颜色
   const themeStyles = theme === 'dark' 
-    ? "bg-bg-card border border-accent" 
+    ? "bg-card border border-accent" 
     : "bg-white border border-gray-200";
   
   // 组合所有样式

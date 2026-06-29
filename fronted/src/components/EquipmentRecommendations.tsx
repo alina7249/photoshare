@@ -13,7 +13,7 @@ export const EquipmentRecommendations: React.FC<EquipmentRecommendationsProps> =
   recommendedEquipment 
 }) => {
   return (
-    <div className="mt-6 p-4 bg-bg-card rounded-lg border border-accent">
+    <div className="mt-6 p-4 bg-card rounded-lg border border-accent">
       <h3 className="text-lg font-semibold text-text-primary mb-4">搭配推荐</h3>
       
       <p className="text-sm text-text-muted mb-3">
@@ -25,7 +25,7 @@ export const EquipmentRecommendations: React.FC<EquipmentRecommendationsProps> =
           <motion.div
             key={equipment.id}
             whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-            className="bg-bg-deep rounded-lg overflow-hidden border border-accent transition-all"
+            className="bg-deep rounded-lg overflow-hidden border border-accent transition-all"
           >
             <div className="flex">
               <div className="w-24 h-24">
@@ -51,7 +51,7 @@ export const EquipmentRecommendations: React.FC<EquipmentRecommendationsProps> =
         ))}
       </div>
       
-      <div className="mt-4 bg-bg-deep p-3 rounded-lg border border-accent">
+      <div className="mt-4 bg-deep p-3 rounded-lg border border-accent">
         <h4 className="text-sm font-medium text-text-primary mb-2">搭配理由</h4>
         <ul className="list-disc pl-5 space-y-1 text-sm text-text-muted">
           <li>与{currentEquipment.name}在性能和风格上高度匹配</li>

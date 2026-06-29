@@ -175,9 +175,9 @@ export const HistoryPanel: React.FC = () => {
   };
   
   return (
-    <div className={`flex flex-col h-[calc(100vh-160px)] ${theme === 'dark' ? 'bg-bg-card' : 'bg-white'} rounded-xl shadow-xl overflow-hidden border ${theme === 'dark' ? 'border-accent' : 'border-gray-200'}`}>
+    <div className={`flex flex-col h-[calc(100vh-160px)] ${theme === 'dark' ? 'bg-card' : 'bg-white'} rounded-xl shadow-xl overflow-hidden border ${theme === 'dark' ? 'border-accent' : 'border-gray-200'}`}>
       {/* 面板头部 */}
-      <div className={`p-4 border-b ${theme === 'dark' ? 'border-accent bg-bg-deep' : 'border-gray-200 bg-gray-50'} flex justify-between items-center`}>
+      <div className={`p-4 border-b ${theme === 'dark' ? 'border-accent bg-deep' : 'border-gray-200 bg-gray-50'} flex justify-between items-center`}>
         <h3 className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>对话历史</h3>
         <motion.button
           whileHover={{ scale: 1.1 }}
@@ -202,7 +202,7 @@ export const HistoryPanel: React.FC = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className={`w-full pl-9 pr-4 py-2 rounded-lg text-sm ${
               theme === 'dark' 
-                ? 'bg-bg-deep text-white border-none focus:outline-none focus:ring-2 focus:ring-accent' 
+                ? 'bg-deep text-white border-none focus:outline-none focus:ring-2 focus:ring-accent' 
                 : 'bg-gray-100 text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-gray-300'
             }`}
           />
@@ -322,7 +322,7 @@ export const HistoryPanel: React.FC = () => {
       </div>
       
       {/* 面板底部 */}
-      <div className={`p-4 border-t ${theme === 'dark' ? 'border-accent bg-bg-deep' : 'border-gray-200 bg-gray-50'}`}>
+      <div className={`p-4 border-t ${theme === 'dark' ? 'border-accent bg-deep' : 'border-gray-200 bg-gray-50'}`}>
         <div className="grid grid-cols-2 gap-3">
           <motion.button
             whileHover={{ scale: 1.02 }}

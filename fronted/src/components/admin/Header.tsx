@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, sidebarCollapsed }) => {
   };
 
   return (
-    <header className="bg-bg-card border-b border-accent h-16 flex items-center px-6 justify-between">
+    <header className="bg-card border-b border-accent h-16 flex items-center px-6 justify-between">
       {/* 左侧切换按钮 */}
       <div className="flex items-center">
         <button
@@ -110,7 +110,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, sidebarCollapsed }) => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="搜索..."
-            className="bg-bg-deep border border-accent text-text-primary rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all w-64"
+            className="bg-deep border border-accent text-text-primary rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all w-64"
           />
           <i className="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-accent-hover"></i>
         </form>
@@ -137,7 +137,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, sidebarCollapsed }) => {
           </button>
           
           {/* 下拉菜单 */}
-          <div className="absolute right-0 mt-2 w-48 bg-bg-card border border-accent rounded-lg shadow-lg py-2 z-10 hidden group-hover:block">
+          <div className="absolute right-0 mt-2 w-48 bg-card border border-accent rounded-lg shadow-lg py-2 z-10 hidden group-hover:block">
             <button className="w-full text-left px-4 py-2 text-sm text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
               <i className="fa-solid fa-user mr-2"></i> 个人资料
             </button>

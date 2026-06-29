@@ -81,7 +81,7 @@ export const ShareButton: React.FC<ShareButtonProps> = ({
             initial={{ opacity: 0, scale: 0.9, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: -10 }}
-            className="absolute right-0 mt-2 w-48 bg-bg-card rounded-lg shadow-lg border border-accent py-2 z-50"
+            className="absolute right-0 mt-2 w-48 bg-card rounded-lg shadow-lg border border-accent py-2 z-50"
           >
             <button 
               className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"

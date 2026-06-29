@@ -96,14 +96,14 @@ const OfflineEvents: React.FC = () => {
 
   if (!isAuthenticated && isUserPersonalEvents) {
     return (
-          <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+          <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
           <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-user-lock text-2xl"></i>
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">请先登录</h2>
           <p className="text-text-muted mb-6 max-w-md">登录后查看您已报名的摄影活动</p>
-          <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-bg-dark-hover transition-colors">
+          <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors">
             立即登录
           </Link>
         </div>
@@ -112,7 +112,7 @@ const OfflineEvents: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -144,7 +144,7 @@ const OfflineEvents: React.FC = () => {
                     placeholder="搜索活动、地点或主题..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                    className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                   />
                   <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
                 </div>
@@ -152,7 +152,7 @@ const OfflineEvents: React.FC = () => {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                  className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
                 >
                   <option value="upcoming">即将开始</option>
                   <option value="popular">热门活动</option>
@@ -165,7 +165,7 @@ const OfflineEvents: React.FC = () => {
             {/* 活动类型和分类选项卡 - 仅在非个人活动页面显示 */}
             {!isUserPersonalEvents && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+                <div className="bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
                   <div className="p-3 border-b border-accent">
                     <h4 className="text-sm font-medium text-text-primary">活动类型</h4>
                   </div>
@@ -177,7 +177,7 @@ const OfflineEvents: React.FC = () => {
                         className={`py-2 px-1 text-center text-sm font-medium transition-colors ${
                           selectedType === type
                             ? 'bg-accent text-text-primary rounded-lg'
-                            : 'bg-bg-card text-text-muted hover:bg-accent/50'
+                            : 'bg-card text-text-muted hover:bg-accent/50'
                         }`}
                       >
                         {type}
@@ -185,7 +185,7 @@ const OfflineEvents: React.FC = () => {
                   ))}</div>
                 </div>
                 
-                <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+                <div className="bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
                   <div className="p-3 border-b border-accent">
                     <h4 className="text-sm font-medium text-text-primary">活动分类</h4>
                   </div>
@@ -197,7 +197,7 @@ const OfflineEvents: React.FC = () => {
                         className={`py-2 px-1 text-center text-sm font-medium transition-colors ${
                           selectedCategory === category
                             ? 'bg-accent text-text-primary rounded-lg'
-                            : 'bg-bg-card text-text-muted hover:bg-accent/50'
+                            : 'bg-card text-text-muted hover:bg-accent/50'
                         }`}
                       >
                         {category}
@@ -231,7 +231,7 @@ const OfflineEvents: React.FC = () => {
                       {/* 活动类型和标签 */}
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm text-text-primary font-medium">{event.type}</span>
-                        <span className="text-xs px-2 py-1 bg-bg-card/50 text-text-primary rounded-full">{event.category}</span>
+                        <span className="text-xs px-2 py-1 bg-card/50 text-text-primary rounded-full">{event.category}</span>
                       </div>
                       
                       {/* 活动标题 */}
@@ -292,7 +292,7 @@ const OfflineEvents: React.FC = () => {
                             className={`px-2 py-1 rounded-full text-xs ${
                               selectedTags.includes(tag)
                                 ? 'bg-text-primary text-accent'
-                                : 'bg-bg-card/50 text-text-primary border border-accent/50'
+                                : 'bg-card/50 text-text-primary border border-accent/50'
                             } transition-colors`}
                           >
                             #{tag}
@@ -309,7 +309,7 @@ const OfflineEvents: React.FC = () => {
                           查看详情
                         </Link>
                         {isUserPersonalEvents ? (
-                          <button className="flex-1 py-2 text-center bg-bg-card text-text-primary rounded-lg font-medium hover:bg-accent transition-colors border border-accent">
+                          <button className="flex-1 py-2 text-center bg-card text-text-primary rounded-lg font-medium hover:bg-accent transition-colors border border-accent">
                             <i className="fa-solid fa-calendar-check mr-1"></i> 已报名
                           </button>
                         ) : (
@@ -324,8 +324,8 @@ const OfflineEvents: React.FC = () => {
               ))}
               
               {filteredEvents.length === 0 && (
-                <div className="p-8 bg-bg-card rounded-xl border border-accent text-center">
-                  <div className="w-16 h-16 bg-bg-dark-alt rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+                <div className="p-8 bg-card rounded-xl border border-accent text-center">
+                  <div className="w-16 h-16 bg-dark-alt rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                     <i className="fa-solid fa-search text-2xl"></i>
                   </div>
                   <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关活动</h3>
@@ -339,7 +339,7 @@ const OfflineEvents: React.FC = () => {
             {/* 分页 */}
             {filteredEvents.length > 0 && (
               <div className="flex justify-center">
-                <nav className="flex items-center space-x-1 bg-bg-card p-2 rounded-lg border border-accent">
+                <nav className="flex items-center space-x-1 bg-card p-2 rounded-lg border border-accent">
                   <button className="px-3 py-2 rounded border border-accent text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                     <i className="fa-solid fa-chevron-left text-xs"></i>
                   </button>
@@ -397,7 +397,7 @@ const OfflineEvents: React.FC = () => {
                 </div>
                 
                 {/* 活动日历模块 */}
-                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                   <h3 className="text-lg font-bold mb-4 text-text-primary">活动日历</h3>
                   {/* 简化的日历组件 */}
                   <div className="text-center mb-3">
@@ -438,11 +438,11 @@ const OfflineEvents: React.FC = () => {
                 <div className="bg-gradient-to-r from-accent to-accent-hover rounded-xl p-6 shadow-sm border border-accent text-text-primary">
                   <h3 className="text-lg font-bold mb-3">近期活动提醒</h3>
                   <div className="space-y-3 mb-4">
-                    <div className="bg-bg-card/30 p-3 rounded-lg backdrop-blur-sm">
+                    <div className="bg-card/30 p-3 rounded-lg backdrop-blur-sm">
                       <p className="text-sm font-medium">新疆喀纳斯秋季风光摄影团</p>
                       <p className="text-xs text-text-primary/90 mt-1">10月15日开始 · 剩余8个名额</p>
                     </div>
-                    <div className="bg-bg-card/30 p-3 rounded-lg backdrop-blur-sm">
+                    <div className="bg-card/30 p-3 rounded-lg backdrop-blur-sm">
                       <p className="text-sm font-medium">上海城市纪实摄影沙龙</p>
                       <p className="text-xs text-text-primary/90 mt-1">10月28日 · 剩余12个名额</p>
                     </div>
@@ -453,7 +453,7 @@ const OfflineEvents: React.FC = () => {
                 </div>
                 
                 {/* 如何参加活动 */}
-                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                   <h3 className="text-lg font-bold mb-4 text-text-primary">如何参加活动</h3>
                   <div className="space-y-3">
                     <div className="flex items-start">

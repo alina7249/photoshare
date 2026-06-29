@@ -138,14 +138,14 @@ const PostDetail: React.FC = () => {
 
   if (!post) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-4 py-8 bg-deep min-h-screen flex items-center justify-center">
         <div className="text-text-muted">加载中...</div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -181,7 +181,7 @@ const PostDetail: React.FC = () => {
                 transformStyle: 'preserve-3d',
                 backgroundColor: "transparent",
               }}
-              className="bg-bg-card border border-accent rounded-lg overflow-hidden shadow-sm"
+              className="bg-card border border-accent rounded-lg overflow-hidden shadow-sm"
             >
               <div className="p-6">
                 {/* 话题标签 */}
@@ -220,7 +220,7 @@ const PostDetail: React.FC = () => {
                           <span className={`text-xs px-1.5 py-0.5 rounded ${getLevelBadgeClass(post.author.level)}`}>
                             Lv{post.author.level}
                           </span>
-                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 w-48 bg-bg-deep text-text-muted text-xs rounded p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10 whitespace-nowrap pointer-events-none">
+                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 w-48 bg-deep text-text-muted text-xs rounded p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10 whitespace-nowrap pointer-events-none">
                             发帖: {post.author.stats.posts} | 获赞: {post.author.stats.likes} | 活跃: {post.author.stats.days}天
                           </div>
                         </div>
@@ -274,7 +274,7 @@ const PostDetail: React.FC = () => {
                   {post.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent"
+                      className="px-3 py-1 bg-deep text-text-muted rounded-full text-xs border border-accent"
                     >
                       #{tag}
                     </span>
@@ -346,7 +346,7 @@ const PostDetail: React.FC = () => {
           {/* 右侧边栏 */}
           <div className="space-y-6">
             {/* 作者信息卡片 */}
-            <div className="bg-bg-card border border-accent rounded-lg p-6">
+            <div className="bg-card border border-accent rounded-lg p-6">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-accent">
                   <img
@@ -397,7 +397,7 @@ const PostDetail: React.FC = () => {
             </div>
             
             {/* 相关帖子 */}
-            <div className="bg-bg-card border border-accent rounded-lg p-6">
+            <div className="bg-card border border-accent rounded-lg p-6">
               <h3 className="text-lg font-bold text-text-primary mb-4">相关帖子</h3>
               <div className="space-y-4">
                 {relatedPosts.map((relatedPost) => (
@@ -407,7 +407,7 @@ const PostDetail: React.FC = () => {
                     className="group"
                   >
                     <Link to={`/post/${relatedPost.id}`} className="block">
-                      <div className="bg-bg-deep rounded-lg p-4 border border-accent group-hover:border-accent transition-colors">
+                      <div className="bg-deep rounded-lg p-4 border border-accent group-hover:border-accent transition-colors">
                         <h4 className="font-medium text-text-primary group-hover:text-accent transition-colors mb-1 line-clamp-2">
                           {relatedPost.title}
                         </h4>
@@ -422,14 +422,14 @@ const PostDetail: React.FC = () => {
             </div>
             
             {/* 热门标签 */}
-            <div className="bg-bg-card border border-accent rounded-lg p-6">
+            <div className="bg-card border border-accent rounded-lg p-6">
               <h3 className="text-lg font-bold text-text-primary mb-4">热门标签</h3>
               <div className="flex flex-wrap gap-2">
                 {post?.tags.map((tag, index) => (
                     <a
                       key={index}
                       href={`/search?tag=${tag}`}
-                      className="px-3 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent hover:bg-accent hover:text-text-primary transition-colors"
+                      className="px-3 py-1 bg-deep text-text-muted rounded-full text-xs border border-accent hover:bg-accent hover:text-text-primary transition-colors"
                     >
                       #{tag}
                     </a>

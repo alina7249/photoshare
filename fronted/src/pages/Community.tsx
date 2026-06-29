@@ -207,7 +207,7 @@ const ContributionCalendar: React.FC = () => {
 
     const getColorByCount = (count: number) => {
         if (count === 0)
-            return "bg-bg-deep";
+            return "bg-deep";
 
         if (count === 1)
             return "bg-accent/30";
@@ -244,14 +244,14 @@ const ContributionCalendar: React.FC = () => {
     const firstDayOfWeek = new Date(2023, 0, 2).getDay();
 
     return (
-        <div className="bg-bg-card border border-accent rounded-lg p-6">
+        <div className="bg-card border border-accent rounded-lg p-6">
             <h3 className="text-lg font-bold text-text-primary mb-4">用户贡献</h3>
             {}
             <div className="flex items-center justify-between mb-4">
                 <div className="text-xs text-text-muted">过去一个月的活动</div>
                 <div className="flex items-center space-x-2">
                     <div className="text-xs text-text-muted">较少</div>
-                    <div className="w-3 h-3 bg-bg-deep rounded-full"></div>
+                    <div className="w-3 h-3 bg-deep rounded-full"></div>
                     <div className="w-3 h-3 bg-accent/30 rounded-full"></div>
                     <div className="w-3 h-3 bg-accent/60 rounded-full"></div>
                     <div className="w-3 h-3 bg-accent rounded-full"></div>
@@ -311,7 +311,7 @@ const ContributionCalendar: React.FC = () => {
                         opacity: 0,
                         scale: 0.9
                     }}
-                    className="fixed bg-bg-card border border-accent rounded-lg p-3 shadow-lg z-50"
+                    className="fixed bg-card border border-accent rounded-lg p-3 shadow-lg z-50"
                     style={{
                         left: tooltipPosition.x,
                         top: tooltipPosition.y
@@ -349,7 +349,7 @@ const ActivityTrendChart: React.FC = () => {
     }, [timeRange]);
 
     return (
-        <div className="bg-bg-card border border-accent rounded-lg p-6">
+        <div className="bg-card border border-accent rounded-lg p-6">
             <h3 className="text-lg font-bold text-text-primary mb-4">活跃度趋势</h3>
             {}
             <div className="flex space-x-2 mb-6">
@@ -361,7 +361,7 @@ const ActivityTrendChart: React.FC = () => {
                         scale: 0.95
                     }}
                     onClick={() => setTimeRange("7days")}
-                    className={`px-3 py-1.5 rounded-lg text-sm ${timeRange === "7days" ? "bg-accent text-text-primary" : "bg-bg-deep text-text-muted hover:bg-accent/50"} transition-colors`}>7天
+                    className={`px-3 py-1.5 rounded-lg text-sm ${timeRange === "7days" ? "bg-accent text-text-primary" : "bg-deep text-text-muted hover:bg-accent/50"} transition-colors`}>7天
                                                                             </motion.button>
                 <motion.button
                     whileHover={{
@@ -371,7 +371,7 @@ const ActivityTrendChart: React.FC = () => {
                         scale: 0.95
                     }}
                     onClick={() => setTimeRange("30days")}
-                    className={`px-3 py-1.5 rounded-lg text-sm ${timeRange === "30days" ? "bg-accent text-text-primary" : "bg-bg-deep text-text-muted hover:bg-accent/50"} transition-colors`}>30天
+                    className={`px-3 py-1.5 rounded-lg text-sm ${timeRange === "30days" ? "bg-accent text-text-primary" : "bg-deep text-text-muted hover:bg-accent/50"} transition-colors`}>30天
                                                                             </motion.button>
                 <motion.button
                     whileHover={{
@@ -381,7 +381,7 @@ const ActivityTrendChart: React.FC = () => {
                         scale: 0.95
                     }}
                     onClick={() => setTimeRange("90days")}
-                    className={`px-3 py-1.5 rounded-lg text-sm ${timeRange === "90days" ? "bg-accent text-text-primary" : "bg-bg-deep text-text-muted hover:bg-accent/50"} transition-colors`}>90天
+                    className={`px-3 py-1.5 rounded-lg text-sm ${timeRange === "90days" ? "bg-accent text-text-primary" : "bg-deep text-text-muted hover:bg-accent/50"} transition-colors`}>90天
                                                                             </motion.button>
             </div>
             {}
@@ -458,19 +458,19 @@ const ActivityTrendChart: React.FC = () => {
             </div>
             {}
             <div className="mt-4 grid grid-cols-3 gap-4 text-center">
-                <div className="bg-bg-deep p-3 rounded-lg">
+                <div className="bg-deep p-3 rounded-lg">
                     <div className="text-xs text-accent-hover">总发帖数</div>
                     <div className="text-lg font-bold text-text-primary">
                         {activityData.reduce((sum, day) => sum + day.posts, 0)}
                     </div>
                 </div>
-                <div className="bg-bg-deep p-3 rounded-lg">
+                <div className="bg-deep p-3 rounded-lg">
                     <div className="text-xs text-accent-hover">总回复数</div>
                     <div className="text-lg font-bold text-text-primary">
                         {activityData.reduce((sum, day) => sum + day.replies, 0)}
                     </div>
                 </div>
-                <div className="bg-bg-deep p-3 rounded-lg">
+                <div className="bg-deep p-3 rounded-lg">
                     <div className="text-xs text-accent-hover">活跃用户</div>
                     <div className="text-lg font-bold text-text-primary">
                         {Math.max(...activityData.map(day => day.users))}
@@ -585,7 +585,7 @@ export const Poll: React.FC<PollProps> = (
         return (
             <div key={option.id} className="mb-3">
                 <div
-                    className={`p-3 rounded-lg cursor-pointer transition-all ${voted ? isVotedFor ? "bg-accent/20 border border-accent" : "bg-bg-card border border-accent/30" : isSelected ? "bg-accent/20 border border-accent" : "bg-bg-card border border-accent/30 hover:border-accent"}`}
+                    className={`p-3 rounded-lg cursor-pointer transition-all ${voted ? isVotedFor ? "bg-accent/20 border border-accent" : "bg-card border border-accent/30" : isSelected ? "bg-accent/20 border border-accent" : "bg-card border border-accent/30 hover:border-accent"}`}
                     onClick={() => handleOptionSelect(option.id)}>
                     <div className="flex items-center mb-2">
                         <div
@@ -596,7 +596,7 @@ export const Poll: React.FC<PollProps> = (
                         <span className="text-text-primary">{option.text}</span>
                     </div>
                     {voted && <div className="space-y-1">
-                        <div className="w-full bg-bg-deep h-2 rounded-full overflow-hidden">
+                        <div className="w-full bg-deep h-2 rounded-full overflow-hidden">
                             <motion.div
                                 initial={{
                                     width: 0
@@ -702,7 +702,7 @@ export const GroupCard: React.FC<GroupCardProps> = (
                 transformStyle: "preserve-3d",
                 backgroundColor: "transparent"
             }}
-            className="bg-bg-card border border-accent rounded-lg overflow-hidden shadow-sm">
+            className="bg-card border border-accent rounded-lg overflow-hidden shadow-sm">
             <div className="relative h-32">
                 <img
                     src={group.coverImage}
@@ -710,7 +710,7 @@ export const GroupCard: React.FC<GroupCardProps> = (
                     className="w-full h-full object-cover" />
                 <div className="absolute top-3 left-3">
                     <div
-                        className="w-16 h-16 rounded-full border-2 border-bg-card overflow-hidden">
+                        className="w-16 h-16 rounded-full border-2 border-card overflow-hidden">
                         <img
                             src={group.avatar}
                             alt={group.name}
@@ -718,7 +718,7 @@ export const GroupCard: React.FC<GroupCardProps> = (
                     </div>
                 </div>
                 {!group.isPublic && <div
-                    className="absolute top-3 right-3 px-2 py-1 bg-bg-deep/80 text-white text-xs rounded-full">
+                    className="absolute top-3 right-3 px-2 py-1 bg-deep/80 text-white text-xs rounded-full">
                     <i className="fa-solid fa-lock mr-1"></i>私密
                                                                             </div>}
             </div>
@@ -741,7 +741,7 @@ export const GroupCard: React.FC<GroupCardProps> = (
                 <div className="flex flex-wrap gap-1 mb-3">
                     {group.tags.map((tag, index) => <span
                         key={index}
-                        className="px-2 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent">#{tag}
+                        className="px-2 py-1 bg-deep text-text-muted rounded-full text-xs border border-accent">#{tag}
                     </span>)}
                 </div>
                 <motion.button
@@ -920,7 +920,7 @@ const CreateGroupForm: React.FC<{ isOpen: boolean; onClose: () => void; onCreate
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 20 }}
-        className="bg-bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[80vh] overflow-y-auto"
+        className="bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[80vh] overflow-y-auto"
         onClick={e => e.stopPropagation()}
       >
         <div className="p-6">
@@ -942,7 +942,7 @@ const CreateGroupForm: React.FC<{ isOpen: boolean; onClose: () => void; onCreate
                 value={groupName}
                 onChange={(e) => setGroupName(e.target.value)}
                 placeholder="请输入小组名称"
-                className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                 maxLength={50}
                 required
               />
@@ -955,7 +955,7 @@ const CreateGroupForm: React.FC<{ isOpen: boolean; onClose: () => void; onCreate
                 value={groupDescription}
                 onChange={(e) => setGroupDescription(e.target.value)}
                 placeholder="介绍你的小组主题、目标和成员可以获得什么..."
-                className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[120px]"
+                className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[120px]"
                 maxLength={500}
               />
               <p className="text-xs text-accent-hover mt-1">最多500个字符，详细的介绍能吸引更多成员</p>
@@ -971,7 +971,7 @@ const CreateGroupForm: React.FC<{ isOpen: boolean; onClose: () => void; onCreate
                     value="public"
                     checked={groupType === "public"}
                     onChange={(e) => setGroupType(e.target.value)}
-                    className="w-4 h-4 text-accent bg-bg-deep border-accent rounded focus:ring-accent"
+                    className="w-4 h-4 text-accent bg-deep border-accent rounded focus:ring-accent"
                   />
                   <span className="ml-2 text-text-muted">公开小组</span>
                 </label>
@@ -982,7 +982,7 @@ const CreateGroupForm: React.FC<{ isOpen: boolean; onClose: () => void; onCreate
                     value="private"
                     checked={groupType === "private"}
                     onChange={(e) => setGroupType(e.target.value)}
-                    className="w-4 h-4 text-accent bg-bg-deep border-accent rounded focus:ring-accent"
+                    className="w-4 h-4 text-accent bg-deep border-accent rounded focus:ring-accent"
                   />
                   <span className="ml-2 text-text-muted">私密小组</span>
                 </label>
@@ -997,7 +997,7 @@ const CreateGroupForm: React.FC<{ isOpen: boolean; onClose: () => void; onCreate
                 value={groupTags}
                 onChange={(e) => setGroupTags(e.target.value)}
                 placeholder="输入标签，用逗号分隔，最多5个标签"
-                className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
               />
               <p className="text-xs text-accent-hover mt-1">添加相关标签，让更多志同道合的人找到你的小组</p>
             </div>
@@ -1006,7 +1006,7 @@ const CreateGroupForm: React.FC<{ isOpen: boolean; onClose: () => void; onCreate
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 py-3 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                className="flex-1 py-3 bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
               >
                 取消
               </button>
@@ -1226,7 +1226,7 @@ const Community: React.FC = () => {
 
     return (
         <div
-            className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+            className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
             <motion.div
                 initial={{
                     opacity: 0,
@@ -1254,7 +1254,7 @@ const Community: React.FC = () => {
                             placeholder="搜索话题、用户或标签..."
                             value={searchQuery}
                             onChange={e => setSearchQuery(e.target.value)}
-                            className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted" />
+                            className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted" />
                         <i
                             className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
                     </div>
@@ -1266,7 +1266,7 @@ const Community: React.FC = () => {
                                 <select
                                     value={filterType}
                                     onChange={e => setFilterType(e.target.value)}
-                                    className="px-3 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
+                                    className="px-3 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                                     <option value="all">全部话题</option>
                                     <option value="essential">精华话题</option>
                                     <option value="sticky">置顶话题</option>
@@ -1277,7 +1277,7 @@ const Community: React.FC = () => {
                                 <select
                                     value={sortType}
                                     onChange={e => setSortType(e.target.value)}
-                                    className="px-3 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
+                                    className="px-3 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                                     <option value="latest">最新发布</option>
                                     <option value="popular">最多点赞</option>
                                     <option value="comments">最多评论</option>
@@ -1329,7 +1329,7 @@ const Community: React.FC = () => {
                                         opacity: 0,
                                         y: -10
                                     }}
-                                    className="absolute right-0 mt-2 w-80 bg-bg-card border border-accent rounded-lg shadow-lg z-10">
+                                    className="absolute right-0 mt-2 w-80 bg-card border border-accent rounded-lg shadow-lg z-10">
                                     <div
                                         className="flex justify-between items-center p-4 border-b border-accent">
                                         <h3 className="font-medium text-text-primary">通知</h3>
@@ -1389,14 +1389,14 @@ const Community: React.FC = () => {
                             opacity: 0,
                             height: 0
                         }}
-                        className="mb-6 bg-bg-card rounded-lg border border-accent p-4">
+                        className="mb-6 bg-card rounded-lg border border-accent p-4">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">
                                 <input
                                     type="checkbox"
                                     checked={selectedTopics.length > 0 && selectedTopics.length === topics.length}
                                     onChange={toggleSelectAll}
-                                    className="w-4 h-4 bg-bg-card border-accent text-accent rounded focus:ring-accent mr-2" />
+                                    className="w-4 h-4 bg-card border-accent text-accent rounded focus:ring-accent mr-2" />
                                 <span className="text-text-muted">已选择 {selectedTopics.length}个话题</span>
                             </div>
                             <div className="flex space-x-3">
@@ -1476,7 +1476,7 @@ const Community: React.FC = () => {
                         whileTap={{
                           scale: 0.97
                         }}
-                        className="px-6 py-2 bg-bg-card text-text-muted border border-accent rounded-lg hover:bg-accent hover:text-text-primary transition-colors"
+                        className="px-6 py-2 bg-card text-text-muted border border-accent rounded-lg hover:bg-accent hover:text-text-primary transition-colors"
                       >
                         查看全部小组 <i className="fa-solid fa-chevron-right ml-1"></i>
                       </motion.button>
@@ -1515,7 +1515,7 @@ const Community: React.FC = () => {
                                 transformStyle: "preserve-3d",
                                 backgroundColor: "transparent"
                             }}
-                            className={`bg-bg-card border border-accent rounded-lg overflow-hidden shadow-sm cursor-pointer relative ${topic.isSelected ? "ring-2 ring-accent" : ""}`}
+                            className={`bg-card border border-accent rounded-lg overflow-hidden shadow-sm cursor-pointer relative ${topic.isSelected ? "ring-2 ring-accent" : ""}`}
                             onClick={() => window.location.href = `/post/${topic.id}`}>
                             <div className="p-6">
                                 {}
@@ -1530,7 +1530,7 @@ const Community: React.FC = () => {
                                         type="checkbox"
                                         checked={selectedTopics.includes(topic.id)}
                                         onChange={() => toggleTopicSelection(topic.id)}
-                                        className="w-4 h-4 bg-bg-card border-accent text-accent rounded focus:ring-accent mt-1" />
+                                        className="w-4 h-4 bg-card border-accent text-accent rounded focus:ring-accent mt-1" />
                                 </div>}
                                 {}
                                 <div className="flex items-center space-x-2 mb-3">
@@ -1555,7 +1555,7 @@ const Community: React.FC = () => {
                                 <div className="flex flex-wrap gap-2 mb-4">
                                     {topic.tags.map((tag, index) => <span
                                         key={index}
-                                        className="px-2 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent">
+                                        className="px-2 py-1 bg-deep text-text-muted rounded-full text-xs border border-accent">
                                         {tag}
                                     </span>)}
                                 </div>
@@ -1574,7 +1574,7 @@ const Community: React.FC = () => {
                                                         className={`text-xs px-1.5 py-0.5 rounded ${getLevelBadgeClass(topic.author.level)}`}>Lv{topic.author.level}
                                                     </span>
                                                     <div
-                                                        className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 w-48 bg-bg-deep text-text-muted text-xs rounded p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10 whitespace-nowrap pointer-events-none">发帖: {topic.author.stats.posts}| 获赞: {topic.author.stats.likes}| 活跃: {topic.author.stats.days}天
+                                                        className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 w-48 bg-deep text-text-muted text-xs rounded p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10 whitespace-nowrap pointer-events-none">发帖: {topic.author.stats.posts}| 获赞: {topic.author.stats.likes}| 活跃: {topic.author.stats.days}天
                                                                                                                                                                                                      </div>
                                                 </div>
                                             </div>
@@ -1649,7 +1649,7 @@ const Community: React.FC = () => {
                             expiresAt="2025-12-31" />
                         {}
                         {}
-                        <div className="bg-bg-card border border-accent rounded-lg p-6">
+                        <div className="bg-card border border-accent rounded-lg p-6">
                             <h3 className="text-lg font-bold text-text-primary mb-4">话题分布</h3>
                             <div className="h-64">
                                 <ResponsiveContainer width="100%" height="100%">

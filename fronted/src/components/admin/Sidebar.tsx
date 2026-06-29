@@ -26,7 +26,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed }) => {
   };
 
   return (
-    <div className={`bg-bg-card border-r border-accent transition-all duration-300 ${
+    <div className={`bg-card border-r border-accent transition-all duration-300 ${
       collapsed ? 'w-16' : 'w-64'
     } flex flex-col h-full`}>
       {/* 品牌标识 */}

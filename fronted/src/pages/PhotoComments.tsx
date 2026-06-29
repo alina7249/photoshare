@@ -256,7 +256,7 @@ const PhotoComments: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen flex items-center justify-center">
         <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
@@ -264,7 +264,7 @@ const PhotoComments: React.FC = () => {
 
   if (!photo) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
           <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-exclamation-circle text-2xl"></i>
@@ -278,7 +278,7 @@ const PhotoComments: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -304,10 +304,10 @@ const PhotoComments: React.FC = () => {
         </div>
 
         {/* 作品预览 */}
-        <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
+        <div className="bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
           <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-6">
             <div className="w-full md:w-1/3">
-              <div className="bg-bg-deep rounded-lg overflow-hidden">
+              <div className="bg-deep rounded-lg overflow-hidden">
                 <img
                   src={photo?.image}
                   alt={photo?.title}
@@ -330,7 +330,7 @@ const PhotoComments: React.FC = () => {
               </div>
               <div className="flex flex-wrap gap-2 mb-4">
                 {photo?.tags.map((tag, index) => (
-                  <span key={index} className="px-2 py-1 bg-bg-deep text-text-muted text-xs rounded-full">
+                  <span key={index} className="px-2 py-1 bg-deep text-text-muted text-xs rounded-full">
                     #{tag}
                   </span>
                 ))}

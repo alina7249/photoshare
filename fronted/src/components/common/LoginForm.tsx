@@ -191,7 +191,7 @@ const LoginForm: React.FC = () => {
             } ${
               theme === 'dark' 
                 ? 'bg-border-light-form text-surface-light-hover' 
-                : 'bg-white text-bg-deep'
+                : 'bg-white text-deep'
             } focus:outline-none focus:ring-2 focus:ring-light-accent transition-colors`}
             placeholder="请输入用户名"
           />
@@ -230,7 +230,7 @@ const LoginForm: React.FC = () => {
               } ${
                 theme === 'dark' 
                   ? 'bg-border-light-form text-surface-light-hover' 
-                  : 'bg-white text-bg-deep'
+                  : 'bg-white text-deep'
               } focus:outline-none focus:ring-2 focus:ring-light-accent transition-colors`}
               placeholder="••••••••"
             />
@@ -266,7 +266,7 @@ const LoginForm: React.FC = () => {
               id="remember-me"
               type="checkbox"
               {...register('rememberMe')}
-              className="h-4 w-4 text-teal focus:ring-teal border-border-light-form rounded bg-bg-dark-alt"
+              className="h-4 w-4 text-teal focus:ring-teal border-border-light-form rounded bg-dark-alt"
             />
             <label htmlFor="remember-me" className="ml-2 block text-sm text-text-light-label">
               记住我

@@ -70,7 +70,7 @@ export const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        className="absolute top-16 right-4 w-[320px] max-w-[90%] bg-bg-deep border border-accent rounded-lg shadow-lg overflow-hidden z-50 profile-dropdown-container"
+        className="absolute top-16 right-4 w-[320px] max-w-[90%] bg-deep border border-accent rounded-lg shadow-lg overflow-hidden z-50 profile-dropdown-container"
       >
         {/* 顶部身份信息区 */}
         <div className="px-6 py-4 border-b border-accent">
@@ -95,7 +95,7 @@ export const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
                   <span className="text-accent text-xs">{level} LV.{levelNum}</span>
                   <span className="text-accent text-xs">{progress}/{progressMax}成长值</span>
                 </div>
-                <div className="w-full h-1.5 bg-bg-card rounded-full overflow-hidden">
+                <div className="w-full h-1.5 bg-card rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-accent" 
                     style={{ width: `${(progress / progressMax) * 100}%` }}
@@ -112,7 +112,7 @@ export const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
         </div>
         
         {/* 中间核心数据统计区 */}
-        <div className="grid grid-cols-3 gap-1 px-4 py-3 bg-bg-card">
+        <div className="grid grid-cols-3 gap-1 px-4 py-3 bg-card">
           <div className="text-center">
             <p className="text-text-muted/70 text-xs mb-1">作品</p>
             <p className="text-text-primary font-bold text-lg">{stats.posts}</p>

@@ -114,7 +114,7 @@ const Captcha: React.FC<CaptchaProps> = ({ onChange, value = '', className = '' 
           className={`w-full px-4 py-2 rounded-lg border border-accent ${
             theme === 'dark' 
               ? 'bg-border-light-form text-surface-light-hover' 
-              : 'bg-white text-bg-deep'
+              : 'bg-white text-deep'
           } focus:outline-none focus:ring-2 focus:ring-light-accent transition-colors`}
           placeholder="请输入验证码"
           maxLength={6}

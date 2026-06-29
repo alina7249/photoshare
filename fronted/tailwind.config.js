@@ -18,12 +18,12 @@ export default {
       },
       colors: {
         // 深色主题色板
-        'bg-deep': '#1E2532',
-        'bg-card': '#2D3748',
-        'bg-dark-surface': '#2B3445',
-        'bg-dark-alt': '#1E2A3A',
-        'bg-dark-tertiary': '#232D3F',
-        'bg-dark-hover': '#3A4B6F',
+        'deep': '#1E2532',
+        'card': '#2D3748',
+        'dark-surface': '#2B3445',
+        'dark-alt': '#1E2A3A',
+        'dark-tertiary': '#232D3F',
+        'dark-hover': '#3A4B6F',
         'accent': '#4A5F8B',
         'accent-hover': '#6B7C93',
         'text-muted': '#B8C6D8',

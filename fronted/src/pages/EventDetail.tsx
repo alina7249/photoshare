@@ -104,7 +104,7 @@ const EventDetail: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-4 py-8 bg-deep min-h-screen flex items-center justify-center">
         <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
@@ -112,20 +112,20 @@ const EventDetail: React.FC = () => {
 
   if (!event) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
           <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-exclamation-circle text-2xl"></i>
           </div>
           <h2 className="text-2xl font-bold text-text-primary mb-2">未找到该活动</h2>
           <p className="text-text-muted mb-6 max-w-md">抱歉，您访问的活动不存在或已被删除</p>
-          <Link to="/offline-events" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-bg-dark-hover transition-colors">
+          <Link to="/offline-events" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors">
             返回活动列表
           </Link>
              </div>
              
              {/* 评论区 */}
-             <div className="bg-bg-card rounded-xl p-6 border border-accent mt-8">
+             <div className="bg-card rounded-xl p-6 border border-accent mt-8">
                <CommentSection postId={event.id} />
              </div>
            </div>
@@ -133,7 +133,7 @@ const EventDetail: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -151,19 +151,19 @@ const EventDetail: React.FC = () => {
         </div>
 
         {/* 活动主图 */}
-        <div className="relative rounded-xl overflow-hidden mb-8 bg-bg-card border border-accent">
+        <div className="relative rounded-xl overflow-hidden mb-8 bg-card border border-accent">
           <img
             src={event.image}
             alt={event.title}
             className="w-full h-[50vh] object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg-deep to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-deep to-transparent"></div>
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
             <div className="flex flex-wrap items-center gap-2 mb-3">
               <span className="px-3 py-1 bg-accent text-text-primary text-sm rounded-full">
                 {event.type}
               </span>
-              <span className="px-3 py-1 bg-bg-card text-text-primary text-sm rounded-full">
+              <span className="px-3 py-1 bg-card text-text-primary text-sm rounded-full">
                 {event.category}
               </span>
             </div>
@@ -188,7 +188,7 @@ const EventDetail: React.FC = () => {
         </div>
 
          {/* 价格和报名按钮 */}
-        <div className="flex flex-col sm:flex-row justify-between items-center bg-bg-card rounded-xl p-6 mb-8 border border-accent">
+        <div className="flex flex-col sm:flex-row justify-between items-center bg-card rounded-xl p-6 mb-8 border border-accent">
           <div>
             <h3 className="text-lg font-medium text-text-muted mb-1">活动费用</h3>
             <p className="text-3xl font-bold text-text-primary">
@@ -221,7 +221,7 @@ const EventDetail: React.FC = () => {
           {/* 左侧主要内容 */}
           <div className="lg:col-span-2 space-y-8">
             {/* 活动详情 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">活动详情</h2>
               <div className="prose prose-invert max-w-none">
                 <p className="text-text-muted leading-relaxed">
@@ -234,7 +234,7 @@ const EventDetail: React.FC = () => {
                 {event.tags.map((tag: string, index: number) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-bg-deep text-text-muted rounded-full text-sm"
+                    className="px-3 py-1 bg-deep text-text-muted rounded-full text-sm"
                   >
                     #{tag}
                   </span>
@@ -243,7 +243,7 @@ const EventDetail: React.FC = () => {
             </div>
 
             {/* 行程安排 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">行程安排</h2>
               <div className="space-y-4">
                 {event.itinerary.map((item: string, index: number) => (
@@ -259,7 +259,7 @@ const EventDetail: React.FC = () => {
 
             {/* 费用包含/不包含 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-bg-card rounded-xl p-6 border border-accent">
+              <div className="bg-card rounded-xl p-6 border border-accent">
                 <h3 className="text-lg font-bold text-text-primary mb-4">费用包含</h3>
                 <ul className="space-y-2">
                   {event.inclusion.map((item: string, index: number) => (
@@ -271,7 +271,7 @@ const EventDetail: React.FC = () => {
                 </ul>
               </div>
               
-              <div className="bg-bg-card rounded-xl p-6 border border-accent">
+              <div className="bg-card rounded-xl p-6 border border-accent">
                 <h3 className="text-lg font-bold text-text-primary mb-4">费用不包含</h3>
                 <ul className="space-y-2">
                   {event.exclusion.map((item: string, index: number) => (
@@ -285,7 +285,7 @@ const EventDetail: React.FC = () => {
             </div>
 
              {/* 注意事项 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">注意事项</h2>
               <ul className="space-y-2">
                 {/* 添加报名条件提示 */}
@@ -311,7 +311,7 @@ const EventDetail: React.FC = () => {
           {/* 右侧边栏 */}
           <div className="lg:col-span-1 space-y-6">
             {/* 导师信息 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">导师信息</h2>
               <div className="flex items-center mb-4">
                 <img
@@ -325,15 +325,15 @@ const EventDetail: React.FC = () => {
                   <p className="text-xs text-text-muted">{event.instructor.experience}摄影经验</p>
                 </div>
               </div>
-              <button className="w-full py-2 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent text-sm">
+              <button className="w-full py-2 bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent text-sm">
                 查看导师主页
               </button>
             </div>
 
             {/* 活动日历 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">活动日历</h2>
-              <div className="p-4 bg-bg-deep rounded-lg text-center">
+              <div className="p-4 bg-deep rounded-lg text-center">
                 <div className="text-sm text-text-muted mb-1">
                   {event.date.split(' ')[0]}
                 </div>
@@ -344,32 +344,32 @@ const EventDetail: React.FC = () => {
                   {['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'][new Date(event.date.split(' ')[0]).getMonth()]}
                 </div>
               </div>
-              <button className="w-full mt-4 py-2 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent text-sm">
+              <button className="w-full mt-4 py-2 bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent text-sm">
                 添加到日历
               </button>
             </div>
 
             {/* 分享 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">分享活动</h2>
               <div className="grid grid-cols-4 gap-3">
-                <button className="w-full h-12 bg-bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
+                <button className="w-full h-12 bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                   <i className="fa-brands fa-weixin text-xl"></i>
                 </button>
-                <button className="w-full h-12 bg-bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
+                <button className="w-full h-12 bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                   <i className="fa-brands fa-weibo text-xl"></i>
                 </button>
-                <button className="w-full h-12 bg-bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
+                <button className="w-full h-12 bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                   <i className="fa-brands fa-qq text-xl"></i>
                 </button>
-                <button className="w-full h-12 bg-bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
+                <button className="w-full h-12 bg-deep rounded-lg flex items-center justify-center text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                   <i className="fa-solid fa-link text-xl"></i>
                 </button>
               </div>
             </div>
 
             {/* 常见问题 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">常见问题</h2>
               <div className="space-y-4">
                 <div>
@@ -400,7 +400,7 @@ const EventDetail: React.FC = () => {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+            className="bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[90vh] overflow-y-auto"
           >
             <div className="flex justify-between items-center p-6 border-b border-accent">
               <h3 className="text-xl font-bold text-text-primary">报名活动：{event.title}</h3>
@@ -423,7 +423,7 @@ const EventDetail: React.FC = () => {
                     type="text"
                     value={registrationData.name}
                     onChange={(e) => setRegistrationData({...registrationData, name: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入您的姓名"
                     required
                   />
@@ -438,7 +438,7 @@ const EventDetail: React.FC = () => {
                     type="tel"
                     value={registrationData.phone}
                     onChange={(e) => setRegistrationData({...registrationData, phone: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入11位手机号码"
                     pattern="^1[3-9]\d{9}$"
                     required
@@ -455,7 +455,7 @@ const EventDetail: React.FC = () => {
                     type="email"
                     value={registrationData.email}
                     onChange={(e) => setRegistrationData({...registrationData, email: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入您的电子邮箱"
                     required
                   />
@@ -469,7 +469,7 @@ const EventDetail: React.FC = () => {
                     id="experience"
                     value={registrationData.experience}
                     onChange={(e) => setRegistrationData({...registrationData, experience: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                   >
                     <option value="">请选择您的摄影经验</option>
                     <option value="beginner">初学者 (0-1年)</option>
@@ -487,7 +487,7 @@ const EventDetail: React.FC = () => {
                     id="specialRequests"
                     value={registrationData.specialRequests}
                     onChange={(e) => setRegistrationData({...registrationData, specialRequests: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[100px]"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[100px]"
                     placeholder="如有任何特殊需求，请在此说明"
                   ></textarea>
                 </div>
@@ -498,7 +498,7 @@ const EventDetail: React.FC = () => {
                     type="checkbox"
                     checked={registrationData.agreement}
                     onChange={(e) => setRegistrationData({...registrationData, agreement: e.target.checked})}
-                    className="mt-1 h-4 w-4 text-accent focus:ring-accent rounded border-accent bg-bg-deep"
+                    className="mt-1 h-4 w-4 text-accent focus:ring-accent rounded border-accent bg-deep"
                     required
                   />
                   <label htmlFor="agreement" className="ml-2 block text-sm text-text-muted">
@@ -515,7 +515,7 @@ const EventDetail: React.FC = () => {
                 <div className="flex space-x-3">
                   <button 
                     type="button"
-                    className="px-6 py-3 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                    className="px-6 py-3 bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                     onClick={() => setShowRegistrationForm(false)}
                   >
                     取消

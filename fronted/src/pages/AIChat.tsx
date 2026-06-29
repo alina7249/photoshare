@@ -34,7 +34,7 @@ export default function AIChat() {
   }, []);
   
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-50'} transition-colors duration-300`}>
+    <div className={`min-h-screen ${theme === 'dark' ? 'bg-deep' : 'bg-gray-50'} transition-colors duration-300`}>
       <div className="container mx-auto px-4 py-8">
         <motion.div 
           initial={{ opacity: 0 }}

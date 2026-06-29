@@ -592,15 +592,15 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
   const getThemeClasses = () => {
     if (theme === 'dark') {
       return {
-        container: 'bg-bg-card border-accent',
+        container: 'bg-card border-accent',
         text: 'text-text-muted',
         primaryText: 'text-text-primary',
         secondaryText: 'text-accent-hover',
         accentColor: 'text-accent',
-        inputBg: 'bg-bg-card border-accent text-text-primary',
-        cardBg: 'bg-bg-deep',
+        inputBg: 'bg-card border-accent text-text-primary',
+        cardBg: 'bg-deep',
         button: 'bg-accent text-text-primary hover:bg-accent-hover',
-        buttonSecondary: 'bg-bg-card text-text-muted hover:bg-accent hover:text-text-primary',
+        buttonSecondary: 'bg-card text-text-muted hover:bg-accent hover:text-text-primary',
         border: 'border-accent',
         highlight: 'text-accent',
         likedColor: 'text-danger',
@@ -1216,7 +1216,7 @@ export const EquipmentQuestions: React.FC<EquipmentQuestionsProps> = ({ equipmen
         ) : (
           // 空状态
           <div className="py-12 text-center">
-            <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+            <div className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
               <i className="fa-solid fa-question-circle text-2xl"></i>
             </div>
             <h3 className="text-lg font-medium text-text-primary mb-2">暂无相关问题</h3>

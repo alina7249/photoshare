@@ -58,15 +58,15 @@ export const EventCard: React.FC<EventCardProps> = ({
             {isContest ? (
               <span className={`text-xs px-2 py-1 rounded-full ${
                 item.status === '进行中'
-                  ? 'bg-bg-card/50 text-text-primary'
+                  ? 'bg-card/50 text-text-primary'
                   : item.status === '已截止'
                     ? 'bg-accent-hover text-text-primary'
-                    : 'bg-bg-card/50 text-text-primary'
+                    : 'bg-card/50 text-text-primary'
               }`}>
                 {item.status}
               </span>
             ) : (
-              <span className="text-xs px-2 py-1 bg-bg-card/50 text-text-primary rounded-full">
+              <span className="text-xs px-2 py-1 bg-card/50 text-text-primary rounded-full">
                 {item.tags[0] || '其他'}
               </span>
             )}
@@ -141,7 +141,7 @@ export const EventCard: React.FC<EventCardProps> = ({
                 className={`px-2 py-1 rounded-full text-xs ${
                   selectedTags.includes(tag)
                     ? 'bg-text-primary text-accent'
-                    : 'bg-bg-card/50 text-text-primary border border-accent-hover/30'
+                    : 'bg-card/50 text-text-primary border border-accent-hover/30'
                 } transition-colors`}
               >
                 #{tag}

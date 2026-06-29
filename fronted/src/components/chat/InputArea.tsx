@@ -223,7 +223,7 @@ export const InputArea: React.FC = () => {
     <div className="space-y-4">
       {/* 文件上传进度条 */}
       {isFileUploading && (
-        <div className={`rounded-lg overflow-hidden ${theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-100'}`}>
+        <div className={`rounded-lg overflow-hidden ${theme === 'dark' ? 'bg-deep' : 'bg-gray-100'}`}>
           <div 
             className={`h-1.5 ${theme === 'dark' ? 'bg-accent' : 'bg-blue-500'}`} 
             style={{ width: `${uploadingProgress}%` }}
@@ -237,7 +237,7 @@ export const InputArea: React.FC = () => {
       
       {/* 输入框区域 */}
       <div className={`rounded-xl p-3 flex items-end space-x-2 ${
-        theme === 'dark' ? 'bg-bg-deep border border-accent' : 'bg-gray-100'
+        theme === 'dark' ? 'bg-deep border border-accent' : 'bg-gray-100'
       } shadow-sm`}>
         <input
           type="file"
@@ -318,7 +318,7 @@ export const InputArea: React.FC = () => {
           
           {isOptionsOpen && (
             <div className={`absolute right-0 bottom-full mb-2 w-48 rounded-lg shadow-xl z-20 ${
-              theme === 'dark' ? 'bg-bg-card border border-accent' : 'bg-white border border-gray-200'
+              theme === 'dark' ? 'bg-card border border-accent' : 'bg-white border border-gray-200'
             }`}>
               <div className="py-1">
                 <button
@@ -380,7 +380,7 @@ export const InputArea: React.FC = () => {
           
           {isRoleDropdownOpen && (
             <div className={`absolute right-0 bottom-full mb-2 w-64 rounded-lg shadow-xl z-20 ${
-              theme === 'dark' ? 'bg-bg-card border border-accent' : 'bg-white border border-gray-200'
+              theme === 'dark' ? 'bg-card border border-accent' : 'bg-white border border-gray-200'
             }`}>
               <div className="p-3 border-b border-gray-200 dark:border-accent">
                 <h4 className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>选择AI助手</h4>

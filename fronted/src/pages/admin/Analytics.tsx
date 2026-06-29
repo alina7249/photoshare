@@ -51,7 +51,7 @@ const Analytics: React.FC = () => {
           <p className="text-text-muted mt-1">查看系统各项数据分析报表</p>
         </div>
         <div className="mt-4 md:mt-0 flex items-center space-x-3">
-          <div className="flex bg-bg-card rounded-lg overflow-hidden">
+          <div className="flex bg-card rounded-lg overflow-hidden">
             {['day', 'week', 'month', 'year'].map((range) => (
               <button
                 key={range}
@@ -108,14 +108,14 @@ const Analytics: React.FC = () => {
       </div>
 
       {/* 分析类型标签页 */}
-      <div className="bg-bg-card border border-accent rounded-xl overflow-hidden">
+      <div className="bg-card border border-accent rounded-xl overflow-hidden">
         <div className="flex border-b border-accent flex-wrap">
           <button
             onClick={() => setActiveTab('overview')}
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'overview'
                 ? 'bg-accent text-text-primary'
-                : 'bg-bg-card text-text-muted hover:text-text-primary'
+                : 'bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-chart-pie mr-2"></i>
@@ -126,7 +126,7 @@ const Analytics: React.FC = () => {
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'users'
                 ? 'bg-accent text-text-primary'
-                : 'bg-bg-card text-text-muted hover:text-text-primary'
+                : 'bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-users mr-2"></i>
@@ -137,7 +137,7 @@ const Analytics: React.FC = () => {
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'content'
                 ? 'bg-accent text-text-primary'
-                : 'bg-bg-card text-text-muted hover:text-text-primary'
+                : 'bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-images mr-2"></i>
@@ -148,7 +148,7 @@ const Analytics: React.FC = () => {
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'revenue'
                 ? 'bg-accent text-text-primary'
-                : 'bg-bg-card text-text-muted hover:text-text-primary'
+                : 'bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-chart-line mr-2"></i>
@@ -159,7 +159,7 @@ const Analytics: React.FC = () => {
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'engagement'
                 ? 'bg-accent text-text-primary'
-                : 'bg-bg-card text-text-muted hover:text-text-primary'
+                : 'bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-heart mr-2"></i>
@@ -178,7 +178,7 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-bg-deep rounded-xl p-6 border border-accent"
+                  className="bg-deep rounded-xl p-6 border border-accent"
                 >
                   <div className="flex items-center justify-between mb-4">
                     <h2 className="text-lg font-bold text-text-primary">用户增长趋势</h2>
@@ -236,7 +236,7 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="bg-bg-deep rounded-xl p-6 border border-accent"
+                  className="bg-deep rounded-xl p-6 border border-accent"
                 >
                   <h2 className="text-lg font-bold text-text-primary mb-4">用户活跃度分布</h2>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -290,7 +290,7 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="bg-bg-deep rounded-xl p-6 border border-accent"
+                  className="bg-deep rounded-xl p-6 border border-accent"
                 >
                   <div className="flex items-center justify-between mb-4">
                     <h2 className="text-lg font-bold text-text-primary">内容类型统计</h2>
@@ -332,7 +332,7 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  className="bg-bg-deep rounded-xl p-6 border border-accent"
+                  className="bg-deep rounded-xl p-6 border border-accent"
                 >
                   <h2 className="text-lg font-bold text-text-primary mb-4">热门摄影分类占比</h2>
                   <div className="h-60">
@@ -373,7 +373,7 @@ const Analytics: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="bg-bg-deep rounded-xl p-6 border border-accent"
+                className="bg-deep rounded-xl p-6 border border-accent"
               >
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-lg font-bold text-text-primary">用户增长趋势</h2>
@@ -407,7 +407,7 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-bg-deep rounded-xl p-6 border border-accent"
+                  className="bg-deep rounded-xl p-6 border border-accent"
                 >
                   <h2 className="text-lg font-bold text-text-primary mb-4">用户活跃度分布</h2>
                   <div className="h-60">
@@ -440,7 +440,7 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-bg-deep rounded-xl p-6 border border-accent"
+                  className="bg-deep rounded-xl p-6 border border-accent"
                 >
                   <h2 className="text-lg font-bold text-text-primary mb-4">热门摄影分类占比</h2>
                   <div className="h-60">
@@ -481,7 +481,7 @@ const Analytics: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="bg-bg-deep rounded-xl p-6 border border-accent"
+                className="bg-deep rounded-xl p-6 border border-accent"
               >
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-lg font-bold text-text-primary">内容类型统计</h2>
@@ -528,7 +528,7 @@ const Analytics: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="bg-bg-deep rounded-xl p-6 border border-accent"
+                className="bg-deep rounded-xl p-6 border border-accent"
               >
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-lg font-bold text-text-primary">收入趋势</h2>
@@ -561,7 +561,7 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-bg-deep rounded-xl p-6 border border-accent"
+                  className="bg-deep rounded-xl p-6 border border-accent"
                 >
                   <div className="flex items-center justify-between mb-4">
                     <h2 className="text-lg font-bold text-text-primary">互动趋势</h2>
@@ -594,7 +594,7 @@ const Analytics: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="bg-bg-deep rounded-xl p-6 border border-accent"
+                  className="bg-deep rounded-xl p-6 border border-accent"
                 >
                   <h2 className="text-lg font-bold text-text-primary mb-4">热门摄影分类占比</h2>
                   <div className="h-60">

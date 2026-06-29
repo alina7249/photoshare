@@ -51,13 +51,13 @@ export const ProfileSidebar: React.FC<ProfileSidebarProps> = ({
         animate={{ x: 0 }}
         exit={{ x: '100%' }}
         transition={{ type: 'spring', damping: 20 }}
-        className="absolute top-0 right-0 h-full w-[320px] max-w-[90%] bg-bg-deep border-l border-accent star-texture overflow-y-auto"
+        className="absolute top-0 right-0 h-full w-[320px] max-w-[90%] bg-deep border-l border-accent star-texture overflow-y-auto"
       >
         {/* 顶部关闭按钮 */}
         <div className="flex justify-end p-4">
           <button 
             onClick={onClose}
-            className="w-8 h-8 rounded-full flex items-center justify-center text-text-primary hover:bg-bg-card transition-colors"
+            className="w-8 h-8 rounded-full flex items-center justify-center text-text-primary hover:bg-card transition-colors"
           >
             <i className="fa-solid fa-times"></i>
           </button>
@@ -78,12 +78,12 @@ export const ProfileSidebar: React.FC<ProfileSidebarProps> = ({
           </div>
           
           {/* 等级和进度条 */}
-          <div className="bg-bg-card rounded-lg p-4 mb-4">
+          <div className="bg-card rounded-lg p-4 mb-4">
             <div className="flex justify-between items-center mb-2">
               <span className="text-accent text-sm">{level} LV.{levelNum}</span>
               <span className="text-accent text-xs">{progress}/{progressMax}成长值</span>
             </div>
-            <div className="w-full h-2 bg-bg-deep rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-deep rounded-full overflow-hidden">
               <div 
                 className="h-full bg-accent" 
                 style={{ width: `${(progress / progressMax) * 100}%` }}
@@ -99,15 +99,15 @@ export const ProfileSidebar: React.FC<ProfileSidebarProps> = ({
         
         {/* 中间核心数据统计区 */}
         <div className="grid grid-cols-3 gap-1 px-6 mb-6">
-          <div className="bg-bg-card rounded-lg p-3 text-center">
+          <div className="bg-card rounded-lg p-3 text-center">
             <p className="text-text-muted text-sm mb-1">作品</p>
             <p className="text-text-primary font-bold text-lg">{stats.posts}</p>
           </div>
-          <div className="bg-bg-card rounded-lg p-3 text-center">
+          <div className="bg-card rounded-lg p-3 text-center">
             <p className="text-text-muted text-sm mb-1">获赞</p>
             <p className="text-text-primary font-bold text-lg">{stats.likes}</p>
           </div>
-          <div className="bg-bg-card rounded-lg p-3 text-center">
+          <div className="bg-card rounded-lg p-3 text-center">
             <p className="text-text-muted text-sm mb-1">收藏</p>
             <p className="text-text-primary font-bold text-lg">{stats.collections}</p>
           </div>

@@ -74,7 +74,7 @@ const GroupCard: React.FC<GroupCardProps> = (
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="bg-bg-card rounded-xl overflow-hidden border border-accent hover:shadow-lg transition-shadow"
+      className="bg-card rounded-xl overflow-hidden border border-accent hover:shadow-lg transition-shadow"
     >
       {/* 封面图 */}
       <div className="relative h-32">
@@ -87,7 +87,7 @@ const GroupCard: React.FC<GroupCardProps> = (
         
         {/* 小组头像 */}
         <div className="absolute bottom-0 left-4 transform translate-y-1/2">
-          <div className="w-16 h-16 rounded-full border-4 border-bg-card overflow-hidden">
+          <div className="w-16 h-16 rounded-full border-4 border-card overflow-hidden">
             <img
               src={group.avatar}
               alt={group.name}

@@ -10,7 +10,7 @@ const Register: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-md w-full space-y-8 bg-bg-dark-alt p-8 rounded-xl shadow-xl border border-border-light-form"
+        className="max-w-md w-full space-y-8 bg-dark-alt p-8 rounded-xl shadow-xl border border-border-light-form"
       >
         <div className="text-center relative">
           <div className="absolute inset-0 bg-[url('https://space.coze.cn/api/coze_space/gen_image?image_size=landscape_16_9&prompt=galaxy%20background%20stars%20purple%20blue&sign=9a9229c82aef2e4f5ac40648383863bf')] bg-cover opacity-10 rounded-full w-20 h-20 mx-auto -mt-12"></div>
@@ -34,7 +34,7 @@ const Register: React.FC = () => {
             <div className="w-full border-t border-border-light-form"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-bg-dark-alt text-text-light-muted">
+            <span className="px-2 bg-dark-alt text-text-light-muted">
               或通过以下方式注册
             </span>
           </div>
@@ -44,7 +44,7 @@ const Register: React.FC = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex justify-center items-center px-4 py-2 border border-border-light-form rounded-lg bg-bg-dark-alt text-text-light-label hover:bg-border-light-form transition-colors"
+            className="inline-flex justify-center items-center px-4 py-2 border border-border-light-form rounded-lg bg-dark-alt text-text-light-label hover:bg-border-light-form transition-colors"
           >
             <i className="fa-brands fa-weixin text-green-500"></i>
           </motion.button>
@@ -52,7 +52,7 @@ const Register: React.FC = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex justify-center items-center px-4 py-2 border border-border-light-form rounded-lg bg-bg-dark-alt text-text-light-label hover:bg-border-light-form transition-colors"
+            className="inline-flex justify-center items-center px-4 py-2 border border-border-light-form rounded-lg bg-dark-alt text-text-light-label hover:bg-border-light-form transition-colors"
           >
             <i className="fa-brands fa-weibo text-red-500"></i>
           </motion.button>
@@ -60,7 +60,7 @@ const Register: React.FC = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex justify-center items-center px-4 py-2 border border-border-light-form rounded-lg bg-bg-dark-alt text-text-light-label hover:bg-border-light-form transition-colors"
+            className="inline-flex justify-center items-center px-4 py-2 border border-border-light-form rounded-lg bg-dark-alt text-text-light-label hover:bg-border-light-form transition-colors"
           >
             <i className="fa-brands fa-qq text-blue-400"></i>
           </motion.button>

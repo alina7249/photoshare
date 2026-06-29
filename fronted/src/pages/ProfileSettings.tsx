@@ -308,7 +308,7 @@ const ProfileSettings: React.FC = () => {
 
     if (!isAuthenticated) {
         return (
-            <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+            <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
                 <div className="flex flex-col items-center justify-center h-[60vh] text-center">
                     <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
                         <i className="fa-solid fa-user-lock text-2xl"></i>
@@ -322,7 +322,7 @@ const ProfileSettings: React.FC = () => {
     }
 
     return (
-        <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+        <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
                 {/* 返回按钮 */}
                 <div className="mb-6">
@@ -339,13 +339,13 @@ const ProfileSettings: React.FC = () => {
                 </div>
 
                 {/* 标签页导航 */}
-                <div className="bg-bg-card rounded-xl p-1 mb-8 flex flex-wrap">
-                    <button onClick={() => setActiveTab("account")} className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${activeTab === "account" ? "bg-accent text-text-primary font-medium" : "bg-bg-card text-text-muted hover:text-text-primary"}`}>账号信息</button>
-                    <button onClick={() => setActiveTab("orders")} className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${activeTab === "orders" ? "bg-accent text-text-primary font-medium" : "bg-bg-card text-text-muted hover:text-text-primary"}`}>我的订单</button>
-                    <button onClick={() => setActiveTab("notifications")} className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${activeTab === "notifications" ? "bg-accent text-text-primary font-medium" : "bg-bg-card text-text-muted hover:text-text-primary"}`}>通知</button>
-                    <button onClick={() => setActiveTab("privacy")} className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${activeTab === "privacy" ? "bg-accent text-text-primary font-medium" : "bg-bg-card text-text-muted hover:text-text-primary"}`}>隐私设置</button>
-                    <button onClick={() => setActiveTab("preferences")} className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${activeTab === "preferences" ? "bg-accent text-text-primary font-medium" : "bg-bg-card text-text-muted hover:text-text-primary"}`}>偏好设置</button>
-                    <button onClick={() => setActiveTab("security")} className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${activeTab === "security" ? "bg-accent text-text-primary font-medium" : "bg-bg-card text-text-muted hover:text-text-primary"}`}>安全设置</button>
+                <div className="bg-card rounded-xl p-1 mb-8 flex flex-wrap">
+                    <button onClick={() => setActiveTab("account")} className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${activeTab === "account" ? "bg-accent text-text-primary font-medium" : "bg-card text-text-muted hover:text-text-primary"}`}>账号信息</button>
+                    <button onClick={() => setActiveTab("orders")} className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${activeTab === "orders" ? "bg-accent text-text-primary font-medium" : "bg-card text-text-muted hover:text-text-primary"}`}>我的订单</button>
+                    <button onClick={() => setActiveTab("notifications")} className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${activeTab === "notifications" ? "bg-accent text-text-primary font-medium" : "bg-card text-text-muted hover:text-text-primary"}`}>通知</button>
+                    <button onClick={() => setActiveTab("privacy")} className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${activeTab === "privacy" ? "bg-accent text-text-primary font-medium" : "bg-card text-text-muted hover:text-text-primary"}`}>隐私设置</button>
+                    <button onClick={() => setActiveTab("preferences")} className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${activeTab === "preferences" ? "bg-accent text-text-primary font-medium" : "bg-card text-text-muted hover:text-text-primary"}`}>偏好设置</button>
+                    <button onClick={() => setActiveTab("security")} className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${activeTab === "security" ? "bg-accent text-text-primary font-medium" : "bg-card text-text-muted hover:text-text-primary"}`}>安全设置</button>
                 </div>
 
                 {/* 保存成功提示 */}
@@ -355,7 +355,7 @@ const ProfileSettings: React.FC = () => {
                 </motion.div>}
 
                 {/* 账号信息 */}
-                {activeTab === "account" && <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                {activeTab === "account" && <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
                         <h3 className="text-lg font-bold text-text-primary">个人信息</h3>
                         <button onClick={() => setIsEditing(!isEditing)} className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent mt-3 md:mt-0">
@@ -380,7 +380,7 @@ const ProfileSettings: React.FC = () => {
                                         <span>上传头像...</span>
                                         <span>{uploadProgress}%</span>
                                     </div>
-                                    <div className="w-full h-1.5 bg-bg-deep rounded-full overflow-hidden">
+                                    <div className="w-full h-1.5 bg-deep rounded-full overflow-hidden">
                                         <div className="h-full bg-accent" style={{ width: `${uploadProgress}%` }}></div>
                                     </div>
                                 </div>}
@@ -400,7 +400,7 @@ const ProfileSettings: React.FC = () => {
                                     <span>上传封面...</span>
                                     <span>{uploadProgress}%</span>
                                 </div>
-                                <div className="w-full h-1.5 bg-bg-deep rounded-full overflow-hidden">
+                                <div className="w-full h-1.5 bg-deep rounded-full overflow-hidden">
                                     <div className="h-full bg-accent" style={{ width: `${uploadProgress}%` }}></div>
                                 </div>
                             </div>}
@@ -410,27 +410,27 @@ const ProfileSettings: React.FC = () => {
                         <div className="space-y-6">
                             <div>
                                 <label htmlFor="username" className="block text-sm font-medium text-text-primary mb-1">用户名</label>
-                                <input type="text" id="username" value={formData.username} onChange={e => handleInputChange("username", e.target.value)} disabled={!isEditing} className={`w-full px-4 py-3 bg-text-muted border border-accent text-bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all ${!isEditing ? "cursor-not-allowed" : ""}`} />
+                                <input type="text" id="username" value={formData.username} onChange={e => handleInputChange("username", e.target.value)} disabled={!isEditing} className={`w-full px-4 py-3 bg-text-muted border border-accent text-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all ${!isEditing ? "cursor-not-allowed" : ""}`} />
                             </div>
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-text-primary mb-1">电子邮箱</label>
-                                <input type="email" id="email" value={formData.email} onChange={e => handleInputChange("email", e.target.value)} disabled={!isEditing} className={`w-full px-4 py-3 bg-text-muted border border-accent text-bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all ${!isEditing ? "cursor-not-allowed" : ""}`} />
+                                <input type="email" id="email" value={formData.email} onChange={e => handleInputChange("email", e.target.value)} disabled={!isEditing} className={`w-full px-4 py-3 bg-text-muted border border-accent text-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all ${!isEditing ? "cursor-not-allowed" : ""}`} />
                             </div>
                             <div>
                                 <label htmlFor="phone" className="block text-sm font-medium text-text-primary mb-1">手机号码</label>
-                                <input type="tel" id="phone" value={formData.phone} onChange={e => handleInputChange("phone", e.target.value)} disabled={!isEditing} className={`w-full px-4 py-3 bg-text-muted border border-accent text-bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all ${!isEditing ? "cursor-not-allowed" : ""}`} />
+                                <input type="tel" id="phone" value={formData.phone} onChange={e => handleInputChange("phone", e.target.value)} disabled={!isEditing} className={`w-full px-4 py-3 bg-text-muted border border-accent text-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all ${!isEditing ? "cursor-not-allowed" : ""}`} />
                             </div>
                             <div>
                                 <label htmlFor="bio" className="block text-sm font-medium text-text-primary mb-1">个人简介</label>
-                                <textarea id="bio" value={formData.bio} onChange={e => handleInputChange("bio", e.target.value)} disabled={!isEditing} rows={3} className={`w-full px-4 py-3 bg-text-muted border border-accent text-bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none ${!isEditing ? "cursor-not-allowed" : ""}`} />
+                                <textarea id="bio" value={formData.bio} onChange={e => handleInputChange("bio", e.target.value)} disabled={!isEditing} rows={3} className={`w-full px-4 py-3 bg-text-muted border border-accent text-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none ${!isEditing ? "cursor-not-allowed" : ""}`} />
                             </div>
                             <div>
                                 <label htmlFor="location" className="block text-sm font-medium text-text-primary mb-1">所在地区</label>
-                                <input type="text" id="location" value={formData.location} onChange={e => handleInputChange("location", e.target.value)} disabled={!isEditing} className={`w-full px-4 py-3 bg-text-muted border border-accent text-bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all ${!isEditing ? "cursor-not-allowed" : ""}`} />
+                                <input type="text" id="location" value={formData.location} onChange={e => handleInputChange("location", e.target.value)} disabled={!isEditing} className={`w-full px-4 py-3 bg-text-muted border border-accent text-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all ${!isEditing ? "cursor-not-allowed" : ""}`} />
                             </div>
                             <div>
                                 <label htmlFor="website" className="block text-sm font-medium text-text-primary mb-1">个人网站</label>
-                                <input type="url" id="website" value={formData.website} onChange={e => handleInputChange("website", e.target.value)} disabled={!isEditing} className={`w-full px-4 py-3 bg-text-muted border border-accent text-bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all ${!isEditing ? "cursor-not-allowed" : ""}`} />
+                                <input type="url" id="website" value={formData.website} onChange={e => handleInputChange("website", e.target.value)} disabled={!isEditing} className={`w-full px-4 py-3 bg-text-muted border border-accent text-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all ${!isEditing ? "cursor-not-allowed" : ""}`} />
                             </div>
                             {isEditing && <div className="flex justify-end mt-4">
                                 <button onClick={handleSaveAccount} className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors">保存更改</button>
@@ -440,11 +440,11 @@ const ProfileSettings: React.FC = () => {
                 </div>}
 
                 {/* 我的订单 */}
-                {activeTab === "orders" && <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                {activeTab === "orders" && <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                     <h3 className="text-lg font-bold text-text-primary mb-6">我的订单</h3>
                     <div className="space-y-4">
                         {orders.map(order => (
-                            <div key={order.id} className="bg-bg-deep rounded-lg p-4 flex flex-col md:flex-row md:items-center justify-between">
+                            <div key={order.id} className="bg-deep rounded-lg p-4 flex flex-col md:flex-row md:items-center justify-between">
                                 <div className="flex-1">
                                     <div className="flex items-center justify-between mb-2">
                                         <span className="text-sm text-text-muted">订单号: {order.id}</span>
@@ -464,14 +464,14 @@ const ProfileSettings: React.FC = () => {
                 </div>}
 
                 {/* 通知 */}
-                {activeTab === "notifications" && <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                {activeTab === "notifications" && <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                     <div className="flex items-center justify-between mb-6">
                         <h3 className="text-lg font-bold text-text-primary">通知</h3>
                         <div className="flex space-x-2">
-                            <button onClick={selectAllNotifications} className="px-3 py-1.5 bg-bg-deep text-text-muted rounded-lg text-sm hover:bg-accent hover:text-text-primary transition-colors">
+                            <button onClick={selectAllNotifications} className="px-3 py-1.5 bg-deep text-text-muted rounded-lg text-sm hover:bg-accent hover:text-text-primary transition-colors">
                                 {selectedNotificationIds.length === notifications.length ? "取消全选" : "全选"}
                             </button>
-                            <button onClick={markNotificationsAsRead} className="px-3 py-1.5 bg-bg-deep text-text-muted rounded-lg text-sm hover:bg-accent hover:text-text-primary transition-colors">
+                            <button onClick={markNotificationsAsRead} className="px-3 py-1.5 bg-deep text-text-muted rounded-lg text-sm hover:bg-accent hover:text-text-primary transition-colors">
                                 标记已读
                             </button>
                             {selectedNotificationIds.length > 0 && <button onClick={deleteSelectedNotifications} className="px-3 py-1.5 bg-red-500/20 text-red-400 rounded-lg text-sm hover:bg-red-500/40 transition-colors">
@@ -481,7 +481,7 @@ const ProfileSettings: React.FC = () => {
                     </div>
                     <div className="space-y-3">
                         {notifications.map(notification => (
-                            <div key={notification.id} className={`bg-bg-deep rounded-lg p-4 flex items-start space-x-3 ${!notification.read ? "border-l-4 border-accent" : ""}`}>
+                            <div key={notification.id} className={`bg-deep rounded-lg p-4 flex items-start space-x-3 ${!notification.read ? "border-l-4 border-accent" : ""}`}>
                                 <input type="checkbox" checked={selectedNotificationIds.includes(notification.id)} onChange={() => toggleNotificationSelect(notification.id)} className="mt-1" />
                                 <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${notification.type === "like" ? "bg-red-500/20 text-red-400" : notification.type === "comment" ? "bg-blue-500/20 text-blue-400" : notification.type === "follow" ? "bg-green-500/20 text-green-400" : "bg-gray-500/20 text-gray-400"}`}>
                                     {notification.type === "like" && <i className="fa-solid fa-heart"></i>}
@@ -499,13 +499,13 @@ const ProfileSettings: React.FC = () => {
                 </div>}
 
                 {/* 隐私设置 */}
-                {activeTab === "privacy" && <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                {activeTab === "privacy" && <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                     <div className="flex items-center justify-between mb-6">
                         <h3 className="text-lg font-bold text-text-primary">隐私设置</h3>
                         <button onClick={handleSaveSettings} className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors">保存设置</button>
                     </div>
                     <div className="space-y-6">
-                        <div className="p-4 bg-bg-deep rounded-lg">
+                        <div className="p-4 bg-deep rounded-lg">
                             <h4 className="font-medium text-text-primary mb-4">个人资料可见性</h4>
                             <div className="space-y-4">
                                 <div className="flex items-center justify-between">
@@ -515,7 +515,7 @@ const ProfileSettings: React.FC = () => {
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" className="sr-only peer" checked={privacySettings.profileVisible} onChange={e => handlePrivacyChange("profileVisible", e.target.checked)} />
-                                        <div className="w-9 h-5 bg-bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
+                                        <div className="w-9 h-5 bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
                                     </label>
                                 </div>
                                 <div className="flex items-center justify-between">
@@ -525,7 +525,7 @@ const ProfileSettings: React.FC = () => {
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" className="sr-only peer" checked={privacySettings.photosPublic} onChange={e => handlePrivacyChange("photosPublic", e.target.checked)} />
-                                        <div className="w-9 h-5 bg-bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
+                                        <div className="w-9 h-5 bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
                                     </label>
                                 </div>
                                 <div className="flex items-center justify-between">
@@ -535,7 +535,7 @@ const ProfileSettings: React.FC = () => {
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" className="sr-only peer" checked={privacySettings.allowComments} onChange={e => handlePrivacyChange("allowComments", e.target.checked)} />
-                                        <div className="w-9 h-5 bg-bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
+                                        <div className="w-9 h-5 bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
                                     </label>
                                 </div>
                                 <div className="flex items-center justify-between">
@@ -545,12 +545,12 @@ const ProfileSettings: React.FC = () => {
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" className="sr-only peer" checked={privacySettings.allowFollowing} onChange={e => handlePrivacyChange("allowFollowing", e.target.checked)} />
-                                        <div className="w-9 h-5 bg-bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
+                                        <div className="w-9 h-5 bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
                                     </label>
                                 </div>
                             </div>
                         </div>
-                        <div className="p-4 bg-bg-deep rounded-lg">
+                        <div className="p-4 bg-deep rounded-lg">
                             <h4 className="font-medium text-text-primary mb-4">个人信息展示</h4>
                             <div className="space-y-4">
                                 <div className="flex items-center justify-between">
@@ -560,7 +560,7 @@ const ProfileSettings: React.FC = () => {
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" className="sr-only peer" checked={privacySettings.showLocation} onChange={e => handlePrivacyChange("showLocation", e.target.checked)} />
-                                        <div className="w-9 h-5 bg-bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
+                                        <div className="w-9 h-5 bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
                                     </label>
                                 </div>
                                 <div className="flex items-center justify-between">
@@ -570,7 +570,7 @@ const ProfileSettings: React.FC = () => {
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" className="sr-only peer" checked={privacySettings.showEmail} onChange={e => handlePrivacyChange("showEmail", e.target.checked)} />
-                                        <div className="w-9 h-5 bg-bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
+                                        <div className="w-9 h-5 bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
                                     </label>
                                 </div>
                                 <div className="flex items-center justify-between">
@@ -580,7 +580,7 @@ const ProfileSettings: React.FC = () => {
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" className="sr-only peer" checked={privacySettings.showPhone} onChange={e => handlePrivacyChange("showPhone", e.target.checked)} />
-                                        <div className="w-9 h-5 bg-bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
+                                        <div className="w-9 h-5 bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
                                     </label>
                                 </div>
                             </div>
@@ -589,18 +589,18 @@ const ProfileSettings: React.FC = () => {
                 </div>}
 
                 {/* 偏好设置 */}
-                {activeTab === "preferences" && <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                {activeTab === "preferences" && <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                     <div className="flex items-center justify-between mb-6">
                         <h3 className="text-lg font-bold text-text-primary">偏好设置</h3>
                         <button onClick={handleSaveSettings} className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors">保存设置</button>
                     </div>
                     <div className="space-y-6">
-                        <div className="p-4 bg-bg-deep rounded-lg">
+                        <div className="p-4 bg-deep rounded-lg">
                             <h4 className="font-medium text-text-primary mb-4">界面设置</h4>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div>
                                     <label className="block text-sm font-medium text-text-primary mb-1">主题偏好</label>
-                                    <select value={preferences.theme} onChange={e => handlePreferencesChange("theme", e.target.value)} className="w-full px-4 py-3 bg-text-muted border border-accent text-bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
+                                    <select value={preferences.theme} onChange={e => handlePreferencesChange("theme", e.target.value)} className="w-full px-4 py-3 bg-text-muted border border-accent text-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                                         <option value="dark">深色模式</option>
                                         <option value="light">浅色模式</option>
                                         <option value="system">跟随系统</option>
@@ -608,14 +608,14 @@ const ProfileSettings: React.FC = () => {
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-text-primary mb-1">语言</label>
-                                    <select value={preferences.language} onChange={e => handlePreferencesChange("language", e.target.value)} className="w-full px-4 py-3 bg-text-muted border border-accent text-bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
+                                    <select value={preferences.language} onChange={e => handlePreferencesChange("language", e.target.value)} className="w-full px-4 py-3 bg-text-muted border border-accent text-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                                         <option value="zh-CN">简体中文</option>
                                         <option value="en-US">English (US)</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-text-primary mb-1">默认首页</label>
-                                    <select value={preferences.defaultTab} onChange={e => handlePreferencesChange("defaultTab", e.target.value)} className="w-full px-4 py-3 bg-text-muted border border-accent text-bg-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
+                                    <select value={preferences.defaultTab} onChange={e => handlePreferencesChange("defaultTab", e.target.value)} className="w-full px-4 py-3 bg-text-muted border border-accent text-card rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                                         <option value="feed">推荐动态</option>
                                         <option value="explore">发现作品</option>
                                         <option value="profile">个人主页</option>
@@ -623,7 +623,7 @@ const ProfileSettings: React.FC = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="p-4 bg-bg-deep rounded-lg">
+                        <div className="p-4 bg-deep rounded-lg">
                             <h4 className="font-medium text-text-primary mb-4">通知设置</h4>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="flex items-center justify-between">
@@ -633,7 +633,7 @@ const ProfileSettings: React.FC = () => {
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" className="sr-only peer" checked={preferences.notifications.newFollower} onChange={e => handleNotificationChange("newFollower", e.target.checked)} />
-                                        <div className="w-9 h-5 bg-bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
+                                        <div className="w-9 h-5 bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
                                     </label>
                                 </div>
                                 <div className="flex items-center justify-between">
@@ -643,7 +643,7 @@ const ProfileSettings: React.FC = () => {
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" className="sr-only peer" checked={preferences.notifications.newLike} onChange={e => handleNotificationChange("newLike", e.target.checked)} />
-                                        <div className="w-9 h-5 bg-bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
+                                        <div className="w-9 h-5 bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
                                     </label>
                                 </div>
                                 <div className="flex items-center justify-between">
@@ -653,7 +653,7 @@ const ProfileSettings: React.FC = () => {
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" className="sr-only peer" checked={preferences.notifications.newComment} onChange={e => handleNotificationChange("newComment", e.target.checked)} />
-                                        <div className="w-9 h-5 bg-bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
+                                        <div className="w-9 h-5 bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
                                     </label>
                                 </div>
                                 <div className="flex items-center justify-between">
@@ -663,7 +663,7 @@ const ProfileSettings: React.FC = () => {
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" className="sr-only peer" checked={preferences.notifications.newMessage} onChange={e => handleNotificationChange("newMessage", e.target.checked)} />
-                                        <div className="w-9 h-5 bg-bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
+                                        <div className="w-9 h-5 bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
                                     </label>
                                 </div>
                             </div>
@@ -672,10 +672,10 @@ const ProfileSettings: React.FC = () => {
                 </div>}
 
                 {/* 安全设置 */}
-                {activeTab === "security" && <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                {activeTab === "security" && <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                     <h3 className="text-lg font-bold text-text-primary mb-6">安全设置</h3>
                     <div className="space-y-6">
-                        <div className="p-4 bg-bg-deep rounded-lg">
+                        <div className="p-4 bg-deep rounded-lg">
                             <h4 className="font-medium text-text-primary mb-4">账号安全</h4>
                             <div className="flex items-center justify-between">
                                 <div>
@@ -685,7 +685,7 @@ const ProfileSettings: React.FC = () => {
                                 <button onClick={() => setShowPasswordModal(true)} className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors text-sm">修改</button>
                             </div>
                         </div>
-                        <div className="p-4 bg-bg-deep rounded-lg">
+                        <div className="p-4 bg-deep rounded-lg">
                             <h4 className="font-medium text-text-primary mb-4">登录记录</h4>
                             <div className="space-y-4">
                                 <div className="flex items-center justify-between">
@@ -698,7 +698,7 @@ const ProfileSettings: React.FC = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="p-4 bg-bg-deep rounded-lg">
+                        <div className="p-4 bg-deep rounded-lg">
                             <h4 className="font-medium text-text-primary mb-2">退出登录</h4>
                             <p className="text-sm text-text-muted mb-4">安全退出当前账号</p>
                             <button onClick={handleLogout} className="w-full py-2 bg-red-500/20 text-red-400 border border-red-500/40 rounded-lg font-medium hover:bg-red-500/40 transition-colors">退出登录</button>
@@ -708,24 +708,24 @@ const ProfileSettings: React.FC = () => {
 
                 {/* 修改密码弹窗 */}
                 {showPasswordModal && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-                    <div className="bg-bg-card rounded-xl p-6 w-full max-w-md mx-4">
+                    <div className="bg-card rounded-xl p-6 w-full max-w-md mx-4">
                         <h3 className="text-lg font-bold text-text-primary mb-6">修改密码</h3>
                         <div className="space-y-4">
                             <div>
                                 <label className="block text-sm font-medium text-text-primary mb-1">当前密码</label>
-                                <input type="password" value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder="请输入当前密码" />
+                                <input type="password" value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder="请输入当前密码" />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-text-primary mb-1">新密码</label>
-                                <input type="password" value={newPassword} onChange={e => setNewPassword(e.target.value)} className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder="请输入新密码" />
+                                <input type="password" value={newPassword} onChange={e => setNewPassword(e.target.value)} className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder="请输入新密码" />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-text-primary mb-1">确认新密码</label>
-                                <input type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder="请再次输入新密码" />
+                                <input type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder="请再次输入新密码" />
                             </div>
                         </div>
                         <div className="flex space-x-4 mt-6">
-                            <button onClick={closePasswordModal} className="flex-1 py-2 bg-bg-deep text-text-muted border border-accent rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors">取消</button>
+                            <button onClick={closePasswordModal} className="flex-1 py-2 bg-deep text-text-muted border border-accent rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors">取消</button>
                             <button onClick={handleChangePassword} className="flex-1 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors">确认修改</button>
                         </div>
                     </div>

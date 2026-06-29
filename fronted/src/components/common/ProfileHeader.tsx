@@ -50,19 +50,19 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   // 根据主题获取样式类
   const getBgClass = () => {
     return theme === 'dark' 
-      ? 'bg-bg-card border border-accent' 
+      ? 'bg-card border border-accent' 
       : 'bg-white border border-gray-200';
   };
   
   const getAvatarBorderClass = () => {
     return theme === 'dark' 
-      ? 'border-bg-card border-accent' 
+      ? 'border-card border-accent' 
       : 'border-white border-gray-200';
   };
   
   const getTextClass = (isPrimary: boolean) => {
     return isPrimary 
-      ? (theme === 'dark' ? 'text-text-primary' : 'text-bg-deep')
+      ? (theme === 'dark' ? 'text-text-primary' : 'text-deep')
       : (theme === 'dark' ? 'text-text-muted' : 'text-accent-hover');
   };
   
@@ -73,7 +73,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   };
   
   const getProgressBgClass = () => {
-    return theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-100';
+    return theme === 'dark' ? 'bg-deep' : 'bg-gray-100';
   };
   
   const getProgressFillClass = () => {

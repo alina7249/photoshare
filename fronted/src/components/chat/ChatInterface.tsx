@@ -42,10 +42,10 @@ export const ChatInterface: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`flex flex-col h-[calc(100vh-160px)] ${theme === 'dark' ? 'bg-bg-card' : 'bg-white'} rounded-xl shadow-xl overflow-hidden border ${theme === 'dark' ? 'border-accent' : 'border-gray-200'}`}
+      className={`flex flex-col h-[calc(100vh-160px)] ${theme === 'dark' ? 'bg-card' : 'bg-white'} rounded-xl shadow-xl overflow-hidden border ${theme === 'dark' ? 'border-accent' : 'border-gray-200'}`}
     >
       {/* 聊天头部 - 增强版 */}
-      <div className={`p-4 border-b ${theme === 'dark' ? 'border-accent bg-bg-deep' : 'border-gray-200 bg-gray-50'} flex justify-between items-center`}>
+      <div className={`p-4 border-b ${theme === 'dark' ? 'border-accent bg-deep' : 'border-gray-200 bg-gray-50'} flex justify-between items-center`}>
         <div className="flex items-center space-x-3">
           {/* AI角色头像 */}
           {selectedRole && (

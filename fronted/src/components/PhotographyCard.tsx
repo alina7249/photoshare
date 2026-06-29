@@ -63,7 +63,7 @@ export const PhotographyCard: React.FC<PhotographyCardProps> = ({ post }) => {
   return (
     <motion.div
       whileHover={{ y: -5, borderColor: 'var(--light-blue-gray)' }}
-      className="bg-bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-accent h-[500px] flex flex-col"
+      className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-accent h-[500px] flex flex-col"
     >
       {/* 图片容器 */}
       <div className="relative flex-shrink-0">

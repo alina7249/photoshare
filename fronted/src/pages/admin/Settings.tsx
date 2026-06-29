@@ -41,14 +41,14 @@ const Settings: React.FC = () => {
       </div>
 
       {/* 设置类型标签页 */}
-      <div className="bg-bg-card border border-accent rounded-xl overflow-hidden">
+      <div className="bg-card border border-accent rounded-xl overflow-hidden">
         <div className="flex border-b border-accent flex-wrap">
           <button
             onClick={() => setActiveTab('system')}
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'system'
                 ? 'bg-accent text-text-primary'
-                : 'bg-bg-card text-text-muted hover:text-text-primary'
+                : 'bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-cog mr-2"></i>
@@ -59,7 +59,7 @@ const Settings: React.FC = () => {
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'security'
                 ? 'bg-accent text-text-primary'
-                : 'bg-bg-card text-text-muted hover:text-text-primary'
+                : 'bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-shield-alt mr-2"></i>
@@ -70,7 +70,7 @@ const Settings: React.FC = () => {
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'permissions'
                 ? 'bg-accent text-text-primary'
-                : 'bg-bg-card text-text-muted hover:text-text-primary'
+                : 'bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-user-shield mr-2"></i>
@@ -81,7 +81,7 @@ const Settings: React.FC = () => {
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'notifications'
                 ? 'bg-accent text-text-primary'
-                : 'bg-bg-card text-text-muted hover:text-text-primary'
+                : 'bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-bell mr-2"></i>
@@ -92,7 +92,7 @@ const Settings: React.FC = () => {
             className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
               activeTab === 'backup'
                 ? 'bg-accent text-text-primary'
-                : 'bg-bg-card text-text-muted hover:text-text-primary'
+                : 'bg-card text-text-muted hover:text-text-primary'
             }`}
           >
             <i className="fa-solid fa-database mr-2"></i>
@@ -110,7 +110,7 @@ const Settings: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="space-y-6"
             >
-              <div className="bg-bg-deep rounded-xl p-6 border border-accent">
+              <div className="bg-deep rounded-xl p-6 border border-accent">
                 <h2 className="text-lg font-bold text-text-primary mb-6">基本设置</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -120,7 +120,7 @@ const Settings: React.FC = () => {
                       type="text"
                       value={siteName}
                       onChange={(e) => setSiteName(e.target.value)}
-                      className="w-full px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     />
                   </div>
                   
@@ -129,7 +129,7 @@ const Settings: React.FC = () => {
                     <textarea
                       value={siteDescription}
                       onChange={(e) => setSiteDescription(e.target.value)}
-                      className="w-full px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[80px]"
+                      className="w-full px-4 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[80px]"
                     ></textarea>
                   </div>
                   
@@ -138,7 +138,7 @@ const Settings: React.FC = () => {
                     <select
                       value={defaultLanguage}
                       onChange={(e) => setDefaultLanguage(e.target.value)}
-                      className="w-full px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
+                      className="w-full px-4 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
                     >
                       <option value="zh-CN">简体中文</option>
                       <option value="en-US">English</option>
@@ -152,7 +152,7 @@ const Settings: React.FC = () => {
                       type="number"
                       value={maxFileSize}
                       onChange={(e) => setMaxFileSize(e.target.value)}
-                      className="w-full px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                       min="1"
                       max="100"
                     />
@@ -205,13 +205,13 @@ const Settings: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-bg-deep rounded-xl p-6 border border-accent">
+              <div className="bg-deep rounded-xl p-6 border border-accent">
                 <h2 className="text-lg font-bold text-text-primary mb-6">API设置</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-text-muted mb-2">API接口状态</label>
-                    <div className="flex items-center p-2 bg-bg-card border border-accent text-text-primary rounded-lg">
+                    <div className="flex items-center p-2 bg-card border border-accent text-text-primary rounded-lg">
                       <span className="w-3 h-3 bg-teal rounded-full mr-2"></span>
                       <span>已启用</span>
                     </div>
@@ -219,7 +219,7 @@ const Settings: React.FC = () => {
                   
                   <div>
                     <label className="block text-sm font-medium text-text-muted mb-2">API访问密钥</label>
-                    <div className="flex items-center justify-between p-2 bg-bg-card border border-accent text-text-primary rounded-lg">
+                    <div className="flex items-center justify-between p-2 bg-card border border-accent text-text-primary rounded-lg">
                       <span className="text-mono">***********</span>
                       <button className="text-accent hover:text-accent-hover transition-colors">
                         <i className="fa-solid fa-refresh"></i>
@@ -248,7 +248,7 @@ const Settings: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="space-y-6"
             >
-              <div className="bg-bg-deep rounded-xl p-6 border border-accent">
+              <div className="bg-deep rounded-xl p-6 border border-accent">
                 <h2 className="text-lg font-bold text-text-primary mb-6">密码设置</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -257,7 +257,7 @@ const Settings: React.FC = () => {
                     <select
                       value={passwordComplexity}
                       onChange={(e) => setPasswordComplexity(e.target.value as 'low' | 'medium' | 'high')}
-                      className="w-full px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
+                      className="w-full px-4 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
                     >
                         <option value="low">低 (至少6位字符)</option>
                         <option value="medium">中 (8位，包含字母和数字)</option>
@@ -271,7 +271,7 @@ const Settings: React.FC = () => {
                       type="number"
                       value={loginAttempts}
                       onChange={(e) => setLoginAttempts(e.target.value)}
-                      className="w-full px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                       min="1"
                       max="20"
                     />
@@ -306,7 +306,7 @@ const Settings: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-bg-deep rounded-xl p-6 border border-accent">
+              <div className="bg-deep rounded-xl p-6 border border-accent">
                 <h2 className="text-lg font-bold text-text-primary mb-6">会话设置</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -316,7 +316,7 @@ const Settings: React.FC = () => {
                       type="number"
                       value={sessionTimeout}
                       onChange={(e) => setSessionTimeout(e.target.value)}
-                      className="w-full px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                       min="5"
                       max="120"
                     />
@@ -342,7 +342,7 @@ const Settings: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="bg-bg-deep rounded-xl p-6 border border-accent">
+              <div className="bg-deep rounded-xl p-6 border border-accent">
                 <h2 className="text-lg font-bold text-text-primary mb-6">角色与权限管理</h2>
                 
                 <div className="overflow-x-auto">
@@ -360,13 +360,13 @@ const Settings: React.FC = () => {
                       <tr>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-text-primary">用户管理</td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
                           <button className="text-accent hover:text-accent-hover transition-colors">配置</button>
@@ -375,13 +375,13 @@ const Settings: React.FC = () => {
                       <tr>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-text-primary">内容管理</td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" checked className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" checked className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
                           <button className="text-accent hover:text-accent-hover transition-colors">配置</button>
@@ -390,13 +390,13 @@ const Settings: React.FC = () => {
                       <tr>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-text-primary">小组管理</td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
                           <button className="text-accent hover:text-accent-hover transition-colors">配置</button>
@@ -405,13 +405,13 @@ const Settings: React.FC = () => {
                       <tr>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-text-primary">订单管理</td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
                           <button className="text-accent hover:text-accent-hover transition-colors">配置</button>
@@ -420,13 +420,13 @@ const Settings: React.FC = () => {
                       <tr>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-text-primary">系统设置</td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" checked readOnly className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <input type="checkbox" className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep" />
+                          <input type="checkbox" className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep" />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
                           <button className="text-accent hover:text-accent-hover transition-colors">配置</button>
@@ -456,7 +456,7 @@ const Settings: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="space-y-6"
             >
-              <div className="bg-bg-deep rounded-xl p-6 border border-accent">
+              <div className="bg-deep rounded-xl p-6 border border-accent">
                 <h2 className="text-lg font-bold text-text-primary mb-6">邮件通知设置</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -482,7 +482,7 @@ const Settings: React.FC = () => {
                     <input
                       type="text"
                       defaultValue="smtp.example.com"
-                      className="w-full px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     />
                   </div>
                   
@@ -491,7 +491,7 @@ const Settings: React.FC = () => {
                     <input
                       type="number"
                       defaultValue="587"
-                      className="w-full px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     />
                   </div>
                   
@@ -500,7 +500,7 @@ const Settings: React.FC = () => {
                     <input
                       type="text"
                       defaultValue="admin@example.com"
-                      className="w-full px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     />
                   </div>
                   
@@ -509,7 +509,7 @@ const Settings: React.FC = () => {
                     <input
                       type="password"
                       defaultValue="********"
-                      className="w-full px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     />
                   </div>
                 </div>
@@ -534,12 +534,12 @@ const Settings: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="space-y-6"
             >
-              <div className="bg-bg-deep rounded-xl p-6 border border-accent">
+              <div className="bg-deep rounded-xl p-6 border border-accent">
                 <h2 className="text-lg font-bold text-text-primary mb-6">数据备份与恢复</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
-                    <div className="p-4 bg-bg-card rounded-lg border border-accent">
+                    <div className="p-4 bg-card rounded-lg border border-accent">
                       <h3 className="font-medium text-text-primary mb-3">创建新备份</h3>
                       <div className="flex flex-wrap gap-3">
                         <Button>
@@ -641,7 +641,7 @@ const Settings: React.FC = () => {
                   </div>
                   
                   <div className="md:col-span-2">
-                    <div className="p-4 bg-bg-card rounded-lg border border-accent">
+                    <div className="p-4 bg-card rounded-lg border border-accent">
                       <h3 className="font-medium text-text-primary mb-3">自动备份设置</h3>
                       <div className="flex items-center justify-between mb-4">
                         <div>
@@ -660,7 +660,7 @@ const Settings: React.FC = () => {
                         <div>
                           <label className="block text-sm font-medium text-text-muted mb-2">备份频率</label>
                           <select
-                            className="w-full px-4 py-2 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
+                            className="w-full px-4 py-2 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
                           >
                             <option value="daily">每天</option>
                             <option value="weekly" selected>每周</option>
@@ -672,7 +672,7 @@ const Settings: React.FC = () => {
                           <input
                             type="number"
                             defaultValue="7"
-                            className="w-full px-4 py-2 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                            className="w-full px-4 py-2 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                             min="1"
                             max="30"
                           />

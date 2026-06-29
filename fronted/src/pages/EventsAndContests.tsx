@@ -341,7 +341,7 @@ const EventsAndContests: React.FC = () => {
   const filteredContests = getFilteredContests();
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -362,14 +362,14 @@ const EventsAndContests: React.FC = () => {
           {/* 主要内容 */}
           <div className="lg:col-span-2 space-y-6">
             {/* 顶部功能标签 */}
-            <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+            <div className="bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
               <div className="flex">
                 <button
                   onClick={() => setActiveTab('events')}
                   className={`flex-1 py-4 px-6 text-center font-medium transition-all duration-300 ${
                     activeTab === 'events'
                       ? 'bg-accent text-text-primary'
-                      : 'bg-bg-card text-text-muted hover:text-text-primary'
+                      : 'bg-card text-text-muted hover:text-text-primary'
                   }`}
                 >
                   线下活动
@@ -379,7 +379,7 @@ const EventsAndContests: React.FC = () => {
                   className={`flex-1 py-4 px-6 text-center font-medium transition-all duration-300 ${
                     activeTab === 'contests'
                       ? 'bg-accent text-text-primary'
-                      : 'bg-bg-card text-text-muted hover:text-text-primary'
+                      : 'bg-card text-text-muted hover:text-text-primary'
                   }`}
                 >
                   摄影赛事
@@ -406,14 +406,14 @@ const EventsAndContests: React.FC = () => {
                       placeholder="搜索活动、地点或主题..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                      className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                     />
                     <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
                   </div>
 
                   {/* 活动类型和分类选项卡 */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+                    <div className="bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
                       <div className="p-3 border-b border-accent">
                         <h4 className="text-sm font-medium text-text-primary">活动类型</h4>
                       </div>
@@ -425,7 +425,7 @@ const EventsAndContests: React.FC = () => {
                             className={`py-2 px-1 text-center text-sm font-medium transition-colors ${
                               selectedEventType === type
                                 ? 'bg-accent text-text-primary rounded-lg'
-                                : 'bg-bg-card text-text-muted hover:bg-accent/50'
+                                : 'bg-card text-text-muted hover:bg-accent/50'
                             }`}
                           >
                             {type}
@@ -434,7 +434,7 @@ const EventsAndContests: React.FC = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+                    <div className="bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
                       <div className="p-3 border-b border-accent">
                         <h4 className="text-sm font-medium text-text-primary">活动分类</h4>
                       </div>
@@ -446,7 +446,7 @@ const EventsAndContests: React.FC = () => {
                             className={`py-2 px-1 text-center text-sm font-medium transition-colors ${
                               selectedEventCategory === category
                                 ? 'bg-accent text-text-primary rounded-lg'
-                                : 'bg-bg-card text-text-muted hover:bg-accent/50'
+                                : 'bg-card text-text-muted hover:bg-accent/50'
                             }`}
                           >
                             {category}
@@ -470,8 +470,8 @@ const EventsAndContests: React.FC = () => {
                     ))}
                     
                     {filteredEvents.length === 0 && (
-                      <div className="p-8 bg-bg-card rounded-xl border border-accent text-center">
-                        <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+                      <div className="p-8 bg-card rounded-xl border border-accent text-center">
+                        <div className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                           <i className="fa-solid fa-search text-2xl"></i>
                         </div>
                         <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关活动</h3>
@@ -494,14 +494,14 @@ const EventsAndContests: React.FC = () => {
                       placeholder="搜索赛事、主题或关键词..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                      className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                     />
                     <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
                   </div>
 
                   {/* 赛事类型和状态选项卡 */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+                    <div className="bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
                       <div className="p-3 border-b border-accent">
                         <h4 className="text-sm font-medium text-text-primary">赛事类型</h4>
                       </div>
@@ -513,7 +513,7 @@ const EventsAndContests: React.FC = () => {
                             className={`py-2 px-1 text-center text-sm font-medium transition-colors ${
                               selectedContestType === type
                                 ? 'bg-accent text-text-primary rounded-lg'
-                                : 'bg-bg-card text-text-muted hover:bg-accent/50'
+                                : 'bg-card text-text-muted hover:bg-accent/50'
                             }`}
                           >
                             {type}
@@ -522,7 +522,7 @@ const EventsAndContests: React.FC = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+                    <div className="bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
                       <div className="p-3 border-b border-accent">
                         <h4 className="text-sm font-medium text-text-primary">赛事状态</h4>
                       </div>
@@ -534,7 +534,7 @@ const EventsAndContests: React.FC = () => {
                             className={`py-2 px-1 text-center text-sm font-medium transition-colors ${
                               selectedContestStatus === status
                                 ? 'bg-accent text-text-primary rounded-lg'
-                                : 'bg-bg-card text-text-muted hover:bg-accent/50'
+                                : 'bg-card text-text-muted hover:bg-accent/50'
                             }`}
                           >
                             {status}
@@ -558,8 +558,8 @@ const EventsAndContests: React.FC = () => {
                     ))}
                     
                     {filteredContests.length === 0 && (
-                      <div className="p-8 bg-bg-card rounded-xl border border-accent text-center">
-                        <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+                      <div className="p-8 bg-card rounded-xl border border-accent text-center">
+                        <div className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                           <i className="fa-solid fa-search text-2xl"></i>
                         </div>
                         <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关赛事</h3>
@@ -638,7 +638,7 @@ const EventsAndContests: React.FC = () => {
             </div>
             
             {/* 即将开始/截止提醒 */}
-            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
               <h3 className="text-lg font-bold mb-4 text-text-primary">
                 {activeTab === 'events' ? '即将开始' : '即将截止'}
               </h3>
@@ -694,7 +694,7 @@ const EventsAndContests: React.FC = () => {
             </div>
             
             {/* 常见问题 */}
-            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
               <h3 className="text-lg font-bold mb-4 text-text-primary">
                 {activeTab === 'events' ? '活动常见问题' : '参赛指南'}
               </h3>
@@ -771,7 +771,7 @@ const EventsAndContests: React.FC = () => {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+            className="bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[90vh] overflow-y-auto"
           >
             <div className="flex justify-between items-center p-6 border-b border-accent">
               <h3 className="text-xl font-bold text-text-primary">发布活动</h3>
@@ -794,7 +794,7 @@ const EventsAndContests: React.FC = () => {
                     type="text"
                     value={newEventData.title}
                     onChange={(e) => setNewEventData({...newEventData, title: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入活动标题"
                     required
                   />
@@ -809,7 +809,7 @@ const EventsAndContests: React.FC = () => {
                       id="event-type"
                       value={newEventData.type}
                       onChange={(e) => setNewEventData({...newEventData, type: e.target.value})}
-                      className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                       required
                     >
                       <option value="">请选择活动类型</option>
@@ -828,7 +828,7 @@ const EventsAndContests: React.FC = () => {
                       type="text"
                       value={newEventData.location}
                       onChange={(e) => setNewEventData({...newEventData, location: e.target.value})}
-                      className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                       placeholder="请输入活动地点"
                       required
                     />
@@ -845,7 +845,7 @@ const EventsAndContests: React.FC = () => {
                       type="text"
                       value={newEventData.date}
                       onChange={(e) => setNewEventData({...newEventData, date: e.target.value})}
-                      className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                       placeholder="例如：2025-12-15 至 2025-12-22"
                       required
                     />
@@ -860,7 +860,7 @@ const EventsAndContests: React.FC = () => {
                       type="text"
                       value={newEventData.duration}
                       onChange={(e) => setNewEventData({...newEventData, duration: e.target.value})}
-                      className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                       placeholder="例如：8天7晚"
                       required
                     />
@@ -875,7 +875,7 @@ const EventsAndContests: React.FC = () => {
                     id="event-description"
                     value={newEventData.description}
                     onChange={(e) => setNewEventData({...newEventData, description: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[150px]"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[150px]"
                     placeholder="请详细描述活动内容、亮点和安排"
                     required
                   ></textarea>
@@ -890,7 +890,7 @@ const EventsAndContests: React.FC = () => {
                     type="text"
                     value={newEventData.tags}
                     onChange={(e) => setNewEventData({...newEventData, tags: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入标签，用逗号分隔"
                   />
                 </div>
@@ -899,7 +899,7 @@ const EventsAndContests: React.FC = () => {
               <div className="flex justify-end space-x-3 pt-4 border-t border-accent">
                 <button 
                   type="button"
-                  className="px-6 py-3 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                  className="px-6 py-3 bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                   onClick={() => setShowEventForm(false)}
                 >
                   取消
@@ -926,7 +926,7 @@ const EventsAndContests: React.FC = () => {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+            className="bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[90vh] overflow-y-auto"
           >
             <div className="flex justify-between items-center p-6 border-b border-accent">
               <h3 className="text-xl font-bold text-text-primary">发布赛事</h3>
@@ -949,7 +949,7 @@ const EventsAndContests: React.FC = () => {
                     type="text"
                     value={newContestData.title}
                     onChange={(e) => setNewContestData({...newContestData, title: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入赛事标题"
                     required
                   />
@@ -963,7 +963,7 @@ const EventsAndContests: React.FC = () => {
                     id="contest-type"
                     value={newContestData.type}
                     onChange={(e) => setNewContestData({...newContestData, type: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     required
                   >
                     <option value="">请选择赛事类型</option>
@@ -982,7 +982,7 @@ const EventsAndContests: React.FC = () => {
                     type="text"
                     value={newContestData.deadline}
                     onChange={(e) => setNewContestData({...newContestData, deadline: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="例如：2025-12-31"
                     required
                   />
@@ -996,7 +996,7 @@ const EventsAndContests: React.FC = () => {
                     id="contest-description"
                     value={newContestData.description}
                     onChange={(e) => setNewContestData({...newContestData, description: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[150px]"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[150px]"
                     placeholder="请详细描述赛事主题、规则和奖励"
                     required
                   ></textarea>
@@ -1011,7 +1011,7 @@ const EventsAndContests: React.FC = () => {
                     type="text"
                     value={newContestData.tags}
                     onChange={(e) => setNewContestData({...newContestData, tags: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入标签，用逗号分隔"
                   />
                 </div>
@@ -1020,7 +1020,7 @@ const EventsAndContests: React.FC = () => {
               <div className="flex justify-end space-x-3 pt-4 border-t border-accent">
                 <button 
                   type="button"
-                  className="px-6 py-3 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                  className="px-6 py-3 bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                   onClick={() => setShowContestForm(false)}
                 >
                   取消
@@ -1048,7 +1048,7 @@ const EventsAndContests: React.FC = () => {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+            className="bg-card rounded-xl border border-accent w-full max-w-2xl max-h-[90vh] overflow-y-auto"
           >
             <div className="flex justify-between items-center p-6 border-b border-accent">
               <h3 className="text-xl font-bold text-text-primary">报名活动：{selectedEvent.title}</h3>
@@ -1071,7 +1071,7 @@ const EventsAndContests: React.FC = () => {
                     type="text"
                     value={registrationData.name}
                     onChange={(e) => setRegistrationData({...registrationData, name: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入您的姓名"
                     required
                   />
@@ -1086,7 +1086,7 @@ const EventsAndContests: React.FC = () => {
                 type="tel"
                 value={registrationData.phone}
                 onChange={(e) => setRegistrationData({...registrationData, phone: e.target.value})}
-                className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                 placeholder="请输入11位手机号码"
                 pattern="^1[3-9]\d{9}$"
                 required
@@ -1103,7 +1103,7 @@ const EventsAndContests: React.FC = () => {
                     type="email"
                     value={registrationData.email}
                     onChange={(e) => setRegistrationData({...registrationData, email: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     placeholder="请输入您的电子邮箱"
                     required
                   />
@@ -1117,7 +1117,7 @@ const EventsAndContests: React.FC = () => {
                     id="experience"
                     value={registrationData.experience}
                     onChange={(e) => setRegistrationData({...registrationData, experience: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                   >
                     <option value="">请选择您的摄影经验</option>
                     <option value="beginner">初学者 (0-1年)</option>
@@ -1135,7 +1135,7 @@ const EventsAndContests: React.FC = () => {
                     id="specialRequests"
                     value={registrationData.specialRequests}
                     onChange={(e) => setRegistrationData({...registrationData, specialRequests: e.target.value})}
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[100px]"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[100px]"
                     placeholder="如有任何特殊需求，请在此说明"
                   ></textarea>
                 </div>
@@ -1146,7 +1146,7 @@ const EventsAndContests: React.FC = () => {
                     type="checkbox"
                     checked={registrationData.agreement}
                     onChange={(e) => setRegistrationData({...registrationData, agreement: e.target.checked})}
-                    className="mt-1 h-4 w-4 text-accent focus:ring-accent rounded border-accent bg-bg-deep"
+                    className="mt-1 h-4 w-4 text-accent focus:ring-accent rounded border-accent bg-deep"
                     required
                   />
                   <label htmlFor="agreement" className="ml-2 block text-sm text-text-muted">
@@ -1164,7 +1164,7 @@ const EventsAndContests: React.FC = () => {
                 <div className="flex space-x-3">
                   <button 
                     type="button"
-                    className="px-6 py-3 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                    className="px-6 py-3 bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                     onClick={() => setShowRegistrationForm(false)}
                   >
                     取消

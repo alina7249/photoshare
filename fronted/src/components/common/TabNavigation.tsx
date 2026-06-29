@@ -23,7 +23,7 @@ const TabNavigation: React.FC<TabNavigationProps> = ({
 }) => {
   return (
     <div className={`${variant === 'primary' 
-      ? 'bg-bg-card rounded-xl p-1 border border-accent' 
+      ? 'bg-card rounded-xl p-1 border border-accent' 
       : 'border-b border-accent'
     } ${className}`}>
       <div className="flex">
@@ -37,7 +37,7 @@ const TabNavigation: React.FC<TabNavigationProps> = ({
                   ? 'bg-accent text-text-primary rounded-lg' 
                   : 'text-text-primary border-b-2 border-accent'
                 : variant === 'primary'
-                  ? 'bg-bg-card text-text-muted hover:text-text-primary'
+                  ? 'bg-card text-text-muted hover:text-text-primary'
                   : 'text-text-muted/70 hover:text-text-primary'
             }`}
           >

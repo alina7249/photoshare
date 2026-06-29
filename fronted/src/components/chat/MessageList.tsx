@@ -201,7 +201,7 @@ export const MessageList: React.FC = () => {
                   ? 'bg-accent text-white' 
                   : 'bg-blue-500 text-white'
                 : theme === 'dark'
-                  ? 'bg-bg-deep text-text-primary border border-accent'
+                  ? 'bg-deep text-text-primary border border-accent'
                   : 'bg-gray-50 text-gray-800 border border-gray-200'
             }`}
           >
@@ -293,7 +293,7 @@ export const MessageList: React.FC = () => {
           </div>
           <div className={`p-4 rounded-2xl ${
             theme === 'dark' 
-              ? 'bg-bg-deep text-text-primary border border-accent' 
+              ? 'bg-deep text-text-primary border border-accent' 
               : 'bg-gray-50 text-gray-800 border border-gray-200'
           }`}>
             <div className="flex space-x-1">

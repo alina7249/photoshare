@@ -130,7 +130,7 @@ const EquipmentReview: React.FC = () => {
   const filteredReviews = getFilteredReviews();
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -203,7 +203,7 @@ const EquipmentReview: React.FC = () => {
                   placeholder="搜索测评内容、器材型号或作者..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                  className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                 />
                 <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
               </div>
@@ -211,7 +211,7 @@ const EquipmentReview: React.FC = () => {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
               >
                 <option value="latest">最新发布</option>
                 <option value="popular">最多阅读</option>
@@ -220,7 +220,7 @@ const EquipmentReview: React.FC = () => {
             </div>
 
             {/* 测评分类选项卡 */}
-            <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+            <div className="bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
               <div className="flex">
                 {reviewCategories.map((category) => (
                   <button
@@ -244,7 +244,7 @@ const EquipmentReview: React.FC = () => {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="bg-bg-card rounded-xl p-6 border border-accent overflow-hidden"
+                className="bg-card rounded-xl p-6 border border-accent overflow-hidden"
               >
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-lg font-bold text-text-primary">测评对比</h3>
@@ -313,7 +313,7 @@ const EquipmentReview: React.FC = () => {
                 <motion.div
                   key={review.id}
                   whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-                  className="bg-bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
+                  className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
                 >
                   {/* 测评图片 */}
                   <div className="md:flex">
@@ -336,7 +336,7 @@ const EquipmentReview: React.FC = () => {
                           className={`w-6 h-6 rounded-full flex items-center justify-center ${
                             selectedReviews.includes(review.id)
                               ? 'bg-accent text-white'
-                              : 'bg-bg-card/80 text-text-muted'
+                              : 'bg-card/80 text-text-muted'
                           } transition-colors`}
                           title="添加到对比"
                         >
@@ -349,7 +349,7 @@ const EquipmentReview: React.FC = () => {
                     <div className="p-5 md:w-2/3">
                       {/* 测评类型和日期 */}
                       <div className="flex items-center justify-between mb-3">
-                        <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-bg-deep text-accent border border-accent">
+                        <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-deep text-accent border border-accent">
                           {review.type}
                         </span>
                         <div className="text-xs text-text-muted flex items-center space-x-2">
@@ -389,7 +389,7 @@ const EquipmentReview: React.FC = () => {
                             className={`px-2 py-1 rounded-full text-xs ${
                               selectedTags.includes(tag)
                                 ? 'bg-accent text-text-primary'
-                                : 'bg-bg-deep text-text-muted border border-accent'
+                                : 'bg-deep text-text-muted border border-accent'
                             } transition-colors`}
                           >
                             #{tag}
@@ -439,7 +439,7 @@ const EquipmentReview: React.FC = () => {
                   </div>
                   
                   {/* 性能摘要 */}
-                  <div className="px-5 py-4 bg-bg-deep border-t border-accent">
+                  <div className="px-5 py-4 bg-deep border-t border-accent">
                     <div className="flex items-center justify-between mb-3">
                       <h4 className="text-sm font-medium text-text-primary">性能评分</h4>
                       <div className="flex items-center">
@@ -465,7 +465,7 @@ const EquipmentReview: React.FC = () => {
                   </div>
                   
                   {/* 底部操作按钮 */}
-                  <div className="px-5 py-4 border-t border-accent bg-bg-card flex items-center justify-between">
+                  <div className="px-5 py-4 border-t border-accent bg-card flex items-center justify-between">
                     <Link
                       to={`/review/${review.id}`}
                       className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors border border-accent"
@@ -491,8 +491,8 @@ const EquipmentReview: React.FC = () => {
               ))}
               
               {filteredReviews.length === 0 && (
-                <div className="p-8 bg-bg-card rounded-xl border border-accent text-center">
-                  <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+                <div className="p-8 bg-card rounded-xl border border-accent text-center">
+                  <div className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                     <i className="fa-solid fa-search text-2xl"></i>
                   </div>
                   <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关测评</h3>
@@ -506,7 +506,7 @@ const EquipmentReview: React.FC = () => {
             {/* 对比测评按钮 */}
             {selectedReviews.length > 0 && (
               <motion.div 
-                className="fixed bottom-0 left-0 right-0 bg-bg-card border-t border-accent py-3 px-4 z-10 shadow-lg"
+                className="fixed bottom-0 left-0 right-0 bg-card border-t border-accent py-3 px-4 z-10 shadow-lg"
                 initial={{ y: 100 }}
                 animate={{ y: 0 }}
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}

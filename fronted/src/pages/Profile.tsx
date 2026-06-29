@@ -210,7 +210,7 @@ const Profile: React.FC = () => {
   // 检查用户是否登录，如果没有登录，显示登录提示
   if (!isAuthenticated) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
           <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-user-lock text-2xl"></i>
@@ -229,7 +229,7 @@ const Profile: React.FC = () => {
   }
   
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -247,7 +247,7 @@ const Profile: React.FC = () => {
         </div>
         
         {/* 个人资料卡片 */}
-        <div className="bg-bg-card rounded-xl overflow-hidden shadow-sm border border-accent mb-8">
+        <div className="bg-card rounded-xl overflow-hidden shadow-sm border border-accent mb-8">
           {/* 封面图 */}
           <div className="h-64 overflow-hidden">
             <img
@@ -262,7 +262,7 @@ const Profile: React.FC = () => {
             <div className="flex flex-col md:flex-row -mt-20 mb-6">
               {/* 头像 */}
               <div className="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
-                <div className="w-40 h-40 rounded-full border-4 border-bg-card overflow-hidden shadow-md border-accent">
+                <div className="w-40 h-40 rounded-full border-4 border-card overflow-hidden shadow-md border-accent">
                   <img
                     src={profileUser.avatar}
                     alt="User avatar"
@@ -288,7 +288,7 @@ const Profile: React.FC = () => {
                   {/* 等级和进度条 */}
                   <div className="flex items-center mb-4">
                     <span className="text-text-muted text-sm mr-2">LV.0</span>
-                    <div className="flex-1 h-2 bg-bg-deep rounded-full overflow-hidden mr-2">
+                    <div className="flex-1 h-2 bg-deep rounded-full overflow-hidden mr-2">
                       <div 
                         className="h-full bg-accent" 
                         style={{ width: '0%' }}
@@ -368,7 +368,7 @@ const Profile: React.FC = () => {
                            toast.error('复制失败，请手动复制');
                          }
                        }}
-                       className="p-2 bg-bg-deep text-text-muted rounded-lg hover:bg-accent hover:text-text-primary transition-colors border border-accent relative z-10"
+                       className="p-2 bg-deep text-text-muted rounded-lg hover:bg-accent hover:text-text-primary transition-colors border border-accent relative z-10"
                        title="分享用户主页"
                      >
                        <i className="fa-solid fa-share-nodes"></i>
@@ -413,7 +413,7 @@ const Profile: React.FC = () => {
         </div>
         
         {/* 内容标签页 - 整合个人中心功能 */}
-        <div className="bg-bg-card rounded-xl shadow-sm border border-accent mb-8">
+        <div className="bg-card rounded-xl shadow-sm border border-accent mb-8">
           <div className="flex border-b border-accent">
             <button
               onClick={() => setActiveTab('posts')}
@@ -461,7 +461,7 @@ const Profile: React.FC = () => {
           {activeTab === 'stats' && (
             <div className="p-6">
               {/* 创作数据趋势图 */}
-              <div className="bg-bg-deep rounded-xl p-6 shadow-sm border border-accent mb-8">
+              <div className="bg-deep rounded-xl p-6 shadow-sm border border-accent mb-8">
                 <h2 className="text-xl font-bold text-text-primary mb-4">创作数据</h2>
                 <div className="h-64">
                   <ResponsiveContainer width="100%" height="100%">
@@ -476,7 +476,7 @@ const Profile: React.FC = () => {
                             const viewsData = payload.find(item => item.dataKey === "views");
                             const likesData = payload.find(item => item.dataKey === "likes");
                             return (
-                              <div className="bg-bg-card border border-accent p-3 rounded-lg">
+                              <div className="bg-card border border-accent p-3 rounded-lg">
                                 <p className="text-text-muted font-medium mb-2">{`${label}数据`}</p>
                                 {viewsData && <p className="text-text-muted mb-1">浏览量: {viewsData.value}</p>}
                                 {likesData && <p className="text-text-muted">点赞量: {likesData.value}</p>}
@@ -495,7 +495,7 @@ const Profile: React.FC = () => {
               </div>
               
               {/* 最近活动 */}
-              <div className="bg-bg-deep rounded-xl p-6 shadow-sm border border-accent mb-8">
+              <div className="bg-deep rounded-xl p-6 shadow-sm border border-accent mb-8">
                 <h2 className="text-xl font-bold text-text-primary mb-4">最近活动</h2>
                 <div className="space-y-3">
                   {[].map(activity => (
@@ -525,7 +525,7 @@ const Profile: React.FC = () => {
               {/* 筛选和搜索 */}
               {activeTab === 'posts' && isCurrentUser && (
                 <>
-                  <div className="bg-bg-deep rounded-xl p-6 shadow-sm border border-accent mb-8">
+                  <div className="bg-deep rounded-xl p-6 shadow-sm border border-accent mb-8">
                     <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                       <div className="relative flex-1">
                         <input
@@ -533,7 +533,7 @@ const Profile: React.FC = () => {
                           placeholder="搜索作品标题或描述..."
                           value={searchTerm}
                           onChange={e => setSearchTerm(e.target.value)}
-                          className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                          className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                         />
                         <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
                       </div>
@@ -541,7 +541,7 @@ const Profile: React.FC = () => {
                         <select
                           value={visibilityFilter}
                           onChange={e => setVisibilityFilter(e.target.value)}
-                          className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                          className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
                         >
                           <option value="all">全部可见性</option>
                           <option value="public">公开</option>
@@ -551,7 +551,7 @@ const Profile: React.FC = () => {
                         <select
                           value={formatFilter}
                           onChange={e => setFormatFilter(e.target.value)}
-                          className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                          className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
                         >
                           <option value="all">全部格式</option>
                           <option value="raw">RAW</option>
@@ -560,7 +560,7 @@ const Profile: React.FC = () => {
                         <select
                           value={sortBy}
                           onChange={e => setSortBy(e.target.value)}
-                          className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                          className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
                         >
                           <option value="latest">最新发布</option>
                           <option value="popular">最受欢迎</option>
@@ -580,7 +580,7 @@ const Profile: React.FC = () => {
                             className={`px-3 py-1 rounded-full text-sm ${
                               selectedTag === tag 
                                 ? "bg-accent text-text-primary" 
-                                : "bg-bg-card text-text-muted border border-accent"
+                                : "bg-card text-text-muted border border-accent"
                             } transition-colors`}
                           >
                             {tag}
@@ -616,7 +616,7 @@ const Profile: React.FC = () => {
                   icon="fa-image"
                   actionText={activeTab === 'posts' && isCurrentUser ? '上传作品' : undefined}
                   onActionClick={() => activeTab === 'posts' && isCurrentUser ? handleUpload() : undefined}
-                  backgroundColor="bg-bg-card"
+                  backgroundColor="bg-card"
                   textColor="text-text-primary"
                 />
               ) : (
@@ -627,7 +627,7 @@ const Profile: React.FC = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
-                      className="bg-bg-deep rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
+                      className="bg-deep rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
                     >
                       <div className="relative">
                         <img src={post.image} alt={post.title} className="w-full h-48 object-cover" />
@@ -637,10 +637,10 @@ const Profile: React.FC = () => {
                           {post.copyrightType}
                         </div>
                         <div className="absolute top-3 right-3 flex space-x-2">
-                          <span className="px-2 py-1 bg-bg-card/80 text-text-muted text-xs rounded">
+                          <span className="px-2 py-1 bg-card/80 text-text-muted text-xs rounded">
                             {post.format}
                           </span>
-                          <span className="px-2 py-1 bg-bg-card/80 text-text-muted text-xs rounded">
+                          <span className="px-2 py-1 bg-card/80 text-text-muted text-xs rounded">
                             {post.visibility}
                           </span>
                         </div>
@@ -671,17 +671,17 @@ const Profile: React.FC = () => {
                           <div className="flex justify-between space-x-2">
                             <Link
                               to={`/photo/${post.id}`}
-                              className="flex-1 py-2 text-center bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors text-sm border border-accent"
+                              className="flex-1 py-2 text-center bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors text-sm border border-accent"
                             >
                               查看详情
                             </Link>
-                            <button className="px-3 py-2 text-center bg-bg-card text-text-muted rounded-lg font-medium hover:border-accent hover:text-text-primary transition-colors text-sm border border-accent">
+                            <button className="px-3 py-2 text-center bg-card text-text-muted rounded-lg font-medium hover:border-accent hover:text-text-primary transition-colors text-sm border border-accent">
                               <i className="fa-solid fa-edit"></i>
                             </button>
-                            <button className="px-3 py-2 text-center bg-bg-card text-text-muted rounded-lg font-medium hover:border-accent hover:text-text-primary transition-colors text-sm border border-accent">
+                            <button className="px-3 py-2 text-center bg-card text-text-muted rounded-lg font-medium hover:border-accent hover:text-text-primary transition-colors text-sm border border-accent">
                               <i className="fa-solid fa-trash"></i>
                             </button>
-                            <button className="px-3 py-2 text-center bg-gradient-to-r from-accent to-bg-card text-text-primary rounded-lg font-medium hover:from-accent-hover hover:to-accent transition-colors text-sm border border-accent">
+                            <button className="px-3 py-2 text-center bg-gradient-to-r from-accent to-card text-text-primary rounded-lg font-medium hover:from-accent-hover hover:to-accent transition-colors text-sm border border-accent">
                               <i className="fa-solid fa-copyright"></i>
                             </button>
                           </div>
@@ -697,7 +697,7 @@ const Profile: React.FC = () => {
                 <div className="mt-10 text-center">
                   <button
                     onClick={() => navigate('/login')}
-                    className="inline-flex items-center px-6 py-3 bg-bg-card text-text-muted border border-accent hover:bg-accent hover:text-text-primary rounded-lg font-medium transition-colors"
+                    className="inline-flex items-center px-6 py-3 bg-card text-text-muted border border-accent hover:bg-accent hover:text-text-primary rounded-lg font-medium transition-colors"
                   >
                     加载更多
                   </button>
@@ -709,11 +709,11 @@ const Profile: React.FC = () => {
         
         {/* 个人中心快捷入口 */}
         {isCurrentUser && (
-          <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
+          <div className="bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
             <h2 className="text-lg font-bold text-text-primary mb-6">个人中心</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* 我的器材库 */}
-              <div className="bg-bg-deep rounded-lg p-5 border border-accent">
+              <div className="bg-deep rounded-lg p-5 border border-accent">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-base font-medium text-text-primary flex items-center">
                     <i className="fa-solid fa-video text-accent mr-2"></i>我的器材库
@@ -742,19 +742,19 @@ const Profile: React.FC = () => {
               </div>
               
               {/* 会员中心 */}
-              <div className="bg-bg-deep rounded-lg p-5 border border-accent">
+              <div className="bg-deep rounded-lg p-5 border border-accent">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-base font-medium text-text-primary flex items-center">
                     <i className="fa-solid fa-crown text-accent mr-2"></i>会员中心
                   </h3>
                 </div>
                 <p className="text-xs text-text-muted/70 mb-4">您当前是 会员</p>
-                <div className="bg-bg-card p-3 rounded-lg mb-4">
+                <div className="bg-card p-3 rounded-lg mb-4">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm text-text-muted">会员有效期</span>
                     <span className="text-xs text-accent">剩余 0天</span>
                   </div>
-                  <div className="w-full h-2 bg-bg-deep rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-deep rounded-full overflow-hidden">
                     <div className="h-full bg-accent" style={{ width: '0%' }}></div>
                   </div>
                 </div>
@@ -769,26 +769,26 @@ const Profile: React.FC = () => {
               </div>
               
               {/* 快速工具 */}
-              <div className="bg-bg-deep rounded-lg p-5 border border-accent">
+              <div className="bg-deep rounded-lg p-5 border border-accent">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-base font-medium text-text-primary flex items-center">
                     <i className="fa-solid fa-toolbox text-accent mr-2"></i>快速工具
                   </h3>
                 </div>
                 <div className="grid grid-cols-2 gap-3 mb-4">
-                  <button className="flex flex-col items-center justify-center p-3 bg-bg-card rounded-lg hover:bg-accent transition-colors">
+                  <button className="flex flex-col items-center justify-center p-3 bg-card rounded-lg hover:bg-accent transition-colors">
                     <i className="fa-solid fa-palette text-xl text-text-muted mb-2"></i>
                     <span className="text-sm text-text-muted">后期工具</span>
                   </button>
-                  <button className="flex flex-col items-center justify-center p-3 bg-bg-card rounded-lg hover:bg-accent transition-colors">
+                  <button className="flex flex-col items-center justify-center p-3 bg-card rounded-lg hover:bg-accent transition-colors">
                     <i className="fa-solid fa-map-marker-alt text-xl text-text-muted mb-2"></i>
                     <span className="text-sm text-text-muted">拍摄地点</span>
                   </button>
-                  <button className="flex flex-col items-center justify-center p-3 bg-bg-card rounded-lg hover:bg-accent transition-colors">
+                  <button className="flex flex-col items-center justify-center p-3 bg-card rounded-lg hover:bg-accent transition-colors">
                     <i className="fa-solid fa-flag text-xl text-text-muted mb-2"></i>
                     <span className="text-sm text-text-muted">摄影活动</span>
                   </button>
-                  <button className="flex flex-col items-center justify-center p-3 bg-bg-card rounded-lg hover:bg-accent transition-colors">
+                  <button className="flex flex-col items-center justify-center p-3 bg-card rounded-lg hover:bg-accent transition-colors">
                     <i className="fa-solid fa-bell text-xl text-text-muted mb-2"></i>
                     <span className="text-sm text-text-muted">我的通知</span>
                   </button>
@@ -815,7 +815,7 @@ const Profile: React.FC = () => {
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.9 }}
-            className="bg-bg-card rounded-xl p-6 w-full max-w-lg border border-accent"
+            className="bg-card rounded-xl p-6 w-full max-w-lg border border-accent"
             onClick={e => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-6">
@@ -861,7 +861,7 @@ const Profile: React.FC = () => {
                   <span>上传中...</span>
                   <span>{uploadProgress}%</span>
                 </div>
-                <div className="w-full h-2 bg-bg-deep rounded-full overflow-hidden">
+                <div className="w-full h-2 bg-deep rounded-full overflow-hidden">
                   <div className="h-full bg-accent" style={{ width: `${uploadProgress}%` }}></div>
                 </div>
               </div>
@@ -876,7 +876,7 @@ const Profile: React.FC = () => {
                   value={newPostTitle}
                   onChange={e => setNewPostTitle(e.target.value)}
                   placeholder="输入作品标题..."
-                  className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                  className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                 />
               </div>
               <div>
@@ -886,7 +886,7 @@ const Profile: React.FC = () => {
                   onChange={e => setNewPostDescription(e.target.value)}
                   placeholder="描述您的作品..."
                   rows={3}
-                  className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none placeholder:text-text-muted"
+                  className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none placeholder:text-text-muted"
                 />
               </div>
               <div>
@@ -896,7 +896,7 @@ const Profile: React.FC = () => {
                   value={newPostTags}
                   onChange={e => setNewPostTags(e.target.value)}
                   placeholder="输入标签，用逗号分隔..."
-                  className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                  className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                 />
               </div>
               <div>
@@ -904,7 +904,7 @@ const Profile: React.FC = () => {
                 <select
                   value={newPostVisibility}
                   onChange={e => setNewPostVisibility(e.target.value)}
-                  className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
                 >
                   <option value="公开">公开</option>
                   <option value="仅好友可见">仅好友可见</option>
@@ -917,7 +917,7 @@ const Profile: React.FC = () => {
             <div className="flex space-x-4 mt-6">
               <button
                 onClick={handleCancelUpload}
-                className="flex-1 py-3 bg-bg-deep text-text-muted border border-accent rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors"
+                className="flex-1 py-3 bg-deep text-text-muted border border-accent rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors"
               >
                 取消
               </button>

@@ -129,14 +129,14 @@ const PhotographyContests: React.FC = () => {
     if (isUserPersonalContests) {
       // 即使未登录也显示个人赛事页面，但提示用户登录
       return (
-        <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+        <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
           <div className="flex flex-col items-center justify-center h-[60vh] text-center">
             <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
               <i className="fa-solid fa-user-lock text-2xl"></i>
             </div>
             <h2 className="text-2xl font-bold text-text-primary mb-2">请先登录</h2>
             <p className="text-text-muted mb-6 max-w-md">登录后查看您参加的摄影赛事</p>
-            <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-bg-dark-hover transition-colors">
+            <Link to="/login" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors">
               立即登录
             </Link>
           </div>
@@ -146,7 +146,7 @@ const PhotographyContests: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -178,7 +178,7 @@ const PhotographyContests: React.FC = () => {
                     placeholder="搜索赛事、主题或关键词..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                    className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                   />
                   <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
                 </div>
@@ -186,7 +186,7 @@ const PhotographyContests: React.FC = () => {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                  className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
                 >
                   <option value="deadline">按截止日期</option>
                   <option value="popular">最受欢迎</option>
@@ -197,7 +197,7 @@ const PhotographyContests: React.FC = () => {
 
             {/* 赛事类型和状态选项卡 */}
             {!isUserPersonalContests && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4"><div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4"><div className="bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
                   <div className="p-3 border-b border-accent">
                     <h4 className="text-sm font-medium text-text-primary">赛事类型</h4>
                   </div>
@@ -209,7 +209,7 @@ const PhotographyContests: React.FC = () => {
                         className={`py-2 px-1 text-center text-sm font-medium transition-colors ${
                           selectedType === type
                             ? 'bg-accent text-text-primary rounded-lg'
-                            : 'bg-bg-card text-text-muted hover:bg-accent/50'
+                            : 'bg-card text-text-muted hover:bg-accent/50'
                         }`}
                       >
                         {type}
@@ -218,7 +218,7 @@ const PhotographyContests: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+                <div className="bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
                   <div className="p-3 border-b border-accent">
                     <h4 className="text-sm font-medium text-text-primary">赛事状态</h4>
                   </div>
@@ -229,7 +229,7 @@ const PhotographyContests: React.FC = () => {
                         onClick={() => setSelectedStatus(status)}
                         className={`py-2 px-1 text-center text-sm font-medium transition-colors ${
                           selectedStatus === status? 'bg-accent text-text-primary rounded-lg'
-                            : 'bg-bg-card text-text-muted hover:bg-accent/50'
+                            : 'bg-card text-text-muted hover:bg-accent/50'
                         }`}
                       >
                         {status}
@@ -269,10 +269,10 @@ const PhotographyContests: React.FC = () => {
                         <span className="text-sm text-text-primary font-medium">{contest.type}</span>
                         <span className={`text-xs px-2 py-1 rounded-full ${
                           contest.status === '进行中'
-                            ? 'bg-bg-card/50 text-text-primary'
+                            ? 'bg-card/50 text-text-primary'
                             : contest.status === '已截止'
                               ? 'bg-accent-hover text-text-primary'
-                              : 'bg-bg-card/50 text-text-primary'
+                              : 'bg-card/50 text-text-primary'
                         }`}>
                           {contest.status}
                         </span>
@@ -310,12 +310,12 @@ const PhotographyContests: React.FC = () => {
                       
                       {/* 用户参赛进度跟踪 - 仅在个人赛事页面显示 */}
                       {isUserPersonalContests && contestStatus && (
-                        <div className="mb-4 bg-bg-card/30 p-3 rounded-lg">
+                        <div className="mb-4 bg-card/30 p-3 rounded-lg">
                           <div className="flex justify-between items-center mb-2">
                             <span className="text-sm text-text-primary">参赛状态: <span className="font-medium">{contestStatus.status}</span></span>
                             <span className="text-sm text-text-primary">进度: <span className="font-medium">{contestStatus.progress}</span></span>
                           </div>
-                          <div className="w-full h-2 bg-bg-card rounded-full overflow-hidden">
+                          <div className="w-full h-2 bg-card rounded-full overflow-hidden">
                             <div 
                               className="h-full bg-text-primary" 
                               style={{ width: `${(contestStatus.submittedWorks / contestStatus.totalWorksLimit) * 100}%` }}
@@ -339,13 +339,13 @@ const PhotographyContests: React.FC = () => {
                           {contest.prizes.slice(0, 3).map((prize, index) => (
                             <span
                               key={index}
-                              className="px-2 py-1 bg-bg-card/50 text-text-primary rounded-full text-xs border border-accent-hover/30"
+                              className="px-2 py-1 bg-card/50 text-text-primary rounded-full text-xs border border-accent-hover/30"
                             >
                               {prize.rank}
                             </span>
                           ))}
                           {contest.prizes.length > 3 && (
-                            <span className="px-2 py-1 bg-bg-card/50 text-text-primary rounded-full text-xs border border-accent-hover/30">
+                            <span className="px-2 py-1 bg-card/50 text-text-primary rounded-full text-xs border border-accent-hover/30">
                               +{contest.prizes.length - 3}
                             </span>
                           )}
@@ -361,7 +361,7 @@ const PhotographyContests: React.FC = () => {
                             className={`px-2 py-1 rounded-full text-xs ${
                               selectedTags.includes(tag)
                                 ? 'bg-text-primary text-accent'
-                                : 'bg-bg-card/50 text-text-primary border border-accent-hover/30'
+                                : 'bg-card/50 text-text-primary border border-accent-hover/30'
                             } transition-colors`}
                           >
                             #{tag}
@@ -390,7 +390,7 @@ const PhotographyContests: React.FC = () => {
                           
                           {/* 分享菜单 */}
                           {showShareMenu === contest.id && (
-                                 <div className="absolute right-0 mt-2 w-48 bg-bg-card rounded-lg shadow-lg border border-accent py-2 z-10">
+                                 <div className="absolute right-0 mt-2 w-48 bg-card rounded-lg shadow-lg border border-accent py-2 z-10">
                                 <button 
                                   className="w-full text-left px-4 py-2 text-text-primary hover:bg-accent transition-colors flex items-center"
                                   onClick={() => shareContest(contest.id, '微博')}
@@ -431,8 +431,8 @@ const PhotographyContests: React.FC = () => {
             })}
               
                {filteredContests.length === 0 && (
-                <div className="p-8 bg-bg-card rounded-xl border border-accent text-center">
-                  <div className="w-16 h-16 bg-bg-dark-alt rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+                <div className="p-8 bg-card rounded-xl border border-accent text-center">
+                  <div className="w-16 h-16 bg-dark-alt rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                     <i className={isUserPersonalContests ? "fa-solid fa-trophy text-2xl" : "fa-solid fa-search text-2xl"}></i>
                   </div>
                   <h3 className="text-lg font-medium text-text-primary mb-2">
@@ -445,7 +445,7 @@ const PhotographyContests: React.FC = () => {
                     }
                   </p>
                   {isUserPersonalContests && (
-                    <Link to="/photography-contests" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-bg-dark-hover transition-colors inline-flex items-center">
+                    <Link to="/photography-contests" className="px-6 py-3 bg-accent text-text-primary rounded-lg font-medium hover:bg-dark-hover transition-colors inline-flex items-center">
                       <i className="fa-solid fa-compass mr-2"></i>
                       浏览更多赛事
                     </Link>
@@ -457,7 +457,7 @@ const PhotographyContests: React.FC = () => {
             {/* 分页 */}
             {filteredContests.length > 0 && (
               <div className="flex justify-center">
-                <nav className="flex items-center space-x-1 bg-bg-card p-2 rounded-lg border border-accent">
+                <nav className="flex items-center space-x-1 bg-card p-2 rounded-lg border border-accent">
                   <button className="px-3 py-2 rounded border border-accent text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                     <i className="fa-solid fa-chevron-left text-xs"></i>
                   </button>
@@ -534,7 +534,7 @@ const PhotographyContests: React.FC = () => {
                         whileHover={{ x: 5 }}
                         className="flex space-x-3 cursor-pointer"
                       >
-                        <div className="w-16 h-16 flex-shrink-0 flex flex-col items-center justify-center bg-bg-card/30 rounded-lg text-text-primary">
+                        <div className="w-16 h-16 flex-shrink-0 flex flex-col items-center justify-center bg-card/30 rounded-lg text-text-primary">
                           <span className="text-lg font-bold">{diffDays}</span>
                           <span className="text-xs">天后截止</span>
                         </div>
@@ -563,7 +563,7 @@ const PhotographyContests: React.FC = () => {
             </div>
             
             {/* 赛事常见问题 */}
-            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
               <h3 className="text-lg font-bold mb-4 text-text-primary">参赛指南</h3>
               <div className="space-y-3">
                 <div>
@@ -594,7 +594,7 @@ const PhotographyContests: React.FC = () => {
             </div>
             
             {/* 赛事日历模块 */}
-            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
               <h3 className="text-lg font-bold mb-4 text-text-primary">赛事日历</h3>
               {/* 简化的日历组件 */}
               <div className="text-center mb-3">

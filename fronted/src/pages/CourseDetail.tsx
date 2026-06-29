@@ -290,7 +290,7 @@ const CourseDetail: React.FC = () => {
   
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-4 py-8 bg-deep min-h-screen flex items-center justify-center">
         <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
@@ -298,7 +298,7 @@ const CourseDetail: React.FC = () => {
 
   if (!course) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
           <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-exclamation-circle text-2xl"></i>
@@ -312,7 +312,7 @@ const CourseDetail: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -334,8 +334,8 @@ const CourseDetail: React.FC = () => {
           <div className="flex flex-col lg:flex-row gap-6">
             {/* 课程封面和视频区域 */}
             <div className="lg:w-2/3">
-              <div className="relative bg-bg-card rounded-xl overflow-hidden border border-accent mb-6" id="course-video-section">
-                <div className="aspect-video bg-bg-deep flex items-center justify-center">
+              <div className="relative bg-card rounded-xl overflow-hidden border border-accent mb-6" id="course-video-section">
+                <div className="aspect-video bg-deep flex items-center justify-center">
                   {selectedLesson ? (
                     // 模拟视频播放器
                     <div className="text-center">
@@ -371,7 +371,7 @@ const CourseDetail: React.FC = () => {
                             </button>
                           )}
                           {course.type !== '免费' && (
-                            <button className="px-6 py-3 bg-bg-card text-text-primary border border-accent rounded-lg font-medium hover:bg-accent transition-colors">
+                            <button className="px-6 py-3 bg-card text-text-primary border border-accent rounded-lg font-medium hover:bg-accent transition-colors">
                               立即购买
                             </button>
                           )}
@@ -382,14 +382,14 @@ const CourseDetail: React.FC = () => {
                 </div>
                 
                 {selectedLesson && (
-                  <div className="p-4 bg-bg-card border-t border-accent flex justify-between items-center">
+                  <div className="p-4 bg-card border-t border-accent flex justify-between items-center">
                     <div className="flex items-center space-x-4">
                       <button
                         onClick={handleMarkCompleted}
                         className={`flex items-center space-x-1 text-sm px-3 py-1 rounded-full ${
                           progress[selectedLesson.id]
                             ? 'bg-accent text-text-primary'
-                            : 'bg-bg-deep text-text-muted'
+                            : 'bg-deep text-text-muted'
                         }`}
                       >
                         <i className={`fa-solid ${progress[selectedLesson.id] ? 'fa-check' : 'fa-circle-check'}`}></i>
@@ -397,7 +397,7 @@ const CourseDetail: React.FC = () => {
                       </button>
                       <button
                         onClick={() => setShowNotes(!showNotes)}
-                        className="flex items-center space-x-1 text-sm px-3 py-1 bg-bg-deep text-text-muted rounded-full"
+                        className="flex items-center space-x-1 text-sm px-3 py-1 bg-deep text-text-muted rounded-full"
                       >
                         <i className="fa-solid fa-pen-to-square"></i>
                         <span>笔记</span>
@@ -415,14 +415,14 @@ const CourseDetail: React.FC = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="p-4 bg-bg-deep border-t border-accent"
+                    className="p-4 bg-deep border-t border-accent"
                   >
                     <div className="mb-4">
                       <textarea
                         value={newNote}
                         onChange={(e) => setNewNote(e.target.value)}
                         placeholder="添加学习笔记..."
-                        className="w-full px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none h-24"
+                        className="w-full px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none h-24"
                       ></textarea>
                       <div className="flex justify-end mt-2">
                         <button
@@ -442,7 +442,7 @@ const CourseDetail: React.FC = () => {
                           {notes
                             .filter(note => note.lessonId === selectedLesson.id)
                             .map(note => (
-                              <div key={note.id} className="p-3 bg-bg-card rounded-lg border border-accent">
+                              <div key={note.id} className="p-3 bg-card rounded-lg border border-accent">
                                 <div className="flex justify-between items-start mb-1">
                                   <p className="text-sm text-text-primary">{note.content}</p>
                                   <button
@@ -462,7 +462,7 @@ const CourseDetail: React.FC = () => {
               </div>
               
               {/* 课程描述 */}
-              <div className="bg-bg-card rounded-xl p-6 border border-accent mb-6">
+              <div className="bg-card rounded-xl p-6 border border-accent mb-6">
                 <h3 className="text-xl font-bold text-text-primary mb-4">课程介绍</h3>
                 <p className="text-text-muted mb-4">
                   {course.description}
@@ -473,7 +473,7 @@ const CourseDetail: React.FC = () => {
               </div>
               
               {/* 课程评价 */}
-              <div className="bg-bg-card rounded-xl p-6 border border-accent mb-6">
+              <div className="bg-card rounded-xl p-6 border border-accent mb-6">
                 <h3 className="text-xl font-bold text-text-primary mb-4">课程评价</h3>
                 
                 <div className="flex items-center space-x-6 mb-6">
@@ -502,7 +502,7 @@ const CourseDetail: React.FC = () => {
                         return (
                           <div key={star} className="flex items-center space-x-2">
                             <div className="w-16 text-sm text-text-muted">{star}星</div>
-                            <div className="flex-1 h-2 bg-bg-deep rounded-full overflow-hidden">
+                            <div className="flex-1 h-2 bg-deep rounded-full overflow-hidden">
                               <div
                                 className="h-full bg-accent"
                                 style={{ width: `${percentage}%` }}
@@ -551,7 +551,7 @@ const CourseDetail: React.FC = () => {
             {/* 课程大纲和侧边信息 */}
             <div className="lg:w-1/3">
               {/* 课程信息卡片 */}
-              <div className="bg-bg-card rounded-xl p-6 border border-accent mb-6">
+              <div className="bg-card rounded-xl p-6 border border-accent mb-6">
                 <div className="flex items-center mb-4">
                   <img
                     src={course.instructor.avatar}
@@ -565,11 +565,11 @@ const CourseDetail: React.FC = () => {
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="text-center p-3 bg-bg-deep rounded-lg">
+                  <div className="text-center p-3 bg-deep rounded-lg">
                     <p className="text-xl font-bold text-accent">{course.instructor.students.toLocaleString()}</p>
                     <p className="text-xs text-text-muted">学员</p>
                   </div>
-                  <div className="text-center p-3 bg-bg-deep rounded-lg">
+                  <div className="text-center p-3 bg-deep rounded-lg">
                     <p className="text-xl font-bold text-accent">{course.instructor.courses}</p>
                     <p className="text-xs text-text-muted">课程</p>
                   </div>
@@ -599,7 +599,7 @@ const CourseDetail: React.FC = () => {
                     <span className="text-sm text-text-muted">学习进度</span>
                     <span className="text-sm text-text-primary">{overallProgress}%</span>
                   </div>
-                  <div className="w-full h-2 bg-bg-deep rounded-full overflow-hidden mb-4">
+                  <div className="w-full h-2 bg-deep rounded-full overflow-hidden mb-4">
                     <div
                       className="h-full bg-accent"
                       style={{ width: `${overallProgress}%` }}
@@ -619,14 +619,14 @@ const CourseDetail: React.FC = () => {
               </div>
               
               {/* 课程大纲 */}
-              <div className="bg-bg-card rounded-xl border border-accent overflow-hidden mb-6">
-                <div className="p-4 border-b border-accent bg-bg-card">
+              <div className="bg-card rounded-xl border border-accent overflow-hidden mb-6">
+                <div className="p-4 border-b border-accent bg-card">
                   <h3 className="font-bold text-text-primary">课程大纲</h3>
                 </div>
                 <div className="max-h-96 overflow-y-auto">
                   {course.sections.map((section) => (
                     <div key={section.id} className="mb-3">
-                      <div className="p-3 bg-bg-card border-b border-accent flex justify-between items-center">
+                      <div className="p-3 bg-card border-b border-accent flex justify-between items-center">
                         <h4 className="font-medium text-text-primary">{section.title}</h4>
                         <span className="text-xs text-text-muted">{section.duration}</span>
                       </div>
@@ -638,7 +638,7 @@ const CourseDetail: React.FC = () => {
                             className={`w-full text-left p-3 ${
                               selectedLesson?.id === lesson.id
                                 ? 'bg-accent text-text-primary'
-                                : 'bg-bg-deep text-text-muted hover:bg-bg-card'
+                                : 'bg-deep text-text-muted hover:bg-card'
                             } flex justify-between items-center transition-colors`}
                             whileHover={{ x: 5 }}
                           >
@@ -663,8 +663,8 @@ const CourseDetail: React.FC = () => {
               </div>
               
               {/* 学习小组 */}
-              <div className="bg-bg-card rounded-xl border border-accent overflow-hidden">
-                <div className="p-4 border-b border-accent bg-bg-card flex justify-between items-center">
+              <div className="bg-card rounded-xl border border-accent overflow-hidden">
+                <div className="p-4 border-b border-accent bg-card flex justify-between items-center">
                   <h3 className="font-bold text-text-primary">学习小组</h3>
                   <button
                     onClick={() => setShowGroups(!showGroups)}
@@ -685,7 +685,7 @@ const CourseDetail: React.FC = () => {
                             value={newGroupName}
                             onChange={(e) => setNewGroupName(e.target.value)}
                             placeholder="创建学习小组"
-                            className="flex-1 px-3 py-2 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all text-sm"
+                            className="flex-1 px-3 py-2 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all text-sm"
                           />
                           <button
                             onClick={handleCreateGroup}
@@ -700,7 +700,7 @@ const CourseDetail: React.FC = () => {
                     {/* 小组列表 */}
                     <div className="space-y-3">
                       {studyGroups.map((group) => (
-                        <div key={group.id} className="p-3 bg-bg-deep rounded-lg border border-accent">
+                        <div key={group.id} className="p-3 bg-deep rounded-lg border border-accent">
                           <div className="flex justify-between items-start mb-1">
                             <h4 className="font-medium text-text-primary">{group.name}</h4>
                             {isAuthenticated && (
@@ -735,7 +735,7 @@ const CourseDetail: React.FC = () => {
               <motion.div
                 key={instructor.id}
                 whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-                className="bg-bg-card rounded-xl p-6 border border-accent transition-all"
+                className="bg-card rounded-xl p-6 border border-accent transition-all"
               >
                 <div className="flex items-center mb-4">
                   <img
@@ -775,7 +775,7 @@ const CourseDetail: React.FC = () => {
                     onClick={() => {
                       toast.success(`已关注讲师 ${instructor.name}`);
                     }}
-                    className="px-4 py-2 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                    className="px-4 py-2 bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                   >
                     <i className="fa-solid fa-plus"></i>
                   </button>
@@ -799,7 +799,7 @@ const CourseDetail: React.FC = () => {
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 20 }}
-            className="bg-bg-card rounded-xl border border-accent max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-card rounded-xl border border-accent max-w-2xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* 证书预览 */}
@@ -840,7 +840,7 @@ const CourseDetail: React.FC = () => {
             <div className="p-4 flex justify-end space-x-3 border-t border-accent">
               <button
                 onClick={() => setShowCertificate(false)}
-                className="px-4 py-2 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                className="px-4 py-2 bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
               >
                 关闭
               </button>
@@ -869,7 +869,7 @@ const CourseDetail: React.FC = () => {
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 20 }}
-            className="bg-bg-card rounded-xl border border-accent max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-card rounded-xl border border-accent max-w-2xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* 讲师详情头部 */}
@@ -917,7 +917,7 @@ const CourseDetail: React.FC = () => {
               
               <div className="mb-6">
                 <h4 className="text-lg font-medium text-text-primary mb-2">擅长领域</h4>
-                <span className="px-3 py-1 bg-bg-deep text-text-muted rounded-full text-sm border border-accent">
+                <span className="px-3 py-1 bg-deep text-text-muted rounded-full text-sm border border-accent">
                   {selectedInstructor.specialty}
                 </span>
               </div>
@@ -931,7 +931,7 @@ const CourseDetail: React.FC = () => {
                 <h4 className="text-lg font-medium text-text-primary mb-2">代表课程</h4>
                 <div className="space-y-3">
                   {[1, 2].map((item) => (
-                    <div key={item} className="p-3 bg-bg-deep rounded-lg border border-accent flex items-center justify-between">
+                    <div key={item} className="p-3 bg-deep rounded-lg border border-accent flex items-center justify-between">
                       <div>
                         <h5 className="font-medium text-text-primary">
                           {selectedInstructor.specialty}进阶课程 {item}
@@ -953,7 +953,7 @@ const CourseDetail: React.FC = () => {
             <div className="p-4 border-t border-accent flex justify-end space-x-3">
               <button
                 onClick={() => setSelectedInstructor(null)}
-                className="px-4 py-2 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                className="px-4 py-2 bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
               >
                 关闭
               </button>

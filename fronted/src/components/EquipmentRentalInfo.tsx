@@ -20,7 +20,7 @@ export const EquipmentRentalInfo: React.FC<RentalInfoProps> = ({ rentalInfo, sec
   }
 
   return (
-    <div className="mt-4 p-4 bg-bg-card rounded-lg border border-accent">
+    <div className="mt-4 p-4 bg-card rounded-lg border border-accent">
       <h3 className="text-lg font-semibold text-text-primary mb-3">租赁与二手信息</h3>
       
       {rentalInfo && (
@@ -39,15 +39,15 @@ export const EquipmentRentalInfo: React.FC<RentalInfoProps> = ({ rentalInfo, sec
           
           <h4 className="text-sm font-medium text-text-muted mb-2">租赁价格</h4>
           <div className="grid grid-cols-3 gap-2 mb-3">
-            <div className="text-center p-2 bg-bg-deep rounded-lg">
+            <div className="text-center p-2 bg-deep rounded-lg">
               <p className="text-xs text-text-muted">日租</p>
               <p className="text-lg font-bold text-accent">¥{rentalInfo.rentalPrice.daily}</p>
             </div>
-            <div className="text-center p-2 bg-bg-deep rounded-lg">
+            <div className="text-center p-2 bg-deep rounded-lg">
               <p className="text-xs text-text-muted">周租</p>
               <p className="text-lg font-bold text-accent">¥{rentalInfo.rentalPrice.weekly}</p>
             </div>
-            <div className="text-center p-2 bg-bg-deep rounded-lg">
+            <div className="text-center p-2 bg-deep rounded-lg">
               <p className="text-xs text-text-muted">月租</p>
               <p className="text-lg font-bold text-accent">¥{rentalInfo.rentalPrice.monthly}</p>
             </div>

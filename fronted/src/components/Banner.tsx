@@ -75,19 +75,19 @@ export const Banner: React.FC = () => {
   // 根据主题获取样式类
   const getBgClass = () => {
     return theme === 'dark' 
-      ? 'bg-bg-card border border-accent' 
+      ? 'bg-card border border-accent' 
       : 'bg-gray-100 border border-gray-200';
   };
   
   const getGradientClass = () => {
     return theme === 'dark' 
-      ? 'bg-gradient-to-t from-bg-deep/80 to-transparent' 
+      ? 'bg-gradient-to-t from-deep/80 to-transparent' 
       : 'bg-gradient-to-t from-black/60 to-transparent';
   };
   
   const getButtonClass = () => {
     return theme === 'dark' 
-      ? 'border-2 border-accent bg-gradient-to-r from-accent to-bg-card text-text-primary hover:from-accent-hover hover:to-accent' 
+      ? 'border-2 border-accent bg-gradient-to-r from-accent to-card text-text-primary hover:from-accent-hover hover:to-accent' 
       : 'border-2 border-light-accent bg-gradient-to-r from-light-accent to-light-accent-hover text-white hover:from-light-accent-hover hover:to-blue-dark';
   };
   

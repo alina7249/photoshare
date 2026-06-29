@@ -47,12 +47,12 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
       <p className="text-text-muted/70 text-sm mb-3">风光/人像双题材创作者</p>
       
       {/* 等级和进度条 */}
-      <div className="bg-bg-card p-3 rounded-lg mb-4">
+      <div className="bg-card p-3 rounded-lg mb-4">
         <div className="flex justify-between items-center mb-1">
           <span className="text-accent text-xs">{level} LV.{levelNum}</span>
           <span className="text-accent text-xs">{progress}/{progressMax}成长值</span>
         </div>
-        <div className="w-full h-1.5 bg-bg-deep rounded-full overflow-hidden">
+        <div className="w-full h-1.5 bg-deep rounded-full overflow-hidden">
           <div 
             className="h-full bg-accent" 
             style={{ width: `${progressPercentage}%` }}
@@ -66,7 +66,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
       </div>
       
       {/* 核心数据统计区 */}
-      <div className="grid grid-cols-3 gap-1 px-4 py-3 bg-bg-card rounded-lg">
+      <div className="grid grid-cols-3 gap-1 px-4 py-3 bg-card rounded-lg">
         <div className="text-center">
           <p className="text-text-muted/70 text-xs mb-1">作品</p>
           <p className="text-text-primary font-bold text-lg">{stats.posts}</p>

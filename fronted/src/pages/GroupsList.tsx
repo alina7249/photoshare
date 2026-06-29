@@ -145,7 +145,7 @@ const GroupsList: React.FC = () => {
   // 渲染加载状态
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-4 py-8 bg-deep min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-text-muted">加载小组中...</p>
@@ -155,7 +155,7 @@ const GroupsList: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -201,7 +201,7 @@ const GroupsList: React.FC = () => {
               transition={{ duration: 0.3 }}
               className="mb-8 overflow-hidden"
             >
-              <div className="bg-bg-card border border-accent rounded-lg p-6">
+              <div className="bg-card border border-accent rounded-lg p-6">
                 <h2 className="text-xl font-bold text-text-primary mb-4">创建摄影小组</h2>
                 
                 <form onSubmit={handleCreateGroup}>
@@ -212,7 +212,7 @@ const GroupsList: React.FC = () => {
                       value={groupName}
                       onChange={(e) => setGroupName(e.target.value)}
                       placeholder="请输入小组名称"
-                      className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                       maxLength={50}
                       required
                     />
@@ -225,7 +225,7 @@ const GroupsList: React.FC = () => {
                       value={groupDescription}
                       onChange={(e) => setGroupDescription(e.target.value)}
                       placeholder="介绍你的小组主题、目标和成员可以获得什么..."
-                      className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[120px]"
+                      className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[120px]"
                       maxLength={500}
                     ></textarea>
                     <p className="text-xs text-accent-hover mt-1">最多500个字符，详细的介绍能吸引更多成员</p>
@@ -241,7 +241,7 @@ const GroupsList: React.FC = () => {
                           value="public"
                           checked={groupType === "public"}
                           onChange={(e) => setGroupType(e.target.value)}
-                          className="w-4 h-4 text-accent bg-bg-deep border-accent rounded focus:ring-accent"
+                          className="w-4 h-4 text-accent bg-deep border-accent rounded focus:ring-accent"
                         />
                         <span className="ml-2 text-text-muted">公开小组</span>
                       </label>
@@ -252,7 +252,7 @@ const GroupsList: React.FC = () => {
                           value="private"
                           checked={groupType === "private"}
                           onChange={(e) => setGroupType(e.target.value)}
-                          className="w-4 h-4 text-accent bg-bg-deep border-accent rounded focus:ring-accent"
+                          className="w-4 h-4 text-accent bg-deep border-accent rounded focus:ring-accent"
                         />
                         <span className="ml-2 text-text-muted">私密小组</span>
                       </label>
@@ -267,7 +267,7 @@ const GroupsList: React.FC = () => {
                       value={groupTags}
                       onChange={(e) => setGroupTags(e.target.value)}
                       placeholder="输入标签，用逗号分隔，最多5个标签"
-                      className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                      className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                     />
                     <p className="text-xs text-accent-hover mt-1">添加相关标签，让更多志同道合的人找到你的小组</p>
                   </div>
@@ -276,7 +276,7 @@ const GroupsList: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setShowCreateGroupForm(false)}
-                      className="flex-1 py-3 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                      className="flex-1 py-3 bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                     >
                       取消
                     </button>
@@ -295,26 +295,26 @@ const GroupsList: React.FC = () => {
         </AnimatePresence>
 
         {/* 小组列表统计 */}
-        <div className="mb-6 bg-bg-card border border-accent rounded-lg p-4">
+        <div className="mb-6 bg-card border border-accent rounded-lg p-4">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-lg font-bold text-text-primary">全部小组</h2>
               <p className="text-sm text-text-muted">共 {groups.length} 个小组</p>
             </div>
             <div className="grid grid-cols-3 gap-4 text-center">
-              <div className="bg-bg-deep p-3 rounded-lg">
+              <div className="bg-deep p-3 rounded-lg">
                 <div className="text-xs text-accent-hover">已加入</div>
                 <div className="text-lg font-bold text-text-primary">
                   {groups.filter(group => group.joined).length}
                 </div>
               </div>
-              <div className="bg-bg-deep p-3 rounded-lg">
+              <div className="bg-deep p-3 rounded-lg">
                 <div className="text-xs text-accent-hover">公开小组</div>
                 <div className="text-lg font-bold text-text-primary">
                   {groups.filter(group => group.isPublic).length}
                 </div>
               </div>
-              <div className="bg-bg-deep p-3 rounded-lg">
+              <div className="bg-deep p-3 rounded-lg">
                 <div className="text-xs text-accent-hover">总成员数</div>
                 <div className="text-lg font-bold text-text-primary">
                   {groups.reduce((sum, group) => sum + group.members.length, 0)}
@@ -327,8 +327,8 @@ const GroupsList: React.FC = () => {
         {/* 小组列表 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {groups.length === 0 ? (
-            <div className="col-span-full p-12 bg-bg-card border border-accent rounded-lg text-center">
-              <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+            <div className="col-span-full p-12 bg-card border border-accent rounded-lg text-center">
+              <div className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                 <i className="fa-solid fa-users text-2xl"></i>
               </div>
               <h3 className="text-lg font-medium text-text-primary mb-2">暂无小组</h3>

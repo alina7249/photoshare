@@ -135,7 +135,7 @@ const PhotoDetail: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen flex items-center justify-center">
         <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
@@ -143,7 +143,7 @@ const PhotoDetail: React.FC = () => {
 
   if (!photo) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
           <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-exclamation-circle text-2xl"></i>
@@ -157,7 +157,7 @@ const PhotoDetail: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -181,7 +181,7 @@ const PhotoDetail: React.FC = () => {
           {/* 左侧作品信息 */}
           <div className="lg:col-span-2 space-y-6">
             {/* 作品图片 - 增加版权标签 */}
-            <div className="bg-bg-card p-4 rounded-xl shadow-sm border border-accent relative">
+            <div className="bg-card p-4 rounded-xl shadow-sm border border-accent relative">
               {/* 版权标签 */}
               <div className={`absolute top-6 left-6 px-3 py-1 rounded text-xs ${
                 photo?.copyrightType === '独家授权' 
@@ -198,7 +198,7 @@ const PhotoDetail: React.FC = () => {
             </div>
 
             {/* 作品描述 */}
-            <div className="bg-bg-card p-6 rounded-xl shadow-sm border border-accent">
+            <div className="bg-card p-6 rounded-xl shadow-sm border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">作品描述</h2>
               <p className="text-text-muted whitespace-pre-line">{photo?.description}</p>
               
@@ -213,7 +213,7 @@ const PhotoDetail: React.FC = () => {
             </div>
 
             {/* EXIF信息 */}
-            <div className="bg-bg-card p-6 rounded-xl shadow-sm border border-accent">
+            <div className="bg-card p-6 rounded-xl shadow-sm border border-accent">
               <h2 className="text-xl font-bold text-text-muted mb-4">EXIF 信息</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-3">
@@ -256,7 +256,7 @@ const PhotoDetail: React.FC = () => {
             </div>
 
             {/* 评论区 */}
-            <div className="bg-bg-card p-6 rounded-xl shadow-sm border border-accent">
+            <div className="bg-card p-6 rounded-xl shadow-sm border border-accent">
               <CommentSection postId={photo?.id} />
             </div>
           </div>
@@ -264,7 +264,7 @@ const PhotoDetail: React.FC = () => {
           {/* 右侧边栏 */}
           <div className="space-y-6">
             {/* 作者信息 */}
-            <div className="bg-bg-card p-6 rounded-xl shadow-sm border border-accent">
+            <div className="bg-card p-6 rounded-xl shadow-sm border border-accent">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-accent">
                   <img
@@ -317,7 +317,7 @@ const PhotoDetail: React.FC = () => {
             </div>
 
             {/* 互动区域 */}
-            <div className="bg-bg-card p-6 rounded-xl shadow-sm border border-accent">
+            <div className="bg-card p-6 rounded-xl shadow-sm border border-accent">
               <div className="flex justify-between mb-6">
                 <button className={`flex flex-col items-center justify-center ${isLiked ? 'text-danger' : 'text-accent'}`}
                   onClick={handleLike}
@@ -365,7 +365,7 @@ const PhotoDetail: React.FC = () => {
                      className={`w-full py-2 rounded-lg font-medium transition-colors flex items-center justify-center ${
                        isSubscribed 
                          ? 'bg-accent-hover text-text-primary border border-accent-hover' 
-                         : 'bg-bg-card text-text-muted border border-accent'
+                         : 'bg-card text-text-muted border border-accent'
                      }`}
                    >
                      {isSubscribed ? (
@@ -381,7 +381,7 @@ const PhotoDetail: React.FC = () => {
                      )}
                    </button>
                  )}
-                 <button className="w-full py-2 bg-bg-card text-text-muted border border-accent rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors flex items-center justify-center">
+                 <button className="w-full py-2 bg-card text-text-muted border border-accent rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors flex items-center justify-center">
                    <i className="fa-solid fa-ellipsis-h mr-2"></i>
                    更多选项
                  </button>
@@ -389,18 +389,18 @@ const PhotoDetail: React.FC = () => {
             </div>
 
             {/* 版权交易 */}
-            <div className="bg-bg-card p-6 rounded-xl shadow-sm border border-accent">
+            <div className="bg-card p-6 rounded-xl shadow-sm border border-accent">
               <h3 className="font-bold text-text-primary mb-4">版权交易</h3>
               
               <div className="space-y-4">
                 {photo?.licensingOptions.map(option => (
-                  <div key={option.id} className="p-4 bg-bg-deep rounded-lg border border-accent">
+                  <div key={option.id} className="p-4 bg-deep rounded-lg border border-accent">
                     <div className="flex justify-between items-center mb-2">
                       <h4 className="font-medium text-text-primary">{option.name}</h4>
                       <span className="font-bold text-accent">¥{option.price}</span>
                     </div>
                     <p className="text-xs text-text-muted mb-3">{option.description}</p>
-                    <button className="w-full py-2 bg-gradient-to-r from-accent to-bg-card text-text-primary rounded-lg font-medium hover:from-accent-hover hover:to-accent transition-colors text-sm border border-accent">
+                    <button className="w-full py-2 bg-gradient-to-r from-accent to-card text-text-primary rounded-lg font-medium hover:from-accent-hover hover:to-accent transition-colors text-sm border border-accent">
                       购买授权
                     </button>
                   </div>
@@ -415,7 +415,7 @@ const PhotoDetail: React.FC = () => {
             </div>
 
             {/* 作品信息 */}
-            <div className="bg-bg-card p-6 rounded-xl shadow-sm border border-accent">
+            <div className="bg-card p-6 rounded-xl shadow-sm border border-accent">
               <h3 className="font-bold text-text-primary mb-4">作品信息</h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
@@ -446,7 +446,7 @@ const PhotoDetail: React.FC = () => {
             </div>
 
             {/* 相关推荐 */}
-            <div className="bg-bg-card p-6 rounded-xl shadow-sm border border-accent">
+            <div className="bg-card p-6 rounded-xl shadow-sm border border-accent">
               <h3 className="font-bold text-text-primary mb-4">相关推荐</h3>
               <div className="space-y-4">
                  {[
@@ -502,7 +502,7 @@ const PhotoDetail: React.FC = () => {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-bg-card rounded-xl border border-accent w-full max-w-md p-6"
+            className="bg-card rounded-xl border border-accent w-full max-w-md p-6"
           >
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-xl font-bold text-text-primary">打赏作者</h3>
@@ -541,7 +541,7 @@ const PhotoDetail: React.FC = () => {
                     className={`py-2 rounded-lg transition-colors ${
                       selectedDonation?.id === option.id 
                         ? 'bg-accent text-text-primary border-2 border-accent' 
-                        : 'bg-bg-deep text-text-muted border border-accent hover:border-accent'
+                        : 'bg-deep text-text-muted border border-accent hover:border-accent'
                     }`}
                   >
                     ¥{option.amount}
@@ -552,7 +552,7 @@ const PhotoDetail: React.FC = () => {
                   className={`py-2 rounded-lg transition-colors ${
                     selectedDonation?.id === 'custom' 
                       ? 'bg-accent text-text-primary border-2 border-accent' 
-                      : 'bg-bg-deep text-text-muted border border-accent hover:border-accent'
+                      : 'bg-deep text-text-muted border border-accent hover:border-accent'
                   }`}
                 >
                   自定义
@@ -567,7 +567,7 @@ const PhotoDetail: React.FC = () => {
                     onChange={(e) => setCustomDonationAmount(Number(e.target.value))}
                     min="1"
                     placeholder="输入自定义金额"
-                    className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                    className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                   />
                 </div>
               )}
@@ -576,7 +576,7 @@ const PhotoDetail: React.FC = () => {
             <div className="flex space-x-3">
               <button 
                 onClick={() => setShowDonationModal(false)}
-                className="flex-1 py-3 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                className="flex-1 py-3 bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
               >
                 取消
               </button>

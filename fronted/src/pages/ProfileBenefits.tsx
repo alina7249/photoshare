@@ -56,7 +56,7 @@ const ProfileBenefits: React.FC = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-dark-alt min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-dark-alt min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
           <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-user-lock text-2xl"></i>
@@ -73,7 +73,7 @@ const ProfileBenefits: React.FC = () => {
 
   if (!membershipData) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 mx-auto mb-4">
             <i className="fa-solid fa-spinner fa-spin text-3xl text-accent"></i>
@@ -129,7 +129,7 @@ const ProfileBenefits: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -197,7 +197,7 @@ const ProfileBenefits: React.FC = () => {
         </div>
 
         {/* 标签页导航 */}
-        <div className="bg-bg-card rounded-xl p-1 mb-8 flex flex-wrap">
+        <div className="bg-card rounded-xl p-1 mb-8 flex flex-wrap">
           <button
             onClick={() => setActiveTab("overview")}
             className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${activeTab === "overview" ? "bg-accent text-text-primary font-medium" : "text-text-muted hover:text-text-primary"}`}
@@ -242,7 +242,7 @@ const ProfileBenefits: React.FC = () => {
             {/* 左侧栏 */}
             <div className="lg:col-span-1 space-y-6">
               {/* 使用统计 */}
-              <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+              <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                 <h3 className="text-lg font-bold text-text-muted mb-4">使用统计</h3>
                 <div className="space-y-4">
                   {Object.entries(membershipData.usageStats).map(([key, value]) => (
@@ -251,7 +251,7 @@ const ProfileBenefits: React.FC = () => {
                         <span className="text-sm text-text-muted">{key}</span>
                         <span className="text-sm text-accent">{value.used}/{value.total}</span>
                       </div>
-                      <div className="w-full h-2 bg-bg-deep rounded-full overflow-hidden">
+                      <div className="w-full h-2 bg-deep rounded-full overflow-hidden">
                         <div
                           className="h-full bg-accent"
                           style={{
@@ -265,7 +265,7 @@ const ProfileBenefits: React.FC = () => {
               </div>
 
               {/* 当前订阅 */}
-              <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+              <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                 <h3 className="text-lg font-bold text-text-muted mb-4">当前订阅</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between">
@@ -321,7 +321,7 @@ const ProfileBenefits: React.FC = () => {
             {/* 右侧主内容 */}
             <div className="lg:col-span-2 space-y-6">
               {/* 权益使用统计可视化 */}
-              <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+              <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                 <h3 className="text-lg font-bold text-text-muted mb-4">权益使用统计</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="h-64">
@@ -368,11 +368,11 @@ const ProfileBenefits: React.FC = () => {
               </div>
 
               {/* 您的专属特权 */}
-              <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+              <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                 <h3 className="text-lg font-bold text-text-muted mb-4">您的专属特权</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {membershipData.benefits.active.slice(0, 4).map(benefit => (
-                    <div key={benefit.id} className="flex items-start p-4 bg-bg-deep rounded-lg"><div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-4 flex-shrink-0"><i className={`fa-solid ${benefit.icon}`}></i>
+                    <div key={benefit.id} className="flex items-start p-4 bg-deep rounded-lg"><div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-4 flex-shrink-0"><i className={`fa-solid ${benefit.icon}`}></i>
                         </div>
                         <div>
                           <h4 className="font-medium text-text-muted mb-1">{benefit.name}</h4>
@@ -391,14 +391,14 @@ const ProfileBenefits: React.FC = () => {
               </div>
 
               {/* 专属内容预览 */}
-              <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+              <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                 <h3 className="text-lg font-bold text-text-muted mb-4">专属内容预览</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {membershipData.growthSystem.exclusiveContent.map(content => (
                     <motion.div
                       key={content.id}
                       whileHover={{ y: -5, boxShadow: "0 2px 12px rgba(74, 95, 139, 0.3)" }}
-                      className="bg-bg-deep rounded-xl overflow-hidden border border-accent"
+                      className="bg-deep rounded-xl overflow-hidden border border-accent"
                     >
                       <div className="h-40 overflow-hidden">
                         <img 
@@ -421,14 +421,14 @@ const ProfileBenefits: React.FC = () => {
               </div>
 
               {/* 推荐套餐 */}
-              <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+              <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                 <h3 className="text-lg font-bold text-text-muted mb-4">推荐套餐</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {membershipData.availablePlans.map(plan => (
                     <motion.div
                       key={plan.id}
                       whileHover={{ y: -5, boxShadow: "0 2px 12px rgba(74, 95, 139, 0.3)" }}
-                      className={`rounded-xl overflow-hidden border transition-all ${plan.recommended ? "border-accent bg-bg-deep relative" : "border-accent bg-bg-deep"}`}
+                      className={`rounded-xl overflow-hidden border transition-all ${plan.recommended ? "border-accent bg-deep relative" : "border-accent bg-deep"}`}
                     >
                       {plan.recommended && (
                         <div className="absolute top-0 right-0">
@@ -468,11 +468,11 @@ const ProfileBenefits: React.FC = () => {
         {/* 会员权益标签页 */}
         {activeTab === "benefits" && (
           <div className="space-y-8">
-            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
               <h3 className="text-lg font-bold text-text-muted mb-4">当前可用权益</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {membershipData.benefits.active.map(benefit => (
-                  <div key={benefit.id} className="flex items-start p-4 bg-bg-deep rounded-lg">
+                  <div key={benefit.id} className="flex items-start p-4 bg-deep rounded-lg">
                     <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-4 flex-shrink-0">
                       <i className={`fa-solid ${benefit.icon}`}></i>
                     </div>
@@ -492,11 +492,11 @@ const ProfileBenefits: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
               <h3 className="text-lg font-bold text-text-muted mb-4">即将解锁权益</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {membershipData.benefits.upcoming.map(benefit => (
-                  <div key={benefit.id} className="flex flex-col p-4 bg-bg-deep rounded-lg">
+                  <div key={benefit.id} className="flex flex-col p-4 bg-deep rounded-lg">
                     <div className="flex items-center mb-3">
                       <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-4 flex-shrink-0">
                         <i className={`fa-solid ${benefit.icon}`}></i>
@@ -523,7 +523,7 @@ const ProfileBenefits: React.FC = () => {
         {activeTab === "upgrade" && (
           <div className="space-y-8">
             {/* 等级晋升路径 */}
-            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
               <h3 className="text-lg font-bold text-text-muted mb-6">会员成长体系</h3>
               
               <div className="relative">
@@ -537,9 +537,9 @@ const ProfileBenefits: React.FC = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className={`flex md:items-center p-4 rounded-lg border ${level.isCurrent ? "bg-accent/20 border-accent" : "bg-bg-deep border-accent"}`}
+                      className={`flex md:items-center p-4 rounded-lg border ${level.isCurrent ? "bg-accent/20 border-accent" : "bg-deep border-accent"}`}
                     >
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold z-10 mb-4 md:mb-0 ${level.isCurrent ? "bg-accent text-white" : "bg-bg-deep text-accent border border-accent"}`}>
+                      <div className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold z-10 mb-4 md:mb-0 ${level.isCurrent ? "bg-accent text-white" : "bg-deep text-accent border border-accent"}`}>
                         <i className={`fa-solid ${level.icon}`}></i>
                       </div>
                       
@@ -567,14 +567,14 @@ const ProfileBenefits: React.FC = () => {
             {/* 升级任务 */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-1 space-y-6">
-                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                   <h3 className="text-lg font-bold text-text-muted mb-4">当前等级</h3>
                   <div className="flex items-center justify-center mb-4">
                     <div className="w-24 h-24 rounded-full bg-accent/20 flex items-center justify-center relative">
                       <span className="text-3xl font-bold text-accent">
                         LV.{membershipData.currentPlan.level}
                       </span>
-                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-bg-deep rounded-b-full overflow-hidden">
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-deep rounded-b-full overflow-hidden">
                         <div
                           className="h-full bg-accent"
                           style={{ width: "70%" }}
@@ -590,17 +590,17 @@ const ProfileBenefits: React.FC = () => {
               </div>
 
               <div className="lg:col-span-2">
-                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                   <h3 className="text-lg font-bold text-text-muted mb-4">
                     升级至 {membershipData.nextLevel.name}(LV.{membershipData.nextLevel.level})
                   </h3>
                   <div className="space-y-4">
                     {membershipData.nextLevel.requirements.map(req => (
-                      <div key={req.id} className="p-4 bg-bg-deep rounded-lg">
+                      <div key={req.id} className="p-4 bg-deep rounded-lg">
                         <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center">
                             <div
-                              className={`w-8 h-8 rounded-full flex items-center justify-center mr-3 ${req.completed ? "bg-accent text-text-primary" : "bg-bg-deep text-text-muted border border-accent"}`}
+                              className={`w-8 h-8 rounded-full flex items-center justify-center mr-3 ${req.completed ? "bg-accent text-text-primary" : "bg-deep text-text-muted border border-accent"}`}
                             >
                               {req.completed ? <i className="fa-solid fa-check"></i> : <span>{req.id}</span>}
                             </div>
@@ -609,7 +609,7 @@ const ProfileBenefits: React.FC = () => {
                           {req.completed ? (
                             <span className="px-3 py-1 bg-accent/20 text-accent text-xs rounded-full">已完成</span>
                           ) : (
-                            <span className="px-3 py-1 bg-bg-deep text-text-muted text-xs rounded-full border border-accent">进行中</span>
+                            <span className="px-3 py-1 bg-deep text-text-muted text-xs rounded-full border border-accent">进行中</span>
                           )}
                         </div>
                         {!req.completed && req.progress !== undefined && (
@@ -618,7 +618,7 @@ const ProfileBenefits: React.FC = () => {
                               <span className="text-xs text-text-muted">进度</span>
                               <span className="text-xs text-accent">{req.progress}/{req.total}</span>
                             </div>
-                            <div className="w-full h-1.5 bg-bg-deep rounded-full overflow-hidden">
+                            <div className="w-full h-1.5 bg-deep rounded-full overflow-hidden">
                               <div
                                 className="h-full bg-accent"
                                 style={{ width: `${(req.progress / req.total) * 100}%` }}
@@ -689,13 +689,13 @@ const ProfileBenefits: React.FC = () => {
             </div>
 
             {/* 标签页导航 */}
-            <div className="bg-bg-card rounded-xl p-1 mb-8 flex flex-wrap">
+            <div className="bg-card rounded-xl p-1 mb-8 flex flex-wrap">
               <button
                 onClick={() => setActiveTab('growth')}
                 className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${
                   activeTab === 'growth'
                     ? 'bg-accent text-text-primary font-medium'
-                    : 'bg-bg-card text-text-muted hover:text-text-primary'
+                    : 'bg-card text-text-muted hover:text-text-primary'
                 }`}
               >
                 成长记录
@@ -705,7 +705,7 @@ const ProfileBenefits: React.FC = () => {
                 className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${
                   activeTab === 'rewards'
                     ? 'bg-accent text-text-primary font-medium'
-                    : 'bg-bg-card text-text-muted hover:text-text-primary'
+                    : 'bg-card text-text-muted hover:text-text-primary'
                 }`}
               >
                 福利兑换
@@ -715,7 +715,7 @@ const ProfileBenefits: React.FC = () => {
                 className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${
                   activeTab === 'tasks'
                     ? 'bg-accent text-text-primary font-medium'
-                    : 'bg-bg-card text-text-muted hover:text-text-primary'
+                    : 'bg-card text-text-muted hover:text-text-primary'
                 }`}
               >
                 任务中心
@@ -725,7 +725,7 @@ const ProfileBenefits: React.FC = () => {
                 className={`flex-1 py-3 px-4 text-center rounded-lg transition-colors ${
                   activeTab === 'referral'
                     ? 'bg-accent text-text-primary font-medium'
-                    : 'bg-bg-card text-text-muted hover:text-text-primary'
+                    : 'bg-card text-text-muted hover:text-text-primary'
                 }`}
               >
                 推荐奖励
@@ -736,11 +736,11 @@ const ProfileBenefits: React.FC = () => {
             {activeTab === 'growth' && (
               <div className="space-y-8">
                 {/* 成长值记录 */}
-                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                   <h3 className="text-lg font-bold text-text-primary mb-4">成长值记录</h3>
                   <div className="space-y-4">
                     {membershipData.growthBenefits.growthHistory.map((item, index) => (
-                      <div key={index} className="flex items-center justify-between p-4 bg-bg-deep rounded-lg border border-accent hover:border-accent hover:border-2 transition-all">
+                      <div key={index} className="flex items-center justify-between p-4 bg-deep rounded-lg border border-accent hover:border-accent hover:border-2 transition-all">
                         <div className="flex items-center">
                           <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-4">
                             <i className="fa-solid fa-plus-circle"></i>
@@ -757,7 +757,7 @@ const ProfileBenefits: React.FC = () => {
                   
                   {/* 分页 */}
                   <div className="flex justify-center mt-6">
-                    <nav className="flex items-center space-x-1 bg-bg-deep p-2 rounded-lg border border-accent">
+                    <nav className="flex items-center space-x-1 bg-deep p-2 rounded-lg border border-accent">
                       <button className="px-3 py-2 rounded border border-accent text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                         <i className="fa-solid fa-chevron-left text-xs"></i>
                       </button>
@@ -770,7 +770,7 @@ const ProfileBenefits: React.FC = () => {
                 </div>
 
                 {/* 升级指南模块 */}
-                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                   <h3 className="text-lg font-bold text-text-primary mb-4">升级指南</h3>
                   <div className="space-y-4">
                     <div className="flex items-start">
@@ -827,7 +827,7 @@ const ProfileBenefits: React.FC = () => {
             {activeTab === 'rewards' && (
               <div className="space-y-8">
                 {/* 福利兑换 */}
-                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                   <div className="flex items-center justify-between mb-6">
                     <h3 className="text-lg font-bold text-text-primary">可兑换福利</h3>
                     <div className="flex items-center">
@@ -839,7 +839,7 @@ const ProfileBenefits: React.FC = () => {
                           checked={showClaimedRewards}
                           onChange={() => setShowClaimedRewards(!showClaimedRewards)}
                         />
-                        <div className="w-9 h-5 bg-bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
+                        <div className="w-9 h-5 bg-deep peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-accent"></div>
                       </label>
                     </div>
                   </div>
@@ -849,7 +849,7 @@ const ProfileBenefits: React.FC = () => {
                       <motion.div
                         key={reward.id}
                         whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-                        className={`bg-bg-deep rounded-xl overflow-hidden border transition-all ${
+                        className={`bg-deep rounded-xl overflow-hidden border transition-all ${
                           reward.available 
                             ? 'border-accent' 
                             : 'border-accent/50 opacity-80'
@@ -908,7 +908,7 @@ const ProfileBenefits: React.FC = () => {
                   
                   {filteredRewards.length === 0 && (
                     <div className="p-8 text-center">
-                      <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+                      <div className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                         <i className="fa-solid fa-gift text-2xl"></i>
                       </div>
                       <h3 className="text-lg font-medium text-text-primary mb-2">暂无可用福利</h3>
@@ -920,7 +920,7 @@ const ProfileBenefits: React.FC = () => {
                 </div>
 
                 {/* 兑换记录 */}
-                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                   <h3 className="text-lg font-bold text-text-primary mb-4">兑换记录</h3>
                   <div className="overflow-x-auto">
                     <table className="min-w-full">
@@ -967,14 +967,14 @@ const ProfileBenefits: React.FC = () => {
             {activeTab === 'tasks' && (
               <div className="space-y-8">
                 {/* 进行中任务 */}
-                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                   <h3 className="text-lg font-bold text-text-primary mb-4">进行中任务</h3>
                   <div className="space-y-4">
                     {membershipData.growthBenefits.ongoingTasks.map((task) => (
-                      <div key={task.id} className="p-4 bg-bg-deep rounded-lg border border-accent">
+                      <div key={task.id} className="p-4 bg-deep rounded-lg border border-accent">
                         <div className="flex items-start justify-between mb-3">
                           <div className="flex items-start">
-                            <div className="w-8 h-8 rounded-full bg-bg-deep text-accent border border-accent flex items-center justify-center mr-3 flex-shrink-0">
+                            <div className="w-8 h-8 rounded-full bg-deep text-accent border border-accent flex items-center justify-center mr-3 flex-shrink-0">
                               <i className="fa-solid fa-spinner fa-spin"></i>
                             </div>
                             <div>
@@ -992,7 +992,7 @@ const ProfileBenefits: React.FC = () => {
                             <span className="text-xs text-text-muted">进度</span>
                             <span className="text-xs text-accent">{task.progress}/{task.total}</span>
                           </div>
-                          <div className="w-full h-1.5 bg-bg-deep rounded-full overflow-hidden border border-accent">
+                          <div className="w-full h-1.5 bg-deep rounded-full overflow-hidden border border-accent">
                             <div 
                               className="h-full bg-accent" 
                               style={{ width: `${(task.progress / task.total) * 100}%` }}
@@ -1010,11 +1010,11 @@ const ProfileBenefits: React.FC = () => {
                 </div>
 
                 {/* 已完成任务 */}
-                <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                   <h3 className="text-lg font-bold text-text-primary mb-4">已完成任务</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {membershipData.growthBenefits.completedTasks.map((task) => (
-                      <div key={task.id} className="p-4 bg-bg-deep rounded-lg border border-accent flex items-center justify-between">
+                      <div key={task.id} className="p-4 bg-deep rounded-lg border border-accent flex items-center justify-between">
                         <div className="flex items-center">
                           <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-4">
                             <i className="fa-solid fa-check"></i>
@@ -1035,13 +1035,13 @@ const ProfileBenefits: React.FC = () => {
                {/* 会员推荐奖励 */}
               {activeTab === "referral" && (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                  <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                     <h3 className="text-lg font-bold text-text-muted mb-4">推荐奖励计划</h3>
                     <p className="text-sm text-text-muted mb-6">邀请好友加入会员，您和好友都能获得丰厚奖励</p>
                     
-                    <div className="bg-bg-deep rounded-lg p-4 mb-6">
+                    <div className="bg-deep rounded-lg p-4 mb-6">
                       <h4 className="text-md font-medium text-text-muted mb-3">我的邀请码</h4>
-                      <div className="flex items-center justify-between bg-bg-card p-3 rounded-lg">
+                      <div className="flex items-center justify-between bg-card p-3 rounded-lg">
                         <span className="font-mono text-text-muted">{membershipData.growthSystem.referralProgram.currentUser.referralCode}</span>
                         <button 
                           className="px-3 py-1 bg-accent text-text-primary rounded-lg hover:bg-light-accent transition-colors text-sm"
@@ -1052,9 +1052,9 @@ const ProfileBenefits: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-bg-deep rounded-lg p-4 mb-6">
+                    <div className="bg-deep rounded-lg p-4 mb-6">
                       <h4 className="text-md font-medium text-text-muted mb-3">我的邀请链接</h4>
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between bg-bg-card p-3 rounded-lg space-y-3 sm:space-y-0">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between bg-card p-3 rounded-lg space-y-3 sm:space-y-0">
                         <span className="font-mono text-text-muted text-sm truncate flex-1">
                           {membershipData.growthSystem.referralProgram.currentUser.referralLink}
                         </span>
@@ -1086,7 +1086,7 @@ const ProfileBenefits: React.FC = () => {
                       <h4 className="text-md font-medium text-text-muted mb-3">已获得奖励</h4>
                       <div className="space-y-3">
                         {membershipData.growthSystem.referralProgram.currentUser.rewards.map(reward => (
-                          <div key={reward.id} className="flex justify-between items-center p-3 bg-bg-deep rounded-lg">
+                          <div key={reward.id} className="flex justify-between items-center p-3 bg-deep rounded-lg">
                             <div>
                               <span className="text-sm text-text-muted">{reward.name}</span>
                               {reward.date && (
@@ -1104,7 +1104,7 @@ const ProfileBenefits: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                  <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
                     <h3 className="text-lg font-bold text-text-muted mb-4">奖励等级</h3>
                     
                     <div className="space-y-6">
@@ -1117,14 +1117,14 @@ const ProfileBenefits: React.FC = () => {
                           className={`flex items-center justify-between p-4 rounded-lg border ${
                             index < membershipData.growthSystem.referralProgram.currentUser.successfulInvites 
                               ? "bg-accent/20 border-accent" 
-                              : "bg-bg-deep border-accent"
+                              : "bg-deep border-accent"
                           }`}
                         >
                           <div className="flex items-center">
                             <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white mr-4 ${
                               index < membershipData.growthSystem.referralProgram.currentUser.successfulInvites 
                                 ? "bg-accent" 
-                                : "bg-bg-deep border border-accent"
+                                : "bg-deep border border-accent"
                             }`}>
                               {tier.invites}
                             </div>
@@ -1191,7 +1191,7 @@ const ProfileBenefits: React.FC = () => {
         {/* 账单管理标签页 */}
         {activeTab === "billing" && (
           <div className="space-y-8">
-            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-lg font-bold text-text-muted">支付方式</h3>
                 <button className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-light-accent transition-colors border border-accent text-sm">
@@ -1199,7 +1199,7 @@ const ProfileBenefits: React.FC = () => {
                 </button>
               </div>
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-bg-deep rounded-lg border-2 border-accent">
+                <div className="flex items-center justify-between p-4 bg-deep rounded-lg border-2 border-accent">
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-4">
                       <i className="fa-credit-card"></i>
@@ -1216,7 +1216,7 @@ const ProfileBenefits: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
               <h3 className="text-lg font-bold text-text-muted mb-6">交易记录</h3>
               <div className="overflow-x-auto">
                 <table className="min-w-full">
@@ -1271,7 +1271,7 @@ const ProfileBenefits: React.FC = () => {
                 </table>
               </div>
               <div className="flex justify-center mt-6">
-                <nav className="flex items-center space-x-1 bg-bg-deep p-2 rounded-lg border border-accent">
+                <nav className="flex items-center space-x-1 bg-deep p-2 rounded-lg border border-accent">
                   <button className="px-3 py-2 rounded border border-accent text-text-muted hover:bg-accent hover:text-text-primary transition-colors">
                     <i className="fa-solid fa-chevron-left text-xs"></i>
                   </button>
@@ -1288,19 +1288,19 @@ const ProfileBenefits: React.FC = () => {
         {/* 会员活动日历 */}
         {activeTab === "calendar" && (
           <div className="space-y-8">
-            <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+            <div className="bg-card rounded-xl p-6 shadow-sm border border-accent">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-lg font-bold text-text-muted">会员活动日历</h3>
                 <div className="flex space-x-2">
                   <button 
-                    className="px-3 py-1 bg-bg-deep text-text-muted rounded-lg hover:bg-accent hover:text-text-primary transition-colors"
+                    className="px-3 py-1 bg-deep text-text-muted rounded-lg hover:bg-accent hover:text-text-primary transition-colors"
                     onClick={() => setCurrentMonth(prev => Math.max(1, prev - 1))}
                   >
                     <i className="fa-solid fa-chevron-left"></i>
                   </button>
-                  <span className="px-3 py-1 bg-bg-deep text-text-muted rounded-lg">2023年{currentMonth}月</span>
+                  <span className="px-3 py-1 bg-deep text-text-muted rounded-lg">2023年{currentMonth}月</span>
                   <button 
-                    className="px-3 py-1 bg-bg-deep text-text-muted rounded-lg hover:bg-accent hover:text-text-primary transition-colors"
+                    className="px-3 py-1 bg-deep text-text-muted rounded-lg hover:bg-accent hover:text-text-primary transition-colors"
                     onClick={() => setCurrentMonth(prev => Math.min(12, prev + 1))}
                   >
                     <i className="fa-solid fa-chevron-right"></i>
@@ -1329,7 +1329,7 @@ const ProfileBenefits: React.FC = () => {
                     <div 
                       key={day} 
                       className={`p-2 h-16 rounded-lg border transition-colors relative ${
-                        hasEvent ? "border-accent bg-accent/10 cursor-pointer hover:bg-accent/20" : "border-transparent hover:border-accent hover:bg-bg-deep"
+                        hasEvent ? "border-accent bg-accent/10 cursor-pointer hover:bg-accent/20" : "border-transparent hover:border-accent hover:bg-deep"
                       }`}
                     >
                       <div className="text-center font-medium text-text-muted">{day}</div>
@@ -1349,7 +1349,7 @@ const ProfileBenefits: React.FC = () => {
                     <motion.div 
                       key={event.id}
                       whileHover={{ x: 5 }}
-                      className="flex items-start p-4 bg-bg-deep rounded-lg border border-accent cursor-pointer"
+                      className="flex items-start p-4 bg-deep rounded-lg border border-accent cursor-pointer"
                     >
                       <div className="w-12 h-12 rounded-lg bg-accent text-white flex flex-col items-center justify-center mr-4 flex-shrink-0">
                         <span className="text-lg font-bold">{event.date.split('-')[2]}</span>
@@ -1391,7 +1391,7 @@ const ProfileBenefits: React.FC = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="bg-bg-deep rounded-xl border border-accent w-full max-w-md"
+            className="bg-deep rounded-xl border border-accent w-full max-w-md"
           >
             <div className="flex justify-between items-center p-4 border-b border-accent">
               <h3 className="font-bold text-text-muted flex items-center">
@@ -1411,7 +1411,7 @@ const ProfileBenefits: React.FC = () => {
                   <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white mr-2 flex-shrink-0">
                     <i className="fa-solid fa-headset"></i>
                   </div>
-                  <div className="bg-bg-card p-3 rounded-lg rounded-tl-none max-w-[80%]">
+                  <div className="bg-card p-3 rounded-lg rounded-tl-none max-w-[80%]">
                     <p className="text-sm text-text-muted">您好！我是您的专属客服，有什么可以帮助您的吗？</p>
                   </div>
                 </div>
@@ -1425,7 +1425,7 @@ const ProfileBenefits: React.FC = () => {
                   value={newNote}
                   onChange={(e) => setNewNote(e.target.value)}
                   placeholder="输入您的问题..."
-                  className="flex-1 px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                  className="flex-1 px-4 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
                 />
                 <button 
                   className="px-4 py-2 bg-accent text-text-primary rounded-lg hover:bg-light-accent transition-colors"

@@ -350,7 +350,7 @@ const BatchManagePhotos: React.FC = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -371,7 +371,7 @@ const BatchManagePhotos: React.FC = () => {
   }
   
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -402,7 +402,7 @@ const BatchManagePhotos: React.FC = () => {
         </div>
         
         {/* 批量操作栏 - 浅蓝灰 #4A5F8B + 浅白 #F5F7FA */}
-        <div className="bg-bg-card rounded-xl p-4 shadow-sm border border-accent mb-8">
+        <div className="bg-card rounded-xl p-4 shadow-sm border border-accent mb-8">
           <div className="flex flex-col md:flex-row gap-4 items-center md:items-end">
             <div className="flex items-center">
               <input
@@ -410,7 +410,7 @@ const BatchManagePhotos: React.FC = () => {
                 id="select-all"
                 checked={selectedPhotos.length > 0 && selectedPhotos.length === filteredPosts.length}
                 onChange={toggleSelectAll}
-                className="w-4 h-4 bg-bg-card border-accent text-accent rounded focus:ring-accent"
+                className="w-4 h-4 bg-card border-accent text-accent rounded focus:ring-accent"
               />
               <label htmlFor="select-all" className="ml-2 text-text-muted">
                 全选 ({selectedPhotos.length}/{filteredPosts.length})
@@ -432,7 +432,7 @@ const BatchManagePhotos: React.FC = () => {
                 <i className="fa-solid fa-trash mr-2"></i>
                 批量删除
                 {selectedPhotos.length === 0 && (
-                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-bg-deep text-xs text-text-muted rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
+                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-deep text-xs text-text-muted rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
                     请先选择作品
                   </span>
                 )}
@@ -455,7 +455,7 @@ const BatchManagePhotos: React.FC = () => {
                   批量修改可见性
                 </button>
                 {selectedPhotos.length > 0 && (
-                  <div className="absolute right-0 mt-1 w-48 bg-bg-card rounded-lg shadow-lg border border-accent z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                  <div className="absolute right-0 mt-1 w-48 bg-card rounded-lg shadow-lg border border-accent z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                     <button 
                       onClick={() => handleBatchVisibility('公开')}
                       className="block w-full text-left px-4 py-2 text-sm text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
@@ -485,7 +485,7 @@ const BatchManagePhotos: React.FC = () => {
                   placeholder="输入标签..."
                   value={tagToAdd}
                   onChange={(e) => setTagToAdd(e.target.value)}
-                  className="px-3 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted text-sm"
+                  className="px-3 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted text-sm"
                 />
                 <motion.button 
                   whileHover={{ scale: 1.05, rotateY: 5 }}
@@ -501,7 +501,7 @@ const BatchManagePhotos: React.FC = () => {
                   <i className="fa-solid fa-tags mr-2"></i>
                   添加标签
                   {selectedPhotos.length === 0 && (
-                    <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-bg-deep text-xs text-text-muted rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
+                    <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-deep text-xs text-text-muted rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
                       请先选择作品
                     </span>
                   )}
@@ -525,7 +525,7 @@ const BatchManagePhotos: React.FC = () => {
                   更多操作
                 </button>
                 {selectedPhotos.length > 0 && (
-                  <div className="absolute right-0 mt-1 w-48 bg-bg-card rounded-lg shadow-lg border border-accent z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                  <div className="absolute right-0 mt-1 w-48 bg-card rounded-lg shadow-lg border border-accent z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                     <button 
                       onClick={() => setShowRemoveTagModal(true)}
                       className="block w-full text-left px-4 py-2 text-sm text-text-muted hover:bg-accent hover:text-text-primary transition-colors"
@@ -574,7 +574,7 @@ const BatchManagePhotos: React.FC = () => {
         </div>
         
         {/* 搜索和筛选 */}
-        <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
+        <div className="bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
             <div className="relative flex-1">
               <input
@@ -585,7 +585,7 @@ const BatchManagePhotos: React.FC = () => {
                   setSearchTerm(e.target.value);
                   setCurrentPage(1); // 重置到第一页
                 }}
-                className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
               />
               <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
             </div>
@@ -597,7 +597,7 @@ const BatchManagePhotos: React.FC = () => {
                   setVisibilityFilter(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
               >
                 <option value="all">全部可见性</option>
                 <option value="public">公开</option>
@@ -611,7 +611,7 @@ const BatchManagePhotos: React.FC = () => {
                   setFormatFilter(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
               >
                 <option value="all">全部格式</option>
                 <option value="raw">RAW</option>
@@ -624,7 +624,7 @@ const BatchManagePhotos: React.FC = () => {
                   setCategoryFilter(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
               >
                 {getAllCategories.map(category => (
                   <option key={category} value={category}>{category}</option>
@@ -634,7 +634,7 @@ const BatchManagePhotos: React.FC = () => {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
               >
                 <option value="latest">最新发布</option>
                 <option value="popular">最受欢迎</option>
@@ -658,7 +658,7 @@ const BatchManagePhotos: React.FC = () => {
                   className={`px-3 py-1 rounded-full text-sm ${
                     selectedTag === tag
                       ? 'bg-accent text-text-primary'
-                      : 'bg-bg-card text-text-muted border border-accent'
+                      : 'bg-card text-text-muted border border-accent'
                   } transition-colors`}
                 >
                   {tag}
@@ -669,11 +669,11 @@ const BatchManagePhotos: React.FC = () => {
         </div>
         
         {/* 作品列表 */}
-        <div className="bg-bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
+        <div className="bg-card rounded-xl shadow-sm border border-accent overflow-hidden">
           <div className="overflow-x-auto">
             <table className="min-w-full">
               <thead>
-                <tr className="bg-bg-card border-b border-accent">
+                <tr className="bg-card border-b border-accent">
                   <th className="px-6 py-4 text-left text-sm font-medium text-text-muted w-12">选择</th>
                   <th className="px-6 py-4 text-left text-sm font-medium text-text-muted w-40">预览</th>
                   <th className="px-6 py-4 text-left text-sm font-medium text-text-muted hidden md:table-cell">标题</th>
@@ -691,7 +691,7 @@ const BatchManagePhotos: React.FC = () => {
                   {paginatedPosts.map((post) => (
                     <motion.tr 
                       key={post.id} 
-                      className={`hover:bg-bg-deep transition-colors ${selectedPhotos.includes(post.id) ? 'ring-2 ring-accent' : ''}`}
+                      className={`hover:bg-deep transition-colors ${selectedPhotos.includes(post.id) ? 'ring-2 ring-accent' : ''}`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -702,7 +702,7 @@ const BatchManagePhotos: React.FC = () => {
                           type="checkbox"
                           checked={selectedPhotos.includes(post.id)}
                           onChange={() => togglePhotoSelection(post.id)}
-                          className="w-4 h-4 bg-bg-card border-accent text-accent rounded focus:ring-accent"
+                          className="w-4 h-4 bg-card border-accent text-accent rounded focus:ring-accent"
                         />
                       </td>
                       <td className="px-6 py-4">
@@ -733,7 +733,7 @@ const BatchManagePhotos: React.FC = () => {
                       <td className="px-6 py-4 hidden md:table-cell">
                         <span className={`px-2 py-1 rounded-full text-xs ${
                           post.visibility === '公开' ? 'bg-accent text-text-primary' : 
-                          post.visibility === '仅好友可见' ? 'bg-accent-hover text-text-primary' : 'bg-text-muted text-bg-card'
+                          post.visibility === '仅好友可见' ? 'bg-accent-hover text-text-primary' : 'bg-text-muted text-card'
                         }`}>
                           {post.visibility}
                         </span>
@@ -742,7 +742,7 @@ const BatchManagePhotos: React.FC = () => {
                       <td className="px-6 py-4 hidden xl:table-cell">
                         <div className="flex flex-wrap gap-1">
                           {post.tags.map((tag, index) => (
-                            <span key={index} className="px-2 py-0.5 bg-bg-card text-text-muted text-xs rounded-full border border-accent">
+                            <span key={index} className="px-2 py-0.5 bg-card text-text-muted text-xs rounded-full border border-accent">
                               {tag}
                             </span>
                           ))}
@@ -801,7 +801,7 @@ const BatchManagePhotos: React.FC = () => {
               text="暂无作品"
               helperText="您当前没有符合筛选条件的作品"
               icon="fa-image"
-              backgroundColor="bg-bg-card"
+              backgroundColor="bg-card"
               textColor="text-text-primary"
             />
           )}
@@ -809,7 +809,7 @@ const BatchManagePhotos: React.FC = () => {
           {/* 分页 */}
           {filteredPosts.length > 0 && (
             <div className="flex justify-center mt-8 pb-6">
-              <nav className="flex items-center space-x-1 bg-bg-card p-2 rounded-lg border border-accent">
+              <nav className="flex items-center space-x-1 bg-card p-2 rounded-lg border border-accent">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -907,7 +907,7 @@ const BatchManagePhotos: React.FC = () => {
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -50, opacity: 0 }}
-              className="bg-bg-card rounded-xl border border-accent w-full max-w-lg max-h-[80vh] overflow-hidden"
+              className="bg-card rounded-xl border border-accent w-full max-w-lg max-h-[80vh] overflow-hidden"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex justify-between items-center p-4 border-b border-accent">
@@ -932,7 +932,7 @@ const BatchManagePhotos: React.FC = () => {
               <div className="overflow-y-auto max-h-[calc(80vh-6rem)] p-4">
                 {operationHistory.length === 0 ? (
                   <div className="text-center py-8">
-                    <div className="w-12 h-12 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-3">
+                    <div className="w-12 h-12 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-3">
                       <i className="fa-solid fa-history"></i>
                     </div>
                     <p className="text-text-muted">暂无操作历史</p>
@@ -940,7 +940,7 @@ const BatchManagePhotos: React.FC = () => {
                 ) : (
                   <div className="space-y-3">
                     {operationHistory.map(record => (
-                      <div key={record.id} className="p-3 bg-bg-deep rounded-lg">
+                      <div key={record.id} className="p-3 bg-deep rounded-lg">
                         <div className="flex justify-between items-center">
                           <p className="text-text-primary">{record.action}</p>
                           <span className="text-xs text-accent-hover">{record.timestamp}</span>
@@ -970,7 +970,7 @@ const BatchManagePhotos: React.FC = () => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-bg-card rounded-xl border border-accent w-full max-w-md"
+              className="bg-card rounded-xl border border-accent w-full max-w-md"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex justify-between items-center p-4 border-b border-accent">
@@ -987,7 +987,7 @@ const BatchManagePhotos: React.FC = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer mb-4"
+                  className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer mb-4"
                 >
                   <option value="">请选择分类</option>
                   {getAllCategories.filter(cat => cat !== '全部').map(category => (
@@ -999,7 +999,7 @@ const BatchManagePhotos: React.FC = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setShowMoveCategoryModal(false)}
-                    className="px-4 py-2 bg-bg-deep text-text-muted rounded-lg hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                    className="px-4 py-2 bg-deep text-text-muted rounded-lg hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                   >
                     取消
                   </motion.button>
@@ -1035,7 +1035,7 @@ const BatchManagePhotos: React.FC = () => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-bg-card rounded-xl border border-accent w-full max-w-md"
+              className="bg-card rounded-xl border border-accent w-full max-w-md"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex justify-between items-center p-4 border-b border-accent">
@@ -1056,7 +1056,7 @@ const BatchManagePhotos: React.FC = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => handleBatchRemoveTag(tag)}
-                      className="px-3 py-2 bg-bg-deep text-text-muted rounded-lg hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                      className="px-3 py-2 bg-deep text-text-muted rounded-lg hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                     >
                       {tag}
                     </motion.button>
@@ -1067,7 +1067,7 @@ const BatchManagePhotos: React.FC = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setShowRemoveTagModal(false)}
-                    className="px-4 py-2 bg-bg-deep text-text-muted rounded-lg hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                    className="px-4 py-2 bg-deep text-text-muted rounded-lg hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                   >
                     取消
                   </motion.button>

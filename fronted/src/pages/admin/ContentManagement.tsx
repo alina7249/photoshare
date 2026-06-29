@@ -208,7 +208,7 @@ const ContentManagement: React.FC = () => {
       </div>
 
       {/* 筛选和搜索 */}
-      <div className="bg-bg-card p-4 rounded-xl border border-accent">
+      <div className="bg-card p-4 rounded-xl border border-accent">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="relative">
             <input
@@ -216,7 +216,7 @@ const ContentManagement: React.FC = () => {
               placeholder="搜索标题或作者..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-2 pl-10 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+              className="w-full px-4 py-2 pl-10 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
             />
             <i className="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-accent-hover"></i>
           </div>
@@ -224,7 +224,7 @@ const ContentManagement: React.FC = () => {
           <select
             value={contentType}
             onChange={(e) => setContentType(e.target.value)}
-            className="bg-bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
+            className="bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
           >
             <option value="all">全部类型</option>
             <option value="photo">摄影作品</option>
@@ -234,7 +234,7 @@ const ContentManagement: React.FC = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
+            className="bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
           >
             <option value="all">全部状态</option>
             <option value="active">活跃</option>
@@ -245,7 +245,7 @@ const ContentManagement: React.FC = () => {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="bg-bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
+            className="bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
           >
             <option value="createdAt">按发布日期排序</option>
             <option value="title">按标题排序</option>
@@ -269,13 +269,13 @@ const ContentManagement: React.FC = () => {
           <div className="flex items-center space-x-2">
             <button
               onClick={() => handleBulkAction('active')}
-              className="px-3 py-1 bg-bg-card text-text-primary rounded-lg hover:bg-accent transition-colors text-sm"
+              className="px-3 py-1 bg-card text-text-primary rounded-lg hover:bg-accent transition-colors text-sm"
             >
               启用
             </button>
             <button
               onClick={() => handleBulkAction('banned')}
-              className="px-3 py-1 bg-bg-card text-text-primary rounded-lg hover:bg-accent transition-colors text-sm"
+              className="px-3 py-1 bg-card text-text-primary rounded-lg hover:bg-accent transition-colors text-sm"
             >
               禁用
             </button>
@@ -299,7 +299,7 @@ const ContentManagement: React.FC = () => {
       )}
 
       {/* 内容列表 */}
-      <div className="bg-bg-card rounded-xl border border-accent overflow-hidden">
+      <div className="bg-card rounded-xl border border-accent overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-accent">
             <thead>
@@ -310,7 +310,7 @@ const ContentManagement: React.FC = () => {
                       type="checkbox"
                       checked={selectedContent.length === filteredContent.length && filteredContent.length > 0}
                       onChange={handleSelectAll}
-                      className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep"
+                      className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep"
                     />
                   </div>
                 </th>
@@ -326,21 +326,21 @@ const ContentManagement: React.FC = () => {
                 <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">操作</th>
               </tr>
             </thead>
-            <tbody className="bg-bg-deep divide-y divide-accent">
+            <tbody className="bg-deep divide-y divide-accent">
               {filteredContent.map((item) => (
                 <motion.tr
                   key={item.id}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
-                  className="hover:bg-bg-card transition-colors"
+                  className="hover:bg-card transition-colors"
                 >
                   <td className="px-6 py-4 whitespace-nowrap">
                     <input
                       type="checkbox"
                       checked={selectedContent.includes(item.id)}
                       onChange={() => handleSelectContent(item.id)}
-                      className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep"
+                      className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep"
                     />
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -452,7 +452,7 @@ const ContentManagement: React.FC = () => {
         {/* 空状态 */}
         {filteredContent.length === 0 && (
           <div className="p-12 text-center">
-            <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+            <div className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
               <i className="fa-solid fa-images text-2xl"></i>
             </div>
             <h3 className="text-lg font-medium text-text-primary mb-2">暂无内容</h3>
@@ -462,7 +462,7 @@ const ContentManagement: React.FC = () => {
         
         {/* 分页 */}
         {filteredContent.length > 0 && (
-          <div className="px-6 py-4 bg-bg-deep border-t border-accent flex items-center justify-between">
+          <div className="px-6 py-4 bg-deep border-t border-accent flex items-center justify-between">
             <div className="text-sm text-text-muted">
               显示 1 到 {filteredContent.length} 条，共 {filteredContent.length} 条
             </div>

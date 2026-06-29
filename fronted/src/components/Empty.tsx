@@ -133,7 +133,7 @@ const defaultConfig = {
   // 操作按钮类型配置
   actionTypeConfig: {
     primary: 'bg-accent text-text-primary hover:bg-accent-hover',
-    secondary: 'bg-bg-card text-text-muted hover:bg-accent border border-accent',
+    secondary: 'bg-card text-text-muted hover:bg-accent border border-accent',
     ghost: 'bg-transparent text-accent hover:bg-accent/10 border border-accent',
   },
 };
@@ -163,7 +163,7 @@ export function Empty(props: EmptyProps) {
     effect3d = globalConfig.effect3d || false,
     onClick,
     onActionClick,
-    backgroundColor = 'bg-bg-card',
+    backgroundColor = 'bg-card',
     textColor = 'text-text-primary',
     padding,
     cursor = 'cursor-pointer',
@@ -292,7 +292,7 @@ export function Empty(props: EmptyProps) {
       
       {/* 加载覆盖层 */}
       {loading && (
-        <div className="absolute inset-0 bg-bg-deep/80 flex items-center justify-center rounded-xl">
+        <div className="absolute inset-0 bg-deep/80 flex items-center justify-center rounded-xl">
           <i className="fa-solid fa-spinner fa-spin text-2xl text-accent"></i>
         </div>
       )}

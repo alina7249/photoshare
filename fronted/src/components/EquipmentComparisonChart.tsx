@@ -267,14 +267,14 @@ const COLORS = ['#4A5F8B', '#8884d8', '#6B7C93', '#4CAF50'];
   const getThemeStyles = () => {
     if (darkMode) {
       return {
-        container: "bg-bg-card border-accent",
+        container: "bg-card border-accent",
         text: "text-text-muted",
         primaryText: "text-text-primary",
         secondaryText: "text-accent-hover",
         button: "bg-accent text-text-primary hover:bg-accent-hover",
-        buttonSecondary: "bg-bg-deep text-text-muted hover:bg-accent hover:text-text-primary",
-        input: "bg-bg-deep border-accent text-text-primary placeholder:text-accent-hover",
-        chartContainer: "bg-bg-deep border-accent",
+        buttonSecondary: "bg-deep text-text-muted hover:bg-accent hover:text-text-primary",
+        input: "bg-deep border-accent text-text-primary placeholder:text-accent-hover",
+        chartContainer: "bg-deep border-accent",
         highlight: "text-accent"
       };
     }
@@ -422,7 +422,7 @@ const COLORS = ['#4A5F8B', '#8884d8', '#6B7C93', '#4CAF50'];
                         step="0.5"
                         value={newEquipmentPerformance[key] || value}
                         onChange={(e) => handleNewEquipmentPerformanceChange(key, parseFloat(e.target.value))}
-                        className="w-full h-2 rounded-lg appearance-none bg-bg-deep outline-none"
+                        className="w-full h-2 rounded-lg appearance-none bg-deep outline-none"
                       />
                     </div>
                   ))}

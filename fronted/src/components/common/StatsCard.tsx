@@ -24,7 +24,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
   className = ''
 }) => {
   return (
-    <div className={`bg-bg-card rounded-xl p-5 border border-accent ${className}`}>
+    <div className={`bg-card rounded-xl p-5 border border-accent ${className}`}>
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-base font-medium text-text-primary flex items-center">
           <i className={`fa-solid ${icon} text-accent mr-2`}></i>

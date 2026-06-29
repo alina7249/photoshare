@@ -112,7 +112,7 @@ const TutorialResources: React.FC = () => {
   const filteredRecommendedTools = getFilteredRecommendedTools();
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -138,14 +138,14 @@ const TutorialResources: React.FC = () => {
         </div>
 
         {/* 顶部选项卡 */}
-        <div className="bg-bg-card rounded-xl shadow-sm border border-accent mb-8">
+        <div className="bg-card rounded-xl shadow-sm border border-accent mb-8">
           <div className="flex">
             <button
               onClick={() => setActiveTab('online')}
               className={`flex-1 py-4 font-medium transition-colors ${
                 activeTab === 'online'
                   ? 'bg-accent text-text-primary'
-                  : 'bg-bg-card text-text-muted hover:text-text-primary'
+                  : 'bg-card text-text-muted hover:text-text-primary'
               }`}
             >
               在线工具
@@ -155,7 +155,7 @@ const TutorialResources: React.FC = () => {
               className={`flex-1 py-4 font-medium transition-colors ${
                 activeTab === 'presets'
                   ? 'bg-accent text-text-primary'
-                  : 'bg-bg-card text-text-muted hover:text-text-primary'
+                  : 'bg-card text-text-muted hover:text-text-primary'
               }`}
             >
               个人预设
@@ -164,7 +164,7 @@ const TutorialResources: React.FC = () => {
         </div>
 
         {/* 搜索和筛选 */}
-        <div className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
+        <div className="bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
             <div className="relative flex-1">
               <input
@@ -172,7 +172,7 @@ const TutorialResources: React.FC = () => {
                 placeholder="搜索工具或功能..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
+                className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted"
               />
               <i className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
             </div>
@@ -181,7 +181,7 @@ const TutorialResources: React.FC = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
               >
                 {categories.map(category => (
                   <option key={category} value={category}>{category}</option>
@@ -192,7 +192,7 @@ const TutorialResources: React.FC = () => {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                  className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
                 >
                   <option value="usage">使用频率</option>
                   <option value="rating">评分</option>
@@ -213,7 +213,7 @@ const TutorialResources: React.FC = () => {
                   className={`px-3 py-1 rounded-full text-sm ${
                     selectedTags.includes(category)
                       ? 'bg-accent text-text-primary'
-                      : 'bg-bg-card text-text-muted border border-accent'
+                      : 'bg-card text-text-muted border border-accent'
                   } transition-colors`}
                 >
                   #{category}
@@ -247,7 +247,7 @@ const TutorialResources: React.FC = () => {
                   <motion.div
                     key={tool.id}
                     whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-                    className="bg-bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
+                    className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
                   >
                     {/* 工具缩略图 */}
                     <div className="relative">
@@ -293,8 +293,8 @@ const TutorialResources: React.FC = () => {
               </div>
               
               {filteredAddedTools.length === 0 && (
-                <div className="p-6 bg-bg-card rounded-xl border border-accent text-center">
-                  <div className="w-12 h-12 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-3">
+                <div className="p-6 bg-card rounded-xl border border-accent text-center">
+                  <div className="w-12 h-12 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-3">
                     <i className="fa-solid fa-toolbox text-xl"></i>
                   </div>
                   <p className="text-text-muted">暂无符合条件的已添加工具</p>
@@ -314,7 +314,7 @@ const TutorialResources: React.FC = () => {
                   <motion.div
                     key={tool.id}
                     whileHover={{ y: -5, boxShadow: '0 2px 12px rgba(74, 95, 139, 0.3)' }}
-                    className="bg-bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
+                    className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm"
                   >
                     {/* 工具缩略图 */}
                     <div className="relative">
@@ -360,8 +360,8 @@ const TutorialResources: React.FC = () => {
               </div>
               
               {filteredRecommendedTools.length === 0 && (
-                <div className="p-6 bg-bg-card rounded-xl border border-accent text-center">
-                  <div className="w-12 h-12 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-3">
+                <div className="p-6 bg-card rounded-xl border border-accent text-center">
+                  <div className="w-12 h-12 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-3">
                     <i className="fa-solid fa-thumbs-up text-xl"></i>
                   </div>
                   <p className="text-text-muted">暂无符合条件的推荐工具</p>
@@ -372,8 +372,8 @@ const TutorialResources: React.FC = () => {
         )}
 
         {activeTab === 'presets' && (
-          <div className="bg-bg-card rounded-xl p-10 text-center border border-accent">
-            <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+          <div className="bg-card rounded-xl p-10 text-center border border-accent">
+            <div className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
               <i className="fa-solid fa-palette text-2xl"></i>
             </div>
             <h3 className="text-lg font-medium text-text-primary mb-2">个人预设</h3>

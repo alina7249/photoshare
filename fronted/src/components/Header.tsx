@@ -78,18 +78,18 @@ export const Header: React.FC = () => {
 
     const getBgClass = () => {
         if (scrolled) {
-            return theme === "dark" ? "bg-bg-deep/95 backdrop-blur-sm" : "bg-white/95 backdrop-blur-sm shadow-md";
+            return theme === "dark" ? "bg-deep/95 backdrop-blur-sm" : "bg-white/95 backdrop-blur-sm shadow-md";
         }
 
-        return theme === "dark" ? "bg-bg-deep" : "bg-white";
+        return theme === "dark" ? "bg-deep" : "bg-white";
     };
 
     const getTextClass = (isActive: boolean) => {
         if (isActive) {
-            return theme === "dark" ? "text-text-primary" : "text-bg-deep";
+            return theme === "dark" ? "text-text-primary" : "text-deep";
         }
 
-        return theme === "dark" ? "text-text-muted/70 hover:text-text-primary" : "text-accent-hover/70 hover:text-bg-deep";
+        return theme === "dark" ? "text-text-muted/70 hover:text-text-primary" : "text-accent-hover/70 hover:text-deep";
     };
 
     return (
@@ -108,7 +108,7 @@ export const Header: React.FC = () => {
                                 <i className="fa-solid fa-camera"></i>
                             </motion.div>
                             <span
-                                className={`text-xl font-bold ${theme === "dark" ? "text-text-primary" : "text-bg-deep"}`}>影研社
+                                className={`text-xl font-bold ${theme === "dark" ? "text-text-primary" : "text-deep"}`}>影研社
                                               </span>
                         </Link>
                     </div>
@@ -143,18 +143,18 @@ export const Header: React.FC = () => {
                                     alt={username}
                                     className={`w-10 h-10 rounded-full object-cover border-2 ${theme === "dark" ? "border-accent" : "border-light-accent"} cursor-pointer transition-transform relative`} />
                                 <span
-                                    className={`font-medium ${theme === "dark" ? "text-text-primary" : "text-bg-deep"} hidden lg:inline`}>
+                                    className={`font-medium ${theme === "dark" ? "text-text-primary" : "text-deep"} hidden lg:inline`}>
                                     {username}
                                 </span>
                             </button>
                         </div> : <div className="flex items-center space-x-3">
                             <Link
                                 to="/login"
-                                className={`px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "text-text-primary border border-accent hover:bg-accent/20" : "text-bg-deep border border-gray-300 hover:bg-gray-100"} transition-colors`}>登录
+                                className={`px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "text-text-primary border border-accent hover:bg-accent/20" : "text-deep border border-gray-300 hover:bg-gray-100"} transition-colors`}>登录
                                                 </Link>
                             <Link
                                 to="/register"
-                                className={`px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "text-bg-deep bg-accent hover:bg-accent-hover shadow-[0_2px_8px_rgba(74,95,139,0.3)]" : "text-white bg-light-accent hover:bg-light-accent-hover shadow-[0_2px_8px_rgba(99,179,237,0.3)]"} transition-colors`}>注册
+                                className={`px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "text-deep bg-accent hover:bg-accent-hover shadow-[0_2px_8px_rgba(74,95,139,0.3)]" : "text-white bg-light-accent hover:bg-light-accent-hover shadow-[0_2px_8px_rgba(99,179,237,0.3)]"} transition-colors`}>注册
                                                 </Link>
                         </div>}
                     </nav>
@@ -169,7 +169,7 @@ export const Header: React.FC = () => {
                                 scale: 0.9
                             }}
                             onClick={toggleTheme}
-                            className={`p-2 rounded-full ${theme === "dark" ? "bg-bg-card text-text-muted" : "bg-gray-100 text-accent-hover"} transition-colors`}
+                            className={`p-2 rounded-full ${theme === "dark" ? "bg-card text-text-muted" : "bg-gray-100 text-accent-hover"} transition-colors`}
                             aria-label={theme === "dark" ? "切换到浅色模式" : "切换到深色模式"}>
                             <i className={`fa-solid ${theme === "dark" ? "fa-sun" : "fa-moon"}`}></i>
                         </motion.button>
@@ -178,7 +178,7 @@ export const Header: React.FC = () => {
                                 scale: 0.9
                             }}
                             onClick={toggleProfileDropdown}
-                            className={`p-2 rounded-full ${theme === "dark" ? "hover:bg-bg-card" : "hover:bg-gray-100"} transition-colors`}
+                            className={`p-2 rounded-full ${theme === "dark" ? "hover:bg-card" : "hover:bg-gray-100"} transition-colors`}
                             aria-label="打开个人侧边栏">
                             <img
                                 src={userAvatar}
@@ -193,7 +193,7 @@ export const Header: React.FC = () => {
                                 scale: 0.9
                             }}
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className={`p-2 rounded-full ${theme === "dark" ? "hover:bg-bg-card text-text-muted" : "hover:bg-gray-100 text-accent-hover"} transition-colors`}
+                            className={`p-2 rounded-full ${theme === "dark" ? "hover:bg-card text-text-muted" : "hover:bg-gray-100 text-accent-hover"} transition-colors`}
                             aria-label="Open menu">
                             <i
                                 className={`fa-solid ${isMobileMenuOpen ? "fa-times" : "fa-bars"} ${theme === "dark" ? "text-text-muted" : "text-accent-hover"}`}></i>
@@ -214,11 +214,11 @@ export const Header: React.FC = () => {
                         opacity: 0,
                         height: 0
                     }}
-                    className={`md:hidden py-4 space-y-4 border-t ${theme === "dark" ? "border-accent bg-bg-deep" : "border-gray-200 bg-white"}`}>
+                    className={`md:hidden py-4 space-y-4 border-t ${theme === "dark" ? "border-accent bg-deep" : "border-gray-200 bg-white"}`}>
                     {navLinks.map(link => <Link
                         key={link.path}
                         to={link.path}
-                        className={`block px-4 py-2 font-medium transition-colors ${location.pathname === link.path ? theme === "dark" ? "text-text-primary bg-bg-card rounded-lg border-l-2 border-accent" : "text-bg-deep bg-gray-100 rounded-lg border-l-2 border-light-accent" : theme === "dark" ? "text-text-muted/70 hover:text-text-primary" : "text-accent-hover/70 hover:text-bg-deep"}`}
+                        className={`block px-4 py-2 font-medium transition-colors ${location.pathname === link.path ? theme === "dark" ? "text-text-primary bg-card rounded-lg border-l-2 border-accent" : "text-deep bg-gray-100 rounded-lg border-l-2 border-light-accent" : theme === "dark" ? "text-text-muted/70 hover:text-text-primary" : "text-accent-hover/70 hover:text-deep"}`}
                         onClick={() => setIsMobileMenuOpen(false)}>
                         {link.name}
                     </Link>)}
@@ -226,19 +226,19 @@ export const Header: React.FC = () => {
                         <div className="grid grid-cols-3 gap-3">
                         <Link
                             to={`/profile/${user?.id}`}
-                            className={`flex flex-col items-center justify-center p-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-bg-card text-text-muted hover:bg-accent hover:text-text-primary" : "bg-gray-100 text-accent-hover hover:bg-gray-200 hover:text-bg-deep"} transition-colors`}
+                            className={`flex flex-col items-center justify-center p-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-card text-text-muted hover:bg-accent hover:text-text-primary" : "bg-gray-100 text-accent-hover hover:bg-gray-200 hover:text-deep"} transition-colors`}
                             onClick={() => setIsMobileMenuOpen(false)}>
                             <i className="fa-solid fa-image mb-1"></i>作品
                                             </Link>
                         <Link
                             to="#"
-                            className={`flex flex-col items-center justify-center p-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-bg-card text-text-muted hover:bg-accent hover:text-text-primary" : "bg-gray-100 text-accent-hover hover:bg-gray-200 hover:text-bg-deep"} transition-colors`}
+                            className={`flex flex-col items-center justify-center p-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-card text-text-muted hover:bg-accent hover:text-text-primary" : "bg-gray-100 text-accent-hover hover:bg-gray-200 hover:text-deep"} transition-colors`}
                             onClick={() => setIsMobileMenuOpen(false)}>
                             <i className="fa-solid fa-heart mb-1"></i>收藏
                                             </Link>
                         <Link
                             to="#"
-                            className={`flex flex-col items-center justify-center p-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-bg-card text-text-muted hover:bg-accent hover:text-text-primary" : "bg-gray-100 text-accent-hover hover:bg-gray-200 hover:text-bg-deep"} transition-colors`}
+                            className={`flex flex-col items-center justify-center p-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-card text-text-muted hover:bg-accent hover:text-text-primary" : "bg-gray-100 text-accent-hover hover:bg-gray-200 hover:text-deep"} transition-colors`}
                             onClick={() => setIsMobileMenuOpen(false)}>
                             <i className="fa-solid fa-cog mb-1"></i>设置
                                             </Link>
@@ -255,18 +255,18 @@ export const Header: React.FC = () => {
                                 handleLogout();
                                 setIsMobileMenuOpen(false);
                             }}
-                            className={`w-full flex items-center justify-center px-4 py-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-bg-card text-text-muted hover:bg-accent hover:text-text-primary" : "bg-gray-100 text-accent-hover hover:bg-gray-200 hover:text-bg-deep"} transition-colors`}>
+                            className={`w-full flex items-center justify-center px-4 py-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-card text-text-muted hover:bg-accent hover:text-text-primary" : "bg-gray-100 text-accent-hover hover:bg-gray-200 hover:text-deep"} transition-colors`}>
                             <i className="fa-solid fa-sign-out-alt mr-2"></i>退出登录
                                             </button>
                     </div> : <div className="px-4 space-y-3">
                         <Link
                             to="/login"
-                            className={`block w-full text-center px-4 py-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-bg-card text-text-muted hover:bg-accent hover:text-text-primary" : "bg-gray-100 text-accent-hover hover:bg-gray-200 hover:text-bg-deep"} transition-colors`}
+                            className={`block w-full text-center px-4 py-3 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-card text-text-muted hover:bg-accent hover:text-text-primary" : "bg-gray-100 text-accent-hover hover:bg-gray-200 hover:text-deep"} transition-colors`}
                             onClick={() => setIsMobileMenuOpen(false)}>登录
                                             </Link>
                         <Link
                             to="/register"
-                            className={`block w-full text-center px-4 py-3 rounded-lg text-sm font-medium ${theme === "dark" ? "text-bg-deep bg-accent hover:bg-accent-hover" : "text-white bg-light-accent hover:bg-light-accent-hover"} transition-colors`}
+                            className={`block w-full text-center px-4 py-3 rounded-lg text-sm font-medium ${theme === "dark" ? "text-deep bg-accent hover:bg-accent-hover" : "text-white bg-light-accent hover:bg-light-accent-hover"} transition-colors`}
                             onClick={() => setIsMobileMenuOpen(false)}>注册
                                             </Link>
                     </div>}

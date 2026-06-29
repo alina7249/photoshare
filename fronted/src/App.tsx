@@ -228,7 +228,7 @@ export default function App() {
       </main>
       {showFooter && (
         <Suspense fallback={
-          <div className={`w-full py-10 mt-12 ${theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-100'}`}>
+          <div className={`w-full py-10 mt-12 ${theme === 'dark' ? 'bg-deep' : 'bg-gray-100'}`}>
             <div className="container mx-auto px-4 text-center text-text-muted">
               <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin mx-auto"></div>
               <p className="mt-4">加载页脚中...</p>

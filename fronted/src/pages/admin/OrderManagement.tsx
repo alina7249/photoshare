@@ -187,7 +187,7 @@ const OrderManagement: React.FC = () => {
       </div>
 
       {/* 筛选和搜索 */}
-      <div className="bg-bg-card p-4 rounded-xl border border-accent">
+      <div className="bg-card p-4 rounded-xl border border-accent">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="relative">
             <input
@@ -195,7 +195,7 @@ const OrderManagement: React.FC = () => {
               placeholder="搜索订单号或用户名..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-2 pl-10 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+              className="w-full px-4 py-2 pl-10 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
             />
             <i className="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-accent-hover"></i>
           </div>
@@ -203,7 +203,7 @@ const OrderManagement: React.FC = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
+            className="bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
           >
             <option value="all">全部状态</option>
             <option value="pending">待支付</option>
@@ -214,7 +214,7 @@ const OrderManagement: React.FC = () => {
           <select
             value={paymentMethodFilter}
             onChange={(e) => setPaymentMethodFilter(e.target.value)}
-            className="bg-bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
+            className="bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
           >
             <option value="all">全部支付方式</option>
             <option value="alipay">支付宝</option>
@@ -225,7 +225,7 @@ const OrderManagement: React.FC = () => {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="bg-bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
+            className="bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
           >
             <option value="createdAt">按创建时间排序</option>
             <option value="totalAmount">按金额排序</option>
@@ -248,7 +248,7 @@ const OrderManagement: React.FC = () => {
           <div className="flex items-center space-x-2">
             <button
               onClick={() => handleBulkAction('export')}
-              className="px-3 py-1 bg-bg-card text-text-primary rounded-lg hover:bg-accent transition-colors text-sm"
+              className="px-3 py-1 bg-card text-text-primary rounded-lg hover:bg-accent transition-colors text-sm"
             >
               导出
             </button>
@@ -272,7 +272,7 @@ const OrderManagement: React.FC = () => {
       )}
 
       {/* 订单列表 */}
-      <div className="bg-bg-card rounded-xl border border-accent overflow-hidden">
+      <div className="bg-card rounded-xl border border-accent overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-accent">
             <thead>
@@ -283,7 +283,7 @@ const OrderManagement: React.FC = () => {
                       type="checkbox"
                       checked={selectedOrders.length === filteredOrders.length && filteredOrders.length > 0}
                       onChange={handleSelectAll}
-                      className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep"
+                      className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep"
                     />
                   </div>
                 </th>
@@ -297,21 +297,21 @@ const OrderManagement: React.FC = () => {
                 <th className="px-6 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider">操作</th>
               </tr>
             </thead>
-            <tbody className="bg-bg-deep divide-y divide-accent">
+            <tbody className="bg-deep divide-y divide-accent">
               {filteredOrders.map((order) => (
                 <motion.tr
                   key={order.id}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
-                  className="hover:bg-bg-card transition-colors"
+                  className="hover:bg-card transition-colors"
                 >
                   <td className="px-6 py-4 whitespace-nowrap">
                     <input
                       type="checkbox"
                       checked={selectedOrders.includes(order.id)}
                       onChange={() => handleSelectOrder(order.id)}
-                      className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep"
+                      className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep"
                     />
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-primary">
@@ -401,7 +401,7 @@ const OrderManagement: React.FC = () => {
         {/* 空状态 */}
         {filteredOrders.length === 0 && (
           <div className="p-12 text-center">
-            <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+            <div className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
               <i className="fa-solid fa-shopping-cart text-2xl"></i>
             </div>
             <h3 className="text-lg font-medium text-text-primary mb-2">暂无订单</h3>
@@ -411,7 +411,7 @@ const OrderManagement: React.FC = () => {
         
         {/* 分页 */}
         {filteredOrders.length > 0 && (
-          <div className="px-6 py-4 bg-bg-deep border-t border-accent flex items-center justify-between">
+          <div className="px-6 py-4 bg-deep border-t border-accent flex items-center justify-between">
             <div className="text-sm text-text-muted">
               显示 1 到 {filteredOrders.length} 条，共 {filteredOrders.length} 条
             </div>

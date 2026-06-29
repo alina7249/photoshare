@@ -177,7 +177,7 @@ const ContactSellerModal: React.FC<{
           opacity: 0,
           scale: 0.9
         }}
-        className={`w-full max-w-2xl max-h-[90vh] flex flex-col ${theme === 'dark' ? 'bg-bg-card border-accent' : 'bg-white border-gray-200'} rounded-xl border shadow-lg`}>
+        className={`w-full max-w-2xl max-h-[90vh] flex flex-col ${theme === 'dark' ? 'bg-card border-accent' : 'bg-white border-gray-200'} rounded-xl border shadow-lg`}>
         {/* 模态框头部 */}
         <div
           className={`flex justify-between items-center p-4 border-b ${theme === 'dark' ? 'border-accent' : 'border-gray-200'}`}>
@@ -237,7 +237,7 @@ const ContactSellerModal: React.FC<{
           </div>
           
           {/* 消息历史 */}
-          <div className={`flex-1 p-4 space-y-4 overflow-y-auto ${theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-50'}`}>
+          <div className={`flex-1 p-4 space-y-4 overflow-y-auto ${theme === 'dark' ? 'bg-deep' : 'bg-gray-50'}`}>
             {messageHistory.length > 0 ? (
               messageHistory.map(msg => (
                 <div 
@@ -254,7 +254,7 @@ const ContactSellerModal: React.FC<{
                     <div className={`p-3 rounded-lg ${
                       msg.sender === 'user' 
                         ? `${theme === 'dark' ? 'bg-accent text-text-primary' : 'bg-blue-500 text-white'} rounded-br-none` 
-                        : `${theme === 'dark' ? 'bg-bg-card text-text-primary' : 'bg-white text-gray-800 border border-gray-200'} rounded-bl-none`
+                        : `${theme === 'dark' ? 'bg-card text-text-primary' : 'bg-white text-gray-800 border border-gray-200'} rounded-bl-none`
                     }`}>
                       <p>{msg.content}</p>
                       
@@ -262,7 +262,7 @@ const ContactSellerModal: React.FC<{
                       {msg.files && msg.files.length > 0 && (
                         <div className="mt-2 flex flex-wrap gap-2 justify-start">
                           {msg.files.map((file, index) => (
-                            <div key={index} className={`p-2 rounded ${theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-100'} flex items-center text-xs`}>
+                            <div key={index} className={`p-2 rounded ${theme === 'dark' ? 'bg-deep' : 'bg-gray-100'} flex items-center text-xs`}>
                               <i className={`fa-solid ${file.type.includes('image') ? 'fa-image' : 'fa-file'} mr-1`}></i>
                               <span className="truncate max-w-[120px]">{file.name}</span>
                             </div>
@@ -285,7 +285,7 @@ const ContactSellerModal: React.FC<{
             
             {isMessageSent && (
               <div className="text-center animate-pulse">
-                <span className={`inline-block px-4 py-2 rounded-lg ${theme === 'dark' ? 'bg-bg-card' : 'bg-gray-100'}`}>
+                <span className={`inline-block px-4 py-2 rounded-lg ${theme === 'dark' ? 'bg-card' : 'bg-gray-100'}`}>
                   消息发送中...
                 </span>
               </div>
@@ -293,7 +293,7 @@ const ContactSellerModal: React.FC<{
           </div>
           
           {/* 表单区域 */}
-          <div className={`p-4 border-t ${theme === 'dark' ? 'border-accent bg-bg-card' : 'border-gray-200 bg-white'}`}>
+          <div className={`p-4 border-t ${theme === 'dark' ? 'border-accent bg-card' : 'border-gray-200 bg-white'}`}>
             {/* 消息模板 */}
             <div className="mb-4">
               <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-text-muted' : 'text-gray-700'}`}>快速模板</label>
@@ -306,7 +306,7 @@ const ContactSellerModal: React.FC<{
                     onClick={() => selectTemplate(template)}
                     className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${
                       theme === 'dark' 
-                        ? 'bg-bg-deep text-text-muted hover:bg-accent/30 border border-accent' 
+                        ? 'bg-deep text-text-muted hover:bg-accent/30 border border-accent' 
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
                     }`}>
                     {template}
@@ -330,7 +330,7 @@ const ContactSellerModal: React.FC<{
                 placeholder="请输入邮箱或手机号"
                 className={`w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 transition-all ${
                   theme === 'dark' 
-                    ? `bg-bg-deep border ${errors.contactInfo ? 'border-danger' : 'border-accent'} text-text-primary focus:ring-accent` 
+                    ? `bg-deep border ${errors.contactInfo ? 'border-danger' : 'border-accent'} text-text-primary focus:ring-accent` 
                     : `bg-white border ${errors.contactInfo ? 'border-red-500' : 'border-gray-300'} text-gray-800 focus:ring-blue-500`
                 }`}
               />
@@ -353,7 +353,7 @@ const ContactSellerModal: React.FC<{
                 placeholder="请输入您想咨询的内容..."
                 className={`w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 transition-all resize-none h-32 ${
                   theme === 'dark' 
-                    ? `bg-bg-deep border ${errors.message ? 'border-danger' : 'border-accent'} text-text-primary focus:ring-accent` 
+                    ? `bg-deep border ${errors.message ? 'border-danger' : 'border-accent'} text-text-primary focus:ring-accent` 
                     : `bg-white border ${errors.message ? 'border-red-500' : 'border-gray-300'} text-gray-800 focus:ring-blue-500`
                 }`}
               ></textarea>
@@ -367,7 +367,7 @@ const ContactSellerModal: React.FC<{
               <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-text-muted' : 'text-gray-700'}`}>上传附件</label>
               <div className={`border-2 border-dashed rounded-lg p-4 text-center cursor-pointer transition-all ${
                 theme === 'dark' 
-                  ? 'border-accent hover:border-accent-hover hover:bg-bg-deep' 
+                  ? 'border-accent hover:border-accent-hover hover:bg-deep' 
                   : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
               }`}>
                 <input
@@ -389,7 +389,7 @@ const ContactSellerModal: React.FC<{
               {uploadedFiles.length > 0 && (
                 <div className="mt-3 space-y-2">
                   {uploadedFiles.map((file, index) => (
-                    <div key={index} className={`flex items-center justify-between p-2 rounded-lg ${theme === 'dark' ? 'bg-bg-deep' : 'bg-gray-100'}`}>
+                    <div key={index} className={`flex items-center justify-between p-2 rounded-lg ${theme === 'dark' ? 'bg-deep' : 'bg-gray-100'}`}>
                       <div className="flex items-center">
                         <i className={`fa-solid ${file.type.includes('image') ? 'fa-image' : 'fa-file'} mr-2 ${theme === 'dark' ? 'text-accent' : 'text-gray-500'}`}></i>
                         <span className={`text-sm truncate max-w-[200px] ${theme === 'dark' ? 'text-text-muted' : 'text-gray-700'}`}>{file.name}</span>
@@ -422,7 +422,7 @@ const ContactSellerModal: React.FC<{
                 onClick={onClose}
                 className={`flex-1 py-3 rounded-lg font-medium transition-colors ${
                   theme === 'dark' 
-                    ? 'bg-bg-card text-text-muted hover:bg-accent hover:text-text-primary border border-accent' 
+                    ? 'bg-card text-text-muted hover:bg-accent hover:text-text-primary border border-accent' 
                     : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
                 }`}>
                 取消
@@ -694,7 +694,7 @@ const PublishEquipmentForm: React.FC<{
                                     (currentStep === 'images' && (step.id === 'basicInfo' || step.id === 'details')) ||
                                     (currentStep === 'review' && (step.id === 'basicInfo' || step.id === 'details' || step.id === 'images'))
                                         ? 'bg-accent text-white'
-                                        : 'bg-bg-card text-accent-hover border border-accent'
+                                        : 'bg-card text-accent-hover border border-accent'
                                 }`}
                             >
                                 <i className={`fa-solid ${step.icon}`}></i>
@@ -710,7 +710,7 @@ const PublishEquipmentForm: React.FC<{
                             </span>
                         </div>
                         {step.id !== 'review' && (
-                            <div className="flex-1 h-1 mx-2 bg-bg-card">
+                            <div className="flex-1 h-1 mx-2 bg-card">
                                 <div 
                                     className="h-full bg-accent transition-all duration-500"
                                     style={{
@@ -750,7 +750,7 @@ const PublishEquipmentForm: React.FC<{
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-3 bg-bg-deep border ${errors.name ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all`}
+                        className={`w-full px-4 py-3 bg-deep border ${errors.name ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all`}
                         placeholder="例如：索尼 A7R IV" 
                     />
                     {errors.name && <p className="text-xs mt-1">{errors.name}</p>}
@@ -761,7 +761,7 @@ const PublishEquipmentForm: React.FC<{
                         name="type"
                         value={formData.type}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-3 bg-bg-deep border ${errors.type ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer`}
+                        className={`w-full px-4 py-3 bg-deep border ${errors.type ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer`}
                     >
                         {equipmentTypes.filter(t => t !== "全部").map(type => <option key={type} value={type}>{type}</option>)}
                     </select>
@@ -773,7 +773,7 @@ const PublishEquipmentForm: React.FC<{
                         name="brand"
                         value={formData.brand}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-3 bg-bg-deep border ${errors.brand ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer`}
+                        className={`w-full px-4 py-3 bg-deep border ${errors.brand ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer`}
                     >
                         <option value="">请选择品牌</option>
                         {brands.filter(b => b !== "全部").map(brand => <option key={brand} value={brand}>{brand}</option>)}
@@ -788,7 +788,7 @@ const PublishEquipmentForm: React.FC<{
                             name="price"
                             value={formData.price}
                             onChange={handleInputChange}
-                            className={`w-full pl-10 pr-4 py-3 bg-bg-deep border ${errors.price ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all`}
+                            className={`w-full pl-10 pr-4 py-3 bg-deep border ${errors.price ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all`}
                             placeholder="请输入价格" 
                             min="0"
                             step="0.01"
@@ -803,7 +803,7 @@ const PublishEquipmentForm: React.FC<{
                         name="condition"
                         value={formData.condition}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-3 bg-bg-deep border ${errors.condition ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer`}
+                        className={`w-full px-4 py-3 bg-deep border ${errors.condition ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer`}
                     >
                         {conditions.filter(c => c !== "全部").map(condition => <option key={condition} value={condition}>{condition}</option>)}
                     </select>
@@ -816,7 +816,7 @@ const PublishEquipmentForm: React.FC<{
                         name="usageTime"
                         value={formData.usageTime}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                        className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                         placeholder="例如：约1年" 
                     />
                 </div>
@@ -827,7 +827,7 @@ const PublishEquipmentForm: React.FC<{
                         name="shutterCount"
                         value={formData.shutterCount}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                        className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                         placeholder="例如：8500次" 
                     />
                 </div>
@@ -837,7 +837,7 @@ const PublishEquipmentForm: React.FC<{
                         name="repairHistory"
                         value={formData.repairHistory}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
+                        className="w-full px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer"
                     >
                         <option value="">请选择</option>
                         <option value="无维修记录">无维修记录</option>
@@ -863,7 +863,7 @@ const PublishEquipmentForm: React.FC<{
                     name="description"
                     value={formData.description}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 bg-bg-deep border ${errors.description ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none min-h-[120px]`}
+                    className={`w-full px-4 py-3 bg-deep border ${errors.description ? 'border-danger' : 'border-accent'} text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none min-h-[120px]`}
                     placeholder="请详细描述器材的使用情况、外观状态、购买时间等信息..."
                     rows={5}
                 ></textarea>
@@ -881,7 +881,7 @@ const PublishEquipmentForm: React.FC<{
                         type="button"
                         onClick={addAccessory}
                         disabled={formData.accessories.length >= 10}
-                        className={`text-sm px-3 py-1 rounded-lg ${formData.accessories.length >= 10 ? 'bg-bg-card text-accent-hover cursor-not-allowed' : 'bg-accent text-text-primary hover:bg-accent-hover'} transition-colors flex items-center`}
+                        className={`text-sm px-3 py-1 rounded-lg ${formData.accessories.length >= 10 ? 'bg-card text-accent-hover cursor-not-allowed' : 'bg-accent text-text-primary hover:bg-accent-hover'} transition-colors flex items-center`}
                     >
                         <i className="fa-solid fa-plus mr-1"></i>添加配件
                     </button>
@@ -900,7 +900,7 @@ const PublishEquipmentForm: React.FC<{
                                 type="text"
                                 value={accessory}
                                 onChange={e => handleAccessoryChange(index, e.target.value)}
-                                className="flex-1 px-4 py-3 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                                className="flex-1 px-4 py-3 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                                 placeholder={`配件 ${index + 1}（例如：原装电池、充电器、相机包等）`} 
                             />
                             <button
@@ -929,7 +929,7 @@ const PublishEquipmentForm: React.FC<{
             <div className={`space-y-1.5 ${errors.images ? 'text-danger' : 'text-text-muted'}`}>
                 <label className="block text-sm font-medium">上传图片（至少一张）</label>
                 <div 
-                    className={`border-2 ${errors.images ? 'border-danger' : 'border-accent'} ${isDragOver ? 'border-dotted border-accent bg-bg-deep' : 'border-dashed bg-transparent'} rounded-lg p-8 text-center hover:bg-bg-deep transition-all cursor-pointer relative overflow-hidden`}
+                    className={`border-2 ${errors.images ? 'border-danger' : 'border-accent'} ${isDragOver ? 'border-dotted border-accent bg-deep' : 'border-dashed bg-transparent'} rounded-lg p-8 text-center hover:bg-deep transition-all cursor-pointer relative overflow-hidden`}
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
                     onDrop={handleDrop}
@@ -994,7 +994,7 @@ const PublishEquipmentForm: React.FC<{
                 </div>
             )}
             
-            <div className="bg-bg-deep border border-accent rounded-lg p-4">
+            <div className="bg-deep border border-accent rounded-lg p-4">
                 <h4 className="text-sm font-medium text-text-primary mb-2 flex items-center">
                     <i className="fa-solid fa-circle-info text-accent mr-2"></i>
                     图片上传小贴士
@@ -1025,7 +1025,7 @@ const PublishEquipmentForm: React.FC<{
             transition={{ duration: 0.3 }}
             className="space-y-6"
         >
-            <div className="bg-bg-deep rounded-lg p-6 border border-accent">
+            <div className="bg-deep rounded-lg p-6 border border-accent">
                 <h3 className="text-lg font-bold text-text-primary mb-4">确认发布信息</h3>
                 <div className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1102,7 +1102,7 @@ const PublishEquipmentForm: React.FC<{
                 </div>
             </div>
             
-            <div className="bg-bg-deep border border-accent rounded-lg p-4">
+            <div className="bg-deep border border-accent rounded-lg p-4">
                 <h4 className="text-sm font-medium text-text-primary mb-2 flex items-center">
                     <i className="fa-solid fa-shield-alt text-accent mr-2"></i>
                     交易保障提示
@@ -1138,11 +1138,11 @@ const PublishEquipmentForm: React.FC<{
     
     // 渲染底部操作按钮
     const renderActions = () => (
-        <div className="flex justify-between items-center mt-8 pt-6 border-t border-accent sticky bottom-0 bg-bg-card z-10">
+        <div className="flex justify-between items-center mt-8 pt-6 border-t border-accent sticky bottom-0 bg-card z-10">
             <button
                 type="button"
                 onClick={onClose}
-                className="px-6 py-3 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                className="px-6 py-3 bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
             >
                 取消
             </button>
@@ -1154,7 +1154,7 @@ const PublishEquipmentForm: React.FC<{
                         whileTap={{ scale: 0.97 }}
                         type="button"
                         onClick={prevStep}
-                        className="px-6 py-3 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                        className="px-6 py-3 bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                     >
                         <i className="fa-solid fa-arrow-left mr-2"></i>
                         上一步
@@ -1197,10 +1197,10 @@ const PublishEquipmentForm: React.FC<{
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="bg-bg-card rounded-xl border border-accent w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl"
+                className="bg-card rounded-xl border border-accent w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl"
                 onClick={e => e.stopPropagation()}
             >
-                <div className="sticky top-0 bg-bg-card z-10 border-b border-accent">
+                <div className="sticky top-0 bg-card z-10 border-b border-accent">
                     <div className="flex justify-between items-center p-5">
                         <h3 className="font-bold text-text-primary flex items-center text-lg">
                             <i className="fa-solid fa-plus-circle mr-2 text-accent"></i>
@@ -1287,7 +1287,7 @@ const EquipmentDetail: React.FC = () => {
     if (!equipment) {
         return (
             <div
-                className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen flex items-center justify-center">
+                className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen flex items-center justify-center">
                 <div className="text-center">
                     <div
                         className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
@@ -1316,7 +1316,7 @@ const EquipmentDetail: React.FC = () => {
 
     return (
         <div
-            className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+            className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
             <div className="mb-6">
                 <Link
                     to="/equipment-trade"
@@ -1341,7 +1341,7 @@ const EquipmentDetail: React.FC = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {}
                     <div className="lg:col-span-2">
-                        <div className="bg-bg-card rounded-xl p-4 shadow-sm border border-accent">
+                        <div className="bg-card rounded-xl p-4 shadow-sm border border-accent">
                           {/* 主图片，点击可放大 */}
                           <motion.div 
                             className="cursor-pointer relative overflow-hidden rounded-lg"
@@ -1377,7 +1377,7 @@ const EquipmentDetail: React.FC = () => {
                           {/* 器材详情 */}
                           <div className="mt-6">
                                 <h2 className="text-xl font-bold text-text-primary mb-3">器材详情</h2>
-                                <div className="bg-bg-deep p-4 rounded-lg">
+                                <div className="bg-deep p-4 rounded-lg">
                                     <p className="text-text-muted whitespace-pre-line">{equipment.description}</p>
                                 </div>
                             </div>
@@ -1386,7 +1386,7 @@ const EquipmentDetail: React.FC = () => {
                             {equipment.condition && equipment.conditionDescription && (
                               <div className="mt-6">
                                 <h2 className="text-xl font-bold text-text-primary mb-3">成色描述</h2>
-                                <div className="bg-bg-deep p-4 rounded-lg">
+                                <div className="bg-deep p-4 rounded-lg">
                                   <div className="flex items-center mb-3">
                                     <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-4 flex-shrink-0">
                                       <i className="fa-solid fa-camera text-xl"></i>
@@ -1404,7 +1404,7 @@ const EquipmentDetail: React.FC = () => {
                                         className={`text-center p-2 rounded-lg transition-colors ${
                                           level === equipment.condition 
                                             ? 'bg-accent text-text-primary' 
-                                            : 'bg-bg-card text-accent-hover hover:bg-accent/30'
+                                            : 'bg-card text-accent-hover hover:bg-accent/30'
                                         }`}
                                       >
                                         <p className="text-sm">{level}</p>
@@ -1421,7 +1421,7 @@ const EquipmentDetail: React.FC = () => {
                             {/* 技术参数 */}
                             {equipment.type === "相机" && <div className="mt-6">
                                 <h2 className="text-xl font-bold text-text-primary mb-3">技术参数</h2>
-                                <div className="bg-bg-deep p-4 rounded-lg grid grid-cols-2 gap-4">
+                                <div className="bg-deep p-4 rounded-lg grid grid-cols-2 gap-4">
                                     <div>
                                         <p className="text-sm text-text-muted mb-1">传感器</p>
                                         <p className="text-text-primary">全画幅 CMOS</p>
@@ -1445,7 +1445,7 @@ const EquipmentDetail: React.FC = () => {
                             <div className="mt-6">
                               <button 
                                 onClick={() => setShowTradeProcess(!showTradeProcess)}
-                                className="w-full flex items-center justify-between py-3 px-4 bg-bg-deep rounded-lg text-text-primary hover:bg-bg-card transition-colors"
+                                className="w-full flex items-center justify-between py-3 px-4 bg-deep rounded-lg text-text-primary hover:bg-card transition-colors"
                               >
                                 <div className="flex items-center">
                                   <i className="fa-solid fa-shopping-cart mr-2 text-accent"></i>
@@ -1459,7 +1459,7 @@ const EquipmentDetail: React.FC = () => {
                                   initial={{ opacity: 0, height: 0 }}
                                   animate={{ opacity: 1, height: 'auto' }}
                                   exit={{ opacity: 0, height: 0 }}
-                                  className="mt-2 bg-bg-deep rounded-lg p-4"
+                                  className="mt-2 bg-deep rounded-lg p-4"
                                 >
                                   <div className="relative">
                                     {/* 连接线 */}
@@ -1487,11 +1487,11 @@ const EquipmentDetail: React.FC = () => {
                     {}
                     <div className="lg:col-span-1">
                         <div
-                            className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent sticky top-24">
+                            className="bg-card rounded-xl p-6 shadow-sm border border-accent sticky top-24">
                             <div className="flex items-center justify-between mb-4">
                                 <h3 className="text-sm text-accent-hover font-medium">{equipment.brand} {equipment.type}</h3>
                                 <span
-                                    className="text-xs px-2 py-1 bg-bg-card text-text-muted rounded-full border border-accent">{equipment.type}</span>
+                                    className="text-xs px-2 py-1 bg-card text-text-muted rounded-full border border-accent">{equipment.type}</span>
                             </div>
                             <h2 className="text-xl font-bold text-text-primary mb-4">{equipment.name}</h2>
                             <div className="flex items-center mb-6">
@@ -1604,7 +1604,7 @@ const EquipmentDetail: React.FC = () => {
                                     {equipment.originalPrice !== equipment.price ? "联系卖家" : "立即购买"}
                                 </button>
                                 <button
-                                    className="w-full py-3 bg-bg-card text-text-primary rounded-lg font-medium hover:bg-accent transition-colors border border-accent">收藏
+                                    className="w-full py-3 bg-card text-text-primary rounded-lg font-medium hover:bg-accent transition-colors border border-accent">收藏
                                             </button>
                             </div>
                             {}
@@ -1852,7 +1852,7 @@ const EquipmentTrade: React.FC = () => {
 
     return (
         <div
-            className="container mx-auto px-4 py-8 bg-bg-deep star-texture min-h-screen">
+            className="container mx-auto px-4 py-8 bg-deep star-texture min-h-screen">
             <motion.div
                 initial={{
                     opacity: 0,
@@ -1881,7 +1881,7 @@ const EquipmentTrade: React.FC = () => {
                             scale: 0.95
                         }}
                         onClick={() => setTradeType("used")}
-                        className={`py-4 rounded-xl flex items-center justify-center transition-all ${tradeType === "used" ? "bg-accent border-2 border-accent text-text-primary shadow-md" : "bg-bg-card border border-accent text-text-muted"}`}>
+                        className={`py-4 rounded-xl flex items-center justify-center transition-all ${tradeType === "used" ? "bg-accent border-2 border-accent text-text-primary shadow-md" : "bg-card border border-accent text-text-muted"}`}>
                         <i className="fa-solid fa-recycle text-xl mr-2"></i>
                         <span className="font-medium">二手器材</span>
                     </motion.button>
@@ -1893,14 +1893,14 @@ const EquipmentTrade: React.FC = () => {
                             scale: 0.95
                         }}
                         onClick={() => setTradeType("new")}
-                        className={`py-4 rounded-xl flex items-center justify-center transition-all ${tradeType === "new" ? "bg-accent border-2 border-accent text-text-primary shadow-md" : "bg-bg-card border border-accent text-text-muted"}`}>
+                        className={`py-4 rounded-xl flex items-center justify-center transition-all ${tradeType === "new" ? "bg-accent border-2 border-accent text-text-primary shadow-md" : "bg-card border border-accent text-text-muted"}`}>
                         <i className="fa-solid fa-box-open text-xl mr-2"></i>
                         <span className="font-medium">全新器材</span>
                     </motion.button>
                 </div>
                 {}
                 <div
-                    className="bg-bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
+                    className="bg-card rounded-xl p-6 shadow-sm border border-accent mb-8">
                     <div
                         className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mb-4">
                         <div className="relative flex-1">
@@ -1909,32 +1909,32 @@ const EquipmentTrade: React.FC = () => {
                                 placeholder={`搜索${tradeType === "used" ? "二手" : "全新"}器材...`}
                                 value={searchTerm}
                                 onChange={e => setSearchTerm(e.target.value)}
-                                className="w-full px-4 py-3 pl-12 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted" />
+                                className="w-full px-4 py-3 pl-12 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted" />
                             <i
                                 className="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-text-muted"></i>
                         </div>
                         <select
                             value={selectedType}
                             onChange={e => setSelectedType(e.target.value)}
-                            className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
+                            className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                             {equipmentTypes.map(type => <option key={type} value={type}>{type}</option>)}
                         </select>
                         <select
                             value={selectedBrand}
                             onChange={e => setSelectedBrand(e.target.value)}
-                            className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
+                            className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                             {brands.map(brand => <option key={brand} value={brand}>{brand}</option>)}
                         </select>
                         <select
                             value={selectedPriceRange}
                             onChange={e => setSelectedPriceRange(e.target.value)}
-                            className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
+                            className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                             {priceRanges.map(range => <option key={range} value={range}>{range}</option>)}
                         </select>
                         {tradeType === "used" && <select
                             value={selectedCondition}
                             onChange={e => setSelectedCondition(e.target.value)}
-                            className="px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
+                            className="px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                             {conditions.map(
                                 condition => <option key={condition} value={condition}>{condition}</option>
                             )}
@@ -1945,7 +1945,7 @@ const EquipmentTrade: React.FC = () => {
                         <select
                             value={sortBy}
                             onChange={e => setSortBy(e.target.value)}
-                            className="px-4 py-2 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
+                            className="px-4 py-2 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none cursor-pointer">
                             <option value="recommended">推荐排序</option>
                             <option value="price-asc">价格从低到高</option>
                             <option value="price-desc">价格从高到低</option>
@@ -1961,7 +1961,7 @@ const EquipmentTrade: React.FC = () => {
                             y: -5,
                             boxShadow: "0 2px 12px rgba(74, 95, 139, 0.3)"
                         }}
-                        className="bg-bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm cursor-pointer">
+                        className="bg-card rounded-xl overflow-hidden border border-accent transition-all shadow-sm cursor-pointer">
                         {}
                         <div className="relative">
                             <img src={item.image} alt={item.name} className="w-full h-48 object-cover" />
@@ -1974,12 +1974,12 @@ const EquipmentTrade: React.FC = () => {
                                                   </div>}
                         </div>
                         {}
-                        <div className="p-5 bg-bg-card">
+                        <div className="p-5 bg-card">
                             {}
                             <div className="flex items-center justify-between mb-2">
                                 <span className="text-sm text-accent-hover font-medium">{item.brand}</span>
                                 <span
-                                    className="text-xs px-2 py-1 bg-bg-card text-text-muted rounded-full border border-accent">{item.type}</span>
+                                    className="text-xs px-2 py-1 bg-card text-text-muted rounded-full border border-accent">{item.type}</span>
                             </div>
                             {}
                             <h3 className="text-lg font-bold text-text-primary mb-2">{item.name}</h3>
@@ -2033,7 +2033,7 @@ const EquipmentTrade: React.FC = () => {
                             <div className="flex items-center space-x-3">
                                 <Link
                                     to={`/equipment-detail/${item.id}`}
-                                    className="flex-1 py-2 text-center bg-gradient-to-r from-accent to-bg-card text-text-primary rounded-lg font-medium transition-colors border border-accent">查看详情
+                                    className="flex-1 py-2 text-center bg-gradient-to-r from-accent to-card text-text-primary rounded-lg font-medium transition-colors border border-accent">查看详情
                                                       </Link>
                                 <button
                                     className="px-4 py-2 bg-accent text-text-primary rounded-lg font-medium hover:bg-accent-hover transition-colors"
@@ -2044,9 +2044,9 @@ const EquipmentTrade: React.FC = () => {
                         </div>
                     </motion.div>)}
                     {currentEquipment.length === 0 && <div
-                        className="col-span-full p-8 bg-bg-card rounded-xl border border-accent text-center">
+                        className="col-span-full p-8 bg-card rounded-xl border border-accent text-center">
                         <div
-                            className="w-16 h-16 bg-bg-dark-alt rounded-full flex items-center justify-center text-accent mx-auto mb-4 border border-accent">
+                            className="w-16 h-16 bg-dark-alt rounded-full flex items-center justify-center text-accent mx-auto mb-4 border border-accent">
                             <i className="fa-solid fa-search text-2xl"></i>
                         </div>
                         <h3 className="text-lg font-medium text-text-primary mb-2">未找到相关器材</h3>
@@ -2056,12 +2056,12 @@ const EquipmentTrade: React.FC = () => {
                 </div>
                 {}
                 <div
-                    className="mt-12 bg-bg-card rounded-xl p-6 shadow-sm border border-accent">
+                    className="mt-12 bg-card rounded-xl p-6 shadow-sm border border-accent">
                     <h2 className="text-xl font-bold text-text-primary mb-4">交易保障</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="flex items-start">
                             <div
-                                className="w-10 h-10 rounded-full bg-bg-dark-alt flex items-center justify-center text-accent mr-3 flex-shrink-0">
+                                className="w-10 h-10 rounded-full bg-dark-alt flex items-center justify-center text-accent mr-3 flex-shrink-0">
                                 <i className="fa-solid fa-check-circle"></i>
                             </div>
                             <div>
@@ -2072,7 +2072,7 @@ const EquipmentTrade: React.FC = () => {
                         </div>
                         <div className="flex items-start">
                             <div
-                                className="w-10 h-10 rounded-full bg-bg-dark-alt flex items-center justify-center text-accent mr-3 flex-shrink-0">
+                                className="w-10 h-10 rounded-full bg-dark-alt flex items-center justify-center text-accent mr-3 flex-shrink-0">
                                 <i className="fa-solid fa-shield-alt"></i>
                             </div>
                             <div>
@@ -2083,7 +2083,7 @@ const EquipmentTrade: React.FC = () => {
                         </div>
                         <div className="flex items-start">
                             <div
-                                className="w-10 h-10 rounded-full bg-bg-dark-alt flex items-center justify-center text-accent mr-3 flex-shrink-0">
+                                className="w-10 h-10 rounded-full bg-dark-alt flex items-center justify-center text-accent mr-3 flex-shrink-0">
                                 <i className="fa-solid fa-headset"></i>
                             </div>
                             <div>

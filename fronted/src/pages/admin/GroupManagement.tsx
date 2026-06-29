@@ -191,7 +191,7 @@ const GroupManagement: React.FC = () => {
       </div>
 
       {/* 筛选和搜索 */}
-      <div className="bg-bg-card p-4 rounded-xl border border-accent">
+      <div className="bg-card p-4 rounded-xl border border-accent">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="relative">
             <input
@@ -199,7 +199,7 @@ const GroupManagement: React.FC = () => {
               placeholder="搜索小组名称或描述..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-2 pl-10 bg-bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+              className="w-full px-4 py-2 pl-10 bg-deep border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
             />
             <i className="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-accent-hover"></i>
           </div>
@@ -207,7 +207,7 @@ const GroupManagement: React.FC = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
+            className="bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
           >
             <option value="all">全部状态</option>
             <option value="active">活跃</option>
@@ -218,7 +218,7 @@ const GroupManagement: React.FC = () => {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="bg-bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
+            className="bg-deep border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all appearance-none"
           >
             <option value="createdAt">按创建日期排序</option>
             <option value="name">按名称排序</option>
@@ -242,13 +242,13 @@ const GroupManagement: React.FC = () => {
           <div className="flex items-center space-x-2">
             <button
               onClick={() => handleBulkAction('active')}
-              className="px-3 py-1 bg-bg-card text-text-primary rounded-lg hover:bg-accent transition-colors text-sm"
+              className="px-3 py-1 bg-card text-text-primary rounded-lg hover:bg-accent transition-colors text-sm"
             >
               启用
             </button>
             <button
               onClick={() => handleBulkAction('banned')}
-              className="px-3 py-1 bg-bg-card text-text-primary rounded-lg hover:bg-accent transition-colors text-sm"
+              className="px-3 py-1 bg-card text-text-primary rounded-lg hover:bg-accent transition-colors text-sm"
             >
               禁用
             </button>
@@ -279,7 +279,7 @@ const GroupManagement: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-bg-card rounded-xl border border-accent overflow-hidden hover:shadow-lg transition-all"
+            className="bg-card rounded-xl border border-accent overflow-hidden hover:shadow-lg transition-all"
           >
             {/* 小组封面 */}
             <div className="relative h-40 overflow-hidden">
@@ -296,7 +296,7 @@ const GroupManagement: React.FC = () => {
                   type="checkbox"
                   checked={selectedGroups.includes(group.id)}
                   onChange={() => handleSelectGroup(group.id)}
-                  className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-bg-deep"
+                  className="h-4 w-4 text-accent focus:ring-accent border-accent rounded bg-deep"
                 />
               </div>
             </div>
@@ -305,7 +305,7 @@ const GroupManagement: React.FC = () => {
             <div className="p-5">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full border-2 border-bg-card overflow-hidden shadow-lg -mt-8 mr-3 bg-bg-deep">
+                  <div className="w-12 h-12 rounded-full border-2 border-card overflow-hidden shadow-lg -mt-8 mr-3 bg-deep">
                     <img
                       src={group.avatar}
                       alt={group.name}
@@ -347,13 +347,13 @@ const GroupManagement: React.FC = () => {
               <div className="flex space-x-2">
                 <button
                   onClick={() => handleGroupAction(group.id, 'view')}
-                  className="flex-1 py-2 bg-bg-deep text-text-primary rounded-lg text-sm font-medium hover:bg-accent transition-colors border border-accent"
+                  className="flex-1 py-2 bg-deep text-text-primary rounded-lg text-sm font-medium hover:bg-accent transition-colors border border-accent"
                 >
                   查看详情
                 </button>
                 <button
                   onClick={() => handleGroupAction(group.id, 'edit')}
-                  className="px-3 py-2 bg-bg-deep text-text-primary rounded-lg text-sm font-medium hover:bg-accent transition-colors border border-accent"
+                  className="px-3 py-2 bg-deep text-text-primary rounded-lg text-sm font-medium hover:bg-accent transition-colors border border-accent"
                 >
                   <i className="fa-solid fa-pen-to-square"></i>
                 </button>
@@ -393,8 +393,8 @@ const GroupManagement: React.FC = () => {
       
       {/* 空状态 */}
       {filteredGroups.length === 0 && (
-        <div className="p-12 text-center bg-bg-card rounded-xl border border-accent">
-          <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+        <div className="p-12 text-center bg-card rounded-xl border border-accent">
+          <div className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
             <i className="fa-solid fa-users-rectangle text-2xl"></i>
           </div>
           <h3 className="text-lg font-medium text-text-primary mb-2">暂无小组</h3>

@@ -65,7 +65,7 @@ const TutorialDetail: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-4 py-8 bg-deep min-h-screen flex items-center justify-center">
         <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
@@ -73,7 +73,7 @@ const TutorialDetail: React.FC = () => {
 
   if (!tutorial) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+      <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
         <div className="flex flex-col items-center justify-center h-[60vh] text-center">
           <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-text-primary mb-4">
             <i className="fa-solid fa-exclamation-circle text-2xl"></i>
@@ -92,7 +92,7 @@ const TutorialDetail: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -110,14 +110,14 @@ const TutorialDetail: React.FC = () => {
         </div>
         
         {/* 教程封面 */}
-        <div className="bg-bg-card rounded-xl overflow-hidden border border-accent mb-8">
+        <div className="bg-card rounded-xl overflow-hidden border border-accent mb-8">
           <div className="relative">
             <img
               src={tutorial.image}
               alt={tutorial.title}
               className="w-full h-64 object-cover"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-bg-deep to-transparent p-6">
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-deep to-transparent p-6">
               <div className="flex flex-wrap items-center gap-2 mb-2">
                 <span className="px-3 py-1 bg-accent text-text-primary text-sm rounded-full border border-accent">
                   {tutorial.category}
@@ -150,7 +150,7 @@ const TutorialDetail: React.FC = () => {
           {/* 教程正文 */}
           <div className="lg:col-span-2 space-y-6">
             {/* 教程描述 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">教程简介</h2>
               <p className="text-text-muted leading-relaxed">
                 {tutorial.description}
@@ -158,7 +158,7 @@ const TutorialDetail: React.FC = () => {
             </div>
             
             {/* 教程内容 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-6">教程内容</h2>
               
               {/* Markdown 内容渲染 */}
@@ -220,7 +220,7 @@ const TutorialDetail: React.FC = () => {
           {/* 侧边栏 */}
           <div className="lg:col-span-1 space-y-6">
             {/* 作者信息 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">作者信息</h2>
               <div className="flex items-center mb-4">
                 <img
@@ -233,13 +233,13 @@ const TutorialDetail: React.FC = () => {
                   <p className="text-sm text-text-muted">摄影导师 / 专业摄影师</p>
                 </div>
               </div>
-              <button className="w-full py-2 bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
+              <button className="w-full py-2 bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
                 关注作者
               </button>
             </div>
             
             {/* 操作按钮 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">操作</h2>
               <div className="space-y-3">
                 <button
@@ -247,13 +247,13 @@ const TutorialDetail: React.FC = () => {
                   className={`w-full py-3 flex items-center justify-center rounded-lg font-medium transition-colors ${
                     isLiked
                       ? 'bg-accent text-text-primary border border-accent'
-                      : 'bg-bg-deep text-text-muted border border-accent hover:bg-accent hover:text-text-primary'
+                      : 'bg-deep text-text-muted border border-accent hover:bg-accent hover:text-text-primary'
                   }`}
                 >
                   <i className={`fa-solid ${isLiked ? 'fa-heart' : 'fa-heart'} mr-2`}></i>
                   {isLiked ? '已喜欢' : '喜欢'}
                 </button>
-                <button className="w-full py-3 flex items-center justify-center bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
+                <button className="w-full py-3 flex items-center justify-center bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
                   <i className="fa-solid fa-bookmark mr-2"></i>
                   收藏教程
                 </button>
@@ -266,12 +266,12 @@ const TutorialDetail: React.FC = () => {
                        toast.error('复制失败，请手动复制');
                      }
                    }}
-                   className="w-full py-3 flex items-center justify-center bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent relative z-10"
+                   className="w-full py-3 flex items-center justify-center bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent relative z-10"
                  >
                    <i className="fa-solid fa-share-alt mr-2"></i>
                    分享教程
                  </button>
-                <button className="w-full py-3 flex items-center justify-center bg-bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
+                <button className="w-full py-3 flex items-center justify-center bg-deep text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent">
                   <i className="fa-solid fa-download mr-2"></i>
                   下载资料
                 </button>
@@ -279,7 +279,7 @@ const TutorialDetail: React.FC = () => {
             </div>
             
             {/* 标签 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">相关标签</h2>
               <div className="flex flex-wrap gap-2">
                 {tutorial.tags.map((tag, index) => (
@@ -294,14 +294,14 @@ const TutorialDetail: React.FC = () => {
             </div>
             
             {/* 推荐教程 */}
-            <div className="bg-bg-card rounded-xl p-6 border border-accent">
+            <div className="bg-card rounded-xl p-6 border border-accent">
               <h2 className="text-xl font-bold text-text-primary mb-4">推荐教程</h2>
               <div className="space-y-4">
                 <p className="text-sm text-accent-hover text-center">暂无推荐教程</p>
              </div>
              
              {/* 评论区 */}
-             <div className="bg-bg-card rounded-xl p-6 border border-accent mt-8">
+             <div className="bg-card rounded-xl p-6 border border-accent mt-8">
                <CommentSection postId={tutorial.id} />
              </div>
           </div>

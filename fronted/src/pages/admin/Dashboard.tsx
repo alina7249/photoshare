@@ -67,7 +67,7 @@ const Dashboard: React.FC = () => {
           <p className="text-text-muted mt-1">欢迎回来，查看系统运行情况</p>
         </div>
         <div className="flex items-center space-x-3">
-          <div className="flex bg-bg-card rounded-lg overflow-hidden">
+          <div className="flex bg-card rounded-lg overflow-hidden">
             {['day', 'week', 'month'].map((range) => (
               <button
                 key={range}
@@ -126,7 +126,7 @@ const Dashboard: React.FC = () => {
       {/* 图表区域 */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* 用户增长趋势 */}
-        <div className="lg:col-span-2 bg-bg-card rounded-xl p-6 border border-accent">
+        <div className="lg:col-span-2 bg-card rounded-xl p-6 border border-accent">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-text-primary">用户增长趋势</h2>
             <div className="flex space-x-2">
@@ -172,7 +172,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* 内容分布 */}
-        <div className="bg-bg-card rounded-xl p-6 border border-accent">
+        <div className="bg-card rounded-xl p-6 border border-accent">
           <h2 className="text-lg font-bold text-text-primary mb-4">内容分布</h2>
           <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
@@ -216,7 +216,7 @@ const Dashboard: React.FC = () => {
       {/* 订单统计和最近活动 */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* 订单统计 */}
-        <div className="bg-bg-card rounded-xl p-6 border border-accent">
+        <div className="bg-card rounded-xl p-6 border border-accent">
           <h2 className="text-lg font-bold text-text-primary mb-4">订单收入</h2>
           <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
@@ -236,7 +236,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* 最近活动 */}
-        <div className="lg:col-span-2 bg-bg-card rounded-xl p-6 border border-accent">
+        <div className="lg:col-span-2 bg-card rounded-xl p-6 border border-accent">
           <h2 className="text-lg font-bold text-text-primary mb-4">最近活动</h2>
           <div className="space-y-4">
             {recentActivities.map((activity) => (
@@ -245,7 +245,7 @@ const Dashboard: React.FC = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: activity.id * 0.1 }}
-                className="flex items-start p-3 bg-bg-deep rounded-lg border border-accent hover:border-accent-hover transition-colors"
+                className="flex items-start p-3 bg-deep rounded-lg border border-accent hover:border-accent-hover transition-colors"
               >
                 <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent mr-3 flex-shrink-0">
                   <i className={`fa-solid ${

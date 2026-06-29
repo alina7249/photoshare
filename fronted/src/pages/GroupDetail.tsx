@@ -154,7 +154,7 @@ const GroupDetail: React.FC = () => {
   // 渲染加载状态
   if (isLoading || !group) {
     return (
-      <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-4 py-8 bg-deep min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-text-muted">加载小组信息中...</p>
@@ -164,7 +164,7 @@ const GroupDetail: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-bg-deep min-h-screen">
+    <div className="container mx-auto px-4 py-8 bg-deep min-h-screen">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -190,15 +190,15 @@ const GroupDetail: React.FC = () => {
               alt={`${group.name} cover`}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-bg-deep to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-deep to-transparent"></div>
           </div>
 
           {/* 小组信息卡片 */}
-          <div className="bg-bg-card border border-accent rounded-xl p-6 -mt-16 relative z-10">
+          <div className="bg-card border border-accent rounded-xl p-6 -mt-16 relative z-10">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
               {/* 小组头像和名称 */}
               <div className="flex items-end gap-4">
-                <div className="w-24 h-24 rounded-full border-4 border-bg-card overflow-hidden shadow-lg">
+                <div className="w-24 h-24 rounded-full border-4 border-card overflow-hidden shadow-lg">
                   <img
                     src={group.avatar}
                     alt={group.name}
@@ -209,14 +209,14 @@ const GroupDetail: React.FC = () => {
                   <div className="flex items-center gap-2">
                     <h1 className="text-2xl md:text-3xl font-bold text-text-primary">{group.name}</h1>
                     {!group.isPublic && (
-                      <span className="px-2 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent">
+                      <span className="px-2 py-1 bg-deep text-text-muted rounded-full text-xs border border-accent">
                         <i className="fa-solid fa-lock mr-1"></i>私密
                       </span>
                     )}
                   </div>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {group.tags.map((tag, index) => (
-                      <span key={index} className="px-2 py-1 bg-bg-deep text-text-muted rounded-full text-xs border border-accent">#{tag}</span>
+                      <span key={index} className="px-2 py-1 bg-deep text-text-muted rounded-full text-xs border border-accent">#{tag}</span>
                     ))}
                   </div>
                 </div>
@@ -247,7 +247,7 @@ const GroupDetail: React.FC = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 bg-bg-card text-text-primary rounded-lg font-medium hover:bg-accent transition-colors border border-accent"
+                    className="px-4 py-2 bg-card text-text-primary rounded-lg font-medium hover:bg-accent transition-colors border border-accent"
                   >
                     <i className="fa-solid fa-bell mr-2"></i>
                     订阅通知
@@ -264,19 +264,19 @@ const GroupDetail: React.FC = () => {
 
             {/* 小组数据统计 */}
             <div className="mt-6 grid grid-cols-3 md:grid-cols-4 gap-4">
-              <div className="bg-bg-deep p-3 rounded-lg text-center">
+              <div className="bg-deep p-3 rounded-lg text-center">
                 <p className="text-xs text-accent-hover mb-1">成员数</p>
                 <p className="text-lg font-bold text-text-primary">{group.members.length}</p>
               </div>
-              <div className="bg-bg-deep p-3 rounded-lg text-center">
+              <div className="bg-deep p-3 rounded-lg text-center">
                 <p className="text-xs text-accent-hover mb-1">今日活跃度</p>
                 <p className="text-lg font-bold text-text-primary">{group.activity.today}</p>
               </div>
-              <div className="bg-bg-deep p-3 rounded-lg text-center">
+              <div className="bg-deep p-3 rounded-lg text-center">
                 <p className="text-xs text-accent-hover mb-1">本周活跃度</p>
                 <p className="text-lg font-bold text-text-primary">{group.activity.thisWeek}</p>
               </div>
-              <div className="bg-bg-deep p-3 rounded-lg text-center">
+              <div className="bg-deep p-3 rounded-lg text-center">
                 <p className="text-xs text-accent-hover mb-1">本月活跃度</p>
                 <p className="text-lg font-bold text-text-primary">{group.activity.thisMonth}</p>
               </div>
@@ -285,14 +285,14 @@ const GroupDetail: React.FC = () => {
         </div>
 
         {/* 内容标签页 */}
-        <div className="bg-bg-card border border-accent rounded-xl mb-8">
+        <div className="bg-card border border-accent rounded-xl mb-8">
           <div className="flex border-b border-accent">
             <button
               onClick={() => setActiveTab('posts')}
               className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
                 activeTab === 'posts'
                   ? 'bg-accent text-text-primary'
-                  : 'bg-bg-card text-text-muted hover:text-text-primary'
+                  : 'bg-card text-text-muted hover:text-text-primary'
               }`}
             >
               <i className="fa-solid fa-file-lines mr-2"></i>
@@ -303,7 +303,7 @@ const GroupDetail: React.FC = () => {
               className={`flex-1 py-4 px-4 text-center font-medium transition-colors ${
                 activeTab === 'members'
                   ? 'bg-accent text-text-primary'
-                  : 'bg-bg-card text-text-muted hover:text-text-primary'
+                  : 'bg-card text-text-muted hover:text-text-primary'
               }`}
             >
               <i className="fa-solid fa-users mr-2"></i>
@@ -318,7 +318,7 @@ const GroupDetail: React.FC = () => {
               <>
                 {/* 发布帖子框 */}
                 {group.joined && (
-                  <div className="bg-bg-deep border border-accent rounded-lg p-4 mb-6">
+                  <div className="bg-deep border border-accent rounded-lg p-4 mb-6">
                     <form onSubmit={handlePostSubmit}>
                       <div className="flex items-start gap-3 mb-3">
                         <img
@@ -332,13 +332,13 @@ const GroupDetail: React.FC = () => {
                             value={newPostTitle}
                             onChange={(e) => setNewPostTitle(e.target.value)}
                             placeholder="输入帖子标题..."
-                            className="w-full px-4 py-2 mb-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+                            className="w-full px-4 py-2 mb-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
                           />
                           <textarea
                             value={newPostContent}
                             onChange={(e) => setNewPostContent(e.target.value)}
                             placeholder="分享你的摄影心得、作品或提问..."
-                            className="w-full px-4 py-3 bg-bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[100px]"
+                            className="w-full px-4 py-3 bg-card border border-accent text-text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all min-h-[100px]"
                           ></textarea>
                         </div>
                       </div>
@@ -373,7 +373,7 @@ const GroupDetail: React.FC = () => {
                 {/* 帖子列表 */}
                 {group.posts.length === 0 ? (
                   <div className="text-center py-12">
-                    <div className="w-16 h-16 bg-bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
+                    <div className="w-16 h-16 bg-deep rounded-full flex items-center justify-center text-accent mx-auto mb-4">
                       <i className="fa-solid fa-file-lines text-2xl"></i>
                     </div>
                     <h3 className="text-lg font-medium text-text-primary mb-2">暂无帖子</h3>
@@ -389,7 +389,7 @@ const GroupDetail: React.FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="bg-bg-deep border border-accent rounded-lg p-4 hover:border-accent-hover transition-colors"
+                        className="bg-deep border border-accent rounded-lg p-4 hover:border-accent-hover transition-colors"
                       >
                         <div className="flex items-start gap-3 mb-3">
                           <img
@@ -424,7 +424,7 @@ const GroupDetail: React.FC = () => {
                             {post.tags && post.tags.length > 0 && (
                               <div className="flex flex-wrap gap-1 mb-3">
                                 {post.tags.map((tag, index) => (
-                                  <span key={index} className="px-2 py-1 bg-bg-card text-text-muted rounded-full text-xs border border-accent">#{tag}</span>
+                                  <span key={index} className="px-2 py-1 bg-card text-text-muted rounded-full text-xs border border-accent">#{tag}</span>
                                 ))}
                               </div>
                             )}
@@ -471,7 +471,7 @@ const GroupDetail: React.FC = () => {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3 }}
-                      className="bg-bg-deep border border-accent rounded-lg p-4 hover:border-accent-hover transition-colors"
+                      className="bg-deep border border-accent rounded-lg p-4 hover:border-accent-hover transition-colors"
                     >
                       <div className="flex items-center gap-3">
                         <img
@@ -521,7 +521,7 @@ const GroupDetail: React.FC = () => {
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-bg-card rounded-xl border border-accent w-full max-w-md"
+              className="bg-card rounded-xl border border-accent w-full max-w-md"
               onClick={e => e.stopPropagation()}
             >
               <div className="p-6">
@@ -541,7 +541,7 @@ const GroupDetail: React.FC = () => {
                 <div className="flex space-x-3">
                   <button
                     onClick={() => setShowJoinModal(false)}
-                    className="flex-1 py-3 bg-bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
+                    className="flex-1 py-3 bg-card text-text-muted rounded-lg font-medium hover:bg-accent hover:text-text-primary transition-colors border border-accent"
                   >
                     取消
                   </button>

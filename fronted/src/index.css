@@ -177,12 +177,12 @@ img.loading {
 }
 
 .btn-secondary {
-  @apply bg-bg-card text-text-primary border border-accent font-medium rounded-lg px-4 py-2 transition-colors hover:bg-accent;
+  @apply bg-card text-text-primary border border-accent font-medium rounded-lg px-4 py-2 transition-colors hover:bg-accent;
 }
 
 /* 输入框基础样式 */
 .input {
-  @apply bg-bg-card border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted;
+  @apply bg-card border border-accent text-text-primary rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-text-muted;
 }
 
 /* 自定义滚动条样式增强 */
